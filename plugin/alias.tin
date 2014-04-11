@@ -1,0 +1,601 @@
+#alias {load} {
+    #read ${HOME}/.tt/plugin/%1.tin;
+};
+
+#alias {unload} {
+    #class %1 kill;
+};
+
+#alias {eat_food} {
+	#6 {drink cha};
+};
+
+#alias {cq} {
+	n;w;cun %1 gold;
+	e;s;
+};
+
+#alias {qq} {
+	n;w;qu %1 gold;
+	#action {钱眼开说道：「哟，抱歉啊，我这儿正忙着呢……您请稍候。」} {
+		#delay {1} {
+			qu %1 gold;
+		};
+	};
+	#action {钱眼开记完帐，告诉你} {
+		#unaction {钱眼开记完帐，告诉你};
+		#unaction {钱眼开说道：「哟，抱歉啊，我这儿正忙着呢……您请稍候。」};
+	};
+	e;s;
+};
+
+#alias {cq} {
+	n;w;cun %1 gold;
+	e;s;
+};
+
+#alias {chifan} {
+	eat_food;
+};
+
+#alias {get.fan} {
+	enter shudong;say 天堂有路你不走呀;d;9;sw;s;#2 sw;nw;out;wd;s;s;w;
+	buy tea 30;
+	e;n;n;eu;zuan dong;se;#2 ne;n;ne;e;u;out;
+};
+
+#alias {xs} {
+    ask song about 下山;
+};
+
+#alias {lm} {
+    localmaps;
+};
+
+#alias {grep} {
+    #grep %1;
+};
+
+#alias {query_room} {
+    #system {${HOME}/.tt/bin/query_room.rb %0};
+};
+
+#action {(%1)告诉你：query %2} {
+	query_npc %2;
+	#list query_npc_output size tmp_size;
+	#var tmp_index 0;
+	#while {$tmp_index < ${tmp_size}} {
+		#math tmp_index ${tmp_index}+1;
+		#list query_npc_output get $tmp_index tmp_value;
+		tell %1 $tmp_value;
+	};
+} {1};
+
+#alias bladebook {set brief 1;w;w;n;n;n;ask tian about 淫贼;set brief 2};
+#alias bladebookb {set brief 1;s;s;;e;e;set brief 2};
+
+#alias swordbook {
+    s;s;;w;nw;ask punk about 王小二;
+    #delay {1} {
+	    se;e;n;n;nw;nw;ne;enter hole;ask wang about 鸡;bihua;
+	    w;sw;se;se;
+    };
+};
+
+#alias lpy {
+    ask xiao mao about 老朋友;
+};
+
+#alias wuliang {
+    set brief 1;#9 {s};
+    #delay {1} {sw;w;w;nw;#4 {sw}};
+    #delay {2} {nw;#3 {nu};set brief 2}
+};
+
+#alias yubi {set brief 1;e;se;#4 {sw};s;e;n;w;n;set brief 2}
+
+#alias shiban {say 上报四重恩，下济三途苦;#4 {pull stone up};#3 {push stone down}};
+
+#alias zsf {set brief 1;n;n;n;n;w;w;w;sw;s;se;e;ne;n;nw;sw;s;e;set brief 2;open door;n};
+#alias zsfb {set brief 1;s;w;n;ne;se;w;e;e;s;s;s;s;set brief 2};
+
+#alias {mg.mhz} {
+	e;n;w;s;w;e;e;e;n;break men;s
+};
+
+#alias mg.dmd {
+	open door;n;sw;se;n;s;w;e;
+	#delay {1} {
+		w;e;e;s;w;n;nw;n
+	};
+};
+#alias mg.chahua {w;n;w;s;s;e;e;w;w};
+#alias mg.chahuab {e;s;n;w;n;n;e;s;e};
+#alias mg.gumu {swim river;n;n;e;n;n;w;w;n;n;e;ban stone;w;w;};
+#alias mg.wxd {n;w;n;e;s;u;out};
+#alias mg.fmq {set brief 1;w;e;s;e;n;n;e;w;s;set brief 0}
+#alias mg.fmq.b {set brief 1;n;e;w;s;s;w;n;w;e}
+#alias mg.tdh {ed;s;s;s;w;e;n;n;n;n};
+#alias mg.tdh.b {#4 s;w;n;n;e;n;s;wu};
+#alias mg.hz {s;e;n;w;s;s;w};
+#alias mg.yh {n;n;w;e;s;e;e;n;n};
+#alias mg.hhh {say 红花老祖本姓朱,为救苍生下凡来; enter};
+#alias {shudong} {enter shudong;say 天堂有路你不走呀;d;%1};
+
+#alias {sqs} {eu;n;nu;nu;nu;eu;e};
+#alias {sqsb} {w;wd;sd;sd;sd;s;wd};
+
+#alias {le} {l east};
+#alias {lw} {l west};
+#alias {ls} {l south};
+#alias {ln} {l north};
+
+#alias {notify} {
+	#system {echo %0|iconv -f gbk -t utf-8|xargs -I. notify-send -t 5000 -u normal "${char_id}:" .};
+	#nop #system {echo %0|iconv -f gbk -t utf-8|xargs -I. zenity --low --text . &};
+	#nop #system {echo '%0'|iconv -f gbk -t utf-8|xargs -I. gnome-osd-client -f "<message id='myplugin' osd_fake_translucent_bg='off' osd_vposition='center' animations='off' hide_timeout='3000' osd_halignment='center'> <span size='medium' background='green' foreground='white'> "." </span></message>"};
+};
+
+#alias {notify_loop} {
+	#system {echo %0|iconv -f gbk -t utf-8|xargs -I. notify-send -t 5000 -u critical "${char_id}:" .};	
+	#ticker {notify_loop}{
+		#system {echo %0|iconv -f gbk -t utf-8|xargs -I. notify-send -t 5000 -u critical "${char_id}:" .};	
+	} {6}
+};
+
+#alias {i} {
+	#send {i %0};
+	lock 你身上带著下列;
+};
+
+#alias {sc} {
+	#send {sc %0};
+	lock 你是一位;
+};
+
+#alias {st} {
+	#send {status_me};
+	lock ≡━◎;
+};
+
+#alias {hp} {
+	#send {hp};
+	lock ≡━━━━;
+};
+
+#alias {sk} {
+	#send {sk};
+	lock 你目前所学过的技能;
+};
+
+#alias {jifa} {
+	#send {jifa %0};
+	lock 以下是你目前使用中的特殊技能;
+};
+
+#alias {lock} {
+	#if {"%0" != ""} {
+		#action {%0} {
+			#action {^>} {
+				#buffer lock;
+				#unaction {^>}
+			};
+			#unaction {%0};
+		};
+	};
+};
+
+#alias {Q} {
+	quest;
+};
+
+#alias {pp} {
+	helpme ...;
+	helpme find %0;
+}
+
+#alias {jd} {
+	jianding %0;
+};
+
+#alias {repair} {
+	#unticker {naijiu};
+	#var orig_here ${CurrentPosition};
+	#action {抵达目的地} {
+		#unaction {抵达目的地};
+		e;ne;
+		#delay {2} {
+			#foreach {${my_weapons}[%*]} {weapon} {
+				fix ${weapon};
+			};
+			sw;w;
+			gt ${orig_here};			
+		};		
+	};
+	gt ly;
+};
+
+#alias {iall} {
+	#echo {≡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━≡};
+	#send {i ring};
+	#send {i necklace};
+	#send {i spear};
+	#send {i staff};
+	#send {i shield};
+	#send {i sword};
+	#send {i whip};
+	#send {i head};
+	#send {i hands};
+	#send {i waist};
+	#send {i armor};
+	#send {i cloth};
+	#send {i boots};
+	#send {i wrists};
+	#send {i surcoat};
+	#action {你身上id为surcoat的东西有下面这些} {
+		#delay {0.5} {
+			#echo {≡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━≡};
+			#buffer lock;
+		};
+	};
+};
+
+#alias {rec} {
+	#path end;
+	#path new;
+};
+
+#alias {back} {
+	#path save backward xxx;
+	#path load xxx;
+	#path run;
+};
+
+#alias {jinmu} {
+	s;s;s;
+	ask yang about 进墓;
+};
+
+#alias {chumu} {
+	s;s;s;s;
+	e;s;s;s;w;
+	ask sun about 出墓;
+};
+
+#alias {reload} {
+	gt wm;
+	#delay {1} {
+		u;
+		#send {reload};
+		#delay {2} {
+			d;gt yz;
+		};
+	};
+};
+
+#alias {autopp} {
+	show_to_info 正在查找 ${pp_target} ...;
+	pp ${pp_target};
+	#ticker {pp} {
+		pp ${pp_target};
+	} {15};
+
+	#action {%*告诉你：【%*】目前在%*} {
+		#unticker {pp};
+		show_to_info %%2 在 %%3;
+	} {1};
+
+	#action {%*告诉你：%*并不存在} {
+		#unticker {pp};
+		show_to_info %%2 不存在;
+	} {1};
+};
+
+#alias {autopp.set_en} {
+	#var pp_target @lower{%1};
+	autopp;
+};
+
+#alias {autopp.set_zh} {
+	#var pp_target_zhname %1;
+	helpme ...;
+	helpme py ${pp_target_zhname};
+	#action {淘米(zleo)告诉你：%*} {
+		#unaction {淘米(zleo)告诉你：%*};
+		#var pp_target %%1;
+		autopp;
+	} {1};
+};
+
+#alias {jq} {
+	jobquery;
+};
+
+#alias {xmpp.on} {
+	#var xmpp_info on;
+	#alias {xmpp.notify} {
+		tell erq notify %%0;
+	};
+};
+
+#alias {xmpp.off} {
+	#var xmpp_info off;
+	#alias {xmpp.notify} {
+		#cr %0;
+	};
+};
+
+#alias {xmpp.notify} {
+	#cr %0;
+};
+
+#alias {heal.stop} {
+	#unticker {heal};
+};
+
+#alias {heal.start} {
+	#ticker {heal} {
+		yun lifeheal %1;
+		#edelay {2} {
+			dazuo 100;
+		};
+	} {5};
+};
+
+#alias {running} {
+	#delay {idler} {
+		idle;
+	} {300};
+};
+
+#alias {fm} {
+	fullme %0;
+};
+
+#alias {on_there} {
+	#alias tmp_there %0;
+	#action {抵达目的地} {
+		#unaction {抵达目的地};
+		#delay {2} {
+			tmp_there;
+		};
+	};
+};
+
+#alias {on_truce} {
+	#alias tmp_truce %0;
+	#class truce.inner open;
+	fighting;
+	#action {truce} {
+		#class truce.inner kill;
+		tmp_truce;
+	};
+	#class truce.inner close;
+};
+
+#alias {on_unbusy} {
+	#alias tmp_unbusy %0;
+	#class unbusy.inner open;
+	#gag {你不忙};
+	#ticker {checkbusy} {
+		checkbusy;
+	} {1};
+	#action {你不忙} {
+		#class unbusy.inner kill;
+		tmp_unbusy;
+	};
+	#class unbusy.inner close;
+};
+
+#alias {on_hit} {
+	#alias tmp_hit %0;
+	#action {你战胜了} {
+		#unaction {你战胜了};
+		#delay {2} {
+			halt;
+			tmp_hit;
+		};
+	};
+};
+
+#alias {on_dead} {
+	#alias tmp_dead %0;
+	#action {死了} {
+		#unaction {死了};
+		#delay {2} {
+			halt;
+			tmp_dead;
+		};
+	} {1};
+};
+
+#alias {on_health} {
+	#alias tmp_health %0;
+	#class health.inner open;
+	#alias {check_qx} {
+		#if {${eff_qx_percent} < 99} {
+			yun heal;
+			#delay {3} {
+				check_qx;
+			};
+		};
+		#else {
+			check_js;
+		};
+	};
+	#alias {check_js} {
+		#if {${eff_js_percent} < 99} {
+			yun inspire;
+			#delay {3} {
+				check_js;
+			};
+		};
+		#else {
+			#class health.inner kill;
+			re;
+			#delay {1} {
+				tmp_health;
+			};
+		};
+	};	
+
+	#alias {check_health} {
+		dz.full;
+		#action {dz.full} {
+			check_qx;
+		}
+	};
+	#class health.inner close;
+
+	check_health;
+};
+
+#alias {b2} {
+	set brief 2;
+};
+
+#alias {b1} {
+	set brief 1;
+};
+
+#alias {map.edit.on} {
+	show_to_quest map editing ...;
+	#map flag {static} {off};
+};
+
+#alias {map.edit.off} {
+	show_to_quest map editing ... done;
+	#map flag {static} {on};
+};
+
+#alias {map.room.static} {
+	show_to_info set room as static;
+	#map roomflag {static} {on};
+};
+
+#alias {map.dig} {
+	#map dig {%1} {%2};
+};
+
+#alias {map.name} {
+	#map name %1;
+};
+
+#alias {map.info} {
+	#map info;
+};
+
+#alias {map.go} {
+	#path end;
+	#map run %0;
+};
+
+#alias {map.load} {
+	#map read ${HOME}/.tt/map/%1.map;
+	#map flag vtmap off;
+	#map flag ascii off;
+	#map flag nofollow off;
+	#map flag static on;
+	#if {"%1" == "yangzhou"} {
+		#map goto 6;	
+	};
+	#else {
+		#map goto 1;
+	};
+};
+
+#alias {on_wakeup} {
+	#alias tmp_wakeup %0;
+	#class on_wakeup.inner open;
+	#action {睡过一觉} {
+		#delay {sleep} {
+       		sleep;
+		} {10};
+	};
+	#action {你一觉醒来} {
+		#class on_wakeup.inner kill;
+		#delay {wakeup} {
+			tmp_wakeup;
+		} {3};
+	};
+	#class on_wakeup.inner close;
+};
+
+#alias {init_set} {
+	set brief 2;
+	set hubiao_additional 5;
+	set learn_emote 1;
+	set nowieldmsg 1;
+	set nowiki 1;
+	set skip_combat 2;
+	set wimpy 20;
+};
+
+#alias {get.san} {
+	#var get_san_count %1;
+	#action {%S          清心散} {
+		#unaction {%S          清心散};
+		getout %%1;
+		#delay {1} {
+			drop ${get_san_count} san;
+			store san;
+			get san;
+			gt yz;
+		};
+	};
+	#action {你捡起一些清心散} {
+		#unaction {你捡起一些清心散};
+		show_to_info 清心散;
+	};
+	gt bs;
+	on_there {
+		find;
+	};
+};
+
+#alias {xy.start} {
+	#var xy_info on;
+};
+
+#alias {xy.stop} {
+	#var xy_info off;
+};
+
+#alias {get.bpz} {
+	s;e;
+	buy bingpo zhang;
+	#delay {1} {
+		buy bingpo zhang;
+		#delay {1} {
+			w;n;
+		};
+	};
+};
+
+#alias {get.xtj} {
+	n;n;w;
+	get xuantie sword from xiang;
+	#delay {1} {
+		e;s;s;
+	};
+};
+
+#list baowei_time create {3;7;11;15;19;23};
+#alias {check_baowei} {
+	#format {epoch} {%T};
+	#format {current_time} {%t} {{%T}{$epoch}};
+	#var tmp_baowei 0;
+	#foreach {${baowei_time}[%*]} {single_time} {
+		#format from_time {%d:45:99} ${single_time}-1;
+		#format to_time {%d:15:99} ${single_time};
+		#if {"${current_time}" > "${from_time}" && "${current_time}" < "${to_time}"} {
+			#var tmp_baowei 1;
+		};
+	};
+	#if {${tmp_baowei} == 1} {
+		xy.start;
+	};
+	#else {
+		xy.stop;
+	};
+};

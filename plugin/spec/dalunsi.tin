@@ -1,0 +1,96 @@
+#class dalunsi_spec open
+#read ${HOME}/.tt/plugin/chanding.tin;
+
+#alias {attack.prepare} {
+	#cr;
+};
+
+#alias {attack.normal} {
+	#class attack.inner open;
+	#class attack.inner close;
+};
+
+#alias {attack.xiaofeng} {
+	#class attack.inner open;
+	#cr;
+	#class attack.inner close;
+};
+
+#alias {attack.mingjiao} {
+	#class attack.inner open;
+	#cr;
+	#class attack.inner close;
+};
+
+#alias {chan} {
+	#cr;
+};
+
+#alias {chan_robber} {
+	#cr;
+};
+
+#var shortcut NIL;
+#macro {\eOQ} {
+	#cr;
+};
+
+#macro {\eOR} {
+	#cr;
+};
+
+#macro {\eOP} {
+	#cr;
+};
+
+#macro {\eOS} {
+	#cr
+};
+
+#alias {chan_robber} {
+	#cr;
+};
+
+#alias {chan_xiaofeng} {
+	#cr;
+};
+
+#alias {chan_bare} {
+	#cr;
+};
+
+#alias {chan_normal} {
+	#cr;
+};
+
+#alias {chan} {
+	chan_normal;
+};
+
+#alias {load_map} {
+	map.load dalunsi;
+};
+
+#alias {map_goto_lingwu} {
+	map.go {¿àÐÞÔú²Ö};
+};
+
+#alias {map_goto_rest} {
+	map.go {ÇåÐÄÉá};
+};
+
+#alias {map_goto_start} {
+	map.go {Ð»¿ÍÍ¤};
+};
+
+#alias {map_goto_shifu} {
+	map.go {·¨ÌÃ¶þÂ¥};
+};
+
+#var menzhong bofu;
+#var menzhong_didian bofu;
+
+#var shifu zhi;
+
+#list my_weapons create {staff; staff 2};
+#class dalunsi_spec close

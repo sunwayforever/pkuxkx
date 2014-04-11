@@ -1,0 +1,1840 @@
+─────────────────────────────────── 一、扬州 ───────────────────────────────────
+
+发呆室
+  寂寞剑(Lonely sword)
+  无所不知「北侠帮助NPC」满不懂(Man budong)
+赏月台
+  绿萼(Lver)
+东大街
+  流氓(Liu mang)
+  流氓头(Liumang tou)
+杂货铺
+  杂货铺老板 杨永福(Yang yongfu)
+书院
+  朱熹(Zhu xi)
+打铁铺
+  打铁铺 王铁匠(Wang tiejiang)
+药铺
+  药铺伙计(Yaopu huoji)
+  药铺老板 平一指(Ping yizhi)
+宠物店
+  殷老板(Yin laoban)
+荣昌交易行
+  古墓派使者「四大名捕之无情||福威镖局菜鸟镖头」曲清(Qu qing)
+东门
+  八位官兵(Guan bing)
+  武将(Wu jiang)
+正气山庄的大门
+  四位家丁(Jia ding)
+正气山庄
+  龙华天(Long huatian)
+当铺
+  当铺老板 唐楠(Tang nan)
+南大街
+  少林弟子 托钵僧(Tuobo seng)
+丽春院
+  丽春院老板娘 韦春芳(Wei chunfang)
+  妙手神丐 空空儿(Kong kong)
+春来茶馆
+  茶馆老板娘「扬州一支花」阿庆嫂(Aqing sao)
+酒店
+  沈千盅(Shen qianzhong)
+小吃店
+  胡金科(Hu jinke)
+鞋帽店
+  谢一绝(Xie yijue)
+衣服铺
+  陈震骐(Chen zhenqi)
+茶庄
+  钟茗(Zhong ming)
+花店
+  尹霜叶(Yin shuangye)
+房产公司
+  三位推销小姐(Girl)
+礼品店
+  礼品店小姐(Girl)
+驿站
+  驿站伙计(Huo ji)
+贵妃浴场
+  浴室招待(Zhaodai)
+南门
+  二位官兵(Guan bing)
+  武将(Wu jiang)
+兵营大门
+  十一位官兵(Guan bing)
+兵营
+  武将(Wu jiang)
+  扬州守将 史青山(Shi qingshan)
+  武将(Wu jiang)
+  六位官兵(Guan bing)
+衙门大门
+  四位衙役(Ya yi)
+知府大堂
+  四位衙役(Ya yi)
+  扬州副知府 江耀亭(Jiang yaoting)
+衙门正厅
+  知府师爷 谭友纪(Tan youji)
+  扬州知府 程药发(Cheng yaofa)
+内宅
+  知府千金「玉仙姑」程玉环(Cheng yuhuan)
+福威镖局
+  林平之(Lin pingzhi)
+  二位镖头(Biao tou)
+正厅
+  林震南(Lin zhennan)
+财主大门
+  大狼狗(Wolf dog)
+  大狼狗(Wolf dog)
+财主大院
+  管家(Guan jia)
+  家丁(Jia ding)
+财主后院
+  崔员外(Cui yuanwai)
+  万里独行 田伯光(Tian boguang)
+财主西厢
+  财主女儿 崔莺莺(Cui yingying)
+财主东厢
+  红娘(Hong niang)
+飞龙帮总部
+  四位飞龙帮众(Bang zhong)
+红娘庄大门
+  无事忙 媒婆(Mei_po)
+红娘庄走廊
+  小红娘(Xiao hongniang)
+西门
+  八位官兵(Guan bing)
+  武将(Wu jiang)
+比武场
+  「铁手丹心」铁游夏(Tie youxia)
+扬州钱庄
+  钱庄老板「铁公鸡」钱眼开(Qian yankai)
+客店
+  店小二(Xiao er)
+客店二楼
+  少林刀僧 行者(Xingzhe)
+醉仙楼
+  店小二(Xiao er)
+醉仙楼二楼
+  醉仙楼老板 冼老板(Xian laoban)
+  酒客 王五(Wang wu)
+醉仙楼雅座单间
+  醉汉(Zui han)
+北门
+  八位官兵(Guan bing)
+  武将(Wu jiang)
+─────────────────────────────────── 二、大理 ───────────────────────────────────
+
+桃源驿站
+  三位铁掌帮众(Bang zhong)
+  「铁掌水上飘」裘千仞(Qiu qianren)
+瀑布
+  渔隐(Yuyin)
+黑沼小屋
+  「神算子」瑛姑(Yinggu)
+长廊
+  天龙寺本尘大师 本尘大师(Benchen dashi)
+三元宫
+  天龙寺本因方丈 本因方丈(Benyin fangzhang)
+  四位天龙寺小沙弥 沙弥(Sha mi)
+雨花院
+  天龙寺本相大师 本相大师(Benxiang dashi)
+饭厅
+  孙拳(Sun quan)
+长廊
+  天龙寺本参大师 本参大师(Bencan dashi)
+松木屋
+  天龙寺本观大师 本观大师(Benguan dashi)
+  天龙寺神僧「枯荣大师」枯荣大师(Kurong dashi)
+山间小路
+  黑冠巨蟒(Snake)
+  金环蛇(Jin she)
+  竹叶青蛇(Qing she)
+琅缳福地
+  大理王子「风流浪子」段誉(Duan yu)
+─────────────────────────────────── 三、平西王府 ───────────────────────────────────
+
+平西王府大门
+  四位亲兵(Qin bing)
+  亲兵头(Qin bingtou)
+右卫房
+  四位亲兵(Qin bing)
+翠玉屏风
+  三位侍女(Shi nv)
+左卫房
+  四位亲兵(Qin bing)
+平西王府正厅
+  二位仆人(Pu ren)
+东偏厅
+  总管(Guan)
+内室
+  无根公子 吴应雄(Wu yingxiong)
+走廊
+  保镖(Bao biao)
+  萍水逢(Pin shuifeng)
+厢房
+  小妾(Xiao qie)
+平西王府后花园
+  花农(Hua nong)
+书房
+  四位护院武师(Hu yuan)
+  平西王 吴三桂(Wu sangui)
+─────────────────────────────────── 四、武当 ───────────────────────────────────
+
+林中小路
+  二位土匪(Tufei)
+  二位小土匪(Xiao tufei)
+  二位小喽罗(Xiao louluo)
+林中小路
+  百变道人 张三(Zhang san)
+林中小路
+  土匪头(Tufei tou)
+土匪窝
+  土匪头(Tufei tou)
+黄土路
+  二只野兔(Ye tu)
+武当山门
+  进香客(Jinxiang ke)
+小吃店
+  店小二(Xiao er)
+凌霄宫
+  武当派道长 知客道长(Zhike daozhang)
+武当广场
+  二位武当派小道士 道童(Daotong)
+三清殿
+  武当派真人「武当首侠」宋远桥(Song yuanqiao)
+  武当派道长 谷虚道长(Guxu daozhang)
+左配殿
+  武当派小道士 道童(Daotong)
+后堂
+  武当派真人「武当四侠」张松溪(Zhang songxi)
+香积厨
+  武当派第四代烧饭弟子 道士(Shaohuo daoshi)
+  武当派第四代烧火弟子 道士(Shaohuo daoshi)
+前院
+  武当派真人「武当二侠」俞莲舟(Yu lianzhou)
+  二位武当派小道士 道童(Daotong)
+  二位武当派第四代弟子 道士(Shaohuo daoshi)
+复真观一层
+  武当派第四代弟子 制香道长(Zhixiang daozhang)
+松林
+  猴子(Monkey)
+  武当派第四代弟子 伐木道长(Famu daozhang)
+复真观二层
+  武当派道长 知客道长(Zhike daozhang)
+后院
+  武当派真人「武当六侠」殷梨亭(Yin liting)
+  二位武当派小道士 道童(Daotong)
+  二位武当派第四代弟子 道士(Shaohuo daoshi)
+茶室
+  武当派第五代弟子「伺茶道童」小翠(Cui)
+俞岱岩住处
+  武当派真人「武当三侠」俞岱岩(Yu daiyan)
+  武当派小道士 道童(Daotong)
+北侧门
+  武当派真人「武当五侠」张翠山(Zhang cuishan)
+小屋
+  武当派开山祖师「邋遢真人」张三丰(Zhang sanfeng)
+小园
+  喜鹊(Xi que)
+  菜花蛇(Snake)
+崎岖山路
+  土匪(Tufei)
+崎岖山路
+  小喽罗(Xiao louluo)
+桃园小路
+  小蜜蜂(Little bee)
+断恩岭
+  樵夫(Qiao fu)
+五老峰
+  二位小喽罗(Xiao louluo)
+乌鸦岭
+  土匪(Tufei)
+─────────────────────────────────── 五、峨嵋 ───────────────────────────────────
+
+解剑石
+  二位峨嵋派第六代弟子 守山弟子(Shoushan dizi)
+凤凰台
+  白猿(Baiyuan)
+山门
+  四位峨嵋派第六代弟子 守山弟子(Shoushan dizi)
+  峨嵋派第五代弟子 文虚师太(Wenxu shitai)
+山门殿
+  峨嵋派第五代弟子 文月师太(Wenyue shitai)
+  峨嵋派第五代弟子 文心师太(Wenxin shitai)
+神水阁
+  峨嵋派第六代弟子 巡山弟子(Xunshan dizi)
+厢房
+  武当派第三代弟子 宋青书(Song qingshu)
+千佛庵大门
+  三位小女孩(Little girl)
+  小贩(Xiao fan)
+毗卢殿
+  峨嵋派第四代弟子 静道师太(Jingdao shitai)
+文殊殿
+  峨嵋派第四代弟子 静风师太(Jingfeng shitai)
+接引殿
+  峨嵋派第四代弟子 静心师太(Jingxi shitai)
+后殿
+  峨嵋派第四代弟子 静和师太(Jinghe shitai)
+厢房
+  峨嵋派第四代弟子 贝锦仪(Bei jinyi)
+  峨嵋派第四代弟子 赵灵珠(Zhao lingzhu)
+  峨嵋派第四代弟子 李明霞(Li mingxia)
+  峨嵋派第四代弟子 苏梦清(Su mengqing)
+禅房
+  峨嵋派第五代弟子 文怡师太(Wenyi shitai)
+  峨嵋派第五代弟子 文闲师太(Wenxian shitai)
+  峨嵋派第五代弟子 文善师太(Wenshan shitai)
+  峨嵋派第五代弟子 文凌师太(Wenling shitai)
+禅房
+  峨嵋派第四代弟子 静照师太(Jingzhao shitai)
+  峨嵋派第四代弟子 静玄师太(Jingxuan shitai)
+  峨嵋派第四代弟子 静迦师太(Jingjia shitai)
+  峨嵋派第四代弟子 静虚师太(Jingxu shitai)
+  峨嵋派第四代弟子 静真师太(Jingzhen shitai)
+  峨嵋派第四代弟子 静空师太(Jingkong shitai)
+  峨嵋派第四代弟子 静闲师太(Jingxian shitai)
+  峨嵋派第四代弟子 静慧师太(Jinghui shitai)
+雷动坪
+  三位峨嵋派第七代弟子 尼姑(Nigu)
+  三位小尼姑(Xiao nigu)
+太子坪
+  三位尼姑(Nigu)
+  三位女孩(Girl)
+后山
+  三只毒蛇(Snake)
+药王洞
+  峨嵋派第四代弟子 静慈师太(Jingci shitai)
+静修庵
+  峨嵋派第三代掌门「峨嵋派第三代掌门」灭绝师太(Miejue shitai)
+小屋
+  峨嵋派第四代弟子 方碧琳(Fang bilin)
+─────────────────────────────────── 六、泰山 ───────────────────────────────────
+
+大驿道
+  挑夫(Tiao fu)
+大驿道
+  东厂千户 海公公(Hai gonggong)
+  三位趟子手(Tangzi shou)
+大驿道
+  书生(Shu sheng)
+大驿道
+  刀客(Dao ke)
+一天门
+  刀客(Dao ke)
+斗母宫
+  剑客(Jian ke)
+石经峪
+  游方和尚(Seng ren)
+回马岭
+  剑客(Jian ke)
+  挑夫(Tiao fu)
+二天门
+  挑夫(Tiao fu)
+南天门
+  江百胜(Jiang baisheng)
+  二位青衣武士(Wei shi)
+天街
+  二位小贩(Xiao fan)
+  挑夫(Tiao fu)
+玉皇顶
+  三位红衣武士(Wei shi)
+丈人峰
+  二位白衣武士(Wei shi)
+封禅台
+  四位白衣武士(Wei shi)
+正气厅
+  三位红衣武士(Wei shi)
+侠义厅
+  三位红衣武士(Wei shi)
+东天门
+  小毛(Xiao mao)
+茅屋
+  不火不毛(Fefe man)
+─────────────────────────────────── 七、归云庄 ───────────────────────────────────
+
+草地
+  麻雀(Maque)
+草地
+  二只野兔(Ye tu)
+草地
+  民女(Min nv)
+  老农(Lao nong)
+太湖街
+  神偷 小偷(Xiao tou)
+  屠夫(Tu fu)
+太湖街
+  卖艺人(Maiyi ren)
+  卖艺人(Maiyi ren)
+太湖街
+  江南名商 商人(Shang ren)
+太湖街
+  「包准」算卦先生(Suangua xiansheng)
+太湖边
+  二位游客(Youke)
+树林
+  「神射手」猎户(Lie hu)
+树林
+  老虎(Tiger)
+隐者居
+  与世隔绝 隐者(Yin zhe)
+黑风山脚
+  老妇人(Oldwoman)
+山路
+  黑鹰(Hei ying)
+蛇窟
+  火蛇(Snake)
+  七寸子蛇(Snake)
+  竹青蛇(Snake)
+  眼镜蛇(Snake)
+蟒蛇洞
+  巨莽(Ju mang)
+  二只七寸子蛇(Snake)
+黑风山洞
+  黑风双煞「风流女魔」梅超风(Mei chaofeng)
+黑风山洞
+  黑风双煞「弑人狂魔」陈玄风(Chen xuanfeng)
+  四位白骨架(Gu jia)
+迷魂阵入口
+  「天神下凡」神灵(Shen ling)
+太湖桥
+  小流氓(Rascal)
+  挑夫(Tiao fu)
+  小贩(Xiao fan)
+太湖阁
+  小流氓(Rascal)
+  小二(Xiao er)
+太湖阁
+  太湖酒家老板 水老板(Shui laoban)
+太湖边
+  二位游客(Youke)
+归云庄大门
+  二位风云战士 归云庄武士(Wu shi)
+石阶
+  桃花岛第三代弟子 王铁(Wang tie)
+石阶
+  二位进香客(Jinxiang ke)
+归云亭
+  桃花岛第四代弟子 陈叁(Chen san)
+  归云庄少主「域外飞侠」陆冠英(Lu guanying)
+  桃花岛第四代弟子 王德(Wang de)
+密林
+  大弟子「桃花岛」曲灵风(Quling feng)
+大厅
+  归云庄庄主「仗义行侠」陆乘风(Lu chengfeng)
+  六位归云庄卫士(Wei shi)
+走廊
+  总管(Zong guan)
+炼丹房
+  「药师」炼丹人(Liandan ren)
+走廊
+  二位庄仆(Zhuang pu)
+  二位庄童(Zhuang tong)
+柴房
+  砍柴人(Kan chairen)
+仆人住地
+  四位庄仆(Zhuang pu)
+练功房
+  三位练功弟子(Liangong dizi)
+后花园
+  花侍「花神仙子」阿香(A xiang)
+后花园
+  花侍 阿牧(A mu)
+  二位庄仆(Zhuang pu)
+桃花林
+  「鬼手」疯子(Crazy man)
+假山
+  老猴子(Lao monkey)
+假山洞
+  二位猴子(Monkey)
+─────────────────────────────────── 八、泉州 ───────────────────────────────────
+
+嘉兴南湖
+  「赤练仙子」李莫愁(Li mochou)
+嘉兴钱庄
+  包方圆(Bao fangyuan)
+铁枪庙
+  四只乌鸦(Wuya)
+烟雨楼
+  店小二(Xiao er)
+无名谷底
+  丑雕(Chou diao)
+虎跳峡
+  ask about 独孤求败
+  渔夫(Yu fu)
+蛇窟
+  五只毒蛇(Snake)
+荒谷
+  武修文(Wu xiuwen)
+  武敦儒(Wu dunru)
+坟墓
+  武三通(Wu santong)
+天井
+  阿根(Pu ren)
+大厅
+  陆立鼎(Lu liding)
+城中心
+  水果小贩 陈小二(Xiao fan)
+泉州港
+  女孩(Girl)
+  二位男孩(Boy)
+南码头
+  老船家(Chuan jia)
+北码头
+  二位倭寇(Wo kou)
+  浪人头目(Langren tou)
+杂货铺
+  杂货铺老板娘 陈阿婆(Chen apo)
+巨鲸帮总舵
+  四位巨鲸帮帮众(Bang zhong)
+─────────────────────────────────── 九、岳王墓 ───────────────────────────────────
+
+枪铺
+  枪铺 杨老板(Yang tiejiang)
+墓前小道
+  忧国志士(Baixing)
+亭前小道
+  盗墓高手(Daomu gaoshou)
+碎石路
+  十位大内高手(Danei gaoshou)
+风波亭
+  秦桧(Qin hui)
+墓前广场
+  水果小贩 包打听(Bao dating)
+岳  飞  墓
+  五位凭吊者(Baixing)
+─────────────────────────────────── 十、桃花岛 ───────────────────────────────────
+
+金鸡亭
+  老者(Lao zhe)
+海岸
+  船夫(Chuan fu)
+积翠亭
+  桃花岛傻女 傻姑(Sha gu)
+书房
+  郭芙(Guo fu)
+大厅
+  桃花岛开山祖师「东邪」黄药师(Huang yaoshi)
+饭厅
+  桃花岛侍者 哑仆(Yapu)
+赏月台
+  桃花岛宫主「鬼精灵」程英(Cheng ying)
+小木屋
+  郭夫人「桃花仙子」黄蓉(Huang rong)
+  「北侠」郭靖(Guo jing)
+─────────────────────────────────── 十一、小村 ───────────────────────────────────
+
+南村口
+  野狗(Dog)
+碎石路
+  男孩(Boy)
+  女孩(Girl)
+小土房
+  老大娘(Old woman)
+小巷尽头
+  地痞(Dipi)
+  小流氓(Punk)
+打谷场
+  二位小孩(Kid)
+碎石路
+  女孩(Girl)
+杂货店
+  小店老板 李四(Li si)
+铁匠铺
+  冯铁匠(Feng)
+民宅
+  地保(Dibao)
+民房
+  翠花(Cui hua)
+小棚子
+  王小二(Wang xiaoer)
+民宅
+  穷汉(Poor man)
+─────────────────────────────────── 十二、华山 ───────────────────────────────────
+
+玉泉院
+  李铁嘴(Fortune teller)
+莎萝坪
+  江湖豪客(Jianghu haoke)
+华山别院
+  华山剑宗传人 封不平(Feng buping)
+  华山剑宗传人 成不优(Cheng buyou)
+舍身崖
+  公平子(Gongping zi)
+小院
+  华山派隐侠 高长老(Gao zhanglao)
+  华山派隐侠 矮长老(Ai zhanglao)
+练武场
+  五位华山派第二十代弟子 华山弟子(Dizi)
+  华山派第十九代弟子 劳德诺(Lao denuo)
+客厅
+  华山派剑侠「六猴儿」陆大有(Lu dayou)
+  华山派女剑侠 岳灵珊(Yue lingshan)
+后花园
+  二位华山派第二十一代弟子 小童(Xiaotong)
+后花园
+  华山派剑侠 梁发(Liang fa)
+书房
+  华山派第十八代掌门夫人「紫衫女侠」宁中则(Ning zhongze)
+  华山派第十八代掌门「君子剑」岳不群(Yue buqun)
+小路
+  王前(Wang qian)
+思过崖
+  华山派剑侠 令狐冲(Linghu chong)
+─────────────────────────────────── 十三、全真 ───────────────────────────────────
+
+宫门
+  全真教道长 知客道长(Zhike daozhang)
+三清殿
+  全真派女道长 程遥伽(Cheng yaojia)
+烧香坊
+  三位全真派道童 道童(Daotong)
+崇玄台
+  全真派练功弟子 孙发长(Liangong dizi)
+  全真派练功弟子 王血昌(Liangong dizi)
+  铜人(Tong ren)
+  全真派道长 尹志平(Yin zhiping)
+骡马房
+  二只骏马(Horse)
+  「全真派道长」张三(Zhang san)
+车牛房
+  全真派道童 道童(Daotong)
+净人访
+  全真派女真人「清静散人」孙不二(Sun bu er)
+斋堂
+  李余(Li yu)
+香积厨
+  烧火道士(Dao shi)
+玄虚堂
+  全真派真人「丹阳子」马钰(Ma yu)
+天尊殿
+  全真派真人「长春真人」丘处机(Qiu chuji)
+师房
+  全真派开山祖师「中神通」王重阳(Wang chongyang)
+无情居
+  消遥真人「无情剑——剑无情人有情」孤竹无名(Chapion)
+更衣室
+  全真派道童 浴堂道童(Daotong)
+写经房
+  全真派道长 藏经阁道长(Daozhang)
+飞鸾阁
+  全真派真人「长生子」刘处玄(Liu chuxuan)
+凝雪阁
+  全真派真人 谭处端(Tan chuduan)
+说法院
+  全真派真人 王处一(Wang chuyi)
+精思院
+  观想兽(Guanxiang shou)
+逍遥楼
+  全真派道长 赵志敬(Zhao zhijing)
+天尊讲经堂
+  全真派真人「广宁子」郝大通(Hao datong)
+药圃
+  「园圃管家」老者(Lao zhe)
+走廊
+  金丝雀(Sparrow)
+小树林
+  蜜蜂(Bee)
+空地
+  蜂王(Feng wang)
+  四只蜜蜂(Bee)
+小屋
+  「老顽童」周伯通(Zhou botong)
+─────────────────────────────────── 十四、古墓 ───────────────────────────────────
+
+小道
+  六只麻雀(Maque)
+草地
+  古墓派圣女 杨女(Yang nu)
+山道
+  古墓派圣女 杨女(Yang nu)
+侧室
+  古墓派总管 孙婆婆(Sun popo)
+小石厅
+  四位古墓派使女 抚琴少女(Qin)
+  三位女孩(Girl)
+  古墓派女使 小玲(Xiao ling)
+小厅
+  古墓派圣女 陆无双(Lu wushuang)
+小石厅
+  四位古墓派使女 执箫少女(Xiao)
+  古墓派女使 小虹(Xiao hong)
+  三位女孩(Girl)
+石室
+  古墓派圣女 扬雪儿(Yang xuer)
+石室
+  古墓派圣女 扬冰儿(Yang binger)
+大厅
+  古墓派传人 小龙女(Xiao longnu)
+  终南山隐士「西狂」杨过(Yang guo)
+─────────────────────────────────── 十五、少林 ───────────────────────────────────
+
+石阶
+  小孩(Xiao hai)
+石阶
+  二位挑夫(Tiao fu)
+  小贩(Xiao fan)
+汝州城
+  武将(Wu jiang)
+  三位官兵(Guan bing)
+南阳城
+  丐帮五袋弟子 何师我(He shiwo)
+     金轮法王的前弟子 霍都(Huo du)
+     ask he about 霍都
+  小贩(Xiao fan)
+悦来客栈
+  店小二(Xiao er)
+少林寺
+  少林知客僧 虚明(Xu ming)
+  少林知客僧 虚通(Xu tong)
+广场
+  少林派第四十代弟子 清法比丘(Qingfa biqiu)
+  少林派第四十代弟子 清为比丘(Qingwei biqiu)
+  少林派第四十代弟子 清无比丘(Qingwu biqiu)
+松树林
+  扫地僧(Saodi)
+金刚伏魔圈
+  少林长老 渡劫(Du jie)
+  少林长老 渡厄(Du e)
+  少林长老 渡难(Du nan)
+山门殿
+  二位守寺僧兵(Seng bing)
+  进香客(Jingxiang ke)
+天王殿
+  少林派第三十九代弟子 道果禅师(Daoguo chanshi)
+  进香客(Jingxiang ke)
+广场
+  二位守寺僧兵(Seng bing)
+  进香客(Jingxiang ke)
+  少林派第四十代弟子 清善比丘(Qingshan biqiu)
+钟楼一层
+  扫地僧(Saodi seng)
+钟楼七层
+  少林派第四十代弟子 清晓比丘(Qingxiao biqiu)
+鼓楼七层
+  少林派第四十代弟子 清闻比丘(Qingwen biqiu)
+厨房
+  二位烧饭僧(Shaofan seng)
+大雄宝殿
+  进香客(Jingxiang ke)
+  少林派第三十九代弟子 道正禅师(Daozheng chanshi)
+精进场
+  二位守寺僧兵(Seng bing)
+  少林派第三十八代弟子 慧空尊者(Huikong zunzhe)
+后殿
+  二位守寺僧兵(Seng bing)
+  少林派第三十八代弟子 慧如尊者(Huiru zunzhe)
+走廊
+  少林派第三十九代弟子 道品禅师(Daopin chanshi)
+罗汉堂
+  少林罗汉堂罗汉「降龙罗汉」澄观(Chengguan luohan)
+  少林罗汉堂罗汉「清净罗汉」澄知(Chengzhi luohan)
+  少林罗汉堂罗汉「归真罗汉」澄明(Chengming luohan)
+  少林罗汉堂罗汉「精进罗汉」澄净(Chengjing luohan)
+  少林小沙弥 净苦(Xiao shami)
+  少林神僧「罗汉堂首座」玄苦大师(Xuanku dashi)
+  少林罗汉堂罗汉「旃檀罗汉」澄坚(Chengjian luohan)
+  少林罗汉堂罗汉「贤善罗汉」澄行(Chengxing luohan)
+  少林罗汉堂罗汉「智慧罗汉」澄寂(Chengji luohan)
+  少林罗汉堂罗汉「妙音罗汉」澄灭(Chengmie luohan)
+  少林罗汉堂罗汉「金身罗汉」澄和(Chenghe luohan)
+般若堂
+  少林般若堂罗汉「广力罗汉」澄尚(Chengshang luohan)
+  少林般若堂罗汉「须弥罗汉」澄欲(Chengyu luohan)
+  少林般若堂罗汉「日月罗汉」澄灵(Chengling luohan)
+  少林般若堂罗汉「庄严罗汉」澄信(Chengxin luohan)
+  少林小沙弥 净难(Xiao shami)
+  少林般若堂罗汉「光明罗汉」澄志(Chengzhi luohan)
+  少林神僧「般若堂首座」玄难大师(Xuannan dashi)
+  少林般若堂罗汉「功德罗汉」澄识(Chengshi luohan)
+  少林般若堂罗汉「金刚罗汉」澄思(Chengsi luohan)
+  少林般若堂罗汉「接引罗汉」澄意(Chengyi luohan)
+  少林般若堂罗汉「伏虎罗汉」澄心(Chengxin luohan)
+练武场
+  少林派第三十九代弟子 道觉禅师(Daojue chanshi)
+  五位木人(Mu ren)
+和尚院四部
+  少林派第三十八代弟子 慧虚尊者(Huixu zunzhe)
+  少林派第三十八代弟子 慧名尊者(Huiming zunzhe)
+  少林派第三十八代弟子 慧洁尊者(Huijie zunzhe)
+藏经阁一楼
+  少林扫地僧 扫地老僧(Hcc)
+  少林派第三十九代弟子 道一禅师(Daoyi chanshi)
+藏经阁二楼
+  少林派第三十八代弟子 慧真尊者(Huizhen zunzhe)
+和尚院一部
+  少林派第三十八代弟子 慧合尊者(Huihe zunzhe)
+  少林派第三十八代弟子 慧修尊者(Huixiu zunzhe)
+  少林派第三十八代弟子 慧色尊者(Huise zunzhe)
+武器库
+  打铁僧(Datie seng)
+  少林派第三十九代弟子 道尘禅师(Daochen chanshi)
+防具库
+  少林派第三十九代弟子 道相禅师(Daoxiang chanshi)
+药品库
+  少林派第三十九代弟子 道象禅师(Daoxiang chanshi)
+茶室
+  少林派第四十代弟子 清乐比丘(Qingle biqiu)
+方丈室
+  少林派第三十六代弟子「少林寺方丈」玄慈大师(Xuanci dashi)
+  少林小沙弥 净慈(Xiao shami)
+达摩院二楼
+  少林派第三十六代弟子「达摩院主持」玄悲大师(Xuanbei dashi)
+  少林小沙弥 净悲(Xiao shami)
+千佛殿
+  少林派第四十代弟子 清观比丘(Qingguan biqiu)
+竹林
+  少林派第三十六代弟子 玄惠大师(Xuanhui dashi)
+达摩禅房
+  少林祖师 达摩老祖(Damo laozu)
+戒律院
+  少林派第三十六代弟子「戒律院主持」玄痛大师(Xuantong dashi)
+  少林小沙弥 净痛(Xiao shami)
+  三位执法僧兵(Seng bing)
+监狱
+  少林派第四十代弟子 清缘比丘(Qingyuan biqiu)
+  狱卒(Yu zu)
+─────────────────────────────────── 十六、日月 ───────────────────────────────────
+
+大道
+  日月神教长老 秦伟邦(Qin weibang)
+小村庄
+  四位日月神教第二十二代弟子 日月教众(Riyue jiaozhong)
+  日月神教风雷堂堂主 童百熊(Tong baixiong)
+朱雀堂
+  四位日月神教第二十二代弟子 日月教众(Riyue jiaozhong)
+  日月神教朱雀堂堂主 鲍大楚(Bao dachu)
+朱雀堂里屋
+  日月神教左使「天王老子」向问天(Xiang wentian)
+村中小路
+  二位小孩(Kid)
+  二位女孩(Girl)
+庄稼地
+  四只麻雀(Maque)
+院门口
+  大黑(Dog)
+农家小院
+  三只小鸡(Xiao ji)
+厢房
+  农夫(Nong fu)
+卧房
+  农妇(Woman)
+打铁铺
+  打铁铺 王铁匠(Wang tiejiang)
+白虎堂
+  日月神教白虎堂长老「雕侠」上官云(Shangguan yun)
+  四位日月神教第二十二代弟子 日月教众(Riyue jiaozhong)
+黑木崖
+  三位日月神教第二十二代弟子 日月教众(Riyue jiaozhong)
+  日月神教青龙堂长老「黄面尊者」贾布(Jia bu)
+成德殿门
+  三位日月神教第二十二代弟子 紫衫使者(Zishan shizhe)
+成德殿
+  日月神教总管 杨莲亭(Yang lianting)
+  四位日月神教第二十二代弟子 紫衫使者(Zishan shizhe)
+  日月神教教主 东方不败(Dongfang bubai)
+闺房
+  日月神教教主「武功天下第一」东方不败(Dongfang bubai)
+小巷
+  丁丁(Ding ding)
+小舍
+  日月神教圣姑 任盈盈(Ren yingying)
+客厅
+  一字电剑 丁坚(Ding jian)
+书室
+  江南四友 秃笔翁(Tubi weng)
+棋室
+  江南四友 黑白子(Heibai zi)
+琴室
+  江南四友 黄钟公(Huangzhong gong)
+─────────────────────────────────── 十七、慕容 ───────────────────────────────────
+
+湖边
+  绿衣女郎(Girl)
+琴韵小居
+  姑苏慕容侍女 阿碧(A bi)
+听香水榭
+  姑苏慕容侍女 阿朱(A zhu)
+厨房
+  老顾(Lao gu)
+庭院
+  姑苏慕容赤霞庄庄主 公冶乾(Gongye qian)
+库房
+  老仆(Lao pu)
+练武场
+  二位庄丁(Zhuang ding)
+  姑苏慕容金凤庄庄主「包三先生」包不同(Bao butong)
+私塾
+  二位小童(Xiao tong)
+  书生(Shu sheng)
+客厅
+  燕子坞留言牌(Board) [ 13 张留言，13 张未读 ]
+  姑苏慕容青云庄庄主 邓百川(Deng baichuan)
+内室
+  二位丫鬟(Ya huan)
+书房
+  姑苏慕容少庄主 慕容复(Murong fu)
+云锦阁
+  曼佗罗山庄主人 王夫人(Wang furen)
+  二位丫鬟(Ya huan)
+石室
+	花肥房管事 严妈妈(Yan mama)
+竹林
+  曼陀罗山庄小姐 王语嫣(Wang yuyan)
+─────────────────────────────────── 十八、襄阳 ───────────────────────────────────
+
+襄阳南门
+  襄阳守将(Shou jiang)
+  四位襄阳守军(Shou jun)
+土地庙
+  二位进香客(Jinxiang ke)
+绸缎庄
+  赵老板(Zhao laoban)
+客店
+  店小二(Xiao er)
+程氏诊所
+  程灵素(Cheng lingsu)
+城中心
+  二位巡城守将(Shou jiang)
+东街
+  郭没(Guo mo)
+药铺
+  药铺伙计(Yaopu huoji)
+客厅
+  中年女佣(Nvyong)
+马房
+  中年马夫(Ma fu)
+  汗血宝马(Horse)
+太平茶馆
+  郭靖之女 郭芙(Guo fu)
+  茶馆活计(Huo ji)
+襄阳东门
+  襄阳守将(Shou jiang)
+  四位襄阳守军(Shou jun)
+民宅
+  猎户(Lie hu)
+山路
+  麋鹿(Xiao lu)
+山路
+  老虎(Tiger)
+黑松寨山门
+  土匪(Tu fei)
+黑松寨
+  二位土匪(Tu fei)
+  土匪(Tu fei)
+富贵小吃部
+  沙锅王 崔掌柜(Cui zhanggui)
+客厅
+  二位仕女(Shi nu)
+吕家内宅
+  四位亲兵(Qin bing)
+内宅二楼
+  歌妓(Ge ji)
+  歌妓(Ge ji)
+  歌妓(Ge ji)
+  吕文德(Lv wende)
+  歌妓(Ge ji)
+民宅
+  李大哥(Li dage)
+贫苦民宅
+  贫苦人 老丈(Lao zhang)
+里屋
+  小兰(Xiao lan)
+襄阳北门
+  襄阳守将(Shou jiang)
+  四位襄阳守军(Shou jun)
+大草原
+  牧羊犬(Muyang quan)
+  牧羊人(Muyang ren)
+  二位绵羊(Sheep)
+蒙古包
+  蒙古牧民(Mu min)
+蒙古包
+  二位蒙古妇女(Fu nu)
+蒙古营门
+  四位营门守军(Shou jiang)
+  营门守将(Shou jiang)
+蒙古金帐
+  蒙古皇帝 蒙哥(Meng ge)
+  四位蒙古亲兵(Shou jiang)
+打铁铺(售盔甲)
+  打铁铺 张铁匠(Zhang tiejiang)
+打铁铺(售刀剑)
+  铁匠铺伙计(Tiejianpu huoji)
+  打铁铺 扬铁匠(Yang tiejiang)
+襄阳当铺
+  史春秋(Shi chunqiu)
+帅府大门
+  四位襄阳守军(Shou jun)
+帅府大厅
+  二位襄阳守将(Shou jiang)
+  北侠「威震中原,名贯漠北」郭靖(Guo jing)
+襄阳西门
+  襄阳守将(Shou jiang)
+  四位襄阳守军(Shou jun)
+农舍里屋
+  村姑(Cun gu)
+  土匪头(Tufei tou)
+雪峰山腰
+  雕雏(Diao chu)
+  二位白雕(Bai diao)
+─────────────────────────────────── 十九、北京 ───────────────────────────────────
+
+高粱地
+  神龙教青龙使「热血神龙」许雪亭(Xu xueting)
+永安门
+  守门武将(Wu jiang)
+  四位官兵(Guan bing)
+永安门城楼
+  巡城武将(Wu jiang)
+正阳门外大街
+  小贩(Seller)
+  守门武将(Wu jiang)
+甜水井胡同
+  磨刀匠(Modao jiang)
+西天门
+  四位锦衣卫(Jin yiwei)
+梅记包子铺
+  梅老板(Mei laoban)
+天桥
+  小贩(Seller)
+  天地会青木堂护法「八臂猿猴」徐天川(Xu tianchuan)
+诚意客栈
+  店小二(Xiao er)
+西客房
+  掌柜(Zhang gui)
+  二位客店伙计(Kedian huoji)
+东客房
+  独臂神尼(Dubi shenni)
+  六位喇嘛(Lama)
+全聚德
+  店小二(Xiao er)
+雅座
+  神龙教右护法「辽东瘦尊者」瘦头陀(Shou toutuo)
+  天地会洪顺堂香主「铁丐」吴六奇(Wu liuqi)
+屠宰场
+  天地会青木堂会众 钱老本(Qian laoben)
+  天地会青木堂会众 李力世(Li lishi)
+  二位屠宰场伙计(Huo ji)
+京城茶馆
+  天地会青木堂会众「关夫子」关安基(Guan anji)
+  伙计(Huoji)
+乐府诗社
+  茶博士(Cha boshi)
+  酸秀才(Suan xiucai)
+绸缎庄
+  张氏(Zhang shi)
+棺材店
+  天地会青木堂会众 高彦超(Gao yanchao)
+大厅
+  天地会家后堂香主 马超兴(Ma chaoxing)
+  天地会总舵主「英雄无敌」陈近南(Chen jinnan)
+天地会暗道
+  天地会青木堂护法 玄真道长(Xuan zhen)
+长安街
+  三位下棋的(Xiaqi)
+  三位八旗子弟(Baqi zidi)
+荣宝斋
+  刘老板(Liu laoban)
+武胜镖局
+  三位镖头(Biao tou)
+镖局大院
+  武胜镖局总镖头「金枪无敌」王武通(Wang wutong)
+鳌府大院
+  吴之荣(Wu zhirong)
+鳌府厨房
+  厨师(Chu shi)
+鳌府后院
+  二位家丁(Jia ding)
+  女管家(Guan jia)
+鳌拜卧房
+  朝廷顾命大臣「满洲第一勇士」鳌拜(Ao bai)
+牢房
+  庄允城(Zhuang yuncheng)
+侍卫营大门
+  侍卫教头(Shiwei jiaotou)
+  二位三等侍卫(Sandeng shiwei)
+校场
+  五等侍卫(Wudeng shiwei)
+  四等侍卫(Sideng shiwei)
+食堂
+  二位侍卫(Shi wei)
+厅堂
+  侍卫总管 多隆(Duo long)
+兵部府衙
+  兵部尚书 明珠(Ming zhu)
+  兵部侍郎(Bingbu shilang)
+大厅
+  大清国抚远大将军一等鹿鼎公 韦小宝(Wei xiaobao)
+宝源钱庄
+  钱庄伙计(Huo ji)
+皇城当铺
+  当铺伙计(Huo ji)
+食为天
+  天地会青木堂会众 贾老六(Jia laoliu)
+  食为天老板娘 赛西施(Sai xishi)
+一笑堂
+  一笑堂大夫「神医」喜来乐(Xi laile)
+  一笑堂伙计 张德福(Zhang defu)
+大驿道
+  挑夫(Tiao fu)
+小路
+  游方和尚(Seng ren)
+小路
+  土匪(Tufei)
+大院
+  神龙教小头目 章老三(Zhang laosan)
+庄府大厅
+  二位神龙教 弟子(Dizi)
+小房间
+  庄家三少奶奶「未亡人」庄夫人(San furen)
+  天下无双「大功告成」双儿(Shuang er)
+─────────────────────────────────── 二十、康亲王府 ───────────────────────────────────
+
+天井
+  齐元凯(Qi yuankai)
+  神照上人(Shenzhao shangren)
+王府马厩
+  黄骠马(Huangbiao ma)
+  枣红马(Zaohong ma)
+  紫骝马(Ziliu ma)
+内厩
+  玉骢马(Yucong ma)
+石屋
+  三位康府侍卫(Shi wei)
+  侍卫首领(Shiwei shouling)
+佛堂
+  仆人(Puren)
+康亲王书房
+  康亲王(Kang qinwang)
+─────────────────────────────────── 二十一、紫禁城 ───────────────────────────────────
+
+午门
+  四位一等侍卫(Yideng shiwei)
+殿前广场
+  六位一等侍卫(Yideng shiwei)
+  六位二等侍卫(Erdeng shiwei)
+  朝廷命官「御前侍卫」张康年(Zhang kangnian)
+太和殿
+  大清皇帝 康熙(Kang xi)
+慈宁宫
+  皇太后(Huang taihou)
+  「小宫女」蕊初(Rui chu)
+寿康宫
+  建宁公主(Jianning gongzhu)
+慈宁花园
+  侍卫副总管 瑞栋(Rui dong)
+─────────────────────────────────── 二十二、暗器门 ───────────────────────────────────
+
+窄巷
+  暗器门弃徒 鬼手(Gui shou)
+暗器铺
+  暗器门第三代弟子「铜钱镖」陈爽(Chen shuang)
+暗器门
+  暗器门第三代弟子「左手镖」罗天傲(Luo tianao)
+大厅
+  暗器门第二代弟子「袖中剑」胡飞(Hu fei)
+内厅
+  暗器门大弟子「夺命连环镖」孙笑痴(Sun xiaochi)
+至尊房
+  暗器门门主「催命三镖」欧阳血(Ouyang xue)
+─────────────────────────────────── 二十三、星宿 ───────────────────────────────────
+
+黑店
+  四位星宿派第五代弟子 打手(Da shou)
+  星宿派弟子「专做人肉包子」黑老板(Hei laoban)
+嘉峪关
+  武将(Wu jiang)
+  二位官兵(Guan bing)
+鸣沙山
+  沙虫(Sha chong)
+天山脚下
+  波斯商人(Bosi shangren)
+北疆小镇
+  二位维吾尔族妇女(Woman)
+杂货铺
+  杂货铺老板 买卖提(Maimaiti)
+赛马场
+  牧羊姑娘 阿拉木罕(Alamuhan)
+巴依家院
+  巴依(Bayi)
+  小孩(Kid)
+巴依家客厅
+  阿凡提(Afanti)
+天山山路
+  牧羊人(Muyang ren)
+星宿山门
+  星宿派邪士「星宿派三师兄」天狼子(Tianlang zi)
+  星宿派号手(Haoshou)
+  星宿派鼓手(Gushou)
+  星宿派钹手(Boshou)
+天山山路
+  星宿派邪士「星宿派二师兄」狮吼子(Shihou zi)
+星宿海
+星宿派邪士「星宿派大师兄」摘星子(Zhaixing zi)
+日月洞
+  星宿派开山祖师「星宿老怪」丁春秋(Ding chunqiu)
+石道
+  星宿派第五代弟子「赛昆仑」采花子(Caihua zi)
+小路
+  星宿派妖女「星宿派小师妹」阿紫(A zi)
+  星宿派邪士「星宿派八师兄」出尘子(Chuchen zi)
+山谷口
+  天山童老 李秋水(Li qiushui)
+ 天山山路
+  采药人(Caiyao ren)
+天山顶峰
+  二只毒蛇(Snake)
+─────────────────────────────────── 二十四、丐帮 ───────────────────────────────────
+
+树洞内部
+  丐帮二袋弟子 裘万家(Qiu wanjia)
+  丐帮七袋弟子 左全(Zuo quan)
+树洞下
+  丐帮九袋长老「传功长老」梁长老(Liang zhanglao)
+谷场槐树边
+  丐帮七袋弟子 马俱为(Ma juwei)
+  丐帮三袋弟子 莫不收(Mo bushou)
+暗道
+  丐帮四袋弟子 快活三(Kuaihuo san)
+屋角边
+  丐帮五袋弟子 江上游(Jiang shangyou)
+  丐帮七袋弟子 何不净(He bujing)
+沙丘小洞
+  丐帮八袋弟子 余洪兴(Yu hongxing)
+土匪窝边
+  丐帮八袋弟子 黎生(Li sheng)
+  丐帮六袋弟子 李斧头(Li futou)
+土地庙
+  丐帮九袋长老「掌棒龙头」鲁有脚(Lu youjiao)
+  丐帮九袋长老「掌钵龙头」彭有敬(Peng youjing)
+暗道
+  丐帮九袋长老「执法长老」简长老(Jian zhanglao)
+林间小屋
+  丐帮第十七代掌门「九指神丐」洪七公(Hong qigong)
+  丐帮一袋弟子 赵狗儿(Zhao gouer)
+─────────────────────────────────── 二十五、杀手帮 ───────────────────────────────────
+
+妓院
+  婆子(Pozi)
+  小红(Xiao hong)
+  小翠(Xiao cui)
+当铺
+  独孤梦(Dugu meng)
+药铺
+  药铺老板 妙回春(Miao huichun)
+杀手帮广场
+  四位杀手帮弟子(Dizi)
+效忠楼
+  金牌杀手 浪回头(Lang huitou)
+红雨堂
+  红雨堂主 欧阳敏(Ouyang min)
+  三位杀手帮女弟子(Nvdizi)
+清风堂
+  三位杀手帮弟子(Dizi)
+  清风堂堂主 杨啸天(Yang xiaotian)
+黑云堂
+  黑云堂主 柳随风(Liu suifeng)
+  三位杀手帮弟子(Dizi)
+纵横神府
+  二位仆人(Puren)
+  三位杀手帮弟子(Dizi)
+  纵横不败 楚云飞(Chu yunfei)
+练武场
+  四位罡风杀手(Feng)
+  四位擎雷杀手(Lei)
+  四位霏云杀手(Yun)
+  四位涟电杀手(Dian)
+  四位崆潮杀手(Chao)
+山路
+  二只黑熊(Bear)
+  二只豹子(Baozi)
+  二只狐狸(Huli)
+石阶
+  脚夫(Jiao fu)
+万纶台
+  三位杀手帮弟子(Dizi)
+  笑面菩萨 梁柳鹤(Liang liuhe)
+山路
+  脚夫(Jiao fu)
+─────────────────────────────────── 二十六、灵鹫 ───────────────────────────────────
+
+百丈涧
+  昊天部首领 余婆婆(Yu popo)
+  四位弟子 灵鹫宫弟子(Dizi)
+青石大道
+  二只松鼠(Song shu)
+独尊厅大门
+  灵鹫宫第三代弟子 兰剑(Lan jian)
+  灵鹫宫第三代弟子 梅剑(Mei jian)
+独尊厅
+  灵鹫宫尊主「梦郎」虚竹(Xu zhu)
+  灵鹫宫第三代弟子 菊剑(Ju jian)
+  灵鹫宫第三代弟子 竹剑(Zhu jian)
+  四位弟子 灵鹫宫弟子(Dizi)
+朱天部
+  四位弟子 灵鹫宫弟子(Dizi)
+  朱天部首领 石嫂(Shi sao)
+阳天部
+  阳天部首领「针神」符敏仪(Fu minyi)
+钧天部
+  四位弟子 灵鹫宫弟子(Dizi)
+  钧天部副首领 程青霜(Cheng qingshuang)
+花圃
+  獐(Zhang)
+小屋
+  灵鹫宫主人「天上地下，唯我独尊」天山童姥(Tong lao)
+花园
+  梅花鹿(Meihua lu)
+─────────────────────────────────── 二十七、灵州 ───────────────────────────────────
+
+大将军府
+  二位校尉(Xiao wei)
+将军府大院
+  二位家丁(Jia ding)
+衙门
+  四位衙役(Ya yi)
+酒馆
+  店小二(Xiao er)
+灵州南门
+  校尉(Xiao wei)
+  二位西夏兵(Xixia bing)
+骠骑营
+  二位西夏兵(Xixia bing)
+一品堂大门
+  二位一品堂武士(Wu shi)
+皇宫大门
+  四位皇宫卫士(Wei shi)
+车马房
+  二位太监(Taijian)
+太医院
+  二位太医(Taiyi)
+花园
+  三位宫女(Gongnv)
+公主寝宫
+  梦姑 西夏公主(Princess)
+  二位宫女(Gongnv)
+─────────────────────────────────── 二十八、明教 ───────────────────────────────────
+
+绿柳山庄小路
+  野狗(Dog)
+绿柳山庄大门
+  二位庄丁(Zhuang ding)
+正厅
+  神箭八雄 钱二败(Qian erbai)
+  神箭八雄 李四摧(Li sicui)
+  神箭八雄 赵一伤(Zhao yishang)
+  神箭八雄 孙三毁(Sun sanhui)
+东侧厅
+  神箭八雄 吴六破(Wu liupo)
+  神箭八雄 周五输(Zhou wushu)
+西侧厅
+  神箭八雄 郑七灭(Zheng qimie)
+  神箭八雄 王八衰(Wang bashuai)
+小院
+  二只蝴蝶(Hu die)
+小院
+  二只蜜蜂(Bee)
+  二只蝴蝶(Hu die)
+小镇
+  疯子 阿善(A shan)
+小木屋
+  老者(Lao zhe)
+农家
+  农妇(Woman)
+里屋
+  二位小孩(Kid)
+  老婆婆(Old woman)
+小破屋
+  穷汉(Poor man)
+草棚
+  小贩(Xiao fan)
+小胡同
+  女孩(Girl)
+  二位男孩(Boy)
+山门
+  二位明教第二十二代教徒 厚土旗众(Qi zhong)
+  明教掌旗使 颜垣(Yan yuan)
+烈火坛
+  明教掌旗使 辛然(Xin ran)
+  二位明教第二十二代教徒 烈火旗众(Qi zhong)
+巨木坛
+  二位明教第二十二代教徒 巨木旗众(Qi zhong)
+  明教掌旗使 闻苍松(Wen cangsong)
+锐金坛
+  二位明教第二十二代教徒 锐金旗众(Qi zhong)
+  明教掌旗使 庄铮(Zhuang zheng)
+洪水坛
+  明教掌旗使 唐洋(Tang yang)
+  二位明教第二十二代教徒 洪水旗众(Qi zhong)
+广场
+  明教光明左使 杨逍(Yang xiao)
+走廊
+  明教法王「金毛狮王」谢逊(Xie xun)
+  明教法王「青翼蝠王」韦一笑(Wei yixiao)
+明教大殿
+  明教教主 张无忌(Zhang wuji)
+后花园
+  杨不悔丫鬟 小昭(Xiao zhao)
+鹰王宫
+  明教法王「白眉鹰王」殷天正(Yin tianzheng)
+碧水潭畔
+  明教法王「紫衫龙王」黛绮丝(Dai qisi)
+─────────────────────────────────── 二十九、苏州 ───────────────────────────────────
+
+留园
+  苏州女孩(Girl)
+聚宝斋
+  钱庄老板「一毛不拔」孙剥皮(Sun baopi)
+书院
+  老夫子(Lao fuzi)
+燕誉堂
+  二位丫环(Ya huan)
+问梅阁
+  婢女(Bi nu)
+宝带桥
+  小贩(Seller)
+宝和记
+  当铺老板 王合计(Wang heji)
+打铁铺
+  打铁铺 杨铁匠(Yang tiejiang)
+立春堂
+  药铺伙计(Yaopu huoji)
+胡同
+  流氓头(Liumang tou)
+  二位流氓(Liu mang)
+马厩
+  马夫(Ma fu)
+戏园子
+  管事(Guan shi)
+  三位票友(Piao you)
+春在楼
+  店小二(Xiao er)
+紫金庵
+  慈善箱(Cishang xiang)
+  尼姑(Ni gu)
+  尼姑(Ni gu)
+头门山
+  剑客(Jian ke)
+万景山庄
+  刀客(Dao ke)
+枕石
+  游方和尚(Seng ren)
+白莲池
+  苏州少女(Girl)
+苏州府衙
+  知府师爷 甄有庆(Zhen youqing)
+  苏州知府 冯正东(Feng zhengdong)
+  四位衙役(Ya yi)
+书场
+  公子哥(Gongzi)
+杂货铺
+  老渠(Lao qu)
+青石官道
+  金算盘 崔百全(Cui baiquan)
+  追魂手 过彦之(Guo yanzhi)
+─────────────────────────────────── 三十.白驼山 ───────────────────────────────────
+
+戈壁
+  四位白驼山第五代弟子 白衣少女(White lady)
+  白驼山少庄主「玉面蛇心」欧阳克(Ouyang ke)
+张记打铁铺
+  张二楞(Zhang tiejiang)
+西街
+  西域蛇王「蛇见怕」舞蛇人(Snaker)
+  农民(Man)
+酒店
+  店小二(Xiao er)
+小桥
+  农家妇女(Woman)
+山路
+  樵夫(Qiao fu)
+草坪
+  菜花蛇(Caihua she)
+大门
+  二位「铁狮子」门卫(Men wei)
+大厅
+  白驼山庄主「西毒」欧阳锋(Ouyang feng)
+  二位丫环(Ya huan)
+练功房
+  白驼山派第五代弟子 教头(Trainer)
+柴房
+  「老财」老材(Lao cai)
+门廊
+  白驼山第四代弟子 管家(Guan jia)
+花园
+  二位白驼山第五代弟子 白衣少女(White lady)
+花园小径
+  花匠(Gardener)
+蛇舍
+  三只毒蛇(Snake)
+蛇场
+  白驼山庄 蛇奴(She nu)
+药房
+  药剂师 小青(Qing)
+草丛
+  竹叶青蛇(Qing she)
+  金环蛇(Jin she)
+  黑冠巨蟒(Snake)
+─────────────────────────────────── 三十一、张家口 ───────────────────────────────────
+
+东门 南门 西门 大境门
+  武将(Wu jiang),官兵(Guan bing)
+西市
+  皮货商人
+─────────────────────────────────── 三十二、长安 ───────────────────────────────────
+
+朱雀门广场
+   游方和尚
+玄武门 明德门 金光门 春明门 朱雀门 承天门
+   武将(Wu jiang),官兵(Guan bing)
+─────────────────────────────────── 三十三、成都 ───────────────────────────────────
+
+东门 西门 北门
+  武将(Wu jiang),官兵(Guan bing)
+计氏马车行成都分行
+  车夫
+八仙茶楼
+  茶博士(Cha boshi)
+悦来客栈
+  店小二(Xiao er),牌子(paizi);
+当铺
+  当铺老板
+月记银号
+  掌柜
+百花潭
+  少女(Girl)
+老唐家
+  老唐
+─────────────────────────────────── 三十四、昆明 ───────────────────────────────────
+
+东城门 南城门 西城门 北城门
+  武将(Wu jiang),官兵(Guan bing)
+神威镖局
+  张崇威(Zhang chongwei)
+计氏马车行昆明分行
+  车夫
+月记票号
+  掌柜
+当铺
+  当铺老板
+月兴盛
+  伙计(Huoji)
+宝月阁
+  店小二(Xiao er)
+─────────────────────────────────── 三十五、曲阜 ───────────────────────────────────
+
+南城门 西城门 北城门
+  武将(Wu jiang),官兵(Guan bing)
+大成殿
+  孔子像(xiang)
+孔府
+  孔翘(Kong qiao)
+─────────────────────────────────── 三十六、晋阳 ───────────────────────────────────
+
+萧府
+  萧半和(Xiaobanhe)
+唐明镇
+  来福(Dog)
+贫民窟
+  书生(Shusheng)
+金肃门 开远门 怀德门 朝曦门
+  武将(Wujiang),官兵(Guanbing)
+铁匠巷
+  小孩(Xiaohai)
+地主家
+  地主老财(Dizhu)
+晋阳府
+  冼克行(Xiankexing),衙役(Yayi)
+牛市
+  小贩(Xiaofan)
+泰宁寺
+  庙祝(Miaozhu)
+南市
+  流氓(Liumang)
+学馆
+  卓秀才(Zhuoxiucai)
+药铺
+  郝巴(Haoba),药铺伙计(Yaopuhuoji)
+大风镖局
+  李大风(Lidafeng)
+泰山庙
+  庙祝(Miaozhu)
+关帝庙
+  庙祝(Miaozhu)
+铁匠巷
+  小贩(Xiaofan)
+─────────────────────────────────── 三十七、信阳 ───────────────────────────────────
+
+东门 南门 西门 北门
+  武将(Wu jiang),官兵(Guan bing)
+─────────────────────────────────── 三十八、中原 ───────────────────────────────────
+
+汝州城 许昌城 淮北
+  武将(Wu jiang),官兵(Guan bing)
+南阳城
+  何师我(He shiwo),小贩(Xiao fan)
+悦来客栈
+  店小二(Xiao er) 何师我(He shiwo),小贩(Xiao fan); 5.店小二(Xiao er)
+─────────────────────────────────── 三十九、杭州 ───────────────────────────────────
+
+东门 南门 西门 北门
+  武将(Wu jiang),官兵(Guan bing)
+怡红馆
+  小欢(Xiao huan)
+旅游纪念品专卖店
+  爱云残(Ai yuncan)
+杂货铺
+  聂老板(Nie)
+江南钱庄
+  金乞儿(Jin qier)
+兴隆炮仗店
+  王兴隆(Wang xinglong)
+提督府正门   提督府后门  士兵卫房
+  绿营清兵(Qing bing)
+当铺
+  裴老板(Pei)
+绸缎庄
+  马三(Ma san)
+点心铺
+  胖嫂(Pang sao)
+杭州酒家
+  店小二(Xiao er)
+酒家二楼
+  绿营清兵(Qing bing),酒客(Jiu ke)
+荣宝斋
+  刘老板(Liu laoban)
+关帝庙
+  功德箱(Gongde xiang)
+正厅
+  李可秀(Li kexiu),绿营清兵(Qing bing)
+院门
+  家丁(Jia ding)
+西湖岸边
+  小船(boat)
+杭州分舵大门
+  红花会众(Honghua huizhong)
+小院
+  蒋四根(Jiang sigen),余鱼同(Yu yutong)
+门卫房
+  章进(Zhang jin)
+门卫房
+  石双英(Shi shuangying)
+走廊
+  杨成协(Yang chengxie),卫春华(Wei chunhua)
+前厅
+  常赫志(Chang hezhi),常伯志(Chang bozhi)
+正厅
+  无尘道长(Wuchen daozhang),赵半山(Zhao banshan),徐天宏(Xu tianhong),骆冰(Luo bing),对联(duilian),木牌(mupai)
+书房
+  陈家洛(Chen jialuo),心砚(Xin yan)
+─────────────────────────────────── 四十、岳阳 ───────────────────────────────────
+
+东门 南门 西门 北门
+  武将(Wu jiang),官兵(Guan bing)
+岳阳楼
+  伙计(Huoji)
+月记票号
+  掌柜
+当铺
+  当铺老板
+计氏马车行岳阳分行
+  车夫
+李保长家
+  李保长(Li baozhang)
+─────────────────────────────────── 四十一、江州 ───────────────────────────────────
+
+东门 南门 西门
+  武将(Wu jiang),官兵(Guan bing)
+月记票号
+  掌柜
+当铺
+  当铺老板
+韩家
+  韩员外(Han yuanwai)
+邀月阁
+  伙计(Huoji)
+天福镖局
+  王小月(Wang xiaoyue)
+杂货铺
+  冯东顺(Feng dongshun)
+盈月客栈
+  店小二(Xiao er)
+锁江楼二楼
+  伙计(Huoji)
+鄱阳湖边
+  钓鱼人(Diaoyu ren),大湖(lake),小舟(boat)
+内宅
+  温峤(Wen)
+山路
+  砖头(bricks)
+─────────────────────────────────── 四十二、南昌 ───────────────────────────────────
+
+南昌东门  南昌南门  南昌西门  南昌北门
+  武将(Wu jiang),官兵(Guan bing)
+对月居
+  伙计(Huoji)
+计氏马车行总行
+  车夫
+偃月楼
+  店小二(Xiao er)
+飞虎镖局
+  楚大业(Chu daye)
+白家
+  老白(Lao bai),砖头(bricks)
+当铺
+  当铺老板
+月记银号
+  掌柜
+小酒馆
+  李老三(Li laosan)
+比武场
+  壮族青年(Qing nian）
+草地
+  壮族青年(Qing nian),壮族少女(Shao nu)
+族长的竹楼
+  大长老(Da zhanglao),壮族头领(Zhuangzu touling)
+壮族医馆
+  巫医(Wu yi)
+─────────────────────────────────── 四十三、镇江 ───────────────────────────────────
+
+青阳门  定波门  登云门  南水门
+  武将(Wu jiang),官兵(Guan bing)
+藩库
+  库房看守(Kanshou)
+米仓
+  大米(Da mi)
+府衙
+  石狮子(shizi)
+飞龙镖局
+  张经(Zhang jing)
+梦溪园
+  小贩
+奔月居
+  店小二(Xiao er)
+计氏马车行镇江分行
+  车夫
+天月楼
+  伙计(Huoji)
+月记票号
+  掌柜
+当铺
+  当铺老板
+金山寺
+  海法法师(Haifa fashi)
+─────────────────────────────────── 四十四、应天府 ───────────────────────────────────
+
+西内城
+
+军营(西)
+  五军营士兵(Shi bing)
+军营(东)
+  三千营士兵(Shi bing)
+北城
+  闲汉(Xian han)
+钟楼
+  大钟(zhong)
+鼓楼
+  小厮(Xiao si)
+清凉山
+  薄荷(bohe)
+灵英观
+  老道士(Lao daoshi)
+月记票号
+  掌柜
+当铺
+  当铺老板
+中城
+  闲汉(Xian han)
+应天府
+  应天府尹(Yingtian fuyin)
+承恩寺
+  庙祝(Miao zhu)
+三山街
+  流氓(Liu mang)
+杂货铺
+  杂货铺老板
+状元楼
+  伙计(Huoji)
+乌龙潭
+  垂钓老翁(Chuidiao laoweng),鱼腥草(cao)
+清凉寺
+  老和尚(Lao heshang)
+东厂胡同
+  东厂守卫
+东厂
+  东厂督公
+东内城
+
+西安门 东安门 北安门
+  御林军(Yulin jun)
+司礼监
+  秉笔太监(Bingbi taijian),掌印太监(Zhangyin taijian)
+奉天殿
+  皇榜(bang)
+内宫监 御用监 司设监
+  掌印太监(Zhangyin taijian)
+承天门
+  李公公(Li gonggong)
+鸿胪寺
+  鸿胪寺卿(Honglusi qing)
+兵部衙门
+  兵部侍郎(Bingbu shilang),兵部尚书(Bingbu shangshu)
+工部衙门
+  工部尚书(Gongbu shangshu),工部侍郎(Gongbu shilang)
+吏部衙门
+  吏部尚书(Libu shangshu),吏部侍郎(Libu shilang)
+通政司
+  大桌子(desk)
+钦天监
+  浑天仪(Huntian yi)
+翰林院
+  翰林学士(Hanlin xueshi)
+太医院
+  太医院判(Taiyi yuanpan),太医院使(Taiyi yuanshi),经络图(tu)
+户部衙门
+  户部尚书(Hubu shangshu),户部侍郎(Hubu shilang)
+刑部衙门
+  刑部尚书(Xingbu shangshu)
+礼部衙门
+  礼部尚书(Libu shangshu)
+行人司
+  客卿
+城墙 城外
+
+各城门
+  大明武将(Wu jiang),官兵(Guan bing)
+计氏马车行
+  车夫
+窝棚
+  老汉
+─────────────────────────────────── 四十五、冰火岛 ───────────────────────────────────
+
+冰火岛海滩
+  冰山(iceboat)
+冰火洞
+  张翠山(Zhang cuishan),殷素素(Yin susu),谢无忌(Xie wuji)
+石洞
+  谢逊(Xie xun)
+后洞
+  七伤拳谱(Book)
+平原
+  小鹿(Xiao lu)
+熊洞
+  白熊(Bai xiong),树皮(shupi)
+树林
+  大树(tree)
+─────────────────────────────────── 四十六、峨嵋后山 ───────────────────────────────────
+
+后山
+  毒蛇(Snake)
+峨嵋金顶
+  周芷若(Zhou zhiruo)
+静修庵
+  灭绝师太(Miejue shitai)
+药王洞
+  静慈师太(Jingci shitai)
+山洞
+  硫磺(Liu huang)
+小屋
+  郭襄(Guo xiang),方碧琳(Fang bilin)

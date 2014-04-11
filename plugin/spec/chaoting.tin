@@ -1,0 +1,153 @@
+#class gumu_spec open
+
+#alias {attack.prepare} {
+	yun powerup;
+};
+
+#alias {attack.normal} {
+	beng;
+	#class attack.inner open;
+	#ticker {perf_chan} {
+		chan;
+	} {1};
+	#ticker {beng} {
+		beng;
+	} {6};	
+	#ticker {zuoshou} {
+		zuoshou;
+	} {5};
+	#class attack.inner close;
+};
+
+#alias {attack.xiaofeng} {
+	#class attack.inner open;
+	#ticker {perf_chan} {
+		chan;
+	} {1};
+	#class attack.inner close;
+};
+
+#alias {attack.mingjiao} {
+	#class attack.inner open;
+	#ticker {perf_chan} {
+		chan;
+	} {1};
+	#ticker {qixing} {
+		qixing;
+	} {1.5};
+	#ticker {zuoshou} {
+		zuoshou
+	} {1};		
+	#class attack.inner close;
+};
+
+#macro {\eOP} {
+	chan;
+};
+
+#macro {\eOQ} {
+	beng;
+};
+
+#macro {\eOR} {
+	huxiao
+};
+
+#macro {\eOS} {
+	zuoshou;
+};
+
+#macro {\e[15~} {
+	qixing;
+};
+
+#alias {zuoshou} {
+	unwi;
+	wield blade;
+	jiali 10;
+	perform blade.zuoshou;
+	jiali none;
+	wi;
+};
+
+#alias {qixing} {
+	unwi;
+	perform hand.qixing;
+	wi;
+};
+
+#alias {huxiao} {
+	unwi;
+	perform cuff.huxiao;
+	wi;
+};
+
+#alias {beng} {
+	unwi;
+	wield staff;
+	perform staff.beng;
+	wi;
+};
+
+#alias {chan_robber} {
+	unwi;
+	perform cuff.fengtian;
+	wi;
+};
+
+#alias {load_map} {
+	map.load hangzhou;
+};
+
+#alias {map_goto_lingwu} {
+	map.go {学堂};
+};
+
+#alias {map_goto_rest} {
+	map.go {厢房};
+};
+
+#alias {map_goto_start} {
+	map.go {大理寺};
+};
+
+#alias {map_goto_shifu} {
+	map.go {都亭驿};
+};
+
+#alias {chan} {
+	unwi;
+	perform cuff.fengtian;
+	wi;
+};
+
+#alias {xl.start} {
+	xiulian bixue-xinfa;
+	show_to_quest 修炼内功;
+	#action {顿觉内功修为增进不小} {xiulian yunu-xinfa};
+	#action {由于缺乏实战经验} {
+		xl.stop;
+	};
+};
+
+#alias {xl.stop} {
+	show_to_quest 修炼结束;
+	#unaction {顿觉内功修为增进不小};
+	#unaction {由于缺乏实战经验};
+}
+
+#list my_weapons create {staff};
+
+#alias {qudu} {
+	#send {qudu};
+	#delay {1} {#send {qudu}};
+	#delay {2} {#send {qudu}};
+};
+
+#alias {perform_special} {
+	#send {special energy};
+};
+
+#var shifu meng;
+#var shortcut F1:缠 F2:杀威 F3:虎啸 F4:左手 F5:七星
+#class gumu_spec close

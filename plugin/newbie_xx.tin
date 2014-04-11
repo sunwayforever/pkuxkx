@@ -1,0 +1,497 @@
+#class newbie_xx open
+
+#var total_exp 0;
+#alias {bug} {
+	#class bug.inner open;
+	
+	#action {一只不知名的虫子爬了出来} {
+		#cr;
+	};
+	
+	#action {${char_name}发现的%*(%*)} {
+		#var target @lower{%%2};
+		kill ${target};
+	} {2};
+
+	#action {${char_name}发现的%*的尸体(Corpse)} {
+		raw;
+	} {1};
+	
+	#action {${char_name}发现的%*往南} {
+		#delay {1} {
+			s;l;
+		};
+	};
+	#action {${char_name}发现的%*往北} {
+		#delay {1} {
+			n;l;
+		};
+	};
+	#action {${char_name}发现的%*往东} {
+		#delay {1} {
+			e;l;
+		};
+	};
+	#action {${char_name}发现的%*往西} {
+		#delay {1} {
+			w;l;
+		};
+	};
+
+	#action {身上搜出一滴毒液} {
+		#showme bug.done;
+		#class bug.inner kill;
+	};
+	#action {你在地上找了半天，却什么也没发现。|你当真以为星宿海遍地毒虫} {
+		#math shanlin_index ${shanlin_index}+1;
+		#if {${shanlin_index} > 9} {
+			#var shanlin_index 1;
+		};
+		#list shanlin get ${shanlin_index} tmp;
+		#delay {3} {
+			map.go ${tmp};
+			xian;
+		};
+	};
+	#ticker {xian} {
+		l;
+		xian;
+	} {10};
+	
+	#class bug.inner close;
+	#list shanlin create {山林1;山林2;山林3;山林4;山林5;山林6;山林7;山林8;山林9};
+	#var shanlin_index 1;
+	map.go 山林1;
+	xian;
+};
+
+#alias {liandu.start} {
+	#class liandu.inner open;
+	#action {你内力太低，无法融合毒素} {
+		map_goto_rest;
+		on_wakeup {
+			bug;
+		};
+		sleep;
+	};
+	
+	#action {bug.done} {
+		#delay {5} {
+			map.go 密室3;
+			liandu du ye;
+		};
+	};
+
+	#action {你身上没有毒液} {
+		#delay {bug} {
+			bug;
+		} {3};
+	};
+	
+	#action {冥冥中，你觉得自己获得了%*点经验} {
+		#math total_exp ${total_exp}+@ctd{%%1};
+		show_to_quest 炼毒: ${total_exp};
+	} {1};
+
+	#action {你对基本毒技的领会又加深了一些} {
+		#delay {bug} {
+			bug;
+		} {3};
+	};
+	#class liandu.inner close;
+	load_map;
+	bug;
+};
+
+#alias {liandu.stop} {
+	#class liandu.inner kill;
+};
+
+#alias {cai.start} {
+	#class cai.inner open;
+	#ticker {cai} {
+		cai jiaoyin;
+	} {2};
+
+	#action {你刚在三分钟内睡过一觉} {
+		#delay {sleep} {
+			sleep;
+		} {10};
+	};
+
+	#action {你一觉醒来} {
+		map.go 碎石路;
+		#ticker {cai} {
+			cai jiaoyin;
+		} {2};
+	};
+
+	#action {你头昏脑胀} {
+		#if {${nl_percent} > 10} {
+			re;
+		};
+		#else {
+			#unticker {cai};
+			#delay {sleep} {
+				map.go 左内殿;
+				sleep;			
+			} {3}
+		};
+	};
+	#action {你的内力不够} {
+		#unticker {cai};
+		#delay {sleep} {
+			map.go 左内殿;
+			sleep;			
+		} {3}
+	};
+	#class cai.inner close;
+	load_map;
+	map.go 碎石路;
+};
+
+#alias {lianxi.start} {
+	#class lianxi.inner open;
+	#var skill %1;
+	#ticker {lianxi} {
+		lian $skill 10;
+	} {2};
+	#action {你的内力不够} {
+		sleep;
+	};
+	#class lianxi.inner close;
+	lian $skill 10;
+};
+
+#alias {lianxi.stop} {
+	#class lianxi.inner kill;
+};
+
+#alias {watch.start} {
+	#class watch.inner open;
+	#ticker {watch} {
+		watch 石壁;
+	} {2};
+
+	#action {你的内力不够} {
+		map.go 左内殿;
+		sleep;
+	};
+
+	#action {你刚在三分钟内睡过一觉} {
+		#delay {sleep} {
+			sleep;
+		} {10};
+	};
+
+	#action {你一觉醒来} {
+		map.go 石壁;
+	};
+	#class watch.inner close;
+	load_map;
+	map.go 石壁;
+};
+
+#alias {watch.stop} {
+	#class watch.inner kill;
+};
+
+#alias {xuexi.start} {
+	#class xuexi.inner open;
+	#var skill %0;
+	xue dizi for ${skill} 20;
+
+	#action {你今天太累了} {
+		map.go 左内殿;
+		sleep;
+	};
+
+	#action {你刚在三分钟内睡过一觉} {
+		#delay {sleep} {
+			sleep;
+		} {10};
+	};
+
+	#action {你一觉醒来} {
+		map.go 天秀宫;
+		xue dizi for ${skill} 20;
+	};
+	#class xuexi.inner close;
+};
+
+#alias {xuexi.stop} {
+	#class xuexi.inner kill;
+};
+
+#alias {staff.start} {
+	#class xx.inner open;
+	#var job_type -2;
+
+	#list zine_position create {内殿;左内殿;右内殿;石壁};
+	#action {你给我踏月色而来一} {
+		#delay {5} {
+			ask_for_job;
+		};
+	};
+
+	#alias {ask_for_finish} {
+		#var zine_index 1;
+		#list zine_position get ${zine_index} tmp;
+		map.go ${tmp};
+
+		#if {${job_type} == 1} {
+			give zine zhang;				
+		};
+		#elseif {${job_type} == 2} {
+			give zine zhang;
+		};
+		#elseif {${job_type} == 3} {
+			give zine zhang;
+		};
+		#elseif {${job_type} == 0} {
+			give zine du ye;
+		};
+
+		#action {这里没有} {
+			#math zine_index ${zine_index}+1;
+			#if {${zine_index} > 4} {
+				#var zine_index 1;			
+			};
+			#list zine_position get ${zine_index} tmp;
+			map.go ${tmp};
+			#if {${job_type} == 1} {
+				give zine zhang;				
+			};
+			#elseif {${job_type} == 2} {
+				give zine zhang;
+			};
+			#elseif {${job_type} == 3} {
+				give zine zhang;
+			};
+			#elseif {${job_type} == 0} {
+				give zine du ye;
+			};
+		};
+	};
+
+	#alias {ask_for_job} {
+		#var job_type -1;
+		#var zine_index 1;
+		#list zine_position get ${zine_index} tmp;
+		map.go ${tmp};
+		ask zine about job;
+		#action {这里没有} {
+			#math zine_index ${zine_index}+1;
+			#if {${zine_index} > 4} {
+				#var zine_index 1;
+			};
+			#list zine_position get ${zine_index} tmp;
+			map.go ${tmp};
+			ask zine about job;		
+		};
+	};
+	
+	
+	
+	#action {皇帝还不差饿兵呢} {
+		map.go 天秀宫;
+		notify fullme please;
+	};
+
+	#action {我踏月色而来说道：「你去帮我弄根木杖过来吧。」} {
+		#if {${job_type} == -1} {
+			show_to_info 木杖;
+			#var job_type 1;
+			#delay {3} {
+				wield axe;
+				wield da futou;
+				map.go 山林1;
+				#ticker {pi} {
+					pi;
+				} {3};
+			};			
+		};
+	};
+
+	#action {你去帮我弄滴毒液过来吧} {
+		#if {${job_type} == -1} {
+		show_to_info 毒液;
+		#var job_type 0;
+		#delay {3} {
+			map.go 山林1;
+			zhao_bug;
+		};
+		};
+	};
+
+
+	#action {冰魄杖终于做好了} {
+		#delay {2} {
+			e;
+			ask_for_finish;
+		};
+	};
+	
+	#action {你小心翼翼地将毒液渗入冰杖} {
+		#delay {cui} {
+			finish;
+		} {10};
+	};
+	
+	#action {bug.done} {
+		#unticker {xian};
+		#delay {2} {
+			#if {${job_type} == 0} {
+				map.go 天秀宫;
+				ask_for_finish;
+			};
+			#elseif {${job_type} == 3} {
+				map.go 密室;
+				#delay {3} {
+					w;
+					cui zhang;
+				};
+			};
+		};
+	};
+
+	#action {你从冰冷的湖水中取出了一把冰杖} {
+		#if {${job_type} == 2} {
+			#delay {3} {
+				ask_for_finish;
+			};
+		};
+		#elseif {${job_type} == 3} {
+			#delay {3} {
+				map.go 山林1;
+				bug;
+			};
+		};
+	};
+	
+	#action {我踏月色而来说道：「你去帮我弄根冰杖过来吧。」} {
+		#if {${job_type} == -1} {
+		show_to_info 冰杖;
+		#var job_type 2;
+		#delay {3} {
+			wield axe;
+			map.go 山林1;
+			#ticker {pi} {
+				pi;
+			} {3};
+		};
+		};
+	};
+
+	#action {我踏月色而来说道：「你去帮我弄根冰魄杖过来吧。」} {
+		#if {${job_type} == -1} {
+		show_to_info 冰魄杖;
+		#var job_type 3;
+		#delay {3} {
+			wield axe;
+			map.go 山林1;
+			#ticker {pi} {
+				pi;
+			} {3};
+		};
+		};
+	};
+
+	#action {这时大斧头使用过度} {
+		#unticker {pi};
+		#delay {5} {
+			goto_mishi;
+		};
+	};
+
+	#alias {goto_mishi} {
+		#list mishi_path create {tui e;tui s;tui s;tui e;tui s;tui e;tui ne;tui e;tui enter;};
+		#list mishi_path size mishi_path_size;
+		#var mishi_index 0;
+		#ticker {mishi} {
+			#math mishi_index ${mishi_index}+1;
+			#if {${mishi_index} <= ${mishi_path_size}} {
+				#list mishi_path get ${mishi_index} tmp;
+				${tmp};
+			};
+			#else {
+				#unticker {goto_mishi};
+			};
+		} {5};
+	};
+
+	#action {你要往哪里推圆木} {
+		#math mishi_index ${mishi_index}-1;			
+	};
+	
+	#action {要歇一会才能继续推圆木} {
+		#math mishi_index ${mishi_index}-1;	
+	};
+
+	#action {冰魄杖还没有完全吸收毒性} {
+		#delay {cui} {
+			finish;
+		} {10};
+	};
+	#action {木杖吸收的寒气并不足够} {
+		#delay {quzhang} {
+			qu zhang;
+		} {10};
+	};
+	
+	#action {你仔细看着手里已成型的木杖} {
+		#unticker {xiao};
+		#delay {5} {
+			#if {${job_type} == 1} {
+				ask_for_finish;
+			};
+			#elseif {${job_type} == 2} {
+				map.go 小湖;
+				pao zhang;
+				#delay {quzhang} {
+					qu zhang;
+				} {30};
+			};
+			#elseif {${job_type} == 3} {
+				map.go 小湖;
+				pao zhang;
+				#delay {quzhang} {
+					qu zhang;
+				} {30};
+			};
+		};
+	};
+
+	#action {你推着圆木往密室} {
+		#map goto 11;
+		#delay {xiao} {
+			wield dao;
+			#ticker {xiao} {
+				xiao;
+			} {2};
+		} {5};
+	};
+
+	#action {我也能假装会说外国话} {
+		#var job_type -2;
+		#delay {again} {
+			ask_for_job;
+		} {3};
+	};
+	
+	#action {你刚刚辛苦过} {
+		#var job_type -2;
+		#delay {again} {
+			ask_for_job;
+		} {20};
+	};
+	#class xx.inner close;
+	load_map;
+	ask_for_job;
+};
+
+
+#alias {staff.stop} {
+	#class xx.inner kill;
+};
+#class newbie_xx close

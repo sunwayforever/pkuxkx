@@ -1,0 +1,120 @@
+#class chaos open
+#var position "";
+#alias {get_position} {
+	#var record_state 0;
+	#var action %0;
+	#class record.inner open;
+	#action {^%S - $} {
+		#var record_state 1;
+		#var current_room %%1;
+	} {1};
+
+	#action {^    %*} {
+		#if {$record_state == 1} {
+			#var description %%1;
+			#var record_state 2;
+		};
+	} {9};
+
+	#action {^    这里%*的出口是%*} {
+		#var description ${description}%%0;
+		#var position "${current_room}@@${description}";
+		#class record.inner kill;
+	} {8};
+	
+	#action {^%S%*} {
+		#if {$record_state == 2} {
+			#var description ${description}%%1%%2
+		}
+	} {9}
+	#class record.inner close;
+	${action};
+};
+
+#alias {chaos.remember} {
+	get_position {l};
+	#delay {1} {
+		#var last_position ${position};
+	};
+};
+
+#gag {chaos};
+#alias {chaos.find} {
+	get_exits;
+	#alias {check} {
+		#if {${exits_list_index} <= ${exits_list_size}} {
+			#list exits_list get ${exits_list_index} exit;
+			#if {"${exit}" == "fake"} {
+				get_position {l};								
+			};
+			#else {
+				get_position {l ${exit}};				
+			};
+			#delay {1} {
+				#if {${last_position} == ${position}} {
+					#showme chaos ok: ${exit};
+				};
+				#else {
+					#math exits_list_index ${exits_list_index}+1;
+					check;
+				};
+			};
+		};
+		#else {
+			#showme chaos error;
+		};
+	};
+	#delay {1} {
+		#var exits_list_index 1;
+		#list exits_list size exits_list_size;
+		check;		
+	};
+};
+
+#list exits_list create {};
+#alias {get_exits}  {
+	#class get_exits.inner open;
+	#alias {get_exits_done} {
+		#class get_exits.inner kill;
+		#list exits_list add {fake};
+	};
+	#action {这里唯一的出口是 %w。} {
+		#list exits_list create {%%1};
+		get_exits_done;
+	};
+
+	#action {这里明显的出口是 %w 和 %w。} {
+		#list exits_list create {%%1;%%2};
+		get_exits_done;
+	};
+
+	#action {这里明显的出口是 %w、%w 和 %w。} {
+		#list exits_list create {%%1;%%2;%%3};
+		get_exits_done;
+	};
+
+	#action {这里明显的出口是 %w、%w、%w 和 %w。} {
+		#list exits_list create {%%1;%%2;%%3;%%4};
+		get_exits_done;
+	};
+
+	#action {这里明显的出口是 %w、%w、%w、%w 和 %w。} {
+		#list exits_list create {%%1;%%2;%%3;%%4;%%5};
+		get_exits_done;
+	};
+
+	#action {这里明显的出口是 %w、%w、%w、%w、%w 和 %w。} {
+		#list exits_list create {%%1;%%2;%%3;%%4;%%5;%%6};
+		get_exits_done;
+	};
+
+	#action {这里明显的出口是 %w、%w、%w、%w、%w、%w 和 %w。} {
+		#list exits_list create {%%1;%%2;%%3;%%4;%%5;%%6;%%7};
+		get_exits_done;
+	};
+	
+	#class get_exits.inner close;
+	l;
+};
+
+#class chaos close

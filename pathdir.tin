@@ -1,0 +1,24 @@
+#PATHDIR          {n}  {s}  {1}
+#PATHDIR          {e}  {w}  {2}
+#PATHDIR          {s}  {n}  {4}
+#PATHDIR          {w}  {e}  {8}
+#PATHDIR          {u}  {d}  {16}
+#PATHDIR          {d}  {u}  {32}
+#PATHDIR	  {out} {enter} {64}
+#PATHDIR	  {enter} {out} {128}
+
+#PATHDIR          {nu}  {sd}  {17}
+#PATHDIR          {sd}  {nu}  {36}
+#PATHDIR          {nd}  {su}  {33}
+#PATHDIR          {su}  {nd}  {20}
+#PATHDIR          {wu}  {ed}  {24}
+#PATHDIR          {ed}  {wu}  {34}
+#PATHDIR          {wd}  {eu}  {40}
+#PATHDIR          {eu}  {wd}  {18}
+
+#PATHDIR          {ne}  {sw}  {3}
+#PATHDIR          {se}  {nw}  {6}
+#PATHDIR          {nw}  {se}  {9}
+#PATHDIR          {sw}  {ne}  {12}
+
+

@@ -1,0 +1,178 @@
+#class wudang_spec open
+#alias {attack.prepare} {
+	yun powerup;
+};
+
+#alias {attack.normal} {
+	jianzhang;
+	#class attack.inner open;
+	#ticker {chan} {
+		chan
+	} {2};
+	#ticker {jianzhang} {
+		jianzhang;
+	} {6};
+	#ticker {po} {
+		po;
+	} {8};
+	#class attack.inner close;
+};
+
+#alias {attack.hubiao} {
+	#class attack.inner open;
+
+	#class attack.inner close;
+};
+
+#alias {attack.xiaofeng} {
+	#class attack.inner open;
+	#ticker {chan} {
+		chan
+	} {2};
+	#ticker {po} {
+		po;
+	} {6};
+	#class attack.inner close;
+};
+
+#alias {attack.mingjiao} {
+	#class attack.inner open;
+	#ticker {chan} {
+		chan
+	} {2};
+	#ticker {po} {
+		po;
+	} {2};
+	#class attack.inner close;
+};
+
+#macro {\eOQ} {
+	#cr;
+};
+
+#macro {\eOR} {
+	#cr;
+};
+
+#macro {\eOP} {
+	#cr;
+};
+
+#macro {\eOS} {
+	#cr
+};
+
+#alias {chan_robber} {
+	unwi;
+	wield sword;
+	#send {jifa sword huashan-jianfa};
+	perform sword.yangwu;
+	#send {jifa sword dugu-jiujian};
+	wi;
+};
+
+#alias {load_map} {
+	map.load huashan;
+};
+
+#alias {map_goto_lingwu} {
+	map.go {练功房};
+};
+
+#alias {map_goto_rest} {
+	map.go {华山休息室};
+};
+
+#alias {map_goto_start} {
+	map.go {书房};
+};
+
+#alias {map_goto_shifu} {
+	map.go {书房};
+};
+
+#alias {po} {
+	unwi;
+	wield sword;
+	#send {jifa sword dugu-jiujian};
+	perform sword.po;
+	wi;
+};
+
+#alias {feijian} {
+	unwi;
+	wield sword;
+	#send {jifa sword huashan-jianfa};
+	perform sword.feijian;
+	#send {jifa sword dugu-jiujian};
+	wi;
+};
+
+#alias {jianzhang} {
+	unwi;
+	wield sword;
+	#send {jifa sword huashan-jianfa};
+	perform sword.jianzhang;
+	#send {jifa sword dugu-jiujian};
+	wi;
+};
+
+#alias {sanqingfeng} {
+	unwi;
+	wield sword;
+	#send {jifa parry dugu-jiujian};
+	#send {jifa sword huashan-jianfa};
+	perform sword.sanqingfeng;
+	#send {jifa sword dugu-jiujian};
+	wi;
+};
+
+#alias {chan} {
+	unwi;
+	wield sword;
+	#send {jifa sword huashan-jianfa};
+	perform sword.yangwu;
+	#send {jifa sword dugu-jiujian};
+	wi;
+};
+
+#alias {feilong} {
+	unwi;
+	wield sword;
+	#send {jifa sword huashan-jianfa};
+	perform sword.feilong;
+	#send {jifa sword dugu-jiujian};
+	wi;
+};
+
+#var shortcut F1:缠 F2:飞剑 F3:三青风 F4:破 F5:飞龙
+#macro {\eOP} {
+	chan;
+};
+
+#macro {\eOQ} {
+	feijian;
+};
+
+#macro {\eOR} {
+	sanqingfeng;
+};
+
+#macro {\eOS} {
+	po;
+};
+
+#macro {\e[15~} {
+	feilong;
+};
+
+#alias {yzy} {
+	hit %0;
+	feilong;
+	halt;
+};
+#var shifu yue;
+#list my_weapons create {sword;};
+#var menzhong ning;
+#var menzhong_didian hs;
+#class wudang_spec close

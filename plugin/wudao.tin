@@ -1,0 +1,24 @@
+#class wudao open
+#alias {wd.start} {
+	wudao;
+	show_to_quest 悟道;
+	#class wudao.inner open;
+	#ticker {wudao} {
+		wudao;
+	} {180};
+
+	#action {你修行完毕} {
+		#delay {wd.done} {
+			eat_food;
+			wudao;
+		} {0.1};
+	};
+	#class wudao.inner close;
+};
+
+#alias {wd.stop} {
+	#class wudao.inner kill;
+	show_to_quest 悟道结束;
+};
+
+#class wudao close

@@ -1,0 +1,56 @@
+#class daomu open
+
+#alias {daomu.start} {
+	#class daomu.inner open;
+	#action {由于你连番的挖掘,铁锹在你手中竟然断成两截!} {wield qiao};
+	#action {怎么,你准备用手挖啊?想盗墓也要找一个好工具呀!} {uw all;wield qiao;dig 岳王墓;};
+	#action {你像做贼般的挖了起来} {
+		#delay {dig} {
+			dig 岳王墓;
+		} {7};
+	};
+	#action {你挖了良久} {
+		#delay {2} {
+			#nop enter;
+			#math dm_count ${dm_count}+1;
+			show_to_info 挖到 ${dm_count} 层;
+			#delay {5} {
+				dig 岳王墓;
+			};
+		};
+	};
+
+	#action {功夫不负有心人，你终于挖通了地道} {
+		show_to_info 挖完了;
+		#delay {2} {
+			#nop enter;
+			watch_qiang;
+		};
+		
+		#action {你运功完毕} {
+			watch_qiang;
+		};
+		
+		#ticker {restart_watch} {
+			watch_qiang;
+		} {180};
+	};
+
+	#alias {watch_qiang} {
+		watch 墙壁 20;
+		yun regenerate;
+		yun recover;
+		dazuo 200;
+	};
+
+	#class daomu.inner close;
+
+	#var dm_count 0;
+	dig 岳王墓;
+};
+
+#alias {daomu.stop} {
+	#class daomu.inner kill;
+};
+
+#class daomu close

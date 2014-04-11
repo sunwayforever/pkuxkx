@@ -1,0 +1,162 @@
+#class gaibang_spec open
+
+#alias {attack.prepare} {
+	yun powerup;
+	chan_a_chan;
+};
+
+#alias {attack.hubiao} {
+	#class attack.inner open;
+	#ticker {perf_chan} {
+		chan;
+	} {1.5};
+	#class attack.inner close;
+};
+
+#alias {attack.normal} {
+	zhuan;
+	#class attack.inner open;
+	#ticker {perf_chan} {
+		chan;
+	} {1};
+	#ticker {zhuan} {
+		zhuan;
+	} {6};	
+	#class attack.inner close;
+};
+
+#alias {attack.xiaofeng} {
+	#class attack.inner open;
+	#ticker {perf_chan} {
+		chan;
+	} {1};
+	#class attack.inner close;
+};
+
+#alias {attack.mingjiao} {
+	#class attack.inner open;
+	#ticker {perf_chan} {
+		chan;
+	} {1};
+	#class attack.inner close;
+};
+
+#macro {\eOP} {
+	chan;
+};
+
+#macro {\eOQ} {
+	zhuan;
+};
+
+#macro {\eOR} {
+	tiao;
+};
+
+#macro {\eOS} {
+	chuo;
+};
+
+#macro {\e[15~} {
+	leiting;
+};
+
+#macro {\e[17~} {
+	sanhui;
+};
+
+#alias {load_map} {
+	#cr;
+};
+
+#alias {map_goto_lingwu} {
+	#cr;
+};
+
+#alias {map_goto_rest} {
+	#cr;
+};
+
+#alias {map_goto_start} {
+	#cr;
+};
+
+#alias {map_goto_shifu} {
+	#cr;
+};
+
+#alias {chan} {
+	unwi;
+	wield staff;
+	perform staff.chan;
+	wi;
+};
+
+#alias {chan_robber} {
+	unwi;
+	wield staff;
+	perform staff.chan ${char_id}'s robber 1;
+	perform staff.chan ${char_id}'s robber 2;
+	wi;
+};
+
+
+#alias {xl.start} {
+	#cr;
+};
+
+#alias {xl.stop} {
+	#cr;
+}
+
+#alias {zhuan} {
+	unwi;
+	wield staff;
+	perform staff.zhuan;
+	wi;
+};
+
+#alias {tiao} {
+	unwi;
+	wield staff;
+	perform staff.tiao;
+	wi;
+};
+
+#alias {chuo} {
+	unwi;
+	wield staff;
+	perform staff.chuo;
+	wi;
+};
+
+#alias {leiting} {
+	unwi;
+	perform strike.leiting;
+	wi;
+};
+
+#alias {yzy} {
+	hit %0;
+	leiting;
+	halt;
+};
+
+#alias {sanhui} {
+	unwi;
+	perform strike.sanhui;
+	wi;
+};
+
+#alias {perform_special} {
+    #send {special health};
+};
+
+stat.register 缠 miss 你叹了口气知道这“缠”字决已为人所破，只得收回了招式;
+stat.register 缠 hit 你得理不饶人;
+
+#list my_weapons create {my staff 2; my staff};
+#var shortcut F1:缠 F2:转 F3:挑 F4:戳 F5:雷霆降龙 F6:亢龙三悔;
+#var shifu hong;
+#class gaibang_spec close
+

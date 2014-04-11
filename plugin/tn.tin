@@ -1,0 +1,87 @@
+#class tn open
+
+#var tn_total_count 0;
+
+#alias {tn.start} {
+	#send {jifa};
+	#delay {3} {
+		do_tuna;
+	};
+
+	#class tn.inner open;
+	#action {^│%s基本内功%s(force)%s-%*%d/%s%d│$} {
+		#var jiben_neigong %%5;
+		#math max_jingli ${jiben_neigong} * 15 - 1;
+		#if {${max_jingli} < ${hpbrief_max_jl}} {
+			tn.stop;
+			#showme tn done;
+			show_to_quest 精力到达瓶颈: ${hpbrief_max_jl} => ${max_jingli};
+			xmpp.notify 吐纳完毕;
+		};
+		#else {
+			show_to_quest 吐纳: ${hpbrief_max_jl} => ${max_jingli};			
+		};
+	};
+	#alias {do_tuna} {
+		#nop eat_food;
+		tuna ${tuna_count};
+	};
+	
+	#ticker {restart_tn} {
+		eat_food;
+		do_tuna;
+	} {600};
+	
+	#action {你现在精不足} {
+		yun regenerate;
+		do_tuna;
+	};
+	
+	#action {你的内力不够} {
+		sleep;
+	};
+	
+	#action {你一觉醒来} {
+		do_tuna;
+	};
+	
+	#action {睡过一觉} {
+		#delay {sleep} {
+       		sleep;
+		} {10};
+	};
+	
+	#action {内功 (force)%*有效等级：%d} {
+		#var youxiao_neigong %%2;
+		#math tuna_count ${youxiao_neigong}/10+1;
+		#if {${tuna_count}<10} {
+			#var tuna_count 10;
+		};
+	};
+
+	#action {你吐纳完毕} {
+		do_tuna;
+	};
+
+	#action {你的精力上限增加} {
+		#math tn_total_count ${tn_total_count}+1;
+		show_to_info energy +${tn_total_count};
+		#send {sk};
+	};
+
+	#action {你的精力修为已经达到了瓶颈} {
+		tn.stop;
+		show_to_quest 精力到达瓶颈;
+	};
+	#class tn.inner close;
+
+	#send {hpbrief};
+	#send {sk};
+};
+
+#alias {tn.stop} {
+	show_to_quest 吐纳完毕;
+	#class tn.inner kill;
+};
+
+#class tn close

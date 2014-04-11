@@ -1,0 +1,202 @@
+#class gumu_spec open
+
+#alias {attack.prepare} {
+	yun xinjing;
+	chan_a_chan;
+};
+
+#alias {attack.hubiao} {
+	#class attack.inner open;
+	#ticker {perf_chan} {
+		chan;
+	} {1};
+	#ticker {xinjing} {
+		yun xinjing;
+	} {30};
+	#class attack.inner close;
+	suxin;
+};
+
+#alias {attack.normal} {
+	suxin;
+	#class attack.inner open;
+	#ticker {perf_chan} {
+		chan;
+	} {1};
+	#ticker {suxin} {
+		suxin;
+	} {5};
+	#ticker {shexin} {
+		shexin;
+	} {3.5};
+	#ticker {xinjing} {
+		yun xinjing;
+	} {30};
+	#class attack.inner close;
+};
+
+#alias {attack.xiaofeng} {
+	#class attack.inner open;
+	#ticker {perf_chan} {
+		chan;
+	} {1};
+	#ticker {xinjing} {
+		yun xinjing;
+	} {30};
+	#class attack.inner close;
+};
+
+#alias {attack.mingjiao} {
+	#class attack.inner open;
+	#ticker {perf_chan} {
+		chan;
+	} {1};
+	#ticker {perf_qixing} {
+		qixing;
+	} {0.6};
+	#ticker {xinjing} {
+		yun xinjing;
+	} {30};
+	#class attack.inner close;
+};
+
+#var shortcut F1:缠 F2:摄心 F3:素心 F4:抓 F5:汹涌 F6:七星 F7:暗器;
+#macro {\eOP} {
+	chan;
+};
+
+#macro {\eOQ} {
+	shexin;
+};
+
+#macro {\eOR} {
+	suxin;
+};
+
+#macro {\eOS} {
+	zhua;
+};
+
+#macro {\e[15~} {
+	xiongyong;
+};
+
+#macro {\e[17~} {
+	qixing;
+};
+
+#macro {\e[18~} {
+	shuai;
+};
+
+#alias {shuai} {
+	perform throwing.shuai;
+};
+
+#alias {xiongyong} {
+	unwield all;
+	wield sword;
+	#send {jifa parry xuantie-jian};
+	perform xuantie-jian.xiongyong;
+	#send {jifa parry meinu-quan};
+	unwield all;
+	wi;
+};
+
+#alias {qixing} {
+	unwi;
+	wield sword;
+	perform quanzhen-jian.qixing;
+	unwi;
+};
+
+#alias {zhua} {
+	unwi;
+	bei none;
+	bei claw;
+	perform claw.zhua;
+	bei none;
+	bei cuff;
+};
+
+#alias {shexin} {
+	unwi;
+	perform cuff.shexin;
+	wi;
+};
+
+#alias {suxin} {
+	unwield all;
+	wield my sword;
+	wield my sword 2;
+	#nop #send {jifa sword yunu-jianfa};
+	perform yunu-jianfa.suxin;
+	#nop #send {jifa sword xuantie-jian};
+	unwield all;
+	wi;
+};
+
+#macro {\eOP} {
+	chan;
+};
+
+#alias {chan_robber} {
+	unwield all;
+	wield whip;
+	perform whip.chan ${char_id}'s robber 1;
+	perform whip.chan ${char_id}'s robber 2;
+	unwield all;
+	wi;
+};
+
+#alias {load_map} {
+	map.load gumu;
+};
+
+#alias {map_goto_lingwu} {
+	map.go {演武洞};
+};
+
+#alias {map_goto_rest} {
+	map.go {休息室};
+};
+
+#alias {map_goto_start} {
+	map.go {小厅};
+};
+
+#alias {map_goto_shifu} {
+	map.go {大厅};
+};
+
+#alias {chan} {
+	unwield all;
+	wield whip;
+	perform whip.chan;
+	unwield all;
+	wi;	
+};
+
+#alias {xl.start} {
+	xiulian yunu-xinfa;
+	show_to_quest 修炼内功;
+	#action {顿觉内功修为增进不小} {xiulian yunu-xinfa};
+	#action {由于缺乏实战经验} {
+		xl.stop;
+	};
+};
+
+#alias {xl.stop} {
+	show_to_quest 修炼结束;
+	#unaction {顿觉内功修为增进不小};
+	#unaction {由于缺乏实战经验};
+}
+
+#list my_weapons create {my sword 2; my sword};
+
+stat.register 缠 miss 可是他看破了你的企图，并没有上当;
+stat.register 缠 hit 结果他被你攻了个措手不及！
+
+#var shifu yang;
+#class gumu_spec close
+

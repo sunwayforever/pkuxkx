@@ -1,0 +1,11 @@
+#script {HOME} {ruby -e 'puts ENV["HOME"]'};
+#script {XKX_PASSWORD} {ruby -e 'puts ENV["XKX_PASSWORD"]'};
+#var HOME $HOME[1];
+#var XKX_PASSWORD $XKX_PASSWORD[1];
+
+#var char_name °Í¿ËÁ¦;
+#var char_id bakerli;
+#read ${HOME}/.tt/main.tin;
+#read ${HOME}/.tt/plugin/spec/huashan.tin;
+
+#session bakerli pkuxkx.net 8080; bakerli; ${XKX_PASSWORD};

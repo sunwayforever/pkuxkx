@@ -1,0 +1,17 @@
+#class kanxue open
+#alias {kanxue.start} {
+	#class kx.inner open;
+	#ticker {kx} {
+		l snow;
+	} {6};
+
+	#action {你突然发现在路旁的一片积雪上行走} {
+		walk snow;
+	};
+	#class kx.inner close;
+};
+
+#alias {kanxue.stop} {
+	#class kx.inner kill;
+};
+#class kanxue close

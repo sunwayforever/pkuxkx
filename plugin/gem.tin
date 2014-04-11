@@ -1,0 +1,82 @@
+#class gem open
+#var combine_target 5;
+#list gem_types create {地;山;水;风;雷;火;泽;天};
+#var gem.combine_count 0;
+#alias {gem} {
+	jiancha jin nang;
+	lock 用pack <物品id>将宝石放入其中;
+};
+
+#alias {check_gem} {
+	#var gem_id %1;
+	#var gem_type %2;
+	#var gem_count %3;
+	#list gem_types find ${gem_type} gem_type_index;
+	#if {${gem_count} >=3 && ${gem_type_index} < ${combine_target}} {
+		#var target_gem_id ${gem_id};
+	};
+	
+};
+
+#alias {gem.combine} {
+	#var target_gem_id -1;
+	#3 {pack gem};
+	#var gem.combine_count 0;
+	jiancha jin nang;
+	#class gem.combine.inner open;
+	#action {(%s%S)%*{◎|☆|★}%*\*%S%s(%s%S)%*{◎|☆|★}%*\*%S%s(%s%S)%*{◎|☆|★}%*\*%S%s(%s%S)%*{◎|☆|★}%*\*%S%s(%s%S)%*{◎|☆|★}%*\*%S} {
+		check_gem {%%2} {%%3} {%%6};
+		check_gem {%%9} {%%10} {%%13};
+		check_gem {%%16} {%%17} {%%20};
+		check_gem {%%23} {%%24} {%%27};
+		check_gem {%%30} {%%31} {%%34};
+	} {1};
+
+	#action {(%s%S)%*{◎|☆|★}%*\*%S%s(%s%S)%*{◎|☆|★}%*\*%S%s(%s%S)%*{◎|☆|★}%*\*%S%s(%s%S)%*{◎|☆|★}%*\*%S} {
+		check_gem {%%2} {%%3} {%%6};
+		check_gem {%%9} {%%10} {%%13};
+		check_gem {%%16} {%%17} {%%20};
+		check_gem {%%23} {%%24} {%%27};
+	} {2};
+
+	#action {(%s%S)%*{◎|☆|★}%*\*%S%s(%s%S)%*{◎|☆|★}%*\*%S%s(%s%S)%*{◎|☆|★}%*\*%S} {
+		check_gem {%%2} {%%3} {%%6};
+		check_gem {%%9} {%%10} {%%13};
+		check_gem {%%16} {%%17} {%%20};
+	} {3};
+
+	#action {(%s%S)%*{◎|☆|★}%*\*%S%s(%s%S)%*{◎|☆|★}%*\*%S} {
+		check_gem {%%2} {%%3} {%%6};
+		check_gem {%%9} {%%10} {%%13};
+	} {4};
+
+	#action {(%s%S)%*{◎|☆|★}%*\*%S} {
+		check_gem {%%2} {%%3} {%%6};
+	} {5};
+	#class gem.combine.inner close;
+	
+	#alias {combine_gems} {
+		#if {${target_gem_id} != -1} {
+			#3 {pickgem ${target_gem_id}};
+			#delay {3} {
+				combine gem;
+			};
+			#delay {4} {
+				pack gem;
+			};
+			#delay {5} {
+				gem.combine;
+			};
+		};
+		#else {
+			show_to_info 无法合成;
+		};
+	};
+	#action {用pack <物品id>将宝石放入其中} {
+		#unaction {用pack <物品id>将宝石放入其中};
+		#class gem.combine.inner kill;
+		combine_gems;
+	};
+};
+
+#class gem close

@@ -1,0 +1,30 @@
+#class tongmai open
+#alias {tm.start} {
+	#class tm.inner open;
+	#action {你将散入经脉的真气收回丹田} {
+		dz;
+	};
+	
+	#ticker {tongmai} {
+		dz;
+	} {300};
+
+	#action {你的内力增加了} {
+		dz;
+	};
+	
+	#action {你的任督二脉已经被打通了} {
+		tm.stop;
+		show_to_quest 已经打通任督二脉;
+		#showme tongmai done;
+	};
+	#class tm.inner close;
+	show_to_quest 通脉开始;
+	dz;
+};
+
+#alias {tm.stop} {
+	#class tm.inner kill;
+	show_to_quest 通脉结束;
+}
+#class tongmai close

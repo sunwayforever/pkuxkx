@@ -1,0 +1,54 @@
+#class zhuxi open
+
+#alias {zhuxi.start} {
+	#var tired 0;
+	show_to_quest 开始读书;
+	#class zx.inner open;
+	#ticker {xue} {
+		#if {$tired == 0} {
+     		xue zhu xi for literate 20;
+		};	
+	} {0.5};
+
+	#action {切磋} {
+		zhuxi.stop;
+		#showme zhuxin done;
+	};
+
+	#action {你的潜能已经发挥到极限了} {
+		zhuxi.stop;
+		#showme zhuxin done;
+	};
+
+	#action {你今天太累了} {
+		yun regenerate;
+	};
+
+	#action {你的内力不够} {
+		#if {${tired} == 0} {
+			#var tired 1;
+			e;
+			sleep;
+		};
+	};
+
+	#action {多睡对身体有害无益! } {
+		#delay {shui} {
+			sleep;
+		} {10};
+	};
+
+	#action {你一觉醒来} {
+		eat_food;
+		w;
+		#var tired 0;
+	};
+	#class zx.inner close;
+};
+
+#alias {zhuxi.stop} {
+	#class zx.inner kill;
+	show_to_quest 读书结束;
+};
+
+#class zhuxi close

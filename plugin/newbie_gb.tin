@@ -1,0 +1,54 @@
+#class newbie_gb open
+#alias {dating.start} {
+	#class dating.inner open;
+	#action {你已经完成了打听消息的任务} {
+		#unticker {dt};
+		#delay {6} {
+			map.go 树洞;
+			#delay {afj} {
+				ask zuo about job;	
+			} {5};
+		};
+	};
+	
+	#action {左全说道：「你刚刚做过任务，先去休息一会吧。」} {
+		#delay {afj} {
+			ask zuo about job;	
+		} {5};
+	};
+
+	#action {左全对你说道：人人都知道我们丐帮消息天下最为灵通，打探消息就靠你们这些跑腿的了，你去%*打听(dating)些消息回来。} {
+		map.go %%1;
+		#ticker {dt} {
+			dating;
+		} {5};
+	};
+	#class dating.inner close;
+
+	map.load yangzhou;
+	map.go 树洞;
+	
+	ask zuo about job;
+};
+
+#alias {dating.stop} {
+	#class dating.inner kill;
+	#undelay {afj};
+};
+
+#action {糟糕，你失手了} {
+	halt;
+};
+
+#action {彭有敬说道：「我帮素来以侠义著称，你去%*的%*找到一个叫%*的人，和他接头(jietou)。」} {
+	show_to_quest jietou: %1:%2:%3;
+};
+
+#action {彭有敬对你说道：%*，你去把其身上的%*(%*)讨(beg)来，上缴(jiao)帮里。} {
+	show_to_quest beg: %1:%2:%3;
+};
+
+#action {说道：「你快去把情报送给%*吧。」} {
+	show_to_quest qingbao: %1;
+}
+#class newbie_gb close

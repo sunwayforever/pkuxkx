@@ -1,0 +1,113 @@
+#class diaoyu open
+#alias {diaoyu.start} {
+	#class diaoyu.inner open;
+	#alias qu {#13 n;nw;nw;nw;w;};
+	#alias hui {e;se;se;se;#13 s;};
+	#alias teab {e;n;n;eu;zuan dong;se;#2 ne;n;ne;e;u;out};
+	#alias tea {enter shudong;say 天堂有路你不走呀;d;9;sw;s;#2 sw;nw;out;wd;s;s;w;};
+
+	#action {^你还没把鱼饵挂在鱼钩上哪！} {
+		gua yuer;
+	};
+
+	#action {^你猛一提杆，钓到了一个} {
+		#delay {2} {
+			look yuer;
+		};
+	};
+
+	#action {^你猛的一提杆，扯的太急了，线断了，鱼跑了，可惜，可惜。 } {
+		#delay {2} {
+			look yuer;
+		};
+	};
+
+	#action {^你一提杆，钓到了一条} {
+		#delay {2} {
+			look yuer;
+		};
+	};
+
+	#action {^你小心的把鱼饵挂到鱼钩上。} {
+		#delay {2} {
+			diao yu;
+		};
+	};
+
+	#action {^你鱼漂晃动，你心里一急，猛的一提杆，你钓到了一件} {
+		#delay {2} {
+			drink cha;
+			drink cha;
+			#delay {4} {
+				look yuer;
+			};
+		};
+	};
+
+	#action {^鱼饵(Yuer)} {
+		gua yuer;
+	};
+	
+	#action {^这是个钓鱼用的鱼饵。需要先} {
+		gua yuer;
+	};
+
+	#action {^你说道：「开始钓鱼吧」} {
+		look yuer;
+	};
+
+	#action {^你要看什么？} {
+		say 回去卖鱼吧;
+	};
+
+	#action {^你说道：「回去卖鱼吧」} {
+		halt;halt;hui;
+		s;e;
+		sell fish 120;
+		#delay {3} {
+			w;n;
+			e;s;buy yuer 100;
+			#delay {3} {
+				buy yuer 100;
+				#delay {3} {
+					n;w;qu;
+					#delay {4} {
+						say 开始钓鱼吧;
+					};
+				};
+			};
+		};
+	};
+
+	#action {^你的鱼钩上已经有了一个鱼饵了，不能再挂了！} {
+		#delay {2} {
+			diao yu;
+		};
+	};
+
+	#class diaoyu.inner close;
+
+	tea;
+	buy tea 15;
+
+	#delay {3} {
+		teab;
+		e;s;buy yugou;
+		#delay {3} {
+			buy yuer 100;
+			#delay {3} {
+				buy yuer 100;
+				#delay {3} {
+					n;w;qu;
+					say 开始钓鱼吧;
+				};
+			};
+		};
+	};
+};
+
+#alias {diaoyu.stop} {
+	#class diaoyu.inner kill;
+};
+
+#class diaoyu close

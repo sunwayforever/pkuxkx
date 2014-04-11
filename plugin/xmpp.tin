@@ -1,0 +1,36 @@
+#class xmpp open
+
+#alias {xmpp.listen} {
+	#system {${HOME}/.tt/bin/xmpp_listen.rb ${char_id} &};	
+};
+
+#alias {xmpp.send} {
+	#script {response} {${HOME}/.tt/bin/xmpp_send.rb ${char_id}  messenger  "%1: %2"};
+};
+
+#alias {xmpp.read.start} {
+	#ticker {xmpp.read} {
+		#script {command} {${HOME}/.tt/bin/xmpp_read.rb ${char_id}};
+		#if {"${command}[1]" != "nil"} {
+			#var sender ${command}[1];
+			#var content ${command}[2];
+			tell ${sender} ${content}
+		};
+	} {5}
+};
+
+#alias {xmpp.read.stop} {
+	#unticker {xmpp.read};
+};
+
+xmpp.listen;
+xmpp.read.start;
+
+#nop tell sunwaybupt notify hello
+#action {(%*)¸æËßÄã£ºnotify %*} {
+	#var receiver %1;
+	#var content %2;
+	xmpp.send ${receiver} ${content}
+} {1};
+
+#class xmpp close

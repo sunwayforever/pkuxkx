@@ -1,0 +1,107 @@
+#class qiu open
+#alias {qiu.q} {
+	#class qiu.inner open;
+	#action {面露娇羞之色，悄悄的低下头去} {
+		qiu.n;
+	};
+	
+	#action {我先闪了！} {
+		rob biao dui;
+		#delay {5} {war};
+	};
+
+	#action {我已经派了一个探子} {
+		#var qiu.type 4;
+	};
+
+	#action {裘千丈在你耳边告诉了开宝箱的方法} {
+		#var qiu.type 3;
+	};
+
+	#action {我们当家的想找一位压寨夫人} {
+		#var qiu.type 2;
+	};
+
+	#action {你去把%*(%*)给我干掉，提他的脑袋来见我} {
+		#var qiu.type 1;
+		#var qiu.killer %%1;
+		#action {%%1死了。$}{
+			#unaction {%%1死了。$};
+			qiu.n;
+		} {1};
+
+	};
+
+	#action {「肉掌水底钻」裘千丈} {
+		qiu.d;
+	};
+
+	#action {Cangbao xiang} {
+		qiu.n;
+	};
+	#class qiu.inner close;
+	
+	ask qiu about 投名状;
+};
+
+#alias {qiu.b} {
+	gt qiu;
+};
+
+#var qiu.type 0;
+
+
+#alias {qiu.n} {
+	#if {${qiu.type} == 1} {
+		cut corpse;
+		#delay {1} {get shouji};
+	};
+	#elseif {${qiu.type} == 2} {
+		#send hit beauty girl;
+		get beauty girl;
+	};
+	#elseif {${qiu.type} == 3} {
+		unseal box;
+	};
+	#elseif {${qiu.type} == 4} {
+		rob biao dui;
+	};
+};
+
+#alias {qiu.bl} {
+	#if {${qiu.type} == 1} {
+		bl.start ${qiu.killer};
+	};
+	#elseif {${qiu.type} == 2} {
+		bl.start Beauty;
+	};
+	#elseif {${qiu.type} == 3} {
+		bl.start 宝箱;
+	};
+	#elseif {${qiu.type} == 4} {
+		bl.start 铁掌帮;
+	};
+};
+
+#alias {qiu.d} {
+	#if {${qiu.type} == 1} {
+		give shouji to qiu;
+	};
+	#elseif {${qiu.type} == 2} {
+		give beauty girl to qiu;
+	};
+	#elseif {${qiu.type} == 3} {
+		give baobei to qiu;
+	};
+	#elseif {${qiu.type} == 4} {
+		give qiu hong huo;
+	};
+	#class qiu.inner kill;
+};
+
+#alias {qiu.f} {
+	ask qiu about 失败;
+	#class qiu.inner kill;
+};
+
+#class qiu close

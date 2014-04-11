@@ -1,0 +1,182 @@
+#class template open
+#alias {attack.prepare} {
+	#cr;
+};
+
+#alias {attack.normal} {
+	huose;
+	#class attack.inner open;
+	#ticker {huose} {
+		huose;
+	} {6};	
+	#class attack.inner close;
+};
+
+#alias {attack.xiaofeng} {
+	#class attack.inner open;
+	#cr;
+	#class attack.inner close;
+};
+
+#alias {attack.mingjiao} {
+	#class attack.inner open;
+	#cr;
+	#class attack.inner close;
+};
+
+#macro {\eOP} {
+
+};
+
+#macro {\eOQ} {
+
+};
+
+#macro {\eOR} {
+
+};
+
+#macro {\eOS} {
+
+};
+
+#alias {load_map} {
+	map.load xingxiu;
+};
+
+#alias {map_goto_lingwu} {
+	map.go 石壁;
+};
+
+#alias {map_goto_rest} {
+	map.go 左内殿;
+};
+
+#alias {map_goto_start} {
+	map.go 巨岩;
+};
+
+#alias {map_goto_shifu} {
+	map.go 山谷口;
+};
+
+#alias {chan} {
+	#cr;
+};
+
+#alias {chan_robber} {
+	#cr;
+};
+
+#alias {xl.start} {
+	xiulian bixue-xinfa;
+	show_to_quest 修炼内功;
+	#action {顿觉内功修为增进不小} {xiulian yunu-xinfa};
+	#action {由于缺乏实战经验} {
+		xl.stop;
+	};
+};
+
+#alias {xl.stop} {
+	show_to_quest 修炼结束;
+	#unaction {顿觉内功修为增进不小};
+	#unaction {由于缺乏实战经验};
+}
+
+#list my_weapons create {staff; staff 2};
+#alias {perform_special} {
+
+};
+
+#alias {huose} {
+	wi;
+	perform staff.huose;
+	wi;
+};
+
+#alias {huoqiang} {
+	unwi;
+	yun dianhuo;
+	perform strike.huoqiang;
+	wi;
+};
+
+#alias {huoqiu} {
+	unwi;
+	yun dianhuo;
+	perform strike.huoqiu;
+	wi;
+};
+
+#alias {chuanxin} {
+	unwi;
+	perform strike.chuanxin;
+	wi;
+};
+
+#alias {chousui} {
+	unwi;
+	perform strike.chousui;
+	wi;
+};
+
+#alias {sandu} {
+	unwi;
+	perform strike.sandu;
+	wi;
+};
+
+#alias {tan} {
+
+};
+
+#var shortcut F1:活色 F2:抽髓 F3:火球 F4:火墙 F5:穿心 F6:散毒 F7:弹
+#macro {\eOP} {
+	huose;
+};
+
+#macro {\eOQ} {
+	chousui;
+};
+
+#macro {\eOR} {
+	huoqiu;
+};
+
+#macro {\eOS} {
+	huoqiang;
+};
+
+#macro {\e[15~} {
+	chuanxin;
+};
+
+#macro {\e[17~} {
+	sandu;
+};
+
+#macro {\e[18~} {
+	tan;
+};
+
+#alias {qudu} {
+	yun qudu;
+	#action {战斗中运功驱毒} {
+		#unaction {战斗中运功驱毒};
+		eat san;
+	};
+};
+
+#alias {reborn} {
+	#send {jifa strike xingxiu-duzhang};
+	#send {jifa dodge zhaixinggong};
+	#send {jifa parry xingxiu-duzhang};
+	#send {jifa staff tianshan-zhang};
+	#send {jifa hand zhaixing-shou};
+	bei strike hand;
+};
+
+#var shifu li;
+#var menzhong dizi;
+#var menzhong_didian txg;
+#class template close

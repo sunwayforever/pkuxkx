@@ -1,0 +1,65 @@
+#class show open;
+#split 17 1
+
+#nop status/-/shortcut/-/5(info)/-/6(chat)/- = 17
+#var info_window {{1}{ } {2}{ } {3}{ } {4}{ } {5}{ }};
+#var chat_window {{1}{ } {2}{ } {3}{ } {4}{ } {5}{ } {6}{ }};
+
+#var info_window_offset 4;
+#math chat_window_offset $info_window_offset+&info_window[]+1;
+
+#alias {show.init} {
+	#loop {1} {&info_window[]} {cnt}
+	{
+		#math pos $cnt+${info_window_offset};
+		#echo {{<aff>$info_window[$cnt]<099>} {-$pos}};
+	}
+
+	#loop {1} {&chat_window[]} {cnt}
+	{
+		#math pos $cnt+${chat_window_offset};
+		#echo {{<aff>$chat_window[$cnt]<099>} {-$pos}};
+	}
+};
+
+#alias {show_to_shortcut} {
+	#var show_key %0;
+	#echo {{<cfa>${show_key}<099>}{-3}};
+};
+
+#alias {show_to_info} {
+	#format {tmp_time} {%t} {%T};
+	#var temp ${tmp_time} <099> %0;
+	#list info_window ins -1 $temp;
+	#list info_window del 1;
+
+	#loop {1} {&info_window[]} {cnt}
+	{
+		#math pos $cnt+${info_window_offset};
+		#echo {{<aff>$info_window[$cnt]<099>} {-$pos}};
+	}
+}
+
+#alias {show_to_chat} {
+	#format {tmp_time} {%t} {%T};
+	#var temp ${tmp_time} <099> %0;
+	#list chat_window ins -1 {$temp};
+	#list chat_window del 1;
+
+	#loop {1} {&chat_window[]} {cnt}
+	{
+		#math pos $cnt+${chat_window_offset};
+		#echo {{<aff>$chat_window[$cnt]<099>} {-$pos}};
+	}
+}
+
+#alias {show_to_status} {
+	#var show_status %0;
+	#echo {{<fca>${show_status}<099> => <cfa>${show_quest}<099>}{-1}};
+};
+
+#alias {show_to_quest} {
+	#var show_quest %0;
+	#echo {{<fca>${show_status}<099> => <cfa>${show_quest}<099>}{-1}};
+};
+#class show close;

@@ -1,0 +1,79 @@
+#class huwei open;
+#alias {hw.q} {
+    ask sao about 护卫;
+};
+
+#alias {hw.f} {
+    ask sao about fail;
+};
+
+#alias {hw.b} {
+    
+};
+
+#alias {hw} {
+    huwei;
+};
+
+#action {你赶快去%1护卫一下吧} {
+	#if {"%1" == "仙愁门"} {
+	    hw;
+	};
+	#elseif {"%1" == "百丈涧"} {
+		zou tiesuo;
+		#delay {8} {
+		    s;
+		    hw;
+		};
+	};
+	#elseif {"%1" == "断魂崖"} {
+		zou tiesuo;
+		#delay {8} {
+			s; sd;
+			hw;
+		};
+	};
+	#elseif {"%1" == "缥缈峰山脚"} {
+		zou tiesuo;
+		#delay {8} {
+			s; sd; sd;
+			hw;
+		};
+	};
+	#elseif {"%1" == "小路"} {
+		zou tiesuo;
+		#delay {8} {
+			s; sd; sd; s;
+			hw;
+		};
+	};
+	#elseif {"%1" == "山路"} {
+		nw;
+		hw;
+	};
+	#elseif {"%1" == "青石大道"} {
+		nw;ne;nu;nu;
+		hw;
+	};
+	#elseif {"%1" == "松林"} {
+		nw;ne;nu;
+		hw;
+	};		
+};
+
+#action {你在%1来回走动} {
+	#delay {hw} {hw;} {5};
+};
+
+#action {护卫时间已经到了} {
+	show_to_info 护卫完成
+}
+
+#action {你的武林声望上升了%1} {
+	show_to_info 声望:+%1
+}
+
+#alias {ts} {
+	zou tiesuo;
+}
+#class huwei close;

@@ -1,0 +1,248 @@
+#class war open;
+
+#alias {re} {
+    yun recover;
+	yun regenerate;
+};
+
+#var heal_count 1;
+#alias {heal} {
+	re;
+	#var heal_count %1;
+	#loop {1} {${heal_count}} {tmp} {
+		yun heal;
+		yun inspire;
+	};
+};
+
+#alias {unwi} {
+    unwield all;
+};
+
+#action {看起来%1想杀死你} {
+	war;
+};
+
+#action{「%1」%2(%3) <战斗中>} {
+	show_to_info %1:%2:%3;
+}
+
+#alias {qi} {
+    yun qi;
+};
+
+#alias {equip} {
+    down;
+    out;
+    remove all;
+	#foreach {${my_weapons}[%*]} {weapon} {draw ${weapon}};
+    draw armor;
+    draw head;
+    draw cloth;
+    draw surcoat;
+    draw boots;
+    wear all;
+	wi;
+    enter; up;
+};
+
+#alias {play_music} {
+    #system {${HOME}/.tt/bin/play %1};
+};
+
+#action {死了} {
+	#delay {2} {
+		raw;
+	};
+};
+
+#action {君子报仇十年不晚，咱们走着瞧} {
+	#nop play_music win;
+};
+
+#nop #action {你捡起一件%1} {drop cloth;drop pao;drop she pi}
+#nop #action {你捡起一双%1} {drop xie;drop shoes;}
+#nop #action {你捡起一柄%1} {drop changjian; drop duanjian; drop xiuhua bengjia;}
+#nop #action {你捡起一条%1} {drop she rou;drop tu rou;drop band}
+#nop #action {你捡起一块%1} {drop gan liang;}
+
+#nop #action {你从%1一件%2} {drop cloth;drop pao;drop she pi}
+#nop #action {你从%1一双%2} {drop xie;drop shoes;}
+#nop #action {你从%1一柄%2} {drop changjian; drop duanjian; drop xiuhua bengjia;}
+#nop #action {你从%1一条%2} {drop she rou;drop tu rou;drop band}
+#nop #action {你从%1一块%2} {drop gan liang;}
+
+#action {你似乎十分疲惫，看来需要好好休息了} {re} {1};
+#action {你气喘嘘嘘，看起来状况并不太好} {re} {1};
+#action {你看起来已经力不从心了} {re} {1};
+
+#action {忽然一阵刺骨的奇寒袭来} {
+	qudu;
+};
+
+#action {突然你打了个寒战，你中的冰魄寒毒发作了！} {
+	qudu;
+};
+
+#action {他的剧毒散至你的全身} {
+	qudu;
+};
+
+#action {『%*(%1气血:%2\%/%3\%)』} {
+	fighting;
+};
+
+#alias {chan_a_chan} {
+	chan;
+	#ticker {chan_a_chan} {
+		chan;
+	} {0.5};
+    #delay {3} {
+		#unticker {chan_a_chan};
+	};
+};
+
+#alias {kill} {
+	war;
+	#send kill %0;
+};
+
+#alias {killall} {
+	war;
+	#send killall %0;
+};
+
+#alias {hit} {
+	war;
+	#send hit %0;
+};
+
+#alias {fight} {
+	war;
+	#send fight %0;
+};
+
+#alias {wi_normal} {
+	unwi;
+	#foreach {${my_weapons}[%*]} {weapon} {wield ${weapon}};
+};
+
+#alias {wi_bare} {
+	unwi;
+};
+
+#alias {wi_xiaofeng} {
+	wi_normal;
+};
+
+#alias {wi} {
+	wi_normal;
+};
+
+#action {你似乎十分疲惫，看来需要好好休息了} {
+	re;
+};
+
+#action {已经断为两截} {
+	show_to_info 武器断了;
+	wi;
+};
+
+#gag {truce};
+#alias {fighting} {
+	#delay {fighting} {
+		#showme truce;
+		raw;
+		#if {${mj_started} == 1} {
+			#var mj_started 0;
+			show_to_info <<明教;
+			mj.stop;
+		};
+	} {15};
+};
+
+#var mj_started 0;
+#alias {detect_mingjiao} {
+	l %0;
+	#action {这是一位明教} {
+		show_to_info >>明教;
+		#var mj_started 1;
+		mj.start;
+	};
+	
+	#action {圣火令} {
+		show_to_info >>明教;
+		#var mj_started 1;
+		mj.start;
+	};
+	
+	#delay {2} {
+		#unaction {圣火令};
+		#unaction {这是一位明教};
+	};
+};
+
+#alias {mj.start} {
+	#alias {wi} {wi_bare};
+	unwi;
+	attack.end;
+	#alias {attack} {
+		attack.mingjiao;
+	};
+	war;
+};
+
+#alias {mj.stop} {
+	#alias {wi} {wi_normal};
+	wi;
+	attack.end;
+	#alias {attack} {
+		attack.normal;
+	};
+};
+
+#alias {qudu} {
+	eat san;
+};
+
+#alias {raw} {
+	attack.end;
+	#nop get all from corpse;
+	jiali none;
+	#unticker {yun};
+};
+
+#alias {war} {
+	fighting;
+	yun qi;
+	yun jing;
+	#ticker {yun} {
+		yun qi;
+		yun jing;
+	} {10};
+	attack.prepare;
+	#delay {3} {
+		attack;
+	};
+};
+
+#alias {attack}  {
+	attack.normal;
+};
+
+#alias {attack.hubiao} {
+	attack.normal;
+};
+
+#alias {attack.end} {
+	#class attack.inner kill;
+};
+
+#action {^%*运起九阳神功} {
+	show_to_info >>明教;
+	#var mj_started 1;
+	mj.start;
+	#showme mingjiao enemy:%1;
+};
+
+#class war close;

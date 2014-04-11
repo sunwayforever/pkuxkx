@@ -1,0 +1,18 @@
+#class pingdiao open;
+#action {你凭吊完毕,站起身来} {
+	#delay {1} {
+		eat_food;
+		#delay {2} {
+			pingdiao;
+		};
+	};
+};
+
+#alias {pingdiao.start} {
+	#ticker {pingdiao} {
+		pingdiao;
+	} {300};
+	pingdiao;
+}
+
+#class pingdiao close;

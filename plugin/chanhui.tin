@@ -1,0 +1,16 @@
+#class chanhui open
+#alias {chanhui.start} {
+	#class ch.inner open;
+	#action {你感觉心中的杀气渐渐消失} {
+		#delay {2} {
+			chanhui;
+		};
+	};
+	#class ch.inner close;
+	chanhui;
+};
+
+#alias {chanhui.stop} {
+	#class ch.inner kill;
+};
+#class chanhui close

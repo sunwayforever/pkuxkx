@@ -1,0 +1,79 @@
+#class dz open
+#var min_dazuo_count 60;
+#var dz_total_count 0;
+
+#alias get_dazuo_count {
+    #class dazuo_count.inner open;
+    #action {内功 (force)%*有效等级：{ *}%d} {
+        #var youxiao_neigong %%3;
+        #math dazuo_count ${youxiao_neigong}*3/10+1;
+        #class dazuo_count.inner close;
+    };
+    #class dazuo_count.inner close;
+    #send {jifa};
+};
+
+#alias {dz.full.cancel} {
+	#unticker {dz};
+};
+
+#alias {dz.full} {
+	get_dazuo_count;
+	#delay {1} {
+		#ticker {dz} {
+			#if {${nl_percent} < 180} {
+			    yun recover; dazuo ${dazuo_count};  
+			};
+			#else {
+				#unticker {dz};
+				#delay {5} {
+				    #showme dz.full;    
+    			};
+			};
+		} {1};
+	};
+};
+
+#alias {dz.start} {
+	autoheal.off;
+	#send {jifa};
+	#class dz.inner open;
+	#ticker {dz} {
+		#if {${qx_percent} < 10} {
+			sleep;
+		};
+		#else {
+            dazuo ${dazuo_count};
+		};
+    } {1};
+    
+    #action {内功 (force)%*有效等级：{ *}%d} {
+		#var youxiao_neigong %%3;
+		#math dazuo_count ${youxiao_neigong}/10+1;
+    	#math max_neili ${youxiao_neigong} * 10 -1;
+		#if {${max_neili} < ${hpbrief_max_nl}} {
+			dz.stop;
+			#showme dz done;
+			show_to_quest 内力到达瓶颈: ${hpbrief_max_nl} => ${max_neili};
+		};
+		#else {
+			show_to_quest 打坐: ${hpbrief_max_nl} => ${max_neili};			
+		};
+	};
+	
+	#action {你的内力增加了} {
+		#math dz_total_count ${dz_total_count}+1;
+		show_to_info force +${dz_total_count};
+		#send {jifa};
+	};	
+	
+	#class dz.inner close;
+};
+
+#alias {dz.stop} {
+	autoheal.off;
+	show_to_quest 打坐完毕;
+	#class dz.inner kill;
+};
+
+#class dz close

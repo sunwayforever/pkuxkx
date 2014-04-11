@@ -1,0 +1,28 @@
+#class jump open
+#alias {tl.start} {
+	#class jump.inner open;
+	set brief 1;
+	#alias {do_jump} {
+		enter;u;u;u;u;u;u;out;
+	};
+	
+	#action {你已稳稳地站在地上} {
+		#delay {2} {
+			do_jump;
+		};
+	};
+	
+	#ticker {restart} {
+		do_jump;
+	} {60};
+	
+	#class jump.inner close;
+	do_jump;
+};
+
+#alias {tl.stop} {
+	set brief 2;
+	#class jump.inner kill;
+};
+
+#class jump close

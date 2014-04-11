@@ -1,0 +1,242 @@
+#class xiaofeng open
+#var xf.type -1;
+#alias {xf.q} {
+	#class xiaofeng.inner open;
+	#var xf.requested 0;
+	#action {%*向萧峰打听有关『job』的消息} {
+		#if {"%%1" == "你"} {
+			#var xf.requested 1;
+		};
+		#else {
+			#var xf.requested 0;
+		};
+	};
+
+	#var xf.type -1;
+	#action {传闻西夏一品堂派出了若干蒙面杀手，最近出现在%*附近的%*} {
+		#if {${xf.requested} == 1} {
+			#var xf.target %%1:%%2;
+			#delay {2} {
+				#var dest @area_mapping{%%1};
+				#if {"${dest}" != "0"} {
+					gt $dest;
+					#nop #action {抵达目的地} {
+					#nop 	xf.bl;
+					#nop 	#unaction {抵达目的地};
+					#nop } {1};
+				};
+			};
+		};
+	};
+
+	#action {你去将他擒回这里交给我} {
+		#if {${xf.requested} == 1} {
+			#var xf.type 2;
+			show_to_quest 萧峰: 擒回: ${xf.target};
+		};
+	};
+
+	#action {你去将他除掉，取其首级回来。} {
+		#if {${xf.requested} == 1} {
+			#var xf.type 1;
+			show_to_quest 萧峰: 杀死: ${xf.target};
+			#alias {wi} {wi_normal};
+		};
+	};
+
+	#action {『蒙面杀手(%*气血:%*\%/%*\%)』} {
+		fighting;
+		#if {%%2 < 40 || %%3 < 40} {
+			xf.slow_down;
+		};
+	} {1};
+
+	#action {看来杀手有点怕你了} {
+		raw;
+		#delay {2} {
+			#5 {halt};
+		};
+		#delay {3} {
+			#3 quan;
+		};
+	};
+
+	#alias {xf.slow_down} {
+		#if {${xf.type} == 3 || ${xf.type} == 4} {
+			show_to_info 红血了, 慢点;
+			raw;
+			#3 halt;
+			#action {跳出战圈不打了} {
+				#if {${xf.type} == 3} {
+					quan;
+				};
+			};
+			#action {你想停下来} {
+				#delay {halt} {
+					halt;
+				} {0.5};
+			};
+			#alias {wi} {wi_bare};
+			unwi;
+		};
+	};
+
+	#action {尚可教化} {
+		#if {${xf.requested} == 1} {
+			#var xf.type 3;
+			show_to_quest 萧峰: 劝: ${xf.target};
+		};
+	};
+
+	#action {让他认输就好} {
+		#if {${xf.requested} == 1} {
+			#var xf.type 4;
+			show_to_quest 萧峰: 战胜: ${xf.target};
+		};
+	};
+
+	#action {你将%*扶了起来背在背上} {
+			show_to_quest 萧峰: 已擒获 ${xf.real_name};
+	};
+	
+	#action {西夏一品堂 %*(%* %*)} {
+		#unaction {西夏一品堂 %*(%* %*)};
+		#var xf.real_name %%1;
+		autopp.set_zh %%1;
+		#var xf.real_first_name @lower{%%2};
+		
+		#if {${xf.type} == 2} {
+			show_to_quest 萧峰: 擒回: ${xf.real_name};
+			#delay {2} {
+				get ${xf.real_first_name};
+			};
+		};
+		#if {${xf.type} == 4} {
+			show_to_quest 萧峰: 战胜: ${xf.real_name};
+		};
+	} {2};
+
+	#action {西夏一品堂 蒙面杀手(Mengmian shashou)} {
+		#if {${xf.type} != -1} {
+			xf.check;
+		};
+	} {1};
+
+	#action {显是蒙面杀手姓名} {
+		#if {${xf.type} == 1} {
+			#delay {2} {
+				zhan corpse;
+				#delay {2} {
+					get shouji;
+				};
+				show_to_quest 萧峰: 已杀死;
+			};
+		};
+		l;
+	} {1};
+
+	#action {蒙面杀手深深地叹了口气} {
+		raw;
+		show_to_quest 萧峰: 已经劝服;
+	};
+
+	#action {要打便打} {
+		#if {${xf.type} != -1} {
+			follow shashou;
+		};
+	};
+	
+	#alias {xf.n} {
+		detect_mingjiao shashou;
+		#if {${xf.type} == 1} {
+			kill shashou;
+			#action {xf.dead} {
+				#delay {2} {
+					zhan corpse;
+					#delay {2} {
+						get shouji;
+					};
+					show_to_quest 萧峰: 已杀死;
+				};
+				#unaction {xf.dead};
+			};
+		};
+		#elseif {${xf.type} == 2} {
+			#alais {wi} {wi_xiaofeng};
+			#alias {attack} {
+				attack.xiaofeng;
+			};
+			hit shashou;
+		};
+		#elseif {${xf.type} == 3} {
+			#alais {wi} {wi_xiaofeng};
+			#alias {attack} {
+				attack.xiaofeng;
+			};
+			hit shashou;;
+		};
+		#elseif {${xf.type} == 4} {
+			#alais {wi} {wi_xiaofeng};
+			#alias {attack} {
+				attack.xiaofeng;
+			};
+			fight shashou;
+		};
+	};
+
+	#alias {xf.check} {
+		ask shashou about fight;
+	};
+
+	#class xiaofeng.inner close;
+
+	ask xiao about job;
+};
+
+#alias {xf.d} {
+	#class xiaofeng.inner kill;
+	#if {${xf.type} == 1} {
+		give shouji to xiao;
+	};
+	#if {${xf.type} == 2} {
+		give ${xf.real_first_name} to xiao;
+	};
+	#if {${xf.type} == 3} {
+		ask xiao about 完成;
+	};
+	#if {${xf.type} == 4} {
+		ask xiao about 完成;
+	};
+	show_to_quest 萧峰: 完成;
+	#var xf.type -1;
+	#var xf.requested 0;
+	#alias {wi} {wi_normal};
+	wi;
+	#alias {attack} {
+		attack.normal;
+	};
+};
+
+#alias {xf.f} {
+	#class xiaofeng.inner kill;
+	ask xiao about fail;
+	#var xf.type -1;
+	#var xf.requested 0;
+	show_to_quest 萧峰: 失败;
+	#alias {wi} {wi_normal};
+	wi;
+};
+
+#alias {xf.bl} {
+	bl.start 杀手;
+};
+
+#alias {xf.b} {
+	gt xf;
+};
+
+#alias {xf.heal} {
+	yun lifeheal shashou;
+	l shashou;
+};
+#class xiaofeng close

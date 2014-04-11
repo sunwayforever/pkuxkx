@@ -1,0 +1,59 @@
+#class dushu open
+
+#var ds_book shu;
+
+#alias {ds.start} {
+	#var ds_book %0;
+	#var tired 0;
+	
+	#class dushu.inner open;
+	#alias {do_du} {
+		#if {$tired == 0} {
+			du $ds_book for 5;
+		};
+	};
+
+	#action {似乎有点心得} {
+		do_du;
+	};
+
+	#action {你现在过于疲倦} {
+		yun regenerate;
+		#delay {tired} {
+			do_du;
+		} {1};
+	};
+
+	#action {你的内力不够} {
+		#var tired 1;
+		sleep;
+	};
+	
+	#action {多睡对身体有害无益! } {
+		#delay {shui} {
+			sleep;
+		} {3};
+	};
+	
+	#action {你一觉醒来} {
+		eat_food;
+		#var tired 0;
+		do_du;
+	};
+
+	#ticker {du} {
+		#var tired 0;
+		do_du;
+	} {120};
+	#class dushu.inner close;
+
+	do_du;
+	show_to_quest 读书: ${ds_book};
+};
+
+#alias {ds.stop} {
+	#class dushu.inner kill;
+	show_to_quest 读书结束;
+};
+
+#class dushu close

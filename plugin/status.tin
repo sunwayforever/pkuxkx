@@ -1,0 +1,145 @@
+#class status open
+
+#var fuzhong_info  nil;
+#var hpbrief_info  nil;
+#var xmpp_info off;
+#var xy_info off;
+#var auto_heal 1;
+
+#ticker {uptime} {
+	uptime;
+} {60};
+
+#action {北大侠客行已经执行了%1分%2秒} {
+	zhengdian %1;
+} {4};
+
+#action {北大侠客行已经执行了%1小时%2分%3秒} {
+	zhengdian %2;
+} {3};
+
+#action {北大侠客行已经执行了%1天%2分%3秒} {
+	zhengdian %2;
+} {2};
+
+#action {北大侠客行已经执行了%1天%2小时%3分%4秒} {
+	zhengdian %3;
+} {1};
+
+#ticker {check_fuzhong} {
+	#send {i};
+} {180};
+
+#alias {zhengdian} {
+	#showme guaji.update %1;
+	#var tmp_minute @ctd{%1};
+	#var uptime_info ${tmp_minute}分;
+	update_status;
+};
+
+#alias {update_status} {
+	#var status_content ${char_name}: ${hpbrief_info} | ${fuzhong_info} | ${daytime_info} | ${uptime_info} | ${week_info} ;
+	#if {"${xmpp_info}" == "on"} {
+		#var status_content ${status_content} | X;
+	};
+	#if {"${xy_info}" == "on"} {
+		#var status_content ${status_content} | G;
+	};
+	show_to_status ${status_content};
+};
+
+#action {你身上带著下列这些东西(负重 %1\%)：} {
+	#var fuzhong_info 负重: %1;
+	update_status;
+};
+
+#alias {autoheal.on} {
+	#var auto_heal 1;
+};
+
+#alias {autoheal.off} {
+	#var auto_heal 0;
+};
+
+#ticker {hpbrief} {
+	#var hpbrief_first 1;
+	hpbrief;
+} {3};
+
+#var qx_percent 100;
+#var js_percent 100;
+#var nl_percent 100;
+
+#var hpbrief_first 1;
+#action {^#%1,%2,%3,%4,%5,%6$} {
+	#if {${hpbrief_first} == 1} {
+		#var hpbrief_first 0;
+		#var hpbrief_exp %1;
+		#var hpbrief_pot %2;
+		#var hpbrief_max_nl %3;
+		#var hpbrief_curr_nl %4;
+		#var hpbrief_max_jl %5;
+		#var hpbrief_curr_jl %6;
+	};
+	#else {
+		#var hpbrief_first 1;
+		#var hpbrief_max_qx %1;
+		#var hpbrief_eff_qx %2;
+		#var hpbrief_curr_qx %3;
+		#var hpbrief_max_js %4;
+		#var hpbrief_eff_js %5;
+		#var hpbrief_curr_js %6;
+		#math eff_qx_percent ${hpbrief_eff_qx} *100 / ${hpbrief_max_qx};
+		#math eff_js_percent ${hpbrief_eff_js} *100 / ${hpbrief_max_js};
+		#math qx_percent ${hpbrief_curr_qx} *100 / ${hpbrief_max_qx};
+		#math js_percent ${hpbrief_curr_js} * 100 / ${hpbrief_max_js};
+		#math nl_percent ${hpbrief_curr_nl} * 100 / ${hpbrief_max_nl};
+
+		#var hpbrief_info 气血: ${qx_percent} | 精神: ${js_percent} | 内力: ${nl_percent} | 经验: ${hpbrief_exp};
+		update_status;
+
+		#if {${auto_heal} == 1} {
+			#if {${qx_percent} < 30} {
+				yun recover;
+			};
+
+			#if {${js_percent} < 30} {
+				yun regenerate;
+			};
+		};
+	};
+};
+
+#ticker {time} {
+	time;
+} {30};
+
+#var prev_daytime nil;
+#action {北大侠客行现在大约是%1时分} {
+	#var curr_daytime %1;
+	#if {"${curr_daytime}" != "${prev_daytime}"} {
+		#showme ${curr_daytime}到了;
+		#var daytime_info ${curr_daytime};
+		update_status;
+		#var prev_daytime ${curr_daytime};
+		#if {
+			"${curr_daytime}" == "凌晨" ||
+			"${curr_daytime}" == "早晨" ||
+			"${curr_daytime}" == "正午" ||
+			"${curr_daytime}" == "晌午" ||
+			"${curr_daytime}" == "下午"
+			} {
+				#var daytime 1;
+		};
+		#else {
+			#var daytime 0;
+		};
+	};
+};
+
+
+#action {本周为%*之周，} {
+	#var week_info %1之周;
+	update_status;
+};
+#class status close

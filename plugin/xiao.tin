@@ -1,0 +1,22 @@
+#class xiao open
+#alias {xiao.q} {
+	ask xiao about job;
+	#action {萧半和说道：%*} {
+		show_to_quest %%0;
+	};
+};
+
+#alias {xiao.bl} {
+	bl.start 形迹可疑的;
+};
+
+#alias {xiao.d} {
+	give yuanyang dao to xiao;
+};
+
+#alias {xiao.b} {
+	gt jinyang;
+};
+
+
+#class xiao close

@@ -1,0 +1,11 @@
+#script {HOME} {perl -e 'print $ENV{"HOME"}'};
+#script {XKX_PASSWORD} {ruby -e 'puts ENV["XKX_PASSWORD"]'};
+#var HOME $HOME[1];
+#var XKX_PASSWORD $XKX_PASSWORD[1];
+
+#var char_name ´óÀÏ×Ó;
+#var char_id gamester;
+#read ${HOME}/.tt/main.tin;
+#read ${HOME}/.tt/plugin/spec/xingxiu.tin;
+
+#session sunxm pkuxkx.net 8080; gamester; ${XKX_PASSWORD};

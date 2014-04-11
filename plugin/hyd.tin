@@ -1,0 +1,70 @@
+#class hyd open
+#var hyd_count 0;
+
+#alias {hu.b} {
+	gt hyd;
+};
+
+#alias {hu.d} {
+	#class hu.inner kill;
+
+	combine;
+	#delay {1} {
+		give cangbao tu to hu yidao;
+	};
+	#delay {2} {
+		chakan bao tu;
+	};
+};
+
+#alias {hu.bl} {
+	bl.start 盗;
+};
+
+#alias {hu.q} {
+	#class hu.inner open;
+
+	#action {盗 宝 人%*(%S)} {
+		killall @lower{%%2};
+	};
+
+	#action {找到目标: 盗} {
+		#unaction {找到目标: 盗};
+		#delay {2} {l};
+	};
+	
+	#action {%*说道：“你有种去%*找我兄弟%*(%*)，他会给我报仇的！”} {
+		#math hyd_count ${hyd_count}+1;
+		show_to_quest #${hyd_count}: 胡一刀: %%2: %3(%%4);
+		raw;
+		autopp.set_en %%4;
+	};
+
+	#action {人算不如天算，想不到我兄弟五人都栽在你的手中！} {
+		show_to_quest 向胡一刀报告吧;
+		raw;
+	};
+
+	#action {胡一刀说道：『我收到消息，听说%*有盗宝人%*(%*)找到了闯王宝藏的地图}  {
+		#unaction {胡一刀说道：『我收到消息，听说%*有盗宝人%*(%*)找到了闯王宝藏的地图};
+		#var hyd_count 1;
+		autopp.set_en %%3;
+		show_to_quest #${hyd_count}: 胡一刀: %%1: %%2(%%3);
+	};
+
+	#action {盗宝人%*在%*} {
+		#math hyd_count ${hyd_count}+1;
+		show_to_quest #${hyd_count}: %%0;
+		raw;
+	};
+
+	#action {Sui cong} {
+		ask sui cong about 藏宝图;
+	};
+	
+	#class hu.inner close;
+
+	ask hu about job;
+};
+
+#class hyd close

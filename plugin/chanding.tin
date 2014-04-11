@@ -1,0 +1,62 @@
+#class chanding open
+#alias {chanding.start} {
+	#class chanding.inner open;
+
+	#alias {cd.start} {
+		#ticker {cd} {
+			chanding;
+		} {0.8};
+	};
+
+	#alias {cd.stop} {
+		#unticker {cd};
+	};
+
+	#alias {ck.stop} {
+		#unticker {check};
+	};
+	
+	#alias {ck.start} {
+		#ticker {check} {
+			#if {${nl_percent} < 10} {
+				cd.stop;
+				ck.stop;
+				#delay {3} {
+					map_goto_rest;
+					sleep;
+					on_wakeup {
+						eat_food;
+						map.go 大经堂;
+						cd.start;
+						ck.start;
+					};
+				};
+			};
+			#elseif {${js_percent} < 30} {
+				cd.stop;
+				ck.stop;
+				#delay {1} {
+					w;
+					yun regenerate;
+					e;
+					cd.start;
+					ck.start;
+				};
+			};
+		} {3};
+	};
+	#class chanding.inner close;
+	load_map;
+	map.go 大经堂;
+	cd.start;
+	ck.start;
+	show_to_quest 禅定中...;
+};
+
+#alias {chanding.stop} {
+	cd.stop;
+	ck.stop;
+	#class chanding.inner kill;
+	show_to_quest 禅定结束;
+};
+#class chanding close

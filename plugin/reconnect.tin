@@ -1,0 +1,15 @@
+#class reconnect open
+#gag {你有一搭，没一搭的「嗯」了一声};
+#ticker {reconnect} {
+	#send {en};
+} {15};
+
+#action {你有一搭，没一搭的「嗯」了一声} {
+	#delay {reconnect} {
+		#showme reconnect;
+		#delay {5} {
+			#session ${char_id} pkuxkx.net 8080; ${char_id}; zaq1XSW@;
+		};
+	} {30};
+};
+#class reconnect close

@@ -1,0 +1,294 @@
+#class newbie_ct open
+#var jz_auto 0;
+#alias {jz.unauto} {
+	#var jz_auto 0;
+	#class hb.auto.inner kill;
+	#unaction {你运功完毕，深深吸了口气，站了起来};
+	#unaction {无法静下心来搬运真气};
+	#unaction {你现在的气太少了};
+};
+
+#alias {jz.auto} {
+	#var jz_auto 1;
+	#class jz.auto.inner open;
+
+	#action {你现在的气太少了} {
+		heal 5;
+		#delay {5} {
+			dazuo ${dazuo_count};
+		};
+	};
+
+	#action {你现在精不够} {
+		heal 5;
+		#delay {5} {
+			dazuo ${dazuo_count};
+		};
+	};
+
+	#action {无法静下心来搬运真气} {
+		heal 5;
+		#delay {5} {
+			dazuo ${dazuo_count};
+		};
+	};
+	
+	#action {你运功完毕，深深吸了口气，站了起来} {
+		heal 10;
+		#delay {5} {
+			#if {${nl_percent} < 90} {
+				dazuo ${dazuo_count};
+			};
+			#else {
+				#unaction {你运功完毕，深深吸了口气，站了起来};
+				#unaction {无法静下心来搬运真气};
+				#unaction {你现在的气太少了};
+				jz.q;
+			};
+		};
+	};
+	
+	#class jz.auto.inner close;
+	#if {${nl_percent} > 99} {
+		jz.q;
+	};
+	#else {
+		dazuo ${dazuo_count};
+	};		
+};
+
+#alias {jz.teardown} {
+	#unaction {想跑？没那么容易};
+	#unaction {busy_for_move};
+	#unaction {劫匪突然从暗处跳了出来};
+	#unaction {纵遁入暗里不见了};
+	#unaction {对面已经有一辆囚车了};
+	#unaction {冰魄杖(Bingpo zhang)$};
+	#unaction {${char_name}把这辆囚车护送到东城门外的刑部大牢吧};
+	#unaction {你终于把囚车押送到了刑部大牢};
+	#ungag {走了过来};
+};
+
+#alias {jz.setup} {
+	#gag {走了过来};
+	#action {你终于把囚车押送到了刑部大牢} {
+		jz.b;			
+	};
+	#action {${char_name}把这辆囚车护送到东城门外的刑部大牢吧} {
+		jz.go;
+	};
+	
+	#action {冰魄杖(Bingpo zhang)$} {
+		get bingpo zhang;
+	};
+	
+	#action {对面已经有一辆囚车了} {
+		#showme busy_for_move;
+	};
+	
+	#action {想跑？没那么容易} {
+		#math jz_path_index ${jz_path_index}-1;
+	};
+
+	#action {busy_for_move} {
+		#math jz_path_index ${jz_path_index}-1;
+	};
+
+	#action {劫匪突然从暗处跳了出来} {
+		#var wait 1;
+	};
+
+	#action {纵遁入暗里不见了} {
+		#var wait 0;
+	};
+
+	#ALIAS ge {gan che to east};
+	#ALIAS genter {gan che to enter};
+	#ALIAS geu {gan che to eastup};
+	#ALIAS gn {gan che to north};
+	#ALIAS gnn {gan che to 北面};
+	#ALIAS gne {gan che to northeast};
+	#ALIAS gnu {gan che to northup};
+	#ALIAS gnw {gan che to northwest};
+	#ALIAS gout {gan che to out};
+	#ALIAS gs {gan che to south};
+	#ALIAS gse {gan che to southeast};
+	#ALIAS gsu {gan che to southup};
+	#ALIAS gsw {gan che to southwest};
+	#ALIAS gw {gan che to west};
+	#ALIAS gwu {gan che to westup};
+	#ALIAS ged {gan che to eastdown};
+	#ALIAS gnd {gan che to northdown};
+	#ALIAS gwd {gan che to westdown};
+	#ALIAS gsd {gan che to southdown};
+	#ALIAS gd {gan che to down};
+	#ALIAS g_u {gan che to up};
+}
+
+#alias {jz.f} {
+	ask yuan about 失败;
+	jz.teardown;
+	#unticker {walk};
+};
+
+#alias {jz.d} {
+	ask yuan about 奖励;
+	jz.teardown;
+	#unticker {walk};
+};
+
+#alias {jz.b} {
+	#var wait 1;
+	#unticker {walk};
+	show_to_info 到达;
+	#delay {5} {
+		s;sw;w;w;w;w;w;w;w;w;se;w;enter;
+		#delay {2} {
+			jz.d;						
+		};
+		#if {${jz_auto} == 1} {
+			#delay {5} {
+				jz.auto;
+			};
+		};
+	};	
+};
+
+#alias {jz.go} {
+	#list jz_path create {gout;ge;gnw;ge;ge;ge;ge;ge;ge;ge;ge;gne;gnn};
+	#list jz_path size jz_path_size;
+	#var jz_path_index 0;
+	#var wait 0;
+
+	#ticker {walk} {
+		#if {$wait == 0} {
+			#math jz_path_index ${jz_path_index}+1;
+			#if {${jz_path_index} <= ${jz_path_size}} {
+				#list jz_path get ${jz_path_index} jz_path_next;
+				${jz_path_next};
+			};
+		};
+	} {3};
+};
+
+#alias {jz.q} {
+	jz.setup;
+	ask yuan about 监斩;
+};
+
+#alias {shoumen.stop} {
+	#class shoumen.inner kill;
+	show_to_quest 守门结束;
+};
+
+#alias {shoumen.q} {
+	ask duo about 守门;
+	#action {你的任务是去%*守门} {
+		#unaction {你的任务是去%*守门};
+		show_to_quest 守门地点: %%1;
+		#delay {1} {
+			map.go %%1;
+			guarding;
+		};
+	};
+
+	#action {多隆说道：「我不是告诉你了吗？去%*守门吧。」} {
+		#unaction {多隆说道：「我不是告诉你了吗？去%*守门吧。」};
+		show_to_quest 守门地点: %%1;
+		#delay {1} {
+			map.go %%1;
+			guarding;
+		};
+	};
+};
+
+#alias {shoumen.start} {
+	show_to_quest 准备守门;
+	map.load beijing;
+
+	#class shoumen.inner open;
+
+	#action {蒙面杀手} {
+		allow shashou;
+	};
+
+	#action {早晨到了} {
+		shoumen.q;
+	};
+
+	#action {你的眼前一黑，接著什么也不知道了} {
+		show_to_quest 守门挂了;
+		#delay {60} {
+			xmpp.notify 守门挂了;
+		};
+		#class shoumen.inner kill;
+	};
+
+	#act {城门的钟敲了两下，你的换班时间到了} {
+		show_to_quest 准备守门;
+		#delay {10} {
+			#3 halt;
+			map.go 厅堂;
+		};
+	};
+
+	#class shoumen.inner close;
+};
+
+#alias {xunluo.unauto} {
+	#class xunluo.auto.inner kill;
+};
+
+#alias {xunluo.auto} {
+	#class xunluo.auto.inner open;
+	#action {你对朝廷的贡献度增加了} {
+		xunluo.start;
+	};
+
+	#action {现在是晚上, 无法巡逻} {
+		#delay {daytime} {
+			xunluo.start;
+		} {20};
+	};
+	#class xunluo.auto.inner close;
+
+	xunluo.start;
+};
+
+#alias {xunluo.start} {
+	#if {${daytime} == 1} {
+		show_to_quest 巡逻;
+		ask duo about 巡逻;
+
+		#class xunluo.inner open;
+		#action {你去天坛巡逻一下吧} {
+			#unaction {你去天坛巡逻一下吧};
+			#list bl_path create {s;s;s;s;s;s;s;s;s;s;n;w;w;wu;n;ne;sw;nd;n;s;su;s;wd;n;w;e;s;w;w;e;e;eu;s;s;se;nw;sd;s;n;nu;n;n;ed;e;e;n;n;n;n;n;n;n;n;n};
+			bl.go;
+		};
+
+		#action {你去内外城城墙巡逻一下吧} {
+			#unaction {你去内外城城墙巡逻一下吧};
+			#list bl_path create {s;s;s;w;w;w;n;n;u;w;w;sw;sw;s;s;s;s;s;s;s;e;e;e;e;e;e;n;n;n;n;n;n;n;n;s;s;s;s;w;w;w;w;w;e;e;e;e;d;n;n;n;n;n;n;n};
+			bl.go;
+		};
+
+		#action {你去外城巡逻一下吧} {
+			#unaction {你去外城巡逻一下吧};
+			#list bl_path create {s;s;s;e;s;s;s;s;s;s;s;s;s;s;w;w;w;w;w;w;w;w;w;n;n;n;n;n;n;n;n;n;n;n;n;n;ne;e;e;e;e;e;s;s;s;s;s;s;s;s;s;s;s;n;n;n;n;w;n;n;n;n;n;n;n};
+			bl.go;
+		};
+
+		#action {你巡逻时间已过} {
+			ask duo about 完成;
+			show_to_quest 巡逻完成;
+		};
+
+		#class xunluo.inner close;
+	};
+	#else {
+		#showme 现在是晚上, 无法巡逻;
+	};
+};
+
+#class newbie_ct close

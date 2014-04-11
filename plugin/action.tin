@@ -1,0 +1,241 @@
+#class action open;
+#ticker {hearbeat} {#cr} {300}
+
+#macro {\en} {#buffer down};
+#macro {\ep} {#buffer up};
+
+#var buffer_locked 0;
+#macro {\el} {
+       #buffer lock;
+       #IF {$buffer_locked == 0} {
+       	   #var buffer_locked 1;
+       };
+       #ELSE {
+           #var buffer_locked 0;
+       };
+};
+
+#action {http://pkuxkx.net/antirobot/robot.php?filename=%1} {
+	#system google-chrome http://pkuxkx.net/antirobot/robot.php?filename=%1;
+	xmpp.notify http://pkuxkx.net/antirobot/robot.php?filename=%1;
+};
+
+#action {你告诉%*：notify %*} {
+	#cr;
+} {1};
+
+#action {白银(Silver)} {
+	get silver;
+};
+
+#gag {【闲聊】%*};
+#action {【闲聊】%*} {
+    show_to_chat %0;	
+};
+
+#gag {【谣言】%*};
+#action {【谣言】%*} {
+	show_to_chat %0;
+};
+
+#action {%1告诉你：%2} {
+	show_to_chat %0;
+};
+#action {%1回答你：%2} {
+	show_to_chat  %0;
+};
+
+#action {你{(回答)|(告诉)}%1：%2} {
+	show_to_chat %0;
+}
+
+#ticker {check_naijiu} {
+	#foreach {${my_weapons}[%*]} {weapon} {l ${weapon}};
+} {600};
+
+#ticker {check_baowei} {
+	check_baowei;
+} {60};
+
+#action {耐久度:%1} {
+	#if {%1 < 130} {
+		show_to_info 武器耐久过低: %1;
+		#nop notify "endure %1"
+	};
+} {1};
+
+#alias {perform_special} {
+	#cr;
+};
+
+#action {此ID档案已存在} {
+	#delay {5} {
+		unwield all;
+		wi;
+		we;
+		show_to_quest   ;
+		show_to_shortcut ${shortcut};
+		#send {i};
+		#send {hpbrief};
+		#send {uptime};
+		#send {time};
+		perform_special;
+		init_set;
+		show.init;
+		check_baowei;
+	};
+};
+
+#alias {we} {
+	remove all;
+	wear my boots;
+	wear my cloth;
+	wear my surcoat;
+	wear my head;
+	wear my armor;
+	wear my hands;
+	wear my waist;
+	wear my wrists;
+	wear all;
+};
+
+#action {原来是你的肚子在叫了} {
+	eat_food;
+};
+
+#action {你舔了舔干裂的嘴唇，看来是很久没有喝水了。} {
+	eat_food;
+};
+
+#action {你渴得眼冒金星} {
+	eat_food;
+};
+
+#action {好了，你走吧} {
+	remove all;
+	wi;
+	we;
+};
+
+#action {你现在正忙着哩} {
+	#showme busy_for_move;
+};
+
+#action {你逃跑失败} {
+	#showme busy_for_move;	
+};
+
+#action {不能移动} {
+	#showme busy_for_move;
+};
+
+#action {你还是先把对手解决了再说吧} {
+	#showme busy_for_move;
+};
+
+#action {大车停稳了下来} {
+	xia;
+};
+
+#event {SCREEN RESIZE} {
+	show_to_shortcut ${shortcut};
+	show.init;
+	update_status;
+};
+
+#action {你确定要升级吗} {
+	y;
+};
+
+#action {您要将另一个连线中的相同人物赶出去} {
+	y;
+};
+
+#action {你确实要存储%*点潜能吗} {
+	y;
+};
+
+#action {没钱怎么坐船} {
+	set brief 2;
+};
+
+#action {丑雕神情冷漠地拦住了你的去路} {
+	ask diao about 独孤求败;
+};
+
+#action {爸爸说不能给陌生人进去的} {
+	ask xiao mao about 老朋友;
+};
+
+#action {褚万里喝道} {
+	kill zhu;
+	on_dead {
+		enter;
+	};
+};
+
+#action {江百胜伸手拦住你说道} {
+	kill jiang;
+	on_dead {
+		nu;
+	};
+};
+
+#action {天狼子伸手拦住了你的去路} {
+	kill tianlang zi;
+	on_dead {
+		n;
+	};
+};
+
+#action {出尘子一言不发} {
+	kill chuchen zi;
+	on_dead {
+		enter;
+	};
+};
+
+#action {陆大有喝道：你不是华山弟子，不得入内。} {
+	kill dayou;
+	on_dead {
+        s;w;w;  
+	};
+};
+
+#action {守将大声喝到:干什么的} {
+	answer 送信;
+};
+
+#action {冰魄杖(Bingpo zhang)} {
+	get bingpo zhang;
+};
+
+#action {这个方向没有出路} {
+	#path del;
+};
+
+#action {你确定要升级吗} {
+	#send {y};
+};
+
+#action {你确定要把%*自动加载} {
+	#send {y};	
+};
+
+#action {你的东西根本没坏} {
+	show_to_info 不需要修理;
+};
+
+#action {你花费了%*修好%*！} {
+	show_to_info %2 修好了;
+};
+
+#action {你喜欢原地逛逛么} {
+	#showme 抵达目的地;
+};
+
+#action {“你已经把装备放入熔炉并打算让我帮你锻造了么？”(回答yes or no)} {
+	#send {yes};
+};
+#class action close;
+

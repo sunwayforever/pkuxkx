@@ -1,0 +1,27 @@
+#class xkd open
+#alias {xkd.start} {
+
+	#class xkd.inner open;
+	#alias {fullme} {#cr};
+	#alias {quit} {#cr};
+	
+	#alias {start_watch} {
+		yun recover;do 5 watch 石壁 10;yun regenerate;dazuo 310;
+	};
+
+	#action {你运功完毕} {
+		start_watch;
+	};
+
+	#ticker {restart} {
+		start_watch;
+	} {300};
+	
+	#class xkd.inner close;
+	
+	start_watch;
+};
+#alias {xkd.stop} {
+	#class xkd.inner kill;
+};
+#class xkd close

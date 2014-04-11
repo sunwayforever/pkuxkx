@@ -1,0 +1,38 @@
+#class shuibed open;
+#alias {sb.start} {
+	#send {jifa};
+	shui bed;
+	#var dz_total_count 0;
+	
+	#class shuibed.inner open;
+	#action {一周天} {
+		#math dz_total_count  ${dz_total_count}+1;
+		show_to_info force +${dz_total_count};
+		#delay {1} {
+			shui bed;
+			#send {jifa};		
+		};
+	};
+	#action {脸色看起来好多了} {shui bed};
+	#action {内功 (force)%*有效等级：%d} {
+		#var youxiao_neigong %%2;
+		#math max_neili ${youxiao_neigong} * 10;
+		#if {${max_neili} < ${hpbrief_max_nl}} {
+			sb.stop;
+			show_to_quest 内力到达瓶颈: ${hpbrief_max_nl} => ${max_neili};
+			xmpp.notify 睡床完毕;
+		};
+		#else {
+			show_to_quest 睡床: ${hpbrief_max_nl} => ${max_neili};			
+		};
+	};
+
+	#class shuibed.inner close;
+};
+
+#alias {sb.stop} {
+	#class shuibed.inner kill;
+	show_to_quest 睡床结束;
+};
+
+#class shuibed close;

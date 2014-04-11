@@ -1,0 +1,1001 @@
+#class hubiao open
+load chaos;
+
+#var hb_wait 0;
+#var hb_paused 0;
+#var hb_hb_force_wait 0;
+#var hb_start_time 0;
+#var hb_end_time 0;
+#var hb_paused 0;
+#var hb_auto 0;
+#var hb_requested 0;
+#var hb_lunci 0;
+#var has_mixin 0;
+#var hb_ing 0;
+
+#alias {hb.teardown} {
+	#class hb_setup_inner kill;
+	#class clear_npc.inner kill;
+	#unticker {kill_npc};
+	#var hb_ing 0;
+	#alias ge {\east};
+	#alias genter {\enter};
+	#alias geu {\eastup};
+	#alias gn {\north};
+	#alias gne {\northeast};
+	#alias gnu {\northup};
+	#alias gnw {\northwest};
+	#alias gout {\out};
+	#alias gs {\south};
+	#alias gse {\southeast};
+	#alias gsu {\southup};
+	#alias gsw {\southwest};
+	#alias gw {\west};
+	#alias gwu {\westup};
+	#alias ged {\eastdown};
+	#alias gnd {\northdown};
+	#alias gwd {\westdown};
+	#alias gsd {\southdown};
+	#alias gd {\down};
+	#alias gu {\up};
+	#alias {attack} {
+		attack.normal;
+	};
+};
+
+#alias {hb.move} {
+	#if {${qx_percent} < 50 || ${js_percent} < 50} {
+		#unticker {hb_walk};
+		show_to_info 气血或精神过低,推车暂停;
+		notify escort paused;
+		on_health {hb.move};
+	};
+	#else {
+		#math hb_path_index ${hb_path_index}+1;
+		#if {${hb_path_index} > ${hb_path_size}} {
+			hb.end;
+			#format {hb_end_time} {%t} {%T};
+			show_to_info 到达: ${hb_start_time} -> ${hb_end_time};
+			notify_loop escort arrived;
+			xmpp.notify 到达, 没找到收货人;
+		};
+		#else {
+			#list hb_path get ${hb_path_index} hb_path_next;
+			#ticker {hb_walk} {
+				#if {${hb_force_wait} == 0 && ${hb_paused} == 0 && ${hb_wait} == 0} {
+					${hb_path_next};
+				};
+			} {1.8};
+		};
+	};
+};
+
+#alias {hb.setup} {
+	clear_npc {地痞};
+	clear_npc {小流氓};
+	clear_npc {流氓头};
+	clear_npc {翠花};
+	clear_npc {流氓};
+
+	#class hb_setup_inner open;
+	#action {镖车呼啦一声散了架} {
+		hb.pause;
+		show_to_quest 镖车呼啦一声散了架;
+	};
+
+	#alias {chan} {
+		chan_robber;
+	};
+	
+	#action {你赶着镖车驶了过来} {
+		#unticker {notify_loop};
+		chaos.remember;
+		#if {${hb_paused} == 0} {
+			hb.move;
+		};
+		#else {
+			#unticker {hb_walk};
+		};
+	};
+	
+	#action {这个方向} {
+		hb.pause;
+		show_to_info 路径出错;
+	};
+
+	#action {劫匪个起纵遁入暗里不见了} {
+		#delay {1} {
+			#var hb_wait 0;
+		};
+	};
+	
+	#action {劫匪趁你不注意，推着镖车就跑，你赶紧追了上去。} {
+		hb.pause;
+		show_to_info 乱入;
+		hb.recover;
+	};
+
+	#action {劫匪伸手一拦道} {
+		war;
+		hb.wait;
+	};
+
+	#action {^%*运起九阳神功，真气从丹田处绵然不绝地流入四肢百骸} {
+		show_to_info >>明教;
+		#var mj_started 1;
+		mj.start;		
+	};
+	
+	#action {劫匪突然从暗处跳了出来} {
+		war;
+		hb.wait;
+	};
+
+	#action {围上来几个伙计将镖车拉了进去} {
+		hb.end;
+		raw;
+		#format {hb_end_time} {%t} {%T};
+		show_to_quest 推车: ${hb_lunci}: 任务完成: ${hb_start_time} -> ${hb_end_time};
+		notify escort done;
+		#nop xmpp.notify 推车完成;
+		hb.teardown;
+		hb.back;			
+	} {1};
+
+	#class hb_setup_inner close;
+	
+	#var hb_ing 1;
+	#alias ge {gan che to east};
+	#alias genter {gan che to enter};
+	#alias geu {gan che to eastup};
+	#alias gn {gan che to north};
+	#alias gne {gan che to northeast};
+	#alias gnu {gan che to northup};
+	#alias gnw {gan che to northwest};
+	#alias gout {gan che to out};
+	#alias gs {gan che to south};
+	#alias gse {gan che to southeast};
+	#alias gsu {gan che to southup};
+	#alias gsw {gan che to southwest};
+	#alias gw {gan che to west};
+	#alias gwu {gan che to westup};
+	#alias ged {gan che to eastdown};
+	#alias gnd {gan che to northdown};
+	#alias gwd {gan che to westdown};
+	#alias gsd {gan che to southdown};
+	#alias gd {gan che to down};
+	#alias gu {gan che to up};
+
+
+	#alias {attack} {
+		attack.hubiao;
+	};		
+};
+
+#alias {hb.dump} {
+	#math hb_tmp_index ${hb_path_index}-1;
+	#list hb_path_desc get ${hb_tmp_index} hb_last_room1;
+
+	#var hb_tmp_index ${hb_path_index};
+	#list hb_path_desc get ${hb_tmp_index} hb_last_room;
+
+	#math hb_tmp_index ${hb_path_index}+1;
+	#list hb_path_desc get ${hb_tmp_index} hb_last_room2;
+	show_to_info dump, last paths 是 ${hb_last_room1}/${hb_last_room}/${hb_last_room2};
+}
+
+#alias hb.g {
+	#var hb_requested 1;
+	#var should_go 1;
+	hb.setup;
+	#format {hb_start_time} {%t} {%T};
+	#if {"${hb_target}" == "qz"} {
+		#list hb_path create {gs;gw;gw;gs;gsw;gw;gw;gnw;gn;gn;gnd;gnu;gne;gn;gn;gn;gn;gn;gnw;gnw;gw;gnw;gnw;gn;gnw;gnu;gnu;gn;gnu;gn;gn;gn;gn;gn;gn;gn;
+		gn;gn;gs;gw;gs;gs;gw;gn;gn;gn;gs;gw;gn;gn;gs;gs;gs;gs;gs;gn;gn;gn;ge;ge;ge;ge;gn;gs;gs;gs;gn;gn;ge;gn;gs;gs;gs;gs;gw;ge;gn;gn;gn;ge;gn;gn;gs;gs;gs;gn;gw;gw;gw;gs;gs;gn;gw;ge;gs;gs;gw;ge;ge;gw;gs;gw;ge;gs;gs;
+	};
+		#list hb_path_desc  create {
+			青石大道; 青石大道2; 青石大道3; 青石大道4; 官道; 官道2; 官道3; 黄土路; 乡间小路;乡间小路2;沼泽;林间小路;南村口;碎石路; 碎石路2; 碎石路3;碎石路4; 打谷场;碎石路;碎石路2;西村口;石阶; 石阶2;石阶3; 石阶4;石阶5;石阶6; 石阶7;石阶8;宫门;三清殿;崇玄台;玄虚堂;天尊殿;走廊;说法院;天尊讲经堂;
+		};
+	};
+	#elseif {"${hb_target}" == "wd"} {
+		#list hb_path create {gs;gw;gw;gs;gsw;gw;gw;gnw;gw;gw;gw;gwu;gnu;gnu;gnu;gw;gnu;gnu;geu;geu;gnu;gnu;
+		gn;kill song;path_wait;path_wait;path_wait;gw;gw;ge;ge;ge;ge;gw;gw;gn;gw;gw;ge;ge;ge;ge;gw;gw;gn;gw;gw;ge;ge;ge;path_wait;gw;gn;gw;ge;ge;ge;gs;gn;gw;gw;gn;gs;gs;gs;gs;gs;gw;gn;ge;path_wait;gs;gs;gw;gn;ge;ged;ge;ge;ged;gsd;ged;gsd;ged;gwu;gnu;gwu;gnu;gwu;gw;gw;gwu;
+};
+		#list hb_path_desc  create {
+			青石大道; 青石大道2; 青石大道3; 青石大道4; 官道; 官道2; 官道3; 黄土路;黄土路2;黄土路3; 武当山门;石阶;石阶2;石阶3;遇真宫;小吃店;石阶;好汉坡;石阶;玄武门;凌霄宫;武当广场;
+		};
+	};
+	#elseif {"${hb_target}" == "xc"} {
+		#list hb_path create  {gs;gw;gw;gs;gsw;gw;gw;gnw;gn;gn;gnd;gnu;gne;gn;gn;ge;gw;gn;ge;gw;gw;gnw;gse;ge;gn;ge;ge;gw;gw;gn; gnw;gnw;gne;gsw;gw;ge;gse;gsw;gne;gse;ge;gn;gs;gs;ge;gw;gn;ge;gn;gs;ge;gs;gn;ge;ge;gn;gs;gw;gw;gw;gw;gw;};
+		#list hb_path_desc  create {
+			青石大道; 青石大道2; 青石大道3; 青石大道4; 官道; 官道2; 官道3; 黄土路; 乡间小路;乡间小路2;沼泽;林间小路;南村口;碎石路; 碎石路2;小土房;碎石路2;碎石路3;中原马车行;碎石路3;小巷;小巷尽头;小巷;碎石路3;碎石路4; 前厅;内室;前厅;碎石路4;打谷场;
+		};
+	};
+	#elseif {"${hb_target}" == "hs"} {
+		#list hb_path create {gs;gw;gw;gs;gsw;gw;gw;gnw;gn;gn;gnd;gnu;gne;gn;gn;gn;gn;gn;ge;ge;ge;ge;ge;gse;gsu;geu;gsu;geu;gnu; gsd;gsu;gsu;gwu;ged;gsd;geu;gwd;gsu;gs;gn;ge;gw;gnd;gwu;gu;gd;ged;geu;gwd;gsu;ge;gsd;gsd;gsd;gnu;gnu;gnu;gw;gnd;gnu;gn;gs};
+		#list hb_path_desc  create {
+			青石大道; 青石大道2; 青石大道3; 青石大道4; 官道; 官道2; 官道3; 黄土路; 乡间小路;乡间小路2;沼泽;林间小路;南村口;碎石路; 碎石路2; 碎石路3;碎石路4; 打谷场;碎石路; 碎石路2; 碎石路3;东村口;华山脚下; 莎萝坪;青柯坪;千尺幢;百尺峡;老君沟;华山别院;
+		};
+	};
+	#elseif {"${hb_target}" == "yz"} {
+		#list hb_path create {gs;ge;ge;ge;ge;ge;ge;ge;ge;ge;  ge;ge;ge;ge;ge;ge;ge;gse;ge;ge;ge;ge;ge;ge;ge;ge;gse;ge;ge;ge;ge;gd;gu;
+		gn;gse;ge;gw;gnw;gn;ge;gu;gu;gd;ge;gw;gw;ge;gd;gw;gw;ge;gn;ge;gw;gn;gnw;gnw;gse;gse;gn;gn;gs;gs;gs;gs;gs;gw;gs;gn;ge;ge;gw;gs;ge;gn;gs;gs;gn;ge;gn;gn;gs;gs;gs;gs;gn;gn;ge;gw;gw;gw;gs;gw;ge;ge;gs;gn;gw;gs;gw;gw;ge;ge;ge;gw;gs;gw;ge;ge;gw;gs;gn;gn;gn;gn;
+};
+		#list hb_path_desc  create {
+			青石大道;青石大道2;雪峰脚下;乡间土路;乡间土路2;乡间土路3;乡间土路4;襄阳西门;西街;西街2;西街3;城中心; 东街;东街2;东街3;襄阳东门;城东小路;官道;西门;西市;小广场;东市;东门;官道;官道2;官道3;西门;西大街;西大街2;西大街3;中央广场;北大街;北大街2;醉仙楼;
+		};
+	};
+	#elseif {"${hb_target}" == "yz2"} {
+		#list hb_path create {gs;gs;gnw;gn;gn;gn;gn;gn;gnw;gn;gne;gne;gn;gne;gne;gnw;gnw;gw;hb.guojiang;gw;gnd;gnw;gnd;gn;gn;gn;gn;gd;gu;
+		gn;gse;ge;gw;gnw;gn;ge;gu;gu;gd;ge;gw;gw;ge;gd;gw;gw;ge;gn;ge;gw;gn;gnw;gnw;gse;gse;gn;gn;gs;gs;gs;gs;gs;gw;gs;gn;ge;ge;gw;gs;ge;gn;gs;gs;gn;ge;gn;gn;gs;gs;gs;gs;gn;gn;ge;gw;gw;gw;gs;gw;ge;ge;gs;gn;gw;gs;gw;gw;ge;ge;ge;gw;gs;gw;ge;ge;gw;gs;gn;gn;gn;gn;
+	};
+		#list hb_path_desc  create {};
+	};
+	#elseif {"${hb_target}" == "qf"} {
+		#list hb_path create {gs;ge;ge;ge;ge;ge;ge;ge;ge;ge;  ge;ge;ge;ge;ge;ge;ge;gse;ge;ge;ge;ge;ge;ge;ge;ge;gse;ge;ge;ge;ge;gn;gn;gn;gn;gn;gn;gn;gn;gn;gw; genter;gout;gs;gw;gn;gn;gw;gw;ge;ge;gn;ge;ge;gn;gn;gs;gs;gs;ge;gn;gs;gw;gs;ge;gne;geu;genter;gout;gwd;gsw;gw;gw;
+	};
+		#list hb_path_desc  create {
+			青石大道;青石大道2;雪峰脚下;乡间土路;乡间土路2;乡间土路3;乡间土路4;襄阳西门;西街;西街2;西街3;城中心; 东街;东街2;东街3;襄阳东门;城东小路;官道;西门;西市;小广场;东市;东门;官道;官道2;官道3;西门;西大街;西大街2;西大街3;中央广场;北大街;北大街2;北门;青石大道;青石大道2;青石大道3;南城门;鼓楼大街;鼓楼大街2;孔庙;
+		};
+	};
+	#elseif {"${hb_target}" == "sl"} {
+		#list hb_path create {gs;ge;ge;ge;ge;ge;ge;ge;ge;ge;  ge;ge;ge;ge;ge;ge;ge;gse;ge;ge;ge;gn;gn;gn;gn;gn;gn;gnw;gnw;gw;gnu;gnu;gwu;gnu;geu;
+		gwd;gsd;gwd;gwd;gwu;gw;gnw;gn;gs;gse;ge;ged;geu;geu;gnu;gnu;gnu;ge;
+	};
+		#list hb_path_desc  create {
+			青石大道;青石大道2;雪峰脚下;乡间土路;乡间土路2;乡间土路3;乡间土路4;襄阳西门;西街;西街2;西街3;城中心; 东街;东街2;东街3;襄阳东门;城东小路;官道;西门;西市;小广场;镇淮桥;北市;北门;官道;官道2;许昌城;大驿道;汝州城;石阶;石阶2;石阶3;石阶4;石阶5;佛心井;
+		};
+	};
+	#elseif {"${hb_target}" == "xy"} {
+		#list hb_path create {gs;ge;ge;ge;ge;ge;gn;gn;gs;gs;ge;ge;ge;ge;gn;gs;gs;gn;ge;gn;gs;gs;gn;ge;gn;gn;gw;gn;gs;ge;ge;gw;gn;gw;ge;ge;ge;gw;gw;gs;gs;gs;gs;gw;ge;ge;gw;gs;gw;ge;gs;gw;ge;ge;gw;gs;gn;gn;gn;gn;ge;gn;gs;ge;gn;gn;gs;gs;ge;gs;gn;gw;gw;gse;gs;gn;gnw;gw;gw;gw;gn;
+	};
+		#list hb_path_desc  create {
+			青石大道;青石大道2;雪峰脚下;乡间土路;乡间土路2;乡间土路3;农舍;农舍里屋;农舍;乡间土路3乡间土路4;襄阳西门;西街;西街2;襄阳当铺;
+		};
+	};
+	#elseif {"${hb_target}" == "ly"} {
+		#list hb_path create {gs;gw;gw;gs;gsw;gw;gw;gnw;gn;gn;gnd;gnu;gne;gn;gn;gn;gn;gn;ge;ge;ge;ge;ge;gse;gsu;geu;gsu;geu;gsu;gsu;gn;gnd;gnd;gnd;gnd;gn;gn;gse;
+		ge;ge;ge;ge;ge;ged;ge;ge;ge};
+		#list hb_path_desc  create {
+			青石大道; 青石大道2; 青石大道3; 青石大道4; 官道; 官道2; 官道3; 黄土路; 乡间小路;乡间小路2;沼泽;林间小路;南村口;碎石路; 碎石路2; 碎石路3;碎石路4; 打谷场;碎石路; 碎石路2; 碎石路3;东村口;华山脚下; 莎萝坪;青柯坪;千尺幢;百尺峡;老君沟;猢狲愁;苍龙岭;山路;山路2;山路3;山路4;官道;官道2;潼关;官道;函谷关;大官道;大官道2;城西桥;洛阳西门;西大街;西大街2;洛阳中心广场;
+		};
+	};
+	#elseif {"${hb_target}" == "ca"} {
+		#list hb_path create {gs;gw;gw;gs;gsw;gw;gw;gnw;gn;gn;gnd;gnu;gne;gn;gn;gn;gn;gn;ge;ge;ge;ge;ge;gse;gsu;geu;gsu;geu;gsu;gsu;gn;gnd;gnd;gnd;gnd;gn;gn;
+		gw;gw;gw;gw;gs;gs;gw;gw;gw;gw;gw;gs;
+		gn;gw;gw;ge;ge;gn;gs;ge;gn;gs;gs;gw;ge;ge;gw;gs;gw;ge;ge;gw;gs;gw;ge;ge;gw;gs;ge;gs;gw;ge;ge;ge;gw;gw;gs;gs;gn;gn;gn;gn;ge;ge;gw;gw;gn;
+		gw;gs;gw;ge;gn;gn;gn;gw;gw;ge;ge;ge;gw;gs;gs;ge;gn;
+		gn;};
+		#list hb_path_desc  create {
+			青石大道; 青石大道2; 青石大道3; 青石大道4; 官道; 官道2; 官道3; 黄土路; 乡间小路;乡间小路2;沼泽;林间小路;南村口;碎石路; 碎石路2; 碎石路3;碎石路4; 打谷场;碎石路; 碎石路2; 碎石路3;东村口;华山脚下; 莎萝坪;青柯坪;千尺幢;百尺峡;老君沟;猢狲愁;苍龙岭;山路;山路2;山路3;山路4;官道;官道2;官道3;通化门;通化门大街;通化门大街2;丹凤门大街;春明门大街;春明门大街2;朱雀大街;金光门大街;金光门大街2;金光门大街3;飞马镖局;
+		};
+	};
+
+	#elseif {"${hb_target}" == "suzhou"} {
+		#list hb_path create {gs;gs;gsw;gs;gw;ge;gsw;gne;gs;gw;gw;gw;gsw;gne;ge;ge;ge;gs;gs;gn;gn;ge;gw;gn;ge;ge;gse;ge;gs;gn;gw;gnw;gw;gne;gsw;gw;gn;gnw;gs;gn;gn;gs;gnw;gse;gw;gw;gw;gw;ge;ge;ge;gn;gs;gs;gn;ge;gne;gn;gsw;gn;ge;gn;gw;ge;ge;gw;gn;gn;gsw;gne;gs;gs;gs;gs;gs;gne;gs;gn;ge;gn;gs;gs;gn;ge;ge;ge;gw;gw;gw;gw;gsw};
+		#list hb_path_desc  create {};
+	};
+	#elseif {"${hb_target}" == "yashan"} {
+		#list hb_path create {gs;gs;gsw;gs;gs;gs;gs;gs;ge;gse;gne;ge;gne;gne;ge;ge;ge;ge;ge;ge;ge;gn;gw;ge;gs;gw;gw;gs;gn;ge;gs;gn;gn;gs;ge;gs;gw;ge;ge;gw;gs;gw;ge;ge;gw;gs;gn;gn;gn;ge;gn;gs;ge;gn;gs;ge;gw;gw;gw;gn;gw;ge;ge;gw;gn;gs;gs;};
+		#list hb_path_desc  create {
+			胡同;东大街;宝带桥;南大街;南大街2;南门;青石官道;嘉兴城;嘉兴南湖;嘉兴南湖2;驿道;驿道2;驿道3;驿道4;西驿道;西驿道2;西驿道3;
+			牙山湾西口;牙山湾西路;牙山湾西路2;牙山湾中心;
+		};
+	};
+	#elseif {"${hb_target}" == "quanzhou"} {
+		#list hb_path create {gs;gs;gsw;gs;gs;gs;gs;gs;gs;gs;ge;gw;gs;gs;gs;ge;gn;gs;gne;gne;gne;gn;gw;ge;gn;gs;gs;gsw;gsw;gsw;ged;gn;gs;gs;gn;gwu;gs;gn;gw;gs;gs;ge;gw;gn;gn;gw;gn;gs;gs;gn;gw;ge;gn;gs;gs;gn;ge;ge};
+		#list hb_path_desc create {
+			胡同;东大街;宝带桥;南大街;南大街2;南门;青石官道;嘉兴城;嘉兴南门;山路;小道;山路;武夷山路;泉州北门;城中心;泉州港;
+		};
+	};
+	#elseif {"${hb_target}" == "jiaxing"} {
+		#list hb_path create {gs;gs;gsw;gs;gs;gs;gs;gs;gw;gnu;gnw;gse;gsd;ge;gs;ge;gs;gn;gw;gs;ge;gw;gs;gn;gse;gnw;gsw;gne;gn;gsw;gne;gn;ge;gn;gs;gnd;gw;ge;ge;ge;ge;gw;gw;gw;gsu;ge;gw;gse;gs;gn;gne;ge;gw;gsw;gnw;gw;};
+		#list hb_path_desc create {
+			胡同;东大街;宝带桥;南大街;南大街2;南门;青石官道;嘉兴城;
+		};
+	};
+	#elseif {"${hb_target}" == "fuzhou"} {
+		#list hb_path create {gs;gs;gsw;gs;gs;gs;gs;gs;  gs;gs;gse;gse;gsd;gs;gs;gs;ge;gn;gn;gs;gs;ge;gw;gs;gn;gw;gs;gw;ge;gs;gn;gn;gw;gn;gs;gw;gw;gsw;gne;ge;ge;ge;gn;gw;ge;ge;gw;gs;ge;gn;};
+		#list hb_path_desc create {
+			胡同;东大街;宝带桥;南大街;南大街2;南门;青石官道;嘉兴城;
+			嘉兴南门;山路;山路2;山路3;山路4;北门;北大街;城中心;东大街;福威镖局;
+		};
+	};
+	#elseif {"${hb_target}" == "yuewangmu"} {
+		#list hb_path create {gs;gs;gsw;gs;gs;gs;gs;gs;  gs;gs;ge;gn;ge;gne;gn;gn;gnw;gne;gsw;gse;gs;gs;gsw;gs;gn;gw;gn;gs;gs;gn;ge;gne;ge;ge;gw;gw;gn};
+		#list hb_path_desc create {
+			胡同;东大街;宝带桥;南大街;南大街2;南门;青石官道;嘉兴城;
+			嘉兴南门;山路;小道;小道2;墓前小道;墓前小道2;墓前广场;
+		};
+	};
+	#elseif {"${hb_target}" == "zhenjiang"} {
+		#list hb_path create {gs;gs;gsw;gn;gn;gn;gn;gn;gn;gnw;gn;gne;gne;gnw;gn;gn;gn;gn;gnw;gw;gw;gw;gw;gn;ge;gw;gn;ge;gw;gn;gnu;gsd;gw;ge;ge;gw;gs;gs;gs;gw;gs;gn;gw;gn;gs;gs;gn;gw;ge;ge;ge;ge;gs;gn;gw;gs;gw;ge;ge;gw;gs;gn;gn;gn;ge;};
+		#list hb_path_desc create {
+			胡同;东大街;宝带桥;沧浪亭;北大街;北大街2;北门;青石官道;青石官道2;青石官道3;青石官道4;青石官道5;青石官道6;
+			南门;义兴县城;北门;山路;土路;土路2;青阳门;东大街;东大街2;广场;北大街;梦溪园;
+		};
+	};
+	#elseif {"${hb_target}" == "hangzhou"} {
+		#list hb_path create {gs;gs;gsw;gs;gs;gs;gs;gs;gs;gs;gsw;gw;gsw;gw;gw;gw;gw;gw;gw;gn;genter;gn;gw;ge;ge;gw;gn;gs;gs;gout;gs;gw;gn;gs;gw;gn;gw;ge;ge;gw;gn;gs;gs;gw;gn;gs;gs;gn;gw;ge;ge;gse;gw;ge;gs;gn;gnw;ge;ge;gs;genter;gw;ge;ge;gw;gsw;gu;gd;gne;gs;gs;gn;gn;gse;gnw;gout;gn;gw;gw;};
+		#list hb_path_desc create {
+			胡同;东大街;宝带桥;南大街;南大街2;南门;青石官道;嘉兴城;嘉兴南门;山路;山路2;山路3;山路4;青石官道;东青门;东大街;东大街2;众安桥;东大街;
+		};
+	};
+	#elseif {"${hb_target}" == "guiyun"} {
+		#list hb_path create {gs;gs;gsw;gnw;gw;gw;gw;gw;gw;gw;gnw;gne;gse;gn;gw;gn;ge;ge;ge;ge;ge;gnu;gnu;gsd;gsd;ge;gn;gs;gs;gn;ge;ge;ge;gw;gw;gn;gs;gs;gn;gn;gu;gd;gs;gw;gw;gs;gn;};
+		#list hb_path_desc create {
+			胡同;东大街;宝带桥;西大街;西大街2;西门;青石官道;青石官道2;青石官道3;太湖湖边;太湖湖边2;草地;草地2;草地3;草地4;草地5;
+			太湖街;太湖街2;太湖街3;太湖街4;
+		};
+	};
+	#elseif {"${hb_target}" == "jiangzhou"} {
+		#list hb_path create {gs;gs;gsw;gs;gs;gs;gs;gs;gs;gs;gs;  gnw;gn;gnw;gn;gn;gn;gn;gn;gn;gn;gnw;gnd;gn;gn;gn;gn;ge;ge;gw;gw;gn;gn;gw;genter;gw;ge;ge;gw;gout;ge;gn;gs;ge;gs;gn;gne;gnw;gw;ge;gse;gse;gnw;gne;gsw;ge;gw;gsw;gsw;gsw;gsw;gn;gs;gs;gn;gsw;gn;gs;gs;gn;gsw;gw;ge;gne;gne;gne;gs;gw;ge;ge;gw;gs;gw;ge;ge;gw;gn;ge;ge};
+		#list hb_path_desc create {
+			胡同;东大街;宝带桥;南大街;南大街2;南门;青石官道;嘉兴城;嘉兴南门;山路;武夷山路;
+			山路;山路2;山路3;青石官道;南昌南门;南大街;城中心;北大街;南昌北门;山路;山路2;山路3;青石官道;
+			南门;浔阳路;韩家大门;韩家;
+		};
+	};
+	#elseif {"${hb_target}" == "nanchang"} {
+		#list hb_path create {gs;gs;gsw;gs;gs;gs;gs;gs;gs;gs;gs;  gnw;gn;gnw;gn;gn;gn;gn;gn;ge;	gw;gw;ge;gn;gn;gnw;gse;gs;gs;gs;gw;gn;gs;gs;gn;gw;gw;ge;ge;ge;gs;gw;ge;ge;gw;gs;gs;gs;gn;gn;gn;gn;ge;gs;gn;gn;};
+		#list hb_path_desc create {
+			胡同;东大街;宝带桥;南大街;南大街2;南门;青石官道;嘉兴城;嘉兴南门;山路;武夷山路;
+			山路;山路2;山路3;青石官道;南昌南门;南大街;城中心;北大街;飞虎镖局;
+		};
+	};
+	#elseif {"${hb_target}" == "yueyang"} {
+		#list hb_path create {
+			gs;gs;gsw;gs;gs;gs;gs;gs;gs;gs;gs;  gnw;gn;gnw;gn;gn;gn;gn;gn;gn;gn;gnw;gnd;gn;gn;gn;gn;gn;
+			gsw;gsw;gsw;gw;gwu;gnw;gwu;gw;gw;gw;
+			gn;gn;gn;gs;gs;ge;gw;gs;ge;gn;gs;gs;gn;ge;ge;gw;gw;gw;gw;gn;gs;gs;gn;gw;gw;gu;gd;gs;gn;ge;ge;ge;gs;gw;ge;ge;gw;gs;gs;gn;gn;
+		};
+		#list hb_path_desc create {
+			胡同;东大街;宝带桥;南大街;南大街2;南门;青石官道;嘉兴城;嘉兴南门;山路;武夷山路;
+			山路;山路2;山路3;青石官道;南昌南门;南大街;城中心;北大街;南昌北门;山路;山路2;山路3;青石官道;南门;浔阳路;浔阳路2;中央广场;
+			甘棠路;甘棠路2;西门;青石官道;青石官道2;泥泞土路;青石官道;东门;东大街;城中心;
+		};
+	};
+	#else {
+		#var should_go 0;
+	};
+
+	#list hb_path size hb_path_size;
+	#var hb_path_index 0;
+	#var hb_target "";
+
+	#if {${should_go} == 1} {
+		hb.resume;
+	}
+};
+
+#alias {hb.wait} {
+	#var hb_wait 1;
+	#delay {hb_wait} {
+		#var hb_wait 0;
+	} {10};
+};
+
+#alias {hb.pause} {
+	#var hb_force_wait 1;
+	#alias {hb.back} {
+		#cr;
+	};
+	#unticker {hb_walk};
+	#math hb_path_index ${hb_path_index}-1;
+};
+
+#alias {hb.end} {
+	#var hb_paused 1;
+	#var hb_force_wait 1;
+	#unticker {hb_walk};
+	#math hb_path_index ${hb_path_index}-1;
+};
+
+
+#alias {hb.resume} {
+	#var hb_paused 0;
+	#var hb_force_wait 0;
+
+	#alias {hb.back} {
+		on_truce {
+			merge_path;
+			hb.resume;	
+		};
+	};
+
+	#if {${hb_ing} == 1} {
+		hb.move;
+	};
+	#else {
+		#ticker {hb_walk} {
+			#if {${hb_force_wait} == 0} {
+				#math hb_path_index ${hb_path_index}+1;
+				#if {${hb_path_index} > ${hb_path_size}} {
+					hb.pause;
+					#delay {2} {
+						hb.b;	
+					};
+				};
+				#else {
+					#list hb_path get ${hb_path_index} hb_path_next;
+					${hb_path_next};
+				};
+			};
+		} {1};
+	}
+};
+#alias {path_wait} {
+	#var hb_force_wait 1;
+	#delay {3} {
+		#var hb_force_wait 0;
+	};
+};
+
+#alias {hb.get_owner} {
+	#if {"${CurrentPosition}" == "zuo"} {
+		#var hb_owner zuo;
+	};
+	#elseif {"${CurrentPosition}" == "zz"} {
+		#var hb_owner zhang zhi;
+	};
+};
+
+#alias {hb.d} {
+	hb.get_owner;
+	#if {${has_mixin} == 1} {
+		give cai wu to ${hb_owner};
+	};
+	#else {
+		ask ${hb_owner} about finish;
+		#delay {auto} {
+			#if {${hb_auto} == 1 && ${has_mixin} == 0} {
+				hb.start;
+			};
+		} {3};
+	};
+};
+
+#alias {hb.q} {
+	hb.get_owner;
+	#if {${has_mixin} == 1} {
+		show_to_info 密信;
+	};
+	#else {
+		#if {"%1" != ""} {
+			getesc %1;
+		};
+		#else {
+			listesc;
+		}
+	};
+};
+
+
+#alias {hb.f} {
+	#var hb_requested 0;
+	#var hb_lunci 0;
+	hb.teardown;
+	hb.get_owner;
+	ask ${hb_owner} about fail;
+};
+
+#alias hb.b {
+	#if {"${hb_owner}" == "zuo"} {
+		gt zuo;
+	};
+	#elseif {"${hb_owner}" == "zhang zhi"} {
+		gt zz;
+	}
+};
+
+#alias {hb.start} {
+	set brief 1;
+	#var hb_auto 1;
+	#var getesc_current_score 0;
+	#var getesc_current_id 0;
+	#class hb.auto.inner open;
+	#macro {\e[24~} {
+		hb.resume;
+	};
+
+	#action {你一共被奖励了：} {
+		#var hb_requested 0;
+		#class tmp.inner open;
+		#action {%*点经验；} {
+			#class tmp.inner kill;
+			show_to_info @ctd{%%%1} 点经验;
+		};
+		#class tmp.inner close;
+	};
+
+	#action {${char_name}帮%*追回财物，额外获得%*点经验} {
+		show_to_info 额外获得 @ctd{%%2} 点经验;
+	};
+	
+	#action {哇，你太厉害了，这么快就把这些财物追回，我有重谢！} {
+		pack gem;	
+	};
+	
+	#action {掉了出来一颗} {
+		pack gem;
+	};
+
+	#action {你将手中%*放进了宝石袋} {
+		show_to_info 掉宝: %%1;
+	};
+
+	#action {看来该找机会逃跑了} {
+		hb.pause;
+		show_to_quest 丢镖;
+		xmpp.notify 丢镖;
+	};
+
+	#action {你的眼前一黑，接著什么也不知道了} {
+		hb.pause;
+		show_to_quest 挂了;
+		xmpp.notify 挂了;
+	};
+
+	#action {使用命令【getesc 任务序号】来认领押镖任务。} {
+		#buffer lock;
+	};
+	
+	#action {%d%s%S%s%S%s待认领} {
+		#var getesc_id %%1;
+		#var getesc_address %%3;
+		#var score @getesc_get_score{${getesc_address}};
+		#if {${score} > ${getesc_current_score}} {
+			#var getesc_current_score $score;
+			#var getesc_current_id ${getesc_id};
+		};
+	};
+	#action {来认领押镖任务} {
+		#delay {1} {
+			#if {${getesc_current_id} != 0} {
+				hb.q ${getesc_current_id};
+			};
+			#else {
+				#delay {10} {
+					hb.start;
+				};
+			};
+		};
+	};
+
+	#action {请选择其他任务} {
+		#delay {2} {
+			#var getesc_current_score 0;
+			#var getesc_current_id 0;
+			hb.q;
+		};
+	};
+
+	#action {你上次运镖太辛苦了} {
+		#delay {10} {
+			hb.q;
+		};
+	};
+
+	#action {你所领的任务在任务列表中并不存在} {
+		#delay {10} {
+			hb.q;
+		};
+	};
+	
+	#action {昌隆镖局 总镖头 左二把} {
+		#if {${hb_requested} == 1} {
+			#delay {1} {
+				hb.d
+			};
+		};
+	};
+
+	#action {署理总镖头 张志} {
+		#if {${hb_requested} == 1} {
+			#delay {1} {
+				hb.d
+			};
+		};
+	};
+
+	#action {${char_name}把这批红货送到%*他已经派了个伙计名叫%*到%*附近接你} {
+		#format {tmp} {%.4s} {%%1};
+		#if {"${tmp}" == "全真"} {
+			#var hb_target qz;
+		};
+		#elseif {"${tmp}" == "曲阜"} {
+			#var hb_target qf;
+		};
+		#elseif {"${tmp}" == "洛阳"} {
+			#var hb_target ly;
+		};
+		#elseif {"${tmp}" == "扬州"} {
+			#if {"${hb_owner}" == "zhang zhi"} {
+				#var hb_target yz;
+			};
+			#elseif {"${hb_owner}" == "zuo"} {
+				#var hb_target yz2;
+			};
+		};
+		#elseif {"${tmp}" == "少林"} {
+			#var hb_target sl;
+		};
+		#elseif {"${tmp}" == "武当"} {
+			#var hb_target wd;
+		};
+		#elseif {"${tmp}" == "襄阳"} {
+			#var hb_target xy;
+		};
+		#elseif {"${tmp}" == "长安"} {
+			#var hb_target ca;
+		};
+		#elseif {"${tmp}" == "苏州"} {
+			#var hb_target suzhou;
+		};
+		#elseif {"${tmp}" == "牙山"} {
+			#var hb_target yashan;
+		};
+		#elseif {"${tmp}" == "泉州"} {
+			#var hb_target quanzhou;
+		};
+		#elseif {"${tmp}" == "嘉兴"} {
+			#var hb_target jiaxing;
+		};
+		#elseif {"${tmp}" == "岳王"} {
+			#var hb_target yuewangmu;
+		};
+		#elseif {"${tmp}" == "福州"} {
+			#var hb_target fuzhou;
+		};
+		#elseif {"${tmp}" == "镇江"} {
+			#var hb_target zhenjiang;
+		};
+		#elseif {"${tmp}" == "归云"} {
+			#var hb_target guiyun;
+		};
+		#elseif {"${tmp}" == "杭州"} {
+			#var hb_target hangzhou;
+		};
+		#elseif {"${tmp}" == "江州"} {
+			#var hb_target jiangzhou;
+		};
+		#elseif {"${tmp}" == "南昌"} {
+			#var hb_target nanchang;
+		};
+		#elseif {"${tmp}" == "岳阳"} {
+			#var hb_target yueyang;
+		};
+		#elseif {"${tmp}" == ""} {
+			#var hb_target ;
+		};
+		#elseif {"${tmp}" == "华山"} {
+			#format {tmp} {%.6s} {%%1};
+			#if {"${tmp}" == "华山村"} {
+				#var hb_target xc;
+			};
+			#else {
+				#var tmp 华山;
+				#var hb_target hs;
+			};
+		};
+		#math hb_lunci ${hb_lunci}+1;
+		show_to_quest ${hb_lunci}: 推车目的地: ${tmp}|%%2|%%3;
+		#nop autopp.set_zh %%2;
+		notify escort start;
+		hb.g;
+	} {1};
+
+	#action {你给%*一些失踪的财物} {
+		#var hb_requested 0;
+		#var has_mixin 0;
+		#delay {auto} {
+			#if {${hb_auto} == 1 && ${has_mixin} == 0} {
+				hb.start;
+			};
+		} {3};
+	};
+
+	#action {递给你一封密信} {
+		#var has_mixin 1;
+		#var hb_lunci 0;
+		#delay {2} {
+			show_to_quest 推车: 密信;
+			notify_loop escort additional reward;
+			xmpp.notify 密信;
+		};
+	};
+
+	#alias {mx.o} {
+		#unticker {notify_loop};
+		xian mixin;
+	};
+
+	#alias {mx.q} {
+		#var hb_requested 1;
+		zhao;
+	};
+
+	#action {把一包财物砸向你} {
+		show_to_quest 推车: 拿到密信;
+		#class tmp_mx kill;
+	};
+
+	#action {一个伙计挖着鼻屎走了出来，道：你找我啥事} {
+		l;
+	};
+
+	#action {财物的伙计 %S(%S)} {
+		#format {tmp} {%l} {%%2};
+		ask $tmp about yao;
+		ask $tmp about yao;
+		ask $tmp about yao;
+	} {1};
+
+	#alias {mx.f} {
+		#var has_mixin 0;
+	};
+
+	#class hb.auto.inner close;
+	on_health {hb.q};
+};
+
+#function {getesc_get_score} {
+	#if {"${hb_owner}" == "zhang zhi"} {
+		#if {"%1" == "全真天尊讲经堂"} {
+			#if {"${xy_info}" == "on"} {
+				#return -1;
+			};
+			#else {
+				#return 1;	
+			};
+		};
+		#elseif {"%1" == "洛阳四海钱庄"} {
+			#return -1;
+		};
+		#elseif {"%1" == "长安飞马镖局"} {
+			#return 1;
+		};
+		#elseif {"%1" == "曲阜孔府"} {
+			#if {"${xy_info}" == "on"} {
+				#return -1;
+			};
+			#else {
+				#return 1;
+			};
+		};
+		#elseif {"%1" == "武当三清殿"} {
+			#return -1;
+		};
+		#elseif {"%1" == "华山别院"} {
+			#return 5;
+		};
+		#elseif {"%1" == "华山村铁匠铺"} {
+			#return 3;
+		};
+		#elseif {"%1" == "少林佛心井"} {
+			#if {"${xy_info}" == "on"} {
+				#return -1;
+			};
+			#else {
+				#return 2;
+			};
+		};
+		#elseif {"%1" == "扬州醉仙楼"} {
+			#if {"${char_id}" == "uncletuu"} {
+				#return -1;
+			};
+			#elseif {"${xy_info}" == "on"} {
+				#return -1;
+			};
+			#else {
+				#return 4;	
+			};
+		};
+		#elseif {"%1" == "襄阳当铺"} {
+			#if {"${xy_info}" == "on"} {
+				#return -1;
+			};
+			#else {
+				#return 3;				
+			};
+		};
+		#else {
+			#return -1;
+		};
+	};
+	#elseif {"${hb_owner}" == "zuo"} {
+		#if {"%1" == "岳王墓墓前广场"} {
+			#return -1;
+		};
+		#elseif {"%1" == "泉州当铺"} {
+			#return 6;
+		};
+		#elseif {"%1" == "苏州聚宝斋"} {
+			#return -1;
+		};
+		#elseif {"%1" == "福州福威镖局"} {
+			#return 5;
+		};
+		#elseif {"%1" == "南昌飞虎镖局"} {
+			#return 4;
+		};
+		#elseif {"%1" == "杭州江南钱庄"} {
+			#return -1;
+		};
+		#elseif {"%1" == "岳阳车马行"} {
+			#return 4;
+		};
+		#elseif {"%1" == "归云庄太湖街"} {
+			#return -1;
+		};
+		#elseif {"%1" == "牙山小荒地"} {
+			#return 4;
+		};
+		#elseif {"%1" == "镇江飞龙镖局"} {
+			#return 3;
+		};
+		#elseif {"%1" == "扬州醉仙楼"} {
+			#if {"${char_id}" == "uncletuu"} {
+				#return -1;
+			};
+			#else {
+				#return 5;	
+			};
+		};
+		#else {
+			#return -1;
+		};
+	};
+	#else {
+		show_to_info unknown hb_owenr;
+		#return -1;
+	};
+};
+
+#alias {hb.stop} {
+	#var hb_auto 0;
+	set brief 2;
+	#class hb.auto.inner kill;
+	dz.full.cancel;
+};
+
+#alias {mergeable} {
+	#if {"%1" == "gn" && "%2" == "gs"
+	||"%1" == "gs" && "%2" == "gn"
+	||"%1" == "gw" && "%2" == "ge"
+	||"%1" == "ge" && "%2" == "gw"
+	||"%1" == "gse" && "%2" == "gnw"
+	||"%1" == "gnw" && "%2" == "gse"
+	||"%1" == "gsw" && "%2" == "gne"
+	||"%1" == "gne" && "%2" == "gsw"
+	||"%1" == "gu" && "%2" == "gd"
+	||"%1" == "gd" && "%2" == "gu"
+	||"%1" == "gnu" && "%2" == "gsd"
+	||"%1" == "gsd" && "%2" == "gnu"
+	||"%1" == "gsu" && "%2" == "gnd"
+	||"%1" == "gnd" && "%2" == "gsu"
+	||"%1" == "geu" && "%2" == "gwd"
+	||"%1" == "gwd" && "%2" == "geu"
+	||"%1" == "gwu" && "%2" == "ged"
+	||"%1" == "ged" && "%2" == "gwu"
+	||"%1" == "genter" && "%2" == "gout"
+	||"%1" == "gout" && "%2" == "genter"}
+	{
+		#var merge_result 1;
+	};
+	#else {
+		#var merge_result 0;
+	};
+};
+
+#alias {merge_path} {
+	#list tmp_path create;
+	#list tmp_path add #cr;
+	#var tmp_index 1;
+
+	#math hb_path_index ${hb_path_index}+1;
+	#while {${hb_path_index} <= ${hb_path_size}} {
+		#list hb_path get ${hb_path_index} v;
+		#list tmp_path get ${tmp_index} tmp_top;
+		mergeable ${v} ${tmp_top};
+		#if {${merge_result} == 1} {
+			#list tmp_path delete $tmp_index;
+			#math tmp_index ${tmp_index}-1;
+		};
+		#else {
+			#list tmp_path add ${v};
+			#math tmp_index ${tmp_index}+1;			
+		};
+		#math hb_path_index ${hb_path_index}+1;
+	}
+	#var hb_path ${tmp_path};
+	#var hb_path_index 0;
+	#list hb_path size hb_path_size;
+};
+
+#alias {hb.recover} {
+	#action {chaos ok: %*} {
+		#if {"%%1" != "fake"} {
+			#list hb_path set ${hb_path_index} {gan che to %%1};
+			#math hb_path_index ${hb_path_index}-1;
+		};
+		chaos.remember;
+		show_to_info 恢复;
+		#delay {resume} {
+			hb.resume;
+		} {10};
+	};
+
+	#action {chaos error} {
+		notify_loop escort chaos;
+	};
+	
+	chaos.find;
+};
+
+#alias {hb.guojiang} {
+	#class guojiang.inner open;
+	#ticker {sw/yell_boat} {
+		yell boat;
+	} {10};
+	#action {正等着你呢，上来吧。} {#class tmp kill;genter};
+	#action {艄公将一块踏脚板搭上堤岸，} {#class tmp kill;genter};
+	#action {^%*接过你递给的船资} {
+		#class tmp open;
+		#action {^只听得江面上隐隐传来：“别急嘛，这儿正忙着呐……”} {
+			#class tmp kill;#delay {3} {yell boat};
+		};
+		#class tmp close;
+	};
+	#action {^你吸了口气，一声“船家”，声音中正平和地远远传了出去。$} {
+		#class tmp open;
+		#action {^只听得江面上隐隐传来：“别急嘛，这儿正忙着呐……”} {
+			#class tmp kill;#delay {3} {yell boat};
+		};
+		#class tmp close;
+	};
+	#action {^你使出吃奶的力气喊了一声：“船家”$}
+	{
+		#class tmp open;
+		#action {^只听得江面上隐隐传来：“别急嘛，这儿正忙着呐……”} {
+			#class tmp kill;#delay {3} {yell boat};
+		};
+		#class tmp close;
+	};
+	#nop #action {^艄公说“到啦，上岸吧”，随即把一块踏脚板搭上堤岸。} {#class guojiang.inner kill; #var hb_paused 0; gout;};
+	#action {所有人被赶下了渡船} {
+		#class guojiang.inner kill;
+		#delay {3} {
+			hb.resume;
+		};
+	};
+
+	#class guojiang.inner close;
+	#var hb_paused 1;
+	ask shao gong about jiang;
+};
+
+#alias {clear_npc} {
+	#var npc_zh %1;
+	#class clear_npc.inner open;
+	#action {${npc_zh}死了} {
+		#var hb_force_wait 0;
+		#unticker {kill_npc};
+	} {1};
+
+	#action {这里没有这个人} {
+		#var hb_force_wait 0;
+		#unticker {kill_npc};
+		l;
+	};
+	
+	#action {${npc_zh}(%*)} {
+		#var hb_force_wait 1;
+		#var npc_en @lower{%%1};
+		#ticker {kill_npc} {
+			kill ${npc_en};			
+		} {3};
+    } {1};
+	#class clear_npc.inner close;
+};
+#class hubiao close

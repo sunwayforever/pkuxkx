@@ -1,0 +1,67 @@
+#class guaji open
+#var san_count 0;
+#var guaji_item nil;
+#alias {guasan.start} {
+	#class guasan.inner open;
+	#action {^│%*包清心散} {
+		#var san_count @ctd{%%1};
+	} {1};
+	
+	#action { %*包清心散} {
+		#var san_count @ctd{%1%};
+	} {1};
+	
+	#action {(%*)告诉你：san} {
+		tell %%1 现在有${san_count}包清心散;
+		give %%1 qingxin san;
+	} {1};
+	#class guasan.inner close;
+	
+	guaji.start qingxin san;
+};
+
+#alias {guasan.stop} {
+	#class guasan.inner kill;
+	guaji.stop;
+};
+
+#alias {guaji.start} {
+	#var guaji_item %0;
+	show_to_quest 挂机: %0;
+	#send {i}
+
+	#class guaji.inner open;
+	#alias {ticker.gua.start} {
+		#ticker {gua} {
+			get ${guaji_item};
+		} {0.05}
+	};
+		
+	#alias {ticker.gua.end} {
+		#unticker {gua};
+		#send {i};
+	};
+
+	#action {guaji.update %*} {
+		#var tmp_minute @ctd{%%1};
+		#if {${tmp_minute} == 59 || ${tmp_minute} == 29 || ${tmp_minute} == 14 || ${tmp_minute} == 44} {
+			show_to_info 抢东西...;
+			ticker.gua.start;
+		};
+		
+		#if {${tmp_minute} == 1 || ${tmp_minute} == 31 || ${tmp_minute} == 16 || ${tmp_minute} == 46} {
+			show_to_info 抢完了...;
+			ticker.gua.end;
+		};
+	};
+
+	#class guaji.inner close;
+};
+
+#alias {guaji.stop} {
+	#var guaji_item nil;
+	#class guaji.inner kill;
+	show_to_quest 挂机结束;
+};
+
+#class guaji close

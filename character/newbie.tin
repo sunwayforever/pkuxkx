@@ -1,0 +1,7 @@
+#script {HOME} {ruby -e 'puts ENV["HOME"]'};
+#var HOME $HOME[1];
+
+#split 1 1;
+#read ${HOME}/.tt/plugin/newbie.tin
+
+#session newbie pkuxkx.net 8080;

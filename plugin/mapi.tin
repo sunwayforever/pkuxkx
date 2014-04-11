@@ -1,0 +1,22 @@
+#class mapi open
+#alias {mapi.start} {
+	#class mp.inner open;
+	#ticker {hit} {
+		hit lxiao npc;
+		#delay {1} {
+			perform parry.qiurao;
+			halt;
+		};
+	} {3};
+	#alias {attack} {#cr};
+	#alias {wi} {#cr};
+	#class mp.inner close;
+	jifa parry flatter;
+};
+
+#alias {mapi.stop} {
+	#class mp.inner kill;
+	#alias {attack} {attack.normal};
+	#alias {wi} {wi_normal};
+};
+#class mapi close

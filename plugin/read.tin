@@ -1,0 +1,19 @@
+#class read open
+#alias {read.start} {
+	#var read_book %0;
+
+	#class read.inner open;
+	#ticker {read} {
+		read ${read_book} 10;
+	} {1};
+	
+	#action {你的内力不够} {
+		sleep;
+	};
+	#class read.inner close;
+}
+
+#alias {read.stop} {
+	#class read.inner kill;
+};
+#class read close

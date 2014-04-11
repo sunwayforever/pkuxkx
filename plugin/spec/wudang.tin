@@ -1,0 +1,185 @@
+#class wudang_spec open
+#alias {attack.prepare} {
+	yun powerup;
+	chan_a_chan;
+};
+
+#alias {attack.normal} {
+	zong;
+	#class attack.inner open;
+	#ticker {perf_chan} {
+		chan;
+	} {1};
+	#ticker {lzj} {
+		lzj;
+	} {6};
+	#class attack.inner close;
+};
+
+#alias {attack.xiaofeng} {
+	zong;
+	#class attack.inner open;
+	#ticker {perf_chan} {
+		chan;
+	} {1};
+	#class attack.inner close;
+};
+
+#alias {attack.mingjiao} {
+	zong;
+	#class attack.inner open;
+	#ticker {perf_chan} {
+		chan;
+	} {1};
+	#ticker {perf_zhen} {
+		perform cuff.zhen;
+	} {0.6};
+	#ticker {wuying} {
+		wuying;
+	} {6};	
+	#class attack.inner close;
+};
+
+#var shortcut F1:缠 F2:无影 F3:连字诀 F4:刚柔;
+#macro {\eOQ} {
+	wuying;
+};
+
+#macro {\eOR} {
+	lzj;
+};
+
+#macro {\eOP} {
+	chan;
+};
+
+#macro {\eOS} {
+	gangrou;
+};
+
+#alias {chan_robber} {
+	unwield all;
+	wield my sword;
+	perform sword.chan ${char_id}'s robber 1;
+	perform sword.chan ${char_id}'s robber 2;
+	wi;
+};
+
+#alias {chan} {
+	unwield all;
+	wield my sword;
+	perform sword.chan;
+	wi;
+};
+
+#alias {sanhuan} {
+    perform sword.sanhuan;
+};
+
+#alias {zhen} {
+	unwi;
+    perform cuff.zhen;
+	wi;
+};
+
+#alias {zong} {
+    perform dodge.zong;
+};
+
+#alias {lzj} {
+	unwi;
+	wield my sword;
+    jiali 10;
+    perform sword.lian;
+    jiali none;
+	wi;
+};
+
+
+#alias {wuying} {
+	bei claw;
+	bei cuff;
+	unwield all;
+	jiali 10;
+	perform claw.wuying;
+	jiali none;
+	wi;
+};
+
+#alias {gangrou} {
+	bei claw;
+	bei cuff;
+
+	jiali 10;
+	unwi;
+	perform cuff.gangrou;
+	#ticker {zhen} {
+		zhen;
+	} {1};
+	#delay {4} {
+		#unticker {zhen};
+		jiali none;
+	};
+	wi;
+};
+
+#alias {lianhuan} {
+	perform spear.lianhuan;
+};
+
+#alias {xl.start} {
+	xiulian taiji-shengong;
+	show_to_quest 修炼内功;
+	#action {顿觉内功修为增进不小} {xiulian taiji-shengong};
+	#action {由于缺乏实战经验} {
+		xl.stop;
+	};
+};
+
+#alias {xl.stop} {
+	show_to_quest 修炼结束;
+	#unaction {顿觉内功修为增进不小};
+	#unaction {由于缺乏实战经验};
+};
+
+#alias {load_map} {
+	map.load wudang;
+};
+
+#alias {map_goto_lingwu} {
+	map.go {静修阁};
+};
+
+#alias {map_goto_rest} {
+	map.go {客房};
+};
+
+#alias {map_goto_start} {
+	map.go {武当广场};
+};
+
+#alias {map_goto_shifu} {
+	map.go {小屋};
+};
+
+#list my_weapons create {my spear; my spear 2};
+#var shifu zhang;
+
+#alias {wi_xiaofeng} {
+	unwi;
+	wield sword;
+};
+
+#alias {reborn} {
+	#send {jifa cuff taiji-quan};
+	#send {jifa dodge tiyunzong};
+	#send {jifa parry taiji-quan};
+	#send {jifa sword taiji-jian};
+	#send {jifa blade xuanxu-dao};
+	#send {jifa claw taiji-zhao};
+	#send {jifa force taiji-shengong};
+	bei cuff claw;
+	wbei taiji-jian xuanxu-dao;
+};
+
+#class wudang_spec close

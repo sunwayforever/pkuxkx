@@ -1,0 +1,132 @@
+#class scraps open
+
+#alias {scraps.start} {
+
+	#class scraps.inner open;
+
+	#action {你捡起一把玄铁剑} {
+		drop xuantie sword;
+	};
+
+	#actin {你捡起一件紧身宝甲} {
+		drop bao jia;
+	};
+
+	#actin {你捡起一%*清心散} {
+		drop san;
+	};
+
+	#actin {你捡起一%*酥油茶} {
+		drop cha;
+	};
+
+	#actin {你捡起一%*包袱} {
+		drop bao;
+	};
+
+	#list scraps_areas create {xc;xuchang;sz;zjk;dali;qf;quanzhou;jingzhou;fz;yy;jinyang;guiyun;nc;jiangzhou;jiaxing;yashan;zhenjiang;xy};
+	#list scraps_areas size scraps_areas_size;
+	#var scraps_areas_index 0;
+	
+	#alias {scraps.go} {
+		#math scraps_areas_index ${scraps_areas_index}+1;
+		#if {${scraps_areas_index} <= ${scraps_areas_size}} {
+			#list scraps_areas get ${scraps_areas_index} scrap_current_area;
+			gt ${scrap_current_area};
+		};
+		#else {
+			scraps.stop;
+			scraps.start;
+		};
+
+		#action {抵达目的地} {
+			#unaction {抵达目的地};
+			#delay {2} {
+				bl.scrap;
+			};
+		} {1};
+
+		#action {遍历结束} {
+			#unaction {遍历结束};
+			dangpu;
+		} {1};
+	};
+
+	#alias {dangpu} {
+		gt yz;
+		#action {抵达目的地} {
+			#unaction {抵达目的地};
+			#delay {2} {
+				s;e;
+			};
+			#delay {1} {
+				maihuo;
+			};
+		} {1};
+
+		#action {卖货完成} {
+			w;n;
+			scraps.go;
+		};
+	};
+	
+	#action {%*= %*} {
+		#if {"%%1" == "铜板" || "%%1" == "白银" || "%%1" == "黄金" || "%%1" == "锦囊"} {
+			#cr;
+		};
+		#else {
+			#list items add %%1;
+		};
+	} {2};
+
+	#action {%*= %*my%*} {
+		#cr;
+	} {1};
+
+	#alias {maihuo} {
+		#list items create {};
+		id;
+		#delay {3} {
+			#list items size item_size;
+			#var item_index 0;
+			#var sold 0;
+			#action {掌柜的唱道} {
+				#unaction {掌柜的唱道};
+				#var sold 1;
+			};
+			begin_sell;
+		};
+	};
+	
+	#alias {begin_sell} {
+		#math item_index ${item_index}+1;
+		#if {${item_index} <= ${item_size}} {
+			#list items get ${item_index} item;
+			sell ${item};
+			#delay {1} {
+				begin_sell;
+			};
+		};
+		#else {
+			#if {${sold} == 1} {
+				#var sold 0;
+				maihuo;
+			};
+			#else {
+				#showme 卖货完成;
+			};
+		};
+	};
+	
+	#class scraps.inner close;
+	show_to_quest 捡破烂开始;
+
+	scraps.go;
+};
+
+#alias {scraps.stop} {
+	show_to_quest 捡破烂结束;
+	#class scraps.inner kill;
+};
+
+#class scraps close

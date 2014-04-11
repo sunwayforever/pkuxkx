@@ -1,0 +1,33 @@
+#class bxs open
+
+#alias {bxs.f} {
+	ask bai about cancel;
+	#class bxs.inner kill;
+	#unticker {bxs};
+	show_to_quest 百晓生: 结束;
+};
+
+#alias {bxs.q} {
+	#class bxs.inner open;
+
+	#action {口令无误，请接受挑战吧} {
+		#var bxs_time 0;
+		show_to_quest 百晓生: 耗时: ${bxs_time} 分钟;
+		#ticker {bxs} {
+			#math bxs_time ${bxs_time}+1;
+			show_to_quest 百晓生: 耗时: ${bxs_time} 分钟;
+		} {60};
+	};
+	
+	#class bxs.inner close;
+	ask bai about 挑战;
+};
+
+#alias {bxs.d} {
+	ask bai about finish;
+	#class bxs.inner kill;
+	#unticker {bxs};
+	show_to_quest 百晓生: 结束;
+};
+
+#class bxs close

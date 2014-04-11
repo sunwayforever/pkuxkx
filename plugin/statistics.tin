@@ -1,0 +1,35 @@
+#class statistics open
+#list stat_category create {};
+#alias {stat.register} {
+	#var category %1;
+	#var kind %2;
+
+	#list stat_category find ${category} found;
+	#if {${found} == 0} {
+		#list stat_category add ${category};
+	};
+
+	#var ${category}_hit 0;
+	#var ${category}_miss 0;
+
+	#if {"%2" == "hit"} {
+		#action {%3} {
+			#math %1_hit ${%1_hit}+1;
+		};
+	};
+	#elseif {"%2" == "miss"} {
+		#action {%3} {
+			#math %1_miss ${%1_miss}+1;
+		};
+	};
+};
+
+#alias {stat} {
+	#foreach {${stat_category}[%*]} {category} {
+		#math stat_percent ${${category}_hit}*100/(${${category}_hit}+${${category}_miss});
+		#echo {${category}: ÃüÖĞ: ${${category}_hit} ¶ªÊ§: ${${category}_miss} ÃüÖĞÂÊ: ${stat_percent}%%};
+	};
+	#buffer lock;
+};
+
+#class statistics close
