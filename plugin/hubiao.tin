@@ -97,11 +97,6 @@ load chaos;
 			#unticker {hb_walk};
 		};
 	};
-	
-	#action {这个方向} {
-		hb.pause;
-		show_to_info 路径出错;
-	};
 
 	#action {劫匪个起纵遁入暗里不见了} {
 		#delay {1} {
