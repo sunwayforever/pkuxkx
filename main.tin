@@ -11,8 +11,8 @@
 
 #read ${HOME}/.tt/plugin/highlight.tin
 #read ${HOME}/.tt/plugin/status.tin
-#read ${HOME}/.tt/plugin/tn.tin
-#read ${HOME}/.tt/plugin/dz.tin
+#read ${HOME}/.tt/plugin/tuna.tin
+#read ${HOME}/.tt/plugin/dazuo.tin
 #read ${HOME}/.tt/plugin/war.tin
 #read ${HOME}/.tt/plugin/yue.tin
 #read ${HOME}/.tt/plugin/murong.tin

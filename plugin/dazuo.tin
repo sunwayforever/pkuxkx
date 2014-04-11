@@ -1,4 +1,4 @@
-#class dz open
+#class dazuo open
 #var min_dazuo_count 60;
 #var dz_total_count 0;
 
@@ -15,10 +15,16 @@
 
 #alias {dz.full.cancel} {
 	#unticker {dz};
+	#class dz.full.inner kill;
 };
 
 #alias {dz.full} {
 	get_dazuo_count;
+	#class dz.full.inner open;
+	#action {你现在精不够} {
+		heal 1;
+	};
+	#class dz.full.inner close;
 	#delay {1} {
 		#ticker {dz} {
 			#if {${nl_percent} < 180} {
@@ -26,9 +32,10 @@
 			};
 			#else {
 				#unticker {dz};
+				#class dz.full.inner kill;
 				#delay {5} {
 				    #showme dz.full;    
-    			};
+    			      };
 			};
 		} {1};
 	};
@@ -76,4 +83,4 @@
 	#class dz.inner kill;
 };
 
-#class dz close
+#class dazuo close

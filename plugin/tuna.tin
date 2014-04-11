@@ -1,4 +1,4 @@
-#class tn open
+#class tuna open
 
 #var tn_total_count 0;
 
@@ -84,4 +84,4 @@
 	#class tn.inner kill;
 };
 
-#class tn close
+#class tuna close
