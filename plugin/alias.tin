@@ -509,7 +509,6 @@
 	#class on_wakeup.inner open;
 	#action {翻来覆去无法入眠!} {
 		#delay {sleep} {
-			heal 10;
        		sleep;
 		} {10};
 	};
