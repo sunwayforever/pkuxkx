@@ -112,6 +112,10 @@
 		};
 	} {2};
 
+	#action {顿觉内功修为增进不小} {
+		lw.restart;
+	};
+	
 	#action {必须空手} {
 		unwi;
 	};
