@@ -507,6 +507,12 @@
 #alias {on_wakeup} {
 	#alias tmp_wakeup %0;
 	#class on_wakeup.inner open;
+	#action {翻来覆去无法入眠!} {
+		#delay {sleep} {
+			heal 10;
+       		sleep;
+		} {10};
+	};
 	#action {睡过一觉} {
 		#delay {sleep} {
        		sleep;
