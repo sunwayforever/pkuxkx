@@ -132,7 +132,6 @@ load chaos;
 		#format {hb_end_time} {%t} {%T};
 		show_to_quest 推车: ${hb_lunci}: 任务完成: ${hb_start_time} -> ${hb_end_time};
 		notify escort done;
-		#nop xmpp.notify 推车完成;
 		hb.teardown;
 		hb.back;			
 	} {1};
@@ -392,10 +391,22 @@ load chaos;
 	#var hb_force_wait 0;
 
 	#alias {hb.back} {
+		merge_path;
+		#10 {halt};
+		#class hb.back.inner open;
+		#action {跳出战圈不打了} {
+			#class hb.back.inner kill;
+			hb.resume;
+		};
+		#action {你现在不忙} {
+			#class hb.back.inner kill;
+			hb.resume;
+		};
 		on_truce {
-			merge_path;
+			#class hb.back.inner kill;
 			hb.resume;	
 		};
+		#class hb.back.inner close;
 	};
 
 	#if {${hb_ing} == 1} {
