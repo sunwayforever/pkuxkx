@@ -23,6 +23,19 @@
 			dating;
 		} {5};
 	};
+
+	
+	#action {彭有敬说道：「我帮素来以侠义著称，你去%*的%*找到一个叫%*的人，和他接头(jietou)。」} {
+		show_to_quest jietou: %1:%2:%3;
+	};
+
+	#action {彭有敬对你说道：%*，你去把其身上的%*(%*)讨(beg)来，上缴(jiao)帮里。} {
+		show_to_quest beg: %1:%2:%3;
+	};
+
+	#action {说道：「你快去把情报送给%*吧。」} {
+		show_to_quest qingbao: %1;
+	}
 	#class dating.inner close;
 
 	map.load yangzhou;
@@ -40,15 +53,4 @@
 	halt;
 };
 
-#action {彭有敬说道：「我帮素来以侠义著称，你去%*的%*找到一个叫%*的人，和他接头(jietou)。」} {
-	show_to_quest jietou: %1:%2:%3;
-};
-
-#action {彭有敬对你说道：%*，你去把其身上的%*(%*)讨(beg)来，上缴(jiao)帮里。} {
-	show_to_quest beg: %1:%2:%3;
-};
-
-#action {说道：「你快去把情报送给%*吧。」} {
-	show_to_quest qingbao: %1;
-}
 #class newbie_gb close
