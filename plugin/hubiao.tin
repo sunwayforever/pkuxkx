@@ -392,21 +392,10 @@ load chaos;
 
 	#alias {hb.back} {
 		merge_path;
-		#10 {halt};
-		#class hb.back.inner open;
-		#action {跳出战圈不打了} {
-			#class hb.back.inner kill;
-			hb.resume;
+		taopao;
+		#delay {1.5} {
+			hb.resume;			
 		};
-		#action {你现在不忙} {
-			#class hb.back.inner kill;
-			hb.resume;
-		};
-		on_truce {
-			#class hb.back.inner kill;
-			hb.resume;	
-		};
-		#class hb.back.inner close;
 	};
 
 	#if {${hb_ing} == 1} {

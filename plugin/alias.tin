@@ -604,3 +604,20 @@
 		xy.stop;
 	};
 };
+
+#alias {taopao} {
+	get_exits;
+	#10 halt;
+	#delay {1} {
+		#list exits_list get 1 exit;
+		${exit};
+		@opposite{${exit}};
+	};
+};
+
+#list directions create {north;south;east;west;up;down;enter;out;northeast;southwest;northwest;southeast;northdown;southup;northup;southdown;eastup;westdown;eastdown;westup;};
+#list opposite_directions create {south;north;west;east;down;up;out;enter;southwest;northeast;southeast;northwest;southup;northdown;southdown;northup;westdown;eastup;westup;eastdown;};
+#function {opposite} {
+	#list directions find %1 index;
+	#list opposite_directions get ${index} result;
+};
