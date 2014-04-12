@@ -245,4 +245,13 @@
 	#showme mingjiao enemy:%1;
 };
 
+#alias {taopao} {
+	get_exits;
+	#10 halt;
+	#delay {1} {
+		#list exits_list get 1 exit;
+		${exit};
+	};
+};
+
 #class war close;

@@ -103,6 +103,11 @@ load chaos;
 			#var hb_wait 0;
 		};
 	};
+
+	#action {^这个方向} {
+		hb.pause;
+		show_to_info 路径出错;
+	};
 	
 	#action {劫匪趁你不注意，推着镖车就跑，你赶紧追了上去。} {
 		hb.pause;
@@ -159,7 +164,6 @@ load chaos;
 	#alias gsd {gan che to southdown};
 	#alias gd {gan che to down};
 	#alias gu {gan che to up};
-
 
 	#alias {attack} {
 		attack.hubiao;
@@ -385,6 +389,19 @@ load chaos;
 	#math hb_path_index ${hb_path_index}-1;
 };
 
+#alias {hb.duobi} {
+	get_exits;
+	#delay {1} {
+		#list exits_list get 1 exit;
+		#5 halt;
+		${exit};
+		#delay {10} {
+			@opposite{${exit}};
+			hb.resume;
+		};
+	};
+};
+
 
 #alias {hb.resume} {
 	#var hb_paused 0;
@@ -392,10 +409,7 @@ load chaos;
 
 	#alias {hb.back} {
 		merge_path;
-		taopao;
-		#delay {1.5} {
-			hb.resume;			
-		};
+		hb.duobi;
 	};
 
 	#if {${hb_ing} == 1} {
@@ -970,7 +984,7 @@ load chaos;
 
 #alias {mx.re} {
 	hb.get_owner;
-	give mixin to ${hb_owenr};
+	give mixin to ${hb_owner};
 	mx.o;
 };
 

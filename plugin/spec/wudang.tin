@@ -4,6 +4,15 @@
 	chan_a_chan;
 };
 
+#alias {attack.hubiao} {
+	zong;
+	#class attack.inner open;
+	#ticker {perf_chan} {
+		chan;
+	} {1};
+	#class attack.inner close;
+};
+
 #alias {attack.normal} {
 	zong;
 	#class attack.inner open;
@@ -110,13 +119,13 @@
 	bei claw;
 	bei cuff;
 
-	jiali 10;
+	jiali max;
 	unwi;
 	perform cuff.gangrou;
 	#ticker {zhen} {
 		zhen;
-	} {1};
-	#delay {4} {
+	} {0.5};
+	#delay {5} {
 		#unticker {zhen};
 		jiali none;
 	};
