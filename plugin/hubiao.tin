@@ -65,7 +65,7 @@ load chaos;
 				#if {${hb_force_wait} == 0 && ${hb_paused} == 0 && ${hb_wait} == 0} {
 					${hb_path_next};
 				};
-			} {1.8};
+			} {2};
 		};
 	};
 };
@@ -427,7 +427,7 @@ load chaos;
 					${hb_path_next};
 				};
 			};
-		} {1};
+		} {0.3};
 	}
 };
 #alias {path_wait} {
@@ -711,36 +711,6 @@ load chaos;
 		};
 	};
 
-	#alias {mx.o} {
-		#unticker {notify_loop};
-		xian mixin;
-	};
-
-	#alias {mx.q} {
-		#var hb_requested 1;
-		zhao;
-	};
-
-	#action {把一包财物砸向你} {
-		show_to_quest 推车: 拿到密信;
-		#class tmp_mx kill;
-	};
-
-	#action {一个伙计挖着鼻屎走了出来，道：你找我啥事} {
-		l;
-	};
-
-	#action {财物的伙计 %S(%S)} {
-		#format {tmp} {%l} {%%2};
-		ask $tmp about yao;
-		ask $tmp about yao;
-		ask $tmp about yao;
-	} {1};
-
-	#alias {mx.f} {
-		#var has_mixin 0;
-	};
-
 	#class hb.auto.inner close;
 	on_health {hb.q};
 };
@@ -968,12 +938,11 @@ load chaos;
 		};
 		#class tmp close;
 	};
-	#nop #action {^艄公说“到啦，上岸吧”，随即把一块踏脚板搭上堤岸。} {#class guojiang.inner kill; #var hb_paused 0; gout;};
 	#action {所有人被赶下了渡船} {
 		#class guojiang.inner kill;
-		#delay {3} {
+		#delay {hb.xiachuan} {
 			hb.resume;
-		};
+		} {5};
 	};
 
 	#class guojiang.inner close;
@@ -1004,4 +973,49 @@ load chaos;
     } {1};
 	#class clear_npc.inner close;
 };
+
+#alias {mx.o} {
+	#unticker {notify_loop};
+	xian mixin;
+};
+
+#alias {mx.re} {
+	hb.get_owner;
+	give mixin to ${hb_owenr};
+	mx.o;
+};
+
+#alias {mx.q} {
+	#var hb_requested 1;
+	#class mx.inner open;	
+	#action {把一包财物砸向你} {
+		show_to_quest 推车: 拿到密信;
+		#class mx.inner kill;
+	};
+
+	#action {一个伙计挖着鼻屎走了出来，道：你找我啥事} {
+		l;
+	};
+
+	#action {财物的伙计 %S(%S)} {
+		#format {tmp} {%l} {%%2};
+		ask $tmp about yao;
+		ask $tmp about yao;
+		ask $tmp about yao;
+	} {1};
+	#class mx.inner close;
+	zhao;
+};
+
+#alias {mx.d} {
+	hb.get_owner;
+	give cai wu to ${hb_owner};
+	#class mx.inner kill;
+};
+
+#alias {mx.f} {
+	#var has_mixin 0;
+	#class mx.inner kill;
+};
+
 #class hubiao close

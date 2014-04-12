@@ -60,7 +60,6 @@
 #action {ÄÍ¾Ã¶È:%1} {
 	#if {%1 < 130} {
 		show_to_info ÎäÆ÷ÄÍ¾Ã¹ýµÍ: %1;
-		#nop notify "endure %1"
 	};
 } {1};
 
