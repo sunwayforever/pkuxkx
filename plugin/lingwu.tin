@@ -102,9 +102,13 @@
 				on_wakeup {
 					chifan;
 					map_goto_lingwu;
-					#var lw_sleeping 0;
+					#delay {3} {
+						#var lw_sleeping 0;
+					};
 				};
-				sleep;
+				#delay {3} {
+					sleep;
+				};
 			};
 			#else {
 				lw_action;
