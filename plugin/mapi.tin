@@ -4,14 +4,14 @@
 	#ticker {hit} {
 		hit lxiao npc;
 		#delay {1} {
-			perform parry.qiurao;
+			perform flatter.qiurao;
 			halt;
 		};
 	} {3};
 	#alias {attack} {#cr};
 	#alias {wi} {#cr};
 	#class mp.inner close;
-	jifa parry flatter;
+	#nop jifa parry flatter;
 };
 
 #alias {mapi.stop} {
