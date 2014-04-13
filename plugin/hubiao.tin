@@ -250,12 +250,6 @@ load chaos;
 		} {0.3};
 	}
 };
-#alias {path_wait} {
-	#var hb_force_wait 1;
-	#delay {3} {
-		#var hb_force_wait 0;
-	};
-};
 
 #alias {hb.get_owner} {
 	#if {"${CurrentPosition}" == "zuo"} {
@@ -314,7 +308,10 @@ load chaos;
 	};
 	#elseif {"${hb_owner}" == "zhang zhi"} {
 		gt zz;
-	}
+	};
+	#elseif {"${hb_owner}" == "ma"} {
+		gt fm;
+	};
 };
 
 #alias {hb.start} {
@@ -323,9 +320,6 @@ load chaos;
 	#var getesc_current_score 0;
 	#var getesc_current_id 0;
 	#class hb.auto.inner open;
-	#macro {\e[24~} {
-		hb.resume;
-	};
 
 	#action {你一共被奖励了：} {
 		#var hb_requested 0;
@@ -419,6 +413,14 @@ load chaos;
 		};
 	};
 
+	#action {飞马镖局 总镖头 百胜神拳 马行空} {
+		#if {${hb_requested} == 1} {
+			#delay {1} {
+				hb.d
+			};
+		};
+	};
+	
 	#action {署理总镖头 张志} {
 		#if {${hb_requested} == 1} {
 			#delay {1} {
@@ -469,8 +471,8 @@ load chaos;
 			#elseif {"${tmp}" == "武当"} {
 				#list hb_path create {
 					gs;gw;gw;gs;gsw;gw;gw;gnw;gw;gw;gw;gwu;gnu;gnu;gnu;gw;gnu;gnu;geu;geu;gnu;gnu;
-					gn;kill song;path_wait;path_wait;path_wait;gw;gw;ge;ge;ge;ge;gw;gw;gn;gw;gw;ge;ge;ge;ge;gw;gw;gn;gw;gw;ge;ge;ge;path_wait;
-					gw;gn;gw;ge;ge;ge;gs;gn;gw;gw;gn;gs;gs;gs;gs;gs;gw;gn;ge;path_wait;gs;gs;gw;gn;ge;ged;ge;ge;ged;gsd;ged;gsd;ged;gwu;gnu;gwu;gnu;gwu;gw;gw;gwu;
+					gn;kill song;gw;gw;ge;ge;ge;ge;gw;gw;gn;gw;gw;ge;ge;ge;ge;gw;gw;gn;gw;gw;ge;ge;ge;
+					gw;gn;gw;ge;ge;ge;gs;gn;gw;gw;gn;gs;gs;gs;gs;gs;gw;gn;ge;gs;gs;gw;gn;ge;ged;ge;ge;ged;gsd;ged;gsd;ged;gwu;gnu;gwu;gnu;gwu;gw;gw;gwu;
 				};
 			};
 			#elseif {"${tmp}" == "襄阳"} {
@@ -597,11 +599,48 @@ load chaos;
 						gnw;gnw;gne;gsw;gw;gn;gs;gnw;gnw;gse;gse;ge;gse;gsw;gne;gse;gs;ge;ge;gw;gw;gs;gw;gnw;gse;ge;ge;gw;gs;ge;gw;gs;gs;gse;gnw;gsw;gne;gn;gn;gn;gn;gn;
 					};
 				};
+				#else {
+					#list hb_path create  {
+						gn;ge;ge;ge;ge;ge;ge;ge;ge;ge;gs;gsu;gsu;gsu;gsu;gs;gwu;ged;gsd;geu;gwd;gsu;ge;gw;
+						gs;gn;gnd;gnu;gnd;gnd;gnu;gsd;gwd;gnd;gwd;gnd;gnw;gne;gsw;gn;gs;gw;gw;ge;ge;gse;gsu;geu;gsu;geu;gsu;gsu;
+					};
+				};
 			};
 			#elseif {"${tmp}" == "晋阳"} {
 				#list hb_path create {
 					gn;ge;ge;gn;gn;gw;gw;gw;gw;gn;gn;gn;ge;gne;gne;ge;gn;gne;gse;ge;hb.guohe {huanghe};
 					gn;gne;gne;gne;ge;gn;gn;gw;
+				};
+			};
+			#elseif {"${tmp}" == "成都"} {
+				#list hb_path create {
+					gn;gw;gw;gw;gsw;gsu;gsd;gse;gsu;gsw;gse;gsu;gsd;gs;gs;gs;gs;
+					se;gn;gs;gw;ge;gse;gn;gs;ge;ge;gw;gw;gnw;gnw;gn;gw;ge;ge;gw;gn;gw;ge;ge;gw;gn;gn;gs;gs;gs;gs;gnw;
+					gn;gs;gnw;gn;gs;gs;gn;gw;gw;ge;ge;gse;gse;gs;gs;gw;gnw;gse;ge;ge;gw;gs;gw;ge;gs;gsu;gnd;gn;gn;gn;gn;
+				};
+			};
+			#elseif {"${tmp}" == "灵州"} {
+				#list hb_path create {
+					gn;gw;gw;gw;gnu;gne;gnw;gnw;gnu;gn;gw;gw;gw;gw;gw;gn;gn;
+					gs;gs;gs;gw;gw;ge;ge;ge;ge;gw;gw;gs;gs;gs;gs;gn;gn;gn;gn;gn;gw;gn;gs;gs;gn;gw;gn;gs;gs;gn;gw;ge;gnw;gnw;gse;gse;ge;ge;ge;gn;gs;gs;gn;ge;ge;ge;ge;gw;gw;gw;gw;gw;gn;gn;
+				};
+			};
+			#elseif {"${tmp}" == "赞普"} {
+				#list hb_path create {
+					gn;gw;gw;gw;gsw;gsu;gsd;gse;gsu;gsw;gse;gsu;gsd;gs;gs;gs;gs;gnw;gnw;gw;gw;gwu;gwu;gwu;gnw;gnw;gw;gn;gn;gn;
+					gn;gw;ge;gn;gn;gs;gs;ge;gw;gs;gw;gw;gw;ge;gn;gs;ge;ge;ge;gw;gs;gw;ge;ge;gw;gs;gw;ge;ge;gw;gs;gn;gn;gn;
+				};
+			};
+			#elseif {"${tmp}" == "襄阳"} {
+				#list hb_path create {
+					gn;ge;ge;ge;ge;ge;gn;gn;ge;ge;ge;ge;gse;ge;ge;ge;ge;ge;ged;ge;ge;ge;gs;gs;gs;gs;gs;gs;gs;gsw;gs;gs;gs;gw;ge;ge;ge;gw;gw;gs;gw;gn;gs;ge;ge;gw;gs;ge;gw;gs;gw;gn;gs;gs;gn;gw;gn;
+					gs;gs;gn;gw;gw;gw;ge;ge;ge;ge;ge;ge;gn;gs;ge;gn;gn;gw;ge;gs;gs;ge;ge;ge;gw;gw;gs;gn;gw;gsw;gs;gn;gnw;gw;gs;gw;ge;ge;gw;gs;gw;ge;gs;gw;ge;ge;gw;gs;gs;gn;gn;gn;gn;gn;gn;gs;gw;gw;gn;
+				};
+			};
+			#elseif {"${tmp}" == "洛阳"} {
+				#list hb_path create {
+					n;e;e;e;e;e;n;n;e;e;e;se;e;e;e;e;e;ed;e;e;e;
+					
 				};
 			};
 			#else {
@@ -750,8 +789,36 @@ load chaos;
 		#if {"%1" == "华山村铁匠铺"} {
 			#return 6;
 		};
+		#if {"%1" == "华山别院"} {
+			#return 6;
+		};
 		#elseif {"%1" == "晋阳萧府"} {
+			#return 4;
+		};
+		#elseif {"%1" == "成都当铺"} {
+			#return 4;
+		};
+		#elseif {"%1" == "赞普来福杂货"} {
 			#return 5;
+		};
+		#elseif {"%1" == "洛阳四海钱庄"} {
+			#return -1;
+		};
+		#elseif {"%1" == "襄阳当铺"} {
+			#if {"${xy_info}" == "on"} {
+				#return -1;
+			};
+			#else {
+				#return 5;
+			};
+		};
+		#elseif {"%1" == "灵州酒馆"} {
+			#if {"${char_id}" == "uncletuu"} {
+				#return -1;
+			};
+			#else {
+				#return 5;
+			};
 		};
 		#else {
 			#return -1;
