@@ -8,7 +8,6 @@ load chaos;
 #var hb_end_time 0;
 #var hb_paused 0;
 #var hb_auto 0;
-#var hb_requested 0;
 #var hb_lunci 0;
 #var has_mixin 0;
 #var hb_ing 0;
@@ -65,7 +64,7 @@ load chaos;
 				#if {${hb_force_wait} == 0 && ${hb_paused} == 0 && ${hb_wait} == 0} {
 					${hb_path_next};
 				};
-			} {2};
+			} {3};
 		};
 	};
 };
@@ -87,7 +86,7 @@ load chaos;
 		chan_robber;
 	};
 	
-	#action {你赶着镖车驶了过来} {
+	#action {^你赶着镖车驶了过来} {
 		#unticker {notify_loop};
 		chaos.remember;
 		#if {${hb_paused} == 0} {
@@ -171,7 +170,6 @@ load chaos;
 };
 
 #alias hb.g {
-	#var hb_requested 1;
 	#format {hb_start_time} {%t} {%T};
 	#list hb_path size hb_path_size;
 	#var hb_path_index 0;
@@ -295,7 +293,6 @@ load chaos;
 
 
 #alias {hb.f} {
-	#var hb_requested 0;
 	#var hb_lunci 0;
 	hb.teardown;
 	hb.get_owner;
@@ -312,6 +309,10 @@ load chaos;
 	#elseif {"${hb_owner}" == "ma"} {
 		gt fm;
 	};
+
+	on_there {
+		hb.d;
+	};
 };
 
 #alias {hb.start} {
@@ -322,7 +323,6 @@ load chaos;
 	#class hb.auto.inner open;
 
 	#action {你一共被奖励了：} {
-		#var hb_requested 0;
 		#class tmp.inner open;
 		#action {%*点经验；} {
 			#class tmp.inner kill;
@@ -405,30 +405,6 @@ load chaos;
 		};
 	};
 	
-	#action {昌隆镖局 总镖头 左二把} {
-		#if {${hb_requested} == 1} {
-			#delay {1} {
-				hb.d
-			};
-		};
-	};
-
-	#action {飞马镖局 总镖头 百胜神拳 马行空} {
-		#if {${hb_requested} == 1} {
-			#delay {1} {
-				hb.d
-			};
-		};
-	};
-	
-	#action {署理总镖头 张志} {
-		#if {${hb_requested} == 1} {
-			#delay {1} {
-				hb.d
-			};
-		};
-	};
-
 	#action {${char_name}把这批红货送到%*他已经派了个伙计名叫%*到%*附近接你} {
 		#var should_go 1;
 		#format {tmp} {%.4s} {%%1};
@@ -498,6 +474,7 @@ load chaos;
 					};
 				};
 				#else {
+					#var tmp 华山;
 					#list hb_path create {
 						gs;gw;gw;gs;gsw;gw;gw;gnw;gn;gn;gnd;gnu;gne;gn;gn;gn;gn;gn;ge;ge;ge;ge;ge;gse;gsu;geu;gsu;geu;gnu;
 						gsd;gsu;gsu;gwu;ged;gsd;geu;gwd;gsu;gs;gn;ge;gw;gnd;gwu;gu;gd;ged;geu;gwd;gsu;ge;gsd;gsd;gsd;gnu;gnu;gnu;gw;gnd;gnu;gn;gs;
@@ -600,6 +577,7 @@ load chaos;
 					};
 				};
 				#else {
+					#var tmp 华山;
 					#list hb_path create  {
 						gn;ge;ge;ge;ge;ge;ge;ge;ge;ge;gs;gsu;gsu;gsu;gsu;gs;gwu;ged;gsd;geu;gwd;gsu;ge;gw;
 						gs;gn;gnd;gnu;gnd;gnd;gnu;gsd;gwd;gnd;gwd;gnd;gnw;gne;gsw;gn;gs;gw;gw;ge;ge;gse;gsu;geu;gsu;geu;gsu;gsu;
@@ -609,8 +587,8 @@ load chaos;
 			#elseif {"${tmp}" == "晋阳"} {
 				#list hb_path create {
 					gn;ge;ge;gn;gn;gw;gw;gw;gw;gn;gn;gn;ge;gne;gne;ge;gn;gne;gse;ge;hb.guohe {huanghe};gn;gne;gne;gne;ge;gn;gn;gw;
-					ge;gn;gn;ge;ge;gsw;gsw;gw;gsw;gs;gs;ge;gn;gne;ge;gne;ge;ge;gs;gs;gw;gw;gw;gsw;gs;gn;gw;ge;gne;gsw;ge;gne;gsw;ge;
-					gne;gsw;ge;gne;gn;genter;gout;gs;gsw;gs;gs;gsw;ge;gw;gn;gs;gw;gw;gn;gn;ge;gs;gn;gw;gw;gn;gn;gw;
+					ge;gn;gn;ge;gn;gn;gs;gs;ge;gsw;gsw;gw;ge;ge;gne;ge;ge;gs;gs;gw;gw;gw;gsw;gs;gw;gw;ge;ge;gs;gs;ge;gw;gs;gn;ge;ge;ge;
+					gw;gn;gs;gne;gn;gn;gw;gw;gw;gs;gn;gne;gsw;ge;gne;gsw;ge;gne;ge;gs;gs;gn;gn;ge;ge;gw;gw;gw;gw;gw;gw;gsw;gw;
 				};
 			};
 			#elseif {"${tmp}" == "成都"} {
@@ -638,10 +616,24 @@ load chaos;
 					gs;gs;gn;gw;gw;gw;ge;ge;ge;ge;ge;ge;gn;gs;ge;gn;gn;gw;ge;gs;gs;ge;ge;ge;gw;gw;gs;gn;gw;gsw;gs;gn;gnw;gw;gs;gw;ge;ge;gw;gs;gw;ge;gs;gw;ge;ge;gw;gs;gs;gn;gn;gn;gn;gn;gn;gs;gw;gw;gn;
 				};
 			};
+			#elseif {"${tmp}" == "武当"} {
+				#list hb_path create {
+					gn;ge;ge;ge;ge;ge;gn;gn;ge;ge;ge;ge;gse;ge;ge;ge;ge;ge;ged;ge;ge;ge;gs;gs;gs;gs;gs;gs;gs;gsw;gs;gs;gs;gw;ge;ge;ge;gw;gw;gs;gw;gn;gs;ge;ge;gw;gs;ge;gw;gs;gw;gn;gs;gs;gn;gw;
+					gs;gn;gw;gw;gw;gw;gn;gn;gs;gs;gw;gw;gw;gw;gw;gn;
+					gs;gw;gw;gs;gsw;gw;gw;gnw;gn;gs;gw;ge;gse;ge;ge;gne;gn;ge;ge;gn;
+				};
+			};
 			#elseif {"${tmp}" == "洛阳"} {
 				#list hb_path create {
 					n;e;e;e;e;e;n;n;e;e;e;se;e;e;e;e;e;ed;e;e;e;
-					
+				};
+			};
+			#elseif {"${tmp}" == "长安"} {
+				#list hb_path create {
+					gn;ge;ge;ge;ge;ge;gs;gw;ge;ge;gw;gs;gw;ge;ge;gw;gs;gw;ge;ge;gw;gs;gse;ge;gw;gse;gnw;gw;gw;ge;gs;
+					gs;gn;gn;gn;gw;gn;gw;ge;ge;gw;gn;gw;ge;ge;gw;gn;gw;ge;ge;gw;gn;gw;gw;gw;ge;ge;gn;gs;ge;gn;gs;ge;gs;gw;ge;gn;
+					gn;gw;ge;gs;ge;ge;gw;gw;gn;gn;gs;ge;gn;gs;gs;gn;ge;ge;ge;ge;gw;gw;gn;gs;gw;gn;gn;ge;ge;ge;gw;gw;gn;gw;ge;gs;gw;
+					gn;gn;gs;gs;gw;gw;ge;ge;gs;gs;gw;gw;gw;gn;gn;gw;gw;gw;gw;ge;ge;ge;ge;ge;gw;gs;gs;gw;gw;gs;
 				};
 			};
 			#else {
@@ -656,7 +648,6 @@ load chaos;
 	} {1};
 
 	#action {你给%*一些失踪的财物} {
-		#var hb_requested 0;
 		#var has_mixin 0;
 		#delay {auto} {
 			#if {${hb_auto} == 1 && ${has_mixin} == 0} {
@@ -791,18 +782,21 @@ load chaos;
 			#return 6;
 		};
 		#if {"%1" == "华山别院"} {
-			#return 6;
+			#return 7;
 		};
 		#elseif {"%1" == "晋阳萧府"} {
-			#return 2;
-		};
-		#elseif {"%1" == "成都当铺"} {
-			#return 4;
-		};
-		#elseif {"%1" == "赞普来福杂货"} {
 			#return 5;
 		};
+		#elseif {"%1" == "成都当铺"} {
+			#return -1;
+		};
+		#elseif {"%1" == "赞普来福杂货"} {
+			#return -1;
+		};
 		#elseif {"%1" == "洛阳四海钱庄"} {
+			#return -1;
+		};
+		#elseif {"%1" == "长安当铺"} {
 			#return -1;
 		};
 		#elseif {"%1" == "襄阳当铺"} {
@@ -812,6 +806,9 @@ load chaos;
 			#else {
 				#return 3;
 			};
+		};
+		#elseif {"%1" == "武当荆西镖局"} {
+			#return -1;
 		};
 		#elseif {"%1" == "灵州酒馆"} {
 			#if {"${char_id}" == "uncletuu"} {
@@ -989,7 +986,6 @@ load chaos;
 };
 
 #alias {mx.q} {
-	#var hb_requested 1;
 	#class mx.inner open;	
 	#action {把一包财物砸向你} {
 		show_to_quest 推车: 拿到密信;

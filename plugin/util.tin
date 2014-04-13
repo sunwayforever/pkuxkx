@@ -1,0 +1,36 @@
+#class util open
+#function {mapc} {
+	#var map_name map_%1;
+	#list ${map_name}_keys create {};
+	#list ${map_name}_values create {};
+	#var result #cr;
+};
+
+#function {maps} {
+	#var map_name map_%1;
+	#var map_key %2;
+	#var map_value %3;
+	#list ${map_name}_keys find ${map_key} map_index;
+	#if {${map_index} == 0} {
+		#list ${map_name}_keys add ${map_key};
+		#list ${map_name}_values add ${map_value};
+	};
+	#else {
+		#list ${map_name}_values set ${map_index} ${map_value};
+	};
+	#var result #cr;
+};
+
+#function {mapg} {
+	#var map_name map_%1;
+	#var map_key %2;
+	#list ${map_name}_keys find ${map_key} map_index;
+	#if {${map_index} == 0} {
+		#var result NULL;
+	};
+	#else {
+		#list ${map_name}_values get ${map_index} result;
+	};
+};
+
+#class util close

@@ -6,6 +6,7 @@
 #read ${HOME}/.tt/pathdir.tin
 #read ${HOME}/.tt/xiaoyao.tin
 
+#read ${HOME}/.tt/plugin/util.tin
 #read ${HOME}/.tt/plugin/action.tin
 #read ${HOME}/.tt/plugin/alias.tin
 
