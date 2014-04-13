@@ -53,7 +53,7 @@ load chaos;
 	#else {
 		#math hb_path_index ${hb_path_index}+1;
 		#if {${hb_path_index} > ${hb_path_size}} {
-			hb.end;
+			hb.pause;
 			#format {hb_end_time} {%t} {%T};
 			show_to_info 到达: ${hb_start_time} -> ${hb_end_time};
 			notify_loop escort arrived;
@@ -608,8 +608,9 @@ load chaos;
 			};
 			#elseif {"${tmp}" == "晋阳"} {
 				#list hb_path create {
-					gn;ge;ge;gn;gn;gw;gw;gw;gw;gn;gn;gn;ge;gne;gne;ge;gn;gne;gse;ge;hb.guohe {huanghe};
-					gn;gne;gne;gne;ge;gn;gn;gw;
+					gn;ge;ge;gn;gn;gw;gw;gw;gw;gn;gn;gn;ge;gne;gne;ge;gn;gne;gse;ge;hb.guohe {huanghe};gn;gne;gne;gne;ge;gn;gn;gw;
+					ge;gn;gn;ge;ge;gsw;gsw;gw;gsw;gs;gs;ge;gn;gne;ge;gne;ge;ge;gs;gs;gw;gw;gw;gsw;gs;gn;gw;ge;gne;gsw;ge;gne;gsw;ge;
+					gne;gsw;ge;gne;gn;genter;gout;gs;gsw;gs;gs;gsw;ge;gw;gn;gs;gw;gw;gn;gn;ge;gs;gn;gw;gw;gn;gn;gw;
 				};
 			};
 			#elseif {"${tmp}" == "成都"} {
@@ -793,7 +794,7 @@ load chaos;
 			#return 6;
 		};
 		#elseif {"%1" == "晋阳萧府"} {
-			#return 4;
+			#return 2;
 		};
 		#elseif {"%1" == "成都当铺"} {
 			#return 4;
@@ -809,7 +810,7 @@ load chaos;
 				#return -1;
 			};
 			#else {
-				#return 5;
+				#return 3;
 			};
 		};
 		#elseif {"%1" == "灵州酒馆"} {
