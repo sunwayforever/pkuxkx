@@ -1,4 +1,5 @@
 #class xingxiu_spec open
+#read ${HOME}/.tt/plugin/liandu.tin;
 #alias {attack.prepare} {
 	#cr;
 };

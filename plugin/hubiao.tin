@@ -485,7 +485,7 @@ load chaos;
 		#elseif {"${hb_owner}" == "zuo"} {
 			#if {"${tmp}" == "бяжн"} {
 				#list hb_path create {
-					gs;gs;gnw;gn;gn;gn;gn;gn;gnw;gn;gne;gne;gn;gne;gne;gnw;gnw;gw;hb.guohe{jiang};gw;gnd;gnw;gnd;gn;gn;gn;gn;gd;gu;
+					gs;gs;gnw;gn;gn;gn;gn;gn;gnw;gn;gne;gne;gn;gne;gne;gnw;gnw;gw;hb.guohe {jiang};gw;gnd;gnw;gnd;gn;gn;gn;gn;gd;gu;
 					gn;gse;ge;gw;gnw;gn;ge;gu;gu;gd;ge;gw;gw;ge;gd;gw;gw;ge;gn;ge;gw;gn;gnw;gnw;gse;gse;gn;gn;gs;gs;gs;gs;gs;gw;gs;
 					gn;ge;ge;gw;gs;ge;gn;gs;gs;gn;ge;gn;gn;gs;gs;gs;gs;gn;gn;ge;gw;gw;gw;gs;gw;ge;ge;gs;gn;gw;gs;gw;gw;ge;ge;ge;gw;gs;gw;ge;ge;gw;gs;gn;gn;gn;gn;
 				};

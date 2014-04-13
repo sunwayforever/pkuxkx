@@ -238,5 +238,6 @@
 #action {“你已经把装备放入熔炉并打算让我帮你锻造了么？”(回答yes or no)} {
 	#send {yes};
 };
+
 #class action close;
 

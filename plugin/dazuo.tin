@@ -19,6 +19,7 @@
 };
 
 #alias {dz.full} {
+	#alias tmp_dz %1;
 	get_dazuo_count;
 	#class dz.full.inner open;
 	#action {你现在精不够} {
@@ -34,6 +35,7 @@
 				#unticker {dz};
 				#class dz.full.inner kill;
 				#delay {5} {
+					tmp_dz;
 				    #showme dz.full;    
     			      };
 			};

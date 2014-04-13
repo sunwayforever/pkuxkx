@@ -1,0 +1,65 @@
+#class liandu open
+#alias {ld.start} {
+	show_to_quest 炼毒;
+	#class ld.innder.open;
+	#action {你将自身精力内力灌注入星宿派号手的尸体} {
+		#delay {3} {
+			get corpse;
+		};
+	};
+	
+	#action {你将星宿派号手的尸体扶了起来背在背上} {
+		#delay {1} {
+			map.go 石棺;
+			#delay {2} {
+				give piaoran corpse;
+			};
+		};
+	};
+
+	#action {这一瞬间，你发觉那至阴的毒气和自己体内原本的毒气相互融合，一同归纳进了气海！} {
+		#delay {3} {
+			dz.full {
+				ask piaoran about 炼毒;				
+			};
+		};
+	};
+	
+	#action {飘然子对着你嘿嘿一笑：“想练毒是吧？先去给你自己找具有用的尸体来} {
+		ld.get_corpse;
+	};
+	              
+	#action {飘然子说道：「好吧，你来试着练习(liandu)一下毒技吧。」} {
+		unwi;
+		liandu;
+	};
+
+	#action {飘然子说道：「石棺正在用呢，你等等吧。」} {
+		#delay {ld_delay} {
+			give piaoran corpse;
+		} {10};
+	};
+
+	#class ld.innder.close;
+	load_map;
+	map.go 石棺;
+	ask piaoran about 炼毒;
+};
+
+#alias {ld.stop} {
+	#class ld.innder kill;
+	show_to_quest 炼毒结束;
+};
+
+#alias {ld.get_corpse} {
+	wi;
+	out;
+	on_truce {
+		map.go 巨岩;
+		kill haoshou;
+		on_dead {
+			zhishi corpse;
+		};
+	};
+};
+#class liandu close
