@@ -1,6 +1,31 @@
 #class guaji open
 #var san_count 0;
 #var guaji_item nil;
+#alias {guatieqiao.start} {
+	#class guatieqiao.inner open;
+	#alias {ticker.gua.start} {
+		#ticker {gua} {
+			kill gaoshou;
+		} {5};
+		
+		on_dead {
+			get all from corpse;
+		};
+	};
+		
+	#alias {ticker.gua.end} {
+		#unticker {gua};
+	};
+
+	#class guatieqiao.inner close;
+	guaji.start tieqiao;
+};
+
+#alias {guatieqiao.stop} {
+	#class guatieqiao.inner kill;
+	guaji.stop;
+};
+
 #alias {guasan.start} {
 	#class guasan.inner open;
 	#action {^│%*包清心散} {
@@ -15,6 +40,18 @@
 		tell %%1 现在有${san_count}包清心散;
 		give %%1 qingxin san;
 	} {1};
+	
+	#alias {ticker.gua.start} {
+		#ticker {gua} {
+			get qingxin san;
+		} {0.05}
+	};
+		
+	#alias {ticker.gua.end} {
+		#unticker {gua};
+		#send {i};
+	};
+	
 	#class guasan.inner close;
 	
 	guaji.start qingxin san;
@@ -31,16 +68,6 @@
 	#send {i}
 
 	#class guaji.inner open;
-	#alias {ticker.gua.start} {
-		#ticker {gua} {
-			get ${guaji_item};
-		} {0.05}
-	};
-		
-	#alias {ticker.gua.end} {
-		#unticker {gua};
-		#send {i};
-	};
 
 	#action {guaji.update %*} {
 		#var tmp_minute @ctd{%%1};

@@ -28,6 +28,7 @@
 #read ${HOME}/.tt/plugin/xiaofeng.tin
 #read ${HOME}/.tt/plugin/hubiao.tin
 #read ${HOME}/.tt/plugin/jianding.tin
+#read ${HOME}/.tt/plugin/pingdiao.tin
 #read ${HOME}/.tt/plugin/hyd.tin;
 #read ${HOME}/.tt/plugin/newbie_xx.tin
 #read ${HOME}/.tt/plugin/newbie_wd.tin
