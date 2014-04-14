@@ -108,6 +108,10 @@
 	#nop #system {echo '%0'|iconv -f gbk -t utf-8|xargs -I. gnome-osd-client -f "<message id='myplugin' osd_fake_translucent_bg='off' osd_vposition='center' animations='off' hide_timeout='3000' osd_halignment='center'> <span size='medium' background='green' foreground='white'> "." </span></message>"};
 };
 
+#alias {notify_alert} {
+	#system {echo %0|iconv -f gbk -t utf-8|xargs -I. notify-send -t 5000 -u critical "${char_id}:" .};
+};
+
 #alias {notify_loop} {
 	#system {echo %0|iconv -f gbk -t utf-8|xargs -I. notify-send -t 5000 -u critical "${char_id}:" .};	
 	#ticker {notify_loop}{

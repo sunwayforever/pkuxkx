@@ -10,7 +10,7 @@
 		
 		on_dead {
 			#3 halt;
-			get all from corpse;
+			get tie qiao from corpse;
 			#ticker {gua} {
 				get tie qiao from corpse;
 			} {1};

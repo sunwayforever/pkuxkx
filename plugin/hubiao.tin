@@ -55,7 +55,7 @@ load chaos;
 			hb.pause;
 			#format {hb_end_time} {%t} {%T};
 			show_to_info 到达: ${hb_start_time} -> ${hb_end_time};
-			notify_loop escort arrived;
+			notify_alert escort arrived;
 			xmpp.notify 到达, 没找到收货人;
 		};
 		#else {
@@ -87,7 +87,6 @@ load chaos;
 	};
 	
 	#action {^你赶着镖车驶了过来} {
-		#unticker {notify_loop};
 		#if {${hb_paused} == 0} {
 			chaos.remember;
 			hb.move;
@@ -167,18 +166,6 @@ load chaos;
 	#alias {attack} {
 		attack.hubiao;
 	};		
-};
-
-#alias hb.g {
-	#format {hb_start_time} {%t} {%T};
-	#list hb_path size hb_path_size;
-	#var hb_path_index 0;
-	#var hb_target "";
-
-	hb.setup;
-	#if {${should_go} == 1} {
-		hb.resume;
-	}
 };
 
 #alias {hb.wait} {
@@ -407,7 +394,6 @@ load chaos;
 	};
 	
 	#action {${char_name}把这批红货送到%*他已经派了个伙计名叫%*到%*附近接你} {
-		#var should_go 1;
 		#format {tmp} {%.4s} {%%1};
 		#if {"${hb_owner}" == "zhang zhi"} {
 			#if {"${tmp}" == "全真"} {
@@ -637,15 +623,19 @@ load chaos;
 					gn;gn;gs;gs;gw;gw;ge;ge;gs;gs;gw;gw;gw;gn;gn;gw;gw;gw;gw;ge;ge;ge;ge;ge;gw;gs;gs;gw;gw;gs;
 				};
 			};
-			#else {
-				#var should_go 0;
-			};
 		};
+		#list hb_path size hb_path_size;
+		#var hb_path_index 0;
+
 		#math hb_lunci ${hb_lunci}+1;
+		#format {hb_start_time} {%t} {%T};
+		
 		show_to_quest ${hb_lunci}: 推车目的地: ${tmp}|%%2|%%3;
 		#nop autopp.set_zh %%2;
 		notify escort start;
-		hb.g;
+
+		hb.setup;
+		hb.resume;
 	} {1};
 
 	#action {你给%*一些失踪的财物} {
@@ -662,7 +652,7 @@ load chaos;
 		#var hb_lunci 0;
 		#delay {hb_delay} {
 			show_to_quest 推车: 密信;
-			notify_loop escort additional reward;
+			notify_alert escort additional reward;
 			xmpp.notify 密信;
 		} {2};
 	};
@@ -872,7 +862,7 @@ load chaos;
 	};
 
 	#action {chaos error} {
-		notify_loop escort chaos;
+		notify_alert escort chaos;
 	};
 	
 	chaos.find;
@@ -944,7 +934,6 @@ load chaos;
 };
 
 #alias {mx.o} {
-	#unticker {notify_loop};
 	xian mixin;
 };
 
