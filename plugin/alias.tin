@@ -29,11 +29,6 @@
 	e;s;
 };
 
-#alias {cq} {
-	n;w;cun %1 gold;
-	e;s;
-};
-
 #alias {chifan} {
 	eat_food;
 };
@@ -42,10 +37,6 @@
 	enter shudong;say 天堂有路你不走呀;d;9;sw;s;#2 sw;nw;out;wd;s;s;w;
 	buy tea 30;
 	e;n;n;eu;zuan dong;se;#2 ne;n;ne;e;u;out;
-};
-
-#alias {xs} {
-    ask song about 下山;
 };
 
 #alias {lm} {
@@ -71,38 +62,19 @@
 	};
 } {1};
 
-#alias bladebook {set brief 1;w;w;n;n;n;ask tian about 淫贼;set brief 2};
-#alias bladebookb {set brief 1;s;s;;e;e;set brief 2};
-
-#alias swordbook {
-    s;s;;w;nw;ask punk about 王小二;
-    #delay {1} {
-	    se;e;n;n;nw;nw;ne;enter hole;ask wang about 鸡;bihua;
-	    w;sw;se;se;
-    };
-};
-
-#alias lpy {
-    ask xiao mao about 老朋友;
-};
-
 #alias wuliang {
     set brief 1;#9 {s};
     #delay {1} {sw;w;w;nw;#4 {sw}};
     #delay {2} {nw;#3 {nu};set brief 2}
 };
 
-#alias yubi {set brief 1;e;se;#4 {sw};s;e;n;w;n;set brief 2}
-
+#alias mg.yubi {set brief 1;e;se;#4 {sw};s;e;n;w;n;set brief 2}
 #alias shiban {say 上报四重恩，下济三途苦;#4 {pull stone up};#3 {push stone down}};
-
-#alias zsf {set brief 1;n;n;n;n;w;w;w;sw;s;se;e;ne;n;nw;sw;s;e;set brief 2;open door;n};
-#alias zsfb {set brief 1;s;w;n;ne;se;w;e;e;s;s;s;s;set brief 2};
-
+#alias mg.zsf {set brief 1;n;n;n;n;w;w;w;sw;s;se;e;ne;n;nw;sw;s;e;set brief 2;open door;n};
+#alias mg.zsfb {set brief 1;s;w;n;ne;se;w;e;e;s;s;s;s;set brief 2};
 #alias {mg.mhz} {
 	e;n;w;s;w;e;e;e;n;break men;s
 };
-
 #alias mg.dmd {
 	open door;n;sw;se;n;s;w;e;
 	#delay {1} {
@@ -114,16 +86,16 @@
 #alias mg.gumu {swim river;n;n;e;n;n;w;w;n;n;e;ban stone;w;w;};
 #alias mg.wxd {n;w;n;e;s;u;out};
 #alias mg.fmq {set brief 1;w;e;s;e;n;n;e;w;s;set brief 0}
-#alias mg.fmq.b {set brief 1;n;e;w;s;s;w;n;w;e}
+#alias mg.fmqb {set brief 1;n;e;w;s;s;w;n;w;e}
 #alias mg.tdh {ed;s;s;s;w;e;n;n;n;n};
-#alias mg.tdh.b {#4 s;w;n;n;e;n;s;wu};
+#alias mg.tdhb {#4 s;w;n;n;e;n;s;wu};
 #alias mg.hz {s;e;n;w;s;s;w};
 #alias mg.yh {n;n;w;e;s;e;e;n;n};
 #alias mg.hhh {say 红花老祖本姓朱,为救苍生下凡来; enter};
 #alias {shudong} {enter shudong;say 天堂有路你不走呀;d;%1};
 
-#alias {sqs} {eu;n;nu;nu;nu;eu;e};
-#alias {sqsb} {w;wd;sd;sd;sd;s;wd};
+#alias {mg.sqs} {eu;n;nu;nu;nu;eu;e};
+#alias {mg.sqsb} {w;wd;sd;sd;sd;s;wd};
 
 #alias {le} {l east};
 #alias {lw} {l west};
@@ -249,17 +221,6 @@
 	#path save backward xxx;
 	#path load xxx;
 	#path run;
-};
-
-#alias {jinmu} {
-	s;s;s;
-	ask yang about 进墓;
-};
-
-#alias {chumu} {
-	s;s;s;s;
-	e;s;s;s;w;
-	ask sun about 出墓;
 };
 
 #alias {reload} {

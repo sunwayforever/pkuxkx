@@ -210,10 +210,10 @@ load chaos;
 		#list exits_list get 1 exit;
 		#5 halt;
 		${exit};
-		#delay {10} {
+		#delay {hb_delay} {
 			@opposite{${exit}};
 			hb.resume;
-		};
+		} {10};
 	};
 };
 
@@ -268,7 +268,7 @@ load chaos;
 	};
 	#else {
 		ask ${hb_owner} about finish;
-		#delay {auto} {
+		#delay {hb_delay} {
 			#if {${hb_auto} == 1 && ${has_mixin} == 0} {
 				hb.start;
 			};
@@ -372,37 +372,38 @@ load chaos;
 			#var getesc_current_id ${getesc_id};
 		};
 	};
+
 	#action {来认领押镖任务} {
 		#delay {1} {
 			#if {${getesc_current_id} != 0} {
 				hb.q ${getesc_current_id};
 			};
 			#else {
-				#delay {10} {
+				#delay {hb_delay} {
 					hb.start;
-				};
+				} {10};
 			};
 		};
 	};
 
 	#action {请选择其他任务} {
-		#delay {2} {
+		#delay {hb_delay} {
 			#var getesc_current_score 0;
 			#var getesc_current_id 0;
 			hb.q;
-		};
+		} {2};
 	};
 
 	#action {你上次运镖太辛苦了} {
-		#delay {10} {
+		#delay {hb_delay} {
 			hb.q;
-		};
+		} {10};
 	};
 
 	#action {你所领的任务在任务列表中并不存在} {
-		#delay {10} {
+		#delay {hb_delay} {
 			hb.q;
-		};
+		} {10};
 	};
 	
 	#action {${char_name}把这批红货送到%*他已经派了个伙计名叫%*到%*附近接你} {
@@ -649,7 +650,7 @@ load chaos;
 
 	#action {你给%*一些失踪的财物} {
 		#var has_mixin 0;
-		#delay {auto} {
+		#delay {hb_delay} {
 			#if {${hb_auto} == 1 && ${has_mixin} == 0} {
 				hb.start;
 			};
@@ -659,11 +660,11 @@ load chaos;
 	#action {递给你一封密信} {
 		#var has_mixin 1;
 		#var hb_lunci 0;
-		#delay {2} {
+		#delay {hb_delay} {
 			show_to_quest 推车: 密信;
 			notify_loop escort additional reward;
 			xmpp.notify 密信;
-		};
+		} {2};
 	};
 
 	#class hb.auto.inner close;
@@ -832,10 +833,11 @@ load chaos;
 	#var hb_auto 0;
 	set brief 2;
 	#class hb.auto.inner kill;
+	#undelay {hb_delay};
 	dz.full.cancel;
 };
 
-#alias {merge_path} {
+#alias {hb.merge_path} {
 	@stackcreate{tmp};
 	@stackpush{tmp;#cr};
 
@@ -844,7 +846,7 @@ load chaos;
 		#list hb_path get ${hb_path_index} v;
 		#list tmp_path get ${tmp_index} tmp_top;
 		#if {"@opposite{${v}}" == "@stacktop{tmp}"} {
-			@stackpop{tmp};
+			#var nil @stackpop{tmp};
 		};
 		#else {
 			@stackpush{tmp;${v}};
@@ -864,7 +866,7 @@ load chaos;
 		};
 		chaos.remember;
 		show_to_info 恢复;
-		#delay {resume} {
+		#delay {hb_delay} {
 			hb.resume;
 		} {10};
 	};
@@ -907,7 +909,7 @@ load chaos;
 	};
 	#action {所有人被赶下了渡船} {
 		#class guohe.inner kill;
-		#delay {hb.xiachuan} {
+		#delay {hb_delay} {
 			hb.resume;
 		} {5};
 	};

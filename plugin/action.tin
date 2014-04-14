@@ -207,14 +207,6 @@
 	answer 送信;
 };
 
-#action {冰魄杖(Bingpo zhang)} {
-	get bingpo zhang;
-};
-
-#action {这个方向没有出路} {
-	#path del;
-};
-
 #action {你确定要升级吗} {
 	#send {y};
 };

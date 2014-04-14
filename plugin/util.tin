@@ -42,6 +42,7 @@
 #function {stackpush} {
 	#var stack_name stack_%1;
 	#list ${stack_name} add %2;
+	#var result #cr;
 };
 
 #function {stacktop} {
