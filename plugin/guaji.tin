@@ -9,6 +9,8 @@
 		} {5};
 		
 		on_dead {
+			#3 halt;
+			get all from corpse;
 			#ticker {gua} {
 				get all from corpse;
 			} {1};
