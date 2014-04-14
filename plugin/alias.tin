@@ -605,8 +605,16 @@
 	};
 };
 
-#list directions create {north;south;east;west;up;down;enter;out;northeast;southwest;northwest;southeast;northdown;southup;northup;southdown;eastup;westdown;eastdown;westup;};
-#list opposite_directions create {south;north;west;east;down;up;out;enter;southwest;northeast;southeast;northwest;southup;northdown;southdown;northup;westdown;eastup;westup;eastdown;};
+#list directions create {
+	north;south;east;west;up;down;enter;out;northeast;southwest;northwest;southeast;northdown;southup;northup;southdown;eastup;westdown;eastdown;westup;
+	n;s;e;w;u;d;ne;sw;nw;se;nd;su;nu;sd;eu;wd;ed;wu;
+	gn;gs;ge;gw;gu;gd;gne;gsw;gnw;gse;gnd;gsu;gnu;gsd;geu;gwd;ged;gwu;genter;gout;
+};
+#list opposite_directions create {
+	south;north;west;east;down;up;out;enter;southwest;northeast;southeast;northwest;southup;northdown;southdown;northup;westdown;eastup;westup;eastdown;
+	s;n;w;e;d;u;sw;ne;se;nw;su;nd;sd;nu;wd;eu;wu;ed;
+	gs;gn;gw;ge;gd;gu;gsw;gne;gse;gnw;gsu;gnd;gsd;gnu;gwd;geu;gwu;ged;gout;genter;
+};
 #function {opposite} {
 	#list directions find %1 index;
 	#list opposite_directions get ${index} result;

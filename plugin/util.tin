@@ -1,12 +1,12 @@
 #class util open
-#function {mapc} {
+#function {mapcreate} {
 	#var map_name map_%1;
 	#list ${map_name}_keys create {};
 	#list ${map_name}_values create {};
 	#var result #cr;
 };
 
-#function {maps} {
+#function {mapset} {
 	#var map_name map_%1;
 	#var map_key %2;
 	#var map_value %3;
@@ -21,7 +21,7 @@
 	#var result #cr;
 };
 
-#function {mapg} {
+#function {mapget} {
 	#var map_name map_%1;
 	#var map_key %2;
 	#list ${map_name}_keys find ${map_key} map_index;
@@ -33,4 +33,42 @@
 	};
 };
 
+#function {stackcreate} {
+	#var stack_name stack_%1;
+	#list ${stack_name} create {};
+	#var result #cr;
+};
+
+#function {stackpush} {
+	#var stack_name stack_%1;
+	#list ${stack_name} add %2;
+};
+
+#function {stacktop} {
+	#var stack_name stack_%1;
+	#list ${stack_name} size tmp_size;
+	#if {${tmp_size} == 0} {
+		#var result NULL;
+	};
+	#else {
+		#list ${stack_name} get ${tmp_size} result;
+	};
+};
+
+#function {stacktolist} {
+	#var stack_name stack_%1;
+	#var result ${${stack_name}};
+};
+
+#function {stackpop} {
+	#var stack_name stack_%1;
+	#list ${stack_name} size tmp_size;
+	#if {${tmp_size} == 0} {
+		#var result NULL;
+	};
+	#else {
+		#list ${stack_name} get ${tmp_size} result;
+		#list ${stack_name} delete ${tmp_size};
+	};
+};
 #class util close

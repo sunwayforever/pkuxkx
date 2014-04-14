@@ -1,30 +1,30 @@
 #class jianding open
-@mapc{jianding};
-@maps{jianding;剑;sword};
-@maps{jianding;刀;blade};
-@maps{jianding;杖;stff};
-@maps{jianding;鞭;whip};
-@maps{jianding;枪;spear};
-@maps{jianding;锤;hammer};
-@maps{jianding;铠甲;armor};
-@maps{jianding;盔;head};
-@maps{jianding;腰带;waist};
-@maps{jianding;靴;boots};
-@maps{jianding;项链;necklace};
-@maps{jianding;戒指;ring};
-@maps{jianding;披风;surcoat};
-@maps{jianding;袍;cloth};
-@maps{jianding;护腕;wrists};
-@maps{jianding;手套;hands};
-@maps{jianding;盾;shield};
+@mapcreate{jianding};
+@mapset{jianding;剑;sword};
+@mapset{jianding;刀;blade};
+@mapset{jianding;杖;stff};
+@mapset{jianding;鞭;whip};
+@mapset{jianding;枪;spear};
+@mapset{jianding;锤;hammer};
+@mapset{jianding;铠甲;armor};
+@mapset{jianding;盔;head};
+@mapset{jianding;腰带;waist};
+@mapset{jianding;靴;boots};
+@mapset{jianding;项链;necklace};
+@mapset{jianding;戒指;ring};
+@mapset{jianding;披风;surcoat};
+@mapset{jianding;袍;cloth};
+@mapset{jianding;护腕;wrists};
+@mapset{jianding;手套;hands};
+@mapset{jianding;盾;shield};
 #action {从劫匪身上掉了出来一%*之%*} {
-	jianding @mapg{jianding;%2}
+	jianding @mapget{jianding;%2}
 };
 #action {^你捧着%*之%*上上下下仔仔细细的打量了一遍。} {
 	#action {可塑性:%*(%*)} {
 		#unaction {可塑性:%*(%*)};
 		#var cong %%1;
-		#var type @mapg{jianding;%2};
+		#var type @mapget{jianding;%2};
 		#if {${cong} > 1} {
 			show_to_info 掉装备: ${cong} 孔 ${type};
 			put ${type} in bao;

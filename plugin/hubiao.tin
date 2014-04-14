@@ -88,8 +88,8 @@ load chaos;
 	
 	#action {^你赶着镖车驶了过来} {
 		#unticker {notify_loop};
-		chaos.remember;
 		#if {${hb_paused} == 0} {
+			chaos.remember;
 			hb.move;
 		};
 		#else {
@@ -223,7 +223,7 @@ load chaos;
 	#var hb_force_wait 0;
 
 	#alias {hb.back} {
-		merge_path;
+		hb.merge_path;
 		hb.duobi;
 	};
 
@@ -835,56 +835,23 @@ load chaos;
 	dz.full.cancel;
 };
 
-#alias {mergeable} {
-	#if {"%1" == "gn" && "%2" == "gs"
-	||"%1" == "gs" && "%2" == "gn"
-	||"%1" == "gw" && "%2" == "ge"
-	||"%1" == "ge" && "%2" == "gw"
-	||"%1" == "gse" && "%2" == "gnw"
-	||"%1" == "gnw" && "%2" == "gse"
-	||"%1" == "gsw" && "%2" == "gne"
-	||"%1" == "gne" && "%2" == "gsw"
-	||"%1" == "gu" && "%2" == "gd"
-	||"%1" == "gd" && "%2" == "gu"
-	||"%1" == "gnu" && "%2" == "gsd"
-	||"%1" == "gsd" && "%2" == "gnu"
-	||"%1" == "gsu" && "%2" == "gnd"
-	||"%1" == "gnd" && "%2" == "gsu"
-	||"%1" == "geu" && "%2" == "gwd"
-	||"%1" == "gwd" && "%2" == "geu"
-	||"%1" == "gwu" && "%2" == "ged"
-	||"%1" == "ged" && "%2" == "gwu"
-	||"%1" == "genter" && "%2" == "gout"
-	||"%1" == "gout" && "%2" == "genter"}
-	{
-		#var merge_result 1;
-	};
-	#else {
-		#var merge_result 0;
-	};
-};
-
 #alias {merge_path} {
-	#list tmp_path create;
-	#list tmp_path add #cr;
-	#var tmp_index 1;
+	@stackcreate{tmp};
+	@stackpush{tmp;#cr};
 
 	#math hb_path_index ${hb_path_index}+1;
 	#while {${hb_path_index} <= ${hb_path_size}} {
 		#list hb_path get ${hb_path_index} v;
 		#list tmp_path get ${tmp_index} tmp_top;
-		mergeable ${v} ${tmp_top};
-		#if {${merge_result} == 1} {
-			#list tmp_path delete $tmp_index;
-			#math tmp_index ${tmp_index}-1;
+		#if {"@opposite{${v}}" == "@stacktop{tmp}"} {
+			@stackpop{tmp};
 		};
 		#else {
-			#list tmp_path add ${v};
-			#math tmp_index ${tmp_index}+1;			
+			@stackpush{tmp;${v}};
 		};
 		#math hb_path_index ${hb_path_index}+1;
 	}
-	#var hb_path ${tmp_path};
+	#var hb_path @stacktolist{tmp};
 	#var hb_path_index 0;
 	#list hb_path size hb_path_size;
 };
