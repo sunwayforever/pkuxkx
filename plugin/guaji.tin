@@ -9,12 +9,15 @@
 		} {5};
 		
 		on_dead {
-			get all from corpse;
+			#ticker {gua} {
+				get all from corpse;
+			} {1};
 		};
 	};
 		
 	#alias {ticker.gua.end} {
 		#unticker {gua};
+		#send {i};
 	};
 
 	#class guatieqiao.inner close;
@@ -65,10 +68,8 @@
 #alias {guaji.start} {
 	#var guaji_item %0;
 	show_to_quest ¹Ò»ú: %0;
-	#send {i}
 
 	#class guaji.inner open;
-
 	#action {guaji.update %*} {
 		#var tmp_minute @ctd{%%1};
 		#if {${tmp_minute} == 59 || ${tmp_minute} == 29 || ${tmp_minute} == 14 || ${tmp_minute} == 44} {
