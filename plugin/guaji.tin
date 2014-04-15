@@ -12,7 +12,7 @@
 			#3 halt;
 			get all from corpse;
 			#ticker {gua} {
-				get all from corpse;
+				get tie qiao from corpse;
 			} {1};
 		};
 	};
