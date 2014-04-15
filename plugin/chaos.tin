@@ -72,11 +72,13 @@
 };
 
 #list exits_list create {};
+#gag {get_exits};
 #alias {get_exits}  {
 	#class get_exits.inner open;
 	#alias {get_exits_done} {
 		#class get_exits.inner kill;
 		#list exits_list add {fake};
+		#showme {get_exits};
 	};
 	#action {这里唯一的出口是 %w。} {
 		#list exits_list create {%%1};

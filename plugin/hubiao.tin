@@ -192,18 +192,20 @@ load chaos;
 };
 
 #alias {hb.duobi} {
-	get_exits;
-	#delay {1} {
+	#action {get_exits} {
+		#unaction {get_exits};
 		#list exits_list get 1 exit;
-		#5 halt;
-		${exit};
+		#delay {1} {
+			${exit};
+		};
 		#delay {hb_delay} {
 			@opposite{${exit}};
 			hb.resume;
 		} {10};
 	};
+	#5 halt;
+	get_exits;
 };
-
 
 #alias {hb.resume} {
 	#var hb_paused 0;

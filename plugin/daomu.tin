@@ -1,5 +1,7 @@
 #class daomu open
 
+#var dm_dazuo_count 250;
+
 #alias {dm.start} {
 	#class daomu.inner open;
 	#action {由于你连番的挖掘,铁锹在你手中竟然断成两截!} {wield qiao};
@@ -40,7 +42,7 @@
 		watch 墙壁 20;
 		yun regenerate;
 		yun recover;
-		dazuo 200;
+		dazuo ${dm_dazuo_count};
 	};
 
 	#class daomu.inner close;
