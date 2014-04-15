@@ -1,6 +1,6 @@
 #class daomu open
 
-#alias {daomu.start} {
+#alias {dm.start} {
 	#class daomu.inner open;
 	#action {由于你连番的挖掘,铁锹在你手中竟然断成两截!} {wield qiao};
 	#action {怎么,你准备用手挖啊?想盗墓也要找一个好工具呀!} {uw all;wield qiao;dig 岳王墓;};
@@ -11,7 +11,7 @@
 	};
 	#action {你挖了良久} {
 		#delay {2} {
-			#nop enter;
+			enter;
 			#math dm_count ${dm_count}+1;
 			show_to_info 挖到 ${dm_count} 层;
 			#delay {5} {
@@ -23,7 +23,7 @@
 	#action {功夫不负有心人，你终于挖通了地道} {
 		show_to_info 挖完了;
 		#delay {2} {
-			#nop enter;
+			enter;
 			watch_qiang;
 		};
 		
@@ -49,7 +49,7 @@
 	dig 岳王墓;
 };
 
-#alias {daomu.stop} {
+#alias {dm.stop} {
 	#class daomu.inner kill;
 };
 

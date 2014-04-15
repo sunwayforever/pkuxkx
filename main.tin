@@ -36,6 +36,7 @@
 #read ${HOME}/.tt/plugin/newbie_gb.tin
 #read ${HOME}/.tt/plugin/newbie_hs.tin
 #read ${HOME}/.tt/plugin/gem.tin;
+#read ${HOME}/.tt/plugin/daomu.tin;
 #read ${HOME}/.tt/plugin/wat.tin;
 #read ${HOME}/.tt/plugin/lingwu.tin;
 #read ${HOME}/.tt/plugin/xuantie.tin;

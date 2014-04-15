@@ -1,8 +1,21 @@
 #class guaji open
-#var san_count 0;
 #var guaji_item nil;
 #alias {guatieqiao.start} {
+	#var tq_count 0;
 	#class guatieqiao.inner open;
+	#action {^│%*柄铁锹} {
+		#var tq_count @ctd{%%1};
+	} {1};
+	
+	#action { %*柄铁锹} {
+		#var tq_count @ctd{%1%};
+	} {1};
+	
+	#action {(%*)告诉你：tq} {
+		tell %%1 现在有${tq_count}柄铁锹;
+		give %%1 tie qiao;
+	} {1};
+
 	#alias {ticker.gua.start} {
 		#ticker {gua} {
 			kill gaoshou;
@@ -19,7 +32,6 @@
 		
 	#alias {ticker.gua.end} {
 		#unticker {gua};
-		#send {i};
 	};
 
 	#class guatieqiao.inner close;
@@ -32,6 +44,7 @@
 };
 
 #alias {guasan.start} {
+	#var san_count 0;
 	#class guasan.inner open;
 	#action {^│%*包清心散} {
 		#var san_count @ctd{%%1};
@@ -54,7 +67,6 @@
 		
 	#alias {ticker.gua.end} {
 		#unticker {gua};
-		#send {i};
 	};
 	
 	#class guasan.inner close;
@@ -70,7 +82,6 @@
 #alias {guaji.start} {
 	#var guaji_item %0;
 	show_to_quest 挂机: %0;
-
 	#class guaji.inner open;
 	#action {guaji.update %*} {
 		#var tmp_minute @ctd{%%1};
@@ -82,10 +93,12 @@
 		#if {${tmp_minute} == 1 || ${tmp_minute} == 31 || ${tmp_minute} == 16 || ${tmp_minute} == 46} {
 			show_to_info 抢完了...;
 			ticker.gua.end;
+			#send {i};
 		};
 	};
 
 	#class guaji.inner close;
+	#send {i};
 };
 
 #alias {guaji.stop} {
