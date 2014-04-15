@@ -96,6 +96,10 @@
 		check_shuizei;
 	};
 
+	#action {你想用机关对付谁} {
+		#unticker {zhi};	
+	};
+	
 	#action {机关已经使用殆尽} {
 		#unticker {zhi};
 	};
