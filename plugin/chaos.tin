@@ -64,21 +64,24 @@
 			#showme chaos error;
 		};
 	};
-	#delay {1} {
-		#var exits_list_index 1;
-		#list exits_list size exits_list_size;
-		check;		
+	#action {get_exits: done} {
+		#unaction {get_exits: done};
+		#delay {1} {
+			#var exits_list_index 1;
+			#list exits_list size exits_list_size;
+			check;		
+		};
 	};
 };
 
 #list exits_list create {};
-#gag {get_exits};
+#gag {get_exits: done};
 #alias {get_exits}  {
 	#class get_exits.inner open;
 	#alias {get_exits_done} {
 		#class get_exits.inner kill;
 		#list exits_list add {fake};
-		#showme {get_exits};
+		#showme {get_exits: done};
 	};
 	#action {这里唯一的出口是 %w。} {
 		#list exits_list create {%%1};
@@ -116,7 +119,7 @@
 	};
 	
 	#class get_exits.inner close;
-	l;
+	#send {l};
 };
 
 #class chaos close

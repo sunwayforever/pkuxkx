@@ -67,21 +67,26 @@
 	#cr;
 };
 
+#alias {login} {
+	unwield all;
+	wi;
+	we;
+	show_to_quest   ;
+	show_to_shortcut ${shortcut};
+	#send {i};
+	#send {hpbrief};
+	#send {uptime};
+	#send {time};
+	perform_special;
+	init_set;
+	show.init;
+	check_baowei;
+	#send {l};
+};
+
 #action {此ID档案已存在} {
 	#delay {5} {
-		unwield all;
-		wi;
-		we;
-		show_to_quest   ;
-		show_to_shortcut ${shortcut};
-		#send {i};
-		#send {hpbrief};
-		#send {uptime};
-		#send {time};
-		perform_special;
-		init_set;
-		show.init;
-		check_baowei;
+		login;
 	};
 };
 

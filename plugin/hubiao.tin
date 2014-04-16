@@ -64,7 +64,7 @@ load chaos;
 				#if {${hb_force_wait} == 0 && ${hb_paused} == 0 && ${hb_wait} == 0} {
 					${hb_path_next};
 				};
-			} {3};
+			} {3.5};
 		};
 	};
 };
@@ -192,19 +192,21 @@ load chaos;
 };
 
 #alias {hb.duobi} {
-	#action {get_exits} {
-		#unaction {get_exits};
+	#action {get_exits: done} {
+		#unaction {get_exits: done};
 		#list exits_list get 1 exit;
+		#3 halt;
 		#delay {1} {
-			${exit};
+			#send {${exit}};
 		};
 		#delay {hb_delay} {
-			@opposite{${exit}};
+			#send {@opposite{${exit}}};
 			hb.resume;
 		} {10};
 	};
-	#5 halt;
-	get_exits;
+	#delay {3} {
+		get_exits;
+	};
 };
 
 #alias {hb.resume} {
