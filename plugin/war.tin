@@ -245,13 +245,11 @@
 	#showme mingjiao enemy:%1;
 };
 
-#alias {taopao} {
-	#action {get_exits} {
-		#unaction {get_exits};
+#alias {tao} {
+	#action {get_exits: done} {
+		#unaction {get_exits: done};
 		#list exits_list get 1 exit;
-		#delay {1} {
-			${exit};
-		};
+		${exit};
 	};
 	#5 halt;
 	get_exits;

@@ -196,17 +196,14 @@ load chaos;
 		#unaction {get_exits: done};
 		#list exits_list get 1 exit;
 		#3 halt;
-		#delay {1} {
-			#send {${exit}};
-		};
+		#send {${exit}};
 		#delay {hb_delay} {
 			#send {@opposite{${exit}}};
 			hb.resume;
 		} {10};
 	};
-	#delay {3} {
-		get_exits;
-	};
+	#3 halt;
+	get_exits;
 };
 
 #alias {hb.resume} {
