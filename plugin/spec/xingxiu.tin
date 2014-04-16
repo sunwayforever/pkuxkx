@@ -86,7 +86,7 @@
 	#unaction {由于缺乏实战经验};
 }
 
-#list my_weapons create {staff};
+#list my_weapons create {my staff};
 #alias {perform_special} {
 	#cr;
 };
