@@ -64,7 +64,7 @@ load chaos;
 				#if {${hb_force_wait} == 0 && ${hb_paused} == 0 && ${hb_wait} == 0} {
 					${hb_path_next};
 				};
-			} {3.5};
+			} {2};
 		};
 	};
 };
@@ -195,9 +195,13 @@ load chaos;
 	#action {get_exits: done} {
 		#unaction {get_exits: done};
 		#list exits_list get 1 exit;
+		#showme exit: ${exit};
 		#3 halt;
-		#send {${exit}};
+		on_unbusy {
+			#send {${exit}};	
+		};
 		#delay {hb_delay} {
+			#showme opposite: @opposite{${exit}};
 			#send {@opposite{${exit}}};
 			hb.resume;
 		} {10};

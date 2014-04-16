@@ -350,6 +350,7 @@
 		tmp_unbusy;
 	};
 	#class unbusy.inner close;
+	checkbusy;
 };
 
 #alias {on_hit} {
