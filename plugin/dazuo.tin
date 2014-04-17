@@ -26,7 +26,7 @@
 		heal 1;
 	};
 	#class dz.full.inner close;
-	#delay {dz.delay} {
+	#delay {dz_delay} {
 		#ticker {dz} {
 			#if {${nl_percent} < 180} {
 			    yun recover; dazuo ${dazuo_count};  
@@ -34,10 +34,10 @@
 			#else {
 				#unticker {dz};
 				#class dz.full.inner kill;
-				#delay {5} {
+				#delay {dz_delay} {
 					tmp_dz;
 				    #showme dz.full;    
-    			      };
+    			} {3};
 			};
 		} {1};
 	}{1};

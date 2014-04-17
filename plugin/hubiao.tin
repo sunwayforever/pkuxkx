@@ -70,6 +70,7 @@ load chaos;
 };
 
 #alias {hb.setup} {
+	clear_npc {李铁嘴};
 	clear_npc {地痞};
 	clear_npc {小流氓};
 	clear_npc {流氓头};
@@ -195,13 +196,11 @@ load chaos;
 	#action {get_exits: done} {
 		#unaction {get_exits: done};
 		#list exits_list get 1 exit;
-		#showme exit: ${exit};
 		#3 halt;
 		on_unbusy {
 			#send {${exit}};	
 		};
 		#delay {hb_delay} {
-			#showme opposite: @opposite{${exit}};
 			#send {@opposite{${exit}}};
 			hb.resume;
 		} {10};
@@ -246,7 +245,7 @@ load chaos;
 		#var hb_owner zuo;
 	};
 	#elseif {"${CurrentPosition}" == "zz"} {
-		#var hb_owner zhang zhi;
+		#var hb_owner zhang;
 	};
 	#elseif {"${CurrentPosition}" == "fm"} {
 		#var hb_owner ma;
@@ -295,7 +294,7 @@ load chaos;
 	#if {"${hb_owner}" == "zuo"} {
 		gt zuo;
 	};
-	#elseif {"${hb_owner}" == "zhang zhi"} {
+	#elseif {"${hb_owner}" == "zhang"} {
 		gt zz;
 	};
 	#elseif {"${hb_owner}" == "ma"} {
@@ -400,7 +399,7 @@ load chaos;
 	
 	#action {${char_name}把这批红货送到%*他已经派了个伙计名叫%*到%*附近接你} {
 		#format {tmp} {%.4s} {%%1};
-		#if {"${hb_owner}" == "zhang zhi"} {
+		#if {"${hb_owner}" == "zhang"} {
 			#if {"${tmp}" == "全真"} {
 				#list hb_path create {
 					gs;gw;gw;gs;gsw;gw;gw;gnw;gn;gn;gnd;gnu;gne;gn;gn;gn;gn;gn;gnw;gnw;gw;gnw;gnw;gn;gnw;gnu;gnu;gn;gnu;gn;gn;gn;gn;gn;gn;gn;
@@ -667,7 +666,7 @@ load chaos;
 };
 
 #function {getesc_get_score} {
-	#if {"${hb_owner}" == "zhang zhi"} {
+	#if {"${hb_owner}" == "zhang"} {
 		#if {"%1" == "全真天尊讲经堂"} {
 			#if {"${xy_info}" == "on"} {
 				#return -1;
@@ -804,7 +803,7 @@ load chaos;
 			};
 		};
 		#elseif {"%1" == "武当荆西镖局"} {
-			#return -1;
+			#return 2;
 		};
 		#elseif {"%1" == "灵州酒馆"} {
 			#if {"${char_id}" == "uncletuu"} {
