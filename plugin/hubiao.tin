@@ -64,7 +64,7 @@ load chaos;
 				#if {${hb_force_wait} == 0 && ${hb_paused} == 0 && ${hb_wait} == 0} {
 					${hb_path_next};
 				};
-			} {2};
+			} {3.5};
 		};
 	};
 };
@@ -707,7 +707,7 @@ load chaos;
 			};
 		};
 		#elseif {"%1" == "ÑïÖİ×íÏÉÂ¥"} {
-			#if {"${char_id}" == "uncletuu"} {
+			#if {"${char_menpai}" == "gaibang"} {
 				#return -1;
 			};
 			#elseif {"${xy_info}" == "on"} {
@@ -761,7 +761,7 @@ load chaos;
 			#return 3;
 		};
 		#elseif {"%1" == "ÑïÖİ×íÏÉÂ¥"} {
-			#if {"${char_id}" == "uncletuu"} {
+			#if {"${char_menpai}" == "gaibang"} {
 				#return -1;
 			};
 			#else {
@@ -806,7 +806,7 @@ load chaos;
 			#return 2;
 		};
 		#elseif {"%1" == "ÁéÖİ¾Æ¹İ"} {
-			#if {"${char_id}" == "uncletuu"} {
+			#if {"${char_menpai}" == "gaibang"} {
 				#return -1;
 			};
 			#else {

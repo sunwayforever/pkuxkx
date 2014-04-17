@@ -5,7 +5,7 @@
 
 #var char_name ½ð±´±´;
 #var char_id bbkin;
+#var char_menpai chaoting;
 #read ${HOME}/.tt/main.tin;
-#read ${HOME}/.tt/plugin/spec/chaoting.tin;
 
 #session bbkin pkuxkx.net 8080; bbkin; ${XKX_PASSWORD};

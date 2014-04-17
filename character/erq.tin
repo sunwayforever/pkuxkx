@@ -5,8 +5,7 @@
 
 #var char_name ¶þÇò;
 #var char_id erq;
+#var char_menpai wudang;
 #read ${HOME}/.tt/main.tin;
-#read ${HOME}/.tt/plugin/spec/wudang.tin;
-#nop #read ${HOME}/.tt/plugin/xmpp.tin;
 
 #session erq pkuxkx.net 8080; erq; ${XKX_PASSWORD};

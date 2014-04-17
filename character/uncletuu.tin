@@ -5,7 +5,7 @@
 
 #var char_name ∞¢Õ¡≤Æ;
 #var char_id uncletuu;
+#var char_menpai gaibang;
 #read ${HOME}/.tt/main.tin;
-#read ${HOME}/.tt/plugin/spec/gaibang.tin;
 
 #session sunxm pkuxkx.net 8080; uncletuu; ${XKX_PASSWORD};

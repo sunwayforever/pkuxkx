@@ -5,7 +5,7 @@
 
 #var char_name °Í¿ËÁ¦;
 #var char_id bakerli;
+#var char_menpai huashan;
 #read ${HOME}/.tt/main.tin;
-#read ${HOME}/.tt/plugin/spec/huashan.tin;
 
 #session bakerli pkuxkx.net 8080; bakerli; ${XKX_PASSWORD};
