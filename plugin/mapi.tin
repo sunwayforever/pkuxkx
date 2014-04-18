@@ -1,5 +1,5 @@
 #class mapi open
-#alias {mapi.start} {
+#alias {mp.start} {
 	#class mp.inner open;
 	#ticker {hit} {
 		hit lxiao npc;
@@ -14,7 +14,7 @@
 	#nop jifa parry flatter;
 };
 
-#alias {mapi.stop} {
+#alias {mp.stop} {
 	#class mp.inner kill;
 	#alias {attack} {attack.normal};
 	#alias {wi} {wi_normal};

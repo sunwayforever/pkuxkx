@@ -30,11 +30,15 @@
 	#send {i};
 } {180};
 
+#gag npc refreshed;
 #alias {zhengdian} {
 	#showme guaji.update %1;
 	#var tmp_minute @ctd{%1};
 	#var uptime_info ${tmp_minute}·Ö;
 	update_status;
+	#if {${tmp_minute} == 0 || ${tmp_minute} == 30 || ${tmp_minute} == 15 || ${tmp_minute} == 45} {
+		#showme npc refreshed;
+	};
 };
 
 #alias {update_status} {

@@ -2,7 +2,7 @@
 @mapcreate{jianding};
 @mapset{jianding;剑;sword};
 @mapset{jianding;刀;blade};
-@mapset{jianding;杖;stff};
+@mapset{jianding;杖;staff};
 @mapset{jianding;鞭;whip};
 @mapset{jianding;枪;spear};
 @mapset{jianding;锤;hammer};
@@ -17,9 +17,47 @@
 @mapset{jianding;护腕;wrists};
 @mapset{jianding;手套;hands};
 @mapset{jianding;盾;shield};
+
+@mapcreate{jd_value};
+@mapset{jd_value;sword;200};
+@mapset{jd_value;blade;200};
+@mapset{jd_value;staff;200};
+@mapset{jd_value;whip;200};
+@mapset{jd_value;spear;200};
+@mapset{jd_value;hammer;200};
+@mapset{jd_value;armor;300};
+@mapset{jd_value;head;100};
+@mapset{jd_value;waist;50};
+@mapset{jd_value;boots;50};
+@mapset{jd_value;necklace;0};
+@mapset{jd_value;ring;0};
+@mapset{jd_value;surcoat;50};
+@mapset{jd_value;cloth;50};
+@mapset{jd_value;wrists;50};
+@mapset{jd_value;hands;50};
+@mapset{jd_value;shield;300};
+
+#function {jd_get_method} {
+	#if {
+		"%1" == "sword"
+		|| "%1" == "blade"
+		|| "%1" == "staff"
+		|| "%1" == "whip"
+		|| "%1" == "spear"
+		|| "%1" == "hammer"
+		|| "%1" == "shield"
+	} {
+		#var result wield;
+	};
+	#else {
+		#var result wear;	
+	};
+};
+
 #action {从劫匪身上掉了出来一%*之%*} {
 	jianding @mapget{jianding;%2}
 };
+
 #action {^你捧着%*之%*上上下下仔仔细细的打量了一遍。} {
 	#action {可塑性:%*(%*)} {
 		#unaction {可塑性:%*(%*)};
@@ -31,4 +69,55 @@
 		};
 	};
 };
+
+#alias {jd.start} {
+	#class jd.inner open;
+	#action {你从包袱中拿出%*之%*。} {
+		#var jd_item @mapget{jianding;%%2};
+		@stackpush{tmp;${jd_item}};
+	};
+	#action {之%*(+%*)} {
+		#var jd_current_value %%2;
+		#var jd_item @mapget{jianding;%%1};
+		#var required_value @mapget{jd_value;${jd_item}};
+		unwi;
+		remove all;
+		#delay {3} {
+			#if {${required_value} <= ${jd_current_value}} {
+				show_to_info good: ${jd_item}:${jd_current_value} -> ${required_value};
+				put ${jd_item} in bao;
+			};
+			#else {
+				show_to_info bad: ${jd_item}:${jd_current_value} -> ${required_value};
+				sell ${jd_item};
+			};
+			jd.next;			
+		};
+	} {1};
+	
+	#class jd.inner close;
+	@stackcreate{tmp};
+	remove all;
+	unwield all;
+	get all from bao;
+
+	#delay {3} {
+		jd.next;
+	};
+};
+
+#alias {jd.next} {
+	#var item @stackpop{tmp};
+	#if {"${item}" != "NULL"} {
+		@jd_get_method{${item}} ${item};
+		#send {i};
+	};
+	#else {
+		#class jd.inner kill;
+		show_to_info done;
+		we;
+		wi;
+	};
+};
+
 #class jianding close

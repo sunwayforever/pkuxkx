@@ -1,7 +1,7 @@
 #class murong open;
 
 #var mr_auto 0;
-#alias {mr.auto} {
+#alias {mr.start} {
 	#class mr.inner open;
 	#action {一脚踢向你的屁股} {
 		mr.f;
@@ -25,13 +25,6 @@
             #delay {3} {
                 mr.q;           
             };
-        };
-    };
-
-    #alias {mr.start} {
-		gt %%1;
-        on_there {
-            mr.bl;
         };
     };
 
@@ -91,7 +84,7 @@
 	mr.q;
 };
 
-#alias {mr.unauto} {
+#alias {mr.stop} {
 	#var mr_auto 0;
     #class mr.inner kill;	
 };

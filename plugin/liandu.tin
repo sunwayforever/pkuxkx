@@ -28,7 +28,7 @@
 	#action {你将%*尸体扶了起来背在背上} {
 		#delay {1} {
 			map.go 石棺;
-			#delay {2} {
+			#delay {5} {
 				give piaoran corpse;
 			};
 		};
@@ -51,12 +51,6 @@
 	#action {飘然子说道：「好吧，你来试着练习(liandu)一下毒技吧。」} {
 		unwi;
 		liandu;
-	};
-
-	#action {飘然子说道：「石棺正在用呢，你等等吧。」} {
-		#delay {ld_delay} {
-			give piaoran corpse;
-		} {10};
 	};
 
 	#class ld.inner close;

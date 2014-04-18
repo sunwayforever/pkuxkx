@@ -1,5 +1,5 @@
 #class kanxue open
-#alias {kanxue.start} {
+#alias {kx.start} {
 	#class kx.inner open;
 	#ticker {kx} {
 		l snow;
@@ -11,7 +11,7 @@
 	#class kx.inner close;
 };
 
-#alias {kanxue.stop} {
+#alias {kx.stop} {
 	#class kx.inner kill;
 };
 #class kanxue close

@@ -110,6 +110,11 @@
 	
 	#action {^机关继续推动，把%*挤下水去。} {
 		#unticker {zhi};
+		#if {${pl_count} == 0} {
+			#delay {2} {
+				hua ${hua_direction};
+			};
+		};
 	};
 	
 	#class piaoliu.inner close;

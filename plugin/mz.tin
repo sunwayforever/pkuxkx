@@ -1,7 +1,7 @@
 #class mz open
 #var mz_auto 0;
 #list mz_ignore create {手信;华山剑谱;信纸;渔夫;大般;空空儿;无量寿经;大金刚拳法;天山雪莲;飞沙走石;};
-#alias {mz.auto} {
+#alias {mz.start} {
 	#var mz_auto 1;
 	#class mz.inner open;
 	#foreach {${mz_ignore}[%*]} {name} {
@@ -630,7 +630,7 @@
 	mz.b;
 };
 
-#alias {mz.unauto} {
+#alias {mz.stop} {
 	#var mz_auto 0;
 	#class mz.inner kill;
 };
