@@ -28,8 +28,8 @@
 	#action {你将%*尸体扶了起来背在背上} {
 		#delay {1} {
 			map.go 石棺;
-			#delay {5} {
-				give piaoran corpse;
+			on_unbusy {
+				give piaoran corpse;	
 			};
 		};
 	};
