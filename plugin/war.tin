@@ -97,7 +97,12 @@
 	#ticker {chan_a_chan} {
 		chan;
 	} {0.5};
+	#action {²ø: miss} {
+		halt;
+		chan;
+	};
     #delay {3} {
+		#unaction {²ø: miss};
 		#unticker {chan_a_chan};
 	};
 };

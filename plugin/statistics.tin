@@ -11,14 +11,16 @@
 
 	#var ${category}_hit 0;
 	#var ${category}_miss 0;
-
+	#gag {${category}: ${kind}};
 	#if {"%2" == "hit"} {
 		#action {%3} {
+			#showme ${category}: hit;
 			#math %1_hit ${%1_hit}+1;
 		};
 	};
 	#elseif {"%2" == "miss"} {
 		#action {%3} {
+			#showme ${category}: miss;
 			#math %1_miss ${%1_miss}+1;
 		};
 	};
