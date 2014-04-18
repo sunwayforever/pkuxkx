@@ -196,7 +196,7 @@ load chaos;
 	#action {get_exits: done} {
 		#unaction {get_exits: done};
 		#list exits_list get 1 exit;
-		#3 halt;
+		#5 halt;
 		on_unbusy {
 			#send {${exit}};	
 		};
@@ -205,7 +205,7 @@ load chaos;
 			hb.resume;
 		} {10};
 	};
-	#3 halt;
+	#5 halt;
 	get_exits;
 };
 
@@ -609,9 +609,8 @@ load chaos;
 			};
 			#elseif {"${tmp}" == "Œ‰µ±"} {
 				#list hb_path create {
-					gn;ge;ge;ge;ge;ge;gn;gn;ge;ge;ge;ge;gse;ge;ge;ge;ge;ge;ged;ge;ge;ge;gs;gs;gs;gs;gs;gs;gs;gsw;gs;gs;gs;gw;ge;ge;ge;gw;gw;gs;gw;gn;gs;ge;ge;gw;gs;ge;gw;gs;gw;gn;gs;gs;gn;gw;
-					gs;gn;gw;gw;gw;gw;gn;gn;gs;gs;gw;gw;gw;gw;gw;gn;
-					gs;gw;gw;gs;gsw;gw;gw;gnw;gn;gs;gw;ge;gse;ge;ge;gne;gn;ge;ge;gn;
+					gn;ge;ge;ge;ge;ge;gn;gn;ge;ge;ge;ge;gse;ge;ge;ge;ge;ge;ged;ge;ge;ge;gs;gs;gs;gs;gs;gs;gs;gsw;gs;gs;gs;gs;gs;gs;gw;gw;gw;
+					gw;gw;gw;gn;gn;gs;gs;gw;gw;gw;gw;gw;gn;gs;gw;gw;gs;gsw;gw;gw;gnw;gn;gs;gw;ge;gse;ge;ge;gne;gn;ge;ge;gn;
 				};
 			};
 			#elseif {"${tmp}" == "¬Â—Ù"} {
