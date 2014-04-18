@@ -13,7 +13,8 @@
 			#send {jifa};		
 		};
 	};
-	#action {脸色看起来好多了} {shui bed};
+	
+	#action {你深深吸了几口气，脸色看起来好多了。} {shui bed};
 	#action {内功 (force)%*有效等级：%d} {
 		#var youxiao_neigong %%2;
 		#math max_neili ${youxiao_neigong} * 10;
