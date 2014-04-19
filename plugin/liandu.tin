@@ -57,7 +57,9 @@
 	load_map;
 	map.go Ê¯¹×;
 	dz.full {
-		ask piaoran about Á¶¶¾;
+		tn.full {
+			ask piaoran about Á¶¶¾;
+		};
 	};
 };
 

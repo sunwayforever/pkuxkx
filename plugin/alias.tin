@@ -406,10 +406,9 @@
 	};	
 
 	#alias {check_health} {
-		dz.full;
-		#action {dz.full} {
+		dz.full {
 			check_qx;
-		}
+		};
 	};
 	#class health.inner close;
 
