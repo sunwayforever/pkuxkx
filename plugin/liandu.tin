@@ -38,8 +38,11 @@
 		#math ld_count ${ld_count}+1;
 		show_to_quest Á¶¶¾: ${ld_count};
 		#delay {3} {
+			chifan;
 			dz.full {
-				ask piaoran about Á¶¶¾;				
+				tn.full {
+					ask piaoran about Á¶¶¾;
+				};
 			};
 		};
 	};
