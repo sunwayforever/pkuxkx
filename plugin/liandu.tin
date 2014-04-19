@@ -94,6 +94,9 @@
 		#class kill_somebody.inner kill;
 		kill boshou;
 	};
+	#ticker {l} {
+		l;
+	} {60};
 	#class kill_somebody.inner close;
 	l;
 };
