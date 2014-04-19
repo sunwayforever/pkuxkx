@@ -2,6 +2,22 @@
 
 #var tn_total_count 0;
 
+#alias {tn.full} {
+	#alias tmp_tn %1;
+	#ticker {tn} {
+		#if {${jl_percent} < 100} {
+			tuna 50;
+		};
+		#else {
+			#unticker {tn};
+			#delay {tn_delay} {
+				tmp_tn;
+				#showme tn.full;    
+     		} {3};
+		};
+	} {1};
+};
+
 #alias {tn.start} {
 	#send {jifa};
 	#delay {3} {

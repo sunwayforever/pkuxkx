@@ -73,6 +73,7 @@
 #var qx_percent 100;
 #var js_percent 100;
 #var nl_percent 100;
+#var jl_percent 100;
 
 #var hpbrief_first 1;
 #action {^#%1,%2,%3,%4,%5,%6$} {
@@ -98,8 +99,9 @@
 		#math qx_percent ${hpbrief_curr_qx} *100 / ${hpbrief_max_qx};
 		#math js_percent ${hpbrief_curr_js} * 100 / ${hpbrief_max_js};
 		#math nl_percent ${hpbrief_curr_nl} * 100 / ${hpbrief_max_nl};
+		#math jl_percent ${hpbrief_curr_jl} * 100 / ${hpbrief_max_jl};
 
-		#var hpbrief_info 气血: ${qx_percent} | 精神: ${js_percent} | 内力: ${nl_percent} | 经验: ${hpbrief_exp};
+		#var hpbrief_info 气血: ${qx_percent} | 精神: ${js_percent} | 内力: ${nl_percent} | 精力: ${jl_percent} | 经验: ${hpbrief_exp};
 		update_status;
 
 		#if {${auto_heal} == 1} {
