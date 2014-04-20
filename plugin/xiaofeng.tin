@@ -122,6 +122,16 @@
 		};
 	} {2};
 
+	#action {找到目标} {
+		xf.check;	
+	};
+
+	#action {蒙面杀手说道：「就你也配跟我讨教功夫？！」} {
+		#delay {xf.bl} {
+			bl.continue {杀手};
+		 } {3};
+	};
+	
 	#action {西夏一品堂 蒙面杀手(Mengmian shashou)} {
 		#if {${xf.type} != -1} {
 			xf.check;

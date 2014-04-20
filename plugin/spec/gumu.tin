@@ -26,6 +26,9 @@
 	#ticker {suxin} {
 		suxin;	
 	} {10};
+	#action {²ø: hit} {
+		#3 shexin;
+	};
 	#ticker {xinjing} {
 		yun xinjing;
 	} {30};
@@ -37,6 +40,9 @@
 	#ticker {perf_chan} {
 		chan;
 	} {1};
+	#action {²ø: hit} {
+		#3 shexin;
+	};
 	#ticker {xinjing} {
 		yun xinjing;
 	} {30};
