@@ -158,7 +158,7 @@
 			show_to_info <<Ã÷½Ì;
 			mj.stop;
 		};
-	} {15};
+	} {10};
 };
 
 #var mj_started 0;

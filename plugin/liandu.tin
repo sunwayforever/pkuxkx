@@ -1,5 +1,6 @@
 #class liandu open
 #alias {ld.start} {
+	#var max_dz 100;
 	#var ld_count 0;
 	show_to_quest 炼毒: ${ld_count};
 	#class ld.inner open;
@@ -12,6 +13,12 @@
 	#action {炼毒时需要双手的配合，所以你最好还是不要拿武器} {
 		unwi;
 		liandu;
+	};
+
+	#action {飘然子不想要星宿派号手的尸体，你就自个留着吧。} {
+		#delay {give_corpse} {
+			give piaoran corpse;
+		} {10};
 	};
 	
 	#action {你刚刚炼毒完成不久，频繁炼毒会有生命危险的！} {
