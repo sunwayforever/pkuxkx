@@ -23,12 +23,10 @@
 	#ticker {perf_chan} {
 		chan;
 	} {1};
-	#ticker {suxin} {
-		suxin;
-	} {5};
-	#ticker {shexin} {
-		shexin;
-	} {3.5};
+	#action {²ø: hit} {
+		#showme hit;
+		suxin;	
+	};
 	#ticker {xinjing} {
 		yun xinjing;
 	} {30};
@@ -40,6 +38,10 @@
 	#ticker {perf_chan} {
 		chan;
 	} {1};
+	#action {²ø: hit} {
+		#showme hit xf;
+		shexin;
+	};
 	#ticker {xinjing} {
 		yun xinjing;
 	} {30};
@@ -129,9 +131,7 @@
 	unwield all;
 	wield my sword;
 	wield my sword 2;
-	#nop #send {jifa sword yunu-jianfa};
 	perform yunu-jianfa.suxin;
-	#nop #send {jifa sword xuantie-jian};
 	unwield all;
 	wi;
 };

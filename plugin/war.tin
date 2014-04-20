@@ -207,7 +207,6 @@
 
 #alias {raw} {
 	attack.end;
-	#unaction {²ø: miss};
 	#nop get all from corpse;
 	jiali none;
 	#unticker {yun};
@@ -221,10 +220,6 @@
 		yun qi;
 		yun jing;
 	} {10};
-	#action {²ø: miss} {
-		halt;
-		chan;
-	};
 	attack.prepare;
 	#delay {3} {
 		attack;

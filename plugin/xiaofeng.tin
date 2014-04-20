@@ -96,8 +96,14 @@
 	};
 
 	#action {你将%*扶了起来背在背上} {
-			show_to_quest 萧峰: 已擒获 ${xf.real_name};
+		show_to_quest 萧峰: 已擒获 ${xf.real_name};
+		#action {${xf.real_name}略一凝神，精神看起来好多了} {
+			#unaction {${xf.real_name}略一凝神，精神看起来好多了};
+			dian ${xf.real_first_name};
+			get ${xf.real_first_name};
+		};
 	};
+
 	
 	#action {西夏一品堂 %*(%* %*)} {
 		#unaction {西夏一品堂 %*(%* %*)};
@@ -128,8 +134,8 @@
 				zhan corpse;
 				#delay {2} {
 					get shouji;
+					show_to_quest 萧峰: 已杀死;
 				};
-				show_to_quest 萧峰: 已杀死;
 			};
 		};
 		l;
@@ -173,7 +179,7 @@
 			#alias {attack} {
 				attack.xiaofeng;
 			};
-			hit shashou;;
+			hit shashou;
 		};
 		#elseif {${xf.type} == 4} {
 			#alais {wi} {wi_xiaofeng};
