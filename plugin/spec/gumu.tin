@@ -27,7 +27,9 @@
 		suxin;	
 	} {10};
 	#action {²ø: hit} {
-		#3 shexin;
+		#delay {shexin} {
+			#2 shexin;			
+		} {2};
 	};
 	#ticker {xinjing} {
 		yun xinjing;
@@ -41,7 +43,9 @@
 		chan;
 	} {1};
 	#action {²ø: hit} {
-		#3 shexin;
+		#delay {shexin} {
+			#2 shexin;			
+		} {2};
 	};
 	#ticker {xinjing} {
 		yun xinjing;
@@ -115,16 +119,13 @@
 
 #alias {zhua} {
 	unwi;
-	bei none;
-	bei claw;
-	perform claw.zhua;
-	bei none;
-	bei cuff;
+	perform jiuyin-baiguzhao.zhua;
+	wi;
 };
 
 #alias {shexin} {
 	unwi;
-	perform cuff.shexin;
+	perform meinu-quan.shexin;
 	wi;
 };
 
