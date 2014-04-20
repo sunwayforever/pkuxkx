@@ -4,6 +4,12 @@
 	#var ld_count 0;
 	show_to_quest 炼毒: ${ld_count};
 	#class ld.inner open;
+
+	#action {一阵风吹过，把枯乾的骸骨化成骨灰吹散了} {
+		#unticker {give_corpse};
+		ask piaoran about 炼毒;		
+	};
+	
 	#action {你将自身精力内力灌注入星宿派%*的尸体} {
 		#delay {3} {
 			get corpse;
@@ -14,12 +20,6 @@
 		unwi;
 		liandu;
 	};
-
-	#action {飘然子不想要星宿派号手的尸体，你就自个留着吧。} {
-		#delay {give_corpse} {
-			give piaoran corpse;
-		} {10};
-	};
 	
 	#action {你刚刚炼毒完成不久，频繁炼毒会有生命危险的！} {
 		#delay {ld} {
@@ -29,12 +29,16 @@
 	};
 
 	#action {你身上没有 corpse 这样东西。} {
+		#unticker {give_corpse};
 		ask piaoran about 炼毒;
 	};
 	
 	#action {你将%*尸体扶了起来背在背上} {
 		#delay {1} {
 			map.go 石棺;
+			#ticker {give_corpse} {
+				give piaoran corpse;	
+			} {10};
 			on_unbusy {
 				give piaoran corpse;	
 			};
@@ -59,6 +63,7 @@
 	};
 	              
 	#action {飘然子说道：「好吧，你来试着练习(liandu)一下毒技吧。」} {
+		#unticker {give_corpse};
 		unwi;
 		liandu;
 	};
