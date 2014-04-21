@@ -64,7 +64,7 @@ load chaos;
 				#if {${hb_force_wait} == 0 && ${hb_paused} == 0 && ${hb_wait} == 0} {
 					${hb_path_next};
 				};
-			} {2};
+			} {2.5};
 			#list hb_path get ${hb_path_index} hb_path_next;
 		};
 	};

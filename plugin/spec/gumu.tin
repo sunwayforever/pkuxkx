@@ -22,16 +22,18 @@
 	#class attack.inner open;
 	#ticker {perf_chan} {
 		chan;
-	} {1};
+	} {0.8};
 	#ticker {suxin} {
 		suxin;	
-	} {8};
-	#ticker {shexin} {
-		shexin;
-	} {12};
+	} {3.5};
 	#ticker {zhua} {
 		zhua;
-	} {10};
+	} {2};
+	#action {²ø: hit} {
+		#delay {1.5} {
+			shexin;
+		};
+	};
 	#ticker {xinjing} {
 		yun xinjing;
 	} {30};
