@@ -2,11 +2,6 @@
 
 #alias {attack.prepare} {
 	yun xinjing;
-	#action {²ø: hit} {
-		#delay {2.5} {
-			shexin;
-		};
-	};
 	chan_a_chan;
 };
 
@@ -30,6 +25,12 @@
 	} {1};
 	#ticker {suxin} {
 		suxin;	
+	} {8};
+	#ticker {shexin} {
+		shexin;
+	} {12};
+	#ticker {zhua} {
+		zhua;
 	} {10};
 	#ticker {xinjing} {
 		yun xinjing;
@@ -38,6 +39,7 @@
 };
 
 #alias {attack.xiaofeng} {
+	zhua;
 	#class attack.inner open;
 	#ticker {perf_chan} {
 		chan;
