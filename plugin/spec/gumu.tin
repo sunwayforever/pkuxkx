@@ -2,6 +2,11 @@
 
 #alias {attack.prepare} {
 	yun xinjing;
+	#action {²ø: hit} {
+		#delay {2.5} {
+			shexin;
+		};
+	};
 	chan_a_chan;
 };
 
@@ -26,11 +31,6 @@
 	#ticker {suxin} {
 		suxin;	
 	} {10};
-	#action {²ø: hit} {
-		#delay {shexin} {
-			#2 shexin;			
-		} {2};
-	};
 	#ticker {xinjing} {
 		yun xinjing;
 	} {30};
@@ -42,11 +42,6 @@
 	#ticker {perf_chan} {
 		chan;
 	} {1};
-	#action {²ø: hit} {
-		#delay {shexin} {
-			#2 shexin;			
-		} {2};
-	};
 	#ticker {xinjing} {
 		yun xinjing;
 	} {30};

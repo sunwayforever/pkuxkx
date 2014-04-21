@@ -11,7 +11,7 @@
 
 	#var ${category}_hit 0;
 	#var ${category}_miss 0;
-	#gag {${category}: ${kind}};
+	#nop #gag {${category}: ${kind}};
 	#if {"%2" == "hit"} {
 		#action {%3} {
 			#showme ${category}: hit;

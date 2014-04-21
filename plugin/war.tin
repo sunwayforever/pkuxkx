@@ -103,23 +103,23 @@
 };
 
 #alias {kill} {
-	war;
 	#send kill %0;
+	war;
 };
 
 #alias {killall} {
-	war;
 	#send killall %0;
+	war;
 };
 
 #alias {hit} {
-	war;
 	#send hit %0;
+	war;
 };
 
 #alias {fight} {
-	war;
 	#send fight %0;
+	war;
 };
 
 #alias {wi_normal} {
@@ -158,7 +158,7 @@
 			show_to_info <<明教;
 			mj.stop;
 		};
-	} {10};
+	} {12};
 };
 
 #var mj_started 0;
@@ -236,6 +236,10 @@
 
 #alias {attack.end} {
 	#class attack.inner kill;
+};
+
+#action {乾坤大挪移自然激发而出，将你的攻势反击了回去。} {
+	mj.start;	
 };
 
 #action {^%*运起九阳神功} {

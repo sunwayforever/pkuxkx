@@ -47,7 +47,6 @@
 	};
 
 	#action {你总共击退了%*名水贼} {
-		mj.stop;
 		raw;
 		#if {${pl_count} == 0} {
 			#delay {2} {
