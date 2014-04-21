@@ -136,21 +136,6 @@
 	perform spear.lianhuan;
 };
 
-#alias {xl.start} {
-	xiulian taiji-shengong;
-	show_to_quest 修炼内功;
-	#action {顿觉内功修为增进不小} {xiulian taiji-shengong};
-	#action {由于缺乏实战经验} {
-		xl.stop;
-	};
-};
-
-#alias {xl.stop} {
-	show_to_quest 修炼结束;
-	#unaction {顿觉内功修为增进不小};
-	#unaction {由于缺乏实战经验};
-};
-
 #alias {load_map} {
 	map.load wudang;
 };

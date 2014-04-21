@@ -1,0 +1,17 @@
+#class xiulian open
+#alias {xl.start} {
+	#var xl_kungfu %1;
+	xiulian ${xl_kungfu};
+	show_to_quest 修炼内功;
+	#action {顿觉内功修为增进不小} {xiulian ${xl_kungfu}};
+	#action {由于缺乏实战经验} {
+		xl.stop;
+	};
+};
+
+#alias {xl.stop} {
+	show_to_quest 修炼结束;
+	#unaction {顿觉内功修为增进不小};
+	#unaction {由于缺乏实战经验};
+};
+#class xiulian close

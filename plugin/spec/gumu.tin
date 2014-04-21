@@ -178,21 +178,6 @@
 	wi;	
 };
 
-#alias {xl.start} {
-	xiulian yunu-xinfa;
-	show_to_quest 修炼内功;
-	#action {顿觉内功修为增进不小} {xiulian yunu-xinfa};
-	#action {由于缺乏实战经验} {
-		xl.stop;
-	};
-};
-
-#alias {xl.stop} {
-	show_to_quest 修炼结束;
-	#unaction {顿觉内功修为增进不小};
-	#unaction {由于缺乏实战经验};
-}
-
 #list my_weapons create {my sword 2; my sword};
 
 stat.register 缠 miss 可是他看破了你的企图，并没有上当;

@@ -71,21 +71,6 @@
 	#cr;
 };
 
-#alias {xl.start} {
-	xiulian bixue-xinfa;
-	show_to_quest 修炼内功;
-	#action {顿觉内功修为增进不小} {xiulian yunu-xinfa};
-	#action {由于缺乏实战经验} {
-		xl.stop;
-	};
-};
-
-#alias {xl.stop} {
-	show_to_quest 修炼结束;
-	#unaction {顿觉内功修为增进不小};
-	#unaction {由于缺乏实战经验};
-}
-
 #list my_weapons create {my staff};
 #alias {perform_special} {
 	#cr;
