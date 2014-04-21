@@ -59,12 +59,13 @@ load chaos;
 			xmpp.notify 到达, 没找到收货人;
 		};
 		#else {
-			#list hb_path get ${hb_path_index} hb_path_next;
+			#var hb_path_next #cr;
 			#ticker {hb_walk} {
 				#if {${hb_force_wait} == 0 && ${hb_paused} == 0 && ${hb_wait} == 0} {
 					${hb_path_next};
 				};
-			} {3.5};
+			} {2};
+			#list hb_path get ${hb_path_index} hb_path_next;
 		};
 	};
 };
@@ -88,6 +89,7 @@ load chaos;
 	};
 	
 	#action {^你赶着镖车驶了过来} {
+		#var hb_path_next #cr;
 		#if {${hb_paused} == 0} {
 			chaos.remember;
 			hb.move;
@@ -98,9 +100,7 @@ load chaos;
 	};
 
 	#action {劫匪个起纵遁入暗里不见了} {
-		#delay {1} {
-			#var hb_wait 0;
-		};
+		#var hb_wait 0;
 	};
 
 	#action {^这个方向} {
@@ -173,7 +173,7 @@ load chaos;
 	#var hb_wait 1;
 	#delay {hb_wait} {
 		#var hb_wait 0;
-	} {10};
+	} {6};
 };
 
 #alias {hb.pause} {
