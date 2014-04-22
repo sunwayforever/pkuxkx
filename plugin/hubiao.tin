@@ -338,6 +338,25 @@ load chaos;
 		show_to_info 掉宝: %%1;
 	};
 
+	#action {从劫匪身上掉了出来一%*之%*} {
+		jianding @mapget{jianding;%%2}
+	};
+
+	#action {^你捧着%*之%*上上下下仔仔细细的打量了一遍。} {
+		#action {可塑性:%*(%*)} {
+			#unaction {可塑性:%*(%*)};
+			#var cong %%%1;
+			#var type @mapget{jianding;%%2};
+			#if {${cong} > 1} {
+				put ${type} in bao;
+			};
+		};
+		#action {你将一%*之%*放进包袱} {
+			#unaction {你将一%*之%*放进包袱};
+			show_to_info 掉装备: ${cong} 孔 ${type};
+		};
+	};
+
 	#action {看来该找机会逃跑了} {
 		hb.pause;
 		show_to_quest 丢镖;
