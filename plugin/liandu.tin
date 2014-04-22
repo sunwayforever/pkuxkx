@@ -5,6 +5,12 @@
 	show_to_quest 炼毒: ${ld_count};
 	#class ld.inner open;
 
+	#ticker {drop} {
+		drop tonghao;
+		drop tonggu;
+		drop tongbo;
+	} {300};
+	
 	#action {一阵风吹过，把枯乾的骸骨化成骨灰吹散了} {
 		#unticker {give_corpse};
 		ask piaoran about 炼毒;		
