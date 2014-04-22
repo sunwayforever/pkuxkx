@@ -81,7 +81,7 @@
 };
 
 #alias {dz.stop} {
-	autoheal.off;
+	autoheal.on;
 	show_to_quest ´ò×øÍê±Ï;
 	#class dz.inner kill;
 };
