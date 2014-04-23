@@ -10,6 +10,9 @@
 	#ticker {perf_chan} {
 		chan;
 	} {1};
+	#ticker {suxin} {
+		suxin;	
+	} {3.5};
 	#ticker {xinjing} {
 		yun xinjing;
 	} {30};
@@ -183,6 +186,7 @@
 stat.register 缠 miss 可是他看破了你的企图，并没有上当;
 stat.register 缠 hit 结果他被你攻了个措手不及！
 
+#var has_xuanwu 1;
 #var shifu yang;
 #class gumu_spec close
 

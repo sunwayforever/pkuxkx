@@ -413,7 +413,7 @@ load chaos;
 	#action {你所领的任务在任务列表中并不存在} {
 		#delay {hb_delay} {
 			hb.q;
-		} {10};
+		} {2};
 	};
 	
 	#action {${char_name}把这批红货送到%*他已经派了个伙计名叫%*到%*附近接你} {
