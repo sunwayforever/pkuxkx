@@ -362,7 +362,7 @@
 		#act {^六名雪山弟子一齐转动机关，吊桥便又升了起来。} {walk};
 		#act {^艄公把踏脚板收了起来，竹篙一点，扁舟向江心驶去。} {yell boat};
 		#act {^大车停稳了下来，你可以下车(xia)了。$} {walk};
-		#act {^你要进入哪间房？$} {#send {sc};#delay 1 {enter $myid}};
+		#act {^你要进入哪间房？$} {#send {sc};#delay 1 {enter $char_id}};
 		#act {^%d%s《{广陵散|率意帖|溪山行旅图|呕血谱}》$} {#list sibao add {%%1}};
 		#act {^柜子里目前存放的物品有：$}
 		{
@@ -686,7 +686,7 @@
 #list Route_mr_qy create {ask girl about 拜庄} {murongboat} {stop} {w} {w} {w} {s};
 #list Route_yz_rbz create {s} {e} {s};
 #list Route_rbz_yz create {n} {w} {n};
-#list Route_yz_bs create {s} {s} {s} {w} {enter $myid};
+#list Route_yz_bs create {s} {s} {s} {w} {enter $char_id};
 #list Route_bs_yz create {out} {e} {n} {n} {n};
 #list Route_zp_qhn create {n} {n} {ne} {e} {nd} {n} {n} {e};
 #list Route_qhn_zp create {s} {w} {s} {su} {w} {sw} {s} {s};
@@ -827,8 +827,8 @@
 #list Route_hhh_xh create {e}{e}{e}{enter boat}{stop}{w}{nw}{n}{e}{s}{se};
 #list Route_tdf_lld create {e}{su}{wu};
 #list Route_lld_tdf create {ed}{nd}{w};
-#list Route_mz_hz create {open gate}{s}{ne}{ne}{ne}{ne}{n}{e}{e}{e}{se}{s}{s}{w}{n}{enter $myid}{store ouxue pu}{store xishan tu}{store shuaiyi tie}{store guangling san}{out}{s}{e}{n}{n}{nw};
-#list Route_hz_mz create {se}{s}{s}{w}{n}{enter $myid}{find}{stop}{out}{s}{e}{n}{w}{w}{sw}{w}{nw}{n}{nw}{n}{e}{s}{se}{sw}{meizhuang_gate};
+#list Route_mz_hz create {open gate}{s}{ne}{ne}{ne}{ne}{n}{e}{e}{e}{se}{s}{s}{w}{n}{enter $char_id}{store ouxue pu}{store xishan tu}{store shuaiyi tie}{store guangling san}{out}{s}{e}{n}{n}{nw};
+#list Route_hz_mz create {se}{s}{s}{w}{n}{enter $char_id}{find}{stop}{out}{s}{e}{n}{w}{w}{sw}{w}{nw}{n}{nw}{n}{e}{s}{se}{sw}{meizhuang_gate};
 #list Route_cd_yy create {nw}{nw}{n}{hire}{qu yueyang}{stop}{xia}{w}{s}{s};
 #list Route_yy_cd create {n}{n}{e}{hire}{qu chengdu}{stop}{xia}{s}{se}{se};
 #list Route_hz_hsz create {e}{e}{n}{enter}{n};
@@ -1004,7 +1004,6 @@
 #nop ==个人信息==
 
 #var char_menpai_zh {};
-#var myid {};
 #var mydodge 0;
 #act {^│%s基本轻功%s(dodge)%s-%*%d/%s%d│$} {#var mydodge %5};
 
