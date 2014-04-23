@@ -161,26 +161,16 @@
 	#delay {fighting} {
 		#showme truce;
 		raw;
-		#if {${mj_started} == 1} {
-			#var mj_started 0;
-			show_to_info <<明教;
-			mj.stop;
-		};
 	} {12};
 };
 
-#var mj_started 0;
 #alias {detect_mingjiao} {
 	l %0;
 	#action {这是一位明教} {
-		show_to_info >>明教;
-		#var mj_started 1;
 		mj.start;
 	};
 	
 	#action {圣火令} {
-		show_to_info >>明教;
-		#var mj_started 1;
 		mj.start;
 	};
 	
@@ -190,7 +180,11 @@
 	};
 };
 
+#var mj_started 0;
 #alias {mj.start} {
+	#var mj_started 1;
+	show_to_info >>明教;
+
 	#alias {wi} {wi_bare};
 	unwi;
 	attack.end;
@@ -201,6 +195,10 @@
 };
 
 #alias {mj.stop} {
+	#if {${mj_started} == 1} {
+		#var mj_started 0;
+		show_to_info <<明教;
+	};
 	#alias {wi} {wi_normal};
 	wi;
 	attack.end;
@@ -218,6 +216,7 @@
 	#nop get all from corpse;
 	jiali none;
 	#unticker {yun};
+	mj.stop;
 };
 
 #alias {war} {
@@ -251,8 +250,6 @@
 };
 
 #action {^%*运起九阳神功} {
-	show_to_info >>明教;
-	#var mj_started 1;
 	mj.start;
 	#showme mingjiao enemy:%1;
 };

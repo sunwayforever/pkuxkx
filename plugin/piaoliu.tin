@@ -42,12 +42,7 @@
 		};
 	};
 
-	#action {你仔细回忆了之前和鄱阳水贼战斗的经过} {
-		raw;
-	};
-
 	#action {你总共击退了%*名水贼} {
-		raw;
 		#if {${pl_count} == 0} {
 			#delay {2} {
 				hua ${hua_direction};
