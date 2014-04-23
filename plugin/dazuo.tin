@@ -2,7 +2,6 @@
 #var min_dazuo_count 60;
 #var dz_total_count 0;
 #var max_dz 180;
-#var has_xuanwu 0;
 #alias get_dazuo_count {
     #class dazuo_count.inner open;
     #action {内功 (force)%*有效等级：{ *}%d} {
@@ -21,10 +20,12 @@
 
 #alias {dz.full} {
 	#alias tmp_dz %1;
-	get_dazuo_count;
-	#if {${has_xuanwu} == 1} {
-		#var max_dz 100;	
+	#if {${char_nl_recovery} > 40} {
+		tmp_dz;
+		#showme dz.full;
+		#return;
 	};
+	get_dazuo_count;
 	#class dz.full.inner open;
 	#action {你现在精不够} {
 		heal 1;

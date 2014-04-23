@@ -3,9 +3,6 @@
 #var HOME $HOME[1];
 #var XKX_PASSWORD $XKX_PASSWORD[1];
 
-#var char_name ´óÀÏ×Ó;
-#var char_id gamester;
-#var char_menpai xingxiu;
 #read ${HOME}/.tt/main.tin;
 
 #session sunxm pkuxkx.net 8080; gamester; ${XKX_PASSWORD};

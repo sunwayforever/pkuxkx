@@ -61,5 +61,3 @@
 #nop #read ${HOME}/.tt/plugin/reconnect.tin;
 #read ${HOME}/.tt/plugin/show.tin
 #read ${HOME}/.tt/plugin/xiulian.tin
-
-#read ${HOME}/.tt/plugin/spec/${char_menpai}.tin;

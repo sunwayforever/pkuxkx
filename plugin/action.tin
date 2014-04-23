@@ -67,7 +67,37 @@
 	#cr;
 };
 
+@mapcreate{menpai};
+@mapset{menpai;华山派;huashan};
+@mapset{menpai;古墓派;gumu};
+@mapset{menpai;武当派;wudang};
+@mapset{menpai;星宿派;xingxiu};
+@mapset{menpai;大轮寺;dalunsi};
+@mapset{menpai;丐帮;gaibang};
+#alias {get_char_info} {
+	#class get_char_info.inner open;
+	#action {姓名:%*%sID:%S} {
+		#var char_name %%1;
+		#var char_id @lower{%%3};
+	};
+	#action {内力恢复：+%*  } {
+		#var char_nl_recovery %%1;
+	};
+	#action {你是%*第} {
+		#var char_menpai_zh %%1;
+		#var char_menpai @mapget{menpai;%%1};
+		load spec/${char_menpai};
+	};
+	#class get_char_info.inner close;
+	#send {status_me};
+	#send {sc};
+	#delay {3} {
+		#class get_char_info.inner kill;
+	};
+};
+
 #alias {login} {
+	get_char_info;
 	unwield all;
 	wi;
 	we;
@@ -85,9 +115,7 @@
 };
 
 #action {此ID档案已存在} {
-	#delay {5} {
-		login;
-	};
+	login;
 };
 
 #alias {we} {

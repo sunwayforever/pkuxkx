@@ -198,12 +198,12 @@
 	#if {${mj_started} == 1} {
 		#var mj_started 0;
 		show_to_info <<Ã÷½Ì;
-	};
-	#alias {wi} {wi_normal};
-	wi;
-	attack.end;
-	#alias {attack} {
-		attack.normal;
+		#alias {wi} {wi_normal};
+		wi;
+		attack.end;
+		#alias {attack} {
+			attack.normal;
+		};
 	};
 };
 

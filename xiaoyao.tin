@@ -305,13 +305,13 @@
 		#alias mr_mantuob {e;s;n;w;n;n;e;s;e};
 		#alias tiandihui_andao {knock guancai 3;ed;s;s;s;w;e;n;n;n;n;e};
 		#alias tiandihui_andaob {w;#4 s;w;n;n;e;n;s;wu};
-		#alias guohe3s2n {#if {"$mymenpai"=="明教"} {sw;n;ban stone;you;#alias guohe3 {n;ne}} {guohe}};
-		#alias guohe3n2s {#if {"$mymenpai"=="明教"} {sw;s;ban stone;you;#alias guohe3 {s;ne}} {guohe}};
+		#alias guohe3s2n {#if {"$char_menpai_zh"=="明教"} {sw;n;ban stone;you;#alias guohe3 {n;ne}} {guohe}};
+		#alias guohe3n2s {#if {"$char_menpai_zh"=="明教"} {sw;s;ban stone;you;#alias guohe3 {s;ne}} {guohe}};
 		#alias guohe3 {n;ne};
-		#alias taohuadao {#if {"$mymenpai"=="桃花岛"} {ride diao} {enter boat}};
-		#alias baituofufei {#if {"$mymenpai"=="白驼山"} {give qian 30 silver} {give qian 1 gold}};
-		#alias murongboat {#if {"$mymenpai"=="姑苏慕容"} {find boat} {enter boat}};
-		#alias shenlongboat {#if {"$mymenpai"=="神龙教"} {find boat} {enter boat}};
+		#alias taohuadao {#if {"$char_menpai_zh"=="桃花岛"} {ride diao} {enter boat}};
+		#alias baituofufei {#if {"$char_menpai_zh"=="白驼山"} {give qian 30 silver} {give qian 1 gold}};
+		#alias murongboat {#if {"$char_menpai_zh"=="姑苏慕容"} {find boat} {enter boat}};
+		#alias shenlongboat {#if {"$char_menpai_zh"=="神龙教"} {find boat} {enter boat}};
 		#alias qytoyzw {#if {$mydodge>120} {e;cai yanziwu} {#3 n;tan qin;row yanziwu}};
 		#alias qytotx {#if {$mydodge>120} {e;cai tingxiang} {#3 n;tan qin;row tingxiang}};
 		#alias gotoqinyun {#if {$mydodge>120} {cai qinyun} {enter boat;row qinyun}};
@@ -1003,20 +1003,9 @@
 
 #nop ==个人信息==
 
-#var mymenpai {};
+#var char_menpai_zh {};
 #var myid {};
 #var mydodge 0;
-#act {^ 你是%*第%*代弟子} {#var mymenpai %1};
-#act {^≡━◎个人档案◎━━━━━━━━━━━━━━━━━━━━━━━━≡$}
-{
-	#class tmp open;
-	#act {^【%*】%*(%%1)$}
-	{
-		#var myid @lower{%%1};
-		#class tmp kill;
-	};
-	#class tmp close;
-};
 #act {^│%s基本轻功%s(dodge)%s-%*%d/%s%d│$} {#var mydodge %5};
 
 #class goto close;

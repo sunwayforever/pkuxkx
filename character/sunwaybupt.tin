@@ -1,8 +1,6 @@
 #script {HOME} {ruby -e 'puts ENV["HOME"]'};
 #var HOME $HOME[1];
 
-#var char_name Ð¡±¦;
-#var char_id sunwaybupt;
 #read ${HOME}/.tt/main.tin;
 #read ${HOME}/.tt/plugin/xmpp.tin;
 #read ${HOME}/.tt/plugin/guaji.tin;
