@@ -87,6 +87,7 @@
 		#var char_menpai_zh %%1;
 		#var char_menpai @mapget{menpai;%%1};
 		load spec/${char_menpai};
+		show_to_shortcut ${shortcut};
 	};
 	#class get_char_info.inner close;
 	#send {status_me};
@@ -102,7 +103,6 @@
 	wi;
 	we;
 	show_to_quest   ;
-	show_to_shortcut ${shortcut};
 	#send {i};
 	#send {hpbrief};
 	#send {uptime};
