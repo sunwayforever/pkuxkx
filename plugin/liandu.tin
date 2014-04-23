@@ -1,15 +1,9 @@
 #class liandu open
 #alias {ld.start} {
-	#var max_dz 100;
 	#var ld_count 0;
 	show_to_quest 炼毒: ${ld_count};
 	#class ld.inner open;
 
-	#ticker {drop} {
-		drop tonghao;
-		drop tonggu;
-		drop tongbo;
-	} {300};
 	
 	#action {一阵风吹过，把枯乾的骸骨化成骨灰吹散了} {
 		#unticker {give_corpse};
@@ -90,6 +84,9 @@
 };
 
 #alias {ld.get_corpse} {
+	drop tonghao;
+	drop tonggu;
+	drop tongbo;
 	wi;
 	out;
 	on_truce {
