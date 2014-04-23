@@ -93,9 +93,9 @@
 		map.go ¾ÞÑÒ;
 		#delay {3} {
 			kill_somebody;
-		};
-		on_dead {
-			zhishi corpse;
+			on_dead {
+				zhishi corpse;
+			};
 		};
 	};
 };
