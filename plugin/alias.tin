@@ -523,14 +523,6 @@
 	};
 };
 
-#alias {xy.start} {
-	#var xy_info on;
-};
-
-#alias {xy.stop} {
-	#var xy_info off;
-};
-
 #alias {get.bpz} {
 	s;e;
 	buy bingpo zhang;
@@ -563,10 +555,10 @@
 		};
 	};
 	#if {${tmp_baowei} == 1} {
-		xy.start;
+		#var xy_info on;
 	};
 	#else {
-		xy.stop;
+		#var xy_info off;
 	};
 };
 

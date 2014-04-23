@@ -13,6 +13,9 @@
 	#ticker {suxin} {
 		suxin;	
 	} {3.5};
+	#ticker {zhua} {
+		zhua;
+	} {5};
 	#ticker {xinjing} {
 		yun xinjing;
 	} {30};
