@@ -45,7 +45,6 @@
 		|| "%1" == "whip"
 		|| "%1" == "spear"
 		|| "%1" == "hammer"
-		|| "%1" == "shield"
 	} {
 		#var result wield;
 	};
@@ -68,11 +67,11 @@
 		remove all;
 		#delay {3} {
 			#if {${required_value} <= ${jd_current_value}} {
-				show_to_info good: ${jd_item}:${jd_current_value} -> ${required_value};
+				show_to_info ±£Áô: ${jd_item}:${jd_current_value};
 				put ${jd_item} in bao;
 			};
 			#else {
-				show_to_info bad: ${jd_item}:${jd_current_value} -> ${required_value};
+				show_to_info Âôµô: ${jd_item}:${jd_current_value};
 				sell ${jd_item};
 			};
 			jd.next;			
