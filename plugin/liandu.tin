@@ -42,8 +42,10 @@
 		#delay {1} {
 			map.go  Øπ◊;
 			#ticker {give_corpse} {
-				give piaoran corpse;	
-			} {10};
+				on_unbusy {
+					give piaoran corpse;	
+				};
+			} {20};
 			on_unbusy {
 				give piaoran corpse;	
 			};
@@ -106,17 +108,17 @@
 
 #alias {kill_somebody} {
 	#class kill_somebody.inner open;
-	#action {–«Àﬁ≈…πƒ ÷} {
+	#action {^    –«Àﬁ≈…πƒ ÷} {
 		#delay {kill} {
 			kill gushou;
 		} {3};
 	};
-	#action {–«Àﬁ≈…∫≈ ÷} {
+	#action {^    –«Àﬁ≈…∫≈ ÷} {
 		#delay {kill} {
 			kill haoshou;
 		} {3};
 	};
-	#action {–«Àﬁ≈…Ó‡ ÷} {
+	#action {^    –«Àﬁ≈…Ó‡ ÷} {
 		#delay {kill} {
 			kill boshou;
 		} {3};
