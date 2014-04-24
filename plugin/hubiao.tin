@@ -52,7 +52,7 @@ load chaos;
 	#else {
 		#math hb_path_index ${hb_path_index}+1;
 		#if {${hb_path_index} > ${hb_path_size}} {
-			hb.pause;
+			hb.end;
 			#format {hb_end_time} {%t} {%T};
 			show_to_info µ½´ï: ${hb_start_time} -> ${hb_end_time};
 			notify_alert escort arrived;
