@@ -76,6 +76,10 @@
 @mapset{menpai;丐帮;gaibang};
 #alias {get_char_info} {
 	#class get_char_info.inner open;
+	#action {【%*】%* %*(%*)} {
+		#var char_name %%3;
+		#var char_id @lower{%%4};
+	};
 	#action {姓名:%*%sID:%S} {
 		#var char_name %%1;
 		#var char_id @lower{%%3};
@@ -89,12 +93,18 @@
 		load spec/${char_menpai};
 		show_to_shortcut ${shortcut};
 	};
+	#action {系统喘气中} {
+		#delay {6} {
+			#send {status_me};		
+		};
+	};
+	#action {◎其他属性◎} {
+		#class get_char_info.inner kill;
+	};
 	#class get_char_info.inner close;
 	#send {status_me};
 	#send {sc};
-	#delay {3} {
-		#class get_char_info.inner kill;
-	};
+
 };
 
 #alias {login} {
