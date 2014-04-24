@@ -1,0 +1,15 @@
+Scrollbar=none
+CursorType=block
+CursorBlinks=no
+Transparency=off
+CursorColour=0,255,0
+Font=ĞÂËÎÌå
+FontHeight=10
+ConfirmExit=no
+Rows=25
+ScrollbackLines=10000
+Term=xterm-256color
+BellSound=no
+BoldAsFont=no
+Locale=zh_CN
+Charset=GBK
