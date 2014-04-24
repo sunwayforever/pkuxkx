@@ -33,6 +33,10 @@
 		#unticker {give_corpse};
 		ask piaoran about 炼毒;
 	};
+
+	#action {你给飘然子一具星宿%*的尸体} {
+		#unticker {give_corpse};	
+	};
 	
 	#action {你将%*尸体扶了起来背在背上} {
 		#delay {1} {
