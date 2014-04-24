@@ -119,7 +119,7 @@
 	};
 	#ticker {l} {
 		l;
-	} {60};
+	} {105};
 	#action {–«Àﬁ≈…%*À¿¡À} {
 		#class kill_somebody.inner kill;
 		zhishi corpse;				
@@ -128,8 +128,8 @@
 		n;
 		#delay {move} {
 			nd;
-		} {15};
-	} {15};
+		} {30};
+	} {30};
 	#class kill_somebody.inner close;
 	l;
 };
