@@ -103,20 +103,26 @@
 #alias {kill_somebody} {
 	#class kill_somebody.inner open;
 	#action {–«Àﬁ≈…πƒ ÷} {
-		kill gushou;
+		#delay {kill} {
+			kill gushou;
+		} {2};
 	};
 	#action {–«Àﬁ≈…∫≈ ÷} {
-		kill haoshou;
+		#delay {kill} {
+			kill haoshou;
+		} {2};
 	};
 	#action {–«Àﬁ≈…Ó‡ ÷} {
-		kill boshou;
+		#delay {kill} {
+			kill boshou;
+		} {2};
 	};
 	#ticker {l} {
 		l;
 	} {60};
 	#action {–«Àﬁ≈…%*À¿¡À} {
 		#class kill_somebody.inner kill;
-		zhishi corpse;		
+		zhishi corpse;				
 	} {1};
 	#delay {move} {
 		n;
