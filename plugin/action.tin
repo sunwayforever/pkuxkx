@@ -129,7 +129,9 @@
 		};
 	};
 	#class get_char_info.inner close;
-	#send {sc};
+	on_unbusy {
+		#send {sc};
+	};
 };
 
 #alias {login} {
