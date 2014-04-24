@@ -110,7 +110,6 @@ load chaos;
 	
 	#action {劫匪趁你不注意，推着镖车就跑，你赶紧追了上去。} {
 		hb.pause;
-		show_to_info 乱入;
 		hb.recover;
 	};
 
@@ -877,7 +876,6 @@ load chaos;
 			#math hb_path_index ${hb_path_index}-1;
 		};
 		chaos.remember;
-		show_to_info 恢复;
 		#delay {hb_delay} {
 			hb.resume;
 		} {10};
