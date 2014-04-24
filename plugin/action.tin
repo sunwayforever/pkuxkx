@@ -74,54 +74,58 @@
 @mapset{menpai;星宿派;xingxiu};
 @mapset{menpai;大轮寺;dalunsi};
 @mapset{menpai;丐帮;gaibang};
+#gag get_char_info;
 #alias {get_char_info} {
 	#class get_char_info.inner open;
-	#action {【%*】%* %*(%*)} {
-		#var char_name %%3;
-		#var char_id @lower{%%4};
-	};
-	#action {姓名:%*%sID:%S} {
-		#var char_name %%1;
-		#var char_id @lower{%%3};
-	};
-	#action {内力恢复：+%*  } {
-		#var char_nl_recovery %%1;
-	};
 	#action {你是%*第} {
 		#var char_menpai_zh %%1;
 		#var char_menpai @mapget{menpai;%%1};
 		load spec/${char_menpai};
 		show_to_shortcut ${shortcut};
 	};
-	#action {系统喘气中} {
-		#delay {6} {
-			#send {status_me};		
-		};
-	};
-	#action {◎其他属性◎} {
+	#action {≡━━━━━━━━━━━━━━━━━━━━━━◎北大侠客行◎━━≡} {
 		#class get_char_info.inner kill;
+		#class get_st.inner open;
+		#action {姓名:%*%sID:%S} {
+			#var char_name %%%1;
+			#var char_id @lower{%%%3};
+		};
+		#action {内力恢复：+%*  } {
+			#var char_nl_recovery %%%1;
+		};
+		#action {系统喘气中} {
+			#delay {10} {
+				#send {status_me};		
+			};
+		};
+		#action {≡━━━━━━━━━━━━━━━━━━━━━━━◎北大侠客行◎━━≡} {
+			#class get_st.inner kill;
+			#showme get_char_info;
+		};
+		#class get_st.inner close;
+		#send {status_me};		
 	};
 	#class get_char_info.inner close;
-	#send {status_me};
 	#send {sc};
-
 };
 
 #alias {login} {
 	get_char_info;
-	unwield all;
-	wi;
-	we;
-	show_to_quest   ;
-	#send {i};
-	#send {hpbrief};
-	#send {uptime};
-	#send {time};
-	perform_special;
-	init_set;
-	show.init;
-	check_baowei;
-	#send {l};
+	#action {get_char_info} {
+		unwi;
+		wi;
+		we;
+		show_to_quest   ;
+		#send {i};
+		#send {hpbrief};
+		#send {uptime};
+		#send {time};
+		perform_special;
+		init_set;
+		show.init;
+		check_baowei;
+		#send {l};		
+	};
 };
 
 #action {此ID档案已存在} {
