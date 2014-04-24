@@ -11,6 +11,7 @@
 	};
 	
 	#action {你将自身精力内力灌注入星宿派%*的尸体} {
+		#unaction {星宿派%*死了};
 		#delay {3} {
 			get corpse;
 		};
@@ -93,8 +94,8 @@
 		map.go 巨岩;
 		#delay {3} {
 			kill_somebody;
-			on_dead {
-				zhishi corpse;
+			#action {星宿派%*死了} {
+				zhishi corpse;				
 			};
 		};
 	};
