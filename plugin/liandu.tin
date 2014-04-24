@@ -98,7 +98,7 @@
 	};
 	on_truce {
 		map.go æﬁ—“;
-		#delay {3} {
+		#delay {5} {
 			kill_somebody;
 		};
 	};
@@ -109,17 +109,17 @@
 	#action {–«Àﬁ≈…πƒ ÷} {
 		#delay {kill} {
 			kill gushou;
-		} {2};
+		} {3};
 	};
 	#action {–«Àﬁ≈…∫≈ ÷} {
 		#delay {kill} {
 			kill haoshou;
-		} {2};
+		} {3};
 	};
 	#action {–«Àﬁ≈…Ó‡ ÷} {
 		#delay {kill} {
 			kill boshou;
-		} {2};
+		} {3};
 	};
 	#ticker {l} {
 		l;
@@ -130,9 +130,6 @@
 	} {1};
 	#delay {move} {
 		n;
-		#delay {move} {
-			nd;
-		} {30};
 	} {30};
 	#class kill_somebody.inner close;
 	l;
