@@ -9,6 +9,11 @@
 #math chat_window_offset $info_window_offset+&info_window[]+1;
 
 #alias {show.init} {
+	#alias {show_to_status} {
+		#var show_status %%0;
+		#echo {{<fca>${show_status}<099> => <cfa>${show_quest}<099>}{-1}};
+	};
+
 	#loop {1} {&info_window[]} {cnt}
 	{
 		#math pos $cnt+${info_window_offset};
@@ -52,11 +57,6 @@
 		#echo {{<aff>$chat_window[$cnt]<099>} {-$pos}};
 	}
 }
-
-#alias {show_to_status} {
-	#var show_status %0;
-	#echo {{<fca>${show_status}<099> => <cfa>${show_quest}<099>}{-1}};
-};
 
 #alias {show_to_quest} {
 	#var show_quest %0;
