@@ -96,7 +96,7 @@
 			kill_somebody;
 			#action {–«Àﬁ≈…%*À¿¡À} {
 				zhishi corpse;				
-			};
+			} {1};
 		};
 	};
 };
