@@ -143,7 +143,6 @@
 	};
 };
 
-
 #action {本周为%*之周，} {
 	#var week_info %1之周;
 	update_status;

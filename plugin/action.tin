@@ -84,6 +84,9 @@
 #gag get_char_info;
 #alias {get_char_info} {
 	#class get_char_info.inner open;
+	#action {【%*】%*(%*)} {
+		#var char_id @lower{%%3};	
+	};
 	#action {你是%*第} {
 		#var char_menpai_zh %%1;
 		#var char_menpai @mapget{menpai;%%1};
@@ -92,10 +95,21 @@
 	};
 	#action {≡━━━━━━━━━━━━━━━━━━━━━━◎北大侠客行◎━━≡} {
 		#class get_char_info.inner kill;
+
+		#class get_name.inner open;
+		#action {姓    名：	%*} {
+			#var char_name %%%1;
+			#class get_name.inner kill;
+			update_status;
+			#showme get_char_info;
+		};
+		#class get_name.inner close;
+		
 		#class get_st.inner open;
 		#action {姓名:%*%sID:%S} {
 			#var char_name %%%1;
-			#var char_id @lower{%%%3};
+			update_status;
+			#showme get_char_info;
 		};
 		#action {内力恢复：+%*  } {
 			#var char_nl_recovery %%%1;
@@ -107,10 +121,12 @@
 		};
 		#action {≡━━━━━━━━━━━━━━━━━━━━━━━◎北大侠客行◎━━≡} {
 			#class get_st.inner kill;
-			#showme get_char_info;
 		};
 		#class get_st.inner close;
-		#send {status_me};		
+		on_unbusy {
+			#send {finger ${char_id}};
+			#send {status_me};
+		};
 	};
 	#class get_char_info.inner close;
 	#send {sc};
@@ -119,6 +135,7 @@
 #alias {login} {
 	get_char_info;
 	#action {get_char_info} {
+		#unaction {get_char_info};
 		unwi;
 		wi;
 		we;
