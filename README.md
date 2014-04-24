@@ -1,9 +1,5 @@
-1.  假设所有文件放在 /home/sunway/.tt 下
+1.  假设所有文件放在目录 A 下
+2.  cd A; tt++ main.tin; #session xxx pkuxkx.net 8080;user_id;password; 
+    脚本会自动检测门派等信息, 所有预设的门派信息放在 plugin/spec 目录
+	下, 请按自己的需要修改.
 
-2.  执行以下命令来启动: tt++ xxx.tin 其中 xxx.tin 对应着游戏角色的登录
-    信息和 HOME 变量, 模板为
-    
-        #var HOME /home/sunway
-        #nop 这个 HOME 变量需要与文件所在路径一致
-        #read ${HOME}/.tt/main.tin;
-        #session bbkin pkuxkx.net 8080; bbkin; password;

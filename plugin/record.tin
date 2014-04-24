@@ -16,7 +16,7 @@
 		#var record_state 0;
 		gt here;
 		#if {"${current_area}" != ""} {
-			#nop #system {${HOME}/.tt/bin/record.sh "${current_area}@@${current_room}@@${description}"};
+			#nop #system {bin/record.sh "${current_area}@@${current_room}@@${description}"};
 			show_to_info "$current_area:$current_room";
 		};
 	};

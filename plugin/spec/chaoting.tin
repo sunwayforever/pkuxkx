@@ -1,4 +1,4 @@
-#class gumu_spec open
+#class chaoting_spec open
 
 #alias {attack.prepare} {
 	yun powerup;
@@ -95,10 +95,6 @@
 	wi;
 };
 
-#alias {load_map} {
-	map.load hangzhou;
-};
-
 #alias {map_goto_lingwu} {
 	map.go {Ñ§ÌÃ};
 };
@@ -135,4 +131,4 @@
 
 #var shifu meng;
 #var shortcut F1:²ø F2:É±Íþ F3:»¢Ð¥ F4:×óÊÖ F5:ÆßÐÇ
-#class gumu_spec close
+#class chaoting_spec close

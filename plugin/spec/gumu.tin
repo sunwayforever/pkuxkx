@@ -156,10 +156,6 @@
 	wi;
 };
 
-#alias {load_map} {
-	map.load gumu;
-};
-
 #alias {map_goto_lingwu} {
 	map.go {—›Œ‰∂¥};
 };

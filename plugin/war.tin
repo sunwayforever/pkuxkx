@@ -47,7 +47,7 @@
 };
 
 #alias {play_music} {
-    #system {${HOME}/.tt/bin/play %1};
+    #system bin/play %1};
 };
 
 #action {À¿¡À} {

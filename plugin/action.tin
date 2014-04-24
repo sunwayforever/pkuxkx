@@ -71,9 +71,16 @@
 @mapset{menpai;华山派;huashan};
 @mapset{menpai;古墓派;gumu};
 @mapset{menpai;武当派;wudang};
+@mapset{menpai;少林派;shaolin};
 @mapset{menpai;星宿派;xingxiu};
 @mapset{menpai;大轮寺;dalunsi};
 @mapset{menpai;丐帮;gaibang};
+@mapset{menpai;峨眉派;emei};
+@mapset{menpai;全真派;quanzhen};
+@mapset{menpai;日月神教;riyue};
+@mapset{menpai;明教;mingjiao};
+@mapset{menpai;桃花岛;taohua};
+@mapset{menpai;天龙寺;tianlong};
 #gag get_char_info;
 #alias {get_char_info} {
 	#class get_char_info.inner open;

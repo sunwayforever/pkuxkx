@@ -1,5 +1,5 @@
 #alias {load} {
-    #read ${HOME}/.tt/plugin/%1.tin;
+    #read plugin/%1.tin;
 };
 
 #alias {unload} {
@@ -8,6 +8,10 @@
 
 #alias {eat_food} {
 	#6 {drink cha};
+};
+
+#alias {load_map} {
+	map.load ${char_menpai};
 };
 
 #alias {cq} {
@@ -48,7 +52,7 @@
 };
 
 #alias {query_room} {
-    #system {${HOME}/.tt/bin/query_room.rb %0};
+    #system {bin/query_room.rb %0};
 };
 
 #action {(%1)¸æËßÄã£ºquery %2} {
@@ -456,7 +460,7 @@
 };
 
 #alias {map.load} {
-	#map read ${HOME}/.tt/map/%1.map;
+	#map read map/%1.map;
 	#map flag vtmap off;
 	#map flag ascii off;
 	#map flag nofollow off;

@@ -1,5 +1,4 @@
-#class xingxiu_spec open
-#read plugin/liandu.tin;
+#class template open
 #alias {attack.prepare} {
 	#cr;
 };
@@ -21,9 +20,7 @@
 
 #alias {attack.mingjiao} {
 	#class attack.inner open;
-	#ticker {perf_chuanxin} {
-		chuanxin;
-	} {0.6};
+	#cr;
 	#class attack.inner close;
 };
 
@@ -67,14 +64,30 @@
 	#cr;
 };
 
-#list my_weapons create {my staff};
+#alias {xl.start} {
+	xiulian bixue-xinfa;
+	show_to_quest 修炼内功;
+	#action {顿觉内功修为增进不小} {xiulian yunu-xinfa};
+	#action {由于缺乏实战经验} {
+		xl.stop;
+	};
+};
+
+#alias {xl.stop} {
+	show_to_quest 修炼结束;
+	#unaction {顿觉内功修为增进不小};
+	#unaction {由于缺乏实战经验};
+}
+
+#list my_weapons create {staff; staff 2};
 #alias {perform_special} {
-	#cr;
+
 };
 
 #alias {huose} {
 	wi;
 	perform staff.huose;
+	wi;
 };
 
 #alias {huoqiang} {
@@ -93,7 +106,7 @@
 
 #alias {chuanxin} {
 	unwi;
-	perform xingxiu-duzhang.chuanxin;
+	perform strike.chuanxin;
 	wi;
 };
 
@@ -110,10 +123,10 @@
 };
 
 #alias {tan} {
-	#cr;
+
 };
 
-#var shortcut F1:活色 F2:抽髓 F3:火球 F4:火墙 F5:穿心 F6:散毒 F7:弹;
+#var shortcut F1:活色 F2:抽髓 F3:火球 F4:火墙 F5:穿心 F6:散毒 F7:弹
 #macro {\eOP} {
 	huose;
 };
@@ -142,16 +155,8 @@
 	tan;
 };
 
-#macro {\e[19~} {
-	#cr;
-};
-
 #alias {qudu} {
-	yun qudu;
-	#action {战斗中运功驱毒} {
-		#unaction {战斗中运功驱毒};
-		eat san;
-	};
+	eat san;
 };
 
 #alias {reborn} {
@@ -166,4 +171,4 @@
 #var shifu li;
 #var menzhong dizi;
 #var menzhong_didian txg;
-#class xingxiu_spec close
+#class template close

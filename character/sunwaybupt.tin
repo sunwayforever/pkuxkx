@@ -1,8 +1,0 @@
-#script {HOME} {ruby -e 'puts ENV["HOME"]'};
-#var HOME $HOME[1];
-
-#read ${HOME}/.tt/main.tin;
-#read ${HOME}/.tt/plugin/xmpp.tin;
-#read ${HOME}/.tt/plugin/guaji.tin;
-
-#session erq pkuxkx.net 8080; sunwaybupt; 123456;

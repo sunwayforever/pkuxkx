@@ -40,10 +40,6 @@
 
 };
 
-#alias {load_map} {
-	map.load xingxiu;
-};
-
 #alias {map_goto_lingwu} {
 	map.go Ê¯±Ú;
 };

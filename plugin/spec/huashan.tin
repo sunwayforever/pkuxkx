@@ -71,10 +71,6 @@
 	wi;
 };
 
-#alias {load_map} {
-	map.load huashan;
-};
-
 #alias {map_goto_lingwu} {
 	map.go {Á·¹¦·¿};
 };

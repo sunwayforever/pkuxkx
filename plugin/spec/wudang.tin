@@ -136,10 +136,6 @@
 	perform spear.lianhuan;
 };
 
-#alias {load_map} {
-	map.load wudang;
-};
-
 #alias {map_goto_lingwu} {
 	map.go {¾²ÐÞ¸ó};
 };

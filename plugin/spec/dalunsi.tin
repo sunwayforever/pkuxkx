@@ -1,5 +1,5 @@
 #class dalunsi_spec open
-#read ${HOME}/.tt/plugin/chanding.tin;
+#read plugin/chanding.tin;
 
 #alias {attack.prepare} {
 	#cr;
@@ -65,10 +65,6 @@
 
 #alias {chan} {
 	chan_normal;
-};
-
-#alias {load_map} {
-	map.load dalunsi;
 };
 
 #alias {map_goto_lingwu} {
