@@ -89,14 +89,13 @@
 	drop tonggu;
 	drop tongbo;
 	wi;
-	out;
+	#delay {2} {
+		out;
+	};
 	on_truce {
 		map.go æﬁ—“;
 		#delay {3} {
 			kill_somebody;
-			#action {–«Àﬁ≈…%*À¿¡À} {
-				zhishi corpse;				
-			} {1};
 		};
 	};
 };
@@ -104,20 +103,27 @@
 #alias {kill_somebody} {
 	#class kill_somebody.inner open;
 	#action {–«Àﬁ≈…πƒ ÷} {
-		#class kill_somebody.inner kill;
 		kill gushou;
 	};
 	#action {–«Àﬁ≈…∫≈ ÷} {
-		#class kill_somebody.inner kill;
 		kill haoshou;
 	};
 	#action {–«Àﬁ≈…Ó‡ ÷} {
-		#class kill_somebody.inner kill;
 		kill boshou;
 	};
 	#ticker {l} {
 		l;
 	} {60};
+	#action {–«Àﬁ≈…%*À¿¡À} {
+		#class kill_somebody.inner kill;
+		zhishi corpse;		
+	} {1};
+	#delay {move} {
+		n;
+		#delay {move} {
+			nd;
+		} {15};
+	} {15};
 	#class kill_somebody.inner close;
 	l;
 };
