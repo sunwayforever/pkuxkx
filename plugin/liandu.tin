@@ -68,7 +68,7 @@
 				};
 			};		
 		};
-		zuan;
+		zuan_dong;
 	};
 };
 
@@ -92,7 +92,7 @@
 		};		
 	};
 	#delay {1} {
-		zuan;
+		zuan_dong;
 	};
 };
 
@@ -126,7 +126,7 @@
 		#undelay {move};
 		#delay {1} {
 			map.go 山洞;
-			zuan;
+			zuan_dong;
 			#action {zuan ok} {
 				#unaction {zuan ok};
 				on_unbusy {
@@ -145,7 +145,7 @@
 	l;
 };
 
-#alias {zuan} {
+#alias {zuan_dong} {
 	#class zuan.inner open;
 	#action {你取出火折，用火石把它点着。} {
 		#delay {1} {
