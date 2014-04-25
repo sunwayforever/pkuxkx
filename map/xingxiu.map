@@ -183,4 +183,4 @@ E {   40} {out} {out} {64} {0} {}
 E {   42} {enter} {use fire; use fire; use fire; use fire; zuan} {128} {0} {}
 
 R {   42} {0} {} {Ê¯¹×} { } {} {} {} {} {}
-E {   41} {out} {use fire; zuan} {64} {0} {}
+E {   41} {out} {use fire; use fire; use fire; use fire; zuan} {64} {0} {}
