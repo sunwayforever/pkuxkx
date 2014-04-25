@@ -1,6 +1,7 @@
 #class hubiao open
 load chaos;
 
+#var hb_may_luanru 1;
 #var hb_wait 0;
 #var hb_paused 0;
 #var hb_hb_force_wait 0;
@@ -110,6 +111,7 @@ load chaos;
 	
 	#action {劫匪趁你不注意，推着镖车就跑，你赶紧追了上去。} {
 		hb.pause;
+		#var hb_may_luanru 1;
 		hb.recover;
 	};
 
@@ -327,10 +329,12 @@ load chaos;
 	};
 
 	#action {${char_name}帮%*追回财物，额外获得%*点经验} {
+		#var hb_may_luanru 0;
 		show_to_info 额外获得 @ctd{%%2} 点经验;
 	};
 	
 	#action {哇，你太厉害了，这么快就把这些财物追回，我有重谢！} {
+		#var hb_may_luanru 0;
 		pack gem;	
 	};
 	
@@ -802,10 +806,13 @@ load chaos;
 			#return 7;
 		};
 		#elseif {"%1" == "晋阳萧府"} {
+			#if {${hb_may_luanru} == 1} {
+				#return -1;
+			};
 			#return 5;
 		};
 		#elseif {"%1" == "成都当铺"} {
-			#return -1;
+			#return 8;
 		};
 		#elseif {"%1" == "赞普来福杂货"} {
 			#return -1;
