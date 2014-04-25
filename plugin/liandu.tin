@@ -58,11 +58,17 @@
 
 	#class ld.inner close;
 	load_map;
-	map.go 石棺;
-	dz.full {
-		tn.full {
-			ask piaoran about 炼毒;
+	map.go 山洞;
+	on_truce {
+		#action {zuan ok} {
+			#unaction {zuan ok};
+			dz.full {
+				tn.full {
+					ask piaoran about 炼毒;
+				};
+			};		
 		};
+		zuan;
 	};
 };
 
@@ -76,14 +82,17 @@
 	drop tonggu;
 	drop tongbo;
 	wi;
-	#delay {2} {
-		out;
+	#action {zuan ok} {
+		#unaction {zuan ok};
+		on_truce {
+			map.go 巨岩;
+			#delay {5} {
+				kill_somebody;
+			};
+		};		
 	};
-	on_truce {
-		map.go 巨岩;
-		#delay {5} {
-			kill_somebody;
-		};
+	#delay {1} {
+		zuan;
 	};
 };
 
@@ -116,9 +125,13 @@
 		#class kill_somebody.inner kill;
 		#undelay {move};
 		#delay {1} {
-			map.go 石棺;
-			on_unbusy {
-				give piaoran corpse;	
+			map.go 山洞;
+			zuan;
+			#action {zuan ok} {
+				#unaction {zuan ok};
+				on_unbusy {
+					give piaoran corpse;	
+				};
 			};
 		};
 	};
@@ -131,4 +144,22 @@
 	#class kill_somebody.inner close;
 	l;
 };
+
+#alias {zuan} {
+	#class zuan.inner open;
+	#action {你取出火折，用火石把它点着。} {
+		#delay {1} {
+			use fire;
+		};
+	};
+	#action {你点燃了火折，发现%*石壁%*一道裂缝} {
+		#delay {1} {
+			#send {zuan};
+			#showme zuan ok;
+		};
+		#class zuan.inner kill;
+	};
+	#class zuan.inner close;
+	use fire;
+}
 #class liandu close
