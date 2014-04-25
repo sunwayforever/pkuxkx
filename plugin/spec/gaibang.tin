@@ -149,5 +149,7 @@ stat.register ²ø hit ÄãµÃÀí²»ÈÄÈË;
 #list my_weapons create {my spear 2; my spear};
 #var shortcut F1:²ø F2:×ª F3:Ìô F4:´Á F5:À×öª½µÁú F6:¿ºÁúÈı»Ú;
 #var shifu hong;
+#var char_menpai_position gb;
+
 #class gaibang_spec close
 

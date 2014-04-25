@@ -312,6 +312,11 @@ load chaos;
 	#var getesc_current_id 0;
 	#class hb.auto.inner open;
 
+	#action {^你不是才要了任务吗} {
+		hb.f;
+		hb.start;
+	};
+	
 	#action {你一共被奖励了：} {
 		#class tmp.inner open;
 		#action {%*点经验；} {

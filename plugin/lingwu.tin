@@ -2,8 +2,6 @@
 
 #alias {lw_action} {#cr;};
 #alias {lw.start} {
-	load_map;
-	map_goto_lingwu;
 	#var lw_sleeping 0;
 	#var lw_paused 0;
 	#list skills create  {force;cuff;strike;whip;staff;sword;parry;claw;blade;spear;dodge;hand;throwing};
@@ -173,9 +171,13 @@
 	};
 
 	#class lingwu.inner close;
-
-	show_to_quest ¡ÏŒÚ;
-	lw.restart;
+	gt ${char_menpai_position};
+	on_there {
+		show_to_quest ¡ÏŒÚ;
+		load_map;
+		map_goto_lingwu;
+		lw.restart;
+	};
 };
 
 #alias {lw.stop} {

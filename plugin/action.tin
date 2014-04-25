@@ -297,7 +297,9 @@
 };
 
 #action {你喜欢原地逛逛么} {
-	#showme 抵达目的地;
+	#delay {delay} {
+		#showme 抵达目的地;
+	} {1};
 };
 
 #action {“你已经把装备放入熔炉并打算让我帮你锻造了么？”(回答yes or no)} {

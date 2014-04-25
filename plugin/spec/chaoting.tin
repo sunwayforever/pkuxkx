@@ -131,4 +131,6 @@
 
 #var shifu meng;
 #var shortcut F1:²ø F2:É±Íþ F3:»¢Ð¥ F4:×óÊÖ F5:ÆßÐÇ
+#var char_menpai_position hz;
+
 #class chaoting_spec close

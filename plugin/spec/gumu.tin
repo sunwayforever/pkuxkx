@@ -185,6 +185,7 @@
 stat.register 缠 miss 可是他看破了你的企图，并没有上当;
 stat.register 缠 hit 结果他被你攻了个措手不及！
 
+#var char_menpai_position xt;
 #var shifu yang;
 #class gumu_spec close
 

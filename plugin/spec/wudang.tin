@@ -171,5 +171,5 @@
 	bei cuff claw;
 	wbei taiji-jian xuanxu-dao;
 };
-
+#var char_menpai_position wd;
 #class wudang_spec close

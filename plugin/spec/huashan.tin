@@ -171,4 +171,5 @@
 #list my_weapons create {sword;};
 #var menzhong ning;
 #var menzhong_didian hs;
+#var char_menpai_position hs;
 #class wudang_spec close
