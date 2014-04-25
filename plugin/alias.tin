@@ -580,3 +580,13 @@
 	#list directions find %1 index;
 	#list opposite_directions get ${index} result;
 };
+
+#alias {debug.on} {
+	#log overwrite debug.log;
+	#debug all on;
+};
+
+#alias {debug.off} {
+	#log off;
+	#debug all off;
+};

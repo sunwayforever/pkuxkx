@@ -6,7 +6,7 @@
 
 	
 	#action {一阵风吹过，把枯乾的骸骨化成骨灰吹散了} {
-		#unticker {give_corpse};
+		#undelay {give_corpse};
 		ask piaoran about 炼毒;		
 	};
 	
@@ -30,22 +30,22 @@
 	};
 
 	#action {你身上没有 corpse 这样东西。} {
-		#unticker {give_corpse};
+		#undelay {give_corpse};
 		ask piaoran about 炼毒;
 	};
 
 	#action {你给飘然子一具星宿%*的尸体} {
-		#unticker {give_corpse};	
+		#undelay {give_corpse};	
 	};
-	
+
+	#action {飘然子不想要星宿%*的尸体，你就自个留着吧。} {
+		#delay {give_corpse} {
+			give piaoran corpse;	
+		} {20};
+	};
 	#action {你将%*尸体扶了起来背在背上} {
 		#delay {1} {
 			map.go 石棺;
-			#ticker {give_corpse} {
-				on_unbusy {
-					give piaoran corpse;	
-				};
-			} {20};
 			on_unbusy {
 				give piaoran corpse;	
 			};
@@ -70,7 +70,7 @@
 	};
 	              
 	#action {飘然子说道：「好吧，你来试着练习(liandu)一下毒技吧。」} {
-		#unticker {give_corpse};
+		#undelay {give_corpse};
 		unwi;
 		liandu;
 	};
