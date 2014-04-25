@@ -4,12 +4,6 @@
 	show_to_quest 炼毒: ${ld_count};
 	#class ld.inner open;
 
-	
-	#action {一阵风吹过，把枯乾的骸骨化成骨灰吹散了} {
-		#undelay {give_corpse};
-		ask piaoran about 炼毒;		
-	};
-	
 	#action {炼毒时需要双手的配合，所以你最好还是不要拿武器} {
 		unwi;
 		liandu;
@@ -51,7 +45,9 @@
 	};
 	
 	#action {飘然子对着你嘿嘿一笑：“想练毒是吧？先去给你自己找具有用的尸体来} {
-		ld.get_corpse;
+		#delay {delay} {
+			ld.get_corpse;
+		} {2};
 	};
 	              
 	#action {飘然子说道：「好吧，你来试着练习(liandu)一下毒技吧。」} {
