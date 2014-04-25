@@ -10,13 +10,6 @@
 		ask piaoran about 炼毒;		
 	};
 	
-	#action {你将自身精力内力灌注入星宿派%*的尸体} {
-		#unaction {星宿派%*死了};
-		#delay {3} {
-			get corpse;
-		};
-	};
-
 	#action {炼毒时需要双手的配合，所以你最好还是不要拿武器} {
 		unwi;
 		liandu;
@@ -42,14 +35,6 @@
 		#delay {give_corpse} {
 			give piaoran corpse;	
 		} {20};
-	};
-	#action {你将%*尸体扶了起来背在背上} {
-		#delay {1} {
-			map.go 石棺;
-			on_unbusy {
-				give piaoran corpse;	
-			};
-		};
 	};
 
 	#action {这一瞬间，你发觉那至阴的毒气和自己体内原本的毒气相互融合，一同归纳进了气海！} {
@@ -126,8 +111,22 @@
 	#ticker {l} {
 		l;
 	} {105};
-	#action {星宿派%*死了} {
+	#action {你将自身精力内力灌注入星宿派%*的尸体} {
+		#delay {3} {
+			get corpse;
+		};
+	};
+	#action {你将%*尸体扶了起来背在背上} {
 		#class kill_somebody.inner kill;
+		#undelay {move};
+		#delay {1} {
+			map.go 石棺;
+			on_unbusy {
+				give piaoran corpse;	
+			};
+		};
+	};
+	#action {星宿派%*死了} {
 		zhishi corpse;				
 	} {1};
 	#delay {move} {
