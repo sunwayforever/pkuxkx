@@ -60,13 +60,17 @@ load chaos;
 			xmpp.notify 到达, 没找到收货人;
 		};
 		#else {
-			#var hb_path_next #cr;
+			#list hb_path get ${hb_path_index} hb_path_next;
+			#delay {hb_move} {
+				#if {${hb_force_wait} == 0 && ${hb_paused} == 0 && ${hb_wait} == 0} {
+					${hb_path_next};
+				};
+			} {2};
 			#ticker {hb_walk} {
 				#if {${hb_force_wait} == 0 && ${hb_paused} == 0 && ${hb_wait} == 0} {
 					${hb_path_next};
 				};
-			} {2.5};
-			#list hb_path get ${hb_path_index} hb_path_next;
+			} {8};
 		};
 	};
 };
@@ -90,7 +94,6 @@ load chaos;
 	};
 	
 	#action {^你赶着镖车驶了过来} {
-		#var hb_path_next #cr;
 		#if {${hb_paused} == 0} {
 			chaos.remember;
 			hb.move;
@@ -183,6 +186,7 @@ load chaos;
 		#cr;
 	};
 	#unticker {hb_walk};
+	#undelay {hb_move};
 	#math hb_path_index ${hb_path_index}-1;
 };
 
@@ -190,6 +194,7 @@ load chaos;
 	#var hb_paused 1;
 	#var hb_force_wait 1;
 	#unticker {hb_walk};
+	#undelay {hb_move};
 	#math hb_path_index ${hb_path_index}-1;
 };
 
@@ -1007,6 +1012,20 @@ load chaos;
 #alias {mx.f} {
 	#var has_mixin 0;
 	#class mx.inner kill;
+};
+
+#alias {on_norobber} {
+	#alias tmp_norobber %1;
+	#class on_norobber.inner open;
+	#action {你想收谁作弟子？} {
+		#class on_norobber.inner kill;
+		${tmp_norobber};
+	};
+	#action {你想要收劫匪为弟子。} {
+		#class on_norobber.inner kill;		
+	};
+	#class on_norobber.inner close;
+	shou ${char_id}'s robber;
 };
 
 #class hubiao close
