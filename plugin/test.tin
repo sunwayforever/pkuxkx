@@ -23,4 +23,11 @@
 		#showme path error: ${test_path_index}, ${test_path_next};
 	};
 };
+
+#alias {test} {
+	#alias tmp_test %1;
+	#if {"%1" == ""} {
+		#showme null;
+	};
+}
 #class test close

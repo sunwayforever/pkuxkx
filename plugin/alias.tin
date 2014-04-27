@@ -41,6 +41,9 @@
 	enter shudong;say 天堂有路你不走呀;d;9;sw;s;#2 sw;nw;out;wd;s;s;w;
 	buy tea 30;
 	e;n;n;eu;zuan dong;se;#2 ne;n;ne;e;u;out;
+	#if {"%1" != ""} {
+		%1;
+	};
 };
 
 #alias {lm} {
@@ -506,7 +509,7 @@
 };
 
 #alias {get.san} {
-	#var get_san_count %1;
+	#var get_san_count 30;
 	#action {%S          清心散} {
 		#unaction {%S          清心散};
 		getout %%1;
@@ -514,12 +517,17 @@
 			drop ${get_san_count} san;
 			store san;
 			get san;
-			gt yz;
 		};
 	};
 	#action {你捡起一些清心散} {
 		#unaction {你捡起一些清心散};
 		show_to_info 清心散;
+		gt yz;
+		#if {"%1" != ""} {
+			on_there {
+				%1;
+			};
+		};
 	};
 	gt bs;
 	on_there {

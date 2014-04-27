@@ -79,6 +79,7 @@ load chaos;
 };
 
 #alias {hb.setup} {
+	clear_npc {庙祝};
 	clear_npc {李铁嘴};
 	clear_npc {地痞};
 	clear_npc {小流氓};
@@ -298,6 +299,7 @@ load chaos;
 
 #alias {hb.f} {
 	#var hb_lunci 0;
+	#var hb_may_luanru 1;
 	hb.teardown;
 	hb.get_owner;
 	ask ${hb_owner} about fail;
@@ -1036,4 +1038,11 @@ load chaos;
 	#class mx.inner kill;
 };
 
+#alias {hb.p} {
+	get.san {
+		get.fan {
+			repair;
+		};
+	};
+};
 #class hubiao close
