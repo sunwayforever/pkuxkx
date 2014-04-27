@@ -154,7 +154,9 @@
 };
 
 #action {此ID档案已存在} {
-	login;
+	#delay {3} {
+		login;
+	};
 };
 
 #alias {we} {
