@@ -438,8 +438,8 @@ load chaos;
 		#if {"${hb_owner}" == "zhang"} {
 			#if {"${tmp}" == "全真"} {
 				#list hb_path create {
-					gs;gw;gw;gs;gsw;gw;gw;gnw;gn;gn;gnd;gnu;gne;gn;gn;gn;gn;gn;gnw;gnw;gw;gnw;gnw;gn;gnw;gnu;gnu;gn;gnu;gn;gn;gn;gn;gn;gn;gn;
-					gn;gn;gs;gw;gs;gs;gw;gn;gn;gn;gs;gw;gn;gn;gs;gs;gs;gs;gs;gn;gn;gn;ge;ge;ge;ge;gn;gs;gs;gs;gn;gn;ge;gn;gs;gs;gs;gs;gw;ge;gn;gn;gn;
+					gs;gw;gw;gs;gsw;gw;gw;gnw;gn;gn;gnd;gnu;gne;gn;gn;gn;gn;gn;gnw;gnw;gw;gnw;gnw;gn;gnw;gnu;gnu;gn;gnu;gn;gn;
+					gn;gn;gn;gn;gn;gn;gn;gs;gw;gs;gs;gw;gn;gn;gn;gs;gw;gn;gn;gs;gs;gs;gs;gs;gn;gn;gn;ge;ge;ge;ge;gn;gs;gs;gs;gn;gn;ge;gn;gs;gs;gs;gs;gw;ge;gn;gn;gn;
 					ge;gn;gn;gs;gs;gs;gn;gw;gw;gw;gs;gs;gn;gw;ge;gs;gs;gw;ge;ge;gw;gs;gw;ge;gs;gs;
 				};
 			};
@@ -651,6 +651,14 @@ load chaos;
 					gw;gw;gw;gn;gn;gs;gs;gw;gw;gw;gw;gw;gn;gs;gw;gw;gs;gsw;gw;gw;gnw;gn;gs;gw;ge;gse;ge;ge;gne;gn;ge;ge;gn;
 				};
 			};
+			#elseif {"${tmp}" == "全真"} {
+				#list hb_path create {
+					gn;ge;ge;ge;gs;gs;gs;gs;gs;gs;gse;gsu;gsw;gsw;gw;gs;gs;gs;gwu;geu;gsu;gs;gs;
+					gw;gw;gw;gs;gw;gs;gs;gs;gs;gs;gs;ge;ge;gs;gn;ge;ge;gn;ge;gs;gn;ge;gn;gn;gn;ge;gs;gn;gn;gn;gw;gn;gw;gn;gn;gs;gs;gw;gw;gs;gs;gs;gw;gn;gs;gw;
+					gn;gs;gs;gs;ge;gn;gs;ge;gn;gs;gs;gw;ge;gn;ge;gn;gn;gn;gs;ge;gn;gs;gw;gw;gs;gs;gs;gs;gs;gs;gw;gw;gw;gs;gn;gw;gs;gn;ge;ge;ge;ge;ge;
+					ge;ge;gw;gn;gs;gw;gn;gs;gw;gs;gw;ge;ge;gw;gs;ge;gw;gsd;gs;gn;gnu;gn;gn;
+				};
+			};
 			#elseif {"${tmp}" == "洛阳"} {
 				#list hb_path create {
 					n;e;e;e;e;e;n;n;e;e;e;se;e;e;e;e;e;ed;e;e;e;
@@ -831,7 +839,7 @@ load chaos;
 			#return -1;
 		};
 		#elseif {"%1" == "长安当铺"} {
-			#return 1;
+			#return -1;
 		};
 		#elseif {"%1" == "襄阳当铺"} {
 			#if {"${xy_info}" == "on"} {
@@ -842,7 +850,10 @@ load chaos;
 			};
 		};
 		#elseif {"%1" == "武当荆西镖局"} {
-			#return 2;
+			#return 4;
+		};
+		#elseif {"%1" == "全真天尊讲经堂"} {
+			#return 1;
 		};
 		#elseif {"%1" == "灵州酒馆"} {
 			#if {"${char_menpai}" == "gaibang"} {

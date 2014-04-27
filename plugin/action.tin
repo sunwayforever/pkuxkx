@@ -92,6 +92,8 @@
 		#var char_menpai @mapget{menpai;%%1};
 		load spec/${char_menpai};
 		show_to_shortcut ${shortcut};
+		wi;
+		we;
 	};
 	#action {≡━━━━━━━━━━━━━━━━━━━━━━◎北大侠客行◎━━≡} {
 		#class get_char_info.inner kill;
@@ -138,9 +140,6 @@
 	get_char_info;
 	#action {get_char_info} {
 		#unaction {get_char_info};
-		unwi;
-		wi;
-		we;
 		show_to_quest   ;
 		#send {i};
 		#send {hpbrief};

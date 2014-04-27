@@ -20,7 +20,7 @@
 
 #alias {dz.full} {
 	#alias tmp_dz %1;
-	#if {${char_nl_recovery} > 40} {
+	#if {${char_nl_recovery} > 60} {
 		tmp_dz;
 		#showme dz.full;
 		#return;

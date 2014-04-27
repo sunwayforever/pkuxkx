@@ -1,8 +1,9 @@
 #class test open;
 #alias {path.test} {
 	#list test_path create {
-		n;e;e;e;e;e;s;w;e;e;w;s;w;e;e;w;s;w;e;e;w;s;se;e;w;nw;w;s;w;e;s;s;s;n;n;n;n;n;e;e;w;w;n;e;n;s;s;n;e;e;e;e;w;w;n;s;w;n;e;w;n;e;e;e;w;w;n;s;s;n;w;n;n;s;s;w;e;s;s;w;w;n;s;w;n;n;e;w;
-		w;w;w;w;e;e;e;e;s;s;w;n;s;w;n;s;w;w;e;e;e;s;w;e;e;w;s;w;e;e;w;s;w;e;e;w;s;e;n;n;w;s;w;e;n;w;w;s
+		n;e;e;e;s;s;s;s;s;s;se;su;sw;sw;w;s;s;s;wu;eu;su;s;s;
+		w;w;w;s;w;s;s;s;s;s;s;e;e;s;n;e;e;n;e;s;n;e;n;n;n;e;s;n;n;n;w;n;w;n;n;s;s;w;w;s;s;s;w;n;s;w;n;s;s;s;e;n;s;e;n;s;s;w;e;n;e;n;n;n;s;e;n;s;w;w;s;s;s;s;s;s;w;w;w;s;n;w;s;n;e;e;e;e;e;
+		e;e;w;n;s;w;n;s;w;s;w;e;e;w;s;e;w;sd;s;n;nu;n;n
 	};
 
 	#list test_path size test_path_size;
