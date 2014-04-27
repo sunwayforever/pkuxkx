@@ -1,30 +1,31 @@
 #class baiji open
 #alias {bj.start} {
 	#class bj.inner open;
-	#ticker {bj} {
-		baiji xiang;
-	} {0.2};
-	#action {你的精不够，无法继续拜祭。} {
-		yun regenerate;
-	};
 	#action {你内力不够} {
-		bj.stop;
-		#delay {10} {
-			eat_food;
-			dazuo 200;
-			#delay {5} {
-				dazuo 500;
-				#delay {5} {
-					bj.start;
-				};
-			};
+		#unticker {bj};
+		eat_food;
+		dz.full {
+			#ticker {bj} {
+				baiji xiang;
+			} {0.2};		
 		};
 	};
 	#class bj.inner close;
+	gt qf;
+	on_there {
+		enter;
+		#ticker {bj} {
+			baiji xiang;
+		} {0.2};		
+	};
 };
 
 #alias {bj.stop} {
 	#class bj.inner kill;
+	#unticker {bj};
+	on_unbusy {
+		out;
+	};
 };
 
 #class baiji close
