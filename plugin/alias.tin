@@ -590,3 +590,17 @@
 	#log off;
 	#debug all off;
 };
+
+#alias {on_echo} {
+	#alias tmp_echo %1;
+	#class on_echo.inner open;
+	#action {你有一搭，没一搭的「嗯」了一声。} {
+		#class on_echo.inner kill;
+		tmp_echo;
+	};
+	#delay {1} {
+		#class on_echo.inner kill;	
+	};
+	#class on_echo.inner close;
+	#send {en};
+};

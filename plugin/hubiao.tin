@@ -68,9 +68,11 @@ load chaos;
 			} {2};
 			#ticker {hb_walk} {
 				#if {${hb_force_wait} == 0 && ${hb_paused} == 0 && ${hb_wait} == 0} {
-					${hb_path_next};
+					on_echo {
+						${hb_path_next};
+					};
 				};
-			} {8};
+			} {5};
 		};
 	};
 };
@@ -321,7 +323,9 @@ load chaos;
 
 	#action {^你不是才要了任务吗} {
 		hb.f;
-		hb.start;
+		on_unbusy {
+			hb.start;
+		};
 	};
 	
 	#action {你一共被奖励了：} {
@@ -1012,20 +1016,6 @@ load chaos;
 #alias {mx.f} {
 	#var has_mixin 0;
 	#class mx.inner kill;
-};
-
-#alias {on_norobber} {
-	#alias tmp_norobber %1;
-	#class on_norobber.inner open;
-	#action {你想收谁作弟子？} {
-		#class on_norobber.inner kill;
-		${tmp_norobber};
-	};
-	#action {你想要收劫匪为弟子。} {
-		#class on_norobber.inner kill;		
-	};
-	#class on_norobber.inner close;
-	shou ${char_id}'s robber;
 };
 
 #class hubiao close
