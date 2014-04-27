@@ -50,13 +50,15 @@
 			#else {
 				get_position {l ${exit}};				
 			};
-			#delay {1} {
+			#delay {3} {
 				#if {${last_position} == ${position}} {
 					#showme chaos ok: ${exit};
 				};
 				#else {
 					#math exits_list_index ${exits_list_index}+1;
-					check;
+					#delay {3} {
+						check;
+					};
 				};
 			};
 		};
@@ -66,7 +68,7 @@
 	};
 	#action {get_exits: done} {
 		#unaction {get_exits: done};
-		#delay {1} {
+		#delay {3} {
 			#var exits_list_index 1;
 			#list exits_list size exits_list_size;
 			check;		

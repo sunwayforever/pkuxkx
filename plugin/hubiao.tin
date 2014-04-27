@@ -1,6 +1,7 @@
 #class hubiao open
 load chaos;
 
+#var hb_first_kill 0;
 #var hb_may_luanru 1;
 #var hb_wait 0;
 #var hb_paused 0;
@@ -130,8 +131,12 @@ load chaos;
 		#var mj_started 1;
 		mj.start;		
 	};
-	
+
 	#action {劫匪突然从暗处跳了出来} {
+		#if {${hb_first_kill} == 0} {
+			#var hb_first_kill 1;
+			killall robber;
+		};
 		war;
 		hb.wait;
 	};
@@ -853,6 +858,9 @@ load chaos;
 			#return 4;
 		};
 		#elseif {"%1" == "全真天尊讲经堂"} {
+			#if {${hb_may_luanru} == 1} {
+				#return -1;				
+			};
 			#return 1;
 		};
 		#elseif {"%1" == "灵州酒馆"} {
