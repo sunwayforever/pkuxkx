@@ -4,7 +4,7 @@
 	#action {你的精不够} {
 		yun regenerate;
 	};
-	#action {你内力不够} {
+	#action {你的内力不够} {
 		#unticker {bj};
 		eat_food;
 		dz.full {
