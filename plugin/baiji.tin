@@ -1,6 +1,9 @@
 #class baiji open
 #alias {bj.start} {
 	#class bj.inner open;
+	#action {你的精不够} {
+		yun regenerate;
+	};
 	#action {你内力不够} {
 		#unticker {bj};
 		eat_food;
