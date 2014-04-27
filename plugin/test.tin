@@ -1,3 +1,25 @@
 #class test open;
+#alias {path.test} {
+	#list test_path create {
+		n;e;e;e;e;e;s;w;e;e;w;s;w;e;e;w;s;w;e;e;w;s;se;e;w;nw;w;s;w;e;s;s;s;n;n;n;n;n;e;e;w;w;n;e;n;s;s;n;e;e;e;e;w;w;n;s;w;n;e;w;n;e;e;e;w;w;n;s;s;n;w;n;n;s;s;w;e;s;s;w;w;n;s;w;n;n;e;w;
+		w;w;w;w;e;e;e;e;s;s;w;n;s;w;n;s;w;w;e;e;e;s;w;e;e;w;s;w;e;e;w;s;w;e;e;w;s;e;n;n;w;s;w;e;n;w;w;s
+	};
 
+	#list test_path size test_path_size;
+	#var test_path_index 0;
+	#ticker {test_walk} {
+		#math test_path_index ${test_path_index}+1;
+		#if {${test_path_index} > ${test_path_size}} {
+			#untick {test_walk};
+		};
+		#else {
+			#list test_path get ${test_path_index} test_path_next;
+			${test_path_next};
+		};
+	} {1};
+	#action {这个方向没有出路} {
+		#untick {test_walk};
+		#showme path error: ${test_path_index}, ${test_path_next};
+	};
+};
 #class test close
