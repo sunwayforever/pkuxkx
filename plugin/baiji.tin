@@ -4,14 +4,16 @@
 	#action {你的精不够} {
 		yun regenerate;
 	};
-	#action {你的内力不够} {
+	#action {内力不够} {
 		#unticker {bj};
-		eat_food;
-		dz.full {
-			#ticker {bj} {
-				baiji xiang;
-			} {0.2};		
-		};
+		#delay {rest} {
+			eat_food;
+			dz.full {
+				#ticker {bj} {
+					baiji xiang;
+				} {0.2};		
+			};			
+		} {3};
 	};
 	#class bj.inner close;
 	gt qf;
