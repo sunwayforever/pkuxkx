@@ -37,12 +37,42 @@
 	eat_food;
 };
 
+#alias {get.bao} {
+	#class get.bao.inner open;
+	#action {你身上没有bao} {
+		buy bao;
+	};
+	#action {你把身上的一个包袱卖掉} {
+		buy bao;
+	};
+	#action {掌柜的说：客官您这包袱里面还有东西呢。} {
+		#showme 你向当铺买下一个包袱;
+	};
+	#action {你向当铺买下一个包袱} {
+		#class get.bao.inner kill;
+		#delay {3} {
+			s;
+			#if {"%%1" != ""} {
+				%%1;
+			};					
+		};
+	};
+	#class get.bao.inner close;
+	gt rbz;
+	on_there {
+		n;
+		sell bao;
+	};
+}
+
 #alias {get.fan} {
 	enter shudong;say 天堂有路你不走呀;d;9;sw;s;#2 sw;nw;out;wd;s;s;w;
 	buy tea 30;
 	e;n;n;eu;zuan dong;se;#2 ne;n;ne;e;u;out;
-	#if {"%1" != ""} {
-		%1;
+	#delay {3} {
+		#if {"%1" != ""} {
+			%1;
+		};		
 	};
 };
 

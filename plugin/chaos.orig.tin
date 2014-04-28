@@ -1,7 +1,5 @@
 #class chaos open
 #var position "";
-
-#gag get_position: done;
 #alias {get_position} {
 	#var record_state 0;
 	#var action %0;
@@ -22,44 +20,27 @@
 		#var description ${description}%%0;
 		#var position "${current_room}@@${description}";
 		#class record.inner kill;
-		#showme get_position: done;
 	} {8};
 	
 	#action {^%S%*} {
 		#if {$record_state == 2} {
 			#var description ${description}%%1%%2
 		}
-	} {9};
-	#action {风景要慢慢的看} {
-		#delay {1} {
-			${action};
-		};
-	};
+	} {9}
 	#class record.inner close;
 	${action};
 };
 
 #alias {chaos.remember} {
-	#action {get_position: done} {
-		#unaction {get_position: done};
-		#var last_position ${position};	
-	};
 	get_position {l};
+	#delay {1} {
+		#var last_position ${position};
+	};
 };
 
 #gag {chaos};
 #alias {chaos.find} {
 	get_exits;
-	#action {get_position: done} {
-		#if {${last_position} == ${position}} {
-			#showme chaos ok: ${exit};
-			#unaction {get_position: done};
-		};
-		#else {
-			#math exits_list_index ${exits_list_index}+1;
-			check;
-		};	
-	};
 	#alias {check} {
 		#if {${exits_list_index} <= ${exits_list_size}} {
 			#list exits_list get ${exits_list_index} exit;
@@ -69,22 +50,34 @@
 			#else {
 				get_position {l ${exit}};				
 			};
+			#delay {3} {
+				#if {${last_position} == ${position}} {
+					#showme chaos ok: ${exit};
+				};
+				#else {
+					#math exits_list_index ${exits_list_index}+1;
+					#delay {3} {
+						check;
+					};
+				};
+			};
 		};
 		#else {
 			#showme chaos error;
-			#unaction {get_position: done};
 		};
 	};
 	#action {get_exits: done} {
 		#unaction {get_exits: done};
-		#var exits_list_index 1;
-		#list exits_list size exits_list_size;
-		check;		
+		#delay {3} {
+			#var exits_list_index 1;
+			#list exits_list size exits_list_size;
+			check;		
+		};
 	};
 };
 
 #list exits_list create {};
-#gag {get_exits: done};
+#nop #gag {get_exits: done};
 #alias {get_exits}  {
 	#class get_exits.inner open;
 	#alias {get_exits_done} {

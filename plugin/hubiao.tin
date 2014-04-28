@@ -1042,7 +1042,9 @@ load chaos;
 #alias {hb.p} {
 	get.san {
 		get.fan {
-			repair;
+			get.bao {
+				repair;
+			};
 		};
 	};
 };
