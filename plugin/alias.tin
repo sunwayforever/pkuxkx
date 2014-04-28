@@ -66,13 +66,18 @@
 }
 
 #alias {get.fan} {
-	enter shudong;say 天堂有路你不走呀;d;9;sw;s;#2 sw;nw;out;wd;s;s;w;
-	buy tea 30;
-	e;n;n;eu;zuan dong;se;#2 ne;n;ne;e;u;out;
-	#delay {3} {
-		#if {"%1" != ""} {
-			%1;
-		};		
+	#var orig_here ${CurrentPosition};
+	gt zp;
+	on_there {
+		n;w;
+		buy tea 30;
+		e;s;
+		gt ${orig_here};
+		on_there {
+			#if {"%1" != ""} {
+				%1;
+			};		
+		};
 	};
 };
 
