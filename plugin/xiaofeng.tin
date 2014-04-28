@@ -20,10 +20,6 @@
 				#var dest @area_mapping{%%1};
 				#if {"${dest}" != "0"} {
 					gt $dest;
-					#nop #action {抵达目的地} {
-					#nop 	xf.bl;
-					#nop 	#unaction {抵达目的地};
-					#nop } {1};
 				};
 			};
 		};

@@ -52,6 +52,9 @@
 	#ticker {perf_chan} {
 		chan;
 	} {1};
+	#ticker {zhua} {
+		zhua;
+	} {5};
 	#ticker {xinjing} {
 		yun xinjing;
 	} {30};

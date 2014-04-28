@@ -119,6 +119,7 @@ load chaos;
 	#action {劫匪趁你不注意，推着镖车就跑，你赶紧追了上去。} {
 		hb.pause;
 		#var hb_may_luanru 1;
+		show_to_info 乱入;	
 		hb.recover;
 	};
 
