@@ -4,6 +4,7 @@
 #gag get_position: done;
 #alias {get_position} {
 	#var record_state 0;
+	#var position {};
 	#var action %0;
 	#class record.inner open;
 	#action {^%S - $} {
@@ -31,7 +32,7 @@
 		}
 	} {9};
 	#action {风景要慢慢的看} {
-		#delay {1} {
+		#delay {1.5} {
 			${action};
 		};
 	};
@@ -57,7 +58,9 @@
 		};
 		#else {
 			#math exits_list_index ${exits_list_index}+1;
-			check;
+			#delay {1} {
+				check;
+			};
 		};	
 	};
 	#alias {check} {
@@ -79,7 +82,9 @@
 		#unaction {get_exits: done};
 		#var exits_list_index 1;
 		#list exits_list size exits_list_size;
-		check;		
+		#delay {1} {
+			check;		
+		};
 	};
 };
 
@@ -128,7 +133,7 @@
 	};
 
 	#ticker {look} {
-		#send {l};		
+		#send {l};
 	} {1};
 	#class get_exits.inner close;
 	#send {l};
