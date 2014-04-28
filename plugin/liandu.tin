@@ -78,6 +78,7 @@
 };
 
 #alias {ld.get_corpse} {
+	drop gangzhang;
 	drop tonghao;
 	drop tonggu;
 	drop tongbo;
