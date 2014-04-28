@@ -73,7 +73,7 @@ load chaos;
 						${hb_path_next};
 					};
 				};
-			} {5};
+			} {6};
 		};
 	};
 };
