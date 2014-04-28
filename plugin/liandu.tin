@@ -21,11 +21,11 @@
 		ask piaoran about 炼毒;
 	};
 
-	#action {你给飘然子一具星宿%*的尸体} {
+	#action {你给飘然子一具%*的尸体} {
 		#undelay {give_corpse};	
 	};
 
-	#action {飘然子不想要星宿%*的尸体，你就自个留着吧。} {
+	#action {飘然子不想要%*的尸体，你就自个留着吧。} {
 		#delay {give_corpse} {
 			give piaoran corpse;	
 		} {20};
@@ -116,7 +116,7 @@
 	#ticker {l} {
 		l;
 	} {105};
-	#action {你将自身精力内力灌注入星宿派%*的尸体} {
+	#action {你将自身精力内力灌注入%*的尸体} {
 		#delay {3} {
 			get corpse;
 		};
