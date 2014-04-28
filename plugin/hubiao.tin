@@ -136,9 +136,12 @@ load chaos;
 		mj.start;		
 	};
 
+	#action {你长笑一声，开始对周围众人痛下杀手！} {
+		#var hb_first_kill 1;
+	};
+	
 	#action {劫匪突然从暗处跳了出来} {
 		#if {${hb_first_kill} == 0} {
-			#var hb_first_kill 1;
 			killall robber;
 		};
 		war;
