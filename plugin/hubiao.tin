@@ -279,7 +279,7 @@ load chaos;
 	};
 	#else {
 		ask ${hb_owner} about finish;
-		#delay {hb_delay} {
+		#delay {hb_auto_delay} {
 			#if {${hb_auto} == 1 && ${has_mixin} == 0} {
 				hb.start;
 			};
@@ -419,7 +419,7 @@ load chaos;
 				hb.q ${getesc_current_id};
 			};
 			#else {
-				#delay {hb_delay} {
+				#delay {hb_auto_delay} {
 					hb.start;
 				} {10};
 			};
@@ -427,7 +427,7 @@ load chaos;
 	};
 
 	#action {请选择其他任务} {
-		#delay {hb_delay} {
+		#delay {hb_auto_delay} {
 			#var getesc_current_score 0;
 			#var getesc_current_id 0;
 			hb.q;
@@ -435,13 +435,13 @@ load chaos;
 	};
 
 	#action {你上次运镖太辛苦了} {
-		#delay {hb_delay} {
+		#delay {hb_auto_delay} {
 			hb.q;
 		} {10};
 	};
 
 	#action {你所领的任务在任务列表中并不存在} {
-		#delay {hb_delay} {
+		#delay {hb_auto_delay} {
 			hb.q;
 		} {2};
 	};
@@ -701,7 +701,7 @@ load chaos;
 
 	#action {你给%*一些失踪的财物} {
 		#var has_mixin 0;
-		#delay {hb_delay} {
+		#delay {hb_auto_delay} {
 			#if {${hb_auto} == 1 && ${has_mixin} == 0} {
 				hb.start;
 			};
@@ -711,7 +711,7 @@ load chaos;
 	#action {递给你一封密信} {
 		#var has_mixin 1;
 		#var hb_lunci 0;
-		#delay {hb_delay} {
+		#delay {hb_auto_delay} {
 			show_to_quest 推车: 密信;
 			notify_alert escort additional reward;
 			xmpp.notify 密信;
@@ -893,7 +893,7 @@ load chaos;
 	#var hb_auto 0;
 	set brief 2;
 	#class hb.auto.inner kill;
-	#undelay {hb_delay};
+	#undelay {hb_auto_delay};
 	dz.full.cancel;
 };
 
