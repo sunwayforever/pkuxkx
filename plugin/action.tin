@@ -307,5 +307,8 @@
 	#send {yes};
 };
 
+#action {有人从别处%*连线取代你所控制的人物。} {
+	#end;
+};
 #class action close;
 

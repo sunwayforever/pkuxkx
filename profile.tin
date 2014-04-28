@@ -1,6 +1,8 @@
 #class profile open
 
 #read main.tin;
-#session pkuxkx pkuxkx.net 8080; user; password;
+#delay {1} {
+	#session pkuxkx pkuxkx.net 8080; user; password;	
+};
 
 #class profile close
