@@ -626,7 +626,7 @@
 
 #alias {debug.on} {
 	#log overwrite debug.log;
-	#debug all on;
+	#debug all log;
 };
 
 #alias {debug.off} {
