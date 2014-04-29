@@ -166,4 +166,5 @@
 #var shifu li;
 #var menzhong dizi;
 #var menzhong_didian txg;
+#var char_menpai_position xx;
 #class xingxiu_spec close
