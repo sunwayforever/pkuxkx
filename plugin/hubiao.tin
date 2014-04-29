@@ -214,6 +214,9 @@ load chaos;
 	#action {get_exits: done} {
 		#unaction {get_exits: done};
 		#list exits_list get 1 exit;
+		#if {"${exit}" == "up"} {
+			#list exits_list get 2 exit;			
+		};
 		#5 halt;
 		on_unbusy {
 			#send {${exit}};	
