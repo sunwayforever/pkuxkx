@@ -8,7 +8,7 @@
 		unwi;
 		liandu;
 	};
-	
+
 	#action {你刚刚炼毒完成不久，频繁炼毒会有生命危险的！} {
 		#delay {ld} {
 			unwi;
@@ -22,12 +22,12 @@
 	};
 
 	#action {你给飘然子一具%*的尸体} {
-		#unticker {give_corpse};	
+		#unticker {give_corpse};
 	};
 
 	#action {飘然子不想要%*的尸体，你就自个留着吧。} {
 		#delay {give_corpse} {
-			give piaoran corpse;	
+			give piaoran corpse;
 		} {20};
 	};
 
@@ -43,7 +43,7 @@
 			};
 		};
 	};
-	
+
 	#action {飘然子对着你嘿嘿一笑：“想练毒是吧？先去给你自己找具有用的尸体来} {
 		#delay {delay} {
 			ld.get_corpse;
@@ -53,9 +53,9 @@
 	#action {你的手掌刚刚伸出，却被一股无形的大力给震了回来。} {
 		#ticker {give_corpse} {
 			give piaoran corpse;
-		} {20};	
+		} {20};
 	};
-	
+
 	#action {飘然子说道：「好吧，你来试着练习(liandu)一下毒技吧。」} {
 		#unticker {give_corpse};
 		unwi;
@@ -72,7 +72,7 @@
 				tn.full {
 					ask piaoran about 炼毒;
 				};
-			};		
+			};
 		};
 		zuan_dong;
 	};
@@ -96,7 +96,7 @@
 			#delay {5} {
 				kill_somebody;
 			};
-		};		
+		};
 	};
 	#delay {1} {
 		zuan_dong;
@@ -133,20 +133,22 @@
 		#undelay {move};
 		#delay {1} {
 			map.go 山洞;
-			zuan_dong;
-			#action {zuan ok} {
-				#unaction {zuan ok};
-				on_unbusy {
-					give piaoran corpse;	
+			on_truce {
+				#action {zuan ok} {
+					#unaction {zuan ok};
+					on_unbusy {
+						give piaoran corpse;
+					};
+					#ticker {give_corpse} {
+						give piaoran corpse;
+					} {20};
 				};
-				#ticker {give_corpse} {
-					give piaoran corpse;
-				} {20};
+				zuan_dong;
 			};
 		};
 	};
 	#action {星宿派%*死了} {
-		zhishi corpse;				
+		zhishi corpse;
 	} {1};
 	#delay {move} {
 		n;
