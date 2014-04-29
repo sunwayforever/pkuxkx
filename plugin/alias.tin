@@ -625,7 +625,7 @@
 };
 
 #alias {debug.on} {
-	#log overwrite debug.log;
+	#log overwrite debug.${char_id}.log;
 	#debug all log;
 };
 
