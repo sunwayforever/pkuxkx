@@ -89,6 +89,7 @@ load chaos;
 	#class hb_setup_inner open;
 	#action {镖车呼啦一声散了架} {
 		hb.pause;
+		#unticker {hb_update_info};
 		show_to_quest 镖车呼啦一声散了架;
 	};
 
@@ -150,6 +151,7 @@ load chaos;
 		hb.end;
 		raw;
 		#format {hb_end_time} {%t} {%T};
+		#unticker {hb_update_info};
 		show_to_quest 推车: ${hb_lunci}: 任务完成: ${hb_start_time} -> ${hb_end_time};
 		notify escort done;
 		hb.teardown;
@@ -261,6 +263,20 @@ load chaos;
 	}
 };
 
+#alias {hb.check_mixin} {
+	#class hb_check_mixin.inner open;
+	#action {密信(Mixin)} {
+		#var has_mixin 1;
+		#class hb_check_mixin.inner kill;;
+	};
+	#action {你要看什么} {
+		#var has_mixin 0;
+		#class hb_check_mixin.inner kill;;
+	};
+	#class hb_check_mixin.inner close;;
+	l mixin;
+};
+
 #alias {hb.get_owner} {
 	#if {"${CurrentPosition}" == "zuo"} {
 		#var hb_owner zuo;
@@ -273,15 +289,18 @@ load chaos;
 	};
 };
 
+#nop 密信(Mixin)
 #alias {hb.d} {
+	#unticker {hb_update_info};
 	hb.get_owner;
+	hb.check_mixin;
 	#if {${has_mixin} == 1} {
 		give cai wu to ${hb_owner};
 	};
 	#else {
 		ask ${hb_owner} about finish;
 		#delay {hb_auto_delay} {
-			#if {${hb_auto} == 1 && ${has_mixin} == 0} {
+			#if {${hb_auto} == 1} {
 				hb.start;
 			};
 		} {3};
@@ -290,6 +309,7 @@ load chaos;
 
 #alias {hb.q} {
 	hb.get_owner;
+	hb.check_mixin;
 	#if {${has_mixin} == 1} {
 		show_to_info 密信;
 	};
@@ -305,6 +325,7 @@ load chaos;
 
 
 #alias {hb.f} {
+	#unticker {hb_update_info};
 	#var hb_lunci 0;
 	hb.teardown;
 	hb.get_owner;
@@ -387,12 +408,14 @@ load chaos;
 
 	#action {看来该找机会逃跑了} {
 		hb.pause;
+		#unticker {hb_update_info};
 		show_to_quest 丢镖;
 		xmpp.notify 丢镖;
 	};
 
 	#action {你的眼前一黑，接著什么也不知道了} {
 		hb.pause;
+		#unticker {hb_update_info};
 		show_to_quest 挂了;
 		xmpp.notify 挂了;
 	};
@@ -447,6 +470,7 @@ load chaos;
 	#action {${char_name}把这批红货送到%*他已经派了个伙计名叫%*到%*附近接你} {
 		#format {tmp} {%.4s} {%%1};
 		#if {"${hb_owner}" == "zhang"} {
+			#var hb_remain_time 12;
 			#if {"${tmp}" == "全真"} {
 				#list hb_path create {
 					gs;gw;gw;gs;gsw;gw;gw;gnw;gn;gn;gnd;gnu;gne;gn;gn;gn;gn;gn;gnw;gnw;gw;gnw;gnw;gn;gnw;gnu;gnu;gn;gnu;gn;gn;
@@ -521,6 +545,7 @@ load chaos;
 			};
 		};
 		#elseif {"${hb_owner}" == "zuo"} {
+			#var hb_remain_time 20;
 			#if {"${tmp}" == "扬州"} {
 				#list hb_path create {
 					gs;gs;gnw;gn;gn;gn;gn;gn;gnw;gn;gne;gne;gn;gne;gne;gnw;gnw;gw;hb.guohe {jiang};gw;gnd;gnw;gnd;gn;gn;gn;gn;gd;gu;
@@ -606,6 +631,7 @@ load chaos;
 
 		};
 		#elseif {"${hb_owner}" == "ma"} {
+			#var hb_remain_time 20;
 			#if {"${tmp}" == "华山"} {
 				#format {tmp} {%.6s} {%%1};
 				#if {"${tmp}" == "华山村"} {
@@ -688,26 +714,28 @@ load chaos;
 
 		#math hb_lunci ${hb_lunci}+1;
 		#format {hb_start_time} {%t} {%T};
-		
-		show_to_quest ${hb_lunci}: 推车目的地: ${tmp}|%%2|%%3;
-		#nop autopp.set_zh %%2;
-		notify escort start;
+		#var hb_didian ${tmp};
+		#var hb_huoji %%2;
+		show_to_quest 推车: ${hb_lunci}|${hb_remain_time}|${hb_didian}|${hb_huoji};
+		#ticker {hb_update_info} {
+			#math hb_remain_time ${hb_remain_time}-1;
+			show_to_quest 推车: ${hb_lunci}|${hb_remain_time}|${hb_didian}|${hb_huoji};		
+		} {60};
 
+		notify escort start;
 		hb.setup;
 		hb.resume;
 	} {1};
 
 	#action {你给%*一些失踪的财物} {
-		#var has_mixin 0;
 		#delay {hb_auto_delay} {
-			#if {${hb_auto} == 1 && ${has_mixin} == 0} {
+			#if {${hb_auto} == 1} {
 				hb.start;
 			};
 		} {3};
 	};
 
 	#action {递给你一封密信} {
-		#var has_mixin 1;
 		#var hb_lunci 0;
 		show_to_quest 推车: 密信;
 		notify_alert escort additional reward;
@@ -1036,7 +1064,6 @@ load chaos;
 };
 
 #alias {mx.f} {
-	#var has_mixin 0;
 	#class mx.inner kill;
 };
 
@@ -1049,4 +1076,5 @@ load chaos;
 		};
 	};
 };
+
 #class hubiao close
