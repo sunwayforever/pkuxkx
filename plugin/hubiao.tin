@@ -711,10 +711,14 @@ load chaos;
 	#action {递给你一封密信} {
 		#var has_mixin 1;
 		#var hb_lunci 0;
+		show_to_quest 推车: 密信;
+		notify_alert escort additional reward;
+		xmpp.notify 密信;
 		#delay {hb_auto_delay} {
-			show_to_quest 推车: 密信;
-			notify_alert escort additional reward;
-			xmpp.notify 密信;
+			gt rbz;
+			on_there {
+				sell all;
+			};
 		} {2};
 	};
 
