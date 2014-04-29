@@ -870,9 +870,6 @@ load chaos;
 			#return 4;
 		};
 		#elseif {"%1" == "全真天尊讲经堂"} {
-			#if {${hb_may_luanru} == 1} {
-				#return -1;				
-			};
 			#return 1;
 		};
 		#elseif {"%1" == "灵州酒馆"} {
