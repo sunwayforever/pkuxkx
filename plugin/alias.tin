@@ -67,10 +67,12 @@
 
 #alias {get.fan} {
 	#var orig_here ${CurrentPosition};
-	gt zp;
-	on_there {
-		n;w;
-		buy tea 30;
+	#class get.fan.inner open;
+	#action {哟，抱歉啊，我这儿正忙着呢……您请稍候。} {
+		buy tea 30;	
+	};
+	#action {你从江来福那里买下了%*酥油茶} {
+		#class get.fan.inner kill;
 		e;s;
 		gt ${orig_here};
 		on_there {
@@ -78,6 +80,13 @@
 				%1;
 			};		
 		};
+	};
+	#class get.fan.inner close;
+	gt zp;
+	on_there {
+		n;w;
+		buy tea 30;
+
 	};
 };
 
