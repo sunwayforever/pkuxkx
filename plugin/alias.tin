@@ -656,3 +656,11 @@
 	#class on_echo.inner close;
 	#send {en};
 };
+
+#alias {gj.watch} {
+	gt wm;
+	on_there {
+		u;
+		ask jin about ²Î¹Û½ÙÄÑ;
+	};
+};
