@@ -21,7 +21,7 @@
 				};
 			};
 		};
-	} {300};
+	} {60};
 	#class zq.inner open;
 	bei none;
 	bei zui-quan;
