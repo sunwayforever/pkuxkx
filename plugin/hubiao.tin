@@ -291,7 +291,7 @@ load chaos;
 #alias {hb.q} {
 	hb.get_owner;
 	#if {${has_mixin} == 1} {
-		show_to_info 密信;
+		notify_alert escort additional reward;
 	};
 	#else {
 		#if {"%1" != ""} {
@@ -994,6 +994,9 @@ load chaos;
 		#ticker {kill_npc} {
 			kill ${npc_en};			
 		} {3};
+		#delay {hb_delay} {
+			#showme 这里没有这个人;
+		} {20};
     } {1};
 	#class clear_npc.inner close;
 };
