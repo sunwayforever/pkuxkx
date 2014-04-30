@@ -2,6 +2,11 @@
 
 #var tn_total_count 0;
 
+#alias {tn.cancel} {
+	#unticker {tn};
+	#undelay {tn_delay};
+};
+
 #alias {tn.full} {
 	#alias tmp_tn %1;
 	#ticker {tn} {

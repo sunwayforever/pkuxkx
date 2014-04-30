@@ -491,7 +491,9 @@
 
 	#alias {check_health} {
 		dz.full {
-			check_qx;
+			tn.full {
+				check_qx;
+			};
 		};
 	};
 	#class health.inner close;
