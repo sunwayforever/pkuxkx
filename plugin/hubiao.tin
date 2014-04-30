@@ -332,6 +332,11 @@ load chaos;
 	#var hb_auto 1;
 	#var getesc_current_score 0;
 	#var getesc_current_id 0;
+
+	#if {${char_nl_recovery} > 40} {
+		#var max_dz 100;
+	};
+	
 	#class hb.auto.inner open;
 	#action {^你不是才要了任务吗} {
 		hb.f;
@@ -887,10 +892,11 @@ load chaos;
 
 #alias {hb.stop} {
 	#var hb_auto 0;
+	#var max_dz 180;
 	set brief 2;
 	#class hb.auto.inner kill;
 	#undelay {hb_auto_delay};
-	dz.full.cancel;
+	dz.cancel;
 };
 
 #alias {hb.merge_path} {

@@ -13,18 +13,14 @@
     #send {jifa};
 };
 
-#alias {dz.full.cancel} {
+#alias {dz.cancel} {
 	#class dz.full.inner kill;
 	#unticker {dz};
 };
 
 #alias {dz.full} {
 	#alias tmp_dz %1;
-	#if {${char_nl_recovery} > 60} {
-		tmp_dz;
-		#showme dz.full;
-		#return;
-	};
+
 	get_dazuo_count;
 	#class dz.full.inner open;
 	#action {你现在精不够} {
