@@ -11,8 +11,12 @@
 		#if {${jl_percent} < 50} {
 			#class zq.inner kill;
 			#delay {5} {
+				raw;
+				halt;
+				s;
 				chifan;
 				on_health {
+					n;
 					zq.start;
 				};
 			};
