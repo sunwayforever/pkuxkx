@@ -152,7 +152,7 @@
 	} {1};
 	#delay {move} {
 		n;
-	} {30};
+	} {60};
 	#class kill_somebody.inner close;
 	l;
 };
