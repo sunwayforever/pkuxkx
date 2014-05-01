@@ -6,9 +6,9 @@
 	} {10};
 	#ticker {pfm} {
 		perform cuff.lingwu;
-	} {6};
+	} {10};
 	#ticker {check} {
-		#if {${jl_percent} < 90} {
+		#if {${jl_percent} < 80} {
 			zq.stop
 			#delay {20} {
 				raw;
