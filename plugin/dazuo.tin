@@ -7,6 +7,9 @@
     #action {内功 (force)%*有效等级：{ *}%d} {
         #var youxiao_neigong %%3;
         #math dazuo_count ${youxiao_neigong}*3/10+1;
+        #if {${dazuo_count} < 10} {
+			#var dazuo_count 10;
+		};
         #class dazuo_count.inner close;
     };
     #class dazuo_count.inner close;
@@ -48,6 +51,9 @@
 	autoheal.off;
 	#send {jifa};
 	#class dz.inner open;
+	#action {你现在的气太少了} {
+		sleep;
+	};
 	#ticker {dz} {
 		#if {${qx_percent} < 10} {
 			sleep;
@@ -60,6 +66,9 @@
     #action {内功 (force)%*有效等级：{ *}%d} {
 		#var youxiao_neigong %%3;
 		#math dazuo_count ${youxiao_neigong}/10+1;
+		#if {${dazuo_count} < 10} {
+			#var dazuo_count 10;
+		};
     	#math max_neili ${youxiao_neigong} * 10 -1;
 		#if {${max_neili} < ${hpbrief_max_nl}} {
 			dz.stop;
