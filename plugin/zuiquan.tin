@@ -3,26 +3,25 @@
 	#class zq.inner open;
 	#ticker {fight} {
 		hit lxiao npc;
-	} {3};
+	} {10};
 	#ticker {pfm} {
 		perform cuff.lingwu;
 	} {6};
 	#ticker {check} {
-		#if {${jl_percent} < 50} {
-			#class zq.inner kill;
-			#delay {5} {
+		#if {${jl_percent} < 90} {
+			zq.stop
+			#delay {20} {
 				raw;
 				halt;
-				s;
-				chifan;
+				#3 chifan;
 				on_health {
-					n;
 					zq.start;
 				};
 			};
 		};
-	} {300};
+	} {60};
 	#class zq.inner open;
+	unload war;
 	bei none;
 	bei zui-quan;
 	#alias attack.normal {#cr};
@@ -31,8 +30,7 @@
 
 #alias {zq.stop} {
 	#class zq.inner kill;
-	load spec/${char_menpai};
-	raw;
-	tao;
+	#3 halt;
+	load war;
 };
 #class zuiquan close
