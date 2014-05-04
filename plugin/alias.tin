@@ -699,3 +699,11 @@
 		ask jin about ²Î¹Û½ÙÄÑ;
 	};
 };
+
+#alias {al} {
+	autoload %0;
+};
+
+#alias {dl} {
+	disload %0;
+};
