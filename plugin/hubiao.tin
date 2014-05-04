@@ -193,13 +193,10 @@ load chaos;
 };
 
 #alias {hb.pause} {
-	#var hb_force_wait 1;
+	hb.end;
 	#alias {hb.back} {
 		#cr;
 	};
-	#unticker {hb_walk};
-	#undelay {hb_move};
-	#math hb_path_index ${hb_path_index}-1;
 };
 
 #alias {hb.end} {
@@ -630,7 +627,8 @@ load chaos;
 				#list hb_path create {
 					gn;ge;ge;gn;gn;gw;gw;gw;gw;gn;gn;gn;ge;gne;gne;ge;gn;gne;gse;ge;hb.guohe {huanghe};gn;gne;gne;gne;ge;gn;gn;gw;
 					ge;gn;gn;ge;gn;gn;gs;gs;ge;gsw;gsw;gw;ge;ge;gne;ge;ge;gs;gs;gw;gw;gw;gsw;gs;gw;gw;ge;ge;gs;gs;ge;gw;gs;gn;ge;ge;ge;
-					gw;gn;gs;gne;gn;gn;gw;gw;gw;gs;gn;gne;gsw;ge;gne;gsw;ge;gne;ge;gs;gs;gn;gn;ge;ge;gw;gw;gw;gw;gw;gw;gsw;gw;
+					gw;gn;gs;gne;gn;gn;gw;gw;gw;gs;gn;gne;gsw;ge;gne;gsw;ge;gne;ge;gs;gs;gn;gn;ge;ge;gw;gw;gw;gw;gw;gw;gsw;
+					gs;gs;gw;gn;gn;gn;ge;ge;ge;ge;ge;ge;gsw;gsw;gsw;gsw;gsw;gs;gw;gw;gw;gw;gw;gnw;gn;gn;gn;ge;gn;gn;gw;
 				};
 			};
 			#elseif {"${tmp}" == "³É¶¼"} {
