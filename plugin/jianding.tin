@@ -74,7 +74,9 @@
 				show_to_info Âôµô: ${jd_item}:${jd_current_value};
 				sell ${jd_item};
 			};
-			jd.next;			
+			#delay {1} {
+				jd.next;			
+			};
 		};
 	} {1};
 	

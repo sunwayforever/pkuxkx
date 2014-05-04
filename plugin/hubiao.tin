@@ -53,7 +53,7 @@ load chaos;
 	#else {
 		#math hb_path_index ${hb_path_index}+1;
 		#if {${hb_path_index} > ${hb_path_size}} {
-			hb.end;
+			hb.pause;
 			#format {hb_end_time} {%t} {%T};
 			show_to_info 到达: ${hb_start_time} -> ${hb_end_time};
 			notify_alert escort arrived;
@@ -621,7 +621,7 @@ load chaos;
 				#else {
 					#var tmp 华山;
 					#list hb_path create  {
-						gn;ge;ge;ge;ge;ge;ge;ge;ge;ge;gs;gsu;gsu;gsu;gsu;gs;gwu;ged;gsd;geu;gwd;gsu;ge;gw;
+						gn;ge;ge;ge;ge;ge;ge;ge;ge;ge;gs;gsu;gsu;gsu;gsu;gs;gwu;ged;gsd;gwu;gu;gd;ged;geu;gwd;gsu;ge;gw;
 						gs;gn;gnd;gnu;gnd;gnd;gnu;gsd;gwd;gnd;gwd;gnd;gnw;gne;gsw;gn;gs;gw;gw;ge;ge;gse;gsu;geu;gsu;geu;gsu;gsu;
 					};
 				};
