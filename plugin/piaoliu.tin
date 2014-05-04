@@ -88,6 +88,11 @@
 		show_to_info 明教:${pl_npc_c};
 		step;
 		check_shuizei;
+
+		#action {你终于打退了${pl_npc_c}的攻击} {
+			#unaction {你终于打退了${pl_npc_c}的攻击};
+			mj.stop;
+		};
 	};
 
 	#action {你想用机关对付谁} {
