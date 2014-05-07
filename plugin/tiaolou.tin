@@ -7,8 +7,22 @@
 	};
 	
 	#action {你已稳稳地站在地上} {
-		#delay {2} {
-			do_jump;
+		#delay {3} {
+			#if {${qx_percent} < 40} {
+				yun recover;
+			};
+			#if {${js_percent} < 40} {
+				yun regenerate;
+			};
+			#if {${nl_percent} < 40} {
+				chifan;
+				on_health {
+					do_jump;
+				};
+			};
+			#else {
+				do_jump;
+			};
 		};
 	};
 	

@@ -32,9 +32,9 @@
 		}
 	} {9};
 	#action {风景要慢慢的看} {
-		#delay {1.5} {
+		#delay {look} {
 			${action};
-		};
+		} {0.5};
 	};
 	#class record.inner close;
 	${action};
