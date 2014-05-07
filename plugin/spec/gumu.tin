@@ -12,10 +12,13 @@
 	} {1};
 	#ticker {suxin} {
 		suxin;	
-	} {3.5};
+	} {6};
+	#ticker {shexin} {
+		shexin;	
+	} {5};
 	#ticker {zhua} {
 		zhua;
-	} {5};
+	} {3};
 	#ticker {xinjing} {
 		yun xinjing;
 	} {30};
