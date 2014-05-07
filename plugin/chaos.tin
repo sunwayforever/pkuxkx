@@ -40,10 +40,12 @@
 	${action};
 };
 
+#gag chaos.remember: done;
 #alias {chaos.remember} {
 	#action {get_position: done} {
 		#unaction {get_position: done};
-		#var last_position ${position};	
+		#var last_position ${position};
+		#showme chaos.remember: done;
 	};
 	get_position {l};
 };
