@@ -13,7 +13,7 @@
 		#delay {ld} {
 			unwi;
 			liandu;
-		} {30};
+		} {10};
 	};
 
 	#action {你身上没有 corpse 这样东西。} {
@@ -28,7 +28,7 @@
 	#action {飘然子不想要%*的尸体，你就自个留着吧。} {
 		#delay {give_corpse} {
 			give piaoran corpse;
-		} {20};
+		} {10};
 	};
 
 	#action {这一瞬间，你发觉那至阴的毒气和自己体内原本的毒气相互融合，一同归纳进了气海！} {
