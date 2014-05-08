@@ -1026,20 +1026,24 @@ load chaos;
 
 #alias {mx.q} {
 	#class mx.inner open;	
-	#action {把一包财物砸向你} {
-		show_to_quest 推车: 拿到密信;
-		#class mx.inner kill;
-	};
-
 	#action {一个伙计挖着鼻屎走了出来，道：你找我啥事} {
 		l;
 	};
-
 	#action {财物的伙计 %S(%S)} {
 		#format {tmp} {%l} {%%2};
-		ask $tmp about yao;
-		ask $tmp about yao;
-		ask $tmp about yao;
+		#class mx.yao.inner open;
+		#action {把一包财物砸向你，一转眼不见了。} {
+			show_to_quest 推车: 拿到密信;
+			#class mx.yao.inner kill;
+			#class mx.inner kill;
+		};
+		#action {这里没有这个人} {
+			#class mx.yao.inner kill;	
+		};
+		#ticker {yao} {
+			ask $tmp about yao;
+		} {0.5};
+		#class mx.yao.inner close;
 	} {1};
 	#class mx.inner close;
 	zhao;
