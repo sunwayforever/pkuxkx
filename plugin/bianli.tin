@@ -53,7 +53,9 @@
 		#list bl_path create {ne;ne;ne;n;w;e;n;ne;ne;e;e;n;enter;out;s;s;e;w;n;e;n;n;n;n;nu;nw;se;sd;s;s;s;s;s;n;n;e;n;n;s;s;s;n;e;w;w;w;w;w;sw;sw;s;s;sw;sw;sw;n;s;s;n;w;n;n;n;e;n;n;s;e;s;s;n;ne;n;n;s;s;e;e;e;e;w;w;w;sw;w;s;w;se;se;nw;nw;s;s;n;nw;n;nw;se;s;se;n;s;s;s;s;s;e;w;n;n;w;n;s;s;n;w;n;s;e;e}	
 	};
 	#if {"${CurrentPosition}" == "hz"} {
-		#list bl_path create {n;n;w;e;e;s;n;n;s;w;n;w;e;e;e;e;w;w;w;n;n;n;ne;n;n;n;nw;nw;se;se;e;ne;sw;w;s;s;s;sw;s;s;s;s;s;w;n;s;s;n;w;w;n;s;s;sw;ne;n;e;e;e;se;w;enter;out;s;w;sw;ne;nw;se;e;s;n;e;n;s;e;w;s;w;n;s;s;w;n;e;s;w;sw;u;d;ne;e;e;s;n;w;s;e;s;w;w;e;s;w;w;e;n;n;e;n;w;n;e;w;n;n;nw;e;n;s;e;n;enter;n;w;e;n;s;e;w;s;out;s;s;n;e;e;n;n;n;w;e;s;w;e;s;s;e;n;s;s;n;e;e;e;ne;e;ne;sw;w;sw;w;w;w;w;w;w;w;w}		
+		#list bl_path create  {n;w;e;e;s;n;n;s;w;n;w;e;n;n;n;ne;n;n;n;e;w;nw;se;s;s;nw;nw;nw;se;se;se;s;sw;s;s;s;e;e;e;s;w;e;s;w;e;s;e;n;s;s;n;e;e;e;ne;sw;w;w;w;w;w;w;n;enter;n;w;e;e;w;n;s;s;out;s;w;n;s;w;se;
+		e;ne;w;e;e;w;s;s;n;n;se;nw;w;e;sw;w;w;enter;out;s;s;n;w;e;e;e;w;s;w;n;s;s;n;e;e;w;s;w;sw;u;d;ne;s;e;e;n;s;w;s;w;w;n;s;s;n;w;n;s;s;n;w;n;w;s;s;e;n;e;e;e;e;su;wu;ed;nd;n;e;n;w;n;n;n;nw;w;n;s;s;n;w
+		;w;n;s;sw;sw;w;e;s;se;sw;ne;nw;n;w;s;se;s;se;e;ne;e;e;n;nw}		
 	};
 	#if {"${CurrentPosition}" == "yy"} {
 		#list bl_path create {w;e;s;s;su;su;su;ed;nu;enter;n;s;w;e;e;w;out;sd;ed;ed;wu;wu;wu;nd;nd;nd;nd;n;n;e;w;n;e;n;s;s;n;e;e;ed;se;nw;wu;w;w;w;n;e;w;n;n;w;w;e;e;ne;sw;s;s;s;w;n;s;s;n;w;w;u;d;s;w;e;sd;su;se;sw;ne;nd;n;e;e;e;s}
