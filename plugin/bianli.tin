@@ -41,7 +41,7 @@
 		#list bl_path create {e;sw;ne;e;e;se;e;e;e;se;nw;e;e;se;se;sw;ne;nw;nw;w;w;w;w;w;nw;w;w;w;w;sw;sw;sw;s;n;w;nw;nw;nw;w;w;sw;sw;sw;sw;s;n;w;w;w;w;nw;se;e;e;e;e;ne;ne;ne;ne;e;e;se;se;se;e;ne;ne;ne;e};	
 	};
 	#if {"${CurrentPosition}" == "xh"} {
-		#list bl_path create {ne;ne;ne;n;n;s;e;e;w;w;s;n;sw;sw;s;n;w;s;se;e;w;s;se;e;ne;e;n;s;e;w;s;n;w;nw;n;s;se;sw;w;nw;e;enter;n;e;enter boat;bl.wait 5;w;e;enter boat;bl.wait 5;w;nw;n;e;s;se}
+		#list bl_path create {ne;ne;ne;n;n;s;e;e;w;w;s;n;sw;sw;s;n;w;s;se;e;w;s;se;e;ne;e;n;s;e;w;s;n;w;nw;n;s;se;sw;w;nw;e;enter;n;e;enter boat;bl.wait 10;w;e;enter boat;bl.wait 5;w;nw;n;e;s;se}
 	};
 	#if {"${CurrentPosition}" == "xiny"} {
 		#list bl_path create {n;n;n;n;n;n;s;nw;se;sw;ne;e;w;s;s;s;s;s;s;s;w;e;s;s;sd;se;s;n;nw;nu;n;n;n;e;e;e;e;e;se;e;w;nw;w;se;sd;nu;nw;w;w;w;w;w;n;s;s;n;w;w;nw;w;e;e;n;s;w;se;e;e;e;n};
