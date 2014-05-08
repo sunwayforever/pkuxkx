@@ -225,6 +225,12 @@ load chaos;
 			#send {@opposite{${exit}}};
 			hb.resume;
 		} {10};
+		#action {^ƒ„Ã”≈‹ ß∞‹} {
+			#undelay {hb_delay};
+			on_truce {
+				hb.resume;
+			};
+		};
 	};
 	#5 halt;
 	get_exits;

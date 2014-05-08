@@ -1,7 +1,10 @@
 #class chaos open
 #var position "";
+
+#gag get_position: done;
 #alias {get_position} {
 	#var record_state 0;
+	#var position {};
 	#var action %0;
 	#class record.inner open;
 	#action {^%S - $} {
@@ -20,27 +23,48 @@
 		#var description ${description}%%0;
 		#var position "${current_room}@@${description}";
 		#class record.inner kill;
+		#showme get_position: done;
 	} {8};
 	
 	#action {^%S%*} {
 		#if {$record_state == 2} {
 			#var description ${description}%%1%%2
 		}
-	} {9}
+	} {9};
+	#action {风景要慢慢的看} {
+		#delay {look} {
+			${action};
+		} {0.5};
+	};
 	#class record.inner close;
 	${action};
 };
 
+#gag chaos.remember: done;
 #alias {chaos.remember} {
-	get_position {l};
-	#delay {1} {
+	#action {get_position: done} {
+		#unaction {get_position: done};
 		#var last_position ${position};
+		#showme chaos.remember: done;
 	};
+	get_position {l};
 };
 
 #gag {chaos};
 #alias {chaos.find} {
 	get_exits;
+	#action {get_position: done} {
+		#if {${last_position} == ${position}} {
+			#showme chaos ok: ${exit};
+			#unaction {get_position: done};
+		};
+		#else {
+			#math exits_list_index ${exits_list_index}+1;
+			#delay {1} {
+				check;
+			};
+		};	
+	};
 	#alias {check} {
 		#if {${exits_list_index} <= ${exits_list_size}} {
 			#list exits_list get ${exits_list_index} exit;
@@ -50,34 +74,24 @@
 			#else {
 				get_position {l ${exit}};				
 			};
-			#delay {3} {
-				#if {${last_position} == ${position}} {
-					#showme chaos ok: ${exit};
-				};
-				#else {
-					#math exits_list_index ${exits_list_index}+1;
-					#delay {3} {
-						check;
-					};
-				};
-			};
 		};
 		#else {
 			#showme chaos error;
+			#unaction {get_position: done};
 		};
 	};
 	#action {get_exits: done} {
 		#unaction {get_exits: done};
-		#delay {3} {
-			#var exits_list_index 1;
-			#list exits_list size exits_list_size;
+		#var exits_list_index 1;
+		#list exits_list size exits_list_size;
+		#delay {1} {
 			check;		
 		};
 	};
 };
 
 #list exits_list create {};
-#nop #gag {get_exits: done};
+#gag {get_exits: done};
 #alias {get_exits}  {
 	#class get_exits.inner open;
 	#alias {get_exits_done} {
@@ -121,7 +135,7 @@
 	};
 
 	#ticker {look} {
-		#send {l};		
+		#send {l};
 	} {1};
 	#class get_exits.inner close;
 	#send {l};

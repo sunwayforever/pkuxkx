@@ -52,7 +52,6 @@
 
 #gag {chaos};
 #alias {chaos.find} {
-	get_exits;
 	#action {get_position: done} {
 		#if {${last_position} == ${position}} {
 			#showme chaos ok: ${exit};
@@ -85,9 +84,10 @@
 		#var exits_list_index 1;
 		#list exits_list size exits_list_size;
 		#delay {1} {
-			check;		
+			check;
 		};
 	};
+	get_exits;
 };
 
 #list exits_list create {};
