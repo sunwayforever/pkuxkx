@@ -226,6 +226,7 @@ load chaos;
 			hb.resume;
 		} {10};
 		#action {^ÄãÌÓÅÜÊ§°Ü} {
+			#unaction {^ÄãÌÓÅÜÊ§°Ü};
 			#undelay {hb_delay};
 			on_truce {
 				hb.resume;
