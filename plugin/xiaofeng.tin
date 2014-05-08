@@ -122,12 +122,6 @@
 		xf.check;	
 	};
 
-	#action {蒙面杀手说道：「就你也配跟我讨教功夫？！」} {
-		#delay {xf.bl} {
-			bl.continue {杀手};
-		 } {3};
-	};
-	
 	#action {西夏一品堂 蒙面杀手(Mengmian shashou)} {
 		#if {${xf.type} != -1} {
 			xf.check;
@@ -153,6 +147,7 @@
 	};
 
 	#action {要打便打} {
+		#class xf.bl.inner kill;
 		#if {${xf.type} != -1} {
 			follow shashou;
 		};
@@ -207,6 +202,7 @@
 
 #alias {xf.d} {
 	#class xiaofeng.inner kill;
+	#class xf.bl.inner kill;
 	#if {${xf.type} == 1} {
 		give shouji to xiao;
 	};
@@ -231,6 +227,7 @@
 
 #alias {xf.f} {
 	#class xiaofeng.inner kill;
+	#class xf.bl.inner kill;
 	ask xiao about fail;
 	#var xf.type -1;
 	#var xf.requested 0;
@@ -240,6 +237,13 @@
 };
 
 #alias {xf.bl} {
+	#class xf.bl.inner open;
+	#action {蒙面杀手说道：「就你也配跟我讨教功夫？！」} {
+		#delay {xf.bl} {
+			bl.continue {杀手};
+		} {1};
+	};
+	#class xf.bl.inner close;	
 	bl.start 杀手;
 };
 
