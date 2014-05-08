@@ -152,7 +152,7 @@
 	map.go {Ð¡ÎÝ};
 };
 
-#list my_weapons create {my sword};
+#list my_weapons create {my spear; my spear 2};
 #var shifu zhang;
 
 #alias {wi_xiaofeng} {
