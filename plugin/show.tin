@@ -46,16 +46,18 @@
 }
 
 #alias {show_to_chat} {
-	#format {tmp_time} {%t} {%T};
-	#var temp ${tmp_time} <099> %0;
-	#list chat_window ins -1 {$temp};
-	#list chat_window del 1;
+	#delay {chat_delay} {
+		#format {tmp_time} {%t} {%T};
+		#var temp ${tmp_time} <099> %0;
+		#list chat_window ins -1 {$temp};
+		#list chat_window del 1;
 
-	#loop {1} {&chat_window[]} {cnt}
-	{
-		#math pos $cnt+${chat_window_offset};
-		#echo {{<aff>$chat_window[$cnt]<099>} {-$pos}};
-	}
+		#loop {1} {&chat_window[]} {cnt}
+		{
+			#math pos $cnt+${chat_window_offset};
+			#echo {{<aff>$chat_window[$cnt]<099>} {-$pos}};
+		}		
+	} {0.5};
 }
 
 #alias {show_to_quest} {
