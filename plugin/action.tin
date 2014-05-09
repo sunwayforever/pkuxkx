@@ -49,17 +49,29 @@
 	show_to_chat %0;
 }
 
-#ticker {check_naijiu} {
+#alias {naijiu} {
+	check_naijiu;
+	#delay {1} {
+		show_to_info ÄÍ¾Ã: ${min_naijiu};
+	};
+};
+
+#alias {check_naijiu} {
 	#foreach {${my_weapons}[%*]} {weapon} {l ${weapon}};
-} {600};
+};
+
+#ticker {check_naijiu} {
+	check_naijiu;
+} {300};
 
 #ticker {check_baowei} {
 	check_baowei;
 } {60};
 
+#var min_naijiu 1000;
 #action {ÄÍ¾Ã¶È:%1} {
-	#if {%1 < 130} {
-		show_to_info ÎäÆ÷ÄÍ¾Ã¹ýµÍ: %1;
+	#if {${min_naijiu} > %1} {
+		#var min_naijiu %1;
 	};
 } {1};
 
@@ -149,6 +161,7 @@
 		init_set;
 		show.init;
 		check_baowei;
+		check_naijiu;
 		#send {l};		
 	};
 };

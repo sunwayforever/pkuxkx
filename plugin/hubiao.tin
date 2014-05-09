@@ -728,6 +728,11 @@ load chaos;
 			gt rbz;
 			on_there {
 				sell all;
+				#delay {3} {
+					#if {${min_naijiu} < 150} {
+						repair;
+					};
+				};
 			};
 		} {2};
 	};
