@@ -1,6 +1,10 @@
 #class bianli open;
 
 #alias {create_bl_path} {
+	#if {"${CurrentPosition}" == "dzt"} {
+        #list bl_path create {n;n;n;n;enter;out;s;s;s;e;n;e;e;e;s;s;w;w;w;n;e;w;w;w;n;s;s;n;w;n;enter;out;s;s;s;n;n;w;w;ban shan; bl.wait 1; d;nd;nd;ed;
+		e;s;w;sw;se;ed;nd;enter;out;su;wu;nw;ne;n;wu;su;su;u;e;e;e;e;s;s;s;sd;sd;sw;se;ts;bl.wait 10;sd;sd;s;w;w;w;e;e;e;s;sd;nu;n;n;nu;nu;ts; bl.wait 10;nw;ne;nu;nu;n;n};
+    };
 	#if {"${CurrentPosition}" == "th"} {
         #list bl_path create {n;n;nu;nu;nu;se;e;n;n;e;w;s;s;w;n;w;n;n;n;e;e;e;w;w;w;n;w;wu;ed;nu;ed;wu;sd;e;e;e;e;n;w;e;s;e;w;s;w;e;e;w;s;n;n;w;w;w;s;s;s;s;sd;sd;sd;s;s;enter boat;bl.wait 10;s;w;w;w;w;e;e;e;e;s;s;se;nw;n;n;w;w;w;w;su;w;};
     };
@@ -41,7 +45,7 @@
 		#list bl_path create {e;sw;ne;e;e;se;e;e;e;se;nw;e;e;se;se;sw;ne;nw;nw;w;w;w;w;w;nw;w;w;w;w;sw;sw;sw;s;n;w;nw;nw;nw;w;w;sw;sw;sw;sw;s;n;w;w;w;w;nw;se;e;e;e;e;ne;ne;ne;ne;e;e;se;se;se;e;ne;ne;ne;e};	
 	};
 	#if {"${CurrentPosition}" == "xh"} {
-		#list bl_path create {ne;ne;ne;n;n;s;e;e;w;w;s;n;sw;sw;s;n;w;s;se;e;w;s;se;e;ne;e;n;s;e;w;s;n;w;nw;n;s;se;sw;w;nw;e;enter;n;e;enter boat;bl.wait 5;w;e;enter boat;bl.wait 5;w;nw;n;e;s;se}
+		#list bl_path create {ne;ne;ne;n;n;s;e;e;w;w;s;n;sw;sw;s;n;w;s;se;e;w;s;se;e;ne;e;n;s;e;w;s;n;w;nw;n;s;se;sw;w;nw;e;enter;n;e;enter boat;bl.wait 10;w;e;enter boat;bl.wait 5;w;nw;n;e;s;se}
 	};
 	#if {"${CurrentPosition}" == "xiny"} {
 		#list bl_path create {n;n;n;n;n;n;s;nw;se;sw;ne;e;w;s;s;s;s;s;s;s;w;e;s;s;sd;se;s;n;nw;nu;n;n;n;e;e;e;e;e;se;e;w;nw;w;se;sd;nu;nw;w;w;w;w;w;n;s;s;n;w;w;nw;w;e;e;n;s;w;se;e;e;e;n};
@@ -53,7 +57,9 @@
 		#list bl_path create {ne;ne;ne;n;w;e;n;ne;ne;e;e;n;enter;out;s;s;e;w;n;e;n;n;n;n;nu;nw;se;sd;s;s;s;s;s;n;n;e;n;n;s;s;s;n;e;w;w;w;w;w;sw;sw;s;s;sw;sw;sw;n;s;s;n;w;n;n;n;e;n;n;s;e;s;s;n;ne;n;n;s;s;e;e;e;e;w;w;w;sw;w;s;w;se;se;nw;nw;s;s;n;nw;n;nw;se;s;se;n;s;s;s;s;s;e;w;n;n;w;n;s;s;n;w;n;s;e;e}	
 	};
 	#if {"${CurrentPosition}" == "hz"} {
-		#list bl_path create {n;n;w;e;e;s;n;n;s;w;n;w;e;e;e;e;w;w;w;n;n;n;ne;n;n;n;nw;nw;se;se;e;ne;sw;w;s;s;s;sw;s;s;s;s;s;w;n;s;s;n;w;w;n;s;s;sw;ne;n;e;e;e;se;w;enter;out;s;w;sw;ne;nw;se;e;s;n;e;n;s;e;w;s;w;n;s;s;w;n;e;s;w;sw;u;d;ne;e;e;s;n;w;s;e;s;w;w;e;s;w;w;e;n;n;e;n;w;n;e;w;n;n;nw;e;n;s;e;n;enter;n;w;e;n;s;e;w;s;out;s;s;n;e;e;n;n;n;w;e;s;w;e;s;s;e;n;s;s;n;e;e;e;ne;e;ne;sw;w;sw;w;w;w;w;w;w;w;w}		
+		#list bl_path create  {n;w;e;e;s;n;n;s;w;n;w;e;n;n;n;ne;n;n;n;e;w;nw;se;s;s;nw;nw;nw;se;se;se;s;sw;s;s;s;e;e;e;s;w;e;s;w;e;s;e;n;s;s;n;e;e;e;ne;sw;w;w;w;w;w;w;n;enter;n;w;e;e;w;n;s;s;out;s;w;n;s;w;se;
+		e;ne;w;e;e;w;s;s;n;n;se;nw;w;e;sw;w;w;enter;out;s;s;n;w;e;e;e;w;s;w;n;s;s;n;e;e;w;s;w;sw;u;d;ne;s;e;e;n;s;w;s;w;w;n;s;s;n;w;n;s;s;n;w;n;w;s;s;e;n;e;e;e;e;su;wu;ed;nd;n;e;n;w;n;n;n;nw;w;n;s;s;n;w
+		;w;n;s;sw;sw;w;e;s;se;sw;ne;nw;n;w;s;se;s;se;e;ne;e;e;n;nw}		
 	};
 	#if {"${CurrentPosition}" == "yy"} {
 		#list bl_path create {w;e;s;s;su;su;su;ed;nu;enter;n;s;w;e;e;w;out;sd;ed;ed;wu;wu;wu;nd;nd;nd;nd;n;n;e;w;n;e;n;s;s;n;e;e;ed;se;nw;wu;w;w;w;n;e;w;n;n;w;w;e;e;ne;sw;s;s;s;w;n;s;s;n;w;w;u;d;s;w;e;sd;su;se;sw;ne;nd;n;e;e;e;s}
@@ -215,8 +221,8 @@
 	#math bl_path_index ${bl_path_index}-1;
 };
 
-#list area_mappings_from create {荆州;中原;全真;信阳;苏州;张家;大理;小山;曲阜;泉州;荆州;黄河南岸;长江北岸;福州;岳阳;黄河北岸;晋阳;归云;南昌;江州;嘉兴;牙山;梦溪;镇江;长江岸边;黄河岸边;天龙;晋阳;泰山;桃花;桃源;昆明;襄阳;长江长江};
-#list area_mappings_to create {jingzhou;xuchang;quanzhen;xinyang;sz;zjk;dali;xc;qf;quanzhou;jingzhou;hn2;jb2;fz;yy;hb2;jinyang;taihu;nc;jiangzhou;jiaxing;yashan;zhenjiang;zhenjiang;jn2;hn2;tls;jy;tais;th;ty;km;xy;jn2};
+#list area_mappings_from create {灵鹫;临安;荆州;中原;全真;信阳;苏州;张家;大理;小山;曲阜;泉州;荆州;黄河南岸;长江北岸;福州;岳阳;黄河北岸;晋阳;归云;南昌;江州;嘉兴;牙山;梦溪;镇江;长江岸边;黄河岸边;天龙;晋阳;泰山;桃花;桃源;昆明;襄阳;长江长江};
+#list area_mappings_to create {dzt;hz;jingzhou;xuchang;quanzhen;xinyang;sz;zjk;dali;xc;qf;quanzhou;jingzhou;hn2;jb2;fz;yy;hb2;jinyang;taihu;nc;jiangzhou;jiaxing;yashan;zhenjiang;zhenjiang;jn2;hn2;tls;jy;tais;th;ty;km;xy;jn2};
 
 #function {area_mapping} {
 	#format {tmp} {%.4s} {%1};

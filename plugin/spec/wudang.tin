@@ -22,15 +22,22 @@
 	#ticker {lzj} {
 		lzj;
 	} {6};
+	#ticker {wuying} {
+		wuying;
+	} {5};
 	#class attack.inner close;
 };
 
 #alias {attack.xiaofeng} {
 	zong;
+	wuying;
 	#class attack.inner open;
 	#ticker {perf_chan} {
 		chan;
 	} {1};
+	#ticker {wuying} {
+		wuying;
+	} {5};
 	#class attack.inner close;
 };
 
@@ -152,7 +159,7 @@
 	map.go {Ð¡ÎÝ};
 };
 
-#list my_weapons create {my sword};
+#list my_weapons create {my spear; my spear 2};
 #var shifu zhang;
 
 #alias {wi_xiaofeng} {

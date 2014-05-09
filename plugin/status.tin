@@ -4,6 +4,7 @@
 #var hpbrief_info  nil;
 #var xmpp_info off;
 #var xy_info off;
+#var fm_info off;
 #var auto_heal 1;
 
 #ticker {uptime} {
@@ -49,6 +50,10 @@
 	#if {"${xy_info}" == "on"} {
 		#var status_content ${status_content} | G;
 	};
+	#if {"${fm_info}" == "on"} {
+		#var status_content ${status_content} | F;
+	};
+
 	show_to_status ${status_content};
 };
 
