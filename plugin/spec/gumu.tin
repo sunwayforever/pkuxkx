@@ -6,6 +6,9 @@
 	#ticker {perf_chan} {
 		chan;
 	} {1};
+	#ticker {xinjing} {
+		yun xinjing;
+	} {30};
 	#class attack.inner close;
 };
 
@@ -16,20 +19,11 @@
 	#class attack.inner open;
 	#ticker {suxin} {
 		suxin;	
-	} {6};
-	#ticker {shexin} {
-		shexin;	
-	} {5};
+	} {7.5};
 	#ticker {zhua} {
 		zhua;
-	} {3};
-	#ticker {xinjing} {
-		yun xinjing;
-	} {30};
+	} {5.5};
 	#class attack.inner close;
-	on_unbusy {
-		suxin;
-	};
 };
 
 #alias {attack.normal} {
@@ -43,9 +37,6 @@
 	#ticker {zhua} {
 		zhua;
 	} {5.5};
-	#ticker {xinjing} {
-		yun xinjing;
-	} {30};
 	#class attack.inner close;
 };
 
@@ -56,10 +47,7 @@
 	#class attack.inner open;
 	#ticker {zhua} {
 		zhua;
-	} {5};
-	#ticker {xinjing} {
-		yun xinjing;
-	} {30};
+	} {6.5};
 	#class attack.inner close;
 };
 
