@@ -999,24 +999,14 @@ load chaos;
 	#class clear_npc.inner open;
 	#action {${npc_zh}死了} {
 		#var hb_force_wait 0;
-		#unticker {kill_npc};
 	} {1};
 
-	#action {这里没有这个人} {
-		#var hb_force_wait 0;
-		#unticker {kill_npc};
-		#nop l;
-	};
-	
 	#action {${npc_zh}(%*)} {
-		#var hb_force_wait 1;
+		#action {看起来${npc_zh}想杀死你} {
+			#var hb_force_wait 1;
+		} {1};
 		#var npc_en @lower{%%1};
-		#ticker {kill_npc} {
-			kill ${npc_en};			
-		} {3};
-		#delay {hb_delay} {
-			#showme 这里没有这个人;
-		} {20};
+		kill ${npc_en};
     } {1};
 	#class clear_npc.inner close;
 };
