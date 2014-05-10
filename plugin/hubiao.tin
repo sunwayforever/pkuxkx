@@ -111,6 +111,7 @@ load chaos;
 
 	#action {劫匪个起纵遁入暗里不见了} {
 		#var hb_wait 0;
+		raw;
 	};
 
 	#action {^这个方向} {
@@ -145,7 +146,6 @@ load chaos;
 		#if {${hb_first_kill} == 0} {
 			killall robber;
 		};
-		war;
 		hb.wait;
 	};
 
@@ -341,7 +341,7 @@ load chaos;
 	#var getesc_current_id 0;
 
 	#if {${char_nl_recovery} > 40} {
-		#var max_dz 100;
+		#var max_dz 90;
 	};
 	
 	#class hb.auto.inner open;
@@ -939,13 +939,14 @@ load chaos;
 			#list hb_path set ${hb_path_index} {gan che to %%1};
 			#math hb_path_index ${hb_path_index}-1;
 		};
-		chaos.remember;
+		#nop chaos.remember;
 		#delay {hb_delay} {
 			hb.resume;
 		} {10};
 	};
 
 	#action {chaos error} {
+		show_to_info 两步乱入?
 		notify_alert escort chaos;
 	};
 	
@@ -1004,7 +1005,7 @@ load chaos;
 	#action {这里没有这个人} {
 		#var hb_force_wait 0;
 		#unticker {kill_npc};
-		l;
+		#nop l;
 	};
 	
 	#action {${npc_zh}(%*)} {

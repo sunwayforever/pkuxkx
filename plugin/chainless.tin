@@ -1,0 +1,11 @@
+#class chainless open
+
+#alias chainless #cr;
+#action {你只觉剑势连绵不绝，旧力未尽，新力便生，简直无有穷尽} {
+	chainless;
+};
+
+#action {你左支右绌苦苦支撑，陷入了完全被动的境地，根本无法还手！} {
+	chainless;	
+};
+#class chainless close

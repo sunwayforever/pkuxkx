@@ -100,7 +100,12 @@
 	};
 	
 	#action {机关已经使用殆尽} {
-		#unticker {zhi};
+		#if {${nl_percent} > 70} {
+			xiufu;
+		};
+		#else {
+			#unticker {zhi};
+		};
 	};
 	
 	#action {机关刚刚完全运转} {
@@ -119,20 +124,22 @@
 		};
 	};
 
-	#action {钓鱼人给你一枚%*。} {
-		pack gem;
-		show_to_info 掉宝: %%1;
-		#action {%*点实战经验，} {
-			#unaction {%*点实战经验，} ;
-			show_to_info @ctd{%%%1} 点经验;
-		};
-	};
 	#class piaoliu.inner close;
 };
 
 #alias {pl.d} {
 	hua back;
 	give ren xiang;
+	#action {钓鱼人给你一枚%*。} {
+		#unaction {钓鱼人给你一枚%*。};
+		pack gem;
+		show_to_info 掉宝: %%1;
+		show_to_quest 漂流完成;
+		#action {%*点实战经验，} {
+			#unaction {%*点实战经验，} ;
+			show_to_info @ctd{%%%1} 点经验;
+		};
+	};
 	#class piaoliu.inner kill;
 };
 

@@ -1,43 +1,55 @@
 #class wudang_spec open
 #alias {attack.prepare} {
 	yun powerup;
-	chan_a_chan;
+	#class attack.inner open;
+	#delay {7.8} {
+		zong;
+	};
+	#class attack.inner close;
 };
 
 #alias {attack.hubiao} {
-	zong;
+	#delay {3.8} {
+		wuying;
+	};
 	#class attack.inner open;
 	#ticker {perf_chan} {
 		chan;
 	} {1};
+	#ticker {wuying} {
+		wuying;
+	} {6.8};
 	#class attack.inner close;
 };
 
 #alias {attack.normal} {
-	zong;
+	#delay {3.8} {
+		wuying;
+	};
 	#class attack.inner open;
 	#ticker {perf_chan} {
 		chan;
 	} {1};
 	#ticker {lzj} {
 		lzj;
-	} {6};
+	} {7.8};
 	#ticker {wuying} {
 		wuying;
-	} {5};
+	} {5.8};
 	#class attack.inner close;
 };
 
 #alias {attack.xiaofeng} {
-	zong;
-	wuying;
+	#delay {3.8} {
+		wuying;
+	};
 	#class attack.inner open;
 	#ticker {perf_chan} {
 		chan;
 	} {1};
 	#ticker {wuying} {
 		wuying;
-	} {5};
+	} {5.8};
 	#class attack.inner close;
 };
 
@@ -89,7 +101,12 @@
 };
 
 #alias {sanhuan} {
+	unwield all;
+	wield my sword;
+	jiali max;
     perform sword.sanhuan;
+	jiali none;
+	wi;
 };
 
 #alias {zhen} {
@@ -105,27 +122,20 @@
 #alias {lzj} {
 	unwi;
 	wield my sword;
-    jiali 10;
     perform sword.lian;
-    jiali none;
 	wi;
 };
 
 
 #alias {wuying} {
-	bei claw;
-	bei cuff;
 	unwield all;
-	jiali 50;
+	jiali max;
 	perform claw.wuying;
 	jiali none;
 	wi;
 };
 
 #alias {gangrou} {
-	bei claw;
-	bei cuff;
-
 	jiali max;
 	unwi;
 	perform cuff.gangrou;
@@ -179,4 +189,11 @@
 	wbei taiji-jian xuanxu-dao;
 };
 #var char_menpai_position wd;
+
+stat.register 缠 miss 只听得「铮」一声清响，剧烈碰撞之下你剑诀为敌所破，无以为继，被迫撤剑收招。;
+stat.register 缠 hit 只能见招拆招，疲于应对，不觉已深陷太极剑意之中，无法出招。;
+
+#alias {chainless} {
+	special chainless;
+};
 #class wudang_spec close

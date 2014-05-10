@@ -2,7 +2,6 @@
 
 #alias {attack.prepare} {
 	yun xinjing;
-	chan_a_chan;
 };
 
 #alias {attack.hubiao} {
@@ -31,7 +30,7 @@
 	#class attack.inner open;
 	#ticker {perf_chan} {
 		chan;
-	} {0.8};
+	} {1};
 	#ticker {suxin} {
 		suxin;	
 	} {3.5};
@@ -130,7 +129,9 @@
 
 #alias {zhua} {
 	unwi;
+	jiali max;
 	perform jiuyin-baiguzhao.zhua;
+	jiali none;
 	wi;
 };
 
