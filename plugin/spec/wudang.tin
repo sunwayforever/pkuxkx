@@ -46,15 +46,18 @@
 
 #alias {attack.mingjiao} {
 	on_unbusy {
-		wuying;
+		gangrou;
 	};
 	#class attack.inner open;
 	#ticker {perf_zhen} {
 		perform cuff.zhen;
-	} {0.6};
+	} {0.8};
 	#ticker {wuying} {
 		wuying;
-	} {5.8};	
+	} {4.8};
+	#ticker {gangrou} {
+		gangrou;
+	} {7.8};	
 	#class attack.inner close;
 };
 
@@ -121,18 +124,23 @@
 	unwield all;
 	jiali max;
 	perform claw.wuying;
-	jiali none;
+	#if {${pfm_gangrou} == 0} {
+		jiali none;
+	};
 	wi;
 };
 
+#var pfm_gangrou 0;
 #alias {gangrou} {
-	jiali max;
 	unwi;
+	jiali max;
+	#var pfm_gangrou 1;
 	perform cuff.gangrou;
 	#ticker {zhen} {
 		zhen;
-	} {0.5};
+	} {0.8};
 	#delay {5} {
+		#var pfm_gangrou 0;
 		#unticker {zhen};
 		jiali none;
 	};
