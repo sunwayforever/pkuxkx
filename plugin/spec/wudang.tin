@@ -136,12 +136,8 @@
 	jiali max;
 	#var pfm_gangrou 1;
 	perform cuff.gangrou;
-	#ticker {zhen} {
-		zhen;
-	} {0.8};
 	#delay {5} {
 		#var pfm_gangrou 0;
-		#unticker {zhen};
 		jiali none;
 	};
 	wi;
