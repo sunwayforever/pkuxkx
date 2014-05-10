@@ -72,7 +72,14 @@
 	    killall;
 	};
 
-	#action  {^%*突然神秘的一笑，双眼紧叮着你，象要把你的魂摄下来。} {
+	#action {^%*凝神静气，暗运神功，顷刻间碧海神功的内力遍布全身。} {
+		#var pl_npc_c %%1;
+		show_to_info 桃花:${pl_npc_c};
+		step;
+		check_shuizei;
+	};
+	
+	#action {^%*突然神秘的一笑，双眼紧叮着你，象要把你的魂摄下来。} {
 		#var pl_npc_c %%1;
 		show_to_info 古墓:${pl_npc_c};
 		step;
