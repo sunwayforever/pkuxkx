@@ -116,7 +116,7 @@
 	bei claw;
 	bei cuff;
 	unwield all;
-	jiali 10;
+	jiali 50;
 	perform claw.wuying;
 	jiali none;
 	wi;

@@ -107,7 +107,7 @@
 		#unticker {zhi};
 	};
 	
-	#action {^机关继续推动，把%*挤下水去。} {
+	#action {^机关继续推动，把%*生生挤下水去。} {
 		#unticker {zhi};
 		#if {"${pl_mj_npc}" == "%%1"} {
 			mj.stop;
@@ -118,7 +118,15 @@
 			};
 		};
 	};
-	
+
+	#action {钓鱼人给你一枚%*。} {
+		pack gem;
+		show_to_info 掉宝: %%1;
+		#action {%*点实战经验，} {
+			#unaction {%*点实战经验，} ;
+			show_to_info @ctd{%%%1} 点经验;
+		};
+	};
 	#class piaoliu.inner close;
 };
 

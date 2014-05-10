@@ -56,4 +56,6 @@
 #gag {mingjiao enemy};
 #gag {我找不到};
 #gag {你有一搭，没一搭的「嗯」了一声。};
+#gag {你现在已经组合了两种特殊技能};
+#gag {你正在使用梯云纵的特殊防御「梯云纵」！};
 #class gag close
