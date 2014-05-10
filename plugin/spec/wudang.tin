@@ -27,9 +27,6 @@
 		wuying;
 	};
 	#class attack.inner open;
-	#ticker {lzj} {
-		lzj;
-	} {7.8};
 	#ticker {wuying} {
 		wuying;
 	} {5.8};

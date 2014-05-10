@@ -28,7 +28,9 @@
 		#math hua_count ${hua_count}-1;
 		show_to_quest 漂流: ${pl_count} 里后, 往 ${hua_direction} 划 ${hua_count} 里;
 		#if {${hua_count} > 0} {
-			hua ${hua_direction};
+			on_unbusy {
+				hua ${hua_direction};
+			};
 		};
 		#else {
 			xiamao;
@@ -44,18 +46,12 @@
 
 	#action {你总共击退了%*名水贼} {
 		#if {${pl_count} == 0} {
-			#delay {2} {
+			on_unbusy {
 				hua ${hua_direction};
 			};
 		};
 	};
-
-	#action {现在不能划桨} {
-		#delay {2} {
-			hua ${hua_direction};
-		};
-	};
-
+	
 	#action {也许你可以返航了} {
 		pl.d;
 	};
