@@ -76,6 +76,10 @@
 #action {你气喘嘘嘘，看起来状况并不太好} {re} {1};
 #action {你看起来已经力不从心了} {re} {1};
 
+#action {你突然打了个寒战，明显感到一股寒流已经侵入体内！} {
+	qudu;
+};
+
 #action {忽然一阵刺骨的奇寒袭来} {
 	qudu;
 };
@@ -227,7 +231,6 @@
 		yun qi;
 		yun jing;
 	} {10};
-	raw;
 	attack.prepare;
 	#delay {1} {
 		attack;

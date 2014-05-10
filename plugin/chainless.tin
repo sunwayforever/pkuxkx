@@ -1,11 +1,16 @@
 #class chainless open
 
 #alias chainless #cr;
-#action {你只觉剑势连绵不绝，旧力未尽，新力便生，简直无有穷尽} {
-	chainless;
+#list busy_descriptions create {
+	你只觉剑势连绵不绝，旧力未尽，新力便生，简直无有穷尽;
+	你左支右绌苦苦支撑，陷入了完全被动的境地，根本无法还手;
+	你已完全陷入世俗争斗的自责中无法自拔,待惊觉却为时已晚;
 };
 
-#action {你左支右绌苦苦支撑，陷入了完全被动的境地，根本无法还手！} {
-	chainless;	
+#foreach {${busy_descriptions}[%*]} {busy_description} {
+	#action {${busy_description}} {
+		chainless;
+	};
 };
+
 #class chainless close

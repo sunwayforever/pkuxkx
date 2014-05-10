@@ -9,7 +9,7 @@
 };
 
 #alias {attack.hubiao} {
-	#delay {3.8} {
+	#delay {4.5} {
 		wuying;
 	};
 	#class attack.inner open;
@@ -23,7 +23,7 @@
 };
 
 #alias {attack.normal} {
-	#delay {3.8} {
+	#delay {4.5} {
 		wuying;
 	};
 	#class attack.inner open;
@@ -40,7 +40,7 @@
 };
 
 #alias {attack.xiaofeng} {
-	#delay {3.8} {
+	#delay {4.5} {
 		wuying;
 	};
 	#class attack.inner open;
