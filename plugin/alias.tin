@@ -428,7 +428,7 @@
 	#gag {�㲻æ};
 	#ticker {checkbusy} {
 		checkbusy;
-	} {1};
+	} {0.5};
 	#action {�㲻æ} {
 		#class unbusy.inner kill;
 		tmp_unbusy;

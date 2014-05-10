@@ -2,13 +2,18 @@
 
 #alias {attack.prepare} {
 	yun xinjing;
-};
-
-#alias {attack.hubiao} {
 	#class attack.inner open;
 	#ticker {perf_chan} {
 		chan;
 	} {1};
+	#class attack.inner close;
+};
+
+#alias {attack.hubiao} {
+	on_unbusy {
+		zhua;
+	};
+	#class attack.inner open;
 	#ticker {suxin} {
 		suxin;	
 	} {6};
@@ -22,26 +27,22 @@
 		yun xinjing;
 	} {30};
 	#class attack.inner close;
-	suxin;
+	on_unbusy {
+		suxin;
+	};
 };
 
 #alias {attack.normal} {
-	suxin;
+	on_unbusy {
+		zhua;
+	};
 	#class attack.inner open;
-	#ticker {perf_chan} {
-		chan;
-	} {1};
 	#ticker {suxin} {
 		suxin;	
 	} {3.5};
 	#ticker {zhua} {
 		zhua;
-	} {2};
-	#action {²ø: hit} {
-		#delay {1.5} {
-			shexin;
-		};
-	};
+	} {5.5};
 	#ticker {xinjing} {
 		yun xinjing;
 	} {30};
@@ -49,11 +50,10 @@
 };
 
 #alias {attack.xiaofeng} {
-	zhua;
+	on_unbusy {
+		zhua;		
+	};
 	#class attack.inner open;
-	#ticker {perf_chan} {
-		chan;
-	} {1};
 	#ticker {zhua} {
 		zhua;
 	} {5};
@@ -65,9 +65,6 @@
 
 #alias {attack.mingjiao} {
 	#class attack.inner open;
-	#ticker {perf_chan} {
-		chan;
-	} {1};
 	#ticker {perf_qixing} {
 		qixing;
 	} {0.6};

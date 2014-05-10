@@ -5,17 +5,17 @@
 	#delay {7.8} {
 		zong;
 	};
+	#ticker {perf_chan} {
+		chan;
+	} {1};
 	#class attack.inner close;
 };
 
 #alias {attack.hubiao} {
-	#delay {4.5} {
+	on_unbusy {
 		wuying;
 	};
 	#class attack.inner open;
-	#ticker {perf_chan} {
-		chan;
-	} {1};
 	#ticker {wuying} {
 		wuying;
 	} {6.8};
@@ -23,13 +23,10 @@
 };
 
 #alias {attack.normal} {
-	#delay {4.5} {
+	on_unbusy {
 		wuying;
 	};
 	#class attack.inner open;
-	#ticker {perf_chan} {
-		chan;
-	} {1};
 	#ticker {lzj} {
 		lzj;
 	} {7.8};
@@ -40,13 +37,10 @@
 };
 
 #alias {attack.xiaofeng} {
-	#delay {4.5} {
+	on_unbusy {
 		wuying;
 	};
 	#class attack.inner open;
-	#ticker {perf_chan} {
-		chan;
-	} {1};
 	#ticker {wuying} {
 		wuying;
 	} {5.8};
@@ -54,17 +48,16 @@
 };
 
 #alias {attack.mingjiao} {
-	zong;
+	on_unbusy {
+		wuying;
+	};
 	#class attack.inner open;
-	#ticker {perf_chan} {
-		chan;
-	} {1};
 	#ticker {perf_zhen} {
 		perform cuff.zhen;
 	} {0.6};
 	#ticker {wuying} {
 		wuying;
-	} {6};	
+	} {5.8};	
 	#class attack.inner close;
 };
 
