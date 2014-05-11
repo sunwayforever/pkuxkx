@@ -44,10 +44,19 @@
 		};
 	};
 
+	#action {船上的机关被你修复了一些} {
+		#var need_xiufu 0;
+	};
+	
 	#action {你总共击退了%*名水贼} {
 		#if {${pl_count} == 0} {
 			on_unbusy {
 				hua ${hua_direction};
+			};
+		};
+		#else {
+			#if {${nl_percent} > 70 && need_xiufu == 1} {
+				xiufu;
 			};
 		};
 	};
@@ -101,14 +110,11 @@
 	#action {你想用机关对付谁} {
 		#unticker {zhi};	
 	};
-	
+
+	#var need_xiufu 0;
 	#action {机关已经使用殆尽} {
-		#if {${nl_percent} > 70} {
-			xiufu;
-		};
-		#else {
-			#unticker {zhi};
-		};
+		#var need_xiufu 1;		
+		#unticker {zhi};
 	};
 	
 	#action {机关刚刚完全运转} {
