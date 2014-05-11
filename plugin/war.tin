@@ -101,23 +101,23 @@
 };
 
 #alias {kill} {
-	#send kill %0;
 	war;
+	#send kill %0;
 };
 
 #alias {killall} {
-	#send killall %0;
 	war;
+	#send killall %0;
 };
 
 #alias {hit} {
-	#send hit %0;
 	war;
+	#send hit %0;
 };
 
 #alias {fight} {
-	#send fight %0;
 	war;
+	#send fight %0;
 };
 
 #alias {wi_normal} {
