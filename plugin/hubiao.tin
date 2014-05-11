@@ -143,10 +143,13 @@ load chaos;
 	};
 	
 	#action {劫匪突然从暗处跳了出来} {
+		hb.wait;
 		#if {${hb_first_kill} == 0} {
 			killall robber;
 		};
-		hb.wait;
+		#else {
+			war;
+		};
 	};
 
 	#action {围上来几个伙计将镖车拉了进去} {

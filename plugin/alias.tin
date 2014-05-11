@@ -428,7 +428,7 @@
 	#gag {�㲻æ};
 	#ticker {checkbusy} {
 		checkbusy;
-	} {0.5};
+	} {0.3};
 	#action {�㲻æ} {
 		#class unbusy.inner kill;
 		tmp_unbusy;
@@ -464,7 +464,12 @@
 	#class health.inner open;
 	#alias {check_qx} {
 		#if {${eff_qx_percent} < 99} {
-			yun heal;
+			#if {${nl_percent} < 50} {
+				yun lifeheal ${char_id};				
+			};
+			#else {
+				yun heal;				
+			}
 			#delay {3} {
 				check_qx;
 			};

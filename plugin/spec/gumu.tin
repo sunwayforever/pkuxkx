@@ -3,11 +3,9 @@
 #alias {attack.prepare} {
 	yun xinjing;
 	#class attack.inner open;
-	#action {²ø: miss} {
-		on_unbusy {
-			chan;
-		};
-	};
+	#ticker {perf_chan} {
+		chan;
+	} {1};
 	#ticker {xinjing} {
 		yun xinjing;
 	} {30};
@@ -19,18 +17,12 @@
 		chan;
 	};
 	#class attack.inner open;
-	#action {²ø: hit} {
-		on_unbusy {
-			zhua;
-			on_unbusy {
-				shexin;
-				on_unbusy {
-					suxin;
-					attack;
-				};
-			};
-		};
-	};
+	#ticker {zhua} {
+		zhua;
+	} {3.8};
+	#ticker {suxin} {
+		suxin;
+	} {5.8};
 	#class attack.inner close;
 };
 
@@ -39,18 +31,15 @@
 		chan;
 	};
 	#class attack.inner open;
-	#action {²ø: hit} {
-		on_unbusy {
-			zhua;
-			on_unbusy {
-				shexin;
-				on_unbusy {
-					suxin;
-					attack;
-				};
-			};
-		};
-	};
+	#ticker {zhua} {
+		zhua;
+	} {3.8};
+	#ticker {suxin} {
+		suxin;
+	} {7.8};
+	#ticker {shexin} {
+		shexin;
+	} {5.8};
 	#class attack.inner close;
 };
 
@@ -59,26 +48,20 @@
 		chan;
 	};
 	#class attack.inner open;
-	#action {²ø: hit} {
-		on_unbusy {
-			zhua;
-			on_unbusy {
-				shexin;
-				attack;
-			};
-		};
-	};
+	#ticker {zhua} {
+		zhua;
+	} {3.8};
 	#class attack.inner close;
 };
 
 #alias {attack.mingjiao} {
-	#class attack.inner open;
-	#action {²ø: hit} {
-		on_unbusy {
-			qixing;
-			attack;
-		};
+	on_unbusy {
+		chan;
 	};
+	#class attack.inner open;
+	#ticker {qixing} {
+		qixing;
+	} {1.8};
 	#class attack.inner close;
 };
 
@@ -142,7 +125,9 @@
 
 #alias {shexin} {
 	unwi;
+	jiali max;
 	perform meinu-quan.shexin;
+	jiali none;
 	wi;
 };
 

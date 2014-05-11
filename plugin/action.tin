@@ -335,5 +335,11 @@
 	#var fm_info off;
 	update_status;
 };
+
+#gag {wait_for_fight};
+#action {只能对战斗中的对手使用} {
+	#showme wait_for_fight;
+};
+
 #class action close;
 

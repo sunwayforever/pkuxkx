@@ -8,26 +8,24 @@
 	#ticker {perf_chan} {
 		chan;
 	} {1};
-	on_unbusy {
-		chan;
-		#delay {1} {
-			on_unbusy {
-				wuying;
-			};
-		};
-	};
 	#class attack.inner close;
 };
 
 #alias {attack.hubiao} {
+	on_unbusy {
+		chan;
+	};
 	#class attack.inner open;
 	#ticker {wuying} {
 		wuying;
-	} {6.8};
+	} {5.8};
 	#class attack.inner close;
 };
 
-#alias {attack.normal} {
+#alias {attack.normal} {	
+	on_unbusy {
+		chan;
+	};
 	#class attack.inner open;
 	#ticker {wuying} {
 		wuying;
@@ -36,6 +34,9 @@
 };
 
 #alias {attack.xiaofeng} {
+	on_unbusy {
+		chan;
+	};
 	#class attack.inner open;
 	#ticker {wuying} {
 		wuying;
@@ -44,21 +45,19 @@
 };
 
 #alias {attack.mingjiao} {
-	#delay {3} {
-		on_unbusy {
-			gangrou;
-		};
+	on_unbusy {
+		chan;
 	};
 	#class attack.inner open;
 	#ticker {perf_zhen} {
 		perform cuff.zhen;
-	} {0.8};
+	} {1.8};
 	#ticker {wuying} {
 		wuying;
 	} {4.8};
 	#ticker {gangrou} {
 		gangrou;
-	} {7.8};	
+	} {8.8};	
 	#class attack.inner close;
 };
 
@@ -90,7 +89,7 @@
 #alias {chan} {
 	unwield all;
 	wield my sword;
-	perform sword.chan;
+	#2 perform sword.chan;
 	wi;
 };
 

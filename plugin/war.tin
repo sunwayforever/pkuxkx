@@ -164,16 +164,18 @@
 
 #var mj_started 0;
 #alias {mj.start} {
-	#var mj_started 1;
-	show_to_info >>明教;
-
-	#alias {wi} {wi_bare};
-	unwi;
-	#class attack.inner kill;
-	#alias {attack} {
-		attack.mingjiao;
+	#if {${mj_started} == 0} {
+		#var mj_started 1;
+		#class war.inner kill;
+		#class attack.inner kill;
+		show_to_info >>明教;
+		#alias {wi} {wi_bare};
+		unwi;
+		#alias {attack} {
+			attack.mingjiao;
+		};
+		war;		
 	};
-	war;
 };
 
 #alias {mj.stop} {
@@ -214,6 +216,11 @@
 		yun qi;
 		yun jing;
 	} {10};
+	#action {wait_for_fight} {
+		#delay {attack.delay} {
+			attack;
+		} {1};
+	};
 	#class war.inner close;
 	yun qi;
 	yun jing;
