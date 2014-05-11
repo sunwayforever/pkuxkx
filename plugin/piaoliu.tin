@@ -55,8 +55,13 @@
 			};
 		};
 		#else {
-			#if {${nl_percent} > 70 && need_xiufu == 1} {
-				xiufu;
+			#if {${need_xiufu} == 1} {
+				#if {${nl_percent} > 50} {
+					xiufu;
+				};
+				#else {
+					show_to_info 内力不足, 无法修复机关;
+				};
 			};
 		};
 	};
