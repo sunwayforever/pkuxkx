@@ -218,9 +218,7 @@
 	yun qi;
 	yun jing;
 	attack.prepare;
-	#delay {1} {
-		attack;
-	};
+	attack;
 };
 
 #alias {attack}  {

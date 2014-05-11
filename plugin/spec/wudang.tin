@@ -8,13 +8,18 @@
 	#ticker {perf_chan} {
 		chan;
 	} {1};
+	on_unbusy {
+		chan;
+		#delay {1} {
+			on_unbusy {
+				wuying;
+			};
+		};
+	};
 	#class attack.inner close;
 };
 
 #alias {attack.hubiao} {
-	on_unbusy {
-		wuying;
-	};
 	#class attack.inner open;
 	#ticker {wuying} {
 		wuying;
@@ -23,9 +28,6 @@
 };
 
 #alias {attack.normal} {
-	on_unbusy {
-		wuying;
-	};
 	#class attack.inner open;
 	#ticker {wuying} {
 		wuying;
@@ -34,9 +36,6 @@
 };
 
 #alias {attack.xiaofeng} {
-	on_unbusy {
-		wuying;
-	};
 	#class attack.inner open;
 	#ticker {wuying} {
 		wuying;
@@ -45,8 +44,10 @@
 };
 
 #alias {attack.mingjiao} {
-	on_unbusy {
-		gangrou;
+	#delay {3} {
+		on_unbusy {
+			gangrou;
+		};
 	};
 	#class attack.inner open;
 	#ticker {perf_zhen} {
