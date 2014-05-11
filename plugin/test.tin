@@ -1,4 +1,9 @@
 #class test open;
+
+战斗中不能疗伤
+战斗中运功疗伤？找死吗？
+你全身放松，坐下来开始运功疗伤。
+
 #alias {path.test} {
 	#list test_path create {
 		e;n;n;e;n;n;s;s;e;sw;sw;w;e;e;ne;e;e;s;s;w;w;w;sw;s;w;w;e;e;s;s;e;w;s;n;e;e;e;

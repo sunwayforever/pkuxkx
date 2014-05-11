@@ -414,7 +414,7 @@
 #alias {on_truce} {
 	#alias tmp_truce %0;
 	#class truce.inner open;
-	fighting;
+	war;
 	#action {truce} {
 		#class truce.inner kill;
 		tmp_truce;

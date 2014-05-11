@@ -50,12 +50,6 @@
     #system {bin/play %1};
 };
 
-#action {死了} {
-	#delay {2} {
-		raw;
-	};
-};
-
 #action {君子报仇十年不晚，咱们走着瞧} {
 	#nop play_music win;
 };
@@ -90,14 +84,6 @@
 
 #action {他的剧毒散至你的全身} {
 	qudu;
-};
-
-#action {受伤过重，已经有如风中残烛，随时都可能断气} {
-	fighting;	
-};
-
-#action {『%*(%1气血:%2\%/%3\%)』} {
-	fighting;
 };
 
 #alias {chan_a_chan} {
@@ -160,14 +146,6 @@
 	wi;
 };
 
-#gag {truce};
-#alias {fighting} {
-	#delay {fighting} {
-		#showme truce;
-		raw;
-	} {12};
-};
-
 #alias {detect_mingjiao} {
 	l %0;
 	#action {这是一位明教} {
@@ -191,7 +169,7 @@
 
 	#alias {wi} {wi_bare};
 	unwi;
-	attack.end;
+	#class attack.inner kill;
 	#alias {attack} {
 		attack.mingjiao;
 	};
@@ -204,7 +182,7 @@
 		show_to_info <<明教;
 		#alias {wi} {wi_normal};
 		wi;
-		attack.end;
+		#class attack.inner kill;
 		#alias {attack} {
 			attack.normal;
 		};
@@ -216,21 +194,29 @@
 };
 
 #alias {raw} {
-	attack.end;
-	#nop get all from corpse;
+	#class war.inner kill;
+	#class attack.inner kill;
 	jiali none;
-	#unticker {yun};
 	mj.stop;
 };
 
 #alias {war} {
-	fighting;
-	yun qi;
-	yun jing;
+	#class war.inner open;
+	#action {你全身放松，坐下来开始运功疗伤。} {
+		raw;
+		heal 10;
+		#showme truce;
+	};
+	#ticker {fighting} {
+		yun heal;
+	} {3};
 	#ticker {yun} {
 		yun qi;
 		yun jing;
 	} {10};
+	#class war.inner close;
+	yun qi;
+	yun jing;
 	attack.prepare;
 	#delay {1} {
 		attack;
@@ -243,10 +229,6 @@
 
 #alias {attack.hubiao} {
 	attack.normal;
-};
-
-#alias {attack.end} {
-	#class attack.inner kill;
 };
 
 #action {乾坤大挪移自然激发而出，将你的攻势反击了回去。} {
