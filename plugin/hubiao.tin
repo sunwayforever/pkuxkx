@@ -858,7 +858,7 @@ load chaos;
 			#return 7;
 		};
 		#elseif {"%1" == "晋阳萧府"} {
-			#return 5;
+			#return 9;
 		};
 		#elseif {"%1" == "成都当铺"} {
 			#return -1;
@@ -956,25 +956,28 @@ load chaos;
 
 #alias {hb.guohe} {
 	#action {^%*接过你递给的船资} {
-		#var hb_paused 1;
 		#class guohe.inner open;
 		#ticker {sw/yell_boat} {
 			yell boat;
 		} {5};
 		#action {正等着你呢，上来吧。} {
+			#unticker {sw/yell_boat};
 			genter;
 		};
 		#action {艄公将一块踏脚板搭上堤岸，} {
+			#unticker {sw/yell_boat};
 			genter;
 		};
 		#action {所有人被赶下了渡船} {
 			#class guohe.inner kill;
 			#delay {hb_delay} {
 				hb.resume;
-			} {5};
+			} {3};
 		};
 		#class guohe.inner close;
 	};
+	#unticker {hb_walk};
+	#var hb_paused 1;
 	#delay {5} {
 		on_truce {
 			ask shao gong about %1;		
