@@ -964,7 +964,7 @@ load chaos;
 			#unticker {sw/yell_boat};
 			genter;
 		};
-		#action {^黄河渡船$|^长江渡船$} {
+		#alias {shangchuan} {
 			#var hb_paused 1;
 			#unticker {hb_walk};
 			#action {所有人被赶下了渡船} {
@@ -974,6 +974,12 @@ load chaos;
 					hb.resume;
 				} {3};
 			};
+		};
+		#action {^黄河渡船$} {
+			shangchuan;
+		};
+		#action {^长江渡船$} {
+			shangchuan;
 		};
 		#action {艄公将一块踏脚板搭上堤岸，} {
 			#unticker {sw/yell_boat};

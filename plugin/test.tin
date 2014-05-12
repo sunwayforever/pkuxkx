@@ -1,41 +1,11 @@
-#class test open;
-#var a 1;
-#if {${a} == 0} {
-	#showme ok;
+#action {^黄河渡船$} {
+	#showme hit2;	
 };
-#elseif {
-	#showme haha;
+#action {^长江渡船$} {
+	#showme hit2;	
 };
 
-#alias {path.test} {
-	#list test_path create {
-		e;n;n;e;n;n;s;s;e;sw;sw;w;e;e;ne;e;e;s;s;w;w;w;sw;s;w;w;e;e;s;s;e;w;s;n;e;e;e;
-		w;n;s;ne;n;n;w;w;w;s;n;ne;sw;e;ne;sw;e;ne;e;s;s;n;n;e;e;w;w;w;w;w;w;sw;
-		s;s;w;n;n;n;e;e;e;e;e;e;sw;sw;sw;sw;sw;s;w;w;w;w;w;nw;n;n;n;e;n;n;w
-	};
-
-	#list test_path size test_path_size;
-	#var test_path_index 0;
-	#ticker {test_walk} {
-		#math test_path_index ${test_path_index}+1;
-		#if {${test_path_index} > ${test_path_size}} {
-			#untick {test_walk};
-		};
-		#else {
-			#list test_path get ${test_path_index} test_path_next;
-			${test_path_next};
-		};
-	} {1};
-	#action {这个方向没有出路} {
-		#untick {test_walk};
-		#showme path error: ${test_path_index}, ${test_path_next};
-	};
+#action {ttt} {
+	#showme aaa;
 };
 
-#alias {test} {
-	#alias tmp_test %1;
-	#if {"%1" == ""} {
-		#showme null;
-	};
-}
-#class test close
