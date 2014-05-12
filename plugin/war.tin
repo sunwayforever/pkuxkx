@@ -54,36 +54,21 @@
 	#nop play_music win;
 };
 
-#nop #action {你捡起一件%1} {drop cloth;drop pao;drop she pi}
-#nop #action {你捡起一双%1} {drop xie;drop shoes;}
-#nop #action {你捡起一柄%1} {drop changjian; drop duanjian; drop xiuhua bengjia;}
-#nop #action {你捡起一条%1} {drop she rou;drop tu rou;drop band}
-#nop #action {你捡起一块%1} {drop gan liang;}
-
-#nop #action {你从%1一件%2} {drop cloth;drop pao;drop she pi}
-#nop #action {你从%1一双%2} {drop xie;drop shoes;}
-#nop #action {你从%1一柄%2} {drop changjian; drop duanjian; drop xiuhua bengjia;}
-#nop #action {你从%1一条%2} {drop she rou;drop tu rou;drop band}
-#nop #action {你从%1一块%2} {drop gan liang;}
-
 #action {你似乎十分疲惫，看来需要好好休息了} {re} {1};
 #action {你气喘嘘嘘，看起来状况并不太好} {re} {1};
 #action {你看起来已经力不从心了} {re} {1};
 
-#action {你突然打了个寒战，明显感到一股寒流已经侵入体内！} {
-	qudu;
+#list poisions create {
+	你一中掌，身子一晃，看来已经中了毒！;
+	你突然打了个寒战，明显感到一股寒流已经侵入体内！;
+	忽然一阵刺骨的奇寒袭来;
+	突然你打了个寒战，你中的冰魄寒毒发作了！;
+	他的剧毒散至你的全身;
 };
-
-#action {忽然一阵刺骨的奇寒袭来} {
-	qudu;
-};
-
-#action {突然你打了个寒战，你中的冰魄寒毒发作了！} {
-	qudu;
-};
-
-#action {他的剧毒散至你的全身} {
-	qudu;
+#foreach {${poisions}[%*]} {poision} {
+	#action {${poision}} {
+		qudu;
+	} {1};
 };
 
 #alias {chan_a_chan} {

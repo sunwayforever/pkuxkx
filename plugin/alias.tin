@@ -464,7 +464,7 @@
 	#class health.inner open;
 	#alias {check_qx} {
 		#if {${eff_qx_percent} < 99} {
-			#if {${nl_percent} < 50} {
+			#if {${qx_percent} < 50} {
 				yun lifeheal ${char_id};				
 			};
 			#else {

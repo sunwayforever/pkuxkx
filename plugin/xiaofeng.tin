@@ -20,6 +20,7 @@
 				#var dest @area_mapping{%%1};
 				#if {"${dest}" != "0"} {
 					gt $dest;
+					on_there {xf.bl};
 				};
 			};
 		};
@@ -74,7 +75,7 @@
 			#alias {wi} {wi_bare};
 			unwi;
 		};
-		#elif {${xf.type} == 2} {
+		#elseif {${xf.type} == 2} {
 			show_to_info 红血了, 慢点;
 			raw; 
 			#alias  {attack} {attack.bare};
@@ -104,7 +105,6 @@
 			get ${xf.real_first_name};
 		};
 	};
-
 	
 	#action {西夏一品堂 %*(%* %*)} {
 		#unaction {西夏一品堂 %*(%* %*)};

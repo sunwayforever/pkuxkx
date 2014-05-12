@@ -1,8 +1,11 @@
 #class test open;
-
-战斗中不能疗伤
-战斗中运功疗伤？找死吗？
-你全身放松，坐下来开始运功疗伤。
+#var a 1;
+#if {${a} == 0} {
+	#showme ok;
+};
+#elseif {
+	#showme haha;
+};
 
 #alias {path.test} {
 	#list test_path create {
