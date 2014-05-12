@@ -964,25 +964,24 @@ load chaos;
 			#unticker {sw/yell_boat};
 			genter;
 		};
+		#action {^黄河渡船$|^长江渡船$} {
+			#var hb_paused 1;
+			#unticker {hb_walk};
+			#action {所有人被赶下了渡船} {
+				#unaction {所有人被赶下了渡船};
+				#class guohe.inner kill;
+				#delay {hb_delay} {
+					hb.resume;
+				} {3};
+			};
+		};
 		#action {艄公将一块踏脚板搭上堤岸，} {
 			#unticker {sw/yell_boat};
 			genter;
 		};
-		#action {所有人被赶下了渡船} {
-			#class guohe.inner kill;
-			#delay {hb_delay} {
-				hb.resume;
-			} {3};
-		};
 		#class guohe.inner close;
 	};
-	#unticker {hb_walk};
-	#var hb_paused 1;
-	#delay {5} {
-		on_truce {
-			ask shao gong about %1;		
-		};
-	};
+	ask shao gong about %1;		
 };
 
 #alias {clear_npc} {
