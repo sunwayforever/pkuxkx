@@ -690,7 +690,7 @@
 		#class on_echo.inner kill;
 		tmp_echo;
 	};
-	#delay {1} {
+	#delay {0.5} {
 		#class on_echo.inner kill;	
 	};
 	#class on_echo.inner close;

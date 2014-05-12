@@ -101,11 +101,9 @@ load chaos;
 	};
 
 	#action {^你赶着镖车驶了过来} {
+		#unticker {hb_walk};
 		#if {${hb_paused} == 0} {
 			chaos.remember;
-		};
-		#else {
-			#unticker {hb_walk};
 		};
 	};
 
