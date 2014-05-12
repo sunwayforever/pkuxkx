@@ -204,7 +204,7 @@
 	#action {wait_for_fight} {
 		#delay {attack.delay} {
 			attack;
-		} {1};
+		} {0.5};
 	};
 	#class war.inner close;
 	yun qi;

@@ -11,6 +11,14 @@
 	#class attack.inner close;
 };
 
+#alias {attack.bare} {
+	on_unbusy {
+		chan;
+	};
+	#class attack.inner open;
+	#class attack.inner close;
+};
+
 #alias {attack.hubiao} {
 	on_unbusy {
 		chan;
