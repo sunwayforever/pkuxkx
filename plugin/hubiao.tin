@@ -957,44 +957,31 @@ load chaos;
 };
 
 #alias {hb.guohe} {
-	#class guohe.inner open;
-	#ticker {sw/yell_boat} {
-		yell boat;
-	} {10};
-	#action {正等着你呢，上来吧。} {#class tmp kill;genter};
-	#action {艄公将一块踏脚板搭上堤岸，} {#class tmp kill;genter};
 	#action {^%*接过你递给的船资} {
-		#class tmp open;
-		#action {^只听得江面上隐隐传来：“别急嘛，这儿正忙着呐……”} {
-			#class tmp kill;#delay {3} {yell boat};
-		};
-		#class tmp close;
-	};
-	#action {^你吸了口气，一声“船家”，声音中正平和地远远传了出去。$} {
-		#class tmp open;
-		#action {^只听得江面上隐隐传来：“别急嘛，这儿正忙着呐……”} {
-			#class tmp kill;#delay {3} {yell boat};
-		};
-		#class tmp close;
-	};
-	#action {^你使出吃奶的力气喊了一声：“船家”$}
-	{
-		#class tmp open;
-		#action {^只听得江面上隐隐传来：“别急嘛，这儿正忙着呐……”} {
-			#class tmp kill;#delay {3} {yell boat};
-		};
-		#class tmp close;
-	};
-	#action {所有人被赶下了渡船} {
-		#class guohe.inner kill;
-		#delay {hb_delay} {
-			hb.resume;
+		#var hb_paused 1;
+		#class guohe.inner open;
+		#ticker {sw/yell_boat} {
+			yell boat;
 		} {5};
+		#action {正等着你呢，上来吧。} {
+			genter;
+		};
+		#action {艄公将一块踏脚板搭上堤岸，} {
+			genter;
+		};
+		#action {所有人被赶下了渡船} {
+			#class guohe.inner kill;
+			#delay {hb_delay} {
+				hb.resume;
+			} {5};
+		};
+		#class guohe.inner close;
 	};
-
-	#class guohe.inner close;
-	#var hb_paused 1;
-	ask shao gong about %1;
+	#delay {5} {
+		on_truce {
+			ask shao gong about %1;		
+		};
+	};
 };
 
 #alias {clear_npc} {
