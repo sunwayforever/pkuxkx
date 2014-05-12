@@ -994,7 +994,7 @@ load chaos;
 			#var hb_force_wait 1;
 		} {1};
 		#var npc_en @lower{%%1};
-		kill ${npc_en};
+		killall ${npc_en};
     } {1};
 	#class clear_npc.inner close;
 };
