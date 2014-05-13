@@ -1,11 +1,20 @@
-#action {^»ÆºÓ¶É´¬$} {
-	#showme hit2;	
+#alias {path.test} {
+	#list test_path create {
+		s;w;w;w;w;n;n;s;s;w;w;w;w;e;e;e;e;e;e;e;e;s;n;e;n;s;s;n;e;n;e;w;n;w;n;s;e;e;w;n;w;e;e;
+		e;w;w;n;n;n;n;n;n;n;n;n;s;s;s;s;s;s;s;s;s;s;s;s;w;e;e;w;s;w;e;s;w;e;e;w;s;s;s;s;e;w;s;s;
+		n;n;n;n;n;n;n;n;n;e;n;s;e;sw;s;w;e;e;w;n;ne;n;n;w;e;s;s;e;s;n;e;e;se;e;e;w;w;nw;e;n;s;w;w;w;w;w;w;w;w;n;
+	};
+	
+	#list test_path size test_path_size;
+	#var test_path_index 0;
+	#ticker {test_walk} {
+		#math test_path_index ${test_path_index}+1;
+		#if {${test_path_index} > ${test_path_size}} {
+			#untick {test_walk};
+		};
+		#else {
+			#list test_path get ${test_path_index} test_path_next;
+			${test_path_next};
+		};
+	} {1};
 };
-#action {^³¤½­¶É´¬$} {
-	#showme hit2;	
-};
-
-#action {ttt} {
-	#showme aaa;
-};
-

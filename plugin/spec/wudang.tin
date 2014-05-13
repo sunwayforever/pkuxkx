@@ -37,7 +37,10 @@
 	#class attack.inner open;
 	#ticker {wuying} {
 		wuying;
-	} {5.8};
+	} {6.8};
+	#ticker {gangrou} {
+		gangrou;
+	} {4.8};
 	#class attack.inner close;
 };
 
@@ -48,7 +51,10 @@
 	#class attack.inner open;
 	#ticker {wuying} {
 		wuying;
-	} {5.8};
+	} {6.8};
+	#ticker {gangrou} {
+		gangrou;
+	} {4.8};
 	#class attack.inner close;
 };
 
@@ -62,10 +68,10 @@
 	} {1.8};
 	#ticker {wuying} {
 		wuying;
-	} {4.8};
+	} {6.8};
 	#ticker {gangrou} {
 		gangrou;
-	} {8.8};	
+	} {4.8};	
 	#class attack.inner close;
 };
 
