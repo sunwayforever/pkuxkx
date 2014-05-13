@@ -48,6 +48,9 @@
 	on_unbusy {
 		chan;
 	};
+	#delay {3} {
+		wuying;
+	};
 	#class attack.inner open;
 	#ticker {wuying} {
 		wuying;
