@@ -73,7 +73,7 @@
 	#action {小船已经顺流漂出了%*里开外了} {
 		#math pl_count ${pl_count}-1;
 		show_to_quest 漂流: ${pl_count} 里后, 往 ${hua_direction} 划 ${hua_count} 里;
-		#if {"%%1" == "十"} {
+		#if {"%%1" == "十" || ${pl_count} == 2} {
 			sheng;
 		};
 		#if {${pl_count} == 0} {
