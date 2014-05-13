@@ -965,7 +965,6 @@ load chaos;
 			genter;
 		};
 		#alias {shangchuan} {
-			#var hb_paused 1;
 			#unticker {hb_walk};
 			#action {所有人被赶下了渡船} {
 				#unaction {所有人被赶下了渡船};
@@ -987,6 +986,7 @@ load chaos;
 		};
 		#class guohe.inner close;
 	};
+	#var hb_paused 1;
 	ask shao gong about %1;		
 };
 
