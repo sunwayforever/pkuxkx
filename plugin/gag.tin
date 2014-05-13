@@ -68,4 +68,5 @@
 #gag {你现在气力充沛。};
 #gag {你现在精力充沛。};
 #gag {truce};
+#gag {你现在不忙};
 #class gag close
