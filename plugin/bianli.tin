@@ -83,7 +83,7 @@
 		#list bl_path create {e;n;s;s;n;w;s;eu;se;se;nw;n;s;n;nw;n;enter;out;s;se;s;nw;ed;wd;s;w;w;n;enter;n;s;w;u;w;enter;out;e;e;enter;out;e;enter;out;w;w;d;e;out;s;e;e;s;e;se;e;w;nw;w;n;n;n;w;s;w;e;n;n;enter;w;n;s;e;out;s;e;n;w;e;e;u;d;w;n;w;w;e;e;e;e;w;n;s;s;n;w;n;e;s;n;s;w;n;n;n;n;ne;ne;ne;n;s;n;ne;sw;sw;wu;ed;nw;sd;se;ne;ne;sw;s;sw;sw;sw;sw;s;s;s;s;w;#cr;e;s;s;s}		
 	};
 	#if {"${CurrentPosition}" == "qzh"} {
-		#list bl_path create {s;w;e;e;w;s;e;w;sd;s;sd;sd;se;s;se;se;n;s;e;w;nw;nw;n;nw;nu;nu;n;nu;n;n;w;w;w;s;n;w;s;n;e;e;e;e;e;n;s;e;e;w;w;w;n;n;w;w;s;n;w;w;n;n;n;n;n;n;e;n;e;e;n;n;s;s;e;n;n;nd;su;s;s;e;e;n;n;s;s;e;s;e;s;s;s;n;w;n;s;s;s;s;w;s;n;e;n;n;n;w;n;s;s;s;n;n;w;n;n;s;s;s;s;s;s;s;s;n;n;n;w;e;n;n;n;w;n;s;s;s;w;n;n;n;s;w;s;s;s;s;e;e;e;e;s;s}		
+		#list bl_path create {s;w;e;e;w;s;e;w;sd;s;sd;sd;se;s;se;se;n;s;e;w;nw;nw;n;nw;nu;nu;n;nu;n;n;w;w;w;s;n;w;s;n;e;e;e;e;e;n;s;e;e;w;w;w;n;n;w;w;s;n;w;w;n;n;n;n;n;n;e;n;e;e;n;bl.truce;n;bl.truce;s;s;e;n;n;nd;su;s;s;e;e;n;n;s;s;e;s;e;s;s;s;n;w;n;s;s;s;s;w;s;n;e;n;n;n;w;n;s;s;s;n;n;w;n;n;s;s;s;s;s;s;s;s;n;n;n;w;e;n;n;n;w;n;s;s;s;w;n;n;n;s;w;s;s;s;s;e;e;e;e;s;s}		
 	};
 	#if {"${CurrentPosition}" == "xch"} {
 		#list bl_path create {n;s;nw;nw;w;nu;sd;w;nw;se;nu;sd;e;e;se;se;sw;sw;e;w;n;n;n;n;s;s;s;s;w;u;d;e;nw;n;s;sw;ne;se;ne;ne;s;s;s;s;n;n;n;n;e;se;e;ne;ne;ne;ne;ne;e;e;w;w;sw;sw;sw;sw;sw;se;se;se;n;n;n;n;s;s;s;s;s;s;n;n;nw;nw;nw;w;nw;w};		
@@ -147,7 +147,6 @@
 
 #alias {bl.continue} {
 	#alias {bl.back} {
-		#unalias {bl.back};
 		merge_bl_path;
 		bl.continue;
 	};
@@ -210,6 +209,13 @@
 	bl.continue;
 };
 
+#alias {bl.truce} {
+	#var force_wait 1;
+	on_truce {
+		#var force_wait 0;		
+	};
+};
+
 #alias {bl.wait} {
 	#var force_wait 1;
 	#delay {%1} {
@@ -221,8 +227,8 @@
 	#math bl_path_index ${bl_path_index}-1;
 };
 
-#list area_mappings_from create {灵鹫;临安;荆州;中原;全真;信阳;苏州;张家;大理;小山;曲阜;泉州;荆州;黄河南岸;长江北岸;福州;岳阳;黄河北岸;晋阳;归云;南昌;江州;嘉兴;牙山;梦溪;镇江;长江岸边;黄河岸边;天龙;晋阳;泰山;桃花;桃源;昆明;襄阳;长江长江};
-#list area_mappings_to create {dzt;hz;jingzhou;xuchang;quanzhen;xinyang;sz;zjk;dali;xc;qf;quanzhou;jingzhou;hn2;jb2;fz;yy;hb2;jinyang;taihu;nc;jiangzhou;jiaxing;yashan;zhenjiang;zhenjiang;jn2;hn2;tls;jy;tais;th;ty;km;xy;jn2};
+#list area_mappings_from create {灵州;灵鹫;临安;荆州;中原;全真;信阳;苏州;张家;大理;小山;曲阜;泉州;荆州;黄河南岸;长江北岸;福州;岳阳;黄河北岸;晋阳;归云;南昌;江州;嘉兴;牙山;梦溪;镇江;长江岸边;黄河岸边;天龙;晋阳;泰山;桃花;桃源;昆明;襄阳;长江长江};
+#list area_mappings_to create {lz;dzt;hz;jingzhou;xuchang;quanzhen;xinyang;sz;zjk;dali;xc;qf;quanzhou;jingzhou;hn2;jb2;fz;yy;hb2;jinyang;taihu;nc;jiangzhou;jiaxing;yashan;zhenjiang;zhenjiang;jn2;hn2;tls;jy;tais;th;ty;km;xy;jn2};
 
 #function {area_mapping} {
 	#format {tmp} {%.4s} {%1};

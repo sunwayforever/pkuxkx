@@ -2,7 +2,7 @@
 #alias {attack.prepare} {
 	yun powerup;
 	#class attack.inner open;
-	#delay {7.8} {
+	#delay {8.8} {
 		zong;
 	};
 	#ticker {perf_chan} {
