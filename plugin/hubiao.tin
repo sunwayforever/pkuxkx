@@ -65,14 +65,14 @@ load chaos;
 				#if {${hb_force_wait} == 0 && ${hb_paused} == 0 && ${hb_wait} == 0} {
 					${hb_path_next};
 				};
-			} {2};
-			#ticker {hb_walk} {
-				#if {${hb_force_wait} == 0 && ${hb_paused} == 0 && ${hb_wait} == 0} {
-					on_echo {
-						${hb_path_next};
+				#ticker {hb_walk} {
+					#if {${hb_force_wait} == 0 && ${hb_paused} == 0 && ${hb_wait} == 0} {
+						on_echo {
+							${hb_path_next};
+						};
 					};
-				};
-			} {6};
+				} {5};
+			} {3};
 		};
 	};
 };
@@ -100,7 +100,7 @@ load chaos;
 		hb.move;
 	};
 
-	#action {^你赶着镖车驶了过来} {
+	#action {^你赶着镖车驶了过来。$} {
 		#unticker {hb_walk};
 		#if {${hb_paused} == 0} {
 			chaos.remember;
