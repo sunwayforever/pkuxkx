@@ -2,7 +2,7 @@
 #alias {attack.prepare} {
 	yun powerup;
 	#class attack.inner open;
-	#delay {8.8} {
+	#delay {7.8} {
 		zong;
 	};
 	#ticker {perf_chan} {
@@ -26,7 +26,7 @@
 	#class attack.inner open;
 	#ticker {wuying} {
 		wuying;
-	} {5.8};
+	} {4.8};
 	#class attack.inner close;
 };
 
@@ -37,9 +37,6 @@
 	#class attack.inner open;
 	#ticker {wuying} {
 		wuying;
-	} {5.8};
-	#ticker {gangrou} {
-		gangrou;
 	} {4.8};
 	#class attack.inner close;
 };
@@ -47,16 +44,13 @@
 #alias {attack.xiaofeng} {
 	on_unbusy {
 		chan;
-	};
-	#delay {3} {
-		wuying;
+		#delay {1} {
+			on_unbusy {wuying};
+		};
 	};
 	#class attack.inner open;
 	#ticker {wuying} {
 		wuying;
-	} {5.8};
-	#ticker {gangrou} {
-		gangrou;
 	} {4.8};
 	#class attack.inner close;
 };
