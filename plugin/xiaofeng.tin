@@ -129,6 +129,13 @@
 		};
 	} {1};
 
+	#action {要打便打} {
+		#class xf.bl.inner kill;
+		#if {${xf.type} != -1} {
+			follow shashou;
+		};
+	};
+
 	#action {显是蒙面杀手姓名} {
 		#if {${xf.type} == 1} {
 			#delay {2} {
@@ -245,12 +252,6 @@
 	};	
 	#action {找到目标} {
 		xf.check;	
-	};
-	#action {要打便打} {
-		#class xf.bl.inner kill;
-		#if {${xf.type} != -1} {
-			follow shashou;
-		};
 	};
 	#class xf.bl.inner close;	
 	bl.start 杀手;
