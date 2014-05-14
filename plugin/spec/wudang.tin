@@ -26,7 +26,7 @@
 	#class attack.inner open;
 	#ticker {wuying} {
 		wuying;
-	} {4.8};
+	} {5.8};
 	#class attack.inner close;
 };
 
@@ -37,10 +37,10 @@
 	#class attack.inner open;
 	#ticker {wuying} {
 		wuying;
-	} {4.8};
+	} {5.8};
 	#ticker {gangrou} {
 		gangrou;
-	} {5.8};
+	} {4.8};
 	#class attack.inner close;
 };
 
@@ -54,10 +54,10 @@
 	#class attack.inner open;
 	#ticker {wuying} {
 		wuying;
-	} {4.8};
+	} {5.8};
 	#ticker {gangrou} {
 		gangrou;
-	} {5.8};
+	} {4.8};
 	#class attack.inner close;
 };
 
@@ -68,13 +68,13 @@
 	#class attack.inner open;
 	#ticker {perf_zhen} {
 		perform cuff.zhen;
-	} {1.8};
+	} {0.8};
 	#ticker {wuying} {
 		wuying;
-	} {4.8};
+	} {5.8};
 	#ticker {gangrou} {
 		gangrou;
-	} {6.8};	
+	} {4.8};	
 	#class attack.inner close;
 };
 

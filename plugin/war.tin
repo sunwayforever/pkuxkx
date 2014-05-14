@@ -196,7 +196,7 @@
 	};
 	#ticker {fighting} {
 		yun heal;
-	} {3};
+	} {5};
 	#ticker {yun} {
 		yun qi;
 		yun jing;
