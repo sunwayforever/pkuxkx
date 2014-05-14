@@ -858,7 +858,7 @@ load chaos;
 			#return 7;
 		};
 		#elseif {"%1" == "晋阳萧府"} {
-			#return 9;
+			#return 4;
 		};
 		#elseif {"%1" == "成都当铺"} {
 			#return -1;
@@ -961,10 +961,13 @@ load chaos;
 			yell boat;
 		} {5};
 		#action {正等着你呢，上来吧。} {
-			#unticker {sw/yell_boat};
+			genter;
+		};
+		#action {艄公将一块踏脚板搭上堤岸，} {
 			genter;
 		};
 		#alias {shangchuan} {
+			#unticker {sw/yell_boat};
 			#unticker {hb_walk};
 			#action {所有人被赶下了渡船} {
 				#unaction {所有人被赶下了渡船};
@@ -979,10 +982,6 @@ load chaos;
 		};
 		#action {^长江渡船$} {
 			shangchuan;
-		};
-		#action {艄公将一块踏脚板搭上堤岸，} {
-			#unticker {sw/yell_boat};
-			genter;
 		};
 		#class guohe.inner close;
 	};

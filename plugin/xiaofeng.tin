@@ -123,10 +123,6 @@
 		};
 	} {2};
 
-	#action {找到目标} {
-		xf.check;	
-	};
-
 	#action {西夏一品堂 蒙面杀手(Mengmian shashou)} {
 		#if {${xf.type} != -1} {
 			xf.check;
@@ -148,15 +144,14 @@
 
 	#action {蒙面杀手深深地叹了口气} {
 		raw;
-		show_to_quest 萧峰: 已经劝服;
-	};
-
-	#action {要打便打} {
-		#class xf.bl.inner kill;
-		#if {${xf.type} != -1} {
-			follow shashou;
+		#if {${xf.type} == 3} {
+			show_to_quest 萧峰: 已经劝服;
+		};
+		#elseif {${xf.type} == 4} {
+			show_to_quest 萧峰: 已经战胜;	
 		};
 	};
+
 	
 	#alias {xf.n} {
 		detect_mingjiao shashou;
@@ -247,6 +242,15 @@
 		#delay {xf.bl} {
 			bl.continue {杀手};
 		} {1};
+	};	
+	#action {找到目标} {
+		xf.check;	
+	};
+	#action {要打便打} {
+		#class xf.bl.inner kill;
+		#if {${xf.type} != -1} {
+			follow shashou;
+		};
 	};
 	#class xf.bl.inner close;	
 	bl.start 杀手;
