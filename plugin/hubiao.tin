@@ -220,9 +220,11 @@ load chaos;
 		};
 		#5 halt;
 		on_unbusy {
+			#showme duobi: ${exit};
 			#send {${exit}};	
 		};
 		#delay {hb_delay} {
+			#showme duobi_opposite: @opposite{${exit}};
 			#send {@opposite{${exit}}};
 			hb.resume;
 		} {10};
