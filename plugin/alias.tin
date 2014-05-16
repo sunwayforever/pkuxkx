@@ -675,8 +675,6 @@
 
 #alias {debug.on} {
 	#log overwrite debug.${char_id}.log;
-	#showme id is ${char_id};
-	#showme log write to debug_${char_id}.log;
 	#debug all log;
 };
 
