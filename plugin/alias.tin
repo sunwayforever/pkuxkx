@@ -464,7 +464,7 @@
 	#class health.inner open;
 	#alias {check_qx} {
 		#if {${eff_qx_percent} < 99} {
-			#if {${qxg_percent} < 50} {
+			#if {${qx_percent} < 50} {
 				yun lifeheal ${char_id};				
 			};
 			#else {
@@ -675,6 +675,8 @@
 
 #alias {debug.on} {
 	#log overwrite debug.${char_id}.log;
+	#showme id is ${char_id};
+	#showme log write to debug_${char_id}.log;
 	#debug all log;
 };
 
