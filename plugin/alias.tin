@@ -193,10 +193,12 @@
 };
 
 #alias {notify.info} {
+	#bell;
 	#system {echo %0|iconv -f gbk -t utf-8|xargs -I. notify-send -t 5000 -u low "${char_id}:" .};
 };
 
 #alias {notify.alert} {
+	#bell;
 	#system {echo %0|iconv -f gbk -t utf-8|xargs -I. notify-send -t 5000 -u critical "${char_id}:" .};
 };
 
