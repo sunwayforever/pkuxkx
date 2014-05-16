@@ -54,6 +54,11 @@
 #alias {attack.xiaofeng} {
 	on_unbusy {
 		chan;
+		#delay {1} {
+			on_unbusy {
+				zhua;
+			};
+		};
 	};
 	#class attack.inner open;
 	#ticker {zhua} {
