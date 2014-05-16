@@ -1,21 +1,34 @@
 #class xingxiu_spec open
 #read plugin/liandu.tin;
 #alias {attack.prepare} {
-	#cr;
-};
-
-#alias {attack.normal} {
-	huose;
 	#class attack.inner open;
 	#ticker {huose} {
 		huose;
-	} {6};	
+	} {3};	
+	#class attack.inner close;
+};
+
+#alias {attack.hubiao} {
+	on_unbusy {
+		huose;
+	};
+	#class attack.inner open;
+	#class attack.inner close;
+};
+
+#alias {attack.normal} {
+	on_unbusy {
+		chousui;
+	};
+	#class attack.inner open;
 	#class attack.inner close;
 };
 
 #alias {attack.xiaofeng} {
+	on_unbusy {
+		chousui;
+	};
 	#class attack.inner open;
-	#cr;
 	#class attack.inner close;
 };
 
@@ -23,7 +36,7 @@
 	#class attack.inner open;
 	#ticker {perf_chuanxin} {
 		chuanxin;
-	} {0.6};
+	} {1};
 	#class attack.inner close;
 };
 

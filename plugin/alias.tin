@@ -187,12 +187,16 @@
 #alias {ln} {l north};
 
 #alias {notify} {
-	#system {echo %0|iconv -f gbk -t utf-8|xargs -I. notify-send -t 5000 -u normal "${char_id}:" .};
+	#system {echo %0|iconv -f gbk -t utf-8|xargs -I. notify-send -t 5000 -u low "${char_id}:" .};
 	#nop #system {echo %0|iconv -f gbk -t utf-8|xargs -I. zenity --low --text . &};
 	#nop #system {echo '%0'|iconv -f gbk -t utf-8|xargs -I. gnome-osd-client -f "<message id='myplugin' osd_fake_translucent_bg='off' osd_vposition='center' animations='off' hide_timeout='3000' osd_halignment='center'> <span size='medium' background='green' foreground='white'> "." </span></message>"};
 };
 
-#alias {notify_alert} {
+#alias {notify.info} {
+	#system {echo %0|iconv -f gbk -t utf-8|xargs -I. notify-send -t 5000 -u normal "${char_id}:" .};
+};
+
+#alias {notify.alert} {
 	#system {echo %0|iconv -f gbk -t utf-8|xargs -I. notify-send -t 5000 -u critical "${char_id}:" .};
 };
 
@@ -676,11 +680,15 @@
 #alias {debug.on} {
 	#log overwrite debug.${char_id}.log;
 	#debug all log;
+	#var debug_info on;
+	update_status;
 };
 
 #alias {debug.off} {
 	#log off;
 	#debug all off;
+	#var debug_info off;
+	update_status;
 };
 
 #alias {on_echo} {

@@ -5,6 +5,7 @@
 #var xmpp_info off;
 #var xy_info off;
 #var fm_info off;
+#var debug_info off;
 #var auto_heal 1;
 
 #ticker {uptime} {
@@ -52,6 +53,9 @@
 	};
 	#if {"${fm_info}" == "on"} {
 		#var status_content ${status_content} | F;
+	};
+	#if {"${debug_info}" == "on"} {
+		#var status_content ${status_content} | D;
 	};
 
 	show_to_status ${status_content};

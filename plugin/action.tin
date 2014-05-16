@@ -162,7 +162,8 @@
 		show.init;
 		check_baowei;
 		check_naijiu;
-		#send {l};		
+		#send {l};
+		debug.on;
 	};
 };
 

@@ -56,7 +56,7 @@ load chaos;
 			hb.pause;
 			#format {hb_end_time} {%t} {%T};
 			show_to_info 到达: ${hb_start_time} -> ${hb_end_time};
-			notify_alert escort arrived;
+			notify.alert escort arrived;
 			xmpp.notify 到达, 没找到收货人;
 		};
 		#else {
@@ -301,7 +301,7 @@ load chaos;
 #alias {hb.q} {
 	hb.get_owner;
 	#if {${has_mixin} == 1} {
-		notify_alert escort additional reward;
+		notify.alert escort additional reward;
 	};
 	#else {
 		#if {"%1" != ""} {
@@ -378,6 +378,7 @@ load chaos;
 
 	#action {你将手中%*放进了宝石袋} {
 		show_to_info 掉宝: %%1;
+		notify.info %%1;
 	};
 
 	#action {从劫匪身上掉了出来一%*之%*} {
@@ -725,7 +726,7 @@ load chaos;
 		#var has_mixin 1;
 		#var hb_lunci 0;
 		show_to_quest 推车: 密信;
-		notify_alert escort additional reward;
+		notify.alert escort additional reward;
 		xmpp.notify 密信;
 		#delay {hb_auto_delay} {
 			gt rbz;
@@ -950,7 +951,7 @@ load chaos;
 
 	#action {chaos error} {
 		show_to_info 两步乱入?;
-		notify_alert escort chaos;
+		notify.alert escort chaos;
 	};
 	
 	chaos.find;
