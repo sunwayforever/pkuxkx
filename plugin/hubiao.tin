@@ -218,14 +218,12 @@ load chaos;
 		#if {"${exit}" == "up"} {
 			#list exits_list get 2 exit;			
 		};
-		#5 halt;
+		#3 halt;
 		on_unbusy {
-			#showme duobi: ${exit};
-			#send {${exit}};	
+			${exit};
 		};
 		#delay {hb_delay} {
-			#showme duobi_opposite: @opposite{${exit}};
-			#send {@opposite{${exit}}};
+			@opposite{${exit}};
 			hb.resume;
 		} {10};
 		#action {^ƒ„Ã”≈‹ ß∞‹} {
@@ -236,7 +234,7 @@ load chaos;
 			};
 		};
 	};
-	#5 halt;
+	#3 halt;
 	get_exits;
 };
 
