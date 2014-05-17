@@ -675,8 +675,8 @@
 	gs;gn;gw;ge;gd;gu;gsw;gne;gse;gnw;gsu;gnd;gsd;gnu;gwd;geu;gwu;ged;gout;genter;
 };
 #function {opposite} {
-	#list directions find %1 index;
-	#list opposite_directions get ${index} result;
+	#list {directions} {find} {%1} {opposite_index};
+	#list opposite_directions get ${opposite_index} result;
 };
 
 #alias {debug.on} {
