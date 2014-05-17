@@ -722,3 +722,7 @@
 #alias {dl} {
 	disload %0;
 };
+
+#alias {play} {
+	#system {mplayer sound/%1 &>/dev/null &};
+};

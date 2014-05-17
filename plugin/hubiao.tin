@@ -113,8 +113,10 @@ load chaos;
 	};
 
 	#action {^这个方向} {
-		hb.pause;
-		show_to_info 路径出错;
+		#if {${hb_paused} == 0} {
+			hb.pause;
+			show_to_info 路径出错;
+		};
 	};
 	
 	#action {劫匪趁你不注意，推着镖车就跑，你赶紧追了上去。} {
@@ -377,6 +379,7 @@ load chaos;
 	#action {你将手中%*放进了宝石袋} {
 		show_to_info 掉宝: %%1;
 		notify.info %%1;
+		play gem.wav;
 	};
 
 	#action {从劫匪身上掉了出来一%*之%*} {
