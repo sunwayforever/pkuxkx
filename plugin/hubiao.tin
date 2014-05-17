@@ -215,7 +215,14 @@ load chaos;
 
 #alias {hb.duobi} {
 	#action {get_exits: done} {
-		#unaction {get_exits: done};
+		#class hb.duobi.inner open;
+		#action {^ƒ„Ã”≈‹ ß∞‹} {
+			#undelay {hb_delay};
+			#class hb.duobi.inner kill;
+			on_truce {
+				hb.resume;
+			};
+		};
 		#list exits_list get 1 exit;
 		#if {"${exit}" == "up"} {
 			#list exits_list get 2 exit;			
@@ -225,16 +232,11 @@ load chaos;
 			${exit};
 		};
 		#delay {hb_delay} {
+			#class hb.duobi.inner kill;
 			@opposite{${exit}};
 			hb.resume;
 		} {10};
-		#action {^ƒ„Ã”≈‹ ß∞‹} {
-			#unaction {^ƒ„Ã”≈‹ ß∞‹};
-			#undelay {hb_delay};
-			on_truce {
-				hb.resume;
-			};
-		};
+		#class hb.duobi.inner close;
 	};
 	#3 halt;
 	get_exits;

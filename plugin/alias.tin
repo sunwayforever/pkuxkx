@@ -724,5 +724,5 @@
 };
 
 #alias {play} {
-	#system {mplayer sound/%1 &>/dev/null &};
+	#nop #system {mplayer sound/%1 &>/dev/null &};
 };
