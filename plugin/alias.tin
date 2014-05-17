@@ -274,6 +274,7 @@
 			#foreach {${my_weapons}[%*]} {weapon} {
 				fix ${weapon};
 			};
+			play repair.wav;
 			sw;w;
 			gt ${orig_here};			
 		};		

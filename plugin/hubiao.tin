@@ -733,6 +733,7 @@ load chaos;
 		#var hb_lunci 0;
 		show_to_quest 推车: 密信;
 		notify.alert escort additional reward;
+		play alert.wav;
 		xmpp.notify 密信;
 		#delay {hb_auto_delay} {
 			gt rbz;
