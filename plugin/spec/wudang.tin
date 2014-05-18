@@ -24,9 +24,6 @@
 		chan;
 	};
 	#class attack.inner open;
-	#ticker {wuying} {
-		wuying;
-	} {6.8};
 	#class attack.inner close;
 };
 
