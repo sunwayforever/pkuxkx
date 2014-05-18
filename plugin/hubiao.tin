@@ -214,6 +214,7 @@ load chaos;
 	#math hb_path_index ${hb_path_index}-1;
 };
 
+#gag duobi;
 #alias {hb.duobi} {
 	#action {get_exits: done} {
 		#class hb.duobi.inner open;
