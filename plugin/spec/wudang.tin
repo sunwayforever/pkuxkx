@@ -46,9 +46,9 @@
 		};
 	};
 	#class attack.inner open;
-	#ticker {wuying} {
-		wuying;
-	} {4.8};
+	#ticker {zhen} {
+		zhen;
+	} {2.8};
 	#class attack.inner close;
 };
 

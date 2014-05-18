@@ -61,9 +61,6 @@
 		};
 	};
 	#class attack.inner open;
-	#ticker {zhua} {
-		zhua;
-	} {3.8};
 	#class attack.inner close;
 };
 
