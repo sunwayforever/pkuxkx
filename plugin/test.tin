@@ -1,3 +1,11 @@
+#list hb_path create {
+	gn;ge;ge;ge;ge;ge;gs;gw;ge;ge;gw;gs;gw;ge;ge;gw;gs;gw;ge;ge;gw;gs;gse;ge;gw;gnw;gw;gs;gw;ge;gs;gs;gs;gn;
+	gn;gn;gn;gn;ge;ge;gw;gw;gn;ge;gn;gs;gs;gn;ge;ge;ge;ge;gw;gw;gn;gs;gw;gn;ge;gw;gn;ge;ge;ge;gw;gw;gn;gs;gs;gn;gw;gn;gn;gs;gs;gw;ge;gs;gs;gw;gw;gn;gs;gw;gn;gn;ge;gw;
+	gw;gw;gw;gw;ge;ge;ge;ge;gs;gs;gw;gn;gs;gw;gn;gs;gw;gw;ge;ge;ge;gs;gw;ge;ge;gw;gs;gw;ge;ge;gw;gs;gw;ge;ge;gw;gs;ge;gn;gn;gw;gs;gw;ge;gn;gw;gw;gs
+};
+
+#list hb_path ins {gn;gs;gn;gs;gn;gs;gn;gs;gn;gs;gn;gs;gn;gs;gn;gs;gn;gs;gn;gs;};
+
 #alias {path.test} {
 	#list test_path create {
 		s;w;w;w;w;n;n;s;s;w;w;w;w;e;e;e;e;e;e;e;e;s;n;e;n;s;s;n;e;n;e;w;n;w;n;s;e;e;w;n;w;e;e;
