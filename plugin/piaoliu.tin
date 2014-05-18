@@ -173,6 +173,9 @@
 				  zhi @lower{%%2};
 			  } {2};
 		  };
+		  #if {"${pl_mj_npc}" == "%%1"} {
+			  #var mj_id @lower{%%2};
+		  };
 	};
 	#delay {5} {
 		#unaction {Ë®Ôô %S(%S %S)};
