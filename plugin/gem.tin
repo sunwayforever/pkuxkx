@@ -7,6 +7,10 @@
 	lock 用pack <物品id>将宝石放入其中;
 };
 
+#function {gemlevel} {
+	#list gem_types find %1 result;
+};
+
 #alias {check_gem} {
 	#var gem_id %1;
 	#var gem_type %2;
