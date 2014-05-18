@@ -1,5 +1,4 @@
 #class piaoliu open
-#var pl_npc_c nil;
 #alias {pl.q} {
 	ask ren about job;
 };
@@ -86,26 +85,23 @@
 	    killall;
 	};
 
-	#action {^%*凝神静气，暗运神功，顷刻间碧海神功的内力遍布全身。} {
-		#var pl_npc_c %%1;
-		show_to_info 桃花:${pl_npc_c};
+	#action {taohuadao enemy: %*:%*} {
+		show_to_info 桃花:%%1;
 		step;
-		check_shuizei;
+		zhi %%2;
 	};
 	
-	#action {^%*突然神秘的一笑，双眼紧叮着你，象要把你的魂摄下来。} {
-		#var pl_npc_c %%1;
-		show_to_info 古墓:${pl_npc_c};
+	#action {gumu enemy: %*:%*} {
+		show_to_info 古墓:%%1;
 		step;
-		check_shuizei;
+		zhi %%2;
 	};
 
-	#action {mingjiao enemy:%*} {
+	#action {mingjiao enemy: %*:%*} {
 		#var pl_npc_c %%1;
 		show_to_info 明教:${pl_npc_c};
 		step;
-		check_shuizei;
-		#var pl_mj_npc ${pl_npc_c};
+		zhi %%2;
 		#action {你终于打退了${pl_npc_c}的攻击} {
 			#unaction {你终于打退了${pl_npc_c}的攻击};
 			mj.stop;
@@ -172,9 +168,6 @@
 			  #ticker {zhi} {
 				  zhi @lower{%%2};
 			  } {2};
-		  };
-		  #if {"${pl_mj_npc}" == "%%1"} {
-			  #var mj_id @lower{%%2};
 		  };
 	};
 	#delay {5} {

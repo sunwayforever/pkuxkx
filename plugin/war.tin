@@ -223,14 +223,49 @@
 	attack.normal;
 };
 
-#action {%*的乾坤大挪移自然激发而出，将你的攻势反击了回去。} {
+#alias {check_mj} {
 	mj.start;
-	#showme mingjiao enemy:%1;
+	#var tmp_npc %1
+	#action {${tmp_npc}(%S %S)} {
+		#unaction {${tmp_npc}(%S %S)};
+		#var mj_id  @lower{%%1};
+		#showme mingjiao enemy: ${tmp_npc}:${mj_id};
+	} {1};
+	#delay {1} {
+		l;
+	};
+};
+
+#action {%*的乾坤大挪移自然激发而出，将你的攻势反击了回去。} {
+	check_mj %1;
+};
+
+#action {^%*凝神静气，暗运神功，顷刻间碧海神功的内力遍布全身。} {
+	#var tmp_npc %1
+	#action {${tmp_npc}(%S %S)} {
+		#unaction {${tmp_npc}(%S %S)};
+		#var tmp_npc_id  @lower{%%1};
+		#showme taohuadao enemy: ${tmp_npc}:${tmp_npc_id};
+	} {1};
+	#delay {1} {
+		l;
+	};
+};
+
+#action {^%*突然神秘的一笑，双眼紧叮着你，象要把你的魂摄下来。} {
+	#var tmp_npc %1
+	#action {${tmp_npc}(%S %S)} {
+		#unaction {${tmp_npc}(%S %S)};
+		#var tmp_npc_id  @lower{%%1};
+		#showme gumu enemy: ${tmp_npc}:${tmp_npc_id};
+	} {1};
+	#delay {1} {
+		l;
+	};
 };
 
 #action {^%*运起九阳神功} {
-	mj.start;
-	#showme mingjiao enemy:%1;
+	check_mj %1;
 };
 
 #alias {tao} {
