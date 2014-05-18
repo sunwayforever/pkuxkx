@@ -19,7 +19,7 @@
 	on_there {
 		sell all;
 		#delay {1} {
-			$tmp_sell;
+			tmp_sell;
 		};
 	};
 	gt rbz;
