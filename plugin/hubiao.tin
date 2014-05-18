@@ -503,12 +503,10 @@ load chaos;
 		play alert.wav;
 		xmpp.notify 密信;
 		#delay {hb_auto_delay} {
-			gt rbz;
-			on_there {
-				sell all;
-				#delay {3} {
+			sell.all {
+				get.san {
 					#if {${min_naijiu} < 150} {
-						repair;
+						repair ;
 					};
 				};
 			};
@@ -803,6 +801,7 @@ load chaos;
 		#class mx.yao.inner open;
 		#action {把一包财物砸向你，一转眼不见了。} {
 			show_to_quest 推车: 拿到密信;
+			play get_item.wav;
 			#class mx.yao.inner kill;
 			#class mx.inner kill;
 		};
