@@ -913,7 +913,7 @@ load chaos;
 			};
 		};
 		#elseif {"${tmp}" == "华山"} {
-			#format {tmp} {%.6s} {%%1};
+			#format {tmp} {%.6s} {%1};
 			#if {"${tmp}" == "华山村"} {
 				#list hb_path create  {
 					gs;gw;gw;gs;gsw;gw;gw;gnw;gn;gn;gnd;gnu;gne;gn;gn;ge;gw;gn;ge;gw;gw;gnw;gse;ge;gn;ge;ge;gw;gw;gn;
@@ -1015,7 +1015,7 @@ load chaos;
 	};
 	#elseif {"${hb_owner}" == "ma"} {
 		#if {"${tmp}" == "华山"} {
-			#format {tmp} {%.6s} {%%1};
+			#format {tmp} {%.6s} {%1};
 			#if {"${tmp}" == "华山村"} {
 				#list hb_path create  {
 					gn;ge;ge;ge;ge;ge;ge;ge;ge;ge;gs;gsu;gsu;gsu;gsu;gs;gnd;gnd;gwd;gnd;gwd;gnd;gnw;gn;gs;gw;gw;gs;gn;gw;gn;gs;gw;gs;ge;gw;gn;gn;gs;gw;
