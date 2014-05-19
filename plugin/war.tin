@@ -183,6 +183,7 @@
 };
 
 #alias {raw} {
+	#undelay {attack.delay};
 	#class war.inner kill;
 	#class attack.inner kill;
 	jiali none;
