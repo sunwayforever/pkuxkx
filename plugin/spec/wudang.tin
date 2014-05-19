@@ -24,6 +24,9 @@
 		chan;
 	};
 	#class attack.inner open;
+	#ticker {wuying} {
+		wuying;
+	} {4.8};
 	#class attack.inner close;
 };
 
@@ -46,9 +49,9 @@
 		};
 	};
 	#class attack.inner open;
-	#ticker {zhen} {
-		zhen;
-	} {2.8};
+	#ticker {wuying} {
+		wuying;
+	} {4.8};
 	#class attack.inner close;
 };
 
@@ -58,7 +61,7 @@
 	};
 	#class attack.inner open;
 	#ticker {perf_zhen} {
-		zhen;
+		perform cuff.zhen;
 	} {0.8};
 	#ticker {wuying} {
 		wuying;
@@ -112,7 +115,7 @@
 
 #alias {zhen} {
 	unwi;
-    perform cuff.zhen ${mj_id};
+    perform cuff.zhen;
 	wi;
 };
 
@@ -131,7 +134,7 @@
 #alias {wuying} {
 	unwield all;
 	jiali max;
-	perform claw.wuying ${mj_id};
+	perform claw.wuying;
 	#if {${pfm_gangrou} == 0} {
 		jiali none;
 	};
@@ -143,7 +146,7 @@
 	unwi;
 	jiali max;
 	#var pfm_gangrou 1;
-	perform cuff.gangrou ${mj_id};
+	perform cuff.gangrou;
 	#delay {5} {
 		#var pfm_gangrou 0;
 		jiali none;

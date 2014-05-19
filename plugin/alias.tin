@@ -14,17 +14,6 @@
 	map.load ${char_menpai};
 };
 
-#alias {sell.all} {
-	#alias tmp_sell %1;
-	on_there {
-		sell all;
-		#delay {2} {
-			tmp_sell;
-		};
-	};
-	gt rbz;
-};
-
 #alias {cq} {
 	#class money.cun.inner open;
 	#action {^%*张一千两银票(Thousand-cash)} {
@@ -117,7 +106,6 @@
 	};
 	#action {你从江来福那里买下了%*酥油茶} {
 		#class get.fan.inner kill;
-		play get_item.wav;
 		e;s;
 		gt ${orig_here};
 		on_there {
@@ -277,7 +265,6 @@
 };
 
 #alias {repair} {
-	#alias tmp_repair %1;
 	#unticker {naijiu};
 	#var orig_here ${CurrentPosition};
 	#action {抵达目的地} {
@@ -289,9 +276,6 @@
 			};
 			play repair.wav;
 			sw;w;
-			on_there {
-				tmp_repair;
-			};
 			gt ${orig_here};			
 		};		
 	};
@@ -616,7 +600,7 @@
 };
 
 #alias {get.san} {
-	#var get_san_count 20;
+	#var get_san_count 30;
 	#action {%S          清心散} {
 		#unaction {%S          清心散};
 		getout %%1;
@@ -628,7 +612,7 @@
 	};
 	#action {你捡起一些清心散} {
 		#unaction {你捡起一些清心散};
-		play get_item.wav;
+		show_to_info 清心散;
 		gt yz;
 		#if {"%1" != ""} {
 			on_there {

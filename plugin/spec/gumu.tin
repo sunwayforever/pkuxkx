@@ -61,6 +61,9 @@
 		};
 	};
 	#class attack.inner open;
+	#ticker {zhua} {
+		zhua;
+	} {3.8};
 	#class attack.inner close;
 };
 
@@ -71,7 +74,7 @@
 	#class attack.inner open;
 	#ticker {qixing} {
 		qixing;
-	} {1};
+	} {1.8};
 	#class attack.inner close;
 };
 
@@ -121,9 +124,7 @@
 #alias {qixing} {
 	unwi;
 	wield sword;
-	jiali max;
-	perform quanzhen-jian.qixing ${mj_id};
-	jiali none;
+	perform quanzhen-jian.qixing;
 	unwi;
 };
 
