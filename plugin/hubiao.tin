@@ -214,13 +214,12 @@ load chaos;
 	#math hb_path_index ${hb_path_index}-1;
 };
 
-#gag duobi;
 #alias {hb.duobi} {
 	#action {get_exits: done} {
-		#class hb.duobi.inner open;
+		#unaction {get_exits: done};
 		#action {^ƒ„Ã”≈‹ ß∞‹} {
+			#unaction {^ƒ„Ã”≈‹ ß∞‹};
 			#undelay {hb_delay};
-			#class hb.duobi.inner kill;
 			on_truce {
 				hb.resume;
 			};
@@ -231,17 +230,14 @@ load chaos;
 		};
 		#3 halt;
 		on_unbusy {
-			#showme duobi: ${duobi_exit};
 			${duobi_exit};
 		};
 		#delay {hb_delay} {
+			#unaction {^ƒ„Ã”≈‹ ß∞‹};
 			#var duobi_opposite_exit @opposite{${duobi_exit}};
-			#showme duobi: opposite of ${duobi_exit} is ${duobi_opposite_exit};
 			${duobi_opposite_exit};
 			hb.resume;
-			#class hb.duobi.inner kill;
 		} {10};
-		#class hb.duobi.inner close;
 	};
 	#3 halt;
 	get_exits;
