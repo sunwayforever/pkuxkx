@@ -213,17 +213,48 @@ load chaos;
 	#math hb_path_index ${hb_path_index}-1;
 };
 
+#alias {hb.duobi} {
+	#action {get_exits: done} {
+		#unaction {get_exits: done};
+		#class hb.duobi.inner open;
+		#action {^ƒ„Ã”≈‹ ß∞‹} {
+			#unaction {^ƒ„Ã”≈‹ ß∞‹};
+			#undelay {hb_delay};
+			#class hb.duobi.inner kill;
+			on_truce {
+				hb.resume;
+			};
+		};
+		#list exits_list get 1 duobi_exit;
+		#if {"${duobi_exit}" == "up"} {
+			#list exits_list get 2 duobi_exit;			
+		};
+		#3 halt;
+		on_unbusy {
+			#showme duobi: ${duobi_exit};
+			${duobi_exit};
+		};
+		#delay {hb_delay} {
+			#unaction {^ƒ„Ã”≈‹ ß∞‹};
+			#var duobi_opposite_exit @opposite{${duobi_exit}};
+			#showme duobi: opposite of ${duobi_exit} is ${duobi_opposite_exit};
+			${duobi_opposite_exit};
+			#class hb.duobi.inner kill;
+			hb.resume;
+		} {10};
+		#class hb.duobi.inner close;
+	};
+	#3 halt;
+	get_exits;
+};
+
 #alias {hb.resume} {
 	#var hb_paused 0;
 	#var hb_force_wait 0;
 
 	#alias {hb.back} {
 		hb.merge_path;
-		#delay {hb_delay} {
-			on_truce {
-				hb.resume;
-			};
-		} {5};
+		hb.duobi;
 	};
 
 	#if {${hb_ing} == 1} {
