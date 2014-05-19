@@ -18,3 +18,43 @@
 		};
 	} {1};
 };
+
+
+#alias {hb.duobi} {
+	#action {get_exits: done} {
+		#unaction {get_exits: done};
+		#class hb.duobi.inner open;
+		#action {^ƒ„Ã”≈‹ ß∞‹} {
+			#unaction {^ƒ„Ã”≈‹ ß∞‹};
+			#undelay {hb_delay};
+			#class hb.duobi.inner kill;
+			on_truce {
+				hb.resume;
+			};
+		};
+		#list exits_list get 1 duobi_exit;
+		#if {"${duobi_exit}" == "up"} {
+			#list exits_list get 2 duobi_exit;			
+		};
+
+		#delay {3} {
+			#5 halt;
+			#showme duobi: ${duobi_exit};
+			on_unbusy {
+				${duobi_exit};
+			};
+		};
+		
+		#delay {hb_delay} {
+			#unaction {^ƒ„Ã”≈‹ ß∞‹};
+			#var duobi_opposite_exit @opposite{${duobi_exit}};
+			#showme duobi: opposite of ${duobi_exit} is ${duobi_opposite_exit};
+			${duobi_opposite_exit};
+			#class hb.duobi.inner kill;
+			hb.resume;
+		} {10};
+		#class hb.duobi.inner close;
+	};
+	#5 halt;
+	get_exits;
+};
