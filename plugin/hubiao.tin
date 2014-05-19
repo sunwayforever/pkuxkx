@@ -229,11 +229,15 @@ load chaos;
 		#if {"${duobi_exit}" == "up"} {
 			#list exits_list get 2 duobi_exit;			
 		};
-		#3 halt;
-		on_unbusy {
+
+		#delay {3} {
+			#5 halt;
 			#showme duobi: ${duobi_exit};
-			${duobi_exit};
+			on_unbusy {
+				${duobi_exit};
+			};
 		};
+		
 		#delay {hb_delay} {
 			#unaction {^ƒ„Ã”≈‹ ß∞‹};
 			#var duobi_opposite_exit @opposite{${duobi_exit}};
@@ -244,7 +248,7 @@ load chaos;
 		} {10};
 		#class hb.duobi.inner close;
 	};
-	#3 halt;
+	#5 halt;
 	get_exits;
 };
 
