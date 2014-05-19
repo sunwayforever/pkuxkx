@@ -18,7 +18,7 @@
 	#alias tmp_sell %1;
 	on_there {
 		sell all;
-		#delay {1} {
+		#delay {2} {
 			tmp_sell;
 		};
 	};
@@ -741,5 +741,5 @@
 };
 
 #alias {play} {
-	#system {mplayer sound/%1 &>/dev/null &};
+	#system {mplayer sound/%1 1>/dev/null 2>&1 &};
 };
