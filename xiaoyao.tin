@@ -1000,6 +1000,7 @@
 #act {^提督府正门$} {#var CurrentPosition tdf; };#act {^提督府正门 - $} {#var CurrentPosition tdf; };
 #act {^孤山$} {#var CurrentPosition xh; };#act {^孤山 - $} {#var CurrentPosition xh; };
 #act {^大厅$} {#var CurrentPosition hsz; };#act {^大厅 - $} {#var CurrentPosition hsz; };
+#act {^%*的甜蜜小屋$} {#var CurrentPosition bs; };#act {^%*的甜蜜小屋 - $} {#var CurrentPosition bs; };
 
 #nop ==个人信息==
 

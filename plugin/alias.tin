@@ -600,7 +600,7 @@
 };
 
 #alias {get.san} {
-	#var get_san_count 30;
+	#var get_san_count 20;
 	#action {%S          清心散} {
 		#unaction {%S          清心散};
 		getout %%1;
