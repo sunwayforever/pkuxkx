@@ -61,7 +61,7 @@
 	};
 	#class attack.inner open;
 	#ticker {perf_zhen} {
-		perform cuff.zhen;
+		zhen;
 	} {0.8};
 	#ticker {wuying} {
 		wuying;
@@ -115,7 +115,7 @@
 
 #alias {zhen} {
 	unwi;
-    perform cuff.zhen;
+    perform cuff.zhen ${mj_id};
 	wi;
 };
 
@@ -130,11 +130,10 @@
 	wi;
 };
 
-
 #alias {wuying} {
 	unwield all;
 	jiali max;
-	perform claw.wuying;
+	perform claw.wuying ${mj_id};
 	#if {${pfm_gangrou} == 0} {
 		jiali none;
 	};
@@ -146,7 +145,7 @@
 	unwi;
 	jiali max;
 	#var pfm_gangrou 1;
-	perform cuff.gangrou;
+	perform cuff.gangrou ${mj_id};
 	#delay {5} {
 		#var pfm_gangrou 0;
 		jiali none;

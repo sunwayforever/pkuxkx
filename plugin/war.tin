@@ -163,9 +163,11 @@
 	};
 };
 
+#var mj_id {};
 #alias {mj.stop} {
 	#if {${mj_started} == 1} {
 		#var mj_started 0;
+		#var mj_id {};
 		show_to_info <<Ã÷½Ì;
 		#alias {wi} {wi_normal};
 		wi;
