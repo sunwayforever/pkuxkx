@@ -421,12 +421,12 @@
 #alias {on_truce} {
 	#alias tmp_truce %0;
 	#class truce.inner open;
-	war;
 	#action {truce} {
 		#class truce.inner kill;
 		tmp_truce;
 	};
 	#class truce.inner close;
+	war;
 };
 
 #alias {on_unbusy} {
@@ -437,6 +437,7 @@
 		checkbusy;
 	} {0.5};
 	#action {你不忙} {
+		#unaction {你不忙};
 		#class unbusy.inner kill;
 		tmp_unbusy;
 	};
@@ -698,6 +699,7 @@
 	#alias tmp_echo %1;
 	#class on_echo.inner open;
 	#action {你有一搭，没一搭的「嗯」了一声。} {
+		#unaction {你有一搭，没一搭的「嗯」了一声。};
 		#class on_echo.inner kill;
 		tmp_echo;
 	};

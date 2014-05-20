@@ -229,10 +229,12 @@ load chaos;
 		#if {"${duobi_exit}" == "up"} {
 			#list exits_list get 2 duobi_exit;			
 		};
-		#3 halt;
 		on_unbusy {
 			#showme duobi: ${duobi_exit};
-			${duobi_exit};
+			#5 halt;
+			#delay {1} {
+				${duobi_exit};
+			};
 		};
 		#delay {hb_delay} {
 			#unaction {^ƒ„Ã”≈‹ ß∞‹};
@@ -240,11 +242,11 @@ load chaos;
 			#showme duobi: opposite of ${duobi_exit} is ${duobi_opposite_exit};
 			${duobi_opposite_exit};
 			#class hb.duobi.inner kill;
+			#class truce.inner kill;
 			hb.resume;
 		} {10};
 		#class hb.duobi.inner close;
 	};
-	#3 halt;
 	get_exits;
 };
 
@@ -574,7 +576,7 @@ load chaos;
 			#elseif {"${tmp}" == "»™÷›"} {
 				#list hb_path create {
 					gs;gs;gsw;gs;gs;gs;gs;gs;gs;gs;ge;gw;gs;gs;gs;ge;gn;gs;gne;gne;gne;gn;gw;ge;gn;gs;gs;gsw;
-					gsw;gsw;ged;gn;gs;gs;gn;gwu;gs;gn;gw;gs;gs;ge;gw;gn;gn;gw;gn;gs;gs;gn;gw;ge;gn;gs;gs;gn;ge;ge
+					gsw;gsw;ged;gn;gs;gs;gn;gwu;gs;gn;gw;gs;gs;ge;gw;gn;gn;gw;gn;gs;gs;gn;gn;gs;gs;gn;ge;ge
 				};
 			};
 			#elseif {"${tmp}" == "ºŒ–À"} {

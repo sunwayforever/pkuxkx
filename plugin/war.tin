@@ -185,14 +185,14 @@
 	#class attack.inner kill;
 	jiali none;
 	mj.stop;
+	#showme truce;
 };
 
 #alias {war} {
 	#class war.inner open;
 	#action {你全身放松，坐下来开始运功疗伤。} {
-		raw;
 		heal 10;
-		#showme truce;
+		raw;
 	};
 	#ticker {fighting} {
 		yun heal;
