@@ -4,13 +4,13 @@
 	#class attack.inner open;
 	#ticker {huose} {
 		huose;
-	} {3};	
+	} {2.8};
 	#class attack.inner close;
 };
 
 #alias {attack.hubiao} {
 	on_unbusy {
-		huose;
+		huoqiu;
 	};
 	#class attack.inner open;
 	#class attack.inner close;
@@ -21,6 +21,9 @@
 		chousui;
 	};
 	#class attack.inner open;
+	#ticker {huoqiu} {
+		huoqiu;
+	} {4.8};
 	#class attack.inner close;
 };
 

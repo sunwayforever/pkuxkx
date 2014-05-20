@@ -600,8 +600,8 @@
 	set wimpy 20;
 };
 
+#var get_san_count 20;
 #alias {get.san} {
-	#var get_san_count 20;
 	#action {%S          清心散} {
 		#unaction {%S          清心散};
 		getout %%1;
@@ -611,6 +611,12 @@
 			get san;
 		};
 	};
+
+	#action {你没有那么多的清心散} {
+		#unaction {你没有那么多的清心散};
+		get.san;
+	};
+	
 	#action {你捡起一些清心散} {
 		#unaction {你捡起一些清心散};
 		show_to_info 清心散;

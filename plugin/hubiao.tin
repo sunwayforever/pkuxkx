@@ -268,7 +268,7 @@ load chaos;
 				#math hb_path_index ${hb_path_index}+1;
 				#if {${hb_path_index} > ${hb_path_size}} {
 					hb.pause;
-					#delay {2} {
+					#delay {5} {
 						hb.b;	
 					};
 				};
@@ -1048,7 +1048,8 @@ load chaos;
 		#format {tmp} {%l} {%%2};
 		#class mx.yao.inner open;
 		#action {把一包财物砸向你，一转眼不见了。} {
-			show_to_quest 推车: 拿到密信;
+			show_to_quest 推车: 拿到财宝;
+			play get_item.wav;
 			#class mx.yao.inner kill;
 			#class mx.inner kill;
 		};
