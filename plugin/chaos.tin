@@ -31,11 +31,10 @@
 			#var description ${description}%%1%%2
 		}
 	} {9};
-	#action {风景要慢慢的看} {
-		#delay {look} {
-			${action};
-		} {0.5};
-	};
+	
+	#ticker {l} {
+		${action};
+	} {1.5};
 	#class record.inner close;
 	${action};
 };
