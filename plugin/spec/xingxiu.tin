@@ -85,7 +85,7 @@
 
 #list my_weapons create {my staff};
 #alias {perform_special} {
-	#cr;
+	special ironskin
 };
 
 #alias {huose} {
