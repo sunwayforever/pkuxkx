@@ -260,7 +260,7 @@ load chaos;
 	};
 
 	#if {${hb_ing} == 1} {
-		hb.move;
+		chaos.remember;
 	};
 	#else {
 		#ticker {hb_walk} {
@@ -996,9 +996,7 @@ load chaos;
 			#action {所有人被赶下了渡船} {
 				#unaction {所有人被赶下了渡船};
 				#class guohe.inner kill;
-				#delay {hb_delay} {
-					hb.resume;
-				} {3};
+				hb.resume;
 			};
 		};
 		#action {^黄河渡船$} {
