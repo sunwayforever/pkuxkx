@@ -146,7 +146,7 @@
 stat.register 缠 miss 你叹了口气知道这“缠”字决已为人所破，只得收回了招式;
 stat.register 缠 hit 你得理不饶人;
 
-#list my_weapons create {my spear 2; my spear};
+#list my_weapons create {my spear; my spear 2};
 #var shortcut F1:缠 F2:转 F3:挑 F4:戳 F5:雷霆降龙 F6:亢龙三悔;
 #var shifu hong;
 #var char_menpai_position gb;
