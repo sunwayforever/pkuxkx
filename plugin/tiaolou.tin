@@ -5,7 +5,6 @@
 	#alias {do_jump} {
 		enter;u;u;u;u;u;u;out;
 	};
-	
 	#action {你已稳稳地站在地上} {
 		#delay {3} {
 			#if {${qx_percent} < 40} {
@@ -31,7 +30,14 @@
 	} {60};
 	
 	#class jump.inner close;
-	do_jump;
+	on_there {
+		s;s;s;sd;s;s;s;e;
+		#delay {1} {
+			do_jump;
+		};
+	};
+	gt fzl;
+
 };
 
 #alias {tl.stop} {
