@@ -4,7 +4,7 @@
 	#class attack.inner open;
 	#ticker {huose} {
 		huose;
-	} {2.8};
+	} {3.8};
 	#class attack.inner close;
 };
 
@@ -85,7 +85,7 @@
 
 #list my_weapons create {my staff};
 #alias {perform_special} {
-	special ironskin
+	special ironskin;
 };
 
 #alias {huose} {
