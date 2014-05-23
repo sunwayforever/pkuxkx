@@ -642,7 +642,7 @@ load chaos;
 				#format {tmp} {%.6s} {%%1};
 				#if {"${tmp}" == "»ªÉ½´å"} {
 					#list hb_path create  {
-						gn;ge;ge;ge;ge;ge;ge;ge;ge;ge;gs;gsu;gsu;gsu;gsu;gs;gnd;gnd;gwd;gnd;gwd;gnd;gnw;gn;gs;gw;gw;gs;gn;gw;gn;gs;gw;gs;ge;gw;gn;gn;gs;gw;
+						gn;ge;ge;ge;ge;ge;ge;ge;ge;ge;gs;gsu;gsu;gsu;gsu;gs;gnd;gnd;gwd;gnd;gwd;gnd;gnw;gne;gsw;gn;gs;gw;gw;gs;gn;gw;gn;gs;gw;gs;ge;gw;gn;gn;gs;gw;
 						gnw;gnw;gne;gsw;gw;gn;gs;gnw;gnw;gse;gse;ge;gse;gsw;gne;gse;gs;ge;ge;gw;gw;gs;gw;gnw;gse;ge;ge;gw;gs;ge;gw;gs;gs;gse;gnw;gsw;gne;gn;gn;gn;gn;gn;
 					};
 				};
