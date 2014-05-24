@@ -53,11 +53,13 @@ load chaos;
 	#else {
 		#math hb_path_index ${hb_path_index}+1;
 		#if {${hb_path_index} > ${hb_path_size}} {
-			hb.pause;
-			#format {hb_end_time} {%t} {%T};
-			show_to_info 到达: ${hb_start_time} -> ${hb_end_time};
-			notify.alert escort arrived;
-			xmpp.notify 到达, 没找到收货人;
+			#delay {hb_move} {
+				hb.pause;
+				#format {hb_end_time} {%t} {%T};
+				show_to_info 到达: ${hb_start_time} -> ${hb_end_time};
+				notify.alert escort arrived;
+				xmpp.notify 到达, 没找到收货人;
+			} {3};
 		};
 		#else {
 			#list hb_path get ${hb_path_index} hb_path_next;
@@ -1018,6 +1020,10 @@ load chaos;
 		#var hb_force_wait 0;
 	} {1};
 
+	#action {你还是先把对手解决了再说吧} {
+		l;
+	} {1};
+	
 	#action {${npc_zh}(%*)} {
 		#action {看起来${npc_zh}想杀死你} {
 			#var hb_force_wait 1;

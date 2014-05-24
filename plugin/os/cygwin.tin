@@ -1,6 +1,5 @@
 #class cygwin open;
 #alias {notify} {
-	#bell;
 	#system {notifu /d 5000 /p ${char_id} /m "%0" &};
 };
 
