@@ -19,12 +19,18 @@
 };
 
 #alias {attack.hubiao} {
+	on_unbusy {
+		feilong;
+	};
 	#class attack.inner open;
 
 	#class attack.inner close;
 };
 
 #alias {attack.xiaofeng} {
+	on_unbusy {
+		po;
+	};
 	#class attack.inner open;
 	#ticker {chan} {
 		chan
@@ -172,4 +178,7 @@
 #var menzhong ning;
 #var menzhong_didian hs;
 #var char_menpai_position hs;
+
+stat.register 飞龙 miss 莫非这就是传说中穆人清老爷子的天外飞龙;
+stat.register 飞龙 hit 这一记“天外飞龙”，却是华山派穆人清的绝招。;
 #class wudang_spec close
