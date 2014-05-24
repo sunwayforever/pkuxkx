@@ -1,0 +1,23 @@
+#class cygwin open;
+#alias {notify} {
+	#bell;
+	#system {notifu /d 5000 /p ${char_id} /m "%0" &};
+};
+
+#alias {notify.info} {
+	#bell;
+	#system {notifu /d 5000 /p ${char_id} /m "%0" &};
+};
+
+#alias {notify.alert} {
+	#bell;
+	#system {notifu /d 5000 /p ${char_id} /m "%0" &};
+};
+
+#alias {notify_loop} {
+	#system {notifu /d 5000 /p ${char_id} /m "%0" &};
+	#ticker {notify_loop}{
+		#system {notifu /d 5000 /p ${char_id} /m "%0" &};
+	} {6}
+};
+#class cygwin close;
