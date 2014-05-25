@@ -907,7 +907,12 @@ load chaos;
 			};
 		};
 		#elseif {"%1" == "武当荆西镖局"} {
-			#return 4;
+			#if {"${xy_info}" == "on"} {
+				#return -1;
+			};
+			#else {
+				#return 3;
+			};
 		};
 		#elseif {"%1" == "全真天尊讲经堂"} {
 			#return 1;
