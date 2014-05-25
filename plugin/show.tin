@@ -75,7 +75,7 @@
 	show_to_chat %0;
 };
 
-#action {%1{(回答)|(告诉)}你：%2} {
+#action {%1{回答|告诉}你：%2} {
 	show_to_chat 【私聊】%0;
 };
 
