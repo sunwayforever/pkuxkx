@@ -64,4 +64,22 @@
 	#var show_quest %0;
 	#echo {{<fca>${show_status}<099> => <cfa>${show_quest}<099>}{-1}};
 };
+
+#gag {¡¾ÏÐÁÄ¡¿%*};
+#action {¡¾ÏÐÁÄ¡¿%*} {
+    show_to_chat %0;	
+};
+
+#gag {¡¾Ò¥ÑÔ¡¿%*};
+#action {¡¾Ò¥ÑÔ¡¿%*} {
+	show_to_chat %0;
+};
+
+#action {%1{(»Ø´ð)|(¸æËß)}Äã£º%2} {
+	show_to_chat ¡¾Ë½ÁÄ¡¿%0;
+};
+
+#action {Äã{»Ø´ð|¸æËß}%1£º%2} {
+	show_to_chat ¡¾Ë½ÁÄ¡¿%0;
+};
 #class show close;

@@ -27,27 +27,6 @@
 	get silver;
 };
 
-#gag {¡¾ÏÐÁÄ¡¿%*};
-#action {¡¾ÏÐÁÄ¡¿%*} {
-    show_to_chat %0;	
-};
-
-#gag {¡¾Ò¥ÑÔ¡¿%*};
-#action {¡¾Ò¥ÑÔ¡¿%*} {
-	show_to_chat %0;
-};
-
-#action {%1¸æËßÄã£º%2} {
-	show_to_chat %0;
-};
-#action {%1»Ø´ðÄã£º%2} {
-	show_to_chat  %0;
-};
-
-#action {Äã{(»Ø´ð)|(¸æËß)}%1£º%2} {
-	show_to_chat %0;
-}
-
 #alias {naijiu} {
 	check_naijiu;
 	#delay {1} {
