@@ -70,4 +70,6 @@
 #gag {你现在精力充沛。};
 #gag {truce};
 #gag {你现在不忙};
+#gag {走了过来};
+#gag {向%*离开};
 #class gag close
