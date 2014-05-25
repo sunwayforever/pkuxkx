@@ -1,7 +1,7 @@
 1. 假设所有文件放在目录 DIR 下
 2. 在使用前, 需要修改 profile.tin, 填上自己的 user 和 password
 
-linux
+linux / cygwin
 ----------
 cd DIR; 
 tt++ profile.tin
@@ -22,4 +22,3 @@ windows
 
 修改门派信息, 可以参考 gumu 这个文件. 另外, 因为领悟机器人使用 map 来走
 路,所以还需要在 map 目录下自己建立一个相应的 map
-
