@@ -216,40 +216,33 @@ load chaos;
 };
 
 #alias {hb.duobi} {
-	#action {get_exits: done} {
-		#unaction {get_exits: done};
-		#class hb.duobi.inner open;
+	#math hb_path_index ${hb_path_index}+1;
+	#if {${hb_path_index} > ${hb_path_size}} {
+		on_truce {
+			hb.resume;
+		};
+	};
+	#else {
 		#action {^ƒ„Ã”≈‹ ß∞‹} {
 			#unaction {^ƒ„Ã”≈‹ ß∞‹};
 			#undelay {hb_delay};
-			#class hb.duobi.inner kill;
+			#math hb_path_index ${hb_path_index}-1;
 			on_truce {
 				hb.resume;
 			};
 		};
-		#list exits_list get 1 duobi_exit;
-		#if {"${duobi_exit}" == "up"} {
-			#list exits_list get 2 duobi_exit;			
-		};
-		on_unbusy {
+		#list hb_path get ${hb_path_index} duobi_exit;
+		#5 halt;
+		#delay {1} {
 			#showme duobi: ${duobi_exit};
-			#5 halt;
-			#delay {1} {
-				${duobi_exit};
-			};
+			${duobi_exit};
 		};
 		#delay {hb_delay} {
 			#unaction {^ƒ„Ã”≈‹ ß∞‹};
-			#var duobi_opposite_exit @opposite{${duobi_exit}};
-			#showme duobi: opposite of ${duobi_exit} is ${duobi_opposite_exit};
-			${duobi_opposite_exit};
-			#class hb.duobi.inner kill;
 			#class truce.inner kill;
 			hb.resume;
-		} {10};
-		#class hb.duobi.inner close;
+		} {5};
 	};
-	get_exits;
 };
 
 #alias {hb.resume} {
@@ -961,7 +954,7 @@ load chaos;
 		#math hb_path_index ${hb_path_index}+1;
 	}
 	#var hb_path @stacktolist{tmp};
-	#var hb_path_index 0;
+	#var hb_path_index 1;
 	#list hb_path size hb_path_size;
 };
 
