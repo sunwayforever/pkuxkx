@@ -231,8 +231,8 @@ load chaos;
 			on_truce {
 				#delay {hb_delay} {
 					hb.resume;
-				};
-			} {5};
+				} {5};
+			};
 		};
 		#list hb_path get ${hb_path_index} duobi_exit;
 		#5 halt;
@@ -717,10 +717,9 @@ load chaos;
 		#list hb_path size hb_path_size;
 		#var hb_path_index 0;
 
-		#math hb_lunci ${hb_lunci}+1;
 		#format {hb_start_time} {%t} {%T};
 		
-		show_to_quest ${hb_lunci}: 推车目的地: ${tmp}|%%2|%%3;
+		show_to_quest ${hb_lunci}: 推车: ${tmp}|%%2|%%3;
 		#nop autopp.set_zh %%2;
 		notify escort start;
 
@@ -761,7 +760,8 @@ load chaos;
 
 	#class hb.auto.inner close;
 	hb.check_mixin;
-	show_to_quest 推车: 准备;
+	#math hb_lunci ${hb_lunci}+1;
+	show_to_quest 推车: ${hb_lunci}: 准备;
 	on_health {hb.q};
 };
 

@@ -180,4 +180,7 @@
 #var menzhong dizi;
 #var menzhong_didian txg;
 #var char_menpai_position xx;
+
+stat.register 木灵盾 hit 你盔甲上镶嵌的钻石发挥了作用;
+
 #class xingxiu_spec close
