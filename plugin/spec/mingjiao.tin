@@ -80,9 +80,6 @@
 }
 
 #list my_weapons create {staff; staff 2};
-#alias {perform_special} {
-
-};
 
 #alias {huose} {
 	wi;

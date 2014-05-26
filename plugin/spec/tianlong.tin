@@ -62,9 +62,6 @@
 };
 
 #list my_weapons create {staff; staff 2};
-#alias {perform_special} {
-
-};
 
 #var shortcut Nil
 

@@ -139,10 +139,6 @@
 	wi;
 };
 
-#alias {perform_special} {
-    #send {special health};
-};
-
 stat.register 缠 miss 你叹了口气知道这“缠”字决已为人所破，只得收回了招式;
 stat.register 缠 hit 你得理不饶人;
 

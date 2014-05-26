@@ -71,9 +71,7 @@
 #alias {chan_robber} {
 	unwi;
 	wield sword;
-	#send {jifa sword huashan-jianfa};
-	perform sword.yangwu;
-	#send {jifa sword dugu-jiujian};
+	perform huashan-jianfa.yangwu;
 	wi;
 };
 
@@ -96,54 +94,42 @@
 #alias {po} {
 	unwi;
 	wield sword;
-	#send {jifa sword dugu-jiujian};
-	perform sword.po;
+	perform dugu-jiujian.po;
 	wi;
 };
 
 #alias {feijian} {
 	unwi;
 	wield sword;
-	#send {jifa sword huashan-jianfa};
-	perform sword.feijian;
-	#send {jifa sword dugu-jiujian};
+	perform huashan-jianfa.feijian;
 	wi;
 };
 
 #alias {jianzhang} {
 	unwi;
 	wield sword;
-	#send {jifa sword huashan-jianfa};
-	perform sword.jianzhang;
-	#send {jifa sword dugu-jiujian};
+	perform huashan-jianfa.jianzhang;
 	wi;
 };
 
 #alias {sanqingfeng} {
 	unwi;
 	wield sword;
-	#send {jifa parry dugu-jiujian};
-	#send {jifa sword huashan-jianfa};
-	perform sword.sanqingfeng;
-	#send {jifa sword dugu-jiujian};
+	perform huashan-jianfa.sanqingfeng;
 	wi;
 };
 
 #alias {chan} {
 	unwi;
 	wield sword;
-	#send {jifa sword huashan-jianfa};
-	perform sword.yangwu;
-	#send {jifa sword dugu-jiujian};
+	perform huashan-jianfa.yangwu;
 	wi;
 };
 
 #alias {feilong} {
 	unwi;
 	wield sword;
-	#send {jifa sword huashan-jianfa};
-	perform sword.feilong;
-	#send {jifa sword dugu-jiujian};
+	perform huashan-jianfa.feilong;
 	wi;
 };
 

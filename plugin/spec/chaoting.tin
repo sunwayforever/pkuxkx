@@ -125,9 +125,6 @@
 	#delay {2} {#send {qudu}};
 };
 
-#alias {perform_special} {
-	#send {special energy};
-};
 
 #var shifu meng;
 #var shortcut F1:²ø F2:É±Íþ F3:»¢Ð¥ F4:×óÊÖ F5:ÆßÐÇ

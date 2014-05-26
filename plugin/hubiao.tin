@@ -87,6 +87,7 @@ load chaos;
 	clear_npc {流氓头};
 	clear_npc {翠花};
 	clear_npc {流氓};
+	clear_npc {衙役};
 
 	#class hb_setup_inner open;
 	#action {镖车呼啦一声散了架} {
@@ -228,8 +229,10 @@ load chaos;
 			#undelay {hb_delay};
 			#math hb_path_index ${hb_path_index}-1;
 			on_truce {
-				hb.resume;
-			};
+				#delay {hb_delay} {
+					hb.resume;
+				};
+			} {5};
 		};
 		#list hb_path get ${hb_path_index} duobi_exit;
 		#5 halt;
@@ -742,11 +745,11 @@ load chaos;
 		play alert.wav;
 		xmpp.notify 密信;
 		#delay {hb_auto_delay} {
-			get.san {
-				gt rbz;
-				on_there {
-					sell all;
-					#delay {3} {
+			gt rbz;
+			on_there {
+				sell all;
+				#delay {3} {
+					get.san {
 						#if {${min_naijiu} < 150} {
 							repair;
 						};

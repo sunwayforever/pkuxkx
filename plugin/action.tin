@@ -53,10 +53,6 @@
 	};
 } {1};
 
-#alias {perform_special} {
-	#cr;
-};
-
 @mapcreate{menpai};
 @mapset{menpai;华山派;huashan};
 @mapset{menpai;古墓派;gumu};
@@ -135,13 +131,15 @@
 		#send {hpbrief};
 		#send {uptime};
 		#send {time};
-		perform_special;
 		init_set;
 		show.init;
 		check_baowei;
 		check_naijiu;
 		#send {l};
 		debug.on;
+		#delay {3} {
+			pfm_special;
+		};
 	};
 };
 
@@ -320,6 +318,21 @@
 #gag {wait_for_fight};
 #action {只能对战斗中的对手使用} {
 	#showme wait_for_fight;
+};
+
+#alias {pfm_special} {
+	#class pfm_special.inner open;
+	#action {你现在会以下这些特技：} {
+		#action {%S(%S)} {
+			special %%%2;
+		};
+		#delay {1} {
+			#unaction {%S(%S)};
+			#class pfm_special.inner kill;
+		};
+	};
+	#class pfm_special.inner close;
+	special;
 };
 
 #class action close;
