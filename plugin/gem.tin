@@ -68,8 +68,13 @@
 			#delay {4} {
 				pack gem;
 			};
-			#delay {5} {
-				gem.combine;
+			#if {${nl_percent} > 20} {
+				#delay {5} {
+					gem.combine;
+				};
+			};
+			#else {
+				show_to_info 内力不足, 无法 combine gem;
 			};
 		};
 		#else {
