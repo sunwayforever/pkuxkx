@@ -88,4 +88,26 @@
 	};
 };
 
+#alias {gem.transfer} {
+	#var receiver %1;
+	#class gem.transfer.inner open;
+	#action {你的宝石袋里空空荡荡} {
+		#class gem.transfer.inner kill;
+	};
+	#action {你给%*一颗} {
+		pickgem 1;
+	};
+	#action {你从宝石袋里面取出} {
+		#delay {1} {
+			give ${receiver} gem;
+		};
+	};
+	#action {这里没有 ${receiver}} {
+		show_to_info 附近没有 ${receiver};
+		#class gem.transfer.inner kill;
+		pack gem;
+	};
+	#class gem.transfer.inner close;
+	pickgem 1;
+};
 #class gem close
