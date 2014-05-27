@@ -24,6 +24,11 @@
 #alias {attack.normal} {
 	on_unbusy {
 		chousui;
+		#delay {1} {
+			on_unbusy {
+				huoqiu;
+			};
+		};
 	};
 	#class attack.inner open;
 	#ticker {huose} {
@@ -47,11 +52,7 @@
 };
 
 #alias {attack.mingjiao} {
-	#class attack.inner open;
-	#ticker {perf_chuanxin} {
-		chuanxin;
-	} {1};
-	#class attack.inner close;
+	attack.normal;
 };
 
 #macro {\eOP} {
