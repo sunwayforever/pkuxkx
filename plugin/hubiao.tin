@@ -1036,7 +1036,7 @@ load chaos;
 	};
 
 	#action {chaos error} {
-		show_to_info 两步乱入?;
+		show_to_info 两步乱入: ${hb_path_next}: ${last_position};
 		notify.alert escort chaos;
 	};
 	
