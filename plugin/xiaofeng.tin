@@ -204,7 +204,7 @@
 
 	#class xiaofeng.inner close;
 
-	ask xiao about job;
+	ask xiao feng about job;
 };
 
 #alias {xf.d} {
@@ -217,10 +217,10 @@
 		give ${xf.real_first_name} to xiao;
 	};
 	#if {${xf.type} == 3} {
-		ask xiao about 完成;
+		ask xiao feng about 完成;
 	};
 	#if {${xf.type} == 4} {
-		ask xiao about 完成;
+		ask xiao feng about 完成;
 	};
 	show_to_quest 萧峰: 完成;
 	#var xf.type -1;
@@ -235,7 +235,7 @@
 #alias {xf.f} {
 	#class xiaofeng.inner kill;
 	#class xf.bl.inner kill;
-	ask xiao about fail;
+	ask xiao feng about fail;
 	#var xf.type -1;
 	#var xf.requested 0;
 	show_to_quest 萧峰: 失败;

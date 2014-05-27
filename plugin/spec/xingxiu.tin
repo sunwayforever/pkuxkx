@@ -2,9 +2,11 @@
 #read plugin/liandu.tin;
 #alias {attack.prepare} {
 	#class attack.inner open;
-	#ticker {huose} {
-		huose;
-	} {3.8};
+	#class attack.inner close;
+};
+
+#alias {attack.bare} {
+	#class attack.inner open;
 	#class attack.inner close;
 };
 
@@ -13,6 +15,9 @@
 		huoqiu;
 	};
 	#class attack.inner open;
+	#ticker {huose} {
+		huose;
+	} {3.8};
 	#class attack.inner close;
 };
 
@@ -21,6 +26,9 @@
 		chousui;
 	};
 	#class attack.inner open;
+	#ticker {huose} {
+		huose;
+	} {3.8};
 	#ticker {huoqiu} {
 		huoqiu;
 	} {4.8};
@@ -32,6 +40,9 @@
 		chousui;
 	};
 	#class attack.inner open;
+	#ticker {huose} {
+		huose;
+	} {3.8};
 	#class attack.inner close;
 };
 
@@ -83,7 +94,7 @@
 	#cr;
 };
 
-#list my_weapons create {my staff};
+#list my_weapons create {my staff 2; my staff};
 
 #alias {huose} {
 	wi;
@@ -184,6 +195,5 @@
 stat.register Ä¾Áé¶Ü hit Äã¿ø¼×ÉÏÏâÇ¶µÄ×êÊ¯·¢»ÓÁË×÷ÓÃ;
 stat.register Ä¾Áé¶Ü hit ¹¥»÷ÂäÔÚÄãÉíÉÏÏÔµÃÈíÈõÎŞÁ¦;
 stat.register Ä¾Áé¶Ü hit ¹¥»÷Á¦ËÆºõÓĞËù¼õÈõ¡£;
-stat.register Ä¾Áé¶Ü all ¡º${char_name}(damage:%*ÆøÑª:%*)¡»;
 
 #class xingxiu_spec close

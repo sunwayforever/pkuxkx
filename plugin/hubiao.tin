@@ -301,11 +301,6 @@ load chaos;
 	};
 	#else {
 		ask ${hb_owner} about finish;
-		#delay {hb_auto_delay} {
-			#if {${hb_auto} == 1 && ${has_mixin} == 0} {
-				hb.start;
-			};
-		} {3};
 	};
 };
 
@@ -372,6 +367,11 @@ load chaos;
 			#class tmp.inner kill;
 			show_to_info @ctd{%%%1} µã¾­Ñé;
 		};
+		#delay {hb_auto_delay} {
+			#if {${hb_auto} == 1 && ${has_mixin} == 0} {
+				hb.start;
+			};
+		} {3};
 		#class tmp.inner close;
 	};
 
