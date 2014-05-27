@@ -44,7 +44,7 @@ load chaos;
 };
 
 #alias {hb.move} {
-	#if {${qx_percent} < 50 || ${js_percent} < 50} {
+	#if {${qx_percent} < 50 || ${js_percent} < 50 || ${nl_percent} < 20} {
 		#unticker {hb_walk};
 		show_to_info 气血或精神过低,推车暂停;
 		notify escort paused;
@@ -288,6 +288,9 @@ load chaos;
 	};
 	#elseif {"${CurrentPosition}" == "fm"} {
 		#var hb_owner ma;
+	};
+	#elseif {"${CurrentPosition}" == "fh"} {
+		#var hb_owner chu;
 	};
 };
 
@@ -714,6 +717,43 @@ load chaos;
 				};
 			};
 		};
+		#elseif {"${hb_owner}" == "chu"} {
+			#if {"${tmp}" == "曲阜"} {
+				#list hb_path create {
+					gw;gn;gn;gnw;gnd;gn;gn;gn;gn;gn;gne;gne;gne;gne;gn;gnw;gnw;hb.guohe {jiang};
+					gn;gnw;gnu;gn;gn;gn;ge;ge;ge;ge;ge;gse;ge;ge;ge;ge;gn;gn;gn;gn;gn;gn;gn;gn;gw;gn;
+				};
+			};
+			#elseif {"${tmp}" == "武当"} {
+				#list hb_path create {
+					gw;gn;gn;gnw;gnd;gn;gn;gn;gn;gn;gne;gne;gne;gne;gn;gnw;gnw;hb.guohe {jiang};
+					gn;gnw;gnu;gn;gn;gn;gw;gw;gw;gnw;gw;gw;gw;gw;gw;gw;gw;gw;gw;gw;gw;gw;gw;gw;gw;gw;gn
+				};
+			};
+			#elseif {"${tmp}" == "晋阳"} {
+				#list hb_path create {
+					gw;gn;gn;gnw;gnd;gn;gn;gn;gn;gn;gne;gne;gne;gne;gn;gnw;gnw;hb.guohe {jiang};gn;gnw;gnu;gn;gn;gn;gn;
+					gn;gn;gn;gn;gn;gsw;gsw;gn;gn;gn;gn;gn;gn;gn;
+					gn;gn;gn;gnu;gnd;gn;gn;gnu;hb.guohe {huanghe};gn;gne;gne;gne;ge;gn;gn;gw;
+					
+				};
+			};
+			#elseif {"${tmp}" == "华山"} {
+				#format {tmp} {%.6s} {%%1};
+				#if {"${tmp}" == "华山村"} {
+					#list hb_path create  {
+						gw;gn;gn;gnw;gnd;gn;gn;gn;gn;gn;gne;gne;gne;gne;gn;gnw;gnw;hb.guohe {jiang};
+						gn;gnw;gnu;gn;gn;gn;gn;gn;gn;gn;gn;gn;gsw;gsw;gnw;gn;gn;gn;gn;gn;
+					};
+				};
+				#else {
+					#var tmp 华山;
+					#list hb_path create {
+			
+					};
+				};
+			};
+		};
 		#list hb_path size hb_path_size;
 		#var hb_path_index 0;
 
@@ -920,6 +960,28 @@ load chaos;
 			#else {
 				#return 5;
 			};
+		};
+		#else {
+			#return -1;
+		};
+	};
+	#elseif {"${hb_owner}" == "chu"} {
+		#if {"%1" == "华山村铁匠铺"} {
+			#return 4;
+		};
+		#elseif {"%1" == "武当荆西镖局"} {
+			#if {"${xy_info}" == "on"} {
+				#return -1;
+			};
+			#else {
+				#return 3;
+			};
+		};
+		#elseif {"%1" == "曲阜孔府"} {
+			#return 3;
+		};
+		#elseif {"%1" == "晋阳萧府"} {
+			#return 1;
 		};
 		#else {
 			#return -1;
