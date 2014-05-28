@@ -80,6 +80,8 @@ load chaos;
 };
 
 #alias {hb.setup} {
+	clear_npc {山贼};
+	clear_npc {独狼};
 	clear_npc {庙祝};
 	clear_npc {李铁嘴};
 	clear_npc {地痞};
@@ -347,7 +349,7 @@ load chaos;
 	#class hb.auto.inner open;
 	#action {${char_name}把这批红货送到%*他已经派了个伙计名叫%*到%*附近接你} {
 		hb.get_path %%1;
-		show_to_quest ${hb_lunci}: 推车: ${tmp}|%%2|%%3;
+		show_to_quest 推车: ${tmp}|%%2|%%3;
 		hb.setup;
 		hb.resume;
 	} {1};
@@ -1082,6 +1084,12 @@ load chaos;
 				};
 			};
 		};
+		#elseif {"${tmp}" == "岳阳"} {
+	     	#list hb_path create {
+				gn;ge;ge;ge;ge;ge;ge;ge;ge;ge;gn;gse;ge;ge;ge;ge;ge;ged;ge;ge;ge;gs;gs;gs;gs;gs;gs;gs;gsw;
+				gs;gs;gs;gs;gs;gs;gs;gs;gs;gs;gs;gs;gs;gs;gs;gs;gs;gs;gse;gs;gw;hb.guohe {jiang};ge;ge;gs;gs;gs;gs;
+	     	};
+	    };
 	    #elseif {"${tmp}" == "晋阳"} {
 	     	#list hb_path create {
 	     		gn;ge;ge;gn;gn;gw;gw;gw;gw;gn;gn;gn;ge;gne;gne;ge;gn;gne;gse;ge;hb.guohe {huanghe};gn;gne;gne;gne;ge;gn;gn;gw;
@@ -1092,7 +1100,7 @@ load chaos;
 	    };
 	    #elseif {"${tmp}" == "成都"} {
 	     	#list hb_path create {
-	     		gn;gw;gw;gw;gsw;gsu;gsd;gse;gsu;gsw;gse;gsu;gsd;gs;gs;gs;gs;
+	     		gn;gw;gw;gw;gsw;gsu;gsd;gse;gsu;hb.wait;gsw;hb.wait;gse;hb.wait;gsu;hb.wait; gsd;gs;gs;gs;gs;
 	     		se;gn;gs;gw;ge;gse;gn;gs;ge;ge;gw;gw;gnw;gnw;gn;gw;ge;ge;gw;gn;gw;ge;ge;gw;gn;gn;gs;gs;gs;gs;gnw;
 	     		gn;gs;gnw;gn;gs;gs;gn;gw;gw;ge;ge;gse;gse;gs;gs;gw;gnw;gse;ge;ge;gw;gs;gw;ge;gs;gsu;gnd;gn;gn;gn;gn;
 	     	};
