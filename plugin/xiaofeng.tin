@@ -49,11 +49,9 @@
 
 	#action {看来杀手有点怕你了} {
 		raw;
-		#delay {2} {
-			#5 {halt};
-		};
-		#delay {3} {
-			#3 quan;
+		on_unbusy {
+			halt;
+			quan;
 		};
 	};
 
@@ -61,7 +59,9 @@
 		#if {${xf.type} == 3 || ${xf.type} == 4} {
 			show_to_info 红血了, 慢点;
 			raw;
-			#3 halt;
+			on_unbusy {
+				halt;
+			};
 			#class xiaofeng.inner open;
 			#action {跳出战圈不打了} {
 				#if {${xf.type} == 3} {
@@ -69,9 +69,9 @@
 				};
 			};
 			#action {你想停下来} {
-				#delay {halt} {
+				on_unbusy {
 					halt;
-				} {0.5};
+				};
 			};
 			#class xiaofeng.inner close;
 			#alias {wi} {wi_bare};
