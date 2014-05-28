@@ -4,32 +4,36 @@
 };
 
 #alias {attack.normal} {
-	jianzhang;
+	on_unbusy {
+		poqi;
+	};
 	#class attack.inner open;
-	#ticker {chan} {
-		chan
-	} {2};
-	#ticker {jianzhang} {
-		jianzhang;
-	} {6};
+	#ticker {sqf} {
+		sanqingfeng;
+	} {4.8};
 	#ticker {po} {
 		po;
-	} {8};
+	} {2.8};
+	#ticker {fj} {
+		feijian;
+	} {3.8};		
 	#class attack.inner close;
 };
 
 #alias {attack.hubiao} {
 	on_unbusy {
-		feilong;
+		poqi;
 	};
 	#class attack.inner open;
-
+	#ticker {fj} {
+		feijian;
+	} {3.8};
 	#class attack.inner close;
 };
 
 #alias {attack.xiaofeng} {
 	on_unbusy {
-		po;
+		poqi;
 	};
 	#class attack.inner open;
 	#ticker {chan} {
@@ -45,10 +49,10 @@
 	#class attack.inner open;
 	#ticker {chan} {
 		chan
-	} {2};
+	} {1.8};
 	#ticker {po} {
 		po;
-	} {2};
+	} {2.8};
 	#class attack.inner close;
 };
 
@@ -98,6 +102,20 @@
 	wi;
 };
 
+#alias {poqi} {
+	unwi;
+	wield sword;
+	perform dugu-jiujian.poqi;
+	wi;
+};
+
+#alias {kuangfeng} {
+	unwi;
+	wield sword;
+	perform dugu-jiujian.kuangfeng;
+	wi;
+};
+
 #alias {feijian} {
 	unwi;
 	wield sword;
@@ -114,8 +132,10 @@
 
 #alias {sanqingfeng} {
 	unwi;
+	jiali max;
 	wield sword;
 	perform huashan-jianfa.sanqingfeng;
+	jiali none;
 	wi;
 };
 
@@ -133,9 +153,9 @@
 	wi;
 };
 
-#var shortcut F1:缠 F2:飞剑 F3:三青风 F4:破 F5:飞龙
+#var shortcut F1:破气 F2:飞剑 F3:三青风 F4:总决 F5:缠 F6:飞龙 F7:狂风
 #macro {\eOP} {
-	chan;
+	poqi;
 };
 
 #macro {\eOQ} {
@@ -151,7 +171,15 @@
 };
 
 #macro {\e[15~} {
+	chan;
+};
+
+#macro {\e[17~} {
 	feilong;
+};
+
+#macro {\e[18~} {
+	kuangfeng;
 };
 
 #alias {yzy} {
