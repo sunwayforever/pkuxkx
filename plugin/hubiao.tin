@@ -757,6 +757,7 @@ load chaos;
 		#list hb_path size hb_path_size;
 		#var hb_path_index 0;
 
+		#math hb_lunci ${hb_lunci}+1;
 		#format {hb_start_time} {%t} {%T};
 		
 		show_to_quest ${hb_lunci}: 推车: ${tmp}|%%2|%%3;
@@ -800,8 +801,8 @@ load chaos;
 
 	#class hb.auto.inner close;
 	hb.check_mixin;
-	#math hb_lunci ${hb_lunci}+1;
-	show_to_quest 推车: ${hb_lunci}: 准备;
+	#math next_lunci ${hb_lunci}+1;
+	show_to_quest 推车: ${next_lunci}: 准备;
 	on_health {hb.q};
 };
 
