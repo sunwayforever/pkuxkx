@@ -1100,7 +1100,7 @@ load chaos;
 	    };
 	    #elseif {"${tmp}" == "³É¶¼"} {
 	     	#list hb_path create {
-	     		gn;gw;gw;gw;gsw;gsu;gsd;gse;gsu;hb.wait;gsw;hb.wait;gse;hb.wait;gsu;hb.wait; gsd;gs;gs;gs;gs;
+	     		gn;gw;gw;gw;gsw;gsu;gsd;gse;gsu;hb.wait;gsw;hb.wait;gse;hb.wait;gsu;hb.wait;gsd;gs;gs;gs;gs;
 	     		se;gn;gs;gw;ge;gse;gn;gs;ge;ge;gw;gw;gnw;gnw;gn;gw;ge;ge;gw;gn;gw;ge;ge;gw;gn;gn;gs;gs;gs;gs;gnw;
 	     		gn;gs;gnw;gn;gs;gs;gn;gw;gw;ge;ge;gse;gse;gs;gs;gw;gnw;gse;ge;ge;gw;gs;gw;ge;gs;gsu;gnd;gn;gn;gn;gn;
 	     	};
@@ -1113,7 +1113,7 @@ load chaos;
 	    };
 	    #elseif {"${tmp}" == "ÔÞÆÕ"} {
 	     	#list hb_path create {
-	     		gn;gw;gw;gw;gsw;gsu;gsd;gse;gsu;gsw;gse;gsu;gsd;gs;gs;gs;gs;gnw;gnw;gw;gw;gwu;gwu;gwu;gnw;gnw;gw;gn;gn;gn;
+	     		gn;gw;gw;gw;gsw;gsu;gsd;gse;gsu;hb.wait;gsw;hb.wait;gse;hb.wait;gsu;hb.wait;gsd;gs;gs;gs;gs;gnw;gnw;gw;gw;gwu;gwu;gwu;gnw;gnw;gw;gn;gn;gn;
 	     		gn;gw;ge;gn;gn;gs;gs;ge;gw;gs;gw;gw;gw;ge;gn;gs;ge;ge;ge;gw;gs;gw;ge;ge;gw;gs;gw;ge;ge;gw;gs;gn;gn;gn;
 	     	};
 	    };
