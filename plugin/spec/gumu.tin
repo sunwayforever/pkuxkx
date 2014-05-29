@@ -51,7 +51,33 @@
 	#class attack.inner close;
 };
 
-#alias {attack.xiaofeng} {
+#alias {attack.xiaofeng.qin} {
+	on_unbusy {
+		chan;
+		#delay {1} {
+			on_unbusy {
+				zhua;
+			};
+		};
+	};
+	#class attack.inner open;
+	#class attack.inner close;
+};
+
+#alias {attack.xiaofeng.quan} {
+	on_unbusy {
+		chan;
+		#delay {1} {
+			on_unbusy {
+				zhua;
+			};
+		};
+	};
+	#class attack.inner open;
+	#class attack.inner close;
+};
+
+#alias {attack.xiaofeng.sheng} {
 	on_unbusy {
 		chan;
 		#delay {1} {

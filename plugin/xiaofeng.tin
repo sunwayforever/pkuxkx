@@ -180,21 +180,21 @@
 		#elseif {${xf.type} == 2} {
 			#alais {wi} {wi_xiaofeng};
 			#alias {attack} {
-				attack.xiaofeng;
+				attack.xiaofeng.qin;
 			};
 			hit shashou;
 		};
 		#elseif {${xf.type} == 3} {
 			#alais {wi} {wi_xiaofeng};
 			#alias {attack} {
-				attack.xiaofeng;
+				attack.xiaofeng.quan;
 			};
 			hit shashou;
 		};
 		#elseif {${xf.type} == 4} {
 			#alais {wi} {wi_xiaofeng};
 			#alias {attack} {
-				attack.xiaofeng;
+				attack.xiaofeng.sheng;
 			};
 			fight shashou;
 		};

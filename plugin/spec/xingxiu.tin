@@ -40,9 +40,31 @@
 	#class attack.inner close;
 };
 
-#alias {attack.xiaofeng} {
+#alias {attack.xiaofeng.qin} {
 	on_unbusy {
 		chousui;
+	};
+	#class attack.inner open;
+	#ticker {huose} {
+		huose;
+	} {3.8};
+	#class attack.inner close;
+};
+
+#alias {attack.xiaofeng.quan} {
+	on_unbusy {
+		chousui;
+	};
+	#class attack.inner open;
+	#ticker {huose} {
+		huose;
+	} {3.8};
+	#class attack.inner close;
+};
+
+#alias {attack.xiaofeng.sheng} {
+	on_unbusy {
+		huoqiu;
 	};
 	#class attack.inner open;
 	#ticker {huose} {
