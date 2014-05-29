@@ -1,6 +1,7 @@
 #class hubiao open
 load chaos;
 
+#var hb_auto_mixin 0;
 #var hb_first_kill 0;
 #var hb_wait 0;
 #var hb_paused 0;
@@ -89,7 +90,6 @@ load chaos;
 	clear_npc {流氓头};
 	clear_npc {翠花};
 	clear_npc {流氓};
-	clear_npc {衙役};
 
 	#class hb_setup_inner open;
 	#action {镖车呼啦一声散了架} {
@@ -301,7 +301,12 @@ load chaos;
 		give cai wu to ${hb_owner};
 	};
 	#else {
-		ask ${hb_owner} about finish;
+		#if {${hb_lunci} == 5 && ${hb_auto_mixin} == 0} {
+			notify.alert next mixin;
+		};
+		#else {
+			ask ${hb_owner} about finish;			
+		};
 	};
 };
 
@@ -422,8 +427,8 @@ load chaos;
 			#unaction {可塑性:%*(%*)};
 			#var cong %%%1;
 			#var type @mapget{jianding;%%2};
-			#if {${cong} > 1} {
-				put ${type} in bao;
+			#if {"@jd_get_method{$type}" == "wield" || ${cong} > 1} {
+				put ${type} in bao;	
 			};
 		};
 		#action {你将一%*之%*放进包袱} {
@@ -521,7 +526,7 @@ load chaos;
 		notify.alert escort additional reward;
 		play alert.wav;
 		xmpp.notify 密信;
-		#delay {hb_auto_delay} {
+		#delay {2} {
 			gt rbz;
 			on_there {
 				sell all;
@@ -533,7 +538,7 @@ load chaos;
 					};
 				};
 			};
-		} {2};
+		};
 	};
 
 	#class hb.auto.inner close;
@@ -817,6 +822,9 @@ load chaos;
 #alias {clear_npc} {
 	#var npc_zh %1;
 	#class clear_npc.inner open;
+	#action {你想杀谁} {
+		#var hb_force_wait 0;
+	};
 	#action {${npc_zh}死了} {
 		#var hb_force_wait 0;
 	} {1};
