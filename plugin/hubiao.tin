@@ -119,6 +119,7 @@ load chaos;
 
 	#action {^这个方向} {
 		#if {${hb_paused} == 0} {
+			hb.pause;
 			show_to_info 路径出错;
 		};
 	};

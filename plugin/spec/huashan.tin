@@ -147,7 +147,14 @@
 	wi;
 };
 
-#var shortcut F1:破气 F2:飞剑 F3:三青风 F4:总决 F5:缠 F6:飞龙 F7:狂风
+#alias {lianhuan} {
+	unwi;
+	wield sword;
+	perform huashan-jianfa.lianhuan;
+	wi;
+};
+
+#var shortcut F1:破气 F2:飞剑 F3:三青风 F4:总决 F5:缠 F6:飞龙 F7:狂风 F9:剑掌
 #macro {\eOP} {
 	poqi;
 };
@@ -174,6 +181,14 @@
 
 #macro {\e[18~} {
 	kuangfeng;
+};
+
+#macro {\e[19~} {
+
+};
+
+#macro {\e[20~} {
+	jianzhang;
 };
 
 #alias {yzy} {
