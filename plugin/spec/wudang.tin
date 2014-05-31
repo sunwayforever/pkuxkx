@@ -225,7 +225,7 @@
 stat.register 缠 miss 只听得「铮」一声清响，剧烈碰撞之下你剑诀为敌所破，无以为继，被迫撤剑收招。;
 stat.register 缠 hit 只能见招拆招，疲于应对，不觉已深陷太极剑意之中，无法出招。;
 
-#alias {chainless} {
-	special chainless;
-};
+#var menzhong zhang;
+#var menzhong_didian ht;
+
 #class wudang_spec close
