@@ -1,6 +1,7 @@
 #class hubiao open
 load chaos;
 
+#var mixin_lunci 5;
 #var hb_auto_mixin 0;
 #var hb_first_kill 0;
 #var hb_wait 0;
@@ -127,6 +128,7 @@ load chaos;
 	#action {劫匪趁你不注意，推着镖车就跑，你赶紧追了上去。} {
 		hb.pause;
 		show_to_info 乱入;
+		#var mixin_lunci 6;
 		#delay {hb_delay} {
 			hb.recover;
 		} {3};
@@ -302,7 +304,8 @@ load chaos;
 		give cai wu to ${hb_owner};
 	};
 	#else {
-		#if {${hb_lunci} == 5 && ${hb_auto_mixin} == 0} {
+		#if {${hb_lunci} == ${mixin_lunci} && ${hb_auto_mixin} == 0} {
+			#var hb_lunci 0;
 			notify.alert next mixin;
 		};
 		#else {
@@ -523,6 +526,7 @@ load chaos;
 	#action {递给你一封密信} {
 		#var has_mixin 1;
 		#var hb_lunci 0;
+		#var mixin_lunci 5;
 		show_to_quest 推车: 密信;
 		notify.alert escort additional reward;
 		play alert.wav;
