@@ -40,7 +40,7 @@
 
 #alias {attack.hubiao} {
 	on_unbusy {
-		poqi;
+		#2 poqi;
 	};
 	#class attack.inner open;
 	#class attack.inner close;
