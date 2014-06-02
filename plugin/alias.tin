@@ -584,9 +584,13 @@
 		#unaction {%S          清心散};
 		getout %%1;
 		#delay {1} {
-			put ${get_san_count} san in bao;
+			out;
+			drop ${get_san_count} san;
+			enter ${char_id};
 			store san;
-			get san from bao;
+			out;
+			get san;
+			enter ${char_id};
 		};
 	};
 
@@ -595,12 +599,15 @@
 		get.san;
 	};
 	
-	#action {你从包袱中拿出一些清心散。} {
-		#unaction {你从包袱中拿出一些清心散。};
-		gt yz;
-		#if {"%1" != ""} {
-			on_there {
-				%1;
+	#action {你捡起一些清心散} {
+		#unaction {你捡起一些清心散};
+		show_to_info 清心散;
+		#delay {2} {
+			gt yz;
+			#if {"%1" != ""} {
+				on_there {
+					%1;
+				};
 			};
 		};
 	};
