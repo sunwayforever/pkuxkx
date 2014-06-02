@@ -584,9 +584,9 @@
 		#unaction {%S          ÇåĞÄÉ¢};
 		getout %%1;
 		#delay {1} {
-			drop ${get_san_count} san;
+			put ${get_san_count} san in bao;
 			store san;
-			get san;
+			get san from bao;
 		};
 	};
 
