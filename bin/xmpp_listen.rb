@@ -13,7 +13,7 @@ sent_msg_pipe_name = '/tmp/xmpp_pipe_sent_' + ARGV[0]
 # conv = Iconv.new("UTF-8","GBK");
 
 cl = Client.new(sender)
-cl.connect("127.0.0.1")
+cl.connect("54.178.131.100")
 cl.auth("123456")
 cl.send(Presence.new)
 
