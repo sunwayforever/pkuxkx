@@ -2,6 +2,9 @@
 #read plugin/liandu.tin;
 #alias {attack.prepare} {
 	#class attack.inner open;
+	#ticker {suck} {
+		suck;
+	} {2.8}
 	#class attack.inner close;
 };
 
@@ -219,4 +222,21 @@ stat.register 木灵盾 hit 你盔甲上镶嵌的钻石发挥了作用;
 stat.register 木灵盾 hit 攻击落在你身上显得软弱无力;
 stat.register 木灵盾 hit 攻击力似乎有所减弱。;
 
+#alias {suck} {
+	unwi;
+	yun neilisuck;
+	wi;
+};
+
+#alias {maxsuck} {
+	unwi;
+	yun maxsuck;
+	wi;
+};
+
+#alias {qisuck} {
+	unwi;
+	yun qisuck;
+	wi;
+};
 #class xingxiu_spec close
