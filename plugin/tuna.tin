@@ -30,6 +30,11 @@
 	};
 
 	#class tn.inner open;
+	#action {你现在身体状况太差了，无法集中精神！} {
+		on_health {
+			tn.start;
+		};
+	};
 	#action {^│%s基本内功%s(force)%s-%*%d/%s%d│$} {
 		#var jiben_neigong %%5;
 		#math max_jingli ${jiben_neigong} * 15 - 1;

@@ -137,9 +137,7 @@
 		check_naijiu;
 		#send {l};
 		debug.on;
-		#delay {3} {
-			pfm_special;
-		};
+		pfm_special;
 	};
 };
 
