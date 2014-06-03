@@ -312,6 +312,8 @@ load chaos;
 		#if {${hb_lunci} == ${mixin_lunci} && ${hb_auto_mixin} == 0} {
 			#var hb_lunci 0;
 			notify.alert next mixin;
+			xmpp.notify next mixin;
+			play alert.wav;
 		};
 		#else {
 			ask ${hb_owner} about finish;			
