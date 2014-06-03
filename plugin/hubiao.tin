@@ -227,6 +227,11 @@ load chaos;
 		};
 	};
 	#else {
+		#action {不能移动} {
+			#unaction {不能移动};
+			#showme 你逃跑失败;
+		};
+		
 		#action {^你逃跑失败} {
 			#unaction {^你逃跑失败};
 			#undelay {hb_delay};
@@ -245,6 +250,7 @@ load chaos;
 		};
 		#delay {hb_delay} {
 			#unaction {^你逃跑失败};
+			#unaction {不能移动};
 			#class truce.inner kill;
 			hb.resume;
 		} {5};
