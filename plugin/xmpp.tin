@@ -5,7 +5,7 @@
 };
 
 #alias {xmpp.send} {
-	#script {response} {bin/xmpp_send.rb ${char_id}  %1  "%1: %2"};
+	#script {response} {bin/xmpp_send.rb ${char_id}  %1  "%0"};
 };
 
 #alias {xmpp.read.start} {
