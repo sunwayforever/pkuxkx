@@ -64,6 +64,12 @@ load chaos;
 			} {3};
 		};
 		#else {
+			#if {${eff_qx_percent} < 95} {
+				#2 yun heal;
+			};
+			#if {${eff_qx_percent} < 50} {
+				#2 yun lifeheal;
+			};
 			#list hb_path get ${hb_path_index} hb_path_next;
 			#delay {hb_move} {
 				#if {${hb_force_wait} == 0 && ${hb_paused} == 0 && ${hb_wait} == 0} {
