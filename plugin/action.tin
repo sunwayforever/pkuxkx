@@ -137,7 +137,7 @@
 		check_baowei;
 		check_naijiu;
 		#send {l};
-		debug.on;
+		log.on;
 		pfm_special;
 	};
 };

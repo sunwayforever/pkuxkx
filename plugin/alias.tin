@@ -671,14 +671,21 @@
 	#list opposite_directions get ${opposite_index} result;
 };
 
-#alias {debug.on} {
+#alias {log.clear} {
 	#log overwrite debug.${char_id}.log;
 	#debug all log;
 	#var debug_info on;
 	update_status;
 };
 
-#alias {debug.off} {
+#alias {log.on} {
+	#log append debug.${char_id}.log;
+	#debug all log;
+	#var debug_info on;
+	update_status;
+};
+
+#alias {log.off} {
 	#log off;
 	#debug all off;
 	#var debug_info off;
