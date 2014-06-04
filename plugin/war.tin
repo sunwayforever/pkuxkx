@@ -194,9 +194,6 @@
 	#class war.inner open;
 	#action {你全身放松，坐下来开始运功疗伤。} {
 		raw;
-		#delay {0.5} {
-			heal 2;
-		};
 	};
 	#ticker {fighting} {
 		yun heal;
