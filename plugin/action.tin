@@ -20,6 +20,10 @@
 	#system {google-chrome http://pkuxkx.net/antirobot/robot.php?filename=%1 1>/dev/null 2>&1 &};
 };
 
+#action {以你目前的级别，你放不了更多宝石。} {
+	show_to_info 宝石放不下了;
+};
+
 #action {你告诉%*：notify %*} {
 	#cr;
 } {1};

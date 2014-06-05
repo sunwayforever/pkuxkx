@@ -193,7 +193,6 @@
 #alias {war} {
 	#class war.inner open;
 	#action {你全身放松，坐下来开始运功疗伤。} {
-		heal 10;
 		raw;
 	};
 	#ticker {fighting} {

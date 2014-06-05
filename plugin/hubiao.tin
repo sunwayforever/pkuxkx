@@ -64,6 +64,12 @@ load chaos;
 			} {3};
 		};
 		#else {
+			#if {${eff_qx_percent} < 95} {
+				#2 yun heal;
+			};
+			#if {${eff_qx_percent} < 50} {
+				#2 yun lifeheal;
+			};
 			#list hb_path get ${hb_path_index} hb_path_next;
 			#delay {hb_move} {
 				#if {${hb_force_wait} == 0 && ${hb_paused} == 0 && ${hb_wait} == 0} {
@@ -436,15 +442,19 @@ load chaos;
 	#action {^你捧着%*之%*上上下下仔仔细细的打量了一遍。} {
 		#action {可塑性:%*(%*)} {
 			#unaction {可塑性:%*(%*)};
-			#var cong %%%1;
+			#var kong %%%1;
 			#var type @mapget{jianding;%%2};
-			#if {"@jd_get_method{$type}" == "wield" || ${cong} > 1} {
+			#if {${kong} > 1} {
 				put ${type} in bao;	
 			};
 		};
 		#action {你将一%*之%*放进包袱} {
 			#unaction {你将一%*之%*放进包袱};
-			show_to_info 掉装备: ${cong} 孔 ${type};
+			#if {"${type}" == "ring" || "${type}" == "necklace" || ${kong} > 2} {
+				notify.alert 掉装备: ${kong} 孔 ${type};
+				xmpp.notify 掉装备: ${kong} 孔 ${type};
+			};
+			show_to_info 掉装备: ${kong} 孔 ${type};
 		};
 	};
 
