@@ -120,7 +120,7 @@
 	#cr;
 };
 
-#list my_weapons create {my staff 2; my staff};
+#list my_weapons create {my staff;};
 
 #alias {huose} {
 	wi;
