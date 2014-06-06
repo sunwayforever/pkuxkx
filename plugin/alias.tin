@@ -348,7 +348,7 @@
 #alias {xmpp.on} {
 	#var xmpp_info on;
 	#alias {xmpp.notify} {
-		tell erq notify %%0;
+		tell salonbus notify %%0;
 	};
 };
 
