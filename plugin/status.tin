@@ -2,7 +2,6 @@
 
 #var fuzhong_info  nil;
 #var hpbrief_info  nil;
-#var xmpp_info off;
 #var xy_info off;
 #var fm_info off;
 #var debug_info off;
@@ -45,9 +44,6 @@
 
 #alias {update_status} {
 	#var status_content ${char_name}: ${hpbrief_info} | ${fuzhong_info} | ${daytime_info} | ${uptime_info} | ${week_info} ;
-	#if {"${xmpp_info}" == "on"} {
-		#var status_content ${status_content} | X;
-	};
 	#if {"${xy_info}" == "on"} {
 		#var status_content ${status_content} | G;
 	};

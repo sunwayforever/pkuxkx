@@ -345,22 +345,8 @@
 	jobquery;
 };
 
-#alias {xmpp.on} {
-	#var xmpp_info on;
-	#alias {xmpp.notify} {
-		tell salonbus notify %%0;
-	};
-};
-
-#alias {xmpp.off} {
-	#var xmpp_info off;
-	#alias {xmpp.notify} {
-		#cr %0;
-	};
-};
-
 #alias {xmpp.notify} {
-	#cr %0;
+	tell salonbus notify %%0;
 };
 
 #alias {heal.stop} {
