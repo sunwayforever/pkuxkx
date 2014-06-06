@@ -4,10 +4,10 @@
 	#class attack.inner open;
 	#ticker {suck} {
 		suck;
-	} {2.8};
+	} {2};
 	#ticker {suck} {
 		maxsuck;
-	} {3.8}		
+	} {4}		
 	#class attack.inner close;
 };
 
@@ -23,7 +23,7 @@
 	#class attack.inner open;
 	#ticker {huose} {
 		huose;
-	} {3.8};
+	} {3};
 	#class attack.inner close;
 };
 
