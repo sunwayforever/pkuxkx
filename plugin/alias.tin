@@ -346,7 +346,7 @@
 };
 
 #alias {xmpp.notify} {
-	tell salonbus notify %%0;
+	tell salonbus notify %0;
 };
 
 #alias {heal.stop} {
