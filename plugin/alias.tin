@@ -667,15 +667,11 @@
 #alias {log.on} {
 	#log append debug.${char_id}.log;
 	#debug all log;
-	#var debug_info on;
-	update_status;
 };
 
 #alias {log.off} {
 	#log off;
 	#debug all off;
-	#var debug_info off;
-	update_status;
 };
 
 #alias {on_echo} {
