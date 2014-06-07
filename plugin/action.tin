@@ -28,20 +28,12 @@
 	#cr;
 } {1};
 
-#action {°×Òø(Silver)} {
-	get silver;
-};
-
-#alias {naijiu} {
-	check_naijiu;
-	#delay {1} {
-		show_to_info ÄÍ¾Ã: ${min_naijiu};
-	};
-};
-
 #alias {check_naijiu} {
 	#var min_naijiu 10000;
 	#foreach {${my_weapons}[%*]} {weapon} {l ${weapon}};
+	#delay {1} {
+		update_status;
+	};
 };
 
 #ticker {check_naijiu} {

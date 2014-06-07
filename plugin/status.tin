@@ -42,18 +42,17 @@
 };
 
 #alias {update_status} {
-	#var status_content ${char_name}: ${hpbrief_info} | ${fuzhong_info} | ${daytime_info} | ${uptime_info} | ${week_info} ;
+	#var status_content ${char_name}: ${hpbrief_info} ${fuzhong_info} 耐: ${min_naijiu} ${daytime_info} ${uptime_info} ${week_info};
 	#if {"${xy_info}" == "on"} {
-		#var status_content ${status_content} | G;
+		#var status_content ${status_content} 保卫;
 	};
 	#if {"${fm_info}" == "on"} {
-		#var status_content ${status_content} | F;
 	};
 	show_to_status ${status_content};
 };
 
 #action {你身上带著下列这些东西(负重 %1\%)：} {
-	#var fuzhong_info 负重: %1;
+	#var fuzhong_info 重: %1;
 	update_status;
 };
 
@@ -101,7 +100,7 @@
 		#math nl_percent ${hpbrief_curr_nl} * 100 / ${hpbrief_max_nl};
 		#math jl_percent ${hpbrief_curr_jl} * 100 / ${hpbrief_max_jl};
 
-		#var hpbrief_info 气血: ${qx_percent} | 精神: ${js_percent} | 内力: ${nl_percent} | 精力: ${jl_percent} | 经验: ${hpbrief_exp};
+		#var hpbrief_info 气: ${qx_percent} 神: ${js_percent} 内: ${nl_percent} 精: ${jl_percent} 经验: ${hpbrief_exp};
 		update_status;
 
 		#if {${auto_heal} == 1} {
@@ -144,7 +143,7 @@
 };
 
 #action {本周为%*之周，} {
-	#var week_info %1之周;
+	#var week_info %1;
 	update_status;
 };
 #class status close
