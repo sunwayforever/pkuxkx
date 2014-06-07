@@ -2,12 +2,6 @@
 #read plugin/liandu.tin;
 #alias {attack.prepare} {
 	#class attack.inner open;
-	#ticker {suck} {
-		suck;
-	} {2.8};
-	#ticker {maxsuck} {
-		maxsuck;
-	} {3.8}		
 	#class attack.inner close;
 };
 
@@ -37,9 +31,15 @@
 		};
 	};
 	#class attack.inner open;
+	#ticker {suck} {
+		suck;
+	} {2.8};
+	#ticker {maxsuck} {
+		maxsuck;
+	} {3.8}		
 	#ticker {huose} {
 		huose;
-	} {3.8};
+	} {3};
 	#ticker {huoqiu} {
 		huoqiu;
 	} {4.8};
