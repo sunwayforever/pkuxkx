@@ -5,8 +5,9 @@
 	unwi;
 	bei none;
 	gt qzh;
-	#math max_nl ${youxiao_neigong} * 15 - 200;
+	#math max_nl ${youxiao_neigong} * 15 - 100;
 	on_there {
+		show_to_quest suck ¿ªÊ¼;
 		do_suck;
 	};
 };
@@ -26,6 +27,7 @@
 };
 
 #alias {suck.stop} {
+	show_to_quest suck ½áÊø;
 	#alias wi wi_normal;
 	#alias attack attack.normal;
 	bei strike;
