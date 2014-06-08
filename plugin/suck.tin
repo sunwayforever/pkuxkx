@@ -7,18 +7,22 @@
 	gt qzh;
 	#math max_nl ${youxiao_neigong} * 15 - 200;
 	on_there {
-		#ticker {suck} {
-			#if {${hpbrief_max_nl} > ${max_nl}} {
-				suck.stop;
-			};
-			#else {
-				hit tong ren; maxsuck; halt;
-			};
-		} {1.5};
-		#ticker {chifan} {
-			chifan;
-		} {30};
+		do_suck;
 	};
+};
+
+#alias {do_suck} {	
+    #ticker {suck} {
+		#if {${hpbrief_max_nl} > ${max_nl}} {
+			suck.stop;
+		};
+		#else {
+			hit tong ren; maxsuck; halt;
+		};
+	} {1.5};
+	#ticker {chifan} {
+		chifan;
+	} {30};
 };
 
 #alias {suck.stop} {
