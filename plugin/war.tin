@@ -235,7 +235,9 @@
 	#action {get_exits: done} {
 		#unaction {get_exits: done};
 		#list exits_list get 1 exit;
-		${exit};
+		on_unbusy {
+			${exit};
+		};
 	};
 	#5 halt;
 	get_exits;
