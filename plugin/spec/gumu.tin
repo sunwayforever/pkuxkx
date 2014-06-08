@@ -220,5 +220,17 @@ stat.register 缠 hit 结果他被你攻了个措手不及！
 
 #var char_menpai_position xt;
 #var shifu yang;
+
+#alias {reborn} {
+	#send {jifa force yunu-xinfa};
+	#send {jifa dodge xianyun};
+	#send {jifa parry meinu-quan};
+	#send {jifa cuff meinu-quan};
+	#send {jifa sword xuantie-jian};
+	#send {jifa throwing qianmie-shou};
+	#send {jifa claw jiuyin-baiguzhao};
+	bei cuff;
+};
+
 #class gumu_spec close
 

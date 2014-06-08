@@ -1,0 +1,25 @@
+#class suck open
+#alias {suck.start} {
+	#alias wi #cr;
+	#alias attack #cr;
+	unwi;
+	bei none;
+	gt qzh;
+	on_there {
+		#ticker {suck} {
+			hit tong ren; maxsuck; #3 halt;
+		} {2};
+		#ticker {chifan} {
+			chifan;
+		} {30};
+	};
+};
+
+#alias {suck.stop} {
+	#alias wi wi_normal;
+	#alias attack attack.normal;
+	bei strike;
+	#unticker {suck};
+	#unticker {chifan};
+};
+#class suck close
