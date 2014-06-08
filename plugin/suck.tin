@@ -5,9 +5,15 @@
 	unwi;
 	bei none;
 	gt qzh;
+	#math max_nl ${youxiao_neigong} * 1.5;
 	on_there {
 		#ticker {suck} {
-			hit tong ren; maxsuck; #3 halt;
+			#if {${hpbrief_max_nl} > ${max_nl}} {
+				suck.stop;
+			};
+			#else {
+				hit tong ren; maxsuck; #3 halt;
+			};
 		} {1.5};
 		#ticker {chifan} {
 			chifan;

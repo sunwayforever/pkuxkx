@@ -69,6 +69,18 @@
 	hpbrief;
 } {3};
 
+#ticker {jifa} {
+	#send {jifa};
+} {600};
+
+#action {内功 (force)%*有效等级：{ *}%d} {
+    #var youxiao_neigong %3;
+    #math dazuo_count ${youxiao_neigong}*3/10+1;
+    #if {${dazuo_count} < 10} {
+		#var dazuo_count 10;
+	};
+ };
+ 
 #var qx_percent 100;
 #var js_percent 100;
 #var nl_percent 100;

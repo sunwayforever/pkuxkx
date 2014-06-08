@@ -132,6 +132,7 @@
 		show.init;
 		check_baowei;
 		check_naijiu;
+		#send {jifa};
 		#send {l};
 		log.on;
 		pfm_special;

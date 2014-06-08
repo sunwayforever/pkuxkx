@@ -50,7 +50,7 @@
 	};
 	#alias {do_tuna} {
 		#nop eat_food;
-		tuna ${tuna_count};
+		tuna ${dazuo_count};
 	};
 	
 	#ticker {restart_tn} {
@@ -77,14 +77,6 @@
 		} {10};
 	};
 	
-	#action {内功 (force)%*有效等级：%d} {
-		#var youxiao_neigong %%2;
-		#math tuna_count ${youxiao_neigong}/10+1;
-		#if {${tuna_count}<10} {
-			#var tuna_count 10;
-		};
-	};
-
 	#action {你吐纳完毕} {
 		do_tuna;
 	};
