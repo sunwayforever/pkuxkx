@@ -1,0 +1,12 @@
+#class suckhelper open
+#alias {suckhelper} {
+	bei none;
+	jifa dodge none;
+	jifa parry none;
+	gt qzh;
+	on_there {
+		fight tong ren; halt;
+		reborn;
+	};
+};
+#class suckhelper close
