@@ -1,6 +1,5 @@
 #class xingxiu_spec open
 #read plugin/liandu.tin;
-#read plugin/suck.tin;
 
 #alias {attack.prepare} {
 	#class attack.inner open;

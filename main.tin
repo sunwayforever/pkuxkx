@@ -62,6 +62,7 @@
 #read plugin/xiulian.tin;
 #read plugin/zuiquan.tin;
 #read plugin/chainless.tin;
+#read plugin/suck.tin;
 
 #read plugin/os/linux.tin;
 #script {os_name} {ruby -e "require 'os'; puts OS.host_os();"};
