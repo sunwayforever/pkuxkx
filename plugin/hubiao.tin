@@ -554,7 +554,7 @@ load chaos;
 				sell all;
 				#delay {3} {
 					get.san {
-						#if {${min_naijiu} < 150} {
+						#if {${min_naijiu} < 250} {
 							repair;
 						};
 					};
