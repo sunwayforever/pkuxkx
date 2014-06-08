@@ -5,7 +5,7 @@
 	unwi;
 	bei none;
 	gt qzh;
-	#math max_nl ${youxiao_neigong} * 15 - 100;
+	#math max_nl ${youxiao_neigong} * 14;
 	on_there {
 		show_to_quest suck ¿ªÊ¼;
 		do_suck;
