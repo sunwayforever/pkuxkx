@@ -29,9 +29,15 @@
 } {1};
 
 #alias {check_naijiu} {
+	#action {耐久度:%*} {
+		#if {${min_naijiu} > %%1} {
+			#var min_naijiu %%1;
+		};
+	} {1};
 	#var min_naijiu 10000;
 	#foreach {${my_weapons}[%*]} {weapon} {l ${weapon}};
 	#delay {1} {
+		#unaction {耐久度:%*};
 		update_status;
 	};
 };
@@ -43,12 +49,6 @@
 #ticker {check_baowei} {
 	check_baowei;
 } {60};
-
-#action {耐久度:%1} {
-	#if {${min_naijiu} > %1} {
-		#var min_naijiu %1;
-	};
-} {1};
 
 @mapcreate{menpai};
 @mapset{menpai;华山派;huashan};
