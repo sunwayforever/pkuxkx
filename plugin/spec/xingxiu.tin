@@ -32,12 +32,6 @@
 		};
 	};
 	#class attack.inner open;
-	#ticker {suck} {
-		suck;
-	} {2.8};
-	#ticker {maxsuck} {
-		maxsuck;
-	} {3.8}		
 	#ticker {huose} {
 		huose;
 	} {3};
