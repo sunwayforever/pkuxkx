@@ -144,6 +144,10 @@
 		};
 	};
 
+	#action {你的「%*」进步了！} {
+		lw.restart;
+	};
+
 	#action {你不能练} {
 		#showme {火候太浅};
 	};
