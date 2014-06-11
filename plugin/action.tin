@@ -134,7 +134,6 @@
 		check_naijiu;
 		#send {jifa};
 		#send {l};
-		log.on;
 		pfm_special;
 	};
 };
