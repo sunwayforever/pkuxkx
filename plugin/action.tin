@@ -331,5 +331,9 @@
 	special;
 };
 
+#action {张 三双手抱拳，对着${char_name}作了个揖道} {
+	xmpp.notify 张三!;
+	notify.alert 张三!;
+};
 #class action close;
 
