@@ -107,4 +107,16 @@
 	show_to_quest 挂机结束;
 };
 
+#alias {guazs.start} {
+	#alias {ticker.gua.start} {
+		#ticker {gua} {
+			accept zhang;
+		} {0.1};
+	};
+	
+	#alias {ticker.gua.end} {
+		#unticker {gua};
+	};
+	guaji.start 张三;
+};
 #class guaji close
