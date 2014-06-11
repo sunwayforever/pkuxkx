@@ -110,4 +110,110 @@
 	#class gem.transfer.inner close;
 	pickgem 1;
 };
+
+#alias {mark_gem} {
+	#var gem_id %1;
+	#var gem_type %2;
+	#var gem_yinyang %3;
+	#var gem_name %4;
+	#list gem_types find ${gem_type} gem_type_index;
+	#if {${gem_type_index} < ${combine_target}} {
+		#if {"${gem_name}" == "神龙骨" || "${gem_name}" == "凤凰羽" || "${gem_name}" == "玄武甲" || "${gem_name}" == "麒麟角" } {
+			#var key ${gem_type}${gem_yinyang}${gem_name};
+			@mapset{gem_mark;$key;${gem_id}};
+			#if {"${gem_yinyang}" == "☆"} {
+				#var rev_gem_yinyang ★;
+			};
+			#elseif {"${gem_yinyang}" == "★"} {
+				#var rev_gem_yinyang ☆;
+			};
+			#else {
+				#var rev_gem_yinyang n;
+			};
+			#var rev_key ${gem_type}${rev_gem_yinyang}${gem_name};
+			#var rev_gem_id @mapget{gem_mark;${rev_key}};
+			#if {"${rev_gem_id}" != "NULL"} {
+				#if {${gem_id} > ${rev_gem_id}} {
+					#var gem_id_1 ${gem_id};
+					#var gem_id_2 ${rev_gem_id};
+				};
+				#else {
+					#var gem_id_2 ${gem_id};
+					#var gem_id_1 ${rev_gem_id};
+				};
+			};
+		};
+	};
+};
+
+#alias {gem.merge} {
+	#var gem_id_1 -1;
+	#var gem_id_2 -1;
+	#var nil @mapcreate(gem_mark);
+
+	#3 {pack gem};
+	jiancha jin nang;
+
+	#class gem.merge.inner open;
+	#action {(%s%S)%*{◎|☆|★}%*\*%S%s(%s%S)%*{◎|☆|★}%*\*%S%s(%s%S)%*{◎|☆|★}%*\*%S%s(%s%S)%*{◎|☆|★}%*\*%S%s(%s%S)%*{◎|☆|★}%*\*%S} {
+		mark_gem {%%2} {%%3} {%%4} {%%5};
+		mark_gem {%%9} {%%10} {%%11} {%%12};
+		mark_gem {%%16} {%%17} {%%18} {%%19};
+		mark_gem {%%23} {%%24} {%%25} {%%26};
+		mark_gem {%%30} {%%31} {%%32} {%%33};
+	} {1};
+
+	#action {(%s%S)%*{◎|☆|★}%*\*%S%s(%s%S)%*{◎|☆|★}%*\*%S%s(%s%S)%*{◎|☆|★}%*\*%S%s(%s%S)%*{◎|☆|★}%*\*%S} {
+		mark_gem {%%2} {%%3} {%%4} {%%5};
+		mark_gem {%%9} {%%10} {%%11} {%%12};
+		mark_gem {%%16} {%%17} {%%18} {%%19};
+		mark_gem {%%23} {%%24} {%%25} {%%26};
+	} {2};
+
+	#action {(%s%S)%*{◎|☆|★}%*\*%S%s(%s%S)%*{◎|☆|★}%*\*%S%s(%s%S)%*{◎|☆|★}%*\*%S} {
+		mark_gem {%%2} {%%3} {%%4} {%%5};
+		mark_gem {%%9} {%%10} {%%11} {%%12};
+		mark_gem {%%16} {%%17} {%%18} {%%19};
+	} {3};
+
+	#action {(%s%S)%*{◎|☆|★}%*\*%S%s(%s%S)%*{◎|☆|★}%*\*%S} {
+		mark_gem {%%2} {%%3} {%%4} {%%5};
+		mark_gem {%%9} {%%10} {%%11} {%%12};
+	} {4};
+
+	#action {(%s%S)%*{◎|☆|★}%*\*%S} {
+		mark_gem {%%2} {%%3} {%%4} {%%5};
+	} {5};
+	#class gem.merge.inner close;
+
+	#alias {merge_gems} {
+		#if {${gem_id_1} != -1} {
+			pickgem ${gem_id_1};
+			pickgem ${gem_id_2};
+			#delay {3} {
+				merge gem;
+			};
+			#delay {4} {
+				pack gem;
+			};
+			#if {${nl_percent} > 20} {
+				#delay {5} {
+					gem.merge;
+				};
+			};
+			#else {
+				show_to_info 内力不足, 无法 merge gem;
+			};
+		};
+		#else {
+			show_to_info 无法合成;
+		};
+	};
+	#action {用pack <物品id>将宝石放入其中} {
+		#unaction {用pack <物品id>将宝石放入其中};
+		#class gem.merge.inner kill;
+		merge_gems;
+	};
+};
+
 #class gem close
