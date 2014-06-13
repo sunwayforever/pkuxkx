@@ -11,7 +11,7 @@
 #alias {show.init} {
 	#alias {show_to_status} {
 		#var show_status %%0;
-		#echo {{<099>${show_status}<099> => <cfa>${show_quest}<099>}{-1}};
+		#echo {{<fca>${show_status}<099> => <cfa>${show_quest}<099>}{-1}};
 	};
 
 	#loop {1} {&info_window[]} {cnt}
