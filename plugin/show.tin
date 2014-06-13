@@ -1,17 +1,17 @@
 #class show open;
-#split 17 1
+#split 19 1
 
-#nop status/-/shortcut/-/5(info)/-/6(chat)/- = 17
+#nop hp/-/status/-/shortcut/-/5(info)/-/6(chat)/- = 19
 #var info_window {{1}{ } {2}{ } {3}{ } {4}{ } {5}{ }};
 #var chat_window {{1}{ } {2}{ } {3}{ } {4}{ } {5}{ } {6}{ }};
 
-#var info_window_offset 4;
+#var info_window_offset 6;
 #math chat_window_offset $info_window_offset+&info_window[]+1;
 
 #alias {show.init} {
 	#alias {show_to_status} {
 		#var show_status %%0;
-		#echo {{<fca>${show_status}<099> => <cfa>${show_quest}<099>}{-1}};
+		#echo {{<099>${show_status}<099> => <cfa>${show_quest}<099>}{-1}};
 	};
 
 	#loop {1} {&info_window[]} {cnt}
@@ -29,7 +29,7 @@
 
 #alias {show_to_shortcut} {
 	#var show_key %0;
-	#echo {{<cfa>${show_key}<099>}{-3}};
+	#echo {{<cfa>${show_key}<099>}{-5}};
 };
 
 #alias {show_to_info} {
