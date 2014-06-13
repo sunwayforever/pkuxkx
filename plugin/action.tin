@@ -132,6 +132,7 @@
 		show.init;
 		check_baowei;
 		check_naijiu;
+		#send {hp};
 		#send {jifa};
 		#send {l};
 		pfm_special;
@@ -307,6 +308,7 @@
 
 #action {也许是上天垂青于你的勤奋和努力吧，一个小时之内你不用担心被判为机器人。} {
 	#var fm_info off;
+	hp;
 	update_status;
 };
 

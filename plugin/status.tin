@@ -1,7 +1,6 @@
 #class status open
 
-#var fuzhong_info  nil;
-#var hpbrief_info  nil;
+#var exp_info  nil;
 #var xy_info off;
 #var fm_info off;
 #var auto_heal 1;
@@ -30,6 +29,10 @@
 	#send {i};
 } {180};
 
+#ticker {check_hp} {
+	#send {hp};
+} {180};
+
 #gag npc refreshed;
 #alias {zhengdian} {
 	#showme guaji.update %1;
@@ -42,18 +45,19 @@
 };
 
 #alias {update_status} {
-	#var status_content ${char_name}: ${hpbrief_info} ${fuzhong_info} 耐: ${min_naijiu} ${daytime_info} ${uptime_info} ${week_info};
+	#var status_content ${char_name}: ${exp_info}  耐久: ${min_naijiu} ${daytime_info} ${uptime_info} ${week_info};
 	#if {"${xy_info}" == "on"} {
 		#var status_content ${status_content} 保卫;
 	};
 	#if {"${fm_info}" == "on"} {
 	};
 	show_to_status ${status_content};
+	drawhp;
 };
 
 #action {你身上带著下列这些东西(负重 %1\%)：} {
-	#var fuzhong_info 重: %1;
-	update_status;
+	#var fuzhong %1;
+	drawhp;
 };
 
 #alias {autoheal.on} {
@@ -112,7 +116,8 @@
 		#math nl_percent ${hpbrief_curr_nl} * 100 / ${hpbrief_max_nl};
 		#math jl_percent ${hpbrief_curr_jl} * 100 / ${hpbrief_max_jl};
 
-		#var hpbrief_info 气: ${qx_percent} 神: ${js_percent} 内: ${nl_percent} 精: ${jl_percent} 经验: ${hpbrief_exp};
+		#nop #var exp_info 气: ${qx_percent} 神: ${js_percent} 内: ${nl_percent} 精: ${jl_percent} 经验: ${hpbrief_exp};
+		#var exp_info 经验: ${hpbrief_exp};
 		update_status;
 
 		#if {${auto_heal} == 1} {
@@ -157,5 +162,62 @@
 #action {本周为%*之周，} {
 	#var week_info %1;
 	update_status;
+};
+
+#var food 0;
+#var maxfood 100;
+#var water 0;
+#var maxwater 100;
+
+#action {【 食物 】%s%S%s/ %S} {
+	#var food %2;
+	#var maxfood %4;
+	drawhp;
+};
+
+#action {【 饮水 】%s%S%s/ %S} {
+	#var water %2;
+	#var maxwater %4;
+	drawhp;
+};
+
+#alias {drawhp} {
+	#if {@screenw{}>98} {
+		#echo {{<074>@hpcolor{气血[;$hpbrief_curr_qx}@hpdraw{$hpbrief_curr_qx;$hpbrief_max_qx}@hpcolor{];$hpbrief_curr_qx} @hpcolor{精神[;$hpbrief_curr_js}@hpdraw{$hpbrief_curr_js;$hpbrief_max_js}@hpcolor{];$hpbrief_curr_js} @hpcolor{精力[;$hpbrief_curr_jl}@hpdraw{$hpbrief_curr_jl;$hpbrief_max_jl}@hpcolor{];$hpbrief_curr_jl} @hpcolor{内力[;$hpbrief_curr_nl}@hpdraw{$hpbrief_curr_nl;$hpbrief_max_nl}@hpcolor{];$hpbrief_curr_nl} @hpcolor{食物[;$food}@hpdraw{$food;$maxfood}@hpcolor{];$food} @hpcolor{饮水[;$water}@hpdraw{$water;$maxwater}@hpcolor{];$water} @hpcolor{负重[;$fuzhong}@hpdraw{$fuzhong;100}@hpcolor{];$fuzhong} @space{@eval{@screenw{}-98}}<099>} {1}};
+	};
+	#else {
+		#echo {{<074>@hpcolor{气血[;$hpbrief_curr_qx}@hpdraw{$hpbrief_curr_qx;$hpbrief_max_qx}@hpcolor{];$hpbrief_curr_qx} @hpcolor{精神[;$hpbrief_curr_js}@hpdraw{$hpbrief_curr_js;$hpbrief_max_js}@hpcolor{];$hpbrief_curr_js} @hpcolor{精力[;$hpbrief_curr_jl}@hpdraw{$hpbrief_curr_jl;$hpbrief_max_jl}@hpcolor{];$hpbrief_curr_jl} @hpcolor{内力[;$hpbrief_curr_nl}@hpdraw{$hpbrief_curr_nl;$hpbrief_max_nl}@hpcolor{];$hpbrief_curr_nl} @hpcolor{食物[;$food}@hpdraw{$food;$maxfood}@hpcolor{];$food} @hpcolor{饮水[;$water}@hpdraw{$water;$maxwater}@hpcolor{];$water} @space{@eval{@screenw{}-56}}<099>} {1}};
+	};
+};
+
+#function {hpdraw}
+{
+	#var tmp @eval{%1*7/%2};
+	#if {$tmp<0} {#var tmp 0};
+	#elseif {$tmp==0 & %1>0} {#var tmp 1};
+	#elseif {$tmp==7 & %1>%2} {#var tmp 8};
+	#elseif {$tmp>14} {#var tmp 14};
+	#switch {$tmp}
+	{
+		#case 0  {#var result {<074>       }};
+		#case 1  {#var result {<DAA> <074>      }};
+		#case 2  {#var result {<DBA>  <074>     }};
+		#case 3  {#var result {<DCA>   <074>    }};
+		#case 4  {#var result {<DDA>    <074>   }};
+		#case 5  {#var result {<CDA>     <074>  }};
+		#case 6  {#var result {<BDA>      <074> }};
+		#case 7  {#var result {<ADA>       <074>}};
+		#case 8  {#var result {<AEE> <ADA>      <074>}};
+		#case 9  {#var result {<AEE>  <ADA>     <074>}};
+		#case 10 {#var result {<AEE>   <ADA>    <074>}};
+		#case 11 {#var result {<AEE>    <ADA>   <074>}};
+		#case 12 {#var result {<AEE>     <ADA>  <074>}};
+		#case 13 {#var result {<AEE>      <ADA> <074>}};
+		#case 14 {#var result {<AEE>       <074>}};
+	};
+};
+#function {hpcolor}
+{
+	#if {%2<=0} {#var result <014>%1<074>} {#var result <074>%1};
 };
 #class status close
