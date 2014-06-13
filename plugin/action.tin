@@ -131,11 +131,13 @@
 		init_set;
 		show.init;
 		check_baowei;
-		check_naijiu;
-		#send {hp};
-		#send {jifa};
-		#send {l};
-		pfm_special;
+		#delay {0.5} {
+			check_naijiu;
+			#send {hp};
+			#send {jifa};
+			#send {l};
+			pfm_special;
+		};
 	};
 };
 
