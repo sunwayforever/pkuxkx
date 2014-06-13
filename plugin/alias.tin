@@ -708,3 +708,30 @@
 #alias {play} {
 	#system {mplayer sound/%1 1>/dev/null 2>&1 &};
 };
+
+#alias {walk_to} {
+	#var  direction %1;
+	#var  action #cr;
+	#if {@ismember{${direction};exits_list}} {
+		${direction};
+	};
+	#else {
+		#foreach {${exits_list}[%*]} {exit}{
+			#regexp {${exit}} {%*${direction}%*} {#var action ${exit}};
+		};
+		${action};
+	};
+};
+
+#macro {\e[1;3A} {
+	walk_to north;
+};
+#macro {\e[1;3B} {
+	walk_to south;
+};
+#macro {\e[1;3D} {
+	walk_to west;
+};
+#macro {\e[1;3C} {
+	walk_to east;
+};

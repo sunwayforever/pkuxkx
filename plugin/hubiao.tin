@@ -132,6 +132,7 @@ load chaos;
 	};
 	
 	#action {劫匪趁你不注意，推着镖车就跑，你赶紧追了上去。} {
+		#show <acf>乱入<099>;
 		hb.pause;
 		#var mixin_lunci 6;
 		#delay {hb_delay} {
@@ -380,7 +381,7 @@ load chaos;
 };
 
 #alias {hb.start} {
-	set brief 1;
+	set brief 2;
 	#var hb_auto 1;
 	#var getesc_current_score 0;
 	#var getesc_current_id 0;
@@ -765,7 +766,6 @@ load chaos;
 #alias {hb.stop} {
 	#var hb_auto 0;
 	#var max_dz 180;
-	set brief 2;
 	#class hb.auto.inner kill;
 	#undelay {hb_auto_delay};
 	dz.cancel;
@@ -805,7 +805,7 @@ load chaos;
 	};
 
 	#action {chaos error} {
-		show_to_info 两步乱入: ${hb_path_next}: ${last_position};
+		show_to_info 乱入;
 		notify.alert escort chaos;
 	};
 	
