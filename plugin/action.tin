@@ -339,5 +339,11 @@
 	notify.alert 张三!;
 	show_to_info 张三!;
 };
+
+#action {你端起一碗酥油茶喝了一大口，长出了口气，满意的点了点头。} {
+	#delay {delay_hp} {
+		#send {hp};
+	} {1};
+};
 #class action close;
 
