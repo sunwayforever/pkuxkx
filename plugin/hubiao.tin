@@ -77,9 +77,7 @@ load chaos;
 				};
 				#ticker {hb_walk} {
 					#if {${hb_force_wait} == 0 && ${hb_paused} == 0 && ${hb_wait} == 0} {
-						on_echo {
-							${hb_path_next};
-						};
+						${hb_path_next};
 					};
 				} {5};
 			} {3};
