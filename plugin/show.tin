@@ -62,7 +62,7 @@
 
 #alias {show_to_quest} {
 	#var show_quest %0;
-	#echo {{<fca>${show_status}<099> => <cfa>${show_quest}<099>}{-1}};
+	#echo {{<099>${show_status}<099> => <cfa>${show_quest}<099>}{-1}};
 };
 
 #gag {║╬опад║©%*};
