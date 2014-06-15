@@ -280,7 +280,7 @@ load chaos;
 				#math hb_path_index ${hb_path_index}+1;
 				#if {${hb_path_index} > ${hb_path_size}} {
 					hb.pause;
-					#delay {5} {
+					#delay {10} {
 						hb.b;	
 					};
 				};
