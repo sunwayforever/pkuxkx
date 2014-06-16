@@ -54,6 +54,7 @@
 };
 
 #alias {jd.start} {
+	#alias tmp_jd %1;
 	#class jd.inner open;
 	#action {你从包袱中拿出%*之%*。} {
 		#var jd_item @mapget{jianding;%%2};
@@ -84,10 +85,12 @@
 	@stackcreate{tmp};
 	remove all;
 	unwield all;
-	get all from bao;
-
-	#delay {3} {
-		jd.next;
+	gt rbz;
+	on_there {
+		get all from bao;
+		#delay {3} {
+			jd.next;
+		};		
 	};
 };
 
@@ -99,9 +102,11 @@
 	};
 	#else {
 		#class jd.inner kill;
-		show_to_info done;
 		we;
 		wi;
+		#delay {3} {
+			tmp_jd;
+		};
 	};
 };
 

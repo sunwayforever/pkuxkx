@@ -23,10 +23,7 @@
 };
 
 #alias {gem.combine} {
-	#var target_gem_id -1;
-	#3 {pack gem};
-	#var gem.combine_count 0;
-	jiancha jin nang;
+	#alias tmp_combine %1;
 	#class gem.combine.inner open;
 	#action {(%s%S)%*{◎|☆|★}%*\*%S%s(%s%S)%*{◎|☆|★}%*\*%S%s(%s%S)%*{◎|☆|★}%*\*%S%s(%s%S)%*{◎|☆|★}%*\*%S%s(%s%S)%*{◎|☆|★}%*\*%S} {
 		check_gem {%%2} {%%3} {%%6};
@@ -57,8 +54,28 @@
 	#action {(%s%S)%*{◎|☆|★}%*\*%S} {
 		check_gem {%%2} {%%3} {%%6};
 	} {5};
-	#class gem.combine.inner close;
-	
+
+	#action {你的宝石袋里空空荡荡} {
+		combine_gems_done;
+	};
+
+	#action {用pack <物品id>将宝石放入其中} {
+		combine_gems;
+	};
+
+	#alias {combine_gems_done} {
+		#class gem.combine.inner kill;
+		#show 合成完毕;
+		tmp_combine;
+	};
+
+	#alias {combine_gems_prepare} {
+		#var target_gem_id -1;
+		#3 {pack gem};
+		#var gem.combine_count 0;
+		jiancha jin nang;
+	};
+
 	#alias {combine_gems} {
 		#if {${target_gem_id} != -1} {
 			#3 {pickgem ${target_gem_id}};
@@ -70,22 +87,20 @@
 			};
 			#if {${nl_percent} > 20} {
 				#delay {5} {
-					gem.combine;
+					combine_gems_prepare;
 				};
 			};
 			#else {
-				show_to_info 内力不足, 无法 combine gem;
+				combine_gems_done;
 			};
 		};
 		#else {
-			show_to_info 无法合成;
+			combine_gems_done;
 		};
 	};
-	#action {用pack <物品id>将宝石放入其中} {
-		#unaction {用pack <物品id>将宝石放入其中};
-		#class gem.combine.inner kill;
-		combine_gems;
-	};
+	#class gem.combine.inner close;
+
+	combine_gems_prepare;
 };
 
 #alias {gem.transfer} {

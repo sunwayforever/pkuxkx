@@ -552,17 +552,7 @@ load chaos;
 		play alert.wav;
 		xmpp.notify √‹–≈;
 		#delay {2} {
-			gt rbz;
-			on_there {
-				sell all;
-				#delay {3} {
-					get.san {
-						#if {${min_naijiu} < 250} {
-							repair;
-						};
-					};
-				};
-			};
+			chain on_sell get.san on_repair gem.combine jd.start;
 		};
 	};
 

@@ -243,6 +243,7 @@
 };
 
 #alias {repair} {
+	#alias tmp_repair %1;
 	#unticker {naijiu};
 	#var orig_here ${CurrentPosition};
 	#action {抵达目的地} {
@@ -254,7 +255,7 @@
 			};
 			play repair.wav;
 			sw;w;
-			gt ${orig_here};			
+			tmp_repair;
 		};		
 	};
 	gt ly;
@@ -734,4 +735,37 @@
 };
 #macro {\e[1;3C} {
 	walk_to east;
+};
+
+#alias {chain} {
+	%1 {%2 {%3 {%4 {%5 {%6 {%7 {%8 {%9 {%10 {};};};};};};};};};};
+};
+
+#alias {on_goto} {
+	#alias tmp_goto %2;
+	on_there {
+		tmp_goto;
+	};
+	gt %1;
+};
+
+#alias {on_sell} {
+	#alias tmp_sell %1;
+	on_there {
+		sell all;
+		#delay {3} {
+			tmp_sell;
+		};
+	};
+	gt rbz;
+};
+
+#alias {on_repair} {
+	#alias tmp_on_repair %1;
+	#if {${min_naijiu} < 250} {
+		repair %1;
+	};
+	#else {
+		tmp_on_repair;
+	};
 };
