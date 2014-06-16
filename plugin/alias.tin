@@ -35,7 +35,8 @@
 	};
 	#action {你拿出%*张一千两银票，存进了银号。} {
 		#class money.cun.inner kill;
-		show_to_info 存 @ctd{%%1} cash;	
+		show_to_info 存 @ctd{%%1} cash;
+		#send {sc};
 	};
 	#action {你要看什么} {
 		#class money.cun.inner kill;
