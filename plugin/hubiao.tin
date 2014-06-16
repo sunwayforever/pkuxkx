@@ -552,7 +552,7 @@ load chaos;
 		play alert.wav;
 		xmpp.notify √‹–≈;
 		#delay {2} {
-			chain on_sell get.san on_repair gem.combine jd.start;
+			chain on_sell get.san on_repair gem.combine jd.start mx.o;
 		};
 	};
 

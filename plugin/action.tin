@@ -16,6 +16,7 @@
 };
 
 #action {http://pkuxkx.net/antirobot/robot.php?filename=%1} {
+	show_to_info http://pkuxkx.net/antirobot/robot.php?filename=%1; 
 	xmpp.notify http://pkuxkx.net/antirobot/robot.php?filename=%1;
 	#system {google-chrome http://pkuxkx.net/antirobot/robot.php?filename=%1 1>/dev/null 2>&1 &};
 };
