@@ -551,6 +551,7 @@ load chaos;
 		notify.alert escort additional reward;
 		play alert.wav;
 		xmpp.notify √‹–≈;
+		chifan;
 		#delay {2} {
 			chain on_sell get.san on_repair gem.combine jd.start mx.o;
 		};

@@ -477,10 +477,7 @@
 	};
 	#class health.inner close;
 
-	chifan;
-	#delay {1} {
-		check_health;
-	};
+	check_health;
 };
 
 #alias {b2} {
