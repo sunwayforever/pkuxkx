@@ -83,10 +83,10 @@
 	
 	#class jd.inner close;
 	@stackcreate{tmp};
-	remove all;
-	unwield all;
 	gt rbz;
 	on_there {
+		remove all;
+		unwield all;
 		get all from bao;
 		#delay {3} {
 			jd.next;
