@@ -477,6 +477,7 @@
 	};
 	#class health.inner close;
 
+	chifan;
 	check_health;
 };
 
