@@ -478,7 +478,9 @@
 	#class health.inner close;
 
 	chifan;
-	check_health;
+	#delay {1} {
+		check_health;
+	};
 };
 
 #alias {b2} {
