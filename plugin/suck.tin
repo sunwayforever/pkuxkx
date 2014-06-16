@@ -51,13 +51,16 @@
 				fight gu jia;
 				halt;
 				reborn;
-				hit gu jia;
+				#ticker {hit_gujia} {
+					hit gu jia;					
+				} {5};
 			};
 		};
 		reborn;
 	};
 	#class suckhelper.inner open;
 	#action {白骨架脚下一个不稳，跌在地上一动也不动了。} {
+		#unticker {hit_gujia};
 		#ticker {getgujia} {
 			get gu jia;
 		} {3};
@@ -66,8 +69,12 @@
 		#class suckhelper.inner kill;
 		#unticker {getgujia};
 		on_truce {
-			s;s;sd;sd;sd;
-			gt yz;
+			#delay {1} {
+				s;s;sd;sd;sd;				
+			};
+			#delay {2} {
+				gt yz;
+			};
 			on_there {
 				n;se;
 				drop gu jia;
