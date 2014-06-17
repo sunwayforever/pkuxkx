@@ -488,15 +488,13 @@ load chaos;
 	};
 
 	#action {来认领押镖任务} {
-		#delay {1} {
-			#if {${getesc_current_id} != 0} {
-				hb.q ${getesc_current_id};
-			};
-			#else {
-				#delay {hb_auto_delay} {
-					hb.start;
-				} {10};
-			};
+		#if {${getesc_current_id} != 0} {
+			hb.q ${getesc_current_id};
+		};
+		#else {
+			#delay {hb_auto_delay} {
+				hb.start;
+			} {10};
 		};
 	};
 
@@ -706,7 +704,6 @@ load chaos;
 				#return -1;
 			};
 			#else {
-				#nop bug
 				#return -1;
 			};
 		};
