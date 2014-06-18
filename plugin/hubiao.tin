@@ -885,7 +885,7 @@ load chaos;
 		l;
 	};
 	#action {财物的伙计 %S(%S)} {
-		#format {tmp} {%l} {%%2};
+		#format {tmp_huoji} {%l} {%%2};
 		#class mx.yao.inner open;
 		#action {把一包财物砸向你，一转眼不见了。} {
 			show_to_quest 推车: 拿到财宝;
@@ -897,7 +897,7 @@ load chaos;
 			#class mx.yao.inner kill;	
 		};
 		#ticker {yao} {
-			ask $tmp about yao;
+			ask $tmp_huoji about yao;
 		} {0.5};
 		#class mx.yao.inner close;
 	} {1};
