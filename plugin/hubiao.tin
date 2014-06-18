@@ -269,7 +269,9 @@ load chaos;
 	#alias {hb.back} {
 		hb.merge_path;
 		#nop hb.duobi;
-		hb.resume;
+		on_truce {
+			hb.resume;
+		};
 	};
 
 	#if {${hb_ing} == 1} {
