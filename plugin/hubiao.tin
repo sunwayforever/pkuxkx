@@ -267,7 +267,7 @@ load chaos;
 	#var hb_force_wait 0;
 
 	#alias {hb.back} {
-		hb.merge_path;
+		#nop hb.merge_path;
 		#nop hb.duobi;
 		on_truce {
 			hb.resume;
