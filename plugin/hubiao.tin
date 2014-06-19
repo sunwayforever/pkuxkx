@@ -289,8 +289,13 @@ load chaos;
 				#if {${hb_path_index} > ${hb_path_size}} {
 					#unaction {busy_for_move};
 					hb.pause;
-					#delay {10} {
-						hb.b;	
+					#delay {5} {
+						#if {${hb_lunci} == ${mixin_lunci}} {
+							chain on_sell get.san on_repair gem.combine hb.b;						
+						};
+						#else {
+							hb.b;	
+						};
 					};
 				};
 				#else {
@@ -358,7 +363,7 @@ load chaos;
 	ask ${hb_owner} about fail;
 };
 
-#alias hb.b {
+#alias {hb.b} {
 	#if {"${hb_owner}" == "zuo"} {
 		gt zuo;
 	};
@@ -567,9 +572,7 @@ load chaos;
 		play alert.wav;
 		xmpp.notify √‹–≈;
 		chifan;
-		#delay {2} {
-			chain on_sell get.san on_repair gem.combine mx.o;
-		};
+		mx.o;
 	};
 
 	#class hb.auto.inner close;
