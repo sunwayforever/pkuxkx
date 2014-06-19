@@ -134,7 +134,7 @@
 	#var gem_yinyang %3;
 	#var gem_name %4;
 	#list gem_types find ${gem_type} gem_type_index;
-	#if {${gem_type_index} < ${combine_target}} {
+	#if {${gem_type_index} <= ${combine_target}} {
 		#if {"${gem_name}" == "神龙骨" || "${gem_name}" == "凤凰羽" || "${gem_name}" == "玄武甲" || "${gem_name}" == "麒麟角" } {
 			#var key ${gem_type}${gem_yinyang}${gem_name};
 			@mapset{gem_mark;$key;${gem_id}};
@@ -209,17 +209,17 @@
 			pickgem ${gem_id_2};
 			#delay {3} {
 				merge gem;
-			};
-			#delay {4} {
-				pack gem;
-			};
-			#if {${nl_percent} > 20} {
-				#delay {5} {
-					gem.merge;
+				#delay {3} {
+					pack gem;
+					#if {${nl_percent} > 20} {
+						#delay {5} {
+							gem.merge;
+						};
+					};
+					#else {
+						show_to_info 内力不足, 无法 merge gem;
+					};
 				};
-			};
-			#else {
-				show_to_info 内力不足, 无法 merge gem;
 			};
 		};
 		#else {
