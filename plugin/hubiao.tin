@@ -170,7 +170,9 @@ load chaos;
 		show_to_quest 推车: ${hb_lunci}: 任务完成: ${hb_start_time} -> ${hb_end_time};
 		notify escort done;
 		hb.teardown;
-		hb.back;			
+		#delay {3} {
+			hb.back;			
+		};
 	} {1};
 
 	#class hb_setup_inner close;
@@ -267,7 +269,7 @@ load chaos;
 	#var hb_force_wait 0;
 
 	#alias {hb.back} {
-		#nop hb.merge_path;
+		hb.merge_path;
 		#nop hb.duobi;
 		on_truce {
 			hb.resume;
