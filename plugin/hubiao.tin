@@ -716,7 +716,7 @@ load chaos;
 				#return -1;
 			};
 			#else {
-				#return 3;
+				#return -1;
 			};
 		};
 		#elseif {"%1" == "Îäµ±¾£Î÷ïÚ¾Ö"} {
