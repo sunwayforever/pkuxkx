@@ -34,7 +34,7 @@ Thread.new do
         receiver_name=sent_msg_file.gets
         sent_msg=sent_msg_file.gets
         msg = Message.new(JID.new(receiver_name.chomp+"@localhost/xkx"))
-        msg.set_xhtml_body(sent_msg);
+        msg.set_body(sent_msg);
         cl.send msg
         sleep 1
       end
