@@ -9,6 +9,7 @@
 				#unticker {check};
 				halt;
 				jump out;
+				chifan;
 				on_health {
 					start_lian;
 				};
