@@ -33,7 +33,8 @@ Thread.new do
       Timeout::timeout(0.5) do
         receiver_name=sent_msg_file.gets
         sent_msg=sent_msg_file.gets
-        msg = Message.new(JID.new(receiver_name.chomp+"@localhost/xkx"), sent_msg)
+        msg = Message.new(JID.new(receiver_name.chomp+"@localhost/xkx"))
+        msg.set_xhtml_body(sent_msg);
         cl.send msg
         sleep 1
       end
