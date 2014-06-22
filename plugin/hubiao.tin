@@ -320,6 +320,9 @@ load chaos;
 	#elseif {"${CurrentPosition}" == "fh"} {
 		#var hb_owner chu;
 	};
+	#elseif {"${CurrentPosition}" == "tf"} {
+		#var hb_owner wang;
+	};
 };
 
 #alias {hb.d} {
@@ -372,6 +375,9 @@ load chaos;
 	};
 	#elseif {"${hb_owner}" == "ma"} {
 		gt fm;
+	};
+	#elseif {"${hb_owner}" == "wang"} {
+		gt tf;
 	};
 
 	on_there {
@@ -759,6 +765,42 @@ load chaos;
 		};
 		#elseif {"%1" == "晋阳萧府"} {
 			#return 1;
+		};
+		#else {
+			#return -1;
+		};
+	};
+	#elseif {"${hb_owner}" == "wang"} {
+		#if {"%1" == "嘉兴钱庄"} {
+			#return 4;
+		};
+		#elseif {"%1" == "武当荆西镖局"} {
+			#if {"${xy_info}" == "on"} {
+				#return -1;
+			};
+			#else {
+				#return -1;
+			};
+		};
+		#elseif {"%1" == "牙山小荒地"} {
+			#return 4;
+		};
+		#elseif {"%1" == "南昌飞虎镖局"} {
+			#return 4;
+		};
+		#elseif {"%1" == "泉州当铺"} {
+			#return 4;
+		};
+		#elseif {"%1" == "岳阳车马行"} {
+			#return 4;
+		};
+		#elseif {"%1" == "襄阳当铺"} {
+			#if {"${xy_info}" == "on"} {
+				#return -1;
+			};
+			#else {
+				#return -1;
+			};
 		};
 		#else {
 			#return -1;
@@ -1228,6 +1270,43 @@ load chaos;
 	     		};
 	     	};
 	    };
+	};
+	#elseif {"${hb_owner}" == "wang"} {
+	    #if {"${tmp}" == "南昌"} {
+	     	#list hb_path create  {
+				
+			};
+		};
+		#elseif {"${tmp}" == "牙山"} {
+	     	#list hb_path create  {
+				
+			};
+		};
+		#elseif {"${tmp}" == "泉州"} {
+	     	#list hb_path create  {
+				
+			};
+		};
+		#elseif {"${tmp}" == "嘉兴"} {
+	     	#list hb_path create  {
+				
+			};
+		};
+		#elseif {"${tmp}" == "岳阳"} {
+	     	#list hb_path create  {
+				
+			};
+		};
+		#elseif {"${tmp}" == "襄阳"} {
+	     	#list hb_path create  {
+				
+			};
+		};
+		#elseif {"${tmp}" == "武当"} {
+	     	#list hb_path create  {
+				
+			};
+		};
 	};
 	#list hb_path size hb_path_size;
 	#var hb_path_index 0;
