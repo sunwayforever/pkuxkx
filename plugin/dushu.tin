@@ -13,7 +13,7 @@
 	};
 	#else {
 		#alias {do_du} {
-			du $ds_book for 5;
+			du $ds_book for 50;
 		};
 	};
 	
