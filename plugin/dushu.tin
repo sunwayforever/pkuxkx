@@ -8,7 +8,7 @@
 	#class dushu.inner open;
 	#if {"${ds_book}" == "shediao"}  {
 		#alias {do_du} {
-			du $ds_book 5;			
+			du $ds_book 50;			
 		};
 	};
 	#else {
