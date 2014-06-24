@@ -24,12 +24,7 @@
 
 #alias {attack.normal} {
 	on_unbusy {
-		chousui;
-		#delay {1} {
-			on_unbusy {
-				huoqiu;
-			};
-		};
+		huoqiu;
 	};
 	#class attack.inner open;
 	#ticker {huose} {
