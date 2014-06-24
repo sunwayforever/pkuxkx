@@ -118,11 +118,13 @@
 	#cr;
 };
 
-#list my_weapons create {my staff;};
+#list my_weapons create {my spear; my spear 2};
 
 #alias {huose} {
+	unwi;
+	wield staff;
+	perform tianshan-zhang.huose;
 	wi;
-	perform staff.huose;
 };
 
 #alias {huoqiang} {
