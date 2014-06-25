@@ -12,6 +12,7 @@
 
 #read plugin/highlight.tin
 #read plugin/status.tin
+#read plugin/env.tin;
 #read plugin/tuna.tin
 #read plugin/dazuo.tin
 #read plugin/war.tin

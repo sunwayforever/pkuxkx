@@ -130,6 +130,7 @@
 		#send {uptime};
 		#send {time};
 		init_set;
+		update_env;
 		show.init;
 		check_baowei;
 		#delay {0.5} {
