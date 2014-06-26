@@ -70,11 +70,6 @@
     show_to_chat %0;	
 };
 
-#gag {¡¾Ò¥ÑÔ¡¿%*};
-#action {¡¾Ò¥ÑÔ¡¿%*} {
-	show_to_chat %0;
-};
-
 #action {%1{»Ø´ð|¸æËß}Äã£º%2} {
 	show_to_chat ¡¾Ë½ÁÄ¡¿%0;
 };

@@ -333,12 +333,12 @@
 
 	#action {%*告诉你：【%*】目前在%*} {
 		#unticker {pp};
-		show_to_chat 【PP】%%0;
+		show_to_chat 【私聊】%%0;
 	} {1};
 
 	#action {%*告诉你：%*并不存在} {
 		#unticker {pp};
-		show_to_chat 【PP】%%0;
+		show_to_chat 【私聊】%%0;
 	} {1};
 };
 
