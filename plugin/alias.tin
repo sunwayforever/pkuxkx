@@ -314,7 +314,7 @@
 		};
 	};
 	#else {
-		#if {@isalpha{%1} == 1} {
+		#if {@isalphabet{%1} == 1} {
 			autopp.set_en %0;
 		};
 		#else {
