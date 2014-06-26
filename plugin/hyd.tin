@@ -37,7 +37,7 @@
 		#math hyd_count ${hyd_count}+1;
 		show_to_quest #${hyd_count}: 胡一刀: %%2: %3(%%4);
 		raw;
-		autopp.set_en %%4;
+		pp %%4;
 	};
 
 	#action {人算不如天算，想不到我兄弟五人都栽在你的手中！} {
@@ -48,7 +48,7 @@
 	#action {胡一刀说道：『我收到消息，听说%*有盗宝人%*(%*)找到了闯王宝藏的地图}  {
 		#unaction {胡一刀说道：『我收到消息，听说%*有盗宝人%*(%*)找到了闯王宝藏的地图};
 		#var hyd_count 1;
-		autopp.set_en %%3;
+		pp %%3;
 		show_to_quest #${hyd_count}: 胡一刀: %%1: %%2(%%3);
 	};
 

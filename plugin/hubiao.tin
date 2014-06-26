@@ -559,7 +559,7 @@ load chaos;
 		#format {hb_start_time} {%t} {%T};
 		
 		show_to_quest ${hb_lunci}: ÍÆ³µ: ${tmp}|%%2|%%3;
-		autopp.set_zh %%2;
+		pp %%2;
 		notify escort start;
 
 		hb.setup;
