@@ -72,4 +72,8 @@
 		#list ${stack_name} delete ${tmp_size};
 	};
 };
+
+#function {isalphabet} {
+	#regexp {%1} {^%w$} {#var result 1} {#var result 0};
+}
 #class util close

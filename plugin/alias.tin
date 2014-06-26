@@ -234,11 +234,6 @@
 	quest;
 };
 
-#alias {pp} {
-	helpme ...;
-	helpme find %0;
-}
-
 #alias {jd} {
 	jianding %0;
 };
@@ -309,11 +304,32 @@
 	};
 };
 
+#alias {pp} {
+	#if {"%0" == ""} {
+		#if {"${pp_target}" != ""} {
+			autopp;
+		};
+		#else {
+			show_to_info no target;
+		};
+	};
+	#else {
+		#if {@isalpha{%1} == 1} {
+			autopp.set_en %0;
+		};
+		#else {
+			autopp.set_zh %0;	
+		};
+	};
+};
+
 #alias {autopp} {
 	show_to_info 正在查找 ${pp_target} ...;
-	pp ${pp_target};
+	helpme ...;
+	helpme find ${pp_target};
 	#ticker {pp} {
-		pp ${pp_target};
+		helpme ...;
+		helpme find ${pp_target};
 	} {15};
 
 	#action {%*告诉你：【%*】目前在%*} {
