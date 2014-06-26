@@ -435,18 +435,15 @@ load chaos;
 	#action {${char_name}帮%*追回财物，额外获得%*点经验} {
 		show_to_info 额外获得 @ctd{%%2} 点经验;
 	};
-	
-	#action {哇，你太厉害了，这么快就把这些财物追回，我有重谢！} {
-		pack gem;	
-	};
-	
-	#action {掉了出来一颗} {
+
+	#alias {got_gem} {
 		#action {你将手中%*{◎|☆|★}%*放进了宝石袋} {
 			show_to_info 掉宝: %%%1%%%2%%%3;
 			notify.info %%%1%%%2%%%3;
 			#var gem_level @gemlevel{%%%1};
 			#if {${gem_level} > 3} {
-				play gem2.wav;			
+				play gem2.wav;
+				xmpp.notify 掉宝: %%%1%%%2%%%3;
 			};
 			#else {
 				play gem.wav;	
@@ -457,6 +454,15 @@ load chaos;
 			#unaction {你将手中%*{◎|☆|★}%*放进了宝石袋};
 		} {3};
 	};
+	
+	#action {哇，你太厉害了，这么快就把这些财物追回，我有重谢！} {
+		got_gem;
+	};
+	
+	#action {掉了出来一颗} {
+		got_gem;
+	};
+	
 	#action {从劫匪身上掉了出来一%*之%*} {
 		jianding @mapget{jianding;%%2}
 	};
@@ -553,7 +559,7 @@ load chaos;
 		#format {hb_start_time} {%t} {%T};
 		
 		show_to_quest ${hb_lunci}: 推车: ${tmp}|%%2|%%3;
-		#nop autopp.set_zh %%2;
+		autopp.set_zh %%2;
 		notify escort start;
 
 		hb.setup;

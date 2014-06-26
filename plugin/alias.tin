@@ -336,8 +336,8 @@
 	#var pp_target_zhname %1;
 	helpme ...;
 	helpme py ${pp_target_zhname};
-	#action {淘米(zleo)告诉你：%*} {
-		#unaction {淘米(zleo)告诉你：%*};
+	#action {告诉你：拼音：%*} {
+		#unaction {告诉你：拼音：%*};
 		#var pp_target %%1;
 		autopp;
 	} {1};
