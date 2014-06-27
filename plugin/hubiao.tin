@@ -335,6 +335,7 @@ load chaos;
 	#else {
 		#if {${hb_lunci} == ${mixin_lunci} && ${hb_auto_mixin} == 0} {
 			#var hb_lunci 0;
+			@setenv{hb_lunci;${hb_lunci}};
 			notify.alert next mixin;
 			xmpp.notify next mixin;
 			play alert.wav;
@@ -363,6 +364,7 @@ load chaos;
 
 #alias {hb.f} {
 	#var hb_lunci 0;
+	@setenv{hb_lunci;${hb_lunci}};
 	hb.teardown;
 	hb.get_owner;
 	ask ${hb_owner} about fail;
@@ -403,6 +405,7 @@ load chaos;
 };
 
 #alias {hb.start} {
+	#var hb_lunci @getenv{hb_lunci};
 	set brief 2;
 	#var hb_auto 1;
 	#var getesc_current_score 0;
@@ -558,6 +561,7 @@ load chaos;
 		hb.get_path %%1;
 
 		#math hb_lunci ${hb_lunci}+1;
+		@setenv{hb_lunci;${hb_lunci}};
 		#format {hb_start_time} {%t} {%T};
 		
 		show_to_quest ${hb_lunci}: 推车: ${tmp}|%%2|%%3;
@@ -580,6 +584,7 @@ load chaos;
 	#action {递给你一封密信} {
 		#var has_mixin 1;
 		#var hb_lunci 0;
+		@setenv{hb_lunci;${hb_lunci}};
 		#var mixin_lunci 5;
 		show_to_quest 推车: 密信;
 		notify.alert escort additional reward;
