@@ -170,7 +170,7 @@ load chaos;
 		show_to_quest 推车: ${hb_lunci}: 任务完成: ${hb_start_time} -> ${hb_end_time};
 		notify escort done;
 		hb.teardown;
-		#delay {3} {
+		#delay {5} {
 			hb.back;			
 		};
 	} {1};
@@ -269,7 +269,7 @@ load chaos;
 	#var hb_force_wait 0;
 
 	#alias {hb.back} {
-		#nop hb.merge_path;
+		hb.merge_path;
 		#nop hb.duobi;
 		on_truce {
 			hb.resume;
@@ -280,14 +280,17 @@ load chaos;
 		chaos.remember;
 	};
 	#else {
-		#action {busy_for_move} {
-			#math hb_path_index ${hb_path_index}-1;	
+		#math hb_path_index ${hb_path_index}+1;
+		#list hb_path get ${hb_path_index} hb_path_next;
+		
+		#action {get_exits_done} {
+			#math hb_path_index ${hb_path_index}+1;
+			#list hb_path get ${hb_path_index} hb_path_next;
 		};
 		#ticker {hb_walk} {
 			#if {${hb_force_wait} == 0} {
-				#math hb_path_index ${hb_path_index}+1;
 				#if {${hb_path_index} > ${hb_path_size}} {
-					#unaction {busy_for_move};
+					#unaction {get_exits_done};
 					hb.pause;
 					#delay {5} {
 						#if {${hb_lunci} == ${mixin_lunci}} {
@@ -299,11 +302,10 @@ load chaos;
 					};
 				};
 				#else {
-					#list hb_path get ${hb_path_index} hb_path_next;
 					${hb_path_next};
 				};
 			};
-		} {1.5};
+		} {1};
 	}
 };
 
