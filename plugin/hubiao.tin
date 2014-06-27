@@ -170,7 +170,7 @@ load chaos;
 		show_to_quest 推车: ${hb_lunci}: 任务完成: ${hb_start_time} -> ${hb_end_time};
 		notify escort done;
 		hb.teardown;
-		#delay {5} {
+		#delay {10} {
 			hb.back;			
 		};
 	} {1};
