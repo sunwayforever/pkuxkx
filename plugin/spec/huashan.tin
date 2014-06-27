@@ -43,9 +43,6 @@
 		poqi;
 	};
 	#class attack.inner open;
-	#ticker {fj} {
-		feijian;
-	} {6};
 	#class attack.inner close;
 };
 
@@ -248,7 +245,7 @@
 	halt;
 };
 #var shifu yue;
-#list my_weapons create {sword;};
+#list my_weapons create {my spear; my spear 2};
 #var menzhong ning;
 #var menzhong_didian hs;
 #var char_menpai_position hs;
