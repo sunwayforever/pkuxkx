@@ -4,7 +4,7 @@
 	#class attack.inner open;
 	#ticker {poqi} {
 		poqi;
-	} {4.8};
+	} {2.8};
 	#class attack.inner close;
 };
 
@@ -40,7 +40,7 @@
 
 #alias {attack.hubiao} {
 	on_unbusy {
-		poqi;
+		po;
 	};
 	#class attack.inner open;
 	#class attack.inner close;
