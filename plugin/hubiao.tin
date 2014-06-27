@@ -787,7 +787,7 @@ load chaos;
 	};
 	#elseif {"${hb_owner}" == "wang"} {
 		#if {"%1" == "嘉兴钱庄"} {
-			#return 4;
+			#return -1;
 		};
 		#elseif {"%1" == "武当荆西镖局"} {
 			#if {"${xy_info}" == "on"} {
@@ -798,16 +798,16 @@ load chaos;
 			};
 		};
 		#elseif {"%1" == "牙山小荒地"} {
-			#return 4;
+			#return 5;
 		};
 		#elseif {"%1" == "南昌飞虎镖局"} {
 			#return 4;
 		};
 		#elseif {"%1" == "泉州当铺"} {
-			#return 4;
+			#return 5;
 		};
 		#elseif {"%1" == "岳阳车马行"} {
-			#return 4;
+			#return 6;
 		};
 		#elseif {"%1" == "襄阳当铺"} {
 			#if {"${xy_info}" == "on"} {
@@ -1290,17 +1290,21 @@ load chaos;
 	    #if {"${tmp}" == "南昌"} {
 	     	#list hb_path create  {
 				gn;gsw;gs;gs;gs;gs;gs;gsu;gse;gs;gs;gs;ge;gn;
+				gs;ge;ge;geu;geu;gwd;gwd;gw;gw;gs;gn;gw;gw;gn;gs;gs;gn;gw;gw;gwu;gwu;gnu;genter;gw;ge;ge;gw;gn;gs;gout;gsd;
+				gwu;gnd;gsu;ged;ged;ged;ge;ge;ge;gs;gw;ge;ge;gw;gs;gs;gs;gse;gs;gse;gnw;gn;gnw;gn;gn;gn;ge;gw;gn;gn;gw;ge;ge;gw;gn;gs;gs;ge;gn;
 			};
 		};
 		#elseif {"${tmp}" == "牙山"} {
 	     	#list hb_path create  {
 				gn;gne;gne;ge;ge;gne;geu;ged;ged;gse;gse;gse;gse;gs;gs;gs;gse;ge;ge;ge;ge;gn;gn;
 				ge;ge;ge;gs;gse;gse;ge;gse;gs;gse;gse;gsd;ge;ge;gse;gne;ge;gne;gne;ge;ge;ge;ge;ge;ge;ge;
+				gn;gw;ge;ge;gw;gn;gs;gs;ge;gn;gs;ge;gn;gs;ge;gw;gw;gw;gs;gw;ge;ge;gw;gs;gw;ge;ge;gw;gs;gn;gn;gn;gw;gn;gs;gs;gn;gw;gs;gn;ge;ge;
 			};
 		};
 		#elseif {"${tmp}" == "泉州"} {
 	     	#list hb_path create  {
 				gn;gsw;gs;gs;gs;gs;gs;gsu;gse;gs;gs;gs;gs;gs;gs;gs;gse;gs;gse;gs;gs;ge;
+				gn;gs;gne;gne;gne;gn;gs;gsw;gsw;gsw;gs;gn;ged;gn;gs;gs;gn;gwu;gw;gn;gs;gs;gs;ge;gw;gn;gn;gw;gn;gs;gs;gn;gnw;gw;ge;gse;ge;ge;
 			};
 		};
 		#elseif {"${tmp}" == "嘉兴"} {
@@ -1310,7 +1314,8 @@ load chaos;
 		};
 		#elseif {"${tmp}" == "岳阳"} {
 	     	#list hb_path create  {
-				gn;gsw;gsw;gsw;gsw;gw;gwu;gnw;gwu;gw;gw;gw;gs;
+				gn;gsw;gsw;gsw;gsw;gw;gwu;gnw;gwu;gw;gw;gw;
+				gn;gn;gn;gs;gs;ge;gw;gs;ge;gn;gs;gs;gn;ge;ge;gw;gw;gw;gw;gn;gs;gs;gn;gw;gw;gu;gd;gs;gn;ge;ge;ge;gs;gw;ge;ge;gw;gs;gs;gn;gn;
 			};
 		};
 		#elseif {"${tmp}" == "襄阳"} {
