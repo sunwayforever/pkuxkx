@@ -302,10 +302,12 @@ load chaos;
 					};
 				};
 				#else {
-					${hb_path_next};
+					on_echo {
+						${hb_path_next};
+					};
 				};
 			};
-		} {1};
+		} {1.8};
 	}
 };
 
