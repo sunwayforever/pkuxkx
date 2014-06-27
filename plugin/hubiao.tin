@@ -1282,37 +1282,38 @@ load chaos;
 	#elseif {"${hb_owner}" == "wang"} {
 	    #if {"${tmp}" == "ÄÏ²ý"} {
 	     	#list hb_path create  {
-				
+				gn;gsw;gs;gs;gs;gs;gs;gsu;gse;gs;gs;gs;ge;gn;
 			};
 		};
 		#elseif {"${tmp}" == "ÑÀÉ½"} {
 	     	#list hb_path create  {
-				
+				gn;gne;gne;ge;ge;gne;geu;ged;ged;gse;gse;gse;gse;gs;gs;gs;gse;ge;ge;ge;ge;gn;gn;
+				ge;ge;ge;gs;gse;gse;ge;gse;gs;gse;gse;gsd;ge;ge;gse;gne;ge;gne;gne;ge;ge;ge;ge;ge;ge;ge;
 			};
 		};
 		#elseif {"${tmp}" == "ÈªÖÝ"} {
 	     	#list hb_path create  {
-				
+				gn;gsw;gs;gs;gs;gs;gs;gsu;gse;gs;gs;gs;gs;gs;gs;gs;gse;gs;gse;gs;gs;ge;
 			};
 		};
 		#elseif {"${tmp}" == "¼ÎÐË"} {
 	     	#list hb_path create  {
-				
+				gn;gne;gne;ge;ge;gne;geu;ged;ged;gse;gse;gse;gse;gs;gs;gs;gse;ge;ge;ge;ge;gn;gn;ge;ge;ge;gs;gse;gse;ge;gse;gs;gse;gse;gsd;ge;
 			};
 		};
 		#elseif {"${tmp}" == "ÔÀÑô"} {
 	     	#list hb_path create  {
-				
+				gn;gsw;gsw;gsw;gsw;gw;gwu;gnw;gwu;gw;gw;gw;gs;
 			};
 		};
 		#elseif {"${tmp}" == "ÏåÑô"} {
 	     	#list hb_path create  {
-				
+				gn;gne;gne;gne;gn;gnw;gnw;hb.guohe {jiang};gn;gnw;gnu;gn;gn;gn;gw;gw;gw;gnw;gw;gw;gw;gw;gw;gw;gw;gn;
 			};
 		};
 		#elseif {"${tmp}" == "Îäµ±"} {
 	     	#list hb_path create  {
-				
+				gn;gne;gne;gne;gn;gnw;gnw;hb.guohe {jiang};gn;gnw;gnu;gn;gn;gn;gw;gw;gw;gnw;gw;gw;gw;gw;gw;gw;gw;gw;gw;gw;gw;gw;gw;gw;gw;gw;gn;
 			};
 		};
 	};
