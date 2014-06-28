@@ -664,6 +664,9 @@
 	n;s;e;w;u;d;ne;sw;nw;se;nd;su;nu;sd;eu;wd;ed;wu;
 	gn;gs;ge;gw;gu;gd;gne;gsw;gnw;gse;gnd;gsu;gnu;gsd;geu;gwd;ged;gwu;genter;gout;
 };
+#list abbrev_directions create {
+	n;s;e;w;u;d;enter;out;ne;sw;nw;se;nd;su;nu;sd;eu;wd;ed;wu;
+};
 #list opposite_directions create {
 	south;north;west;east;down;up;out;enter;southwest;northeast;southeast;northwest;southup;northdown;southdown;northup;westdown;eastup;westup;eastdown;
 	s;n;w;e;d;u;sw;ne;se;nw;su;nd;sd;nu;wd;eu;wu;ed;
@@ -672,6 +675,10 @@
 #function {opposite} {
 	#list {directions} {find} {%1} {opposite_index};
 	#list opposite_directions get ${opposite_index} result;
+};
+#function {abbrev} {
+	#list {directions} {find} {%1} {abbrev_index};
+	#list abbrev_directions get ${abbrev_index} result;
 };
 
 #alias {log.clear} {
@@ -730,13 +737,13 @@
 	#var  direction %1;
 	#var  action #cr;
 	#if {@ismember{${direction};exits_list}} {
-		${direction};
+		@abbrev{${direction}};
 	};
 	#else {
 		#foreach {${exits_list}[%*]} {exit}{
 			#regexp {${exit}} {%*${direction}%*} {#var action ${exit}};
 		};
-		${action};
+		@abbrev{${action}};
 	};
 };
 
