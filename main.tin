@@ -65,7 +65,7 @@
 #read plugin/chainless.tin;
 #read plugin/suck.tin;
 
-#read plugin/os/linux.tin;
+#read plugin/os/linux-gnu.tin;
 #script {os_name} {ruby -e "require 'os'; puts OS.host_os();"};
 #var os_name ${os_name}[1];
 #read plugin/os/${os_name}.tin;
