@@ -126,11 +126,11 @@ load chaos;
 		#if {${hb_paused} == 0} {
 			hb.pause;
 			show_to_info 路径出错;
+			xmpp.notify 路径出错;
 		};
 	};
 	
 	#action {劫匪趁你不注意，推着镖车就跑，你赶紧追了上去。} {
-		#show <acf>乱入<099>;
 		hb.pause;
 		#var mixin_lunci 6;
 		#delay {hb_delay} {
@@ -737,7 +737,7 @@ load chaos;
 				#return -1;
 			};
 			#else {
-				#return -1;
+				#return 3;
 			};
 		};
 		#elseif {"%1" == "武当荆西镖局"} {
@@ -745,7 +745,7 @@ load chaos;
 				#return -1;
 			};
 			#else {
-				#return -1;
+				#return 5;
 			};
 		};
 		#elseif {"%1" == "全真天尊讲经堂"} {
@@ -794,7 +794,7 @@ load chaos;
 				#return -1;
 			};
 			#else {
-				#return -1;
+				#return 6;
 			};
 		};
 		#elseif {"%1" == "牙山小荒地"} {
@@ -814,7 +814,7 @@ load chaos;
 				#return -1;
 			};
 			#else {
-				#return -1;
+				#return 2;
 			};
 		};
 		#else {
@@ -871,6 +871,7 @@ load chaos;
 	#action {chaos error} {
 		show_to_info 乱入;
 		notify.alert escort chaos;
+		xmpp.notify 乱入;
 	};
 	
 	chaos.find;
