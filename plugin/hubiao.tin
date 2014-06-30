@@ -12,6 +12,7 @@ load chaos;
 #var hb_paused 0;
 #var hb_auto 0;
 #var hb_lunci 0;
+#var hb_lunci_total 0;
 #var has_mixin 0;
 #var hb_ing 0;
 
@@ -167,7 +168,7 @@ load chaos;
 		hb.end;
 		raw;
 		#format {hb_end_time} {%t} {%T};
-		show_to_quest 推车: ${hb_lunci}: 任务完成: ${hb_start_time} -> ${hb_end_time};
+		show_to_quest 推车: ${hb_lunci_total}+${hb_lunci}: 任务完成: ${hb_start_time} -> ${hb_end_time};
 		notify escort done;
 		hb.teardown;
 		#delay {10} {
@@ -369,7 +370,9 @@ load chaos;
 
 #alias {hb.f} {
 	#var hb_lunci 0;
+	#var hb_lunci_total 0;
 	@setenv{hb_lunci;${hb_lunci}};
+	@setenv{hb_lunci_total;${hb_lunci_total}};
 	hb.teardown;
 	hb.get_owner;
 	ask ${hb_owner} about fail;
@@ -410,6 +413,7 @@ load chaos;
 };
 
 #alias {hb.start} {
+	#var hb_lunci_total @getenv{hb_lunci_total};
 	#var hb_lunci @getenv{hb_lunci};
 	set brief 2;
 	#var hb_auto 1;
@@ -569,7 +573,7 @@ load chaos;
 		@setenv{hb_lunci;${hb_lunci}};
 		#format {hb_start_time} {%t} {%T};
 		
-		show_to_quest ${hb_lunci}: 推车: ${tmp}|%%2|%%3;
+		show_to_quest ${hb_lunci_total}+${hb_lunci}: 推车: ${tmp}|%%2|%%3;
 		pp %%2;
 		notify escort start;
 
@@ -588,6 +592,8 @@ load chaos;
 
 	#action {递给你一封密信} {
 		#var has_mixin 1;
+		#math hb_lunci_total ${hb_lunci_total}+${hb_lunci};
+		@setenv{hb_lunci_total;${hb_lunci_total}};
 		#var hb_lunci 0;
 		@setenv{hb_lunci;${hb_lunci}};
 		#var mixin_lunci 5;
@@ -602,7 +608,7 @@ load chaos;
 	#class hb.auto.inner close;
 	hb.check_mixin;
 	#math next_lunci ${hb_lunci}+1;
-	show_to_quest 推车: ${next_lunci}: 准备;
+	show_to_quest 推车: ${hb_lunci_total}+${next_lunci}: 准备;
 	on_health {hb.q};
 };
 
@@ -960,6 +966,7 @@ load chaos;
 			play get_item.wav;
 			#class mx.yao.inner kill;
 			#class mx.inner kill;
+			back;
 		};
 		#action {这里没有这个人} {
 			#class mx.yao.inner kill;	
