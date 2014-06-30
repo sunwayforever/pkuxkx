@@ -346,5 +346,10 @@
 		#send {hp};
 	} {1};
 };
+
+#action {游方和尚(youfang heshang)告诉你：你还没找到之前失散的亲戚吧？} {
+	show_to_info 认亲;
+	xmpp.notify 认亲;
+};
 #class action close;
 
