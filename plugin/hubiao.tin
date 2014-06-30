@@ -287,10 +287,13 @@ load chaos;
 			#math hb_path_index ${hb_path_index}+1;
 			#list hb_path get ${hb_path_index} hb_path_next;
 		};
+		#alias {l} {#cr};
+		
 		#ticker {hb_walk} {
 			#if {${hb_force_wait} == 0} {
 				#if {${hb_path_index} > ${hb_path_size}} {
 					#unaction {get_exits_done};
+					#unalias {l};
 					hb.pause;
 					#delay {5} {
 						#if {${hb_lunci} == ${mixin_lunci}} {

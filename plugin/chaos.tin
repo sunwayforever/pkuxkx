@@ -78,10 +78,20 @@
 			#unaction {get_position: done};
 		};
 	};
-	#var exits_list_index 1;
-	#list exits_list size exits_list_size;
-	#delay {1} {
-		check;
+
+	#ticker {l} {
+		l;
+	} {3};
+
+	#action {get_exits_done} {
+		#unaction {get_exits_done};
+		#unticker {l};
+		
+		#var exits_list_index 1;
+		#list exits_list size exits_list_size;
+		#delay {1} {
+			check;
+		};
 	};
 };
 
