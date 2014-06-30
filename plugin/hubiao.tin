@@ -100,7 +100,7 @@ load chaos;
 	#class hb_setup_inner open;
 	#action {镖车呼啦一声散了架} {
 		hb.pause;
-		show_to_quest 镖车呼啦一声散了架;
+		show_to_quest 推车: ${hb_lunci_total}+${hb_lunci}: 镖车呼啦一声散了架;
 	};
 
 	#alias {chan} {
@@ -507,12 +507,12 @@ load chaos;
 
 	#action {看来该找机会逃跑了} {
 		hb.pause;
-		show_to_quest 丢镖;
+		show_to_quest 推车: ${hb_lunci_total}+${hb_lunci}: 丢镖;
 		xmpp.notify 丢镖;
 	};
 
 	#action {^慢慢地你终于又有了知觉....} {
-		show_to_quest 挂了;
+		show_to_quest 推车: ${hb_lunci_total}+${hb_lunci}: 挂了;
 		notify.alert 挂了; 
 		xmpp.notify 挂了;
 	};
@@ -573,7 +573,7 @@ load chaos;
 		@setenv{hb_lunci;${hb_lunci}};
 		#format {hb_start_time} {%t} {%T};
 		
-		show_to_quest ${hb_lunci_total}+${hb_lunci}: 推车: ${tmp}|%%2|%%3;
+		show_to_quest 推车: ${hb_lunci_total}+${hb_lunci}: ${tmp}|%%2|%%3;
 		pp %%2;
 		notify escort start;
 
@@ -592,12 +592,12 @@ load chaos;
 
 	#action {递给你一封密信} {
 		#var has_mixin 1;
-		#math hb_lunci_total ${hb_lunci_total}+${hb_lunci};
+		#math hb_lunci_total ${hb_lunci_total}+1;
 		@setenv{hb_lunci_total;${hb_lunci_total}};
 		#var hb_lunci 0;
 		@setenv{hb_lunci;${hb_lunci}};
 		#var mixin_lunci 5;
-		show_to_quest 推车: 密信;
+		show_to_quest 推车: ${hb_lunci_total}+${hb_lunci}: 密信;
 		notify.alert escort additional reward;
 		play alert.wav;
 		xmpp.notify 密信;
@@ -962,7 +962,7 @@ load chaos;
 		#format {tmp_huoji} {%l} {%%2};
 		#class mx.yao.inner open;
 		#action {把一包财物砸向你，一转眼不见了。} {
-			show_to_quest 推车: 拿到财宝;
+			show_to_quest 推车: ${hb_lunci_total}+${hb_lunci}: 拿到财宝;
 			play get_item.wav;
 			#class mx.yao.inner kill;
 			#class mx.inner kill;
