@@ -1,5 +1,5 @@
 #class gem open
-#var combine_target 5;
+#var combine_target 7;
 #list gem_types create {地;山;水;风;雷;火;泽;天};
 #var gem.combine_count 0;
 #alias {gem} {
