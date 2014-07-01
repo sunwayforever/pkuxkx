@@ -40,6 +40,7 @@
 	} {1};
 	#var min_naijiu 10000;
 	#foreach {${my_weapons}[%*]} {weapon} {l ${weapon}};
+	#foreach {${my_secondary_weapons}[%*]} {weapon} {l ${weapon}};
 };
 
 #ticker {check_naijiu} {

@@ -214,6 +214,7 @@
 };
 
 #list my_weapons create {my sword; my sword 2};
+#list my_secondary_weapons create {my whip;};
 
 stat.register 缠 miss 可是他看破了你的企图，并没有上当;
 stat.register 缠 hit 结果他被你攻了个措手不及！

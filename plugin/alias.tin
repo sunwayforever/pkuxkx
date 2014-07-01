@@ -249,6 +249,9 @@
 			#foreach {${my_weapons}[%*]} {weapon} {
 				fix ${weapon};
 			};
+			#foreach {${my_secondary_weapons}[%*]} {weapon} {
+				fix ${weapon};
+			};
 			play repair.wav;
 			sw;w;
 			tmp_repair;

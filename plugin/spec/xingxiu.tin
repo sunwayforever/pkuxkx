@@ -114,6 +114,7 @@
 };
 
 #list my_weapons create {my spear; my spear 2};
+#list my_secondary_weapons create {my staff;};
 
 #alias {huose} {
 	unwi;
