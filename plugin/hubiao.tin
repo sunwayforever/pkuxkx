@@ -1007,14 +1007,12 @@ load chaos;
 		#var has_mixin 1;
 		#class hb_check_mixin.inner kill;;
 	};
-	#action {失踪的财物(Cai wu)} {
-		#var has_mixin 1;
+	#action {你要看什么} {
+		#var has_mixin 0;
 		#class hb_check_mixin.inner kill;;
 	};
 	#class hb_check_mixin.inner close;;
-	#var has_mixin 0;
 	l mixin;
-	l cai wu;
 };
 
 #alias {hb.get_path} {
