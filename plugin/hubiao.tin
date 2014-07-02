@@ -298,7 +298,7 @@ load chaos;
 					hb.pause;
 					#delay {5} {
 						#if {${hb_lunci} == ${mixin_lunci}} {
-							chain on_sell get.san on_repair gem.combine hb.b;						
+							chain on_sell get.san on_repair gem.combine hb.b;
 						};
 						#else {
 							hb.b;	

@@ -291,9 +291,12 @@
 };
 
 #alias {back} {
-	#path save backward xxx;
-	#path load xxx;
-	#path run;
+	#var tmp_back 0;
+	#path save backward tmp_back;
+	#if {${tmp_back} != 0} {
+		#path load tmp_back;
+		#path run;
+	};
 };
 
 #alias {reload} {
