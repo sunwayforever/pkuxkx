@@ -291,9 +291,9 @@
 };
 
 #alias {back} {
-	#var tmp_back 0;
+	#var tmp_back NULL;
 	#path save backward tmp_back;
-	#if {${tmp_back} != 0} {
+	#if {"${tmp_back}" != "NULL"} {
 		#path load tmp_back;
 		#path run;
 	};
