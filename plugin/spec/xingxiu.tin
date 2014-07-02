@@ -155,11 +155,7 @@
 	wi;
 };
 
-#alias {tan} {
-	#cr;
-};
-
-#var shortcut F1:活色 F2:抽髓 F3:火球 F4:火墙 F5:穿心 F6:散毒 F7:弹;
+#var shortcut F1:活色 F2:抽髓 F3:火球 F4:火墙 F5:穿心 F6:散毒;
 #macro {\eOP} {
 	huose;
 };
@@ -185,7 +181,7 @@
 };
 
 #macro {\e[18~} {
-	tan;
+	#cr;
 };
 
 #macro {\e[19~} {
