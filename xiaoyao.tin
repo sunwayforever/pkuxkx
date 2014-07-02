@@ -274,7 +274,7 @@
 						$cmd;
 						#math stepaccu {$stepaccu+1};
 						#math step {$step+1};
-						#if {$stepaccu>=20}
+						#if {$stepaccu>=10}
 						{
 							#delay {1} {walk};
 							#var stepaccu 1;
