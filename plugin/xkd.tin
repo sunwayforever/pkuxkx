@@ -6,7 +6,7 @@
 	#alias {quit} {#cr};
 	
 	#alias {start_watch} {
-		yun recover;do 5 watch 石壁 10;yun regenerate;dazuo 310;
+		yun recover;do 5 watch 石壁 10;yun regenerate;dazuo 400;
 	};
 
 	#action {你运功完毕} {
