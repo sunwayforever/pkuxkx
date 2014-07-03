@@ -58,6 +58,7 @@ load chaos;
 		} {3};
 	};
 	#else {
+		#math hb_path_index ${hb_path_index}+1;
 		#if {${hb_path_index} > ${hb_path_size}} {
 			#delay {hb_move} {
 				hb.pause;
@@ -117,7 +118,6 @@ load chaos;
 	#action {^你赶着镖车驶了过来。$} {
 		#unticker {hb_walk};
 		#if {${hb_paused} == 0} {
-			#math hb_path_index ${hb_path_index}+1;
 			chaos.remember;
 		};
 	};
@@ -282,7 +282,6 @@ load chaos;
 	};
 
 	#if {${hb_ing} == 1} {
-		#math hb_path_index ${hb_path_index}+1;
 		chaos.remember;
 	};
 	#else {
