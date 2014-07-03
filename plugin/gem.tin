@@ -243,7 +243,7 @@
 #alias {gem.query} {
 	#format {current_epoch} {%T};
 	#math last_epoch ${current_epoch} - 24*60*60;
-	#system {sqlite3 gem_record.db 'select time, gem from gem_record where epoch > ${last_epoch} and char_id = "${char_id}" order by gem, epoch'};
+	#system {sqlite3 gem_record.db 'select time, gem from gem_record where epoch > ${last_epoch} and char_id = "${char_id}" order by epoch'};
 };
 
 #class gem close
