@@ -1234,7 +1234,7 @@ load chaos;
 	    #elseif {"${tmp}" == "œÂ—Ù"} {
 	     	#list hb_path create {
 	     		gn;ge;ge;ge;ge;ge;gn;gn;ge;ge;ge;ge;gse;ge;ge;ge;ge;ge;ged;ge;ge;ge;gs;gs;gs;gs;gs;gs;gs;gsw;gs;
-	     		gs;gs;gw;ge;ge;ge;gw;gw;gs;gw;ge;ge;gw;gs;ge;gw;gs;gw;gn;gs;gs;gn;gw;gn;gs;gs;gn;gw;gw;gw;gw;gn;gn;gs;gs;gw;gw;gw;gw;
+	     		gs;gs;gw;ge;ge;ge;gw;gw;gs;gw;ge;ge;gw;gs;ge;gw;gs;gw;gn;gs;gs;gn;gw;gn;gs;gs;gs;gn;gn;gw;gw;gw;gw;gn;gn;gs;gs;gw;gw;gw;gw;
 	     		ge;ge;ge;ge;ge;ge;ge;ge;ge;ge;gs;gw;ge;ge;gw;gs;gw;ge;gs;gw;ge;ge;gw;gs;gs;gn;gn;gn;gn;gn;ge;gn;gs;ge;gn;gn;gw;ge;gs;gs;gsw;
 	     		gs;gw;ge;ge;gw;gn;gne;ge;gs;gn;ge;ge;gse;gnw;ge;gw;gw;gw;gw;gw;gw;gw;gw;gn;
 	     	};
