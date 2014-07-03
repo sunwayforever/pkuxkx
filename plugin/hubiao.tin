@@ -49,9 +49,13 @@ load chaos;
 #alias {hb.move} {
 	#if {${qx_percent} < 50 || ${js_percent} < 50 || ${nl_percent} < 20} {
 		#unticker {hb_walk};
-		show_to_info 气血或精神过低,推车暂停;
-		notify escort paused;
-		on_health {hb.move};
+		#delay {hb_move} {
+			show_to_info 气血或精神过低,推车暂停;
+			notify escort paused;
+			on_truce {
+				on_health {hb.move};
+			};
+		} {3};
 	};
 	#else {
 		#math hb_path_index ${hb_path_index}+1;
@@ -609,6 +613,7 @@ load chaos;
 	hb.check_mixin;
 	#math next_lunci ${hb_lunci}+1;
 	show_to_quest 推车: ${hb_lunci_total}+${next_lunci}: 准备;
+	mx.d;
 	on_health {hb.q};
 };
 
