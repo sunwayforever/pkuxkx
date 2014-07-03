@@ -1,7 +1,7 @@
 #class hubiao open
 load chaos;
 
-#var mixin_lunci 5;
+#var mixin_lunci 6;
 #var hb_auto_mixin 0;
 #var hb_first_kill 0;
 #var hb_wait 0;
@@ -118,7 +118,12 @@ load chaos;
 	#action {^你赶着镖车驶了过来。$} {
 		#unticker {hb_walk};
 		#if {${hb_paused} == 0} {
-			chaos.remember;
+			#if {${mixin_lunci} == 5} {
+				hb.move;
+			};
+			#else {
+				chaos.remember;
+			};
 		};
 	};
 
@@ -138,6 +143,7 @@ load chaos;
 	#action {劫匪趁你不注意，推着镖车就跑，你赶紧追了上去。} {
 		hb.pause;
 		#var mixin_lunci 6;
+		@setenv{mixin_lunci;${mixin_lunci}};
 		#delay {hb_delay} {
 			hb.recover;
 		} {3};
@@ -419,6 +425,11 @@ load chaos;
 #alias {hb.start} {
 	#var hb_lunci_total @getenv{hb_lunci_total};
 	#var hb_lunci @getenv{hb_lunci};
+	#var mixin_lunci @getenv{mixin_lunci};
+	#if {${mixin_lunci} == 0} {
+		#var mixin_lunci 6;
+		@setenv{mixin_lunci;${mixin_lunci}};
+	};
 	set brief 2;
 	#var hb_auto 1;
 	#var getesc_current_score 0;
@@ -588,6 +599,8 @@ load chaos;
 
 	#action {你给%*一些失踪的财物} {
 		#var has_mixin 0;
+		#var mixin_lunci 5;
+		@setenv{mixin_lunci;${mixin_lunci}};
 		#delay {hb_auto_delay} {
 			#if {${hb_auto} == 1 && ${has_mixin} == 0} {
 				hb.start;
@@ -601,7 +614,8 @@ load chaos;
 		@setenv{hb_lunci_total;${hb_lunci_total}};
 		#var hb_lunci 0;
 		@setenv{hb_lunci;${hb_lunci}};
-		#var mixin_lunci 5;
+		#var mixin_lunci 6;
+		@setenv{mixin_lunci;${mixin_lunci}};
 		show_to_quest 推车: ${hb_lunci_total}+${hb_lunci}: 密信;
 		notify.alert escort additional reward;
 		play alert.wav;
