@@ -458,6 +458,7 @@ load chaos;
 		#action {你将手中%*{◎|☆|★}%*放进了宝石袋} {
 			show_to_info 掉宝: %%%1%%%2%%%3;
 			notify.info %%%1%%%2%%%3;
+			gem.record %%%1%%%2%%%3;
 			#var gem_level @gemlevel{%%%1};
 			#if {${gem_level} > 3} {
 				play gem2.wav;
