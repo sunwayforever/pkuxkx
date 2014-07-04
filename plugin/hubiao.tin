@@ -576,16 +576,6 @@ load chaos;
 		hb.resume;
 	} {1};
 
-	#action {你给%*一些失踪的财物} {
-		@setenv{hb_state;NIL};
-		@setenv{mixin_lunci;5};
-		#delay {hb_auto_delay} {
-			#if {${hb_auto} == 1} {
-				hb.start;
-			};
-		} {3};
-	} {1};
-
 	#action {递给你一封密信} {
 		@setenv{hb_state;GOT_MIXIN};
 		@setenv{hb_lunci_total;@eval{@getenv{hb_lunci_total}+1}};
@@ -1335,8 +1325,13 @@ load chaos;
 };
 
 #action {你给%*一些失踪的财物} {
-	@setenv{hb_state:NIL};
+	@setenv{hb_state;NIL};
 	@setenv{mixin_lunci;5};
+	#delay {hb_auto_delay} {
+		#if {${hb_auto} == 1} {
+			hb.start;
+		};
+	} {3};
 };
 
 #alias {show_to_tuiche} {
