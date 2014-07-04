@@ -1,8 +1,6 @@
 #class hubiao open
 load chaos;
 
-#var mixin_lunci 6;
-#var hb_auto_mixin 0;
 #var hb_first_kill 0;
 #var hb_wait 0;
 #var hb_paused 0;
@@ -11,16 +9,11 @@ load chaos;
 #var hb_end_time 0;
 #var hb_paused 0;
 #var hb_auto 0;
-#var hb_lunci 0;
-#var hb_lunci_total 0;
-#var has_mixin 0;
-#var hb_ing 0;
 
 #alias {hb.teardown} {
 	#class hb_setup_inner kill;
 	#class clear_npc.inner kill;
 	#unticker {kill_npc};
-	#var hb_ing 0;
 	#alias ge {\east};
 	#alias genter {\enter};
 	#alias geu {\eastup};
@@ -104,7 +97,7 @@ load chaos;
 	#class hb_setup_inner open;
 	#action {镖车呼啦一声散了架} {
 		hb.pause;
-		show_to_quest 推车: ${hb_lunci_total}+${hb_lunci}: 镖车呼啦一声散了架;
+		show_to_tuiche 镖车呼啦一声散了架;
 	};
 
 	#alias {chan} {
@@ -118,7 +111,7 @@ load chaos;
 	#action {^你赶着镖车驶了过来。$} {
 		#unticker {hb_walk};
 		#if {${hb_paused} == 0} {
-			#if {${mixin_lunci} == 5} {
+			#if {@getenv{mixin_lunci} == 5} {
 				hb.move;
 			};
 			#else {
@@ -142,8 +135,7 @@ load chaos;
 	
 	#action {劫匪趁你不注意，推着镖车就跑，你赶紧追了上去。} {
 		hb.pause;
-		#var mixin_lunci 6;
-		@setenv{mixin_lunci;${mixin_lunci}};
+		@setenv{mixin_lunci;6};
 		#delay {hb_delay} {
 			hb.recover;
 		} {3};
@@ -175,10 +167,11 @@ load chaos;
 	};
 
 	#action {围上来几个伙计将镖车拉了进去} {
+		@setenv{hb_state;ENDED};
 		hb.end;
 		raw;
 		#format {hb_end_time} {%t} {%T};
-		show_to_quest 推车: ${hb_lunci_total}+${hb_lunci}: 任务完成: ${hb_start_time} -> ${hb_end_time};
+		show_to_tuiche 任务完成: ${hb_start_time} -> ${hb_end_time};
 		notify escort done;
 		hb.teardown;
 		#delay {10} {
@@ -188,7 +181,6 @@ load chaos;
 
 	#class hb_setup_inner close;
 	
-	#var hb_ing 1;
 	#alias ge {gan che to east};
 	#alias genter {gan che to enter};
 	#alias geu {gan che to eastup};
@@ -287,7 +279,7 @@ load chaos;
 		};
 	};
 
-	#if {${hb_ing} == 1} {
+	#if {"@getenv{hb_state}" == "STARTED"} {
 		chaos.remember;
 	};
 	#else {
@@ -307,7 +299,7 @@ load chaos;
 					#unalias {l};
 					hb.pause;
 					#delay {5} {
-						#if {${hb_lunci} == ${mixin_lunci}} {
+						#if {@getenv{hb_lunci} == @getenv{mixin_lunci}} {
 							chain on_sell get.san on_repair gem.combine hb.b;
 						};
 						#else {
@@ -345,13 +337,12 @@ load chaos;
 
 #alias {hb.d} {
 	hb.get_owner;
-	#if {${has_mixin} == 1} {
+	#if {"@getenv{hb_state}" == "GOT_CAIWU"} {
 		give cai wu to ${hb_owner};
 	};
 	#else {
-		#if {${hb_lunci} == ${mixin_lunci} && ${hb_auto_mixin} == 0} {
-			#var hb_lunci 0;
-			@setenv{hb_lunci;${hb_lunci}};
+		#if {@getenv{hb_lunci} == @getenv{mixin_lunci}} {
+			@setenv{hb_lunci;0};
 			notify.alert next mixin;
 			xmpp.notify next mixin;
 			play alert.wav;
@@ -364,25 +355,20 @@ load chaos;
 
 #alias {hb.q} {
 	hb.get_owner;
-	#if {${has_mixin} == 1} {
-		notify.alert escort additional reward;
+	#if {"%1" != ""} {
+		getesc %1;
 	};
 	#else {
-		#if {"%1" != ""} {
-			getesc %1;
-		};
-		#else {
-			listesc;
-		}
-	};
+		listesc;
+	}
 };
 
 
 #alias {hb.f} {
-	#var hb_lunci 0;
-	#var hb_lunci_total 0;
-	@setenv{hb_lunci;${hb_lunci}};
-	@setenv{hb_lunci_total;${hb_lunci_total}};
+	@setenv{hb_lunci;0};
+	@setenv{hb_lunci_total;0};
+	@setenv{hb_state;NIL};
+	@setenv{mixin_lunci;6};
 	hb.teardown;
 	hb.get_owner;
 	ask ${hb_owner} about fail;
@@ -423,13 +409,6 @@ load chaos;
 };
 
 #alias {hb.start} {
-	#var hb_lunci_total @getenv{hb_lunci_total};
-	#var hb_lunci @getenv{hb_lunci};
-	#var mixin_lunci @getenv{mixin_lunci};
-	#if {${mixin_lunci} == 0} {
-		#var mixin_lunci 6;
-		@setenv{mixin_lunci;${mixin_lunci}};
-	};
 	set brief 2;
 	#var hb_auto 1;
 	#var getesc_current_score 0;
@@ -454,7 +433,7 @@ load chaos;
 			show_to_info @ctd{%%%1} 点经验;
 		};
 		#delay {hb_auto_delay} {
-			#if {${hb_auto} == 1 && ${has_mixin} == 0} {
+			#if {${hb_auto} == 1} {
 				hb.start;
 			};
 		} {3};
@@ -523,12 +502,12 @@ load chaos;
 
 	#action {看来该找机会逃跑了} {
 		hb.pause;
-		show_to_quest 推车: ${hb_lunci_total}+${hb_lunci}: 丢镖;
+		show_to_tuiche 丢镖;
 		xmpp.notify 丢镖;
 	};
 
 	#action {^慢慢地你终于又有了知觉....} {
-		show_to_quest 推车: ${hb_lunci_total}+${hb_lunci}: 挂了;
+		show_to_tuiche 挂了;
 		notify.alert 挂了; 
 		xmpp.notify 挂了;
 	};
@@ -585,11 +564,11 @@ load chaos;
 	#action {${char_name}把这批红货送到%*他已经派了个伙计名叫%*到%*附近接你} {
 		hb.get_path %%1;
 
-		#math hb_lunci ${hb_lunci}+1;
-		@setenv{hb_lunci;${hb_lunci}};
+		@setenv{hb_state;STARTED};
+		@setenv{hb_lunci;@eval{@getenv{hb_lunci}+1}};
 		#format {hb_start_time} {%t} {%T};
 		
-		show_to_quest 推车: ${hb_lunci_total}+${hb_lunci}: ${tmp}|%%2|%%3;
+		show_to_tuiche ${tmp}|%%2|%%3;
 		pp %%2;
 		notify escort start;
 
@@ -598,25 +577,21 @@ load chaos;
 	} {1};
 
 	#action {你给%*一些失踪的财物} {
-		#var has_mixin 0;
-		#var mixin_lunci 5;
-		@setenv{mixin_lunci;${mixin_lunci}};
+		#setenv{hb_state;NIL};
+		@setenv{mixin_lunci;5};
 		#delay {hb_auto_delay} {
-			#if {${hb_auto} == 1 && ${has_mixin} == 0} {
+			#if {${hb_auto} == 1} {
 				hb.start;
 			};
 		} {3};
 	} {1};
 
 	#action {递给你一封密信} {
-		#var has_mixin 1;
-		#math hb_lunci_total ${hb_lunci_total}+1;
-		@setenv{hb_lunci_total;${hb_lunci_total}};
-		#var hb_lunci 0;
-		@setenv{hb_lunci;${hb_lunci}};
-		#var mixin_lunci 6;
-		@setenv{mixin_lunci;${mixin_lunci}};
-		show_to_quest 推车: ${hb_lunci_total}+${hb_lunci}: 密信;
+		#setenv{hb_state;GOT_MIXIN};
+		@setenv{hb_lunci_total;@eval{@getenv{hb_lunci_total}+1}};
+		@setenv{hb_lunci;0};
+		@setenv{mixin_lunci;6};
+		show_to_tuiche 密信;
 		notify.alert escort additional reward;
 		play alert.wav;
 		xmpp.notify 密信;
@@ -625,11 +600,24 @@ load chaos;
 	};
 
 	#class hb.auto.inner close;
-	hb.check_mixin;
-	#math next_lunci ${hb_lunci}+1;
-	show_to_quest 推车: ${hb_lunci_total}+${next_lunci}: 准备;
-	mx.d;
-	on_health {hb.q};
+
+	@declarenv{hb_state;NIL};
+	@declarenv{mixin_lunci;6};
+	
+	#if {"@getenv{hb_state}" == "GOT_CAIWU"} {
+		show_to_info 交财物先;
+	};
+	#if {"@getenv{hb_state}" == "GOT_MIXIN"} {
+		show_to_info 密信;
+	};
+	#elseif {"@getenv{hb_state}" == "STARTED"} {
+		hb.f;
+	};
+	#else {
+		#math next_lunci @getenv{hb_lunci}+1;
+		show_to_quest 推车: @getenv{hb_lunci_total}+${next_lunci}: 准备;
+		on_health {hb.q};		
+	};
 };
 
 #function {getesc_get_score} {
@@ -982,7 +970,8 @@ load chaos;
 		#format {tmp_huoji} {%l} {%%2};
 		#class mx.yao.inner open;
 		#action {把一包财物砸向你，一转眼不见了。} {
-			show_to_quest 推车: ${hb_lunci_total}+${hb_lunci}: 拿到财宝;
+			#setenv{hb_state;GOT_CAIWU};
+			show_to_tuiche 拿到财宝;
 			play get_item.wav;
 			#class mx.yao.inner kill;
 			#class mx.inner kill;
@@ -1006,13 +995,6 @@ load chaos;
 	#class mx.inner kill;
 };
 
-#alias {mx.f} {
-	#var has_mixin 0;
-	#var mixin_lunci 6;
-	@setenv{mixin_lunci;${mixin_lunci}};
-	#class mx.inner kill;
-};
-
 #alias {hb.p} {
 	get.san {
 		get.fan {
@@ -1021,20 +1003,6 @@ load chaos;
 			};
 		};
 	};
-};
-
-#alias {hb.check_mixin} {
-	#class hb_check_mixin.inner open;
-	#action {密信(Mixin)} {
-		#var has_mixin 1;
-		#class hb_check_mixin.inner kill;;
-	};
-	#action {你要看什么} {
-		#var has_mixin 0;
-		#class hb_check_mixin.inner kill;;
-	};
-	#class hb_check_mixin.inner close;;
-	l mixin;
 };
 
 #alias {hb.get_path} {
@@ -1367,8 +1335,11 @@ load chaos;
 };
 
 #action {你给%*一些失踪的财物} {
-	#var has_mixin 0;
-	#var mixin_lunci 5;
-	@setenv{mixin_lunci;${mixin_lunci}};
+	@setenv{hb_state:NIL};
+	@setenv{mixin_lunci;5};
+};
+
+#alias {show_to_tuiche} {
+	show_to_quest 推车: @getenv{hb_lunci_total}+@getenv{hb_lunci}: %0;
 };
 #class hubiao close
