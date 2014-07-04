@@ -606,7 +606,7 @@ load chaos;
 				hb.start;
 			};
 		} {3};
-	};
+	} {1};
 
 	#action {递给你一封密信} {
 		#var has_mixin 1;
@@ -1362,5 +1362,11 @@ load chaos;
 	};
 	#list hb_path size hb_path_size;
 	#var hb_path_index 0;
+};
+
+#action {你给%*一些失踪的财物} {
+	#var has_mixin 0;
+	#var mixin_lunci 5;
+	@setenv{mixin_lunci;${mixin_lunci}};
 };
 #class hubiao close
