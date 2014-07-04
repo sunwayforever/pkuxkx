@@ -577,7 +577,7 @@ load chaos;
 	} {1};
 
 	#action {你给%*一些失踪的财物} {
-		#setenv{hb_state;NIL};
+		@setenv{hb_state;NIL};
 		@setenv{mixin_lunci;5};
 		#delay {hb_auto_delay} {
 			#if {${hb_auto} == 1} {
@@ -587,7 +587,7 @@ load chaos;
 	} {1};
 
 	#action {递给你一封密信} {
-		#setenv{hb_state;GOT_MIXIN};
+		@setenv{hb_state;GOT_MIXIN};
 		@setenv{hb_lunci_total;@eval{@getenv{hb_lunci_total}+1}};
 		@setenv{hb_lunci;0};
 		@setenv{mixin_lunci;6};
@@ -970,7 +970,7 @@ load chaos;
 		#format {tmp_huoji} {%l} {%%2};
 		#class mx.yao.inner open;
 		#action {把一包财物砸向你，一转眼不见了。} {
-			#setenv{hb_state;GOT_CAIWU};
+			@setenv{hb_state;GOT_CAIWU};
 			show_to_tuiche 拿到财宝;
 			play get_item.wav;
 			#class mx.yao.inner kill;
