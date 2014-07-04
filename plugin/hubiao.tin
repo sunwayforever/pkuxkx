@@ -1008,6 +1008,8 @@ load chaos;
 
 #alias {mx.f} {
 	#var has_mixin 0;
+	#var mixin_lunci 6;
+	@setenv{mixin_lunci;${mixin_lunci}};
 	#class mx.inner kill;
 };
 
