@@ -68,14 +68,18 @@ load chaos;
 			#if {${eff_qx_percent} < 50} {
 				#2 yun lifeheal;
 			};
-			#list hb_path get ${hb_path_index} hb_path_next;
+			#list hb_path get ${hb_path_index} hb_next_step;
 			#delay {hb_move} {
 				#if {${hb_force_wait} == 0 && ${hb_paused} == 0 && ${hb_wait} == 0} {
-					${hb_path_next};
+					on_echo {
+						${hb_next_step};
+					};
 				};
 				#ticker {hb_walk} {
 					#if {${hb_force_wait} == 0 && ${hb_paused} == 0 && ${hb_wait} == 0} {
-						${hb_path_next};
+						on_echo {
+							${hb_next_step};
+						};
 					};
 				} {5};
 			} {3};
@@ -284,11 +288,11 @@ load chaos;
 	};
 	#else {
 		#math hb_path_index ${hb_path_index}+1;
-		#list hb_path get ${hb_path_index} hb_path_next;
+		#list hb_path get ${hb_path_index} hb_next_step;
 		
 		#action {get_exits_done} {
 			#math hb_path_index ${hb_path_index}+1;
-			#list hb_path get ${hb_path_index} hb_path_next;
+			#list hb_path get ${hb_path_index} hb_next_step;
 		};
 		#alias {l} {#cr};
 		
@@ -309,7 +313,7 @@ load chaos;
 				};
 				#else {
 					on_echo {
-						${hb_path_next};
+						${hb_next_step};
 					};
 				};
 			};
