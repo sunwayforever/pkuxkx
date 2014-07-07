@@ -178,7 +178,7 @@ load chaos;
 		show_to_tuiche 任务完成: ${hb_start_time} -> ${hb_end_time};
 		notify escort done;
 		hb.teardown;
-		#delay {10} {
+		#delay {5} {
 			hb.back;			
 		};
 	} {1};
@@ -670,7 +670,7 @@ load chaos;
 				#return -1;
 			};
 			#else {
-				#return 3;				
+				#return -1;				
 			};
 		};
 		#else {
@@ -747,7 +747,7 @@ load chaos;
 				#return -1;
 			};
 			#else {
-				#return 3;
+				#return -1;
 			};
 		};
 		#elseif {"%1" == "武当荆西镖局"} {
@@ -755,7 +755,7 @@ load chaos;
 				#return -1;
 			};
 			#else {
-				#return 5;
+				#return -1;
 			};
 		};
 		#elseif {"%1" == "全真天尊讲经堂"} {
@@ -782,7 +782,7 @@ load chaos;
 				#return -1;
 			};
 			#else {
-				#return 3;
+				#return -1;
 			};
 		};
 		#elseif {"%1" == "曲阜孔府"} {
@@ -804,7 +804,7 @@ load chaos;
 				#return -1;
 			};
 			#else {
-				#return 6;
+				#return -1;
 			};
 		};
 		#elseif {"%1" == "牙山小荒地"} {
@@ -824,7 +824,7 @@ load chaos;
 				#return -1;
 			};
 			#else {
-				#return 2;
+				#return -1;
 			};
 		};
 		#else {
