@@ -349,12 +349,12 @@
 };
 
 #alias {autopp.set_en} {
-	#var pp_target @lower{%1};
+	#var pp_target @lower{%0};
 	autopp;
 };
 
 #alias {autopp.set_zh} {
-	#var pp_target_zhname %1;
+	#var pp_target_zhname %0;
 	helpme ...;
 	helpme py ${pp_target_zhname};
 	#action {¸æËßÄã£ºÆ´Òô£º%*} {
