@@ -57,7 +57,7 @@
 			#math pos $cnt+${chat_window_offset};
 			#echo {{<aff>$chat_window[$cnt]<099>} {-$pos}};
 		}		
-	} {0.5};
+	} {0.2};
 }
 
 #alias {show_to_quest} {
