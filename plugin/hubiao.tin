@@ -430,7 +430,6 @@ load chaos;
 	
 	#action {你一共被奖励了：} {
 		#class tmp.inner open;
-		@setenv{hb_state;NIL};
 		#action {%*点经验；} {
 			#class tmp.inner kill;
 			show_to_info @ctd{%%%1} 点经验;
@@ -599,14 +598,11 @@ load chaos;
 	#if {"@getenv{hb_state}" == "GOT_CAIWU"} {
 		show_to_info 交财物先;
 	};
-	#elseif {"@getenv{hb_state}" == "GOT_MIXIN"} {
+	#if {"@getenv{hb_state}" == "GOT_MIXIN"} {
 		show_to_info 密信;
 	};
 	#elseif {"@getenv{hb_state}" == "STARTED"} {
 		hb.f;
-	};
-	#elseif {"@getenv{hb_state}" == "ENDED"} {
-		hb.d;
 	};
 	#else {
 		#math next_lunci @getenv{hb_lunci}+1;
