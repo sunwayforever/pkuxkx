@@ -150,12 +150,6 @@ load chaos;
 		hb.wait;
 	};
 
-	#action {^%*运起九阳神功，真气从丹田处绵然不绝地流入四肢百骸} {
-		show_to_info >>明教;
-		#var mj_started 1;
-		mj.start;		
-	};
-
 	#action {你长笑一声，开始对周围众人痛下杀手！} {
 		#var hb_first_kill 1;
 	};
