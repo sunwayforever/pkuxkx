@@ -746,7 +746,7 @@
 		@abbrev{${direction}};
 	};
 	#else {
-		#foreach {${exits_list}[%*]} {exit}{
+		#foreach {${exits_list}[%*]} {exit} {
 			#regexp {${exit}} {%*${direction}%*} {#var action ${exit}};
 		};
 		@abbrev{${action}};
