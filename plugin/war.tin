@@ -247,4 +247,13 @@
 	wi;
 };
 
+#var enemy NULL;
+#alias {perform} {
+	#if {"${enemy}" == "NULL"} {
+		#send {perform %0};
+	};
+	#else {
+		#send {perform %0 ${enemy}};	
+	};
+};
 #class war close;
