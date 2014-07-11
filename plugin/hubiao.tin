@@ -155,6 +155,7 @@ load chaos;
 	};
 	
 	#action {½Ù·ËÍ»È»´Ó°µ´¦ÌøÁË³öÀ´} {
+		hb.detect_enemy;
 		hb.wait;
 		#if {${hb_first_kill} == 0} {
 			killall robber;
@@ -1331,5 +1332,36 @@ load chaos;
 
 #alias {show_to_tuiche} {
 	show_to_quest ÍÆ³µ: @getenv{hb_lunci_total}+@getenv{hb_lunci}: %0;
+};
+
+#alias {hb.detect_enemy} {
+	#class detect_enemy.inner open;
+	#action {~[1;32m½Ù·Ë[2;37;0m(@capital{${char_id}}'s robber)} {
+		#nop shaolin
+		#showme shaolin robber;
+	};
+	#action {~[1;33m½Ù·Ë[2;37;0m(@capital{${char_id}}'s robber)} {
+		#nop gaibang
+		#showme gaibang robber;
+	};
+	#action {~[1;37m½Ù·Ë[2;37;0m(@capital{${char_id}}'s robber)} {
+		#nop wudang
+		#showme wudang robber;
+	};
+	#action {~[1;31m½Ù·Ë[2;37;0m(@capital{${char_id}}'s robber)} {
+		#nop quanzhen
+		#showme quanzhen robber;
+	};
+	#action {~[1;36m½Ù·Ë[2;37;0m(@capital{${char_id}}'s robber)} {
+		#nop taohua
+		#showme taohua robber;
+	};
+	#action {·ç¾°ÒªÂýÂýµÄ¿´} {
+		#delay {0.5} {
+			#send {l};
+		};
+	};
+	#class detect_enemy.inner close;
+	#send {l};
 };
 #class hubiao close

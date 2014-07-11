@@ -1021,6 +1021,7 @@
 #function {item} {#list %1 get %2 result};
 #function {eval} {#math result {%1}};
 #function {lower} {#format result {%l} {%1}};
+#function {capital} {#format result {%n} {%1}};
 #function {len} {#format result {%L} {%1}};
 #function {trim} {#format result {%p} {%1}};
 #function {screenw} {#format result {%C}};
