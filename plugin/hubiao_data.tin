@@ -2,9 +2,9 @@
 
 @mapcreate{robber_score};
 @mapset{robber_score;gaibang;8};
-@mapset{robber_score;xingxiu;7};
-@mapset{robber_score;wudang;6};
-@mapset{robber_score;taohua;5};
+@mapset{robber_score;taohua;7};
+@mapset{robber_score;xingxiu;6};
+@mapset{robber_score;wudang;5};
 @mapset{robber_score;quanzhen;4};
 @mapset{robber_score;shaolin;3};
 @mapset{robber_score;huashan;2};
