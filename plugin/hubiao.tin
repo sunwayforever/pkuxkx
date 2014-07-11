@@ -1354,31 +1354,24 @@ load chaos;
 		};
 	};
 	#action {~[1;31m½Ù·Ë[2;37;0m(@capital{${char_id}}'s robber)} {
-		#nop quanzhen
 		got_robber quanzhen;
 	};
 	#action {~[1;32m½Ù·Ë[2;37;0m(@capital{${char_id}}'s robber)} {
-		#nop shaolin
 		got_robber shaolin;
 	};
 	#action {~[1;33m½Ù·Ë[2;37;0m(@capital{${char_id}}'s robber)} {
-		#nop gaibang
 		got_robber gaibang;
 	};
 	#action {~[1;34m½Ù·Ë[2;37;0m(@capital{${char_id}}'s robber)} {
-		#nop xingxiu
 		got_robber xingxiu;
 	};
 	#action {~[1;35m½Ù·Ë[2;37;0m(@capital{${char_id}}'s robber)} {
-		#nop huashan
 		got_robber huashan;
 	};
 	#action {~[1;36m½Ù·Ë[2;37;0m(@capital{${char_id}}'s robber)} {
-		#nop taohua
 		got_robber taohua;
 	};
 	#action {~[1;37m½Ù·Ë[2;37;0m(@capital{${char_id}}'s robber)} {
-		#nop wudang
 		got_robber wudang;		
 	};
 	#action {·ç¾°ÒªÂýÂýµÄ¿´} {
