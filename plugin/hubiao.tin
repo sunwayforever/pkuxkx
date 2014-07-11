@@ -1344,15 +1344,16 @@ load chaos;
 @mapset{robber_score;taohua;6};
 @mapset{robber_score;wudang;8};
 
+#alias {got_robber} {
+	#math robber_count ${robber_count}+1;
+	#var tmp_score @mapget{robber_score;%1};
+	#if {${tmp_score} > ${robber_score}} {
+		#var enemy ${char_id}'s robber ${robber_count};
+	};
+};
+
 #alias {hb.detect_enemy} {
 	#class detect_enemy.inner open;
-	#alias {got_robber} {
-		#math robber_count ${robber_count}+1;
-		#var tmp_score @mapget{robber_score;%1};
-		#if {${tmp_score} > ${robber_score}} {
-			#var enemy ${char_id}'s robber ${robber_count};
-		};
-	};
 	#action {~[1;31m½Ù·Ë[2;37;0m(@capital{${char_id}}'s robber)} {
 		got_robber quanzhen;
 	};
