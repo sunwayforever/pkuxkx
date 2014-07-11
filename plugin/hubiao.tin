@@ -1336,13 +1336,13 @@ load chaos;
 };
 
 @mapcreate{robber_score};
-@mapset{robber_score;quanzhen;1};
-@mapset{robber_score;shaolin;1};
-@mapset{robber_score;gaibang;7};
-@mapset{robber_score;xingxiu;2};
+@mapset{robber_score;gaibang;8};
+@mapset{robber_score;xingxiu;7};
+@mapset{robber_score;wudang;6};
+@mapset{robber_score;taohua;5};
+@mapset{robber_score;quanzhen;4};
+@mapset{robber_score;shaolin;3};
 @mapset{robber_score;huashan;2};
-@mapset{robber_score;taohua;6};
-@mapset{robber_score;wudang;8};
 
 #alias {got_robber} {
 	#delay {detect_enemy_delay} {
