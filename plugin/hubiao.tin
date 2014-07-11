@@ -1348,6 +1348,7 @@ load chaos;
 	#math robber_count ${robber_count}+1;
 	#var tmp_score @mapget{robber_score;%1};
 	#if {${tmp_score} > ${robber_score}} {
+		#var robber_score ${tmp_score};
 		#var enemy ${char_id}'s robber ${robber_count};
 	};
 };
