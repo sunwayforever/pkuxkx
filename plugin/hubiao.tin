@@ -1345,6 +1345,9 @@ load chaos;
 @mapset{robber_score;wudang;8};
 
 #alias {got_robber} {
+	#delay {detect_enemy_delay} {
+		#class detect_enemy.inner kill;	
+	} {1};
 	#math robber_count ${robber_count}+1;
 	#var tmp_score @mapget{robber_score;%1};
 	#if {${tmp_score} > ${robber_score}} {
@@ -1381,10 +1384,8 @@ load chaos;
 			l;
 		};
 	};
-	#action {^>} {
-		#class detect_enemy.inner kill;
-	};
 	#class detect_enemy.inner close;
+	#undelay {detect_enemy_delay};
 	#var enemy NULL;
 	#var robber_count 0;
 	#var robber_score 0;
