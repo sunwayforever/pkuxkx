@@ -125,7 +125,7 @@
 			#return 7;
 		};
 		#elseif {"%1" == "晋阳萧府"} {
-			#return 4;
+			#return -1;
 		};
 		#elseif {"%1" == "成都当铺"} {
 			#return -1;
@@ -144,7 +144,7 @@
 				#return -1;
 			};
 			#else {
-				#return -1;
+				#return 4;
 			};
 		};
 		#elseif {"%1" == "武当荆西镖局"} {
@@ -152,7 +152,7 @@
 				#return -1;
 			};
 			#else {
-				#return -1;
+				#return 6;
 			};
 		};
 		#elseif {"%1" == "全真天尊讲经堂"} {
