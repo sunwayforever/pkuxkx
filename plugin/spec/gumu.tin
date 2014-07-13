@@ -13,17 +13,13 @@
 };
 
 #alias {attack.bare} {
-	on_unbusy {
-		chan;
-	};
+	pfm_all chan;
 	#class attack.inner open;
 	#class attack.inner close;
 };
 
 #alias {attack.hubiao} {
-	on_unbusy {
-		#3 chan;
-	};
+	pfm_all chan zhua;
 	#class attack.inner open;
 	#ticker {zhua} {
 		zhua;
@@ -35,9 +31,7 @@
 };
 
 #alias {attack.normal} {
-	on_unbusy {
-		chan;
-	};
+	pfm_all chan zhua shexin;
 	#class attack.inner open;
 	#ticker {zhua} {
 		zhua;
@@ -52,48 +46,25 @@
 };
 
 #alias {attack.xiaofeng.qin} {
-	on_unbusy {
-		chan;
-		#delay {1} {
-			on_unbusy {
-				zhua;
-			};
-		};
-	};
+	pfm_all chan zhua;
 	#class attack.inner open;
 	#class attack.inner close;
 };
 
 #alias {attack.xiaofeng.quan} {
-	on_unbusy {
-		chan;
-		#delay {1} {
-			on_unbusy {
-				zhua;
-			};
-		};
-	};
+	pfm_all chan zhua;
 	#class attack.inner open;
 	#class attack.inner close;
 };
 
 #alias {attack.xiaofeng.sheng} {
-	on_unbusy {
-		chan;
-		#delay {1} {
-			on_unbusy {
-				zhua;
-			};
-		};
-	};
+	pfm_all chan zhua;
 	#class attack.inner open;
 	#class attack.inner close;
 };
 
 #alias {attack.mingjiao} {
-	on_unbusy {
-		chan;
-	};
+	pfm_all chan;
 	#class attack.inner open;
 	#ticker {qixing} {
 		qixing;
