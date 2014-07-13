@@ -327,7 +327,8 @@
 		#action {%S(%S)} {
 			special %%%2;
 		};
-		#delay {1} {
+		#action {^>} {
+			#unaction {^>};
 			#unaction {%S(%S)};
 			#class pfm_special.inner kill;
 		};
