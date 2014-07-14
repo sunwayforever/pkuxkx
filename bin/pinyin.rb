@@ -31,7 +31,7 @@ end
 surname_py = ""
 name_py = ""
 
-name = conv.conv(ARGV[0])
+name = conv.iconv(ARGV[0])
 surname_py = get_fuxing(name[0,2])
 if surname_py
   name_py = get_pinyin(name[2,name.length])
