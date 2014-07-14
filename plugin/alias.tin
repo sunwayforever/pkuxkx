@@ -354,14 +354,8 @@
 };
 
 #alias {autopp.set_zh} {
-	#var pp_target_zhname %0;
-	helpme ...;
-	helpme py ${pp_target_zhname};
-	#action {¸æËßÄã£ºÆ´Òô£º%*} {
-		#unaction {¸æËßÄã£ºÆ´Òô£º%*};
-		#var pp_target %%1;
-		autopp;
-	} {1};
+	#var pp_target @py{%1};
+	autopp;
 };
 
 #alias {jq} {
@@ -803,4 +797,9 @@
 	#else {
 		tmp_on_repair;
 	};
+};
+
+#function {py} {
+	#script {ret} {bin/pinyin.rb %0};
+	#var result $ret[1]
 };
