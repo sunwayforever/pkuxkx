@@ -18,6 +18,17 @@ def get_pinyin (name)
   return ret
 end
 
+def get_xing (name)
+  ret = ""
+  sql = "select pinyin from xing where char = \"#{name}\""
+  rows = $db.execute(sql)
+  if rows.empty?
+    return get_pinyin(name)
+  else
+    return rows[0][0]
+  end
+end
+
 def get_fuxing (name)
   sql = "select pinyin from fuxing where char = \"#{name}\""
   rows = $db.execute(sql)
@@ -36,7 +47,7 @@ surname_py = get_fuxing(name[0,2])
 if surname_py
   name_py = get_pinyin(name[2,name.length])
 else
-  surname_py = get_pinyin(name[0])
+  surname_py = get_xing(name[0])
   name_py = get_pinyin(name[1,name.length])
 end
 
