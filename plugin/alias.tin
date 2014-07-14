@@ -420,9 +420,7 @@
 	#action {�㲻æ} {
 		#unaction {�㲻æ};
 		#class unbusy.inner kill;
-		#delay {tmp_delay} {
-			tmp_unbusy;
-		} {0.5};
+		tmp_unbusy;
 	};
 	#class unbusy.inner close;
 	checkbusy;
