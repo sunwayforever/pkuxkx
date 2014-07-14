@@ -23,10 +23,10 @@
 	#class attack.inner open;
 	#ticker {zhua} {
 		zhua;
-	} {3.8};
+	} {4.8};
 	#ticker {suxin} {
 		suxin;
-	} {5.8};
+	} {6.8};
 	#class attack.inner close;
 };
 
