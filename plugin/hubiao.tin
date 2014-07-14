@@ -404,10 +404,6 @@ load chaos;
 	#var getesc_current_score 0;
 	#var getesc_current_id 0;
 
-	#if {${char_nl_recovery} > 40} {
-		#var max_dz 90;
-	};
-	
 	#class hb.auto.inner open;
 	#action {^你不是才要了任务吗} {
 		hb.f;
@@ -602,7 +598,6 @@ load chaos;
 
 #alias {hb.stop} {
 	#var hb_auto 0;
-	#var max_dz 180;
 	#class hb.auto.inner kill;
 	#undelay {hb_auto_delay};
 	dz.cancel;
