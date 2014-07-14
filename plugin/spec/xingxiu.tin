@@ -12,9 +12,7 @@
 };
 
 #alias {attack.hubiao} {
-	on_unbusy {
-		huoqiu;
-	};
+	pfm_all huose huoqiu;
 	#class attack.inner open;
 	#ticker {huose} {
 		huose;
