@@ -124,7 +124,7 @@
 
 #alias {zhua} {
 	unwi;
-	jiali max;
+	jiali 10;
 	perform jiuyin-baiguzhao.zhua;
 	jiali none;
 	wi;
@@ -132,7 +132,7 @@
 
 #alias {shexin} {
 	unwi;
-	jiali max;
+	jiali 10;
 	perform meinu-quan.shexin;
 	jiali none;
 	wi;
