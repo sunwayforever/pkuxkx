@@ -4,7 +4,7 @@
 	yun xinjing;
 	#class attack.inner open;
 	#ticker {perf_chan} {
-		#3 chan;
+		chan;
 	} {1};
 	#ticker {xinjing} {
 		yun xinjing;
@@ -19,7 +19,7 @@
 };
 
 #alias {attack.hubiao} {
-	pfm_all chan zhua;
+	pfm_all chan;
 	#class attack.inner open;
 	#ticker {zhua} {
 		zhua;
