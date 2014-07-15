@@ -96,10 +96,6 @@ load chaos;
 		show_to_tuiche ïÚ³µºôÀ²Ò»ÉùÉ¢ÁË¼Ü;
 	};
 
-	#alias {chan} {
-		chan_robber;
-	};
-
 	#action {chaos.remember: done} {
 		hb.move;
 	};

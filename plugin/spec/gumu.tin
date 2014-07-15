@@ -19,7 +19,7 @@
 };
 
 #alias {attack.hubiao} {
-	pfm_all chan;
+	pfm_all chan zhua;
 	#class attack.inner open;
 	#ticker {zhua} {
 		zhua;
@@ -149,15 +149,6 @@
 
 #macro {\eOP} {
 	chan;
-};
-
-#alias {chan_robber} {
-	unwield all;
-	wield whip;
-	perform whip.chan ${char_id}'s robber 1;
-	perform whip.chan ${char_id}'s robber 2;
-	unwield all;
-	wi;
 };
 
 #alias {map_goto_lingwu} {
