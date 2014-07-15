@@ -19,7 +19,7 @@
 };
 
 #alias {attack.hubiao} {
-	pfm_all chan zhua;
+	pfm_all chan chan chan zhua;
 	#class attack.inner open;
 	#ticker {zhua} {
 		zhua;
