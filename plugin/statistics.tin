@@ -35,7 +35,8 @@
 #alias {stat} {
 	#foreach {${stat_category}[%*]} {category} {
 		#math stat_percent ${${category}_hit}*100/(${${category}_hit}+${${category}_miss});
-		#echo {${category}: 命中: ${${category}_hit} 丢失: ${${category}_miss} 命中率: ${stat_percent}%%};
+		#format {tmp_category} {%-9s} {${category}:};
+		#echo {${tmp_category}命中: ${${category}_hit}  丢失: ${${category}_miss}  命中率: ${stat_percent}%%};
 	};
 	#buffer lock;
 };
