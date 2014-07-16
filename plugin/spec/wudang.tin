@@ -20,9 +20,6 @@
 #alias {attack.hubiao} {
 	pfm_all chan lzj;
 	#class attack.inner open;
-	#ticker {zhen} {
-		zhen;
-	} {2.8};
 	#class attack.inner close;
 };
 
