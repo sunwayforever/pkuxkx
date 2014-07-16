@@ -120,7 +120,7 @@
 
 #alias {zhen} {
 	unwi;
-    perform cuff.zhen ${mj_id};
+    perform cuff.zhen;
 	wi;
 };
 
@@ -138,7 +138,7 @@
 #alias {wuying} {
 	unwield all;
 	jiali 10;
-	perform claw.wuying ${mj_id};
+	perform claw.wuying;
 	#if {${pfm_gangrou} == 0} {
 		jiali none;
 	};
@@ -150,7 +150,7 @@
 	unwi;
 	jiali max;
 	#var pfm_gangrou 1;
-	perform cuff.gangrou ${mj_id};
+	perform cuff.gangrou;
 	#delay {5} {
 		#var pfm_gangrou 0;
 		jiali none;
