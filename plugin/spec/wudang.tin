@@ -18,11 +18,11 @@
 };
 
 #alias {attack.hubiao} {
-	pfm_all chan wuying;
+	pfm_all chan lzj;
 	#class attack.inner open;
 	#ticker {wuying} {
 		wuying;
-	} {4.8};
+	} {6.8};
 	#class attack.inner close;
 };
 
@@ -112,7 +112,7 @@
 #alias {sanhuan} {
 	unwield all;
 	wield my sword;
-	jiali max;
+	jiali 10;
     perform sword.sanhuan;
 	jiali none;
 	wi;
@@ -131,7 +131,9 @@
 #alias {lzj} {
 	unwi;
 	wield my sword;
+	jiali 10;
     perform sword.lian;
+	jiali none;
 	wi;
 };
 
