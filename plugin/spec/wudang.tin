@@ -137,22 +137,15 @@
 
 #alias {wuying} {
 	unwield all;
-	jiali 10;
 	perform claw.wuying;
-	#if {${pfm_gangrou} == 0} {
-		jiali none;
-	};
 	wi;
 };
 
-#var pfm_gangrou 0;
 #alias {gangrou} {
 	unwi;
 	jiali max;
-	#var pfm_gangrou 1;
 	perform cuff.gangrou;
 	#delay {5} {
-		#var pfm_gangrou 0;
 		jiali none;
 	};
 	wi;
