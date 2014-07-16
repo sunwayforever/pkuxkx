@@ -36,7 +36,10 @@
 	#foreach {${stat_category}[%*]} {category} {
 		#math stat_percent ${${category}_hit}*100/(${${category}_hit}+${${category}_miss});
 		#format {tmp_category} {%-9s} {${category}:};
-		#echo {${tmp_category}命中: ${${category}_hit}  丢失: ${${category}_miss}  命中率: ${stat_percent}%%};
+		#format {tmp_hit} {%-5s} {${${category}_hit}};
+		#format {tmp_miss} {%-5s} {${${category}_miss}};
+		#format {tmp_percent} {%-5s} {${stat_percent}%%};
+		#echo {${tmp_category}命中:${tmp_hit}丢失:${tmp_miss}命中率:${tmp_percent}};
 	};
 	#buffer lock;
 };

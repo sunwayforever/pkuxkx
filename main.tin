@@ -57,7 +57,7 @@
 #read plugin/mz.tin;
 #read plugin/canju.tin;
 #read plugin/guaji.tin;
-#read plugin/statistics.tin;
+#read plugin/stat.tin;
 #read plugin/xizao.tin;
 #read plugin/show.tin;
 #read plugin/xiulian.tin;
