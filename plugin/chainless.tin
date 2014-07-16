@@ -18,4 +18,10 @@
 	} {1};
 };
 
+#alias {chainless.setup} {
+	stat.register 金蝉脱壳 miss 你未能摆脱心中桎梏，行动仍不灵便！;
+	stat.register 金蝉脱壳 hit 你心超物外，不滞于外力，终于能够自由行动了！;
+	#alias chainless special chainless;
+};
+
 #class chainless close

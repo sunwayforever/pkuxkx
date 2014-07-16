@@ -326,6 +326,9 @@
 	#action {你现在会以下这些特技：} {
 		#action {%S(%S)} {
 			special %%%2;
+			#if {"%%2" == "chainless"} {
+				chainless.setup;
+			};
 		};
 		#action {^>} {
 			#unaction {^>};
