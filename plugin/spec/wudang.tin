@@ -12,17 +12,13 @@
 };
 
 #alias {attack.bare} {
-	on_unbusy {
-		chan;
-	};
+	pfm_all chan;
 	#class attack.inner open;
 	#class attack.inner close;
 };
 
 #alias {attack.hubiao} {
-	on_unbusy {
-		chan;
-	};
+	pfm_all chan wuying;
 	#class attack.inner open;
 	#ticker {wuying} {
 		wuying;
@@ -30,10 +26,8 @@
 	#class attack.inner close;
 };
 
-#alias {attack.normal} {	
-	on_unbusy {
-		chan;
-	};
+#alias {attack.normal} {
+	pfm_all chan wuying;
 	#class attack.inner open;
 	#ticker {wuying} {
 		wuying;
@@ -42,12 +36,7 @@
 };
 
 #alias {attack.xiaofeng.qin} {
-	on_unbusy {
-		chan;
-		#delay {1} {
-			on_unbusy {wuying};
-		};
-	};
+	pfm_all chan wuying;
 	#class attack.inner open;
 	#ticker {wuying} {
 		wuying;
@@ -56,12 +45,7 @@
 };
 
 #alias {attack.xiaofeng.quan} {
-	on_unbusy {
-		chan;
-		#delay {1} {
-			on_unbusy {wuying};
-		};
-	};
+	pfm_all chan wuying;
 	#class attack.inner open;
 	#ticker {wuying} {
 		wuying;
@@ -70,12 +54,7 @@
 };
 
 #alias {attack.xiaofeng.sheng} {
-	on_unbusy {
-		chan;
-		#delay {1} {
-			on_unbusy {wuying};
-		};
-	};
+	pfm_all chan wuying;	
 	#class attack.inner open;
 	#ticker {wuying} {
 		wuying;
@@ -84,9 +63,7 @@
 };
 
 #alias {attack.mingjiao} {
-	on_unbusy {
-		chan;
-	};
+	pfm_all chan;
 	#class attack.inner open;
 	#ticker {perf_zhen} {
 		zhen;
@@ -160,7 +137,7 @@
 
 #alias {wuying} {
 	unwield all;
-	jiali max;
+	jiali 10;
 	perform claw.wuying ${mj_id};
 	#if {${pfm_gangrou} == 0} {
 		jiali none;
