@@ -161,13 +161,11 @@
 	};
 
 	#action {你要装备 %* 类武器才能练习} {
-		unwi;
-		wield %%1;
+		#showme {火候太浅};	
 	};
 
 	#action {你必须先找一杆枪才能练此枪法} {
-		unwi;
-		wield spear;
+		#showme {火候太浅};
 	};
 
 	#action {你还没学过这项技能吧} {
