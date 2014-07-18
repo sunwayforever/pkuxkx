@@ -6,10 +6,9 @@ load chaos;
 #var hb_wait 0;
 #var hb_paused 0;
 #var hb_hb_force_wait 0;
-#var hb_start_time 0;
-#var hb_end_time 0;
 #var hb_paused 0;
 #var hb_auto 0;
+#var hb_info nil;
 
 #alias {hb.teardown} {
 	#class hb_setup_inner kill;
@@ -38,6 +37,7 @@ load chaos;
 	#alias {attack} {
 		attack.normal;
 	};
+	#unticker {hb_ticker};
 };
 
 #alias {hb.move} {
@@ -56,8 +56,7 @@ load chaos;
 		#if {${hb_path_index} > ${hb_path_size}} {
 			#delay {hb_move} {
 				hb.pause;
-				#format {hb_end_time} {%t} {%T};
-				show_to_info 到达: ${hb_start_time} -> ${hb_end_time};
+				show_to_info 到达;
 				notify.alert escort arrived;
 				xmpp.notify 到达, 没找到收货人;
 			} {3};
@@ -158,8 +157,7 @@ load chaos;
 		@setenv{hb_state;ENDED};
 		hb.end;
 		raw;
-		#format {hb_end_time} {%t} {%T};
-		show_to_tuiche 任务完成: ${hb_start_time} -> ${hb_end_time};
+		show_to_tuiche 任务完成;
 		notify escort done;
 		hb.teardown;
 		#delay {5} {
@@ -192,7 +190,13 @@ load chaos;
 
 	#alias {attack} {
 		attack.hubiao;
-	};		
+	};
+
+	#var hb_elapsed_time 0;
+	#ticker {hb_ticker} {
+		#math hb_elapsed_time ${hb_elapsed_time}+1;
+		show_to_tuiche ${hb_info} --> ${hb_elapsed_time}:00;
+	} {60};
 };
 
 #alias {hb.wait} {
@@ -548,9 +552,9 @@ load chaos;
 
 		@setenv{hb_state;STARTED};
 		@setenv{hb_lunci;@eval{@getenv{hb_lunci}+1}};
-		#format {hb_start_time} {%t} {%T};
-		
-		show_to_tuiche ${tmp}|%%2|%%3;
+
+		#var hb_info ${tmp}|%%2|%%3;
+		show_to_tuiche ${hb_info};
 		pp %%2;
 		notify escort start;
 
