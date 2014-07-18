@@ -253,8 +253,12 @@
 				fix ${weapon};
 			};
 			play repair.wav;
-			sw;w;
-			tmp_repair;
+			#delay {3} {
+				sw;w;
+				#delay {3} {
+					tmp_repair;
+				};
+			};
 		};		
 	};
 	gt ly;
