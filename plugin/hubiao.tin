@@ -211,6 +211,9 @@ load chaos;
 	#alias {hb.back} {
 		#cr;
 	};
+	#alias {hb.recover} {
+		#cr;
+	};
 };
 
 #alias {hb.end} {
@@ -271,6 +274,27 @@ load chaos;
 		};
 	};
 
+	#alias {hb.recover} {
+		#action {chaos ok: %*} {
+			#if {"%%%1" != "fake"} {
+				#list hb_path set ${hb_path_index} {gan che to %%%1};
+				#math hb_path_index ${hb_path_index}-1;
+			};
+			#nop chaos.remember;
+			#delay {hb_delay} {
+				hb.resume;
+			} {10};
+		};
+
+		#action {chaos error} {
+			show_to_info 乱入;
+			notify.alert escort chaos;
+			xmpp.notify 乱入;
+		};
+		
+		chaos.find;
+	};
+
 	#if {"@getenv{hb_state}" == "STARTED"} {
 		chaos.remember;
 	};
@@ -303,7 +327,7 @@ load chaos;
 					${hb_next_step};
 				};
 			};
-		} {1.8};
+		} {2};
 	}
 };
 
@@ -624,26 +648,6 @@ load chaos;
 	#list hb_path size hb_path_size;
 };
 
-#alias {hb.recover} {
-	#action {chaos ok: %*} {
-		#if {"%%1" != "fake"} {
-			#list hb_path set ${hb_path_index} {gan che to %%1};
-			#math hb_path_index ${hb_path_index}-1;
-		};
-		#nop chaos.remember;
-		#delay {hb_delay} {
-			hb.resume;
-		} {10};
-	};
-
-	#action {chaos error} {
-		show_to_info 乱入;
-		notify.alert escort chaos;
-		xmpp.notify 乱入;
-	};
-	
-	chaos.find;
-};
 
 #alias {hb.guohe} {
 	#action {^%*接过你递给的船资} {
