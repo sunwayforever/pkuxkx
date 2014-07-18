@@ -122,6 +122,9 @@ load chaos;
 			hb.pause;
 			show_to_info 路径出错;
 			xmpp.notify 路径出错;
+			#alias {hb.recover} {
+				#cr;
+			};
 		};
 	};
 	
@@ -211,9 +214,6 @@ load chaos;
 	#alias {hb.back} {
 		#cr;
 	};
-	#alias {hb.recover} {
-		#cr;
-	};
 };
 
 #alias {hb.end} {
@@ -290,6 +290,9 @@ load chaos;
 			show_to_info 乱入;
 			notify.alert escort chaos;
 			xmpp.notify 乱入;
+			#alias {hb.recover} {
+				#cr;
+			};
 		};
 		
 		chaos.find;
@@ -327,7 +330,7 @@ load chaos;
 					${hb_next_step};
 				};
 			};
-		} {2};
+		} {2.8};
 	}
 };
 
