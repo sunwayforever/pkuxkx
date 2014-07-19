@@ -744,15 +744,19 @@
 #alias {walk_to} {
 	#var  direction %1;
 	#var  action #cr;
-	#if {@ismember{${direction};exits_list}} {
-		@abbrev{${direction}};
-	};
-	#else {
-		#foreach {${exits_list}[%*]} {exit} {
-			#regexp {${exit}} {%*${direction}%*} {#var action ${exit}};
+	#action {get_exits: done} {
+		#unaction {get_exits: done};
+		#if {@ismember{${direction};exits_list}} {
+			@abbrev{${direction}};
 		};
-		@abbrev{${action}};
+		#else {
+			#foreach {${exits_list}[%*]} {exit} {
+				#regexp {${exit}} {%*${direction}%*} {#var action ${exit}};
+			};
+			@abbrev{${action}};
+		};
 	};
+	get_exits;
 };
 
 #macro {\e[1;3A} {
