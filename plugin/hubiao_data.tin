@@ -9,7 +9,7 @@
 @mapset{robber_score;shaolin;3};
 @mapset{robber_score;huashan;2};
 
-#list clear_npcs create {山贼;独狼;庙祝;李铁嘴;地痞;小流氓;流氓头;翠花;流氓};
+#list clear_npcs create {山贼;独狼;庙祝;李铁嘴;地痞;小流氓;流氓头;翠花;流氓;襄阳守军};
 #function {getesc_get_score} {
 	#if {"${hb_owner}" == "zhang"} {
 		#if {"%1" == "全真天尊讲经堂"} {
