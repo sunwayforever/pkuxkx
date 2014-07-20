@@ -18,7 +18,7 @@
 };
 
 #alias {attack.hubiao} {
-	pfm_all chan lzj;
+	pfm_all chan;
 	#class attack.inner open;
 	#class attack.inner close;
 };
