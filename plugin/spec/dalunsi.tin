@@ -88,6 +88,6 @@
 
 #var shifu zhi;
 
-#list my_weapons create {staff; staff 2};
+#list my_weapons create {sword; sword 2};
 #var char_menpai_position xkt;
 #class dalunsi_spec close
