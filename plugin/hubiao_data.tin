@@ -24,7 +24,7 @@
 			#return -1;
 		};
 		#elseif {"%1" == "长安飞马镖局"} {
-			#return 1;
+			#return -1;
 		};
 		#elseif {"%1" == "曲阜孔府"} {
 			#if {"${xy_info}" == "on"} {
