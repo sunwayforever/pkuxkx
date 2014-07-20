@@ -809,3 +809,22 @@
 	#script {ret} {bin/pinyin.rb %0};
 	#var result $ret[1]
 };
+
+#var min_naijiu 10000;
+#alias {check_naijiu} {
+	#action {ÄÍ¾Ã¶È:%*} {
+		#if {${min_naijiu} > %%1} {
+			#var min_naijiu %%1;
+		};
+		#delay {d} {
+			#unaction {ÄÍ¾Ã¶È:%*};
+			update_status;
+		} {3};
+	} {1};
+	#foreach {${my_weapons}[%*]} {weapon} {l ${weapon}};
+	#foreach {${my_secondary_weapons}[%*]} {weapon} {l ${weapon}};
+};
+
+#ticker {check_naijiu} {
+	check_naijiu;
+} {300};

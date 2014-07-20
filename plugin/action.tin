@@ -28,25 +28,6 @@
 	#cr;
 } {1};
 
-#alias {check_naijiu} {
-	#action {ÄÍ¾Ã¶È:%*} {
-		#if {${min_naijiu} > %%1} {
-			#var min_naijiu %%1;
-		};
-		#delay {d} {
-			#unaction {ÄÍ¾Ã¶È:%*};
-			update_status;
-		} {3};
-	} {1};
-	#var min_naijiu 10000;
-	#foreach {${my_weapons}[%*]} {weapon} {l ${weapon}};
-	#foreach {${my_secondary_weapons}[%*]} {weapon} {l ${weapon}};
-};
-
-#ticker {check_naijiu} {
-	check_naijiu;
-} {300};
-
 #ticker {check_baowei} {
 	check_baowei;
 } {60};
