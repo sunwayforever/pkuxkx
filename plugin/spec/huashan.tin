@@ -39,7 +39,6 @@
 };
 
 #alias {attack.hubiao} {
-	pfm_all po;
 	#class attack.inner open;
 	#class attack.inner close;
 };
