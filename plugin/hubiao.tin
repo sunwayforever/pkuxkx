@@ -52,7 +52,6 @@ load chaos;
 		} {3};
 	};
 	#else {
-		#math hb_path_index ${hb_path_index}+1;
 		#if {${hb_path_index} > ${hb_path_size}} {
 			#delay {hb_move} {
 				hb.pause;
@@ -97,6 +96,7 @@ load chaos;
 
 	#action {^你赶着镖车驶了过来。$} {
 		#unticker {hb_walk};
+		#math hb_path_index ${hb_path_index}+1;
 		#if {${hb_paused} == 0} {
 			#if {@getenv{mixin_lunci} == 5} {
 				hb.move;
@@ -217,7 +217,6 @@ load chaos;
 	#var hb_force_wait 1;
 	#unticker {hb_walk};
 	#undelay {hb_move};
-	#math hb_path_index ${hb_path_index}-1;
 };
 
 #alias {hb.duobi} {
@@ -273,8 +272,8 @@ load chaos;
 	#alias {hb.recover} {
 		#action {chaos ok: %*} {
 			#if {"%%%1" != "fake"} {
-				#list hb_path set ${hb_path_index} {gan che to %%%1};
 				#math hb_path_index ${hb_path_index}-1;
+				#list hb_path set ${hb_path_index} {gan che to %%%1};
 			};
 			#nop chaos.remember;
 			#delay {hb_delay} {
@@ -295,12 +294,10 @@ load chaos;
 	};
 
 	#if {"@getenv{hb_state}" == "STARTED"} {
-		chaos.remember;
+		hb.move;
 	};
 	#else {
-		#math hb_path_index ${hb_path_index}+1;
 		#list hb_path get ${hb_path_index} hb_next_step;
-		
 		#action {^    这里%*出口} {
 			#math hb_path_index ${hb_path_index}+1;
 			#list hb_path get ${hb_path_index} hb_next_step;
@@ -628,7 +625,6 @@ load chaos;
 	@stackcreate{tmp};
 	@stackpush{tmp;#cr};
 
-	#math hb_path_index ${hb_path_index}+1;
 	#while {${hb_path_index} <= ${hb_path_size}} {
 		#list hb_path get ${hb_path_index} v;
 		#list tmp_path get ${tmp_index} tmp_top;
@@ -641,7 +637,7 @@ load chaos;
 		#math hb_path_index ${hb_path_index}+1;
 	}
 	#var hb_path @stacktolist{tmp};
-	#var hb_path_index 1;
+	#var hb_path_index 2;
 	#list hb_path size hb_path_size;
 };
 

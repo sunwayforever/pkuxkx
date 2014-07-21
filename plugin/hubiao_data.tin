@@ -560,7 +560,7 @@
 		};
 	};
 	#list hb_path size hb_path_size;
-	#var hb_path_index 0;
+	#var hb_path_index 1;
 };
 
 #class hubiao_data close
