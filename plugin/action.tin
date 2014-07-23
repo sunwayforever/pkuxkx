@@ -268,7 +268,10 @@
 };
 
 #action {你花费了%*修好%*！} {
-	show_to_info %2 修好了;
+	show_to_info %2 修好了, 花费%1;
+	#delay {delay_temp_repaired} {
+		check_naijiu;
+	} {1};
 };
 
 #action {你喜欢原地逛逛么} {
