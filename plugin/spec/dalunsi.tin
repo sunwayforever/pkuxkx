@@ -2,7 +2,8 @@
 #read plugin/chanding.tin;
 
 #alias {attack.prepare} {
-	#cr;
+	yun longxiang;
+	jiali 1;
 };
 
 #alias {attack.normal} {
@@ -26,10 +27,6 @@
 	#cr;
 };
 
-#alias {chan_robber} {
-	#cr;
-};
-
 #var shortcut NIL;
 #macro {\eOQ} {
 	#cr;
@@ -45,26 +42,6 @@
 
 #macro {\eOS} {
 	#cr
-};
-
-#alias {chan_robber} {
-	#cr;
-};
-
-#alias {chan_xiaofeng} {
-	#cr;
-};
-
-#alias {chan_bare} {
-	#cr;
-};
-
-#alias {chan_normal} {
-	#cr;
-};
-
-#alias {chan} {
-	chan_normal;
 };
 
 #alias {map_goto_lingwu} {
