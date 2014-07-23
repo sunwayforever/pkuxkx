@@ -1,5 +1,6 @@
 #class goto open;
-
+#var xiaoyao.accu 5;
+#var xiaoyao.delay 0.3;
 #nop ==½»»¥½çÃæ==
 #alias gt
 {
@@ -274,9 +275,9 @@
 						$cmd;
 						#math stepaccu {$stepaccu+1};
 						#math step {$step+1};
-						#if {$stepaccu>=10}
+						#if {$stepaccu>=${xiaoyao.accu}}
 						{
-							#delay {0.5} {walk};
+							#delay {${xiaoyao.delay}} {walk};
 							#var stepaccu 1;
 						} {
 							walk;
