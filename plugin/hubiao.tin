@@ -226,33 +226,39 @@ load chaos;
 		};
 	};
 	#else {
+		#class hb.duobi.inner open;
 		#action {不能移动} {
-			#unaction {不能移动};
 			#showme 你逃跑失败;
 		};
 		
 		#action {^你逃跑失败} {
-			#unaction {^你逃跑失败};
-			#undelay {hb_delay};
+			#class hb.duobi.inner kill;
 			on_truce {
 				#delay {hb_delay} {
 					hb.resume;
-				} {5};
+				} {3};
 			};
 		};
+		
+		#action {^    这里%*出口} {
+			#class hb.duobi.inner kill;
+			#math hb_path_index ${hb_path_index}+1;
+			#delay {hb_delay} {
+				hb.resume;
+			} {3}
+		} {1};
+		
+		#delay {hb_delay} {
+			#showme 你逃跑失败;				
+		} {5};
+		#class hb.duobi.inner close;
+		
 		#list hb_path get ${hb_path_index} duobi_exit;
-		#5 halt;
+		#3 halt;
 		#delay {1} {
 			#showme duobi: ${duobi_exit};
 			${duobi_exit};
 		};
-		#delay {hb_delay} {
-			#unaction {^你逃跑失败};
-			#unaction {不能移动};
-			#class truce.inner kill;
-			#math hb_path_index ${hb_path_index}+1;
-			hb.resume;
-		} {5};
 	};
 };
 

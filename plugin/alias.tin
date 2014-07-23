@@ -404,7 +404,9 @@
 	#class truce.inner open;
 	#action {truce} {
 		#class truce.inner kill;
-		tmp_truce;
+		#delay {tmp_delay_on_truce} {
+			tmp_truce;
+		} {1.8};
 	};
 	#class truce.inner close;
 	war;
