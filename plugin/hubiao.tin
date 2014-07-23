@@ -220,7 +220,6 @@ load chaos;
 };
 
 #alias {hb.duobi} {
-	#math hb_path_index ${hb_path_index}+1;
 	#if {${hb_path_index} > ${hb_path_size}} {
 		on_truce {
 			hb.resume;
@@ -235,7 +234,6 @@ load chaos;
 		#action {^ƒ„Ã”≈‹ ß∞‹} {
 			#unaction {^ƒ„Ã”≈‹ ß∞‹};
 			#undelay {hb_delay};
-			#math hb_path_index ${hb_path_index}-1;
 			on_truce {
 				#delay {hb_delay} {
 					hb.resume;
@@ -252,6 +250,7 @@ load chaos;
 			#unaction {^ƒ„Ã”≈‹ ß∞‹};
 			#unaction {≤ªƒ‹“∆∂Ø};
 			#class truce.inner kill;
+			#math hb_path_index ${hb_path_index}+1;
 			hb.resume;
 		} {5};
 	};
@@ -263,10 +262,7 @@ load chaos;
 
 	#alias {hb.back} {
 		hb.merge_path;
-		#nop hb.duobi;
-		on_truce {
-			hb.resume;
-		};
+		hb.duobi;
 	};
 
 	#alias {hb.recover} {
