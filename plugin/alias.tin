@@ -366,10 +366,6 @@
 	jobquery;
 };
 
-#alias {xmpp.notify} {
-	tell salonbus notify %0;
-};
-
 #alias {heal.stop} {
 	#unticker {heal};
 };

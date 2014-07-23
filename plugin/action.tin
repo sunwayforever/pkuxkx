@@ -114,6 +114,7 @@
 		update_env;
 		show.init;
 		check_baowei;
+		xmpp.start;
 		#delay {0.5} {
 			check_naijiu;
 			#send {hp};

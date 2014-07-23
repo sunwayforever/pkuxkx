@@ -1,6 +1,8 @@
 #class xmpp open
+#var xmpp_listener salonbus;
 
 #alias {xmpp.listen} {
+	#system {/usr/bin/killall xmpp_listen.rb};
 	#system {bin/xmpp_listen.rb ${char_id} &};	
 };
 
@@ -23,14 +25,21 @@
 	#unticker {xmpp.read};
 };
 
-xmpp.listen;
-xmpp.read.start;
+#alias {xmpp.start} {
+	#if {"${char_id}" == "${xmpp_listener}"} {
+		xmpp.listen;
+		#nop xmpp.read.start;
+	};
+};
 
-#nop tell sunwaybupt notify hello
 #action {(%*)¸æËßÄã£ºnotify %*} {
 	#var receiver %1;
 	#var content %2;
 	xmpp.send ${receiver} ${content}
 } {1};
+
+#alias {xmpp.notify} {
+	tell ${xmpp_listener} notify %0;
+};
 
 #class xmpp close
