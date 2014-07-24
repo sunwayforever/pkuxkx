@@ -518,7 +518,7 @@ load chaos;
 		xmpp.notify 挂了;
 	};
 	
-	#action {你的眼前一黑，接著什么也不知道了} {
+	#action {^你的眼前一黑，接著什么也不知道了} {
 		hb.pause;
 	};
 
