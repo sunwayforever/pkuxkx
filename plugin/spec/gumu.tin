@@ -104,7 +104,7 @@
 
 #alias {xiongyong} {
 	unwield all;
-	wield sword;
+	wield zidian;
 	#send {jifa parry xuantie-jian};
 	perform xuantie-jian.xiongyong;
 	#send {jifa parry meinu-quan};
@@ -114,7 +114,7 @@
 
 #alias {qixing} {
 	unwi;
-	wield sword;
+	wield zidian;
 	perform quanzhen-jian.qixing;
 	unwi;
 };
@@ -137,8 +137,8 @@
 
 #alias {suxin} {
 	unwield all;
-	wield my sword;
-	wield my sword 2;
+	wield zidian;
+	wield qingshuang;
 	perform yunu-jianfa.suxin;
 	unwield all;
 	wi;
@@ -172,8 +172,9 @@
 	wi;	
 };
 
-#list my_weapons create {my sword; my sword 2};
+#list my_weapons create {my spear;};
 #list my_secondary_weapons create {my whip;};
+#list my_special_weapons create {zidian; qingshuang};
 
 stat.register 缠 miss 可是他看破了你的企图，并没有上当;
 stat.register 缠 hit 结果他被你攻了个措手不及！

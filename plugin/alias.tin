@@ -252,6 +252,9 @@
 			#foreach {${my_secondary_weapons}[%*]} {weapon} {
 				fix ${weapon};
 			};
+			#foreach {${my_special_weapons}[%*]} {weapon} {
+				fix ${weapon};
+			};
 			play repair.wav;
 			#delay {3} {
 				sw;w;
