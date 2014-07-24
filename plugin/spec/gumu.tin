@@ -19,11 +19,8 @@
 };
 
 #alias {attack.hubiao} {
-	pfm_all chan chan chan zhua;
+	pfm_all chan chan suxin;
 	#class attack.inner open;
-	#ticker {zhua} {
-		zhua;
-	} {4.8};
 	#ticker {suxin} {
 		suxin;
 	} {6.8};
