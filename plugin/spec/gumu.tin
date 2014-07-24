@@ -23,7 +23,7 @@
 	#class attack.inner open;
 	#ticker {suxin} {
 		suxin;
-	} {6.8};
+	} {8.8};
 	#class attack.inner close;
 };
 
@@ -35,7 +35,7 @@
 	} {3.8};
 	#ticker {suxin} {
 		suxin;
-	} {7.8};
+	} {8.8};
 	#ticker {shexin} {
 		shexin;
 	} {5.8};
