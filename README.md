@@ -22,3 +22,11 @@ windows
 
 修改门派信息, 可以参考 gumu 这个文件. 另外, 因为领悟机器人使用 map 来走
 路,所以还需要在 map 目录下自己建立一个相应的 map
+
+Requirements
+----------
+1. tintin++ 2.00.7 (更新版本可能某些触发有问题)
+2. sqlite3
+3. ruby 2.0.0 (需要 sqlite3, iconv 两个 gem)
+4. 其他: libnotify-bin, notifu (for cygwin), mplayer, xmpp4r (for xmpp notification)
+ 
