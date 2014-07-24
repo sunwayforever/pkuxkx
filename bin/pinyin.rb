@@ -4,7 +4,7 @@ require 'iconv'
 
 conv = Iconv.new('UTF-8', 'GBK')
 
-$db = SQLite3::Database.new('pinyin.db')
+$db = SQLite3::Database.new('db/pinyin.db')
 
 def get_pinyin (name)
   ret = ""

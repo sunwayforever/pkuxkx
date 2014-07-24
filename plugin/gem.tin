@@ -237,13 +237,13 @@
 	#var gem_name %1;
 	#format {current_epoch} {%T};
 	#format {current_time} {%t} {{%T}{$epoch}};
-	#system {sqlite3 gem_record.db 'insert into gem_record values (NULL, "${char_id}", "${current_time}", ${current_epoch}, "${gem_name}")'};
+	#system {sqlite3 db/gem_record.db 'insert into gem_record values (NULL, "${char_id}", "${current_time}", ${current_epoch}, "${gem_name}")'};
 };
 
 #alias {gem.query} {
 	#format {current_epoch} {%T};
 	#math last_epoch ${current_epoch} - 6*60*60;
-	#system {sqlite3 gem_record.db 'select time, gem from gem_record where epoch > ${last_epoch} and char_id = "${char_id}" order by epoch'};
+	#system {sqlite3 db/gem_record.db 'select time, gem from gem_record where epoch > ${last_epoch} and char_id = "${char_id}" order by epoch'};
 };
 
 #class gem close
