@@ -36,6 +36,7 @@
 #read plugin/newbie_ct.tin
 #read plugin/newbie_gb.tin
 #read plugin/newbie_hs.tin
+#read plugin/newbie_mj.tin
 #read plugin/gem.tin;
 #read plugin/daomu.tin;
 #read plugin/wat.tin;

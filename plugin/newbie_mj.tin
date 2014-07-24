@@ -1,0 +1,37 @@
+#class newbie_mj open
+#alias {liaowang.start} {
+	#class liaowang.inner open;
+	#action {杨逍说道：「了望塔是我教一处关键所在，你去了望(liaowang)山下，观察敌踪吧。」} {
+		#delay {3} {
+			sd;sd;sd;sd;w;
+			liaowang;
+		};
+	};
+
+	#action {你刚做完任务不久，先去休息一会吧。} {
+		#delay {5} {
+			ask yang about job;			
+		};
+	};
+	
+	#action {你站岗完毕，回杨左使处复命吧。} {
+		#delay {3} {
+			e;nu;nu;nu;nu;
+			ask yang about fuming;
+		};
+	};
+
+	#action {杨逍对你道：幸苦了。} {
+		#delay {3} {
+			ask yang about job;	
+		};
+	};
+	#class liaowang.inner close;
+	ask yang about job;
+};
+
+#alias {liaowang.stop} {
+	#class liaowang.inner kill;	
+};
+
+#class newbie_mj close
