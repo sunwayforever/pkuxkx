@@ -34,4 +34,28 @@
 	#class liaowang.inner kill;	
 };
 
+#action {黛绮丝给你一个瓦罐} {
+	fill guan;
+};
+
+#action {你将瓦罐装满清水} {
+	#delay {5} {
+		s;s;s;s;e;
+		dao gang;
+	};
+}
+
+#action {水缸还有很多空余} {
+	#delay {5} {
+		w;n;n;n;n;
+		fill guan;
+	};
+};
+
+#action {你可以回去和龙王复命了。} {
+	#delay {5} {
+		w;n;n;n;n;
+		ask dai about fuming;
+	};
+};
 #class newbie_mj close
