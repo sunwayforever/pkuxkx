@@ -1,6 +1,9 @@
 #class bianli open;
 
 #alias {create_bl_path} {
+	#if {"${CurrentPosition}" == "mj"} {
+        #list bl_path create {w;e;nu;nu;nu;s;n;w;e;e;w;n;s;nu;w;e;n;w;n;s;w;e;e;e;n;s;e;w;w;n;n;w;n;n;n;n;s;s;s;s;e;e;nd;nd;nd;n;open door;n;w;e;n;s;e;w;s;s;su;su;su;w;s;s;s;sd;sd;sd;sd;sd;se;e;n;s;e;w;s;n;w;s;w;n;s;e;e;w;se;nw;sw;ne;se;sw;w;se;give ding 10 silver;bl.wait 1;n;w;e;n;w;n;e;e;s;w;s;s;nw;e;ne;nw;n;nw;nu};
+    };
 	#if {"${CurrentPosition}" == "dzt"} {
         #list bl_path create {bl.truce;n;bl.truce;n;n;n;enter;out;s;s;s;bl.truce;e;n;e;e;e;s;s;w;w;bl.truce;w;n;e;w;w;w;n;s;s;n;w;n;enter;out;s;s;s;n;n;w;w;ban shan; bl.wait 1; d;nd;nd;ed;
 		e;s;w;sw;se;ed;nd;enter;out;su;wu;nw;ne;n;wu;su;su;u;e;e;e;e;bl.truce;s;bl.truce;s;s;sd;sd;sw;se;ts;bl.wait 10;sd;sd;s;w;w;w;e;e;e;s;sd;nu;n;n;nu;nu;ts; bl.wait 10;nw;ne;nu;nu;n;n};

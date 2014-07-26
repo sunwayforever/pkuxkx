@@ -31,12 +31,6 @@
 #read plugin/jianding.tin
 #read plugin/pingdiao.tin
 #read plugin/hyd.tin;
-#read plugin/newbie_xx.tin
-#read plugin/newbie_wd.tin
-#read plugin/newbie_ct.tin
-#read plugin/newbie_gb.tin
-#read plugin/newbie_hs.tin
-#read plugin/newbie_mj.tin
 #read plugin/gem.tin;
 #read plugin/daomu.tin;
 #read plugin/wat.tin;
