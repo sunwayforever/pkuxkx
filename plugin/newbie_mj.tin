@@ -34,28 +34,86 @@
 	#class liaowang.inner kill;	
 };
 
+#action {你向杨逍打听有关『job』的消息。} {
+	load_map;
+	#map goto 10;
+};
+#nop 鹰王
+#action {杨逍说道：「现在白眉鹰王正在找人帮忙，你去看看吧。」} {
+	#delay {3} {
+		map.go 鹰王宫;
+		ask yin about job;
+	};
+};
+
+#action {殷天正对你道：你去练功房找(zhao)一件钢刀去武场打磨(mo)一下交给我。} {
+	map.go 练武场;
+	zhao;
+};
+
+#nop 狮王
+#action {杨逍说道：「现在金毛狮王正在找人帮忙，你去看看吧。」} {
+	#delay {3} {
+		map.go 走廊;
+		ask xie about job;
+	};
+};
+
+#action {圣火坛可是我教一个大秘密，在明教大殿enter就进去了。} {
+	#var jian_count 0;
+	#delay {3} {
+		map.go 后山小路;
+		#ticker {jian} {
+			jian;
+		} {3};
+	};
+};
+
+#action {你拣起了一段干柴！} {
+	#math jian_count ${jian_count}+1;
+	#if {${jian_count} > 10} {
+		#unticker {jian};
+	};
+};
+
+#nop 龙王
+#action {杨逍说道：「现在紫杉龙王正在找人帮忙，你去看看吧。」} {
+	#delay {3} {
+		map.go 碧水潭畔;
+		drop guan;
+		ask dai about job;
+	};
+};
+
 #action {黛绮丝给你一个瓦罐} {
 	fill guan;
 };
 
 #action {你将瓦罐装满清水} {
 	#delay {5} {
-		s;s;s;s;e;
+		map.go 后花园;
 		dao gang;
 	};
 }
 
 #action {水缸还有很多空余} {
 	#delay {5} {
-		w;n;n;n;n;
+		map.go 碧水潭畔;
 		fill guan;
 	};
 };
 
 #action {你可以回去和龙王复命了。} {
 	#delay {5} {
-		w;n;n;n;n;
+		map.go 碧水潭畔;
 		ask dai about fuming;
+	};
+};
+
+#action {完成任务后，你被奖励了：} {
+	#delay {3} {
+		map.go 广场;
+		ask yang about job;
 	};
 };
 #class newbie_mj close
