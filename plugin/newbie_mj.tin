@@ -174,13 +174,10 @@
 	#delay {3} {
 		map.go 走廊;
 		ask wei about job;
-		ask wei about fail;
-		map.go 广场;
-		ask yang about job;
 	};
 };
 
-#action {NOP我好久没有饮人血了，听说六大派派了一个叫%*的奸细来到明教附近，你去把他揪出来吧。} {
+#action {我好久没有饮人血了，听说六大派派了一个叫%*的奸细来到明教附近，你去把他揪出来吧。} {
 	#var jianxi_name %1;
 	show_to_info 奸细: ${jianxi_name};
 	map_goto_start;
