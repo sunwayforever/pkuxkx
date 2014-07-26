@@ -46,6 +46,11 @@
 	};
 };
 
+#action {你刚做完任务不久，先去休息一会吧。} {
+	#delay {10} {
+		ask yang about job;		
+	};
+};
 #nop 鹰王
 #action {杨逍说道：「现在白眉鹰王正在找人帮忙，你去看看吧。」} {
 	#delay {3} {
@@ -109,8 +114,10 @@
 	#math jian_count ${jian_count}+1;
 	#if {${jian_count} > 10} {
 		#unticker {jian};
-		map.go 圣火坛;
-		kanshou;
+		#delay {3} {
+			map.go 圣火坛;
+			kanshou;
+		};
 	};
 };
 
@@ -167,14 +174,25 @@
 	#delay {3} {
 		map.go 走廊;
 		ask wei about job;
+		ask wei about fail;
+		map.go 广场;
+		ask yang about job;
 	};
 };
 
-#action {我好久没有饮人血了，听说六大派派了一个叫%*的奸细来到明教附近，你去把他揪出来吧。} {
+#action {NOP我好久没有饮人血了，听说六大派派了一个叫%*的奸细来到明教附近，你去把他揪出来吧。} {
 	#var jianxi_name %1;
 	show_to_info 奸细: ${jianxi_name};
 	map_goto_start;
 	bl.start ${jianxi_name};
 };
 
+#action {找到目标} {
+	kill @py{${jianxi_name}};
+};
+
+#action {可以回蝠王那里复命了。} {
+	map.go 走廊;
+	ask wei about fuming;
+};
 #class newbie_mj close
