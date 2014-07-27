@@ -122,6 +122,10 @@
 		#showme {火候太浅};
 	};
 
+	#action {道德小于零才能练这种阴毒功夫} {
+		#showme {火候太浅};	
+	};
+	
 	#action {你的基本功夫比你的高级功夫还高} {
 		#if {"${skill}" == "force"} {
 			#math skill_index ${skill_index}+1;
