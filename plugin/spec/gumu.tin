@@ -172,7 +172,7 @@
 	wi;	
 };
 
-#list my_weapons create {my spear;};
+#list my_weapons create {my spear; my spear 2};
 #list my_secondary_weapons create {my whip;};
 #list my_special_weapons create {zidian; qingshuang};
 
