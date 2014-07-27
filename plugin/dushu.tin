@@ -20,7 +20,6 @@
 	#ticker {du} {
 		do_du;
 		#if {${nl_percent} < 20} {
-			chifan;
 			sleep;
 		};
 	} {2};
