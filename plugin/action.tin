@@ -267,7 +267,7 @@
 	show_to_info 不需要修理;
 };
 
-#action {你花费了%*修好%*！} {
+#action {你花费了%*,修好%*！} {
 	show_to_info %2 修好了, 花费%1;
 	#delay {delay_temp_repaired} {
 		check_naijiu;
