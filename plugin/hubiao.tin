@@ -67,7 +67,6 @@ load chaos;
 			#if {${eff_qx_percent} < 50} {
 				#2 yun lifeheal;
 			};
-			#list hb_path get ${hb_path_index} hb_next_step;
 			#delay {hb_move} {
 				#if {${hb_force_wait} == 0 && ${hb_paused} == 0 && ${hb_wait} == 0} {
 					on_echo {
@@ -99,8 +98,9 @@ load chaos;
 	};
 
 	#action {^你赶着镖车驶了过来。$} {
-		#unticker {hb_walk};
 		#math hb_path_index ${hb_path_index}+1;
+		#list hb_path get ${hb_path_index} hb_next_step;
+		#unticker {hb_walk};
 		#if {${hb_paused} == 0} {
 			#if {@getenv{mixin_lunci} == 5} {
 				hb.move;
