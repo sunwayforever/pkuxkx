@@ -299,7 +299,7 @@
 
 		#alias guojiang {ask shao gong about jiang};
 		#alias guohe {ask shao gong about huanghe};
-		#alias gb_andao {enter shudong;say 天堂有路你不走呀;d};
+		#alias gb_andao {enter shudong;say 天堂有路你不走呀;d;%%1;};
 		#alias gy_yinzhe {s;w;w;e;s};
 		#alias meizhuang_gate {knock gate 4;knock gate 2;knock gate 5;knock gate 3};
 		#alias mr_mantuo {w;n;w;s;s;e;e;w;w};
@@ -486,12 +486,12 @@
 #list Route_xs_dls create {e} {e} {s} {sd} {sd} {e} {s} {enter dong} {se} {sw} {out} {sw} {wu} {nw};
 #list Route_dls_xs create {se} {ed} {ne} {enter dong} {ne} {nw} {out} {n} {w} {nu} {nu} {n} {w} {w};
 #list Route_xs_yz create {e} {e} {s} {sd} {sd} {e} {s} {enter dong} {se} {ne} {ne} {n} {ne} {e} {u} {out};
-#list Route_yz_xs create {gb_andao} {9} {sw} {s} {sw} {sw} {nw} {out} {n} {w} {nu} {nu} {n} {w} {w};
+#list Route_yz_xs create {gb_andao 9} {sw} {s} {sw} {sw} {nw} {out} {n} {w} {nu} {nu} {n} {w} {w};
 #list Route_dls_yz create {se} {ed} {ne} {enter dong} {ne} {ne} {ne} {n} {ne} {e} {u} {out};
-#list Route_yz_dls create {gb_andao} {9} {sw} {s} {sw} {sw} {sw} {out} {sw} {wu} {nw};
-#list Route_yz_hn1 create {gb_andao} {7} {n} {ne} {ne} {n} {out} {e};
+#list Route_yz_dls create {gb_andao 9} {sw} {s} {sw} {sw} {sw} {out} {sw} {wu} {nw};
+#list Route_yz_hn1 create {gb_andao 7} {n} {ne} {ne} {n} {out} {e};
 #list Route_hn1_yz create {w} {enter hole} {s} {sw} {sw} {s} {s} {u} {out};
-#list Route_yz_xz create {gb_andao} {4} {w} {w} {w} {nw};
+#list Route_yz_xz create {gb_andao 4} {w} {w} {w} {nw};
 #list Route_xz_xx create {se} {wu} {n};
 #list Route_xx_xz create {s} {ed} {nw};
 #list Route_xz_ca create {se} {se} {sw} {sd} {e} {e} {e} {e} {e} {e} {n};
@@ -525,7 +525,7 @@
 #list Route_rz_xch create {se} {se};
 #list Route_xch_rz create {nw} {nw};
 #list Route_rz_yz create {w} {w} {nu} {w} {ne} {enter dong} {sw} {sw} {sw} {u} {out};
-#list Route_yz_rz create {gb_andao} {3} {ne} {ne} {u} {sw} {e} {sd} {e} {e};
+#list Route_yz_rz create {gb_andao 3} {ne} {ne} {u} {sw} {e} {sd} {e} {e};
 #list Route_ny_xch create {ne} {ne};
 #list Route_xch_ny create {sw} {sw};
 #list Route_xch_hb create {e} {se} {e};
@@ -542,11 +542,11 @@
 #list Route_jb1_ssb create {w} {nd} {nw} {wu} {wu} {n} {n} {n};
 #list Route_jb1_yz create {w} {nd} {nw} {nd} {n} {n} {n} {n};
 #list Route_yz_jb1 create {s} {s} {s} {s} {su} {se} {su} {e};
-#list Route_yz_gb create {gb_andao} {2} {ne} {ne} {u};
+#list Route_yz_gb create {gb_andao 2} {ne} {ne} {u};
 #list Route_gb_yz create {s} {s} {w} {w} {w} {w};
 #list Route_yz_xiny create {w} {w} {w} {w} {nw} {w} {w} {w} {w} {w} {n};
 #list Route_xiny_yz create {s} {e} {e} {e} {e} {e} {se} {e} {e} {e} {e};
-#list Route_yz_xc create {gb_andao} {1} {n} {n} {u};
+#list Route_yz_xc create {gb_andao 1} {n} {n} {u};
 #list Route_xc_ny create {s} {s} {s} {s} {s} {se};
 #list Route_ny_xc create {nw} {n} {n} {n} {n} {n};
 #list Route_xc_qzh create {nw} {nw} {w} {nw} {nw} {n} {nw} {nu} {nu} {n} {nu} {n} {n};
@@ -557,7 +557,7 @@
 #list Route_xiny_xy create {s} {w} {w} {w} {nw} {w} {w} {w} {w} {w} {w} {w} {n};
 #list Route_wdc_wd create {wu} {nu} {nu} {nu} {w} {nu} {nu} {eu} {eu} {nu} {nu};
 #list Route_wd_wdc create {sd} {sd} {wd} {wd} {sd} {sd} {e} {sd} {sd} {sd} {ed};
-#list Route_yz_qlc create {gb_andao} {1} {n} {nw} {nw} {nw} {n} {nw} {u} {e} {s} {w};
+#list Route_yz_qlc create {gb_andao 1} {n} {nw} {nw} {nw} {n} {nw} {u} {e} {s} {w};
 #list Route_qlc_yz create {e} {n} {w} {enter dong} {se} {s} {se} {se} {se} {s} {s} {u} {out};
 #list Route_qf_hn1 create {e} {n} {n} {n} {n} {nw} {nw} {nw};
 #list Route_hn1_qf create {se} {se} {se} {s} {s} {s} {s} {w};
