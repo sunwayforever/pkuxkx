@@ -37,7 +37,7 @@
 	};
 	#action {^│%s基本内功%s(force)%s-%*%d/%s%d│$} {
 		#var jiben_neigong %%5;
-		#math max_jingli ${jiben_neigong} * 15 - 1;
+		#math max_jingli ${youxiao_neigong} * 10 -1;
 		#if {${max_jingli} < ${hpbrief_max_jl}} {
 			tn.stop;
 			#showme tn done;
