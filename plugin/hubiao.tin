@@ -70,11 +70,15 @@ load chaos;
 			#list hb_path get ${hb_path_index} hb_next_step;
 			#delay {hb_move} {
 				#if {${hb_force_wait} == 0 && ${hb_paused} == 0 && ${hb_wait} == 0} {
-					${hb_next_step};
+					on_echo {
+						${hb_next_step};
+					};
 				};
 				#ticker {hb_walk} {
 					#if {${hb_force_wait} == 0 && ${hb_paused} == 0 && ${hb_wait} == 0} {
-						${hb_next_step};
+						on_echo {
+							${hb_next_step};
+						};
 					};
 				} {8};
 			} {3};
@@ -321,7 +325,9 @@ load chaos;
 				};
 			};
 			#else {
-				${hb_next_step};
+				on_echo {
+					${hb_next_step};
+				};
 			};
 		} {2.8};
 	}
