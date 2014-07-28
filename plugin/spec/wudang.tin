@@ -8,6 +8,9 @@
 	#ticker {perf_chan} {
 		chan;
 	} {1};
+	#action {²ø: miss} {
+		chan;
+	};
 	#class attack.inner close;
 };
 
