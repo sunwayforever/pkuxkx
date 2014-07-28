@@ -299,11 +299,11 @@ load chaos;
 		chaos.find;
 	};
 
+	#list hb_path get ${hb_path_index} hb_next_step;
 	#if {"@getenv{hb_state}" == "STARTED"} {
 		hb.move;
 	};
 	#else {
-		#list hb_path get ${hb_path_index} hb_next_step;
 		#action {^    这里%*出口} {
 			#math hb_path_index ${hb_path_index}+1;
 			#list hb_path get ${hb_path_index} hb_next_step;
