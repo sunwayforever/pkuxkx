@@ -1,7 +1,6 @@
 #class statistics open
 #list stat_category create {};
 #alias {stat.register} {
-	#gag %3;
 	#var category %1;
 	#var kind %2;
 
