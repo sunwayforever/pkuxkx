@@ -238,6 +238,31 @@
 	jianding %0;
 };
 
+#alias {special_repair} {
+	#alias tmp_special_repair %1;
+	#if {${special_min_naijiu} < 100} {
+		#action {抵达目的地} {
+			#unaction {抵达目的地};
+			d;out;
+			#delay {2} {
+				#foreach {${my_special_weapons}[%*]} {weapon} {
+					fix ${weapon};
+				};
+				#delay {3} {
+					enter; up;
+					#delay {3} {
+						tmp_special_repair;
+					};
+				};
+			};
+		};
+		gt yz;
+	};
+	#else {
+		tmp_special_repair;
+	};
+};
+
 #alias {repair} {
 	#alias tmp_repair %1;
 	#unticker {naijiu};
@@ -808,19 +833,41 @@
 	#var result $ret[1]
 };
 
+#var min_naijiu 10000;
 #alias {check_naijiu} {
 	#action {耐久度:%*} {
-		#if {${min_naijiu} > %%1} {
-			#var min_naijiu %%1;
+		#if {${tmp_min_naijiu} > %%1} {
+			#var tmp_min_naijiu %%1;
 		};
 		#delay {d} {
 			#unaction {耐久度:%*};
-			update_status;
+			#if {${tmp_min_naijiu} != 10000} {
+				#var min_naijiu ${tmp_min_naijiu};
+				update_status;
+			};
+			check_special_naijiu;
 		} {3};
 	} {1};
-	#var min_naijiu 10000;
+	#var tmp_min_naijiu 10000;
 	#foreach {${my_weapons}[%*]} {weapon} {#send {l ${weapon}}};
 	#foreach {${my_secondary_weapons}[%*]} {weapon} {#send {l ${weapon}}};
+};
+
+#var special_min_naijiu 10000;
+#alias {check_special_naijiu} {
+	#action {耐久度:%*} {
+		#if {${tmp_min_naijiu} > %%1} {
+			#var tmp_min_naijiu %%1;
+		};
+		#delay {d} {
+			#unaction {耐久度:%*};
+			#if {${tmp_min_naijiu} != 10000} {
+				#var special_min_naijiu ${tmp_min_naijiu};
+			};
+		} {3};
+	} {1};
+	#var tmp_min_naijiu 10000;
+	#foreach {${my_special_weapons}[%*]} {weapon} {#send {l ${weapon}}};
 };
 
 #ticker {check_naijiu} {
