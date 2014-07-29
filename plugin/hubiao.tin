@@ -683,6 +683,22 @@ load chaos;
 	ask shao gong about %1;		
 };
 
+#alias {clear_blocker} {
+	#var tmp_blocker %1;
+	#class clear_blocker.inner open;
+	#action {ÄãÏëÉ±Ë­} {
+		#class clear_blocker.inner kill;
+		#math hb_path_index ${hb_path_index}+1;
+		hb.resume;
+	};
+	#ticker {tmp_blocker_ticker_kill} {
+		killall ${tmp_blocker};	
+	} {5};
+	#class clear_blocker.inner close;
+	hb.pause;
+	killall ${tmp_blocker};
+};
+
 #alias {clear_npc} {
 	#var npc_zh %1;
 	#class clear_npc.inner open;

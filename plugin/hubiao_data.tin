@@ -125,7 +125,7 @@
 			#return 7;
 		};
 		#elseif {"%1" == "晋阳萧府"} {
-			#return 1;
+			#return -1;
 		};
 		#elseif {"%1" == "成都当铺"} {
 			#return -1;
@@ -144,7 +144,7 @@
 				#return -1;
 			};
 			#else {
-				#return -1;
+				#return 2;
 			};
 		};
 		#elseif {"%1" == "武当荆西镖局"} {
@@ -281,7 +281,7 @@
 		};
 		#elseif {"${tmp}" == "襄阳"} {
 			#list hb_path create {
-				gs;ge;ge;ge;ge;ge;gn;gn;gs;gs;ge;ge;ge;ge;gn;gs;gs;gn;ge;gn;gs;gs;gn;ge;gn;gn;gw;gn;gs;ge;ge;gw;gn;
+				gs;ge;ge;ge;ge;ge;gn;gn;gs;gs;ge;ge;ge;ge;gn;gs;gs;clear_blocker jun;gs;gn;gn;ge;gn;gs;gs;gn;ge;gn;gn;gw;gn;gs;ge;ge;gw;gn;
 				gw;ge;ge;ge;gw;gw;gs;gs;gs;gs;gw;ge;ge;gw;gs;gw;ge;gs;gw;ge;ge;gw;gs;gn;gn;gn;gn;ge;gn;gs;ge;gn;gn;gs;gs;ge;gs;gn;gw;gw;gse;gs;gn;gnw;gw;gw;gw;gn;
 			};
 		};
@@ -447,7 +447,7 @@
 	    #elseif {"${tmp}" == "襄阳"} {
 	     	#list hb_path create {
 	     		gn;ge;ge;ge;ge;ge;gn;gn;ge;ge;ge;ge;gse;ge;ge;ge;ge;ge;ged;ge;ge;ge;gs;gs;gs;gs;gs;gs;gs;gsw;gs;
-	     		gs;gs;gw;ge;ge;ge;gw;gw;gs;gw;ge;ge;gw;gs;ge;gw;gs;gw;gn;gs;gs;gn;gw;gn;gs;gs;gs;gn;gn;gw;gw;gw;gw;gn;gn;gs;gs;gw;gw;gw;gw;
+	     		gs;gs;gw;ge;ge;ge;gw;gw;gs;gw;ge;ge;gw;gs;ge;gw;gs;gw;gn;gs;gs;gn;gw;gn;gs;gs;clear_blocker jun;gs;gn;gn;gw;gw;gw;gw;gn;gn;gs;gs;gw;gw;gw;gw;
 	     		ge;ge;ge;ge;ge;ge;ge;ge;ge;ge;gs;gw;ge;ge;gw;gs;gw;ge;gs;gw;ge;ge;gw;gs;gs;gn;gn;gn;gn;gn;ge;gn;gs;ge;gn;gn;gw;ge;gs;gs;gsw;
 	     		gs;gw;ge;ge;gw;gn;gne;ge;gs;gn;ge;ge;gse;gnw;ge;gw;gw;gw;gw;gw;gw;gw;gw;gn;
 	     	};
