@@ -631,9 +631,9 @@ load chaos;
 		#if {"@opposite{${v}}" == "@stacktop{tmp}"} {
 			#var nil @stackpop{tmp};
 		};
-		#else {
-			@stackpush{tmp;${v}};
-		};
+		#elseif {"@opposite{${v}}" != "NULL"} {
+			@stackpush{tmp;${v}};			
+		}
 		#math hb_path_index ${hb_path_index}+1;
 	}
 	#var hb_path @stacktolist{tmp};

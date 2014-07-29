@@ -705,7 +705,12 @@
 };
 #function {opposite} {
 	#list {directions} {find} {%1} {opposite_index};
-	#list opposite_directions get ${opposite_index} result;
+	#if {${opposite_index} == 0} {
+		#return NULL;
+	};
+	#else {
+		#list opposite_directions get ${opposite_index} result;		
+	};
 };
 #function {abbrev} {
 	#list {directions} {find} {%1} {abbrev_index};
