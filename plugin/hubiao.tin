@@ -159,9 +159,7 @@ load chaos;
 		show_to_tuiche 任务完成;
 		notify escort done;
 		hb.teardown;
-		#delay {5} {
-			hb.back;			
-		};
+		hb.back;			
 	} {1};
 
 	#class hb_setup_inner close;
