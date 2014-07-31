@@ -41,43 +41,24 @@
 };
 
 #alias {map_goto_lingwu} {
-	map.go 石壁;
+	map.go 达摩院二楼;
 };
 
 #alias {map_goto_rest} {
-	map.go 左内殿;
+	map.go 和尚院四部;
 };
 
 #alias {map_goto_start} {
-	map.go 巨岩;
+	map.go 方丈楼;
 };
 
 #alias {map_goto_shifu} {
-	map.go 山谷口;
+	map.go 广场;
 };
 
 #alias {chan} {
 	#cr;
 };
-
-#alias {chan_robber} {
-	#cr;
-};
-
-#alias {xl.start} {
-	xiulian bixue-xinfa;
-	show_to_quest 修炼内功;
-	#action {顿觉内功修为增进不小} {xiulian yunu-xinfa};
-	#action {由于缺乏实战经验} {
-		xl.stop;
-	};
-};
-
-#alias {xl.stop} {
-	show_to_quest 修炼结束;
-	#unaction {顿觉内功修为增进不小};
-	#unaction {由于缺乏实战经验};
-}
 
 #list my_weapons create {staff; staff 2};
 
@@ -165,7 +146,7 @@
 	bei strike hand;
 };
 
-#var shifu li;
+#var shifu qingfa;
 #var menzhong dizi;
 #var menzhong_didian txg;
 #class template close
