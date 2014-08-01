@@ -45,7 +45,7 @@
 };
 
 #alias {map_goto_rest} {
-	map.go 和尚院四部;
+	map.go 和尚院五部;
 };
 
 #alias {map_goto_start} {
@@ -104,7 +104,7 @@
 
 };
 
-#var shortcut F1:活色 F2:抽髓 F3:火球 F4:火墙 F5:穿心 F6:散毒 F7:弹
+#var shortcut NIL;
 #macro {\eOP} {
 	huose;
 };
