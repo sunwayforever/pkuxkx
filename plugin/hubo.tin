@@ -60,8 +60,8 @@
 	};
 
 	#action {思维似乎变得迟钝了一些} {
-		show_to_quest 已经掌握了左右互博绝技;
 		xmpp.notify 已经掌握了左右互博绝技;
+		hubo.stop;
 	};
 	
 	#class hubo.inner close;

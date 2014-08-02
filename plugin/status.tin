@@ -59,7 +59,13 @@
 };
 
 #alias {update_status} {
-	#var status_content ${char_name}: ${shaqi_info} | ${exp_info} | ${min_naijiu} ÄÍ¾Ã | ${money_info} | ${daytime_info} | ${uptime_info} | ${week_info};
+	#if {${special_min_naijiu} == 10000} {
+		#var naijiu_info ${min_naijiu};
+	};
+	#else {
+		#var naijiu_info ${min_naijiu}/${special_min_naijiu};
+	};
+	#var status_content ${char_name}: ${shaqi_info} | ${exp_info} | ${naijiu_info} ÄÍ¾Ã | ${money_info} | ${daytime_info} | ${uptime_info} | ${week_info};
 	#if {"${xy_info}" == "on"} {
 		#var status_content ${status_content} | ±£ÎÀ;
 	};
