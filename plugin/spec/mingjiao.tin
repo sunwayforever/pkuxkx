@@ -43,7 +43,7 @@
 };
 
 #alias {map_goto_shifu} {
-	map.go ¾ÞÄ¾Ì³;
+	map.go ¹ã³¡;
 };
 
 #alias {chan} {
@@ -87,7 +87,7 @@
 	bei strike hand;
 };
 
-#var shifu wen;
+#var shifu yang;
 #var menzhong tang;
 #var menzhong_didian hst;
 #class template close
