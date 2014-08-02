@@ -1,6 +1,6 @@
 #class mz open
 #var mz_auto 0;
-#list mz_ignore create {手信;华山剑谱;信纸;渔夫;大般;空空儿;无量寿经;大金刚拳法;天山雪莲;飞沙走石;};
+#list mz_ignore create {手信;华山剑谱;信纸;渔夫;大般;空空儿;无量寿经;大金刚拳法;天山雪莲;飞沙走石;丁坚;第十三章;粽子;小喽啰;水靠};
 #alias {mz.start} {
 	#var mz_auto 1;
 	#class mz.inner open;
@@ -13,6 +13,15 @@
 		};
 	};
 
+	#action {忠诚度提高了%*点。} {
+		show_to_info 门忠: @ctd{%%1} 点;
+		#delay {3} {
+			#if {${mz_auto} == 1} {
+				mz.q;
+			};
+		};
+	} {1};
+
 	#action {说道%*你还没} {
 		mz.f;
 		#if {${mz_auto} == 1} {
@@ -20,15 +29,31 @@
 		};
 	} {1};
 
-	#action {你对%*的忠诚度提高} {
-		#delay {3} {
-			#if {${mz_auto} == 1} {
-				mz.q;
-			};
+	#action {说道：%*裘万家%*裘万家} {
+		gt yz;
+		on_there {
+			enter shudong;
+			hit qiu;
+		};
+		on_hit {
+			out;
+			mz.b;
 		};
 	};
-
-	#action {说道：%*道一} {
+	
+	#action {说道：%*阿紫} {
+		gt xx;
+		on_there {
+			n;nu;
+			hit zi;
+		};
+		on_hit {
+			sd;s;
+			mz.b;
+		};
+	};
+	
+	#action {NOP说道：%*道一} {
 		gt fzl;
 		on_there {
 			w;w;n;n;w;
@@ -40,10 +65,22 @@
 		};
 	};
 
+	#action {说道：%*托钵僧} {
+		gt yz;
+		on_there {
+			s;s;
+			hit seng;
+		};
+		on_hit {
+			back;
+			mz.b;
+		};
+	};
+
 	#action {说道：%*清法比丘} {
 		gt shaolinsi;
 		on_there {
-			unwi;eu;nu;nu;nu;n;
+			unwi;eu;nu;nu;nu;n;wi;
 			kill biqiu;
 		};
 		on_dead {
@@ -485,7 +522,7 @@
 		on_hit {s;d; mz.b};
 	};
 
-	#action {%*说道%*道成%*} {
+	#action {NOP%*说道%*道成%*} {
 		gt fzl;
 		on_there {n; kill daocheng chanshi};
 		on_dead {s; mz.b};

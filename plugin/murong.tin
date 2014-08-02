@@ -53,6 +53,10 @@
             mr.d;
         };
     };
+
+	#action {姑苏慕容叛徒死了。} {
+		get all from corpse;
+	} {1};
 	
     #action {你从姑苏慕容叛徒的尸体身上搜出一块玉玺。} {
 		show_to_quest 慕容任务: 收工;
