@@ -87,6 +87,7 @@
 	bei strike hand;
 };
 
+#var char_menpai_position mj;
 #var shifu yang;
 #var menzhong tang;
 #var menzhong_didian hst;
