@@ -115,7 +115,7 @@
 		show.init;
 		check_baowei;
 		xmpp.start;
-		#delay {0.5} {
+		#delay {1} {
 			check_naijiu;
 			#send {hp};
 			#send {jifa};
