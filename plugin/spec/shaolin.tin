@@ -6,9 +6,6 @@
 #alias {attack.normal} {
 	huose;
 	#class attack.inner open;
-	#ticker {huose} {
-		huose;
-	} {6};	
 	#class attack.inner close;
 };
 
@@ -53,84 +50,36 @@
 };
 
 #alias {map_goto_shifu} {
-	map.go 广场;
+	map.go 罗汉堂五部;
 };
 
 #alias {chan} {
 	#cr;
 };
 
-#list my_weapons create {staff; staff 2};
+#list my_weapons create {sword; sword 2};
 
-#alias {huose} {
-	wi;
-	perform staff.huose;
-	wi;
-};
-
-#alias {huoqiang} {
-	unwi;
-	yun dianhuo;
-	perform strike.huoqiang;
-	wi;
-};
-
-#alias {huoqiu} {
-	unwi;
-	yun dianhuo;
-	perform strike.huoqiu;
-	wi;
-};
-
-#alias {chuanxin} {
-	unwi;
-	perform strike.chuanxin;
-	wi;
-};
-
-#alias {chousui} {
-	unwi;
-	perform strike.chousui;
-	wi;
-};
-
-#alias {sandu} {
-	unwi;
-	perform strike.sandu;
-	wi;
-};
-
-#alias {tan} {
-
-};
 
 #var shortcut NIL;
 #macro {\eOP} {
-	huose;
 };
 
 #macro {\eOQ} {
-	chousui;
 };
 
 #macro {\eOR} {
-	huoqiu;
 };
 
 #macro {\eOS} {
-	huoqiang;
 };
 
 #macro {\e[15~} {
-	chuanxin;
 };
 
 #macro {\e[17~} {
-	sandu;
 };
 
 #macro {\e[18~} {
-	tan;
 };
 
 #alias {qudu} {
@@ -138,15 +87,10 @@
 };
 
 #alias {reborn} {
-	#send {jifa strike xingxiu-duzhang};
-	#send {jifa dodge zhaixinggong};
-	#send {jifa parry xingxiu-duzhang};
-	#send {jifa staff tianshan-zhang};
-	#send {jifa hand zhaixing-shou};
-	bei strike hand;
+
 };
 
-#var shifu qingfa;
+#var shifu dashi;
 #var menzhong dizi;
 #var menzhong_didian txg;
 #class template close
