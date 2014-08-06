@@ -19,7 +19,7 @@
 };
 
 #alias {attack.hubiao} {
-	pfm_all chan chan suxin;
+	pfm_all chan  zhua;
 	#class attack.inner open;
 	#ticker {suxin} {
 		suxin;
@@ -121,7 +121,7 @@
 
 #alias {zhua} {
 	unwi;
-	jiali 10;
+	jiali 1;
 	perform jiuyin-baiguzhao.zhua;
 	jiali none;
 	wi;
@@ -174,7 +174,7 @@
 
 #list my_weapons create {my sword; my sword 2};
 #list my_secondary_weapons create {my whip;};
-#list my_special_weapons create {zidian; qingshuang};
+#list my_special_weapons create {};
 
 stat.register 缠 miss 可是他看破了你的企图，并没有上当;
 stat.register 缠 hit 结果他被你攻了个措手不及！
