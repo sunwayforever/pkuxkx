@@ -256,4 +256,32 @@
 		#send {perform %0 ${enemy}};	
 	};
 };
+
+#alias {disarm.start} {
+	unwi;
+	#alias {wi} {#cr};
+	#alias {attack} {#cr};
+    bei none;		
+};
+
+#alias {disarm.stop} {
+	#alias {wi} {wi_normal};
+	#alias {attack} {attach.normal};
+	reborn;
+	wi;
+};
+
+#alias {busy.start} {
+	#var busy_target %0;
+	disarm.start;
+	#send {hit ${busy_target}};
+	#ticker {busy} {
+		chan;
+	} {0.5};
+};
+
+#alias {busy.stop} {
+	#unticker {busy};
+	disarm.stop;
+};
 #class war close;

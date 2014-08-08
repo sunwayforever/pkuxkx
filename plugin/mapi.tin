@@ -9,9 +9,11 @@
 		};
 	} {3};
 	#class mp.inner close;
+	disarm.start;
 };
 
 #alias {mp.stop} {
 	#class mp.inner kill;
+	disarm.stop;
 };
 #class mapi close

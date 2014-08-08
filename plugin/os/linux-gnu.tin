@@ -12,13 +12,13 @@
 
 #alias {notify.alert} {
 	#bell;
-	#system {echo %0|iconv -f gbk -t utf-8|xargs -I. notify-send -t 5000 -u critical "${char_id}:" .};
+	#system {echo %0|iconv -f gbk -t utf-8|xargs -I. notify-send -t 5000 -u normal "${char_id}:" .};
 };
 
 #alias {notify_loop} {
-	#system {echo %0|iconv -f gbk -t utf-8|xargs -I. notify-send -t 5000 -u critical "${char_id}:" .};	
+	#system {echo %0|iconv -f gbk -t utf-8|xargs -I. notify-send -t 5000 -u normal "${char_id}:" .};	
 	#ticker {notify_loop}{
-		#system {echo %0|iconv -f gbk -t utf-8|xargs -I. notify-send -t 5000 -u critical "${char_id}:" .};	
+		#system {echo %0|iconv -f gbk -t utf-8|xargs -I. notify-send -t 5000 -u normal "${char_id}:" .};	
 	} {6}
 };
 #class linux close
