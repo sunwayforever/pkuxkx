@@ -1,0 +1,29 @@
+#class canchan open
+#alias {cc.start} {
+	#class wudao.inner open;
+	#ticker {canchan} {
+		canchan;
+	} {180};
+
+	#action {你修行完毕} {
+		#delay {wd.done} {
+			eat_food;
+			canchan;
+		} {0.1};
+	};
+	#class wudao.inner close;
+	on_there {
+		load_map;
+		map.go 禅院;
+		canchan;
+		show_to_quest 参禅;
+	};
+	gt fzl;
+};
+
+#alias {cc.stop} {
+	#class wudao.inner kill;
+	show_to_quest 参禅结束;
+};
+
+#class canchan close

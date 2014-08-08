@@ -22,6 +22,7 @@
 #read plugin/xiao.tin
 #read plugin/qiu.tin
 #read plugin/wudao.tin
+#read plugin/canchan.tin
 #read plugin/task.tin
 #read plugin/chanhui.tin
 #read plugin/bianli.tin
