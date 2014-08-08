@@ -1,6 +1,6 @@
 #class dushu open
-
 #var ds_book shu;
+#var ds_count 50;
 
 #alias {ds.start} {
 	#var ds_book %0;
@@ -8,12 +8,12 @@
 	#class dushu.inner open;
 	#if {"${ds_book}" == "shediao"}  {
 		#alias {do_du} {
-			du $ds_book 50;			
+			du $ds_book ${ds_count};			
 		};
 	};
 	#else {
 		#alias {do_du} {
-			du $ds_book for 50;
+			du $ds_book for ${ds_count};
 		};
 	};
 	
@@ -22,7 +22,7 @@
 		#if {${nl_percent} < 20} {
 			sleep;
 		};
-	} {2};
+	} {1.5};
 
 	#class dushu.inner close;
 
