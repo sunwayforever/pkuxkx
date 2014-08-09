@@ -4,7 +4,6 @@
 };
 
 #alias {attack.normal} {
-	huose;
 	#class attack.inner open;
 	#class attack.inner close;
 };
