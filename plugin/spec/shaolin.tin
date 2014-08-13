@@ -56,7 +56,7 @@
 		ask dashi about 达摩老祖;
 	};
 	map.go 达摩洞;
-	#delay {0.5} {
+	#delay {1} {
 		map.go 达摩禅房;
 	};
 };
