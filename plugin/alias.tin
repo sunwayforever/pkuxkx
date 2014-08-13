@@ -561,9 +561,38 @@
 	#map info;
 };
 
+#alias {map.go.wait} {
+	#var map_go_wait 1;
+};
+
+#alias {map.go.resume} {
+	#var map_go_wait 0;
+};
+
 #alias {map.go} {
+	#var map_go_wait 0;
 	#path end;
-	#map run %0;
+	#map find %0;
+	#class map.go.inner open;
+	#ticker {map_go_ticker} {
+		#if {${map_go_wait} == 0} {
+			#path walk;
+		};
+	} {0.3};
+	#class map.go.inner close;
+		
+	#event {END OF PATH} {
+		#class map.go.inner kill;
+		#showme map arrived;
+	};
+};
+
+#alias {on_arrived} {
+	#alias tmp_on_arrived %0;
+	#action {map arrived} {
+		#unaction {map arrived};
+		tmp_on_arrived;
+	};
 };
 
 #alias {map.load} {

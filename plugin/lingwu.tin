@@ -182,7 +182,9 @@
 		show_to_quest ÁìÎò;
 		load_map;
 		map_goto_lingwu;
-		lw.restart;
+		on_arrived {
+			lw.restart;
+		};
 	};
 };
 
