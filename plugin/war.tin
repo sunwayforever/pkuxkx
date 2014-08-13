@@ -275,13 +275,18 @@
 	#var busy_target %0;
 	disarm.start;
 	#send {hit ${busy_target}};
+	#class busy.start.inner open;
+	#action {ÄãÕ½Ê¤ÁË} {
+		#send {hit ${busy_target}};		
+	};
 	#ticker {busy} {
 		chan;
 	} {0.5};
+	#class busy.start.inner close;
 };
 
 #alias {busy.stop} {
-	#unticker {busy};
+	#class busy.start.inner kill;
 	disarm.stop;
 };
 #class war close;
