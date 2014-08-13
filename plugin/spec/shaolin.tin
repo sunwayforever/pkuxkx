@@ -48,8 +48,17 @@
 	map.go 方丈楼;
 };
 
+#var need_ask_for_damo 1;
 #alias {map_goto_shifu} {
-	map.go 罗汉堂五部;
+	#if {${need_ask_for_damo} == 1} {
+		#var need_ask_for_damo 0;
+		map.go 方丈室;
+		ask dashi about 达摩老祖;
+	};
+	map.go 达摩洞;
+	#delay {0.5} {
+		map.go 达摩禅房;
+	};
 };
 
 #alias {chan} {
@@ -89,7 +98,7 @@
 
 };
 
-#var shifu dashi;
+#var shifu laozu;
 #var menzhong dizi;
 #var menzhong_didian txg;
 #class template close
