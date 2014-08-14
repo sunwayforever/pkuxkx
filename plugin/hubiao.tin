@@ -325,21 +325,26 @@ load chaos;
 	}
 };
 
+#var hb_next_choice NIL;
+
 #alias {hb.get_owner} {
 	#if {"${CurrentPosition}" == "zuo"} {
 		#var hb_owner zuo;
+		#var hb_next_choice fm;
 	};
 	#elseif {"${CurrentPosition}" == "zz"} {
 		#var hb_owner zhang;
 	};
 	#elseif {"${CurrentPosition}" == "fm"} {
 		#var hb_owner ma;
+		#var hb_next_choice tf;
 	};
 	#elseif {"${CurrentPosition}" == "fh"} {
 		#var hb_owner chu;
 	};
 	#elseif {"${CurrentPosition}" == "tf"} {
 		#var hb_owner wang;
+		#var hb_next_choice zuo;
 	};
 };
 
