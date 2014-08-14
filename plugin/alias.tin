@@ -578,7 +578,7 @@
 		#if {${map_go_wait} == 0} {
 			#path walk;
 		};
-	} {0.3};
+	} {0.1};
 	#class map.go.inner close;
 		
 	#event {END OF PATH} {

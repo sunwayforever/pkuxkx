@@ -23,12 +23,16 @@
 				ck.stop;
 				#delay {3} {
 					map_goto_rest;
-					sleep;
+					on_arrived {
+						sleep;
+					};
 					on_wakeup {
 						eat_food;
 						map.go 大经堂;
-						cd.start;
-						ck.start;
+						on_arrived {
+							cd.start;
+							ck.start;
+						};
 					};
 				};
 			};
@@ -48,9 +52,11 @@
 	#class chanding.inner close;
 	load_map;
 	map.go 大经堂;
-	cd.start;
-	ck.start;
-	show_to_quest 禅定中...;
+	on_arrived {
+		cd.start;
+		ck.start;
+		show_to_quest 禅定中...;
+	};
 };
 
 #alias {chanding.stop} {

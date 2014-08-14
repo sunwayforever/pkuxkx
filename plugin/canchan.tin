@@ -15,8 +15,10 @@
 	on_there {
 		load_map;
 		map.go ์๘ิบ;
-		canchan;
-		show_to_quest ฒฮ์๘;
+		on_arrived {
+			canchan;
+			show_to_quest ฒฮ์๘;
+		};
 	};
 	gt fzl;
 };

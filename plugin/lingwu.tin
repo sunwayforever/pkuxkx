@@ -104,7 +104,7 @@
 						#var lw_sleeping 0;
 					};
 				};
-				#delay {3} {
+				on_arrived {
 					sleep;
 				};
 			};
