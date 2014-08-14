@@ -219,20 +219,20 @@ load chaos;
 	#undelay {hb_move};
 };
 
-#alias {hb.duobi} {
+#alias {hb.escape} {
 	#if {${hb_path_index} > ${hb_path_size}} {
 		on_truce {
 			hb.resume;
 		};
 	};
 	#else {
-		#class hb.duobi.inner open;
+		#class hb.escape.inner open;
 		#action {≤ªƒ‹“∆∂Ø} {
 			#showme ƒ„Ã”≈‹ ß∞‹;
 		};
 		
 		#action {^ƒ„Ã”≈‹ ß∞‹} {
-			#class hb.duobi.inner kill;
+			#class hb.escape.inner kill;
 			on_truce {
 				#delay {hb_delay} {
 					hb.resume;
@@ -241,7 +241,7 @@ load chaos;
 		};
 		
 		#action {^    ’‚¿Ô%*≥ˆø⁄} {
-			#class hb.duobi.inner kill;
+			#class hb.escape.inner kill;
 			#math hb_path_index ${hb_path_index}+1;
 			#delay {hb_delay} {
 				hb.resume;
@@ -251,13 +251,12 @@ load chaos;
 		#delay {hb_delay} {
 			#showme ƒ„Ã”≈‹ ß∞‹;				
 		} {5};
-		#class hb.duobi.inner close;
+		#class hb.escape.inner close;
 		
-		#list hb_path get ${hb_path_index} duobi_exit;
+		#list hb_path get ${hb_path_index} escape_exit;
 		#3 halt;
 		#delay {1} {
-			#showme duobi: ${duobi_exit};
-			${duobi_exit};
+			${escape_exit};
 		};
 	};
 };
@@ -268,7 +267,7 @@ load chaos;
 
 	#alias {hb.back} {
 		hb.merge_path;
-		hb.duobi;
+		hb.escape;
 	};
 
 	#alias {hb.recover} {
