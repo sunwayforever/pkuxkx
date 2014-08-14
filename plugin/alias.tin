@@ -359,22 +359,24 @@
 };
 
 #alias {autopp} {
-	helpme ...;
-	helpme find ${pp_target};
-	#ticker {pp} {
+	#if {"${pp_target}" != ""} {
 		helpme ...;
 		helpme find ${pp_target};
-	} {15};
+		#ticker {pp} {
+			helpme ...;
+			helpme find ${pp_target};
+		} {15};
 
-	#action {%*告诉你：【%*】目前在%*} {
-		#unticker {pp};
-		show_to_chat 【私聊】%%0;
-	} {1};
+		#action {%*告诉你：【%*】目前在%*} {
+			#unticker {pp};
+			show_to_chat 【私聊】%%0;
+		} {1};
 
-	#action {%*告诉你：%*并不存在} {
-		#unticker {pp};
-		show_to_chat 【私聊】%%0;
-	} {1};
+		#action {%*告诉你：%*并不存在} {
+			#unticker {pp};
+			show_to_chat 【私聊】%%0;
+		} {1};		
+	};
 };
 
 #alias {autopp.set_en} {
@@ -879,7 +881,9 @@
 				#var min_naijiu ${tmp_min_naijiu};
 				update_status;
 			};
-			check_special_naijiu;
+			#if {@numitems{my_special_weapons} > 0} {
+				check_special_naijiu;
+			};
 		} {3};
 	} {1};
 	#var tmp_min_naijiu 10000;

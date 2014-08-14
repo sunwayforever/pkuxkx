@@ -9,6 +9,8 @@ load chaos;
 #var hb_paused 0;
 #var hb_auto 0;
 #var hb_info nil;
+#var hb_rotate_location NIL;
+#var hb_rotate_location_count 0;
 
 #alias {hb.teardown} {
 	#class hb_setup_inner kill;
@@ -325,26 +327,24 @@ load chaos;
 	}
 };
 
-#var hb_next_choice NIL;
-
 #alias {hb.get_owner} {
 	#if {"${CurrentPosition}" == "zuo"} {
 		#var hb_owner zuo;
-		#var hb_next_choice fm;
+		#var hb_rotate_location fm;
 	};
 	#elseif {"${CurrentPosition}" == "zz"} {
 		#var hb_owner zhang;
 	};
 	#elseif {"${CurrentPosition}" == "fm"} {
 		#var hb_owner ma;
-		#var hb_next_choice tf;
+		#var hb_rotate_location tf;
 	};
 	#elseif {"${CurrentPosition}" == "fh"} {
 		#var hb_owner chu;
 	};
 	#elseif {"${CurrentPosition}" == "tf"} {
 		#var hb_owner wang;
-		#var hb_next_choice zuo;
+		#var hb_rotate_location zuo;
 	};
 };
 
@@ -541,12 +541,23 @@ load chaos;
 
 	#action {来认领押镖任务} {
 		#if {${getesc_current_id} != 0} {
+			#var hb_rotate_location_count 0;
 			hb.q ${getesc_current_id};
 		};
 		#else {
-			#delay {hb_auto_delay} {
-				hb.start;
-			} {10};
+			#math hb_rotate_location_count ${hb_rotate_location_count} + 1;
+			#if {${hb_rotate_location_count} > 3 && "${hb_rotate_location}" != "NIL"} {
+				hb.stop;
+				gt ${hb_rotate_location};
+				on_there {
+					hb.start;
+				};
+			};
+			#else {
+				#delay {hb_auto_delay} {
+					hb.start;
+				} {10};
+			};
 		};
 	};
 
