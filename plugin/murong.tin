@@ -62,12 +62,7 @@
 		show_to_quest 慕容任务: 收工;
 	};
 	
-    #action {${char_name}发现的} {
-        follow pantu;
-        #delay {2} {killall pantu};
-    };
-
-    #action {找到目标: pantu} {
+    #action {找到目标} {
         follow pantu;
         #delay {2} {killall pantu};
         #action {你从姑苏慕容叛徒的尸体身上搜出一块玉玺} {
@@ -102,7 +97,7 @@
 };
 
 #alias {mr.bl} {
-    bl.start pantu;
+    bl.start ${char_name}.*叛徒;
 };
 
 #alias {mr.b} {

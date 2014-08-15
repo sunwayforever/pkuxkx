@@ -230,8 +230,8 @@
 	#math bl_path_index ${bl_path_index}-1;
 };
 
-#list area_mappings_from create {麒麟;灵州;灵鹫;临安;荆州;中原;全真;信阳;苏州;张家;大理;小山;曲阜;泉州;荆州;黄河南岸;长江北岸;福州;岳阳;黄河北岸;晋阳;归云;南昌;江州;嘉兴;牙山;梦溪;镇江;长江岸边;黄河岸边;天龙;晋阳;泰山;桃花;桃源;昆明;襄阳;长江长江};
-#list area_mappings_to create {qlc;lz;dzt;hz;jingzhou;xuchang;quanzhen;xinyang;sz;zjk;dali;xc;qf;quanzhou;jingzhou;hn2;jb2;fz;yy;hb2;jinyang;taihu;nc;jiangzhou;jiaxing;yashan;zhenjiang;zhenjiang;jn2;hn2;tls;jy;tais;th;ty;km;xy;jn2};
+#list area_mappings_from create {麒麟;灵州;灵鹫;临安;荆州;中原;全真;信阳;苏州;张家;大理;小山;曲阜;泉州;荆州;黄河南岸;长江北岸;福州;岳阳;黄河北岸;晋阳;归云;南昌;江州;嘉兴;牙山;梦溪;镇江;长江岸边;黄河岸边;天龙;晋阳;泰山;桃花;桃源;昆明;襄阳;长江长江;西湖};
+#list area_mappings_to create {qlc;lz;dzt;hz;jingzhou;xuchang;quanzhen;xinyang;sz;zjk;dali;xc;qf;quanzhou;jingzhou;hn2;jb2;fz;yy;hb2;jinyang;taihu;nc;jiangzhou;jiaxing;yashan;zhenjiang;zhenjiang;jn2;hn2;tls;jy;tais;th;ty;km;xy;jn2;xh};
 
 #function {area_mapping} {
 	#format {tmp} {%.4s} {%1};

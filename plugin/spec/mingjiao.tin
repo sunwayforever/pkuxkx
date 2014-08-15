@@ -1,10 +1,11 @@
 #class template open
 #alias {attack.prepare} {
-	#cr;
+	yun powerup;
 };
 
 #alias {attack.normal} {
 	#class attack.inner open;
+	pfm_all chan;
 	#class attack.inner close;
 };
 
@@ -47,7 +48,7 @@
 };
 
 #alias {chan} {
-	#cr;
+	perform datengnuo-bufa.tisha;
 };
 
 #list my_weapons create {sword; sword 2};
