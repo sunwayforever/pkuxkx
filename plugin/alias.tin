@@ -914,4 +914,24 @@
 	check_naijiu;
 } {300};
 
+#alias {path.test} {
+	#list test_path create {
+		n;sw;s;s;s;s;s;su;se;s;s;s;s;s;s;s;se;s;se;n;n;n;e;se;ne;e;ne;ne;e;e;e;e;e;e;e;
+		n;w;e;e;w;n;s;s;e;n;s;e;n;s;e;w;w;w;s;w;e;e;w;s;w;e;e;w;s;n;n;n;w;n;s;s;n;w;s;n;e;e;
+	};
+	
+	#list test_path size test_path_size;
+	#var test_path_index 0;
+	#ticker {test_walk} {
+		#math test_path_index ${test_path_index}+1;
+		#if {${test_path_index} > ${test_path_size}} {
+			#untick {test_walk};
+		};
+		#else {
+			#list test_path get ${test_path_index} test_path_next;
+			${test_path_next};
+		};
+	} {1};
+};
+
 #alias {q} {#cr};

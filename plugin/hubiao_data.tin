@@ -179,7 +179,7 @@
 				#return -1;
 			};
 			#else {
-				#return -1;
+				#return 5;
 			};
 		};
 		#elseif {"%1" == "曲阜孔府"} {
@@ -201,7 +201,7 @@
 				#return -1;
 			};
 			#else {
-				#return -1;
+				#return 6;
 			};
 		};
 		#elseif {"%1" == "牙山小荒地"} {
@@ -526,8 +526,7 @@
 		};
 		#elseif {"${tmp}" == "牙山"} {
 	     	#list hb_path create  {
-				gn;gne;gne;ge;ge;gne;geu;ged;ged;gse;gse;gse;gse;gs;gs;gs;gse;ge;ge;ge;ge;gn;gn;
-				ge;ge;ge;gs;gse;gse;ge;gse;gs;gse;gse;gsd;ge;ge;gse;gne;ge;gne;gne;ge;ge;ge;ge;ge;ge;ge;
+				gn;gsw;gs;gs;gs;gs;gs;gsu;gse;gs;gs;gs;gs;gs;gs;gs;gse;gs;gse;gn;gn;gn;ge;gse;gne;ge;gne;gne;ge;ge;ge;ge;ge;ge;ge;
 				gn;gw;ge;ge;gw;gn;gs;gs;ge;gn;gs;ge;gn;gs;ge;gw;gw;gw;gs;gw;ge;ge;gw;gs;gw;ge;ge;gw;gs;gn;gn;gn;gw;gn;gs;gs;gn;gw;gs;gn;ge;ge;
 			};
 		};
