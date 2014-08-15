@@ -95,7 +95,7 @@
 		#list bl_path create {e;s;s;w;sw;sw;sw;s;s;n;n;ne;ne;ne;s;s;s;se;e;e;n;n;n;n;s;e;ne;sw;s;n;e;ne;sw;e;w;knock gate;s;n;ne;sw;e;e;ne;n;enter;out;s;sw;s;s;sw;e;w;n;s;w;w;s;e;e;e;n;ne;ne;e;e;nu;n;s;sd;ne;ne;sw;sw;w;w;w;n;n;w;w;e;nw;sw;sw;e;e;w;w;sw;ne;w;sw;n;n;e;n;n;nu;nu;ne;sw;sd;sd;s;e;e;e;sw;sw;ne;ne;w;w;w;w;w;w;s;s;s;e;n;n;w}		
 	};
 	#if {"${CurrentPosition}" == "xy"} {
-		#list bl_path create {s;w;w;w;w;n;n;s;s;w;w;w;w;e;e;e;e;e;e;e;e;s;n;e;n;s;s;n;e;n;e;w;n;w;n;s;e;e;w;n;w;e;e;e;w;w;n;n;n;n;n;n;n;n;n;s;s;s;s;s;s;s;s;s;s;s;s;w;e;e;w;s;w;e;s;w;e;e;w;s;s;s;s;e;w;s;s;n;n;n;n;n;n;n;n;n;e;n;s;e;sw;s;w;e;e;w;n;ne;n;n;w;e;s;s;e;s;n;e;e;se;e;e;w;w;nw;e;n;s;w;w;w;w;w;w;w;w;n} 	
+		#list bl_path create {s;w;w;w;w;n;n;s;s;w;w;w;w;e;e;e;e;e;e;e;e;s;n;e;n;s;s;n;e;n;e;w;n;w;n;s;e;e;w;n;w;e;e;e;w;w;n;n;n;n;n;n;n;n;n;s;s;s;s;s;s;s;s;s;s;s;s;w;e;e;w;s;w;e;s;w;e;e;w;s;s;s;s;e;w;s;s;s;s;s;se;s;n;nw;n;n;n;n;n;n;n;n;n;n;n;n;e;n;s;e;sw;s;w;e;e;w;n;ne;n;n;w;e;s;s;e;s;n;e;e;se;e;e;w;w;nw;e;n;s;w;w;w;w;w;w;w;w;n} 	
 	};
 	#if {"${CurrentPosition}" == "jx"} {
 		#list bl_path create {n;n;n;s;s;s;w;nu;nw;nw;n;nw;w;e;ne;sw;se;s;se;se;sd;e;s;sw;w;nw;se;e;sw;s;enter;enter;s;n;out;out;n;e;w;ne;ne;s;s;n;sw;ne;e;w;se;nw;n;e;s;n;n;n;s;s;n;se;s;n;ne;sw;nw;e;w;nd;e;e;e;e;n;s;s;s;se;nw;n;n;n;enter boat;bl.wait 5;n;n;nu;nu;nu;n;n;e;s;s;e;n;n;e;w;w;n;e;e;w;w;w;n;w;wu;ed;nu;ed;wu;sd;nu;ed;ed;wu;sd;e;e;e;e;n;s;n;w;e;s;s;w;e;s;n;e;w;n;e;w;w;w;w;s;s;s;s;sd;sd;sd;s;s;enter boat;bl.wait 5;s;w;w;w;w;su;w}		
