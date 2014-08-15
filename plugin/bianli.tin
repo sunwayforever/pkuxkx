@@ -164,7 +164,7 @@
 			#unticker {walk};
 			#showme ур╣╫д©╠Й: %1;
  			set brief 2;
-		};
+		} {1};
 	};
 
 	#action {busy_for_move} {
