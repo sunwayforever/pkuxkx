@@ -67,7 +67,7 @@
 				#return -1;
 			};
 			#else {
-				#return -1;				
+				#return 5;				
 			};
 		};
 		#else {
@@ -201,14 +201,14 @@
 				#return -1;
 			};
 			#else {
-				#return 6;
+				#return 7;
 			};
 		};
 		#elseif {"%1" == "牙山小荒地"} {
 			#return 5;
 		};
 		#elseif {"%1" == "南昌飞虎镖局"} {
-			#return 4;
+			#return 1;
 		};
 		#elseif {"%1" == "泉州当铺"} {
 			#return 5;
@@ -538,7 +538,8 @@
 		};
 		#elseif {"${tmp}" == "嘉兴"} {
 	     	#list hb_path create  {
-				gn;gne;gne;ge;ge;gne;geu;ged;ged;gse;gse;gse;gse;gs;gs;gs;gse;ge;ge;ge;ge;gn;gn;ge;ge;ge;gs;gse;gse;ge;gse;gs;gse;gse;gsd;ge;
+				#nop NOT USED;
+				gn;gsw;gs;gs;gs;gs;gs;gsu;gse;gs;gs;gs;gs;gs;gs;gs;gse;gs;gse;gn;gn;gn;
 			};
 		};
 		#elseif {"${tmp}" == "岳阳"} {
@@ -549,12 +550,14 @@
 		};
 		#elseif {"${tmp}" == "襄阳"} {
 	     	#list hb_path create  {
+				#nop NOT USED;
 				gn;gne;gne;gne;gn;gnw;gnw;hb.guohe {jiang};gn;gnw;gnu;gn;gn;gn;gw;gw;gw;gnw;gw;gw;gw;gw;gw;gw;gw;gn;
 			};
 		};
 		#elseif {"${tmp}" == "武当"} {
 	     	#list hb_path create  {
 				gn;gne;gne;gne;gn;gnw;gnw;hb.guohe {jiang};gn;gnw;gnu;gn;gn;gn;gw;gw;gw;gnw;gw;gw;gw;gw;gw;gw;gw;gw;gw;gw;gw;gw;gw;gw;gw;gw;gn;
+				gs;gw;gw;gs;gsw;gw;gw;gnw;gw;ge;gn;gs;gse;ge;ge;gne;gn;ge;ge;gn;
 			};
 		};
 	};
