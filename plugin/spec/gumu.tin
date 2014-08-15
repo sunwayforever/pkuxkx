@@ -5,7 +5,7 @@
 	#class attack.inner open;
 	#ticker {perf_chan} {
 		chan;
-	} {1};
+	} {0.8};
 	#ticker {xinjing} {
 		yun xinjing;
 	} {30};
