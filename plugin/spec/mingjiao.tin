@@ -53,8 +53,9 @@
 
 #list my_weapons create {sword; sword 2};
 
-#var shortcut NIL
+#var shortcut F1: ÌßÉ³;
 #macro {\eOP} {
+	chan;
 };
 
 #macro {\eOQ} {
