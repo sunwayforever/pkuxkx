@@ -50,7 +50,7 @@
 #read plugin/kanxue.tin;
 #read plugin/baiji.tin;
 #read plugin/tongmai.tin;
-#read plugin/mz.tin;
+#read plugin/menzhong.tin;
 #read plugin/canju.tin;
 #read plugin/guaji.tin;
 #read plugin/stat.tin;

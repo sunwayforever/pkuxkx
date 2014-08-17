@@ -1,0 +1,62 @@
+#class mz open
+load menzhong_data;
+
+#var mz_auto 0;
+#alias {mz.start} {
+	#var mz_auto 1;
+	#class mz.inner open;
+
+	#action {忠诚度提高了%*点。} {
+		show_to_info 门忠: @ctd{%%1} 点;
+		#delay {3} {
+			#if {${mz_auto} == 1} {
+				mz.q;
+			};
+		};
+	} {1};
+
+	#action {说道%*你还没} {
+		mz.f;
+		#if {${mz_auto} == 1} {
+			mz.q;
+		};
+	} {1};
+
+	#action {说道：%*} {
+		#showme menzhong:%%1;
+	};
+	
+	#class mz.inner close;
+	mz.b;
+};
+
+#alias {mz.stop} {
+	#var mz_auto 0;
+	#class mz.inner kill;
+};
+
+#alias {mz.q} {
+	ask ${menzhong} about quest;
+};
+
+#alias {mz.f} {
+	ask ${menzhong} about cancelquest;
+};
+
+#alias {mz.back} {
+	#alias tmp_back %0;
+	#delay {2} {
+		gt ${menzhong_didian};
+	};
+	on_there {
+		tmp_back;
+	};
+};
+
+#alias {mz.b} {
+	mz.back {
+		mz.q;
+	};
+};
+
+#class mz close

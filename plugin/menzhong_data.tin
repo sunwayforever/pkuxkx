@@ -1,0 +1,663 @@
+#class menzhong_data open
+#list mz_ignore create {手信;华山剑谱;信纸;渔夫;大般;空空儿;无量寿经;大金刚拳法;天山雪莲;飞沙走石;丁坚;道德经;粽子;小喽啰;水靠;李莫愁;洪七公};
+#foreach {${mz_ignore}[%*]} {name} {
+	#action {说道%*${name}} {
+		#unaction {menzhong:%*${name}};
+		#if {${mz_auto} == 1} {
+			mz.q;
+		};
+	} {2};
+};
+
+#action {menzhong:%*裘万家%*裘万家} {
+	gt yz;
+	on_there {
+		enter shudong;
+		hit qiu;
+	};
+	on_hit {
+		out;
+		mz.b;
+	};
+};
+
+#action {menzhong:%*家丁} {
+	gt yz;
+	on_there {
+		e;e;e;e;s;
+		hit jia
+	};
+	on_hit {
+		back;
+		mz.b;
+	};
+};
+
+#action {menzhong:%*军服} {
+	gt yz;
+	on_there {
+		w;w;w;w;
+		kill bing;
+	};
+	on_dead {
+		get junfu from corpse;
+		#delay {2} {
+			back;
+			mz.back {
+				give ${menzhong} junfu;
+			};
+		};
+	};
+};
+
+#action {menzhong:%*阿紫} {
+	gt xx;
+	on_there {
+		n;nu;
+		hit zi;
+	};
+	on_hit {
+		sd;s;
+		mz.b;
+	};
+};
+
+#action {menzhong:%*道一} {
+	gt fzl;
+	on_there {
+		w;w;n;n;w;
+		kill daoyi chanshi;
+	};
+	on_dead {
+		back;
+		mz.b;
+	};
+};
+
+#action {menzhong:%*托钵僧} {
+	gt yz;
+	on_there {
+		s;s;
+		hit seng;
+	};
+	on_hit {
+		back;
+		mz.b;
+	};
+};
+
+#action {menzhong:%*清法比丘} {
+	gt shaolinsi;
+	on_there {
+		unwi;eu;nu;nu;nu;n;wi;
+		kill biqiu;
+	};
+	on_dead {
+		back;
+		mz.b;
+	};
+};
+
+#action {menzhong:%*雷震挡} {
+	gt lvliu;
+	on_there {
+		give 10 silver to ding;
+		#delay {2} {n;n; kill zhao;};
+	};
+	on_dead {
+		get all from corpse;
+		#delay {2} {
+			s;s;
+			gt ${menzhong_didian};
+			on_there {give ${menzhong} leizhendang};
+		};
+	};
+};
+
+#action {menzhong:%*黄布袈裟} {
+	gt shaolinsi;
+	on_there {kill xu tong;};
+	on_dead {
+		get all from corpse;
+		mz.back {
+			give ${menzhong} jia sha;
+		};
+	};
+};
+
+#action {menzhong:%*短剑} {
+	gt yz;
+	on_there {
+		e;e;s; buy duanjian;
+		#delay {2} {
+			n;w;w;
+			gt ${menzhong_didian};
+			on_there {give ${menzhong} duanjian};
+		};
+	};
+};
+
+#action {menzhong:%*马屁宝典} {
+	gt zx;
+	on_there {
+		buy mapi baodian;
+		#delay {2} {gt xc};
+		on_there {
+			e;e;e;e;e;n;
+			give baodian to teller;
+			back;
+			mz.b;
+		};
+	};
+};
+
+#action {menzhong:%*童百熊%*} {
+	gt ry;
+	on_there {hit tong};
+	on_hit {mz.b};
+};
+
+#action {menzhong:%*衙役%*} {
+	gt yz;
+	on_there {w;n;hit ya};
+	on_hit {s;e;mz.b};
+};
+
+#action {menzhong:%*本尘大师%*} {
+	gt tls;
+	on_there {nu;hit benchen dashi};
+	on_hit {sd;mz.b};
+};
+
+#action {menzhong:%*谷虚%*} {
+	gt wd;
+	on_there {n;kill guxu};
+	on_dead {s;mz.b};
+};
+
+#action {menzhong:%*本观大师%*} {
+	gt tls;
+	on_there {nu;n;n;n;w;kill benguan dashi};
+	on_dead {e;s;s;s;sd;mz.b};
+};
+
+#action {menzhong:%*本相大师%*} {
+	gt tls;
+	on_there {nu;n;n;kill benxiang dashi};
+	on_dead {s;s;sd;mz.b};
+};
+
+#action {menzhong:%*本参大师%*} {
+	gt tls;
+	on_there {nu;n;n;n;kill bencan dashi};
+	on_dead {s;s;s;sd;mz.b};
+};
+
+#action {menzhong:%*志平%*} {
+	gt qzh;
+	on_there {kill yin};
+	on_dead {mz.b};
+};
+
+#action {menzhong:%*霍都%*} {
+	gt ny;
+	on_there {#3 {ask he about 霍都}; kill huo};
+	on_dead {mz.b};
+};
+
+#action {menzhong:%*黑老板%*} {
+	gt xz;
+	on_there {se;se;wd;#path ins {open men} {open men}; kill hei};
+	on_dead {back; mz.b};
+};
+
+#action {menzhong:%*打手%*} {
+	gt xz;
+	on_there {se;se;wd;kill dashou};
+	on_dead {open men; eu; nw;nw; mz.b};
+};
+
+#action {menzhong:%*狮吼子%*} {
+	gt xx;
+	on_there {n;kill shihou zi};
+	on_dead {s;mz.b};
+};
+
+#action {menzhong:%*日月教众%*} {
+	gt ry;
+	on_there {kill jiaozhong};
+	on_dead {mz.b};
+};
+
+#action {menzhong:%*田伯光%*} {
+	gt yz;
+	on_there {w;w;n;n;n;kill tian};
+	on_dead {s;s;s;e;e;mz.b};
+};
+
+#action {menzhong:%*王铁匠%*} {
+	gt yz;
+	on_there {e;e;s; hit wang};
+	on_hit {n;w;w; mz.b};
+};
+
+#action {menzhong:%*天狼子%*} {
+	gt xx;
+	on_there {kill tianlang zi};
+	on_dead {mz.b};
+};
+
+#action {menzhong:%*裘万家%*竹叶青} {
+	gt yz;
+	on_there {
+		s;s;s;e;n;
+		#delay {1} {
+			buy zhuye qing;
+			s;w;n;n;n;
+			enter shudong;
+			give qiu zhuye qing;
+			out;
+			mz.b;
+		};
+	};
+};
+
+#action {%*说道%*爪法入门%*} {
+	gt ly;
+	#action {抵达目的地} {
+		#unaction {抵达目的地};
+		#delay {2} {
+			w;n;
+			buy claw book;
+			#delay {2} {
+				back;
+				#delay {2} {
+					gt ${menzhong_didian};
+				};
+			};
+		};
+		#action {抵达目的地} {
+			#unaction {抵达目的地};
+			#delay {2} {
+				give ${menzhong} claw book;
+			};
+		};
+	};
+};
+
+#action {%*说道%*天山雪莲%*} {
+	mz.f;
+	mz.q;
+};
+
+#action {%*说道%*说文解字%*} {
+	gt zx;
+	on_there {
+		buy shu;
+		gt dzf;
+		on_there {
+			s;s;
+			give shu to shu sheng;
+			n;n;
+			mz.b;	
+		};
+	};
+};
+
+#action {%*说道%*药铺伙计%*} {
+	gt yz;
+	on_there {
+		e;e;n;
+		hit huoji;	
+	};
+	on_hit {
+		halt;back;
+		mz.b;	
+	};
+};
+
+#action {%*说道%*星宿派号手%*} {
+	gt xx;
+	on_there {
+		kill haoshou;	
+	};
+	on_dead {
+		mz.b;	
+	};
+};
+
+#action {%*说道%*花匠%*} {
+	gt bt;
+	on_there {
+		nw;w;w;nw;nu;nu;n;nu;n;n;n;e;
+		kill gardener;	
+	};
+	on_dead {
+		back;
+		mz.b;
+	};
+};
+
+#action {%*说道%*毒蛇胆%*} {
+	gt jx;
+	on_there {
+		e;nd;w;
+		killall snake;	
+	};
+	on_dead {
+		get shedan;
+		get all from corpse;
+		#delay {1} {
+			back;
+			gt yz;
+			on_there {
+				e;e;n;
+				give shedan to huoji;
+				back;
+				mz.b;
+			};
+		};
+	};
+};
+
+#action {%*说道%*崔员外%*} {
+	gt yz;
+	on_there {
+		w;w;n;n;n;
+		kill cui;	
+	};
+	on_dead {
+		get all from corpse;
+		#delay {2} {
+			s;s;s;e;e;
+			mz.b;
+		};
+	};
+};
+
+#action {%*说道%*流氓%*} {
+	gt yz;
+	on_there {
+		s;
+		kill liu mang;	
+	};
+	on_dead {
+		n;
+		mz.b;	
+	};
+};
+
+#action {%*说道%*巨木旗众%*} {
+	gt mj;
+	on_there {
+		nu;nu;nu;w;
+		kill qi zhong;
+	};
+	on_dead {
+		e;sd;sd;sd;
+		mz.b;
+	};
+};
+
+#action {%*说道%*烈火旗众%*} {
+	gt mj;
+	on_there {
+		nu;nu;nu;e;
+		kill qi zhong;
+	};
+	on_dead {
+		w;sd;sd;sd;
+		mz.b;
+	};
+};
+
+#action {%*说道%*锐金旗众%*} {
+	gt mj;
+	on_there {
+		nu;nu;nu;s;
+		kill qi zhong;
+	};
+	on_dead {
+		n;sd;sd;sd;
+		mz.b;
+	};
+};
+
+#action {%*说道%*厚土旗众%*} {
+	gt mj;
+	on_there {
+		nu;nu;nu;
+		kill qi zhong;
+	};
+	on_dead {
+		sd;sd;sd;
+		mz.b;	
+	};
+};
+
+#action {%*说道%*洪水旗众%*} {
+	gt mj;
+	on_there {
+		nu;nu;nu;n;
+		kill qi zhong;
+	};
+	on_dead {
+		s;sd;sd;sd;
+		mz.b;
+	};
+};
+
+#action {%*说道%*衙役服%*} {
+	gt yz;
+	on_there {
+		w;n;
+		kill ya yi;	
+	};
+	on_dead {
+		get all from corpse;
+		#delay {2} {
+			back;
+			mz.back {
+				give ${menzhong} yayi cloth;					
+		};
+		};	
+	};
+};
+	
+#action {%*说道%*采花子%*} {
+	gt xx;
+	on_there {
+		n;nd;n;nw;w;
+		kill caihua zi
+	};
+	on_dead {
+		get all from corpse;
+		#delay {2} {
+			back;
+			mz.b;
+		};
+	};
+};
+	
+#action {%*说道%*竹青蛇%*} {
+	gt taihu;
+	on_there {
+		nu;nu;nu;w;
+		hitall snake;	
+	};
+	#action {你战胜了竹青蛇} {
+		#unaction {你战胜了竹青蛇};
+		halt;back;
+		mz.b;
+	};
+};
+
+#action {%*说道%*眼镜蛇%*} {
+	gt taihu;
+	on_there {
+		nu;nu;nu;w;
+		hitall snake;	
+	};
+	#action {你战胜了眼镜蛇} {
+		#unaction {你战胜了眼镜蛇};
+		halt;back;
+		mz.b;
+	};
+};
+
+#action {%*说道%*金环蛇%*} {
+	gt tls;
+	on_there {ed;nw; hit jin she};
+	on_hit {se;wu;mz.b};
+};
+
+#action {%*说道%*熏田鸡%*} {
+	gt taohua;
+	on_there {
+		n;n;nu;nu;nu;n;n;n;n;e;e;e;e;
+		get all;
+		#delay {2} {
+			back;
+			mz.back {
+				give ${menzhong} tianji;
+			};
+		};
+	};
+};
+
+#action {%*说道%*净慈%*} {
+	gt fzl;
+	on_there {u;n; hit xiao shami};
+	on_hit {s;d; mz.b};
+};
+
+#action {%*说道%*道成%*} {
+	gt fzl;
+	on_there {n; kill daocheng chanshi};
+	on_dead {s; mz.b};
+};
+
+#action {%*说道%*阿牧%*} {
+	gt guiyun;
+	on_there {e;e;e;e;e;s;hit a mu};
+	on_hit {n;w;w;w;w;w;mz.b};
+};
+
+#action {%*说道%*商人%*黄金%*} {
+	gt taihu;
+	on_there{
+		w;w;give 1 gold to shang ren;e;e;
+		mz.b;			
+	};
+};
+	
+#action {%*说道%*粽子%*} {
+	give ${menzhong} zongzi;
+};
+
+#action {%*说道%*七寸子蛇%*} {
+	gt taihu;
+	on_there {
+		nu;nu;nu;w;
+		hitall snake;
+	};
+	on_hit {
+		halt;back;
+		mz.b;
+	};
+};
+
+#action {%*说道%*舞蛇人%*} {
+	gt bt;
+	on_there {nw;w; kill snaker};
+	on_dead {e;se;mz.b};
+};
+
+#action {%*说道%*华山弟子%*} {
+	gt cll;
+	on_there {
+		sd;su;s;
+		kill dizi;
+	};
+	on_dead {
+		n;nd;nu;
+		mz.b;
+	};
+};
+	
+#action {%*说道%*岳灵珊%*} {
+	gt cll;
+	on_there {
+		sd;su;s;s;
+		hit yue;
+	};
+	on_hit {
+		n;n;nd;nu;
+		mz.b;
+	};
+};
+
+#action {%*说道%*烧饭僧%*} {
+	gt fzl;
+	on_there {
+		s;s;sd;s;w;n;n;
+		hit seng;
+	};
+	on_hit {
+		s;s;e;n;nu;n;n;
+		mz.b;
+	};
+};
+
+#action {%*说道%*玉竹杖} {
+	gt yz;
+	on_there {
+		s;e;
+		buy yuzhu zhang;
+		#delay {3} {
+			back;
+			mz.back {give ${menzhong} yuzhu zhang};
+		};
+	};
+};
+	
+#action {%*说道%*慧空%*} {
+	gt fzl;
+	on_there {s;s;sd; kill zunzhe};
+	on_dead {nu;n;n;mz.b};
+};
+
+#action {%*说道%*慧真%*} {
+	gt fzl;
+	on_there {w;w;n;n;w;kill daoyi};
+	on_dead {
+		u;
+		kill zunzhe;
+		on_dead {d;e;s;s;e;e;mz.b};
+	};
+};
+
+#action {%*说道%*庄仆%*} {
+	gt guiyun;
+	on_there {e;e;n;n;w;n;hit pu};
+	on_hit {s;e;s;s;w;w;mz.b};
+};
+
+#action {%*说道%*牢房钥匙%*} {
+	gt yz;
+	on_there {
+		w;w;n;n;n;
+		kill cui;
+	};
+	on_dead {
+		get all from corpse;
+		#delay {3} {
+			back;
+			mz.back {
+				give ${menzhong} key;
+			};
+		};
+	};
+};
+	
+#class menzhong_data close

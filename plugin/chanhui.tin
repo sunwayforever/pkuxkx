@@ -1,5 +1,5 @@
 #class chanhui open
-#alias {chanhui.start} {
+#alias {ch.start} {
 	#class ch.inner open;
 	#action {你感觉心中的杀气渐渐消失} {
 		#delay {2} {
@@ -7,10 +7,17 @@
 		};
 	};
 	#class ch.inner close;
-	chanhui;
+	gt wm;
+	on_there {
+		show_to_quest 忏悔;
+		chanhui;
+	};
 };
 
-#alias {chanhui.stop} {
+#alias {ch.stop} {
 	#class ch.inner kill;
+	on_unbusy {
+		show_to_quest 忏悔结束;	
+	};
 };
 #class chanhui close
