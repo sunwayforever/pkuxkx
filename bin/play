@@ -1,2 +1,0 @@
-#!/bin/bash
-mplayer ~/.tt/music/${1}.mp3 &>/dev/null &

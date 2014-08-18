@@ -46,14 +46,6 @@
     enter; up;
 };
 
-#alias {play_music} {
-    #system {bin/play %1};
-};
-
-#action {君子报仇十年不晚，咱们走着瞧} {
-	#nop play_music win;
-};
-
 #action {你似乎十分疲惫，看来需要好好休息了} {re} {1};
 #action {你气喘嘘嘘，看起来状况并不太好} {re} {1};
 #action {你看起来已经力不从心了} {re} {1};
