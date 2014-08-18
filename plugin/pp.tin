@@ -1,15 +1,17 @@
 #class pp open
 @mapcreate{pp};
-
-#action {¡¾ÇóÖú¡¿${char_name}(%*): find %*} {
+#list pp_customer create {bakerli;erq;sunxm;gamester;beige;milli;uncletuu;bbkin;salonbus};
+#action {¡¾ÇóÖú¡¿%*(%*): find %*} {
 	#var caller @lower{%2};
-	@mapset{pp;%3;${caller}};
-	perceive %3;
-	#ticker {pp_${caller}} {
+	#if {@ismember{${caller};pp_customer}>0} {
+		@mapset{pp;%3;${caller}};
 		perceive %3;
-	} {5};
-	#delay {30} {
-		#unticker {pp_${caller}};
+		#ticker {pp_${caller}} {
+			perceive %3;
+		} {5};
+		#delay {30} {
+			#unticker {pp_${caller}};
+		};		
 	};
 };
 

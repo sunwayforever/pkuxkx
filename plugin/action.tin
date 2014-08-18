@@ -308,7 +308,7 @@
 };
 
 #gag {wait_for_fight};
-#action {只能对战斗中的对手使用} {
+#action {{只能对战斗中的对手使用|只能在战斗中使用}} {
 	#showme wait_for_fight;
 };
 

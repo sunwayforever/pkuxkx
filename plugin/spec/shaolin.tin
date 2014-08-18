@@ -1,22 +1,33 @@
 #class template open
 #alias {attack.prepare} {
-	#cr;
+	#class attack.inner open;
+	#ticker {fumoquan} {
+		fmq;
+	} {20};
+	#class attack.inner close;
 };
 
 #alias {attack.normal} {
 	#class attack.inner open;
+	pfm_all fmq;
+	#class attack.inner close;
+};
+
+#alias {attack.hubiao} {
+	#class attack.inner open;
+	pfm_all chan fmq;	
 	#class attack.inner close;
 };
 
 #alias {attack.xiaofeng} {
 	#class attack.inner open;
-	#cr;
+	pfm_all fmq;
 	#class attack.inner close;
 };
 
 #alias {attack.mingjiao} {
 	#class attack.inner open;
-	#cr;
+	pfm_all fmq;
 	#class attack.inner close;
 };
 
@@ -64,14 +75,18 @@
 };
 
 #alias {chan} {
-	#cr;
+	unwi;
+	wield whip;
+	perform riyue-bian.chan;
+	wi;
 };
 
 #list my_weapons create {sword; sword 2};
 
 
-#var shortcut NIL;
+#var shortcut F1: ²ø;
 #macro {\eOP} {
+	chan;
 };
 
 #macro {\eOQ} {
@@ -98,6 +113,13 @@
 
 #alias {reborn} {
 
+};
+
+#alias {fmq} {
+	unwi;
+	wield whip;
+	#send {perform riyue-bian.fumoquan};
+	wi;
 };
 
 #var char_menpai_position fzl;
