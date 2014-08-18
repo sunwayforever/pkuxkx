@@ -270,6 +270,8 @@
 				gs;ge;ge;ge;ge;ge;ge;ge;ge;ge;
 				ge;ge;ge;ge;ge;ge;ge;gse;ge;ge;ge;gn;gn;gn;gn;gn;gn;gnw;gnw;gw;gnu;gnu;gwu;gnu;geu;
 				gwd;gsd;gwd;gwd;gwu;gw;gnw;gn;gs;gse;ge;ged;geu;geu;gnu;gnu;gnu;ge;
+				clear_blocker {xu};
+				geu;ge;gw;gnu;ge;gw;gnu;gnu;gn;gs;gsd;gsd;gsd;gwd;
 			};
 		};
 		#elseif {"${tmp}" == "Œ‰µ±"} {
