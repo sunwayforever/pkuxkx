@@ -20,14 +20,7 @@
 };
 
 #alias {attack.normal} {
-	on_unbusy {
-		poqi;
-		#delay {1} {
-			on_unbusy {
-				feilong;
-			};
-		};
-	};
+	pfm_all poqi feilong;
 	#class attack.inner open;
 	#ticker {sqf} {
 		sanqingfeng;
@@ -46,9 +39,6 @@
 #alias {attack.xiaofeng.qin} {
 	pfm_all poqi feilong;
 	#class attack.inner open;
-	#ticker {fl} {
-		feilong;
-	} {3.8};
 	#ticker {po} {
 		po;
 	} {5.8};
@@ -56,7 +46,7 @@
 };
 
 #alias {attack.xiaofeng.sheng} {
-	pfm_all poqi;
+	pfm_all poqi kuangfeng;
 	#class attack.inner open;
 	#ticker {po} {
 		po;
@@ -65,7 +55,7 @@
 };
 
 #alias {attack.xiaofeng.quan} {
-	pfm_all poqi;
+	pfm_all poqi kuangfeng;
 	#class attack.inner open;
 	#ticker {po} {
 		po;

@@ -7,10 +7,10 @@
 #var buffer_locked 0;
 #macro {\el} {
        #buffer lock;
-       #IF {$buffer_locked == 0} {
+       #if {$buffer_locked == 0} {
        	   #var buffer_locked 1;
        };
-       #ELSE {
+       #else {
            #var buffer_locked 0;
        };
 };
@@ -319,6 +319,9 @@
 			special %%%2;
 			#if {"%%%2" == "chainless"} {
 				chainless.setup;
+			};
+			#elseif {"%%%2" == "perceive"} {
+				load pp;
 			};
 		};
 		#action {^>} {

@@ -1,7 +1,7 @@
 #class pp open
 @mapcreate{pp};
 
-#action {¡¾ÇóÖú¡¿%*(%*): find %*} {
+#action {¡¾ÇóÖú¡¿${char_name}(%*): find %*} {
 	#var caller @lower{%2};
 	@mapset{pp;%3;${caller}};
 	perceive %3;
