@@ -44,7 +44,7 @@
 };
 
 #alias {map_goto_shifu} {
-	map.go 广场;
+	map.go 明教大殿;
 };
 
 #alias {chan} {
@@ -90,7 +90,7 @@
 };
 
 #var char_menpai_position mj;
-#var shifu yang;
+#var shifu zhang;
 #var menzhong tang;
 #var menzhong_didian hst;
 #class template close
