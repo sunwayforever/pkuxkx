@@ -22,7 +22,7 @@
 
 #alias {attack.hubiao} {
 	#class attack.inner open;
-	pfm_all chan fmq zuida;	
+	pfm_all chan fmq;	
 	#class attack.inner close;
 };
 
