@@ -1,21 +1,28 @@
 #class template open
+#action {如何使用「八仙醉打」呀} {
+	drink fenjiu;
+};
+
 #alias {attack.prepare} {
 	#class attack.inner open;
 	#ticker {fumoquan} {
 		fmq;
+	} {30};
+	#ticker {zuida} {
+		zuida;
 	} {20};
 	#class attack.inner close;
 };
 
 #alias {attack.normal} {
 	#class attack.inner open;
-	pfm_all fmq;
+	pfm_all chan fmq zuida;
 	#class attack.inner close;
 };
 
 #alias {attack.hubiao} {
 	#class attack.inner open;
-	pfm_all fmq;	
+	pfm_all chan fmq zuida;	
 	#class attack.inner close;
 };
 
@@ -81,15 +88,23 @@
 	wi;
 };
 
-#list my_weapons create {sword; sword 2};
+#alias {zuida} {
+	unwi;
+	wield staff;
+	perform zui-gun.zuida;
+	wi;
+};
 
+#list my_weapons create {staff; staff 2};
 
-#var shortcut F1: 缠;
+#var shortcut F1: 缠 F2: 醉打;
+
 #macro {\eOP} {
 	chan;
 };
 
 #macro {\eOQ} {
+	zuida;
 };
 
 #macro {\eOR} {
