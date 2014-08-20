@@ -59,7 +59,7 @@
 	};
 };
 
-#alias {chanding.stop} {
+#alias {cd.stop} {
 	cd.stop;
 	ck.stop;
 	#class chanding.inner kill;

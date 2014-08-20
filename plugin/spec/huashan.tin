@@ -4,7 +4,10 @@
 	#class attack.inner open;
 	#ticker {poqi} {
 		poqi;
-	} {1.8};
+	} {3.8};
+	#ticker {chan} {
+		chan;
+	} {1.8};		
 	#class attack.inner close;
 };
 
@@ -20,10 +23,10 @@
 };
 
 #alias {attack.normal} {
-	pfm_all poqi feilong;
+	pfm_all chan feilong kuangfeng sqf poqi;
 	#class attack.inner open;
 	#ticker {sqf} {
-		sanqingfeng;
+		sqf;
 	} {4.8};
 	#ticker {po} {
 		po;
@@ -33,6 +36,7 @@
 
 #alias {attack.hubiao} {
 	#class attack.inner open;
+	pfm_all chan;
 	#class attack.inner close;
 };
 
@@ -148,11 +152,11 @@
 	wi;
 };
 
-#alias {sanqingfeng} {
+#alias {sqf} {
 	unwi;
 	jiali max;
 	wield sword;
-	perform huashan-jianfa.sanqingfeng;
+	perform huashan-jianfa.sqf;
 	jiali none;
 	wi;
 };
@@ -188,7 +192,7 @@
 };
 
 #macro {\eOR} {
-	sanqingfeng;
+	sqf;
 };
 
 #macro {\eOS} {
