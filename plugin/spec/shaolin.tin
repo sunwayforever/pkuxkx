@@ -73,10 +73,10 @@
 		map.go 方丈室;
 		on_arrived {
 			ask dashi about 达摩老祖;
+			map.go 达摩禅房;
 		};
 	};
-	map.go 达摩洞;
-	#delay {1} {
+	#else {
 		map.go 达摩禅房;
 	};
 };
