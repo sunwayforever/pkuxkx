@@ -4,10 +4,7 @@
 	#class attack.inner open;
 	#ticker {poqi} {
 		poqi;
-	} {3.8};
-	#ticker {chan} {
-		chan;
-	} {1.8};		
+	} {6.8};
 	#class attack.inner close;
 };
 
@@ -23,14 +20,14 @@
 };
 
 #alias {attack.normal} {
-	pfm_all chan feilong kuangfeng sqf poqi;
+	pfm_all kuangfeng pozhang sqf;
 	#class attack.inner open;
 	#ticker {sqf} {
 		sqf;
 	} {4.8};
-	#ticker {po} {
-		po;
-	} {2.8};
+	#ticker {pozhang} {
+		pozhang;
+	} {4.8};		
 	#class attack.inner close;
 };
 
@@ -117,10 +114,17 @@
 	map.go { È∑ø};
 };
 
-#alias {po} {
+#alias {pozhang} {
 	unwi;
 	wield sword;
-	perform dugu-jiujian.po;
+	perform dugu-jiujian.pozhang;
+	wi;
+};
+
+#alias {pobing} {
+	unwi;
+	wield sword;
+	perform dugu-jiujian.pobing;
 	wi;
 };
 
@@ -156,7 +160,7 @@
 	unwi;
 	jiali max;
 	wield sword;
-	perform huashan-jianfa.sqf;
+	perform huashan-jianfa.sanqingfeng;
 	jiali none;
 	wi;
 };
