@@ -48,7 +48,7 @@
 	#ticker {sqf} {
 		sqf;
 	} {4.8};
-	#ticker {pozhang} {
+	#ticker {po} {
 		po;
 	} {6.8};
 	#class attack.inner close;
