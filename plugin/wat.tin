@@ -3,9 +3,7 @@
 	on_health {
 		ask ke about ½øËþ;	
 		detect_mingjiao wushi;
-		#delay {1} {
-			killall wushi;
-		};
+		killall wushi;
 	};	
 };
 
