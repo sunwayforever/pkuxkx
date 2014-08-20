@@ -4,7 +4,7 @@
 	#class attack.inner open;
 	#ticker {poqi} {
 		poqi;
-	} {6.8};
+	} {5.8};
 	#class attack.inner close;
 };
 
@@ -43,14 +43,14 @@
 };
 
 #alias {attack.normal} {
-	pfm_all poqi pobing kuangfeng pozhang sqf;
+	pfm_all pobing kuangfeng pozhang sqf;
 	#class attack.inner open;
 	#ticker {sqf} {
 		sqf;
 	} {4.8};
 	#ticker {po} {
 		po;
-	} {6.8};
+	} {6.8};	
 	#class attack.inner close;
 };
 
