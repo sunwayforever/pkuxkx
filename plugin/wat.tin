@@ -16,11 +16,10 @@
 };
 
 #alias {wat.d} {
-	#class wat.inner kill;
 	qiao luo;
 };
 
-#alias {wat.auto} {
+#alias {wat.start} {
 	wat.q;
 	
 	#class wat.auto.inner open;
@@ -67,5 +66,13 @@
 	} {1};
 
 	#class wat.auto.inner close;	
+};
+
+#alias {wat.stop} {
+	#class wat.auto.inner kill;		
+};
+
+#action {^恭喜你，答对了口令，你可以敲锣离开了} {
+	wat.d;
 };
 #class wat close

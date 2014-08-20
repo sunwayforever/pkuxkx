@@ -43,7 +43,7 @@
 };
 
 #alias {attack.normal} {
-	pfm_all pobing kuangfeng pozhang sqf;
+	pfm_all poqi pobing kuangfeng pozhang sqf;
 	#class attack.inner open;
 	#ticker {sqf} {
 		sqf;
@@ -241,7 +241,7 @@
 	halt;
 };
 #var shifu yue;
-#list my_weapons create {my spear;};
+#list my_weapons create {my sword;};
 #list my_secondary_weapons create {my sword;};
 #var menzhong ning;
 #var menzhong_didian hs;
