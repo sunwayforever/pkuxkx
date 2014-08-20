@@ -177,6 +177,7 @@
 #alias {raw} {
 	#class war.inner kill;
 	#class attack.inner kill;
+	attack.end;
 	jiali none;
 	mj.stop;
 	#showme truce;
@@ -206,6 +207,7 @@
 	attack;
 };
 
+#alias {attack.end} {#cr};
 #alias {attack}  {
 	attack.normal;
 };

@@ -14,20 +14,43 @@
 	};
 	#class attack.inner open;
 	#ticker {po} {
-		po;
+		zongjue;
 	} {3.8};
 	#class attack.inner close;
 };
 
+#alias {attack.end} {
+	#var with_weapon 1;	
+};
+
+#action {对方是空手} {
+	#var with_weapon 0;	
+};
+
+#action {对方不是空手} {
+	#var with_weapon 1;	
+};
+
+#var with_weapon 1;
+#alias {po} {
+	#if {${with_weapon} == 1} {
+		pobing;
+		kuangfeng;
+	};
+	#else {
+		pozhang;
+	};
+};
+
 #alias {attack.normal} {
-	pfm_all kuangfeng pozhang sqf;
+	pfm_all pobing kuangfeng pozhang sqf;
 	#class attack.inner open;
 	#ticker {sqf} {
 		sqf;
 	} {4.8};
 	#ticker {pozhang} {
-		pozhang;
-	} {4.8};		
+		po;
+	} {6.8};
 	#class attack.inner close;
 };
 
@@ -41,7 +64,7 @@
 	pfm_all poqi feilong;
 	#class attack.inner open;
 	#ticker {po} {
-		po;
+		zongjue;
 	} {5.8};
 	#class attack.inner close;
 };
@@ -50,7 +73,7 @@
 	pfm_all poqi kuangfeng;
 	#class attack.inner open;
 	#ticker {po} {
-		po;
+		zongjue;
 	} {3.8};
 	#class attack.inner close;
 };
@@ -59,7 +82,7 @@
 	pfm_all poqi kuangfeng;
 	#class attack.inner open;
 	#ticker {po} {
-		po;
+		zongjue;
 	} {3.8};
 	#class attack.inner close;
 };
@@ -70,32 +93,9 @@
 		chan
 	} {1.8};
 	#ticker {po} {
-		po;
+		zongjue;
 	} {2.8};
 	#class attack.inner close;
-};
-
-#macro {\eOQ} {
-	#cr;
-};
-
-#macro {\eOR} {
-	#cr;
-};
-
-#macro {\eOP} {
-	#cr;
-};
-
-#macro {\eOS} {
-	#cr
-};
-
-#alias {chan_robber} {
-	unwi;
-	wield sword;
-	perform huashan-jianfa.yangwu;
-	wi;
 };
 
 #alias {map_goto_lingwu} {
@@ -118,6 +118,13 @@
 	unwi;
 	wield sword;
 	perform dugu-jiujian.pozhang;
+	wi;
+};
+
+#alias {zongjue} {
+	unwi;
+	wield sword;
+	perform dugu-jiujian.po;
 	wi;
 };
 
@@ -186,7 +193,7 @@
 	wi;
 };
 
-#var shortcut F1:破气 F2:飞剑 F3:三青风 F4:总决 F5:缠 F6:飞龙 F7:狂风 F9:剑掌
+#var shortcut F1:破气 F2:飞剑 F3:三青风 F5:缠 F6:飞龙 F7:狂风 F8: 破 F9: 破兵 F10: 破掌;
 #macro {\eOP} {
 	poqi;
 };
@@ -200,7 +207,7 @@
 };
 
 #macro {\eOS} {
-	po;
+
 };
 
 #macro {\e[15~} {
@@ -216,12 +223,17 @@
 };
 
 #macro {\e[19~} {
-
+	zongjue;
 };
 
 #macro {\e[20~} {
-	jianzhang;
+	pobing;
 };
+
+#macro {\e[21~} {
+	pozhang;
+};
+
 
 #alias {yzy} {
 	hit %0;
