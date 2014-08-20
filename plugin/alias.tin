@@ -494,7 +494,7 @@
 			#else {
 				yun heal;				
 			}
-			#delay {3} {
+			#delay {0.5} {
 				check_qx;
 			};
 		};
@@ -505,14 +505,14 @@
 	#alias {check_js} {
 		#if {${eff_js_percent} < 99} {
 			yun inspire;
-			#delay {3} {
+			#delay {0.5} {
 				check_js;
 			};
 		};
 		#else {
 			#class health.inner kill;
 			re;
-			#delay {1} {
+			#delay {0.5} {
 				tmp_health;
 			};
 		};
@@ -571,10 +571,14 @@
 
 #alias {map.go.resume} {
 	#var map_go_wait 0;
+	#if {${map_go_ended} == 1} {
+		#showme map arrived;
+	};
 };
 
 #alias {map.go} {
 	#var map_go_wait 0;
+	#var map_go_ended 0;
 	#path end;
 	#map find %0;
 	#class map.go.inner open;
@@ -587,7 +591,12 @@
 		
 	#event {END OF PATH} {
 		#class map.go.inner kill;
-		#showme map arrived;
+		#if {${map_go_wait} == 0} {
+			#showme map arrived;
+		};
+		#else {
+			#var map_go_ended 1;
+		};
 	};
 };
 
