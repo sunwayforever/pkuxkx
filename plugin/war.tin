@@ -143,11 +143,11 @@
 #alias {mj.start} {
 	#if {${mj_started} == 0} {
 		#var mj_started 1;
-		#class war.inner kill;
-		#class attack.inner kill;
 		show_to_info >>Ã÷½Ì;
 		#alias {wi} {wi_bare};
 		unwi;
+		#class war.inner kill;
+		#class attack.inner kill;
 		#alias {attack} {
 			attack.mingjiao;
 		};
@@ -190,7 +190,7 @@
 	};
 	#ticker {fighting} {
 		yun heal;
-	} {5};
+	} {8};
 	#ticker {yun} {
 		yun qi;
 		yun jing;
@@ -198,11 +198,12 @@
 	#action {wait_for_fight} {
 		#delay {attack.delay} {
 			attack;
-		} {0.5};
+		} {0.3};
 	};
 	#class war.inner close;
 	yun qi;
 	yun jing;
+	#class attack.inner kill;
 	attack.prepare;
 	attack;
 };

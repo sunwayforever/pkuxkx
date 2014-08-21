@@ -26,12 +26,14 @@
 	#action {如果你继续上楼闯关} {
 		#math wat_level ${wat_level}+1;
 		#if {${wat_level} <= 2} {
-			wat.up;
+			on_health {
+				wat.up;
+			};
 		};
 		#else {
 			#math wat_count ${wat_count}+1;
 			show_to_info wat 次数: ${wat_count};
-			wat.f;
+			wat.d;
 			#delay {5} {
 				jq;
 			};
