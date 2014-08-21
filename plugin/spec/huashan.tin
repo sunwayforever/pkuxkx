@@ -46,6 +46,9 @@
 	#ticker {sqf} {
 		sqf;
 	} {4.8};
+	#ticker {zongjue} {
+		zongjue;
+	} {3.8};					
 	#ticker {po} {
 		po;
 	} {6.8};	
@@ -62,7 +65,7 @@
 	pfm_all poqi pozhang sqf;
 	#class attack.inner open;
 	#ticker {po} {
-		zongjue;
+		po;
 	} {6.8};	
 	#ticker {zongjue} {
 		zongjue;

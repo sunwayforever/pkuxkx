@@ -51,20 +51,44 @@
 	perform datengnuo-bufa.tisha;
 };
 
+#alias {yinfeng} {
+	unwi;
+	wield dagger;
+	perform dagger.yinfeng;
+	wi;
+};
+
+#alias {duo} {
+	unwi;
+	wield dagger;
+	perform dagger.duo;
+	wi;
+};
+
+#alias {jindou} {
+	unwi;
+	wield dagger;
+	perform dagger.jindou;
+	wi;
+};
+
 #list my_weapons create {sword; sword 2};
 
-#var shortcut F1: Ãﬂ…≥;
+#var shortcut F1: Ãﬂ…≥ F2: “ı∑Á F3: ∂· F4: ΩÓ∂∑;
 #macro {\eOP} {
 	chan;
 };
 
 #macro {\eOQ} {
+	yinfeng;
 };
 
 #macro {\eOR} {
+	duo;
 };
 
 #macro {\eOS} {
+	jindou;
 };
 
 #macro {\e[15~} {
