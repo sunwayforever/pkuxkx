@@ -3,7 +3,7 @@
 #alias {lw_action} {#cr;};
 #alias {lw.start} {
 	#var lw_paused 0;
-	#list skills create  {force;cuff;strike;whip;staff;sword;parry;claw;blade;spear;dodge;hand;throwing};
+	#list skills create  {force;cuff;strike;whip;staff;sword;parry;claw;blade;spear;dodge;hand;dagger;throwing};
 	#list skills size skill_size;
 	#list level_a create {};
 	#list level_b create {};
