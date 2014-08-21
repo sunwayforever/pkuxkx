@@ -9,9 +9,7 @@
 };
 
 #alias {attack.bare} {
-	on_unbusy {
-		poqi;
-	};
+	pfm_all poqi;
 	#class attack.inner open;
 	#ticker {po} {
 		zongjue;
@@ -61,20 +59,26 @@
 };
 
 #alias {attack.xiaofeng.qin} {
-	pfm_all poqi pozhang feilong;
+	pfm_all poqi pozhang sqf;
 	#class attack.inner open;
 	#ticker {po} {
-		po;
-	} {6.8};			
+		zongjue;
+	} {6.8};	
+	#ticker {zongjue} {
+		zongjue;
+	} {3.8};			
 	#class attack.inner close;
 };
 
 #alias {attack.xiaofeng.sheng} {
-	pfm_all poqi kuangfeng sqf;
+	pfm_all poqi poqi kuangfeng sqf;
 	#class attack.inner open;
 	#ticker {po} {
 		po;
-	} {6.8};			
+	} {6.8};
+	#ticker {zongjue} {
+		zongjue;
+	} {3.8};			
 	#class attack.inner close;
 };
 
@@ -83,7 +87,10 @@
 	#class attack.inner open;
 	#ticker {po} {
 		po;
-	} {6.8};			
+	} {6.8};
+	#ticker {zongjue} {
+		zongjue;
+	} {3.8};					
 	#class attack.inner close;
 };
 

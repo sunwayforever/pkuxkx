@@ -77,12 +77,6 @@
 			#alias {wi} {wi_bare};
 			unwi;
 		};
-		#elseif {${xf.type} == 2} {
-			show_to_info 红血了, 慢点;
-			raw; 
-			#alias  {attack} {attack.bare};
-			war;
-		};
 	};
 
 	#action {尚可教化} {
