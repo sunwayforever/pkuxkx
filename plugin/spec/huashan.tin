@@ -5,6 +5,9 @@
 	#ticker {poqi} {
 		poqi;
 	} {5.8};
+	#ticker {chan} {
+		chan;
+	} {2.8};		
 	#class attack.inner close;
 };
 
@@ -41,7 +44,7 @@
 };
 
 #alias {attack.normal} {
-	pfm_all poqi kuangfeng pozhang sqf;
+	pfm_all chan poqi sqf;
 	#class attack.inner open;
 	#ticker {sqf} {
 		sqf;
@@ -62,7 +65,7 @@
 };
 
 #alias {attack.xiaofeng.qin} {
-	pfm_all poqi pozhang sqf;
+	pfm_all chan poqi sqf;
 	#class attack.inner open;
 	#ticker {po} {
 		po;
@@ -74,7 +77,7 @@
 };
 
 #alias {attack.xiaofeng.sheng} {
-	pfm_all poqi poqi kuangfeng sqf;
+	pfm_all chan poqi sqf;
 	#class attack.inner open;
 	#ticker {po} {
 		po;
@@ -86,7 +89,7 @@
 };
 
 #alias {attack.xiaofeng.quan} {
-	pfm_all poqi kuangfeng sqf;
+	pfm_all chan poqi kuangfeng sqf;
 	#class attack.inner open;
 	#ticker {po} {
 		po;
@@ -99,9 +102,6 @@
 
 #alias {attack.mingjiao} {
 	#class attack.inner open;
-	#ticker {chan} {
-		chan
-	} {1.8};
 	#ticker {po} {
 		zongjue;
 	} {2.8};
