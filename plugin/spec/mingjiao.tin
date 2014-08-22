@@ -1,34 +1,28 @@
 #class template open
 #alias {attack.prepare} {
 	yun powerup;
+	#class attack.inner open;
+	#ticker {duo} {
+		duo;
+	} {1.8};
+	#class attack.inner close;
 };
 
 #alias {attack.normal} {
 	#class attack.inner open;
-	pfm_all chan;
+	pfm_all chan duo;
+	#ticker {yf} {
+		yinfeng;
+	} {1};
 	#class attack.inner close;
 };
 
 #alias {attack.mingjiao} {
 	#class attack.inner open;
-	#cr;
+	#ticker {yf} {
+		yinfeng;
+	} {1};
 	#class attack.inner close;
-};
-
-#macro {\eOP} {
-
-};
-
-#macro {\eOQ} {
-
-};
-
-#macro {\eOR} {
-
-};
-
-#macro {\eOS} {
-
 };
 
 #alias {map_goto_lingwu} {
