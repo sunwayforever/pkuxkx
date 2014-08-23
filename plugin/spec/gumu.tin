@@ -28,7 +28,7 @@
 };
 
 #alias {attack.normal} {
-	pfm_all chan suxin;
+	pfm_all chan suxin shexin zhua;
 	#class attack.inner open;
 	#ticker {zhua} {
 		zhua;
@@ -43,19 +43,19 @@
 };
 
 #alias {attack.xiaofeng.qin} {
-	pfm_all chan zhua;
+	pfm_all chan zhua suxin;
 	#class attack.inner open;
 	#class attack.inner close;
 };
 
 #alias {attack.xiaofeng.quan} {
-	pfm_all chan zhua;
+	pfm_all chan zhua suxin;
 	#class attack.inner open;
 	#class attack.inner close;
 };
 
 #alias {attack.xiaofeng.sheng} {
-	pfm_all chan zhua;
+	pfm_all chan zhua suxin;
 	#class attack.inner open;
 	#class attack.inner close;
 };
@@ -129,7 +129,7 @@
 
 #alias {shexin} {
 	unwi;
-	jiali 10;
+	jiali max;
 	perform meinu-quan.shexin;
 	jiali none;
 	wi;
