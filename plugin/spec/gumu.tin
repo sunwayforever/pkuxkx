@@ -28,7 +28,7 @@
 };
 
 #alias {attack.normal} {
-	pfm_all chan suxin shexin zhua;
+	pfm_all chan shexin suxin zhua;
 	#class attack.inner open;
 	#ticker {zhua} {
 		zhua;

@@ -16,13 +16,6 @@
 	#action {传闻西夏一品堂派出了若干蒙面杀手，最近出现在%*附近的%*} {
 		#if {${xf.requested} == 1} {
 			#var xf.target %%1:%%2;
-			#delay {2} {
-				#var dest @area_mapping{%%1};
-				#if {"${dest}" != "0"} {
-					gt $dest;
-					on_there {xf.bl};
-				};
-			};
 		};
 	};
 

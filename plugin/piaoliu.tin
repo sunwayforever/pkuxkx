@@ -70,11 +70,13 @@
 		pl.d;
 	};
 
+	#var use_jiguan 0;
 	#action {小船已经顺流漂出了%*里开外了} {
 		#math pl_count ${pl_count}-1;
 		show_to_quest 漂流: ${pl_count} 里后, 往 ${hua_direction} 划 ${hua_count} 里;
 		#if {"%%1" == "十" || ${pl_count} == 2} {
 			sheng;
+			#var use_jiguan 1;
 		};
 		#if {${pl_count} == 0} {
 			sheng;
@@ -168,10 +170,12 @@
 	};
 	#action {水贼 %S(%S %S)} {	
 	      #if {"${pl_npc_c}" == "%%1"} {
-			  show_to_info zhi @lower{%%2};
-			  #ticker {zhi} {
-				  zhi @lower{%%2};
-			  } {2};
+			  #if {${use_jiguan} == 1} {
+				  show_to_info zhi @lower{%%2};
+				  #ticker {zhi} {
+					  zhi @lower{%%2};
+				  } {2};
+			  };
 		  };
 		  #if {"${pl_mj_npc}" == "%%1"} {
 			  #var mj_id @lower{%%2};
