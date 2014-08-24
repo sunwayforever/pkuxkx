@@ -44,7 +44,7 @@
 };
 
 #alias {attack.normal} {
-	pfm_all chan poqi sqf;
+	pfm_all chan poqi pobing kuangfeng sqf;
 	#class attack.inner open;
 	#ticker {sqf} {
 		sqf;
