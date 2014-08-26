@@ -518,6 +518,8 @@ load chaos;
 		show_to_tuiche 挂了;
 		notify.alert 挂了; 
 		xmpp.notify 挂了;
+		hb.teardown;
+		hb.back;			
 	};
 	
 	#action {^你的眼前一黑，接著什么也不知道了} {
