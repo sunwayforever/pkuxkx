@@ -840,7 +840,6 @@
 };
 
 #alias {repair} {
-	show_to_info repair: %1;
 	#alias tmp_repair %1;
 	#if {${min_naijiu} < 250} {
 		#action {抵达目的地} {
