@@ -2,8 +2,8 @@
 #var xmpp_listener salonbus;
 
 #alias {xmpp.listen} {
-	#system {/usr/bin/killall xmpp_listen.rb};
-	#system {bin/xmpp_listen.rb ${char_id} &};	
+	#system {/usr/bin/killall xmpp_listen.rb &>/dev/null};
+	#system {bin/xmpp_listen.rb ${char_id} &>/dev/null &};	
 };
 
 #alias {xmpp.send} {

@@ -23,21 +23,36 @@
 	#class attack.inner close;
 };
 
-#alias {chan} {
-	#cr;
+#alias {fen} {
+	unwi;
+	perform huoyan-dao.fen;
+	wi;
 };
 
-#var shortcut NIL;
+#alias {ran} {
+	unwi;
+	perform huoyan-dao.ran;
+	wi;
+};
+
+#alias {wushuai} {
+	unwi;
+	wield hammer;
+	perform xiangfu-lun.wushuai;
+	wi;
+};
+
+#var shortcut F1:·Ù F2:È¼ F3:ÎåË¥;
 #macro {\eOQ} {
-	#cr;
+	fen;
 };
 
 #macro {\eOR} {
-	#cr;
+	ran;
 };
 
 #macro {\eOP} {
-	#cr;
+	wushuai;
 };
 
 #macro {\eOS} {
@@ -65,6 +80,6 @@
 
 #var shifu zhi;
 
-#list my_weapons create {sword; sword 2};
+#list my_weapons create {staff; staff 2};
 #var char_menpai_position xkt;
 #class dalunsi_spec close
