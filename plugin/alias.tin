@@ -263,32 +263,6 @@
 	};
 };
 
-#alias {repair} {
-	#alias tmp_repair %1;
-	#unticker {naijiu};
-	#var orig_here ${CurrentPosition};
-	#action {抵达目的地} {
-		#unaction {抵达目的地};
-		e;ne;
-		#delay {2} {
-			#foreach {${my_weapons}[%*]} {weapon} {
-				fix ${weapon};
-			};
-			#foreach {${my_secondary_weapons}[%*]} {weapon} {
-				fix ${weapon};
-			};
-			play repair.wav;
-			#delay {3} {
-				sw;w;
-				#delay {3} {
-					tmp_repair;
-				};
-			};
-		};		
-	};
-	gt ly;
-};
-
 #alias {iall} {
 	#echo {≡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━≡};
 	#send {i ring};
@@ -865,13 +839,33 @@
 	gt rbz;
 };
 
-#alias {on_repair} {
-	#alias tmp_on_repair %1;
+#alias {repair} {
+	show_to_info repair: %1;
+	#alias tmp_repair %1;
 	#if {${min_naijiu} < 250} {
-		repair %1;
+		#action {抵达目的地} {
+			#unaction {抵达目的地};
+			e;ne;
+			#delay {2} {
+				#foreach {${my_weapons}[%*]} {weapon} {
+					fix ${weapon};
+				};
+				#foreach {${my_secondary_weapons}[%*]} {weapon} {
+					fix ${weapon};
+				};
+				play repair.wav;
+				#delay {3} {
+					sw;w;
+					#delay {3} {
+						tmp_repair;
+					};
+				};
+				};		
+			};
+			gt ly;
 	};
 	#else {
-		tmp_on_repair;
+		tmp_repair;
 	};
 };
 
