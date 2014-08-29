@@ -43,15 +43,15 @@
 };
 
 #var shortcut F1:·Ù F2:È¼ F3:ÎåË¥;
-#macro {\eOQ} {
+#macro {\eOP} {
 	fen;
 };
 
-#macro {\eOR} {
+#macro {\eOQ} {
 	ran;
 };
 
-#macro {\eOP} {
+#macro {\eOR} {
 	wushuai;
 };
 
