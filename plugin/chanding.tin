@@ -1,10 +1,13 @@
 #class chanding open
 #alias {chanding.start} {
 	#class chanding.inner open;
-
+	#action {石柱上的经文你已经领悟透彻了} {
+		#alias cd_action mingxiang;
+	};
+	#alias cd_action chanding;
 	#alias {cd.start} {
 		#ticker {cd} {
-			chanding;
+			cd_action;
 		} {0.8};
 	};
 
@@ -50,12 +53,15 @@
 		} {3};
 	};
 	#class chanding.inner close;
-	load_map;
-	map.go 大经堂;
-	on_arrived {
-		cd.start;
-		ck.start;
-		show_to_quest 禅定中...;
+	gt xkt;
+	on_there {
+		load_map;
+		map.go 大经堂;
+		on_arrived {
+			cd.start;
+			ck.start;
+			show_to_quest 禅定中...;
+		};
 	};
 };
 
