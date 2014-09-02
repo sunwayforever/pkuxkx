@@ -8,9 +8,6 @@
 	#ticker {perf_chan} {
 		chan;
 	} {1};
-	#action {²ø: miss} {
-		chan;
-	};
 	#class attack.inner close;
 };
 
@@ -27,11 +24,14 @@
 };
 
 #alias {attack.normal} {
-	pfm_all chan wuying;
+	pfm_all chan wuying lzj;
 	#class attack.inner open;
 	#ticker {wuying} {
 		wuying;
 	} {4.8};
+	#ticker {lzj} {
+		lzj;
+	} {6.8};		
 	#class attack.inner close;
 };
 
@@ -49,7 +49,7 @@
 	#class attack.inner open;
 	#ticker {wuying} {
 		wuying;
-		} {4.8};
+	} {4.8};
 	#class attack.inner close;
 };
 
@@ -112,9 +112,11 @@
 #alias {sanhuan} {
 	unwield all;
 	wield my sword;
-	jiali 10;
+	jiali max;
     perform sword.sanhuan;
-	jiali none;
+	#if {${gangrou_ing} == 0} {
+		jiali none;
+	};
 	wi;
 };
 
@@ -131,23 +133,32 @@
 #alias {lzj} {
 	unwi;
 	wield my sword;
-	jiali 10;
+	jiali max;
     perform sword.lian;
-	jiali none;
+	#if {${gangrou_ing} == 0} {
+		jiali none;
+	};
 	wi;
 };
 
 #alias {wuying} {
 	unwield all;
+	jiali max;
 	perform claw.wuying;
+	#if {${gangrou_ing} == 0} {
+		jiali none;
+	};
 	wi;
 };
 
+#var gangrou_ing 0;
 #alias {gangrou} {
+	#var gangrou_ing 1;
 	unwi;
 	jiali max;
 	perform cuff.gangrou;
 	#delay {5} {
+		#var gangrou_ing 0;
 		jiali none;
 	};
 	wi;
