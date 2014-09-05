@@ -5,9 +5,6 @@
 	#ticker {poqi} {
 		poqi;
 	} {5.8};
-	#ticker {chan} {
-		chan;
-	} {2.8};		
 	#class attack.inner close;
 };
 
@@ -36,7 +33,6 @@
 #alias {po} {
 	#if {${with_weapon} == 1} {
 		pobing;
-		kuangfeng;
 	};
 	#else {
 		pozhang;
@@ -44,17 +40,17 @@
 };
 
 #alias {attack.normal} {
-	pfm_all chan poqi pobing kuangfeng sqf;
+	pfm_all pobing poqi sqf;
 	#class attack.inner open;
 	#ticker {sqf} {
 		sqf;
 	} {4.8};
 	#ticker {zongjue} {
 		zongjue;
-	} {3.8};					
+	} {6.8};					
 	#ticker {po} {
 		po;
-	} {6.8};	
+	} {3.8};	
 	#class attack.inner close;
 };
 

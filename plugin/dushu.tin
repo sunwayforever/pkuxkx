@@ -24,6 +24,10 @@
 		};
 	} {1.5};
 
+	#action {你的基本%*等级已经高于} {
+		ds.stop;
+	};
+	
 	#class dushu.inner close;
 
 	show_to_quest 读书: ${ds_book};
