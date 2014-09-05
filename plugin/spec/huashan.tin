@@ -3,8 +3,8 @@
 	yun powerup;
 	#class attack.inner open;
 	#ticker {poqi} {
-		poqi;
-	} {5.8};
+		pfm poqi;
+	} {3.8};
 	#class attack.inner close;
 };
 
@@ -21,18 +21,20 @@
 	#var with_weapon 1;	
 };
 
-#action {对方是空手} {
-	#var with_weapon 0;	
+#action {{对方是空手|对方没有使用兵器}} {
+	#var with_weapon 0;
+	pfm_oob pozhang;
 };
 
 #action {对方不是空手} {
-	#var with_weapon 1;	
+	#var with_weapon 1;
+	pfm_oob kuangfeng;
 };
 
 #var with_weapon 1;
 #alias {po} {
 	#if {${with_weapon} == 1} {
-		pobing;
+		kuangfeng;
 	};
 	#else {
 		pozhang;
@@ -40,58 +42,69 @@
 };
 
 #alias {attack.normal} {
-	pfm_all pobing poqi sqf;
+	pfm kuangfeng;
+	pfm pobing;
+	pfm poqi;
+	pfm sqf;
+	
 	#class attack.inner open;
 	#ticker {sqf} {
-		sqf;
+		pfm sqf;
 	} {4.8};
 	#ticker {zongjue} {
-		zongjue;
+		pfm zongjue;
 	} {6.8};					
 	#ticker {po} {
-		po;
+		pfm po;
 	} {3.8};	
 	#class attack.inner close;
 };
 
 #alias {attack.hubiao} {
 	#class attack.inner open;
-	pfm_all chan;
+
 	#class attack.inner close;
 };
 
 #alias {attack.xiaofeng.qin} {
-	pfm_all chan poqi sqf;
+	pfm chan;
+	pfm poqi;
+	pfm sqf;
 	#class attack.inner open;
 	#ticker {po} {
-		po;
+		pfm po;
 	} {6.8};	
 	#ticker {zongjue} {
-		zongjue;
+		pfm zongjue;
 	} {3.8};			
 	#class attack.inner close;
 };
 
 #alias {attack.xiaofeng.sheng} {
-	pfm_all chan poqi sqf;
+	pfm chan;
+	pfm poqi;
+	pfm sqf;
 	#class attack.inner open;
 	#ticker {po} {
-		po;
+		pfm po;
 	} {6.8};
 	#ticker {zongjue} {
-		zongjue;
+		pfm zongjue;
 	} {3.8};			
 	#class attack.inner close;
 };
 
 #alias {attack.xiaofeng.quan} {
-	pfm_all chan poqi kuangfeng sqf;
+	pfm chan;
+	pfm poqi;
+	pfm kuangfeng;
+	pfm sqf;
 	#class attack.inner open;
 	#ticker {po} {
-		po;
+		pfm po;
 	} {6.8};
 	#ticker {zongjue} {
-		zongjue;
+		pfm zongjue;
 	} {3.8};					
 	#class attack.inner close;
 };
@@ -99,8 +112,11 @@
 #alias {attack.mingjiao} {
 	#class attack.inner open;
 	#ticker {po} {
-		zongjue;
+		pfm zongjue;
 	} {2.8};
+	#ticker {po} {
+		pfm po;
+	} {3.8};	
 	#class attack.inner close;
 };
 
@@ -201,15 +217,15 @@
 
 #var shortcut F1:破气 F2:飞剑 F3:三青风 F5:缠 F6:飞龙 F7:狂风 F8: 破 F9: 破兵 F10: 破掌;
 #macro {\eOP} {
-	poqi;
+	pfm_oob poqi;
 };
 
 #macro {\eOQ} {
-	feijian;
+	pfm_oob feijian;
 };
 
 #macro {\eOR} {
-	sqf;
+	pfm_oob sqf;
 };
 
 #macro {\eOS} {
@@ -217,33 +233,33 @@
 };
 
 #macro {\e[15~} {
-	chan;
+	pfm_oob chan;
 };
 
 #macro {\e[17~} {
-	feilong;
+	pfm_oob feilong;
 };
 
 #macro {\e[18~} {
-	kuangfeng;
+	pfm_oob kuangfeng;
 };
 
 #macro {\e[19~} {
-	zongjue;
+	pfm_oob zongjue;
 };
 
 #macro {\e[20~} {
-	pobing;
+	pfm_oob pobing;
 };
 
 #macro {\e[21~} {
-	pozhang;
+	pfm_oob pozhang;
 };
 
 
 #alias {yzy} {
 	hit %0;
-	feilong;
+	pfm_oob feilong;
 	halt;
 };
 #var shifu yue;

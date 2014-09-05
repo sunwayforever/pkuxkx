@@ -177,12 +177,32 @@
 #alias {raw} {
 	#class war.inner kill;
 	#class attack.inner kill;
+	#undelay {attack.delay};
 	attack.end;
 	jiali none;
 	mj.stop;
 	#showme truce;
 };
 
+#var pfming 0;
+#alias {pfm_next} {
+	#if {${pfming} == 0} {
+		#var pfming 1;
+		#var pfm_action @stackpoll{pfm};
+		#if {"${pfm_action}" != "NULL"} {
+			on_unbusy {
+				${pfm_action};
+				#var pfming 0;
+				pfm_next;
+			};
+		};
+		#else {
+			#var pfming 0;
+		};
+	};
+};
+
+#gag {wait_for_fight};
 #alias {war} {
 	#class war.inner open;
 	#action {你全身放松，坐下来开始运功疗伤。} {
@@ -195,12 +215,14 @@
 		yun qi;
 		yun jing;
 	} {10};
-	#action {wait_for_fight} {
+	#action {{只能对战斗中的对手使用|只能在战斗中使用}} {
 		#delay {attack.delay} {
+			@stackcreate{pfm};
 			attack;
 		} {0.3};
 	};
 	#class war.inner close;
+	@stackcreate{pfm};
 	yun qi;
 	yun jing;
 	#class attack.inner kill;
@@ -284,4 +306,16 @@
 	#class busy.start.inner kill;
 	disarm.stop;
 };
+
+@stackcreate{pfm};
+#alias {pfm} {
+	@stackpush{pfm;%1};
+	pfm_next;
+};
+
+#alias {pfm_oob} {
+	@stackadd{pfm;%1};
+	pfm_next;
+};
+
 #class war close;

@@ -307,11 +307,6 @@
 	update_status;
 };
 
-#gag {wait_for_fight};
-#action {{只能对战斗中的对手使用|只能在战斗中使用}} {
-	#showme wait_for_fight;
-};
-
 #alias {pfm_special} {
 	#class pfm_special.inner open;
 	#action {你现在会以下这些特技：} {

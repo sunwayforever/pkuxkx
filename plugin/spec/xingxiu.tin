@@ -12,57 +12,50 @@
 };
 
 #alias {attack.hubiao} {
-	pfm_all huose huoqiu;
+	pfm huose;
+	pfm huoqiu;
 	#class attack.inner open;
 	#ticker {huose} {
-		huose;
+		pfm huose;
 	} {3};
 	#class attack.inner close;
 };
 
 #alias {attack.normal} {
-	on_unbusy {
-		huoqiu;
-	};
+	pfm huoqiu;
 	#class attack.inner open;
 	#ticker {huose} {
-		huose;
+		pfm huose;
 	} {3};
 	#ticker {huoqiu} {
-		huoqiu;
+		pfm huoqiu;
 	} {4.8};
 	#class attack.inner close;
 };
 
 #alias {attack.xiaofeng.qin} {
-	on_unbusy {
-		chousui;
-	};
+	pfm chousui;
 	#class attack.inner open;
 	#ticker {huose} {
-		huose;
+		pfm huose;
 	} {3.8};
 	#class attack.inner close;
 };
 
 #alias {attack.xiaofeng.quan} {
-	on_unbusy {
-		chousui;
-	};
+	pfm chousui;
 	#class attack.inner open;
 	#ticker {huose} {
-		huose;
+		pfm huose;
 	} {3.8};
 	#class attack.inner close;
 };
 
 #alias {attack.xiaofeng.sheng} {
-	on_unbusy {
-		huoqiu;
-	};
+	pfm huoqiu;
 	#class attack.inner open;
 	#ticker {huose} {
-		huose;
+		pfm huose;
 	} {3.8};
 	#class attack.inner close;
 };
@@ -155,35 +148,35 @@
 
 #var shortcut F1:»îÉ« F2:³éËè F3:»ðÇò F4:»ðÇ½ F5:´©ÐÄ F6:É¢¶¾;
 #macro {\eOP} {
-	huose;
+	pfm_oob huose;
 };
 
 #macro {\eOQ} {
-	chousui;
+	pfm_oob chousui;
 };
 
 #macro {\eOR} {
-	huoqiu;
+	pfm_oob huoqiu;
 };
 
 #macro {\eOS} {
-	huoqiang;
+	pfm_oob huoqiang;
 };
 
 #macro {\e[15~} {
-	chuanxin;
+	pfm_oob chuanxin;
 };
 
 #macro {\e[17~} {
-	sandu;
+	pfm_oob sandu;
 };
 
 #macro {\e[18~} {
-	#cr;
+
 };
 
 #macro {\e[19~} {
-	#cr;
+
 };
 
 #alias {qudu} {

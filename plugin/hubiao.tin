@@ -85,6 +85,8 @@ load chaos;
 
 #alias {hb.setup} {
 	#foreach {${clear_npcs}[%*]} {npc} {clear_npc ${npc}};
+	#unaction {^    这里%*出口};
+	#unaction {你想杀谁};
 	#class hb_setup_inner open;
 	#action {镖车呼啦一声散了架} {
 		hb.pause;

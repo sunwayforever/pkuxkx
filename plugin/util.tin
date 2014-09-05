@@ -45,6 +45,12 @@
 	#var result #cr;
 };
 
+#function {stackadd} {
+	#var stack_name stack_%1;
+	#list ${stack_name} insert 1 %2;
+	#var result #cr;
+};
+
 #function {stacktop} {
 	#var stack_name stack_%1;
 	#list ${stack_name} size tmp_size;
@@ -70,6 +76,18 @@
 	#else {
 		#list ${stack_name} get ${tmp_size} result;
 		#list ${stack_name} delete ${tmp_size};
+	};
+};
+
+#function {stackpoll} {
+	#var stack_name stack_%1;
+	#list ${stack_name} size tmp_size;
+	#if {${tmp_size} == 0} {
+		#var result NULL;
+	};
+	#else {
+		#list ${stack_name} get 1 result;
+		#list ${stack_name} delete 1;
 	};
 };
 
