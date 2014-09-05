@@ -42,7 +42,7 @@
 };
 
 #alias {attack.normal} {
-	pfm kuangfeng;
+	pfm po;
 	pfm pobing;
 	pfm poqi;
 	pfm sqf;
