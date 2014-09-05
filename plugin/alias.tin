@@ -423,7 +423,7 @@
 	#action {�㲻æ} {
 		#unaction {�㲻æ};
 		#class unbusy.inner kill;
-		#delay {0.5} {
+		#delay {0.3} {
 			tmp_unbusy;
 		};
 	};

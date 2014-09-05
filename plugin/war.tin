@@ -223,6 +223,7 @@
 	};
 	#class war.inner close;
 	@stackcreate{pfm};
+	#var pfming 0;
 	yun qi;
 	yun jing;
 	#class attack.inner kill;

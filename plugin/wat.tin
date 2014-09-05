@@ -1,4 +1,5 @@
 #class wat open
+#var wat_max_level 3;
 #alias {wat.q} {
 	on_health {
 		ask ke about 进塔;	
@@ -25,7 +26,7 @@
 	#var wat_level 0;
 	#action {如果你继续上楼闯关} {
 		#math wat_level ${wat_level}+1;
-		#if {${wat_level} <= 2} {
+		#if {${wat_level} <= ${wat_max_level}} {
 			on_health {
 				wat.up;
 			};

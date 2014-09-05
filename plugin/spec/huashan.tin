@@ -42,7 +42,6 @@
 };
 
 #alias {attack.normal} {
-	pfm po;
 	pfm pobing;
 	pfm poqi;
 	pfm sqf;
@@ -53,10 +52,10 @@
 	} {4.8};
 	#ticker {zongjue} {
 		pfm zongjue;
-	} {6.8};					
-	#ticker {po} {
-		pfm po;
-	} {3.8};	
+	} {5.8};					
+	#ticker {pobing} {
+		pfm pobing;
+	} {6.8};	
 	#class attack.inner close;
 };
 
