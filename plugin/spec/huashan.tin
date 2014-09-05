@@ -113,9 +113,9 @@
 	#ticker {po} {
 		pfm zongjue;
 	} {2.8};
-	#ticker {po} {
-		pfm po;
-	} {3.8};	
+	#ticker {feilong} {
+		pfm feilong;
+	} {6.8};	
 	#class attack.inner close;
 };
 
