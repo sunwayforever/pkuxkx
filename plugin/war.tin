@@ -249,14 +249,14 @@
 };
 
 #alias {tao} {
-	#action {get_exits_done} {
+	#action {get_exits: done} {
 		#unaction {get_exits_done};
 		#list exits_list get 1 exit;
 		on_unbusy {
 			${exit};
 		};
 	};
-	l;
+	get_exits;
 	#5 halt;
 };
 
