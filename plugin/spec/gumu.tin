@@ -4,7 +4,7 @@
 	yun xinjing;
 	#class attack.inner open;
 	#ticker {perf_chan} {
-		chan;
+		pfm chan;
 	} {0.8};
 	#ticker {xinjing} {
 		yun xinjing;
@@ -13,89 +13,99 @@
 };
 
 #alias {attack.bare} {
-	pfm_all chan;
+	pfm chan;
 	#class attack.inner open;
 	#class attack.inner close;
 };
 
 #alias {attack.hubiao} {
-	pfm_all chan  suxin;
+	pfm chan;
+	pfm suxin;
 	#class attack.inner open;
 	#ticker {suxin} {
-		suxin;
+		pfm suxin;
 	} {8.8};
 	#class attack.inner close;
 };
 
 #alias {attack.normal} {
-	pfm_all chan shexin suxin zhua;
+	pfm chan;
+	pfm shexin;
+	pfm suxin;
+	pfm zhua;
 	#class attack.inner open;
 	#ticker {zhua} {
-		zhua;
+		pfm zhua;
 	} {3.8};
 	#ticker {suxin} {
-		suxin;
+		pfm suxin;
 	} {8.8};
 	#ticker {shexin} {
-		shexin;
+		pfm shexin;
 	} {5.8};
 	#class attack.inner close;
 };
 
 #alias {attack.xiaofeng.qin} {
-	pfm_all chan zhua suxin;
+	pfm chan;
+	pfm zhua;
+	pfm suxin;
 	#class attack.inner open;
 	#class attack.inner close;
 };
 
 #alias {attack.xiaofeng.quan} {
-	pfm_all chan zhua suxin;
+	pfm chan;
+	pfm zhua;
+	pfm suxin;
 	#class attack.inner open;
 	#class attack.inner close;
 };
 
 #alias {attack.xiaofeng.sheng} {
-	pfm_all chan zhua suxin;
+	pfm chan;
+	pfm zhua;
+	pfm suxin;
 	#class attack.inner open;
 	#class attack.inner close;
 };
 
 #alias {attack.mingjiao} {
-	pfm_all chan;
+	pfm chan;
 	#class attack.inner open;
 	#ticker {qixing} {
-		qixing;
+		pfm qixing;
 	} {1.8};
 	#class attack.inner close;
 };
 
 #var shortcut F1:²ø F2:ÉãÐÄ F3:ËØÐÄ F4:×¥ F5:ÐÚÓ¿ F6:ÆßÐÇ F7:°µÆ÷;
 #macro {\eOP} {
-	chan;
+	pfm_oob chan;
 };
 
 #macro {\eOQ} {
-	shexin;
+	pfm_oob shexin;
 };
 
 #macro {\eOR} {
-	suxin;
+	pfm_oob suxin;
 };
 
 #macro {\eOS} {
-	zhua;
+	pfm_oob zhua;
 };
 
 #macro {\e[15~} {
-	xiongyong;
+	pfm_oob xiongyong;
 };
 
 #macro {\e[17~} {
-	qixing;
+	pfm_oob qixing;
 };
 
 #macro {\e[18~} {
-	shuai;
+	pfm_oob shuai;
 };
 
 #alias {shuai} {

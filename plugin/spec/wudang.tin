@@ -3,10 +3,10 @@
 	yun powerup;
 	#class attack.inner open;
 	#delay {7.8} {
-		zong;
+		pfm zong;
 	};
 	#ticker {perf_chan} {
-		chan;
+		pfm chan;
 	} {1};
 	#class attack.inner close;
 };
@@ -18,88 +18,85 @@
 };
 
 #alias {attack.hubiao} {
-	pfm_all chan;
+	pfm chan;
 	#class attack.inner open;
 	#class attack.inner close;
 };
 
 #alias {attack.normal} {
-	pfm_all chan wuying lzj;
+	pfm chan;
+	pfm wuying;
+	pfm lzj;
 	#class attack.inner open;
 	#ticker {wuying} {
-		wuying;
+		pfm wuying;
 	} {4.8};
 	#ticker {lzj} {
-		lzj;
+		pfm lzj;
 	} {6.8};		
 	#class attack.inner close;
 };
 
 #alias {attack.xiaofeng.qin} {
-	pfm_all chan wuying;
+	pfm chan;
+	pfm wuying;
 	#class attack.inner open;
 	#ticker {wuying} {
-		wuying;
+		pfm wuying;
 	} {4.8};
 	#class attack.inner close;
 };
 
 #alias {attack.xiaofeng.quan} {
-	pfm_all chan wuying;
+	pfm chan;
+	pfm wuying;
 	#class attack.inner open;
 	#ticker {wuying} {
-		wuying;
+		pfm wuying;
 	} {4.8};
 	#class attack.inner close;
 };
 
 #alias {attack.xiaofeng.sheng} {
-	pfm_all chan wuying;	
+	pfm chan;
+	pfm wuying;	
 	#class attack.inner open;
 	#ticker {wuying} {
-		wuying;
+		pfm wuying;
 	} {4.8};
 	#class attack.inner close;
 };
 
 #alias {attack.mingjiao} {
-	pfm_all chan;
+	pfm chan;
 	#class attack.inner open;
 	#ticker {perf_zhen} {
-		zhen;
+		pfm zhen;
 	} {0.8};
 	#ticker {wuying} {
-		wuying;
+		pfm wuying;
 	} {5.8};
 	#ticker {gangrou} {
-		gangrou;
+		pfm gangrou;
 	} {4.8};	
 	#class attack.inner close;
 };
 
 #var shortcut F1:²ø F2:ÎÞÓ° F3:Á¬×Ö¾÷ F4:¸ÕÈá;
 #macro {\eOQ} {
-	wuying;
+	pfm_oob wuying;
 };
 
 #macro {\eOR} {
-	lzj;
+	pfm_oob lzj;
 };
 
 #macro {\eOP} {
-	chan;
+	pfm_oob chan;
 };
 
 #macro {\eOS} {
-	gangrou;
-};
-
-#alias {chan_robber} {
-	unwield all;
-	wield my sword;
-	perform sword.chan ${char_id}'s robber 1;
-	perform sword.chan ${char_id}'s robber 2;
-	wi;
+	pfm_oob gangrou;
 };
 
 #alias {chan} {
@@ -112,7 +109,7 @@
 #alias {sanhuan} {
 	unwield all;
 	wield my sword;
-	jiali max;
+	jiali 10;
     perform sword.sanhuan;
 	#if {${gangrou_ing} == 0} {
 		jiali none;
@@ -133,7 +130,7 @@
 #alias {lzj} {
 	unwi;
 	wield my sword;
-	jiali max;
+	jiali 10;
     perform sword.lian;
 	#if {${gangrou_ing} == 0} {
 		jiali none;
@@ -143,7 +140,7 @@
 
 #alias {wuying} {
 	unwield all;
-	jiali max;
+	jiali 10;
 	perform claw.wuying;
 	#if {${gangrou_ing} == 0} {
 		jiali none;
