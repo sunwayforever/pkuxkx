@@ -187,9 +187,9 @@
 #var pfming 0;
 #alias {pfm_next} {
 	#if {${pfming} == 0} {
-		#var pfming 1;
 		#var pfm_action @stackpoll{pfm};
 		#if {"${pfm_action}" != "NULL"} {
+			#var pfming 1;
 			on_unbusy {
 				${pfm_action};
 				#var pfming 0;
