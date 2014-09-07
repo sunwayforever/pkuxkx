@@ -419,13 +419,11 @@
 	#gag {�㲻æ};
 	#ticker {checkbusy} {
 		checkbusy;
-	} {0.5};
+	} {0.2};
 	#action {�㲻æ} {
 		#unaction {�㲻æ};
 		#class unbusy.inner kill;
-		#delay {0.3} {
-			tmp_unbusy;
-		};
+		tmp_unbusy;
 	};
 	#class unbusy.inner close;
 	checkbusy;
