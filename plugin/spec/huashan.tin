@@ -4,12 +4,12 @@
 	#class attack.inner open;
 	#ticker {poqi} {
 		pfm poqi;
-	} {3.8};
+	} {2.8};
 	#class attack.inner close;
 };
 
 #alias {attack.bare} {
-	pfm_all poqi;
+	pfm poqi;
 	#class attack.inner open;
 	#ticker {po} {
 		zongjue;
@@ -23,18 +23,16 @@
 
 #action {{对方是空手|对方没有使用兵器}} {
 	#var with_weapon 0;
-	pfm_oob pozhang;
 };
 
 #action {对方不是空手} {
 	#var with_weapon 1;
-	pfm_oob kuangfeng;
 };
 
 #var with_weapon 1;
 #alias {po} {
 	#if {${with_weapon} == 1} {
-		kuangfeng;
+		pobing;
 	};
 	#else {
 		pozhang;
@@ -42,23 +40,20 @@
 };
 
 #alias {attack.normal} {
-	pfm pobing;
 	pfm poqi;
+	pfm po;
 	pfm feilong;
 	pfm sqf;
 	#class attack.inner open;
 	#ticker {sqf} {
 		pfm sqf;
 	} {4.8};
-	#ticker {zongjue} {
-		pfm zongjue;
-	} {5.8};					
 	#ticker {pobing} {
-		pfm pobing;
-	} {6.8};
-     #ticker {sqf} {
+		pfm po;
+	} {3.8};
+     #ticker {feilong} {
 		 pfm feilong;
-	} {7.8};
+	} {6.8};
 	#class attack.inner close;
 };
 
@@ -69,45 +64,36 @@
 };
 
 #alias {attack.xiaofeng.qin} {
-	pfm chan;
 	pfm poqi;
+	pfm po;
 	pfm sqf;
+	pfm feilong;
 	#class attack.inner open;
 	#ticker {po} {
 		pfm po;
 	} {6.8};	
-	#ticker {zongjue} {
-		pfm zongjue;
-	} {3.8};			
 	#class attack.inner close;
 };
 
 #alias {attack.xiaofeng.sheng} {
-	pfm chan;
 	pfm poqi;
+	pfm po;
 	pfm sqf;
 	#class attack.inner open;
 	#ticker {po} {
 		pfm po;
 	} {6.8};
-	#ticker {zongjue} {
-		pfm zongjue;
-	} {3.8};			
 	#class attack.inner close;
 };
 
 #alias {attack.xiaofeng.quan} {
-	pfm chan;
 	pfm poqi;
-	pfm kuangfeng;
+	pfm po;
 	pfm sqf;
 	#class attack.inner open;
 	#ticker {po} {
 		pfm po;
 	} {6.8};
-	#ticker {zongjue} {
-		pfm zongjue;
-	} {3.8};					
 	#class attack.inner close;
 };
 

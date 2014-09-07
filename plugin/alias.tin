@@ -419,7 +419,7 @@
 	#gag {�㲻æ};
 	#ticker {checkbusy} {
 		checkbusy;
-	} {0.2};
+	} {0.1};
 	#action {�㲻æ} {
 		#unaction {�㲻æ};
 		#class unbusy.inner kill;
