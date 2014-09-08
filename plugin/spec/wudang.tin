@@ -7,7 +7,7 @@
 	};
 	#ticker {perf_chan} {
 		pfm chan;
-	} {1};
+	} {0.5};
 	#class attack.inner close;
 };
 
@@ -25,15 +25,11 @@
 
 #alias {attack.normal} {
 	pfm chan;
-	pfm wuying;
 	pfm lzj;
 	#class attack.inner open;
-	#ticker {wuying} {
-		pfm wuying;
-	} {4.8};
 	#ticker {lzj} {
 		pfm lzj;
-	} {6.8};		
+	} {6.8};
 	#class attack.inner close;
 };
 
@@ -43,7 +39,7 @@
 	#class attack.inner open;
 	#ticker {wuying} {
 		pfm wuying;
-	} {4.8};
+	} {6.8};
 	#class attack.inner close;
 };
 
@@ -78,7 +74,7 @@
 	} {5.8};
 	#ticker {gangrou} {
 		pfm gangrou;
-	} {4.8};	
+	} {6.8};
 	#class attack.inner close;
 };
 

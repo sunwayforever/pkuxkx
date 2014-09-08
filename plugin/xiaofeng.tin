@@ -67,8 +67,6 @@
 				};
 			};
 			#class xiaofeng.inner close;
-			#alias {wi} {wi_bare};
-			unwi;
 		};
 	};
 
