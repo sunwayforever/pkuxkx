@@ -9,7 +9,7 @@
 		fmq;
 	} {30};
 	#ticker {zuida} {
-		zuida;
+		pfm zuida;
 	} {20};
 	#class attack.inner close;
 };
@@ -17,12 +17,19 @@
 #alias {attack.normal} {
 	#class attack.inner open;
 	pfm_all chan fmq zuida;
+	#ticker {jingmo} {
+		pfm jingmo;
+	} {1.8};
 	#class attack.inner close;
 };
 
 #alias {attack.hubiao} {
+	pfm chan;
+	pfm fmq;
 	#class attack.inner open;
-	pfm_all chan fmq;	
+	#ticker {chan} {
+		pfm chan;
+	} {1.8};
 	#class attack.inner close;
 };
 
@@ -101,12 +108,18 @@
 	wi;
 };
 
+#alias {jingmo} {
+	unwi;
+	perform yizhi-chan.jingmo;
+	wi;
+};
+
 #list my_weapons create {staff; staff 2};
 
-#var shortcut F1: ²ø F2: ×í´ò;
+#var shortcut F1:¾ªÄ§ F2:×í´ò F3:²ø;
 
 #macro {\eOP} {
-	chan;
+	jingmo;
 };
 
 #macro {\eOQ} {
@@ -114,6 +127,7 @@
 };
 
 #macro {\eOR} {
+	chan;
 };
 
 #macro {\eOS} {
