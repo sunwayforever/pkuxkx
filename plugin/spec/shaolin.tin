@@ -16,7 +16,9 @@
 
 #alias {attack.normal} {
 	#class attack.inner open;
-	pfm_all chan fmq zuida;
+	pfm jingmo;
+	pfm fmq;
+	pfm zuida;
 	#ticker {jingmo} {
 		pfm jingmo;
 	} {1.8};
@@ -24,7 +26,7 @@
 };
 
 #alias {attack.hubiao} {
-	pfm chan;
+	pfm jingmo;
 	pfm fmq;
 	#class attack.inner open;
 	#class attack.inner close;
