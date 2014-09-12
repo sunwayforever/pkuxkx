@@ -302,4 +302,15 @@
 		#var merge_result 0;
 	};
 };
+
+#alias {bl.test} {
+	#list bl_path create {
+		s;w;w;s;sw;w;w;nw;n;n;nd;nu;ne;n;n;n;n;n;nw;nw;w;nw;nw;n;nw;nu;nu;n;nu;n;n;
+		n;n;n;n;n;n;n;s;w;s;s;w;n;n;n;s;w;n;n;s;s;s;s;s;n;n;n;e;e;e;e;n;s;s;s;n;n;e;n;s;s;s;s;w;e;n;n;n;
+		e;n;n;s;s;s;n;w;w;w;s;s;n;s;s;w;e;e;w;s;w;e;s;s;
+	};
+	#list bl_path size bl_path_size;
+	#var bl_path_index 0;
+	bl.continue "nop";
+}
 #class bianli close;

@@ -166,6 +166,10 @@
 	we;
 };
 
+#action {^你不小心被什么东西绊了一下} {
+	#showme busy_for_move;	
+};
+
 #action {你现在正忙着哩} {
 	#showme busy_for_move;
 };

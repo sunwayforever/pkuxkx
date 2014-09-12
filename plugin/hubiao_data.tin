@@ -17,7 +17,7 @@
 				#return -1;
 			};
 			#else {
-				#return 1;	
+				#return -1;	
 			};
 		};
 		#elseif {"%1" == "ÂåÑôËÄº£Ç®×¯"} {
@@ -241,7 +241,7 @@
 			#list hb_path create {
 				gs;gw;gw;gs;gsw;gw;gw;gnw;gn;gn;gnd;gnu;gne;gn;gn;gn;gn;gn;gnw;gnw;gw;gnw;gnw;gn;gnw;gnu;gnu;gn;gnu;gn;gn;
 				gn;gn;gn;gn;gn;gn;gn;gs;gw;gs;gs;gw;gn;gn;gn;gs;gw;gn;gn;gs;gs;gs;gs;gs;gn;gn;gn;ge;ge;ge;ge;gn;gs;gs;gs;gn;gn;ge;gn;gs;gs;gs;gs;gw;ge;gn;gn;gn;
-				ge;gn;gn;gs;gs;gs;gn;gw;gw;gw;gs;gs;gn;gw;ge;gs;gs;gw;ge;ge;gw;gs;gw;ge;gs;gs;
+				ge;gn;gn;gs;gs;gs;gn;gw;gw;gw;gs;gs;gs;gw;ge;ge;gw;gs;gw;ge;gs;gs;
 			};
 		};
 		#elseif {"${tmp}" == "Çú¸·"} {
