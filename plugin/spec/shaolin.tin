@@ -27,9 +27,6 @@
 	pfm chan;
 	pfm fmq;
 	#class attack.inner open;
-	#ticker {chan} {
-		pfm chan;
-	} {1.8};
 	#class attack.inner close;
 };
 

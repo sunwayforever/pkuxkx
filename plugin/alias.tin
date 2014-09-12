@@ -691,7 +691,7 @@
 	#var tmp_baowei 0;
 	#foreach {${baowei_time}[%*]} {single_time} {
 		#format from_time {%d:40:99} ${single_time}-1;
-		#format to_time {%d:25:99} ${single_time};
+		#format to_time {%d:35:99} ${single_time};
 		#if {"${current_time}" > "${from_time}" && "${current_time}" < "${to_time}"} {
 			#var tmp_baowei 1;
 		};
