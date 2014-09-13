@@ -394,9 +394,9 @@
 	#alias tmp_there %0;
 	#action {抵达目的地} {
 		#unaction {抵达目的地};
-		#delay {2} {
+		#delay {there_delay} {
 			tmp_there;
-		};
+		} {3};
 	};
 };
 
