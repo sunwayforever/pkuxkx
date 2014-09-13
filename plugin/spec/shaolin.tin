@@ -15,10 +15,10 @@
 };
 
 #alias {attack.normal} {
-	#class attack.inner open;
 	pfm jingmo;
 	pfm fmq;
 	pfm zuida;
+	#class attack.inner open;
 	#ticker {jingmo} {
 		pfm jingmo;
 	} {1.8};
