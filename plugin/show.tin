@@ -70,6 +70,10 @@
     show_to_chat %0;	
 };
 
+#action {我找不到,请看其他的回复} {
+	#cr;
+} {1}
+
 #action {%1{回答|告诉}你：%2} {
 	show_to_chat 【私聊】%0;
 };
