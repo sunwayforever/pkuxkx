@@ -77,7 +77,10 @@
 		#list bl_path create {n;s;s;e;w;s;n;w;n;w;e;e;w;n;n;nu;nw;nw;n;s;s;n;e;w;se;se;sd;s;s;s;w;n;enter;out;s;s;e;w;n;w;w;sw;sw;s;n;ne;ne;e;e;e;s;s;n;n;e;n}		
 	};
 	#if {"${CurrentPosition}" == "xc"} {
-		#list bl_path create {nw;sw;ne;nw;w;nw;nw;n;nw;se;se;s;se;se;n;s;e;ne;sw;se;se;e;n;s;s;e;w;n;e;n;s;e;s;n;e;e;n;s;ne;sw;se;nw;w;w;w;w;w;s;e;e;w;w;s;w;nw;se;e;e;w;s;e;w;s;s;sw;ne;se;nw;n;n;n;n;n}		
+		#list bl_path create {
+			nw;sw;ne;nw;ne;sw;w;n;s;nw;nw;n;nw;nu;nu;n;nu;e;w;n;n;s;s;sd;s;sd;sd;se;s;se;se;e;se;se;e;n;s;s;e;w;n;e;n;s;e;s;n;e;e;n;s;ne;sw;se;su;eu;su;eu;nu;sd;su;nd;wd;nd;wd;nd;nw;w;w;w;w;
+			w;s;e;e;w;w;s;e;w;w;nw;se;e;s;e;w;s;s;se;n;s;n;n;n;s;s;s;e;w;ne;ne;sw;sw;sw;s;s;n;n;bl.command {bo xiaolu};ne;nw;sw;sd;bl.wait {1};su;bl.wait {2};s;s;n;n;nd;bl.wait {1};nu;bl.wait {2};ne;n;n;n;n;n;
+			};		
 	};
 	#if {"${CurrentPosition}" == "tais"} {
 		#list bl_path create {bl.clear {jiang};nu;w;nu;sd;e;u;w;e;e;w;d;ed;eu;e;nu;bl.command {ask xiao mao about ÀÏÅóÓÑ};w;n;s;s;n;e;n;w;e;e;w;s;e;n;s;s;n;w;s;sd;w;wd;wu;sd;e;eu;ed;nu;sd;wu;wd;sd;sd;sd;sd;sd;sd;sd;wd;sd;sd;sd;s;s;sw;w;sw;s;n;nw;se;ne;e;ne;n;n;nu;nu;nu;ed;eu;nu;nu;nu;nu;nu;nu};
@@ -308,7 +311,6 @@
 
 #alias {bl.test} {
 	#list bl_path create {
-
 	};
 	#list bl_path size bl_path_size;
 	#var bl_path_index 0;
