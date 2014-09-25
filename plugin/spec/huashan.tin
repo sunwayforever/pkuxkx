@@ -42,18 +42,11 @@
 #alias {attack.normal} {
 	pfm poqi;
 	pfm po;
-	pfm feilong;
-	pfm sqf;
+	pfm zongjue;
 	#class attack.inner open;
-	#ticker {sqf} {
-		pfm sqf;
-	} {4.8};
 	#ticker {pobing} {
 		pfm po;
 	} {3.8};
-     #ticker {feilong} {
-		 pfm feilong;
-	} {6.8};
 	#class attack.inner close;
 };
 

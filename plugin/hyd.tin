@@ -3,6 +3,9 @@
 
 #alias {hu.b} {
 	gt hyd;
+	on_there {
+		hu.d
+	};
 };
 
 #alias {hu.d} {

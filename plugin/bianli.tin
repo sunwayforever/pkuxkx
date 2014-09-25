@@ -127,6 +127,20 @@
 	#if {"${CurrentPosition}" == "lz"} {
 		#list bl_path create {n;w;n;n;n;n;e;e;n;w;w;e;e;e;e;w;w;s;e;e;s;s;s;s;w;n;w;e;e;w;n;w;e;e;w;n;w;w;e;e;e;e;w;w;n;s;s;s;s;s;s;s;w;n;s;s;n;w;n;s;s;n;nw;nw;ne;sw;sw;ne;se;se;w;e;e;e;s;w;w;e;e;e;e;w;w;s;s;s;s;se;nw;n;n;n;n;n;e;n;s;s;n;e;e;e;e;n;s;s;sd;nu;n;w;w;w;w;w;n;n};	
 	};
+	#if {"${CurrentPosition}" == "qfa"} {
+		#list bl_path create {
+			w;w;s;w;e;e;w;s;w;e;e;w;n;n;n;w;e;e;w;n;w;e;e;w;n;n;s;e;n;s;w;w;w;w;n;s;e;e;e;s;s;s;w;
+			w;nu;sd;sw;nd;nd;su;su;ne;e;e;e;e;e;e;n;w;e;e;w;n;w;e;e;w;n;n;s;w;n;s;w;e;e;e;e;w;w;s;s;s;e;eu;wd;w;s;w;e;e;w;s;w;e;e;w;n;n;w;w;
+			#nop north;
+			n;n;n;u;d;n;w;w;e;n;s;s;n;e;n;n;n;n;s;s;ne;ne;n;s;se;e;w;nw;sw;se;s;se;nw;n;nw;sw;nw;sw;w;nw;w;e;se;e;ne;nw;
+			n;w;e;s;e;e;n;n;n;s;s;
+			#nop exit;
+			mg.yhb;se;se;s;s;s;s;s;s;
+			#nop south;
+			s;s;sd;ed;eu;e;w;wd;sd;sd;sd;s;wd;sd;sd;wd;n;s;w;enter;out;w;e;s;e;w;sd;sd;s;se;
+			e;nd;nd;nd;n;n;s;s;su;sw;sw;s;n;ne;ne;su;su;w;nw;n;nu;nu;n;e;eu;nu;nu;eu;n;nu;nu;nu;wu;nu;n;n;	
+		};	
+	};
 	#if {"${CurrentPosition}" == "shudong"} {
 		#list bl_path create {out;enter shudong; say 天堂有路你不走呀;d;1;n;n;n;s;nw;nw;nw;n;nw;se;s;se;se;se;s;s;u;out; shudong 2;ne;ne;sw;sw;sw;u;out; shudong 3;ne;ne;sw;sw;sw;u;out; shudong 4;w;w;e;e;e;u;out; shudong 5;sw;sw;ne;ne;ne;u;out; shudong 7;n;ne;ne;n;s;sw;sw;s;s;u;out; shudong 9; sw;s;sw;sw;nw;se;sw;ne;ne;ne;n;ne;e;u;out; enter shudong};
 	};
@@ -153,7 +167,7 @@
 		merge_bl_path;
 		bl.continue;
 	};
-	set brief 1;
+	#nop set brief 1;
 	#var wait 0;
 	#var force_wait 0;
 	#var luanru 0;
@@ -224,6 +238,14 @@
 	#delay {%1} {
 		#var force_wait 0;
 	};
+};
+
+#alias {bl.pause} {
+	#var force_wait 1;
+};
+
+#alias {bl.resume} {
+	#var force_wait 0;
 };
 
 #alias {bl.move_back} {
@@ -305,9 +327,7 @@
 
 #alias {bl.test} {
 	#list bl_path create {
-		s;w;w;s;sw;w;w;nw;n;n;nd;nu;ne;n;n;n;n;n;nw;nw;w;nw;nw;n;nw;nu;nu;n;nu;n;n;
-		n;n;n;n;n;n;n;s;w;s;s;w;n;n;n;s;w;n;n;s;s;s;s;s;n;n;n;e;e;e;e;n;s;s;s;n;n;e;n;s;s;s;s;w;e;n;n;n;
-		e;n;n;s;s;s;n;w;w;w;s;s;n;s;s;w;e;e;w;s;w;e;s;s;
+
 	};
 	#list bl_path size bl_path_size;
 	#var bl_path_index 0;
