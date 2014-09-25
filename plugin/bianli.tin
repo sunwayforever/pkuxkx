@@ -79,7 +79,7 @@
 	#if {"${CurrentPosition}" == "xc"} {
 		#list bl_path create {
 			nw;sw;ne;nw;ne;sw;w;n;s;nw;nw;n;nw;nu;nu;n;nu;e;w;n;n;s;s;sd;s;sd;sd;se;s;se;se;e;se;se;e;n;s;s;e;w;n;e;n;s;e;s;n;e;e;n;s;ne;sw;se;su;eu;su;eu;nu;sd;su;nd;wd;nd;wd;nd;nw;w;w;w;w;
-			w;s;e;e;w;w;s;e;w;w;nw;se;e;s;e;w;s;s;se;n;s;n;n;n;s;s;s;e;w;ne;ne;sw;sw;sw;s;s;n;n;bl.command {bo xiaolu};ne;nw;sw;sd;bl.wait {1};su;bl.wait {2};s;s;n;n;nd;bl.wait {1};nu;bl.wait {2};ne;n;n;n;n;n;
+			w;s;e;e;w;w;s;e;w;w;nw;se;e;s;e;w;s;s;se;n;s;n;n;n;s;s;s;e;w;ne;ne;sw;sw;sw;s;s;n;n;bl.command {bo xiaolu};ne;nw;sw;sd;bl.wait {3};su;bl.wait {3};s;s;n;n;nd;bl.wait {3};nu;bl.wait {3};ne;n;n;n;n;n;
 			};		
 	};
 	#if {"${CurrentPosition}" == "tais"} {
