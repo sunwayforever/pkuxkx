@@ -168,7 +168,11 @@
 };
 #alias mg.chahua {w;n;w;s;s;e;e;w;w};
 #alias mg.chahuab {e;s;n;w;n;n;e;s;e};
-#alias mg.gumu {swim river;n;n;e;n;n;w;w;n;n;e;ban stone;w;w;};
+#alias mg.gumu {
+	bl.stop;
+	swim river;n;n;e;n;n;w;w;n;n;e;ban stone;w;w;
+	bl.continue;
+};
 #alias mg.wxd {n;w;n;e;s;u;out};
 #alias mg.fmq {set brief 1;w;e;s;e;n;n;e;w;s;set brief 0}
 #alias mg.fmqb {set brief 1;n;e;w;s;s;w;n;w;e}
