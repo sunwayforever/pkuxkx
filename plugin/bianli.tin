@@ -2,7 +2,7 @@
 
 #alias {create_bl_path} {
 	#if {"${CurrentPosition}" == "mj"} {
-        #list bl_path create {w;e;nu;nu;nu;s;n;w;e;e;w;n;s;nu;w;e;n;w;n;s;w;e;e;e;n;s;e;w;w;n;n;w;n;n;n;n;s;s;s;s;e;e;nd;nd;nd;n;open door;n;w;e;n;s;e;w;s;s;su;su;su;w;s;s;s;sd;sd;sd;sd;sd;se;e;n;s;e;w;s;n;w;s;w;n;s;e;e;w;se;nw;sw;ne;se;e;e;e;e;s;s;s;s;e;e;e;e;se;nw;w;w;w;w;w;w;w;n;n;n;w;w;w;sw;w;se;killall ding;bl.truce;n;w;e;n;w;n;e;e;s;w;s;s;nw;e;ne;nw;n;nw;nu};
+        #list bl_path create {w;e;nu;nu;nu;s;n;w;e;e;w;n;s;nu;w;e;n;w;w;e;e;e;n;s;e;w;w;n;n;w;n;n;n;n;s;s;s;s;e;e;nd;nd;nd;n;bl.command{open door};n;w;e;n;s;e;w;s;s;su;su;su;w;s;s;s;sd;sd;sd;sd;sd;se;e;n;s;e;w;s;n;w;s;w;n;s;e;e;w;se;nw;sw;ne;se;e;e;e;e;s;s;s;s;e;e;e;e;se;nw;w;w;w;w;w;w;w;n;n;n;w;w;w;sw;w;se;bl.clear {ding};n;w;e;n;w;n;e;e;s;w;s;s;nw;e;ne;nw;n;nw;nu};
     };
 	#if {"${CurrentPosition}" == "dzt"} {
         #list bl_path create {bl.truce;n;bl.truce;n;n;n;enter;out;s;s;s;bl.truce;e;n;e;e;e;s;s;w;w;bl.truce;w;n;e;w;w;w;n;s;s;n;w;n;enter;out;s;s;s;n;n;w;w;ban shan; bl.wait 1; d;nd;nd;ed;
@@ -80,7 +80,7 @@
 		#list bl_path create {nw;sw;ne;nw;w;nw;nw;n;nw;se;se;s;se;se;n;s;e;ne;sw;se;se;e;n;s;s;e;w;n;e;n;s;e;s;n;e;e;n;s;ne;sw;se;nw;w;w;w;w;w;s;e;e;w;w;s;w;nw;se;e;e;w;s;e;w;s;s;sw;ne;se;nw;n;n;n;n;n}		
 	};
 	#if {"${CurrentPosition}" == "tais"} {
-		#list bl_path create {kill jiang;nu;w;nu;sd;e;u;w;e;e;w;d;ed;eu;e;nu;ask xiao mao about 老朋友;w;n;s;s;n;e;n;w;e;e;w;s;e;n;s;s;n;w;s;sd;w;wd;wu;sd;e;eu;ed;nu;sd;wu;wd;sd;sd;sd;sd;sd;sd;sd;wd;sd;sd;sd;s;s;sw;w;sw;s;n;nw;se;ne;e;ne;n;n;nu;nu;nu;ed;eu;nu;nu;nu;nu;nu;nu}		
+		#list bl_path create {bl.clear {jiang};nu;w;nu;sd;e;u;w;e;e;w;d;ed;eu;e;nu;bl.command {ask xiao mao about 老朋友};w;n;s;s;n;e;n;w;e;e;w;s;e;n;s;s;n;w;s;sd;w;wd;wu;sd;e;eu;ed;nu;sd;wu;wd;sd;sd;sd;sd;sd;sd;sd;wd;sd;sd;sd;s;s;sw;w;sw;s;n;nw;se;ne;e;ne;n;n;nu;nu;nu;ed;eu;nu;nu;nu;nu;nu;nu};
 	};
 	#if {"${CurrentPosition}" == "dl"} {
 		#list bl_path create {e;n;s;s;n;w;s;eu;se;se;nw;n;s;n;nw;n;enter;out;s;se;s;nw;ed;wd;s;w;w;n;enter;n;s;w;u;w;enter;out;e;e;enter;out;e;enter;out;w;w;d;e;out;s;e;e;s;e;se;e;w;nw;w;n;n;n;w;s;w;e;n;n;enter;w;n;s;e;out;s;e;n;w;e;e;u;d;w;n;w;w;e;e;e;e;w;n;s;s;n;w;n;e;s;n;s;w;n;n;n;n;ne;ne;ne;n;s;n;ne;sw;sw;wu;ed;nw;sd;se;ne;ne;sw;s;sw;sw;sw;sw;s;s;s;s;w;#cr;e;s;s;s}		
@@ -131,12 +131,12 @@
 		#list bl_path create {
 			w;w;s;w;e;e;w;s;w;e;e;w;n;n;n;w;e;e;w;n;w;e;e;w;n;n;s;e;n;s;w;w;w;w;n;s;e;e;e;s;s;s;w;
 			w;nu;sd;sw;nd;nd;su;su;ne;e;e;e;e;e;e;n;w;e;e;w;n;w;e;e;w;n;n;s;w;n;s;w;e;e;e;e;w;w;s;s;s;e;eu;wd;w;s;w;e;e;w;s;w;e;e;w;n;n;w;w;
-			#nop north;
+
 			n;n;n;u;d;n;w;w;e;n;s;s;n;e;n;n;n;n;s;s;ne;ne;n;s;se;e;w;nw;sw;se;s;se;nw;n;nw;sw;nw;sw;w;nw;w;e;se;e;ne;nw;
 			n;w;e;s;e;e;n;n;n;s;s;
-			#nop exit;
+
 			mg.yhb;se;se;s;s;s;s;s;s;
-			#nop south;
+
 			s;s;sd;ed;eu;e;w;wd;sd;sd;sd;s;wd;sd;sd;wd;n;s;w;enter;out;w;e;s;e;w;sd;sd;s;se;
 			e;nd;nd;nd;n;n;s;s;su;sw;sw;s;n;ne;ne;su;su;w;nw;n;nu;nu;n;e;eu;nu;nu;eu;n;nu;nu;nu;wu;nu;n;n;	
 		};	
@@ -150,67 +150,66 @@
 	#var CurrentPosition shudong;
 };
 
-#nop -------
+#alias {bl.command} {
+	#alias tmp_command %1;
+	tmp_command;
+	bl.walk;
+};
+
+#alias {bl.clear} {
+	killall %1;
+	on_truce {
+		bl.walk;
+	};
+};
 
 #alias {bl.stop} {
-	#var force_wait 1;
-	set brief 2;
-	#unticker {walk};
-	#unalias {bl.back};
-	#unaction {busy_for_move}
+	#class bl.inner kill;
+	#undelay {bl.delay};
 };
 
 #var bl_path_index 0;
 
 #alias {bl.continue} {
 	#alias {bl.back} {
-		merge_bl_path;
+		bl.merge;
 		bl.continue;
 	};
-	#nop set brief 1;
-	#var wait 0;
-	#var force_wait 0;
-	#var luanru 0;
+	#class bl.inner open;
+	#action {^    这里%*的出口是%*} {
+		#delay {bl.delay} {
+			bl.walk;
+		} {0.05};
+	} {1};
+	#alias {bl.walk} {
+		#math bl_path_index ${bl_path_index}+1;
+		#if {${bl_path_index} > ${bl_path_size}} {
+			bl.stop;
+			#list bl_path create {};
+			#showme 遍历结束;
+		};
+		#else {
+			#list bl_path get ${bl_path_index} bl_path_next;
+			${bl_path_next};
+		};
+	};
+	#action {这个方向没有出路} {
+		bl.stop;
+	};
+	#action {忽然发现江水决堤} {
+		bl.stop;
+	};
+	#class bl.inner close;
 	#if {"%1" != ""} {
 		#action {%1} {
 			#unaction {%1};
-			#var force_wait 1;
-			#unticker {walk};
+			bl.stop;
 			#showme 找到目标: %1;
- 			set brief 2;
 		} {1};
 	};
-
-	#action {busy_for_move} {
-		#path del;
-		bl.move_back;
-		bl.wait 5;
-	};
-
-	#ticker {walk} {
-		#if {$wait == 0 && ${force_wait} == 0} {
-			#math bl_path_index ${bl_path_index}+1;
-			#if {${bl_path_index} > ${bl_path_size}} {
-				bl.stop;
-				#list bl_path create {};
-				set brief 2;
-				#showme 遍历结束;
-			};
-			#else {
-				#list bl_path get ${bl_path_index} bl_path_next;
-				${bl_path_next};
-			};
-		};
-	} {0.6};	
+	bl.walk;
 };
 
-#action {忽然发现江水决堤} {
-	bl.stop;
-	bl.move_back;
-	#delay {bl_continue} {
-		bl.continue;
-	} {10};
-};
 
 #alias {bl.start} {
 	create_bl_path;
@@ -227,29 +226,15 @@
 };
 
 #alias {bl.truce} {
-	#var force_wait 1;
 	on_truce {
-		#var force_wait 0;		
+		bl.walk;
 	};
 };
 
 #alias {bl.wait} {
-	#var force_wait 1;
 	#delay {%1} {
-		#var force_wait 0;
+		bl.walk;
 	};
-};
-
-#alias {bl.pause} {
-	#var force_wait 1;
-};
-
-#alias {bl.resume} {
-	#var force_wait 0;
-};
-
-#alias {bl.move_back} {
-	#math bl_path_index ${bl_path_index}-1;
 };
 
 #list area_mappings_from create {麒麟;灵州;灵鹫;临安;荆州;中原;全真;信阳;苏州;张家;大理;小山;曲阜;泉州;荆州;黄河南岸;长江北岸;福州;岳阳;黄河北岸;晋阳;归云;南昌;江州;嘉兴;牙山;梦溪;镇江;长江岸边;黄河岸边;天龙;晋阳;泰山;桃花;桃源;昆明;襄阳;长江长江;西湖};
@@ -267,11 +252,7 @@
 	#list area_mappings_to get $index result;
 }
 
-#action {这个方向没有出路} {
-	#path del;
-};
-
-#alias {merge_bl_path} {
+#alias {bl.merge} {
 	#list tmp_path create;
 	#list tmp_path add #cr;
 	#var tmp_index 1;
@@ -292,7 +273,7 @@
 		#math bl_path_index ${bl_path_index}+1;
 	}
 	#var bl_path ${tmp_path};
-	#var bl_path_index 0;
+	#var bl_path_index 1;
 	#list bl_path size bl_path_size;
 };
 

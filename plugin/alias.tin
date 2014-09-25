@@ -180,13 +180,13 @@
 	#class mg.yhb.inner open;
 	#action {^云海出口} {
 		#class mg.yhb.inner kill;
-		bl.resume;
+		bl.continue;
 	};
 	#ticker {mg.yhb.ticker} {
 		n;w;e;s;e;e;n;
 	} {1.5};
 	#class mg.yhb.inner close;
-	bl.pause;
+	bl.stop;
 	n;w;e;s;e;e;n;
 };
 
@@ -194,13 +194,13 @@
 	#class mg.yhb.inner open;
 	#action {^云海入口} {
 		#class mg.yhb.inner kill;
-		bl.resume;
+		bl.continue;
 	};
 	#ticker {mg.yhb.ticker} {
 		e;s;
-	} {2};
+	} {0.5};
 	#class mg.yhb.inner close;
-	bl.pause;
+	bl.stop;
 	s;e;s;	
 };
 #alias mg.hhh {say 红花老祖本姓朱,为救苍生下凡来; enter};

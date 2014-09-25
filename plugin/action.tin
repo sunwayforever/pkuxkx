@@ -322,6 +322,11 @@
 			#elseif {"%%%2" == "perceive"} {
 				load pp;
 			};
+			#elseif {"%%%2" == "sociability"} {
+				#alias {bl.clear} {
+					bl.walk;
+				};
+			};
 		};
 		#action {^>} {
 			#unaction {^>};
