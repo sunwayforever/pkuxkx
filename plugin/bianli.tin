@@ -3,7 +3,12 @@
 #alias {create_bl_path} {
 	#if {"${CurrentPosition}" == "lxc"} {
         #list bl_path create {
-			
+			n;s;e;e;n;n;e;w;n;e;n;n;s;s;w;n;s;w;s;n;n;s;w;n;n;w;e;n;w;e;e;w;s;e;w;s;s;w;n;s;s;n;w;n;s;w;n;n;e;w;s;s;s;n;e;s;w;e;s;e;ne;n;s;s;w;e;e;e;s;w;w;w;w;se;e;e;ne;w;w;
+
+			w;w;sw;s;se;n;s;s;n;e;n;n;ne;sw;s;s;s;n;e;n;s;s;n;e;n;w;e;e;w;nu;sd;s;s;w;u;d;e;e;w;s;w;e;e;w;n;n;e;n;s;s;n;e;n;s;s;n;e;n;s;s;n;ne;n;nw;w;w;
+
+			s;sd;s;s;s;s;bl.command {sheng bridge};bl.wait 3;eu;ne;ne;sw;sw;wu;wd;w;w;w;e;e;e;ed;bl.command {jiang bridge};s;sw;ne;e;e;ne;sw;e;w;s;sd;sd;e;ne;sw;s;wd;s;ne;e;w;sw;s;n;n;nu;wu;w;
+			e;ed;ne;nu;nu;n;w;w;bl.command {yell bridge};n;bl.command {sheng bridge};bl.wait 3;n;n;n;n;nu;n;
 		};
     };
 	#if {"${CurrentPosition}" == "mj"} {
