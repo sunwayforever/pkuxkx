@@ -1,6 +1,11 @@
 #class bianli open;
 
 #alias {create_bl_path} {
+	#if {"${CurrentPosition}" == "fzl"} {
+        #list bl_path create {
+
+		};
+    };
 	#if {"${CurrentPosition}" == "lxc"} {
         #list bl_path create {
 			n;s;e;e;n;n;e;w;n;e;n;n;s;s;w;n;s;w;s;n;n;s;w;n;n;w;e;n;w;e;e;w;s;e;w;s;s;w;n;s;s;n;w;n;s;w;n;n;e;w;s;s;s;n;e;s;w;e;s;e;ne;n;s;s;w;e;e;e;s;w;w;w;w;se;e;e;ne;w;w;
@@ -54,13 +59,15 @@
 	};
 	#if {"${CurrentPosition}" == "yz"} {
 		#list bl_path create {
-			w;n;bl.clear {ya yi};w;e;n;w;e;n;s;e;w;s;s;s;bl.clear {guan bing};s;n;n;w;n;n;n;bl.clear {cui};w;e;s;s;s;s;n;w;n;s;s;e;e;e;w;w;w;n;w;nw;w;se;nw;e;se;e;e;e;e;
-
 			e;n;w;e;n;s;s;s;n;e;n;n;s;s;s;s;n;n;e;n;s;s;n;e;n;e;n;w;n;e;w;n;s;s;s;s;w;w;e;e;n;n;w;w;w;w;
 
 			s;nw;se;w;u;w;e;n;s;e;w;s;n;d;d;u;e;e;s;n;w;s;w;w;e;e;e;d;ed;n;s;s;n;wu;u;w;s;w;n;s;w;e;s;n;e;e;n;s;s;n;e;n;s;s;n;e;n;s;s;n;e;w;w;w;w;s;su;wu;wu;n;s;ed;ed;se;su;nd;nw;nd;n;n;n;n;
 
 			n;w;s;n;e;se;e;w;nw;e;u;enter;out;d;w;n;e;u;w;e;e;w;u;d;d;w;n;e;w;n;nw;nw;nw;se;se;se;n;n;n;n;w;e;s;s;s;s;s;s;w;u;n;s;d;nw;se;e;s;s;
+
+			d;out;enter;up;enter shudong;out;
+
+			w;n;bl.clear {ya yi};w;e;n;w;e;n;s;e;w;s;s;s;bl.clear {guan bing};s;n;n;w;n;n;n;bl.clear {cui};w;e;s;s;s;s;n;w;n;s;s;e;e;e;w;w;w;n;w;nw;w;se;nw;e;se;e;e;e;e;
 		};
 	};
 	#if {"${CurrentPosition}" == "hb2"} {
