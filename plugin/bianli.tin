@@ -1,11 +1,61 @@
 #class bianli open;
 
 #alias {create_bl_path} {
-	#if {"${CurrentPosition}" == "fzl"} {
+	#if {"${CurrentPosition}" == "gy"} {
         #list bl_path create {
-
+			
 		};
     };
+	#if {"${CurrentPosition}" == "jk"} {
+        #list bl_path create {
+			
+		};
+    };
+	#if {"${CurrentPosition}" == "ywm"} {
+        #list bl_path create {
+			
+		};
+    };
+	#if {"${CurrentPosition}" == "ssb"} {
+        #list bl_path create {
+		};
+    };
+	#if {"${CurrentPosition}" == "fzl"} {
+        #list bl_path create {
+			
+		};
+    };
+	#if {"${CurrentPosition}" == "kf"} {
+		#nop bj
+        #list bl_path create {
+			
+		};
+    };
+	#if {"${CurrentPosition}" == "xkt"} {
+        #list bl_path create {
+			
+		};
+	};
+	#if {"${CurrentPosition}" == "xx"} {
+        #list bl_path create {
+			
+		};
+	};
+	#if {"${CurrentPosition}" == "zp"} {
+        #list bl_path create {
+			
+		};
+	};
+	#if {"${CurrentPosition}" == "cll"} {
+        #list bl_path create {
+			
+		};
+	};
+	#if {"${CurrentPosition}" == "hs"} {
+        #list bl_path create {
+			
+		};
+	};
 	#if {"${CurrentPosition}" == "lxc"} {
         #list bl_path create {
 			n;s;e;e;n;n;e;w;n;e;n;n;s;s;w;n;s;w;s;n;n;s;w;n;n;w;e;n;w;e;e;w;s;e;w;s;s;w;n;s;s;n;w;n;s;w;n;n;e;w;s;s;s;n;e;s;w;e;s;e;ne;n;s;s;w;e;e;e;s;w;w;w;w;se;e;e;ne;w;w;
@@ -151,9 +201,6 @@
 		#list bl_path create {
 			e;se;sw;n;s;sw;sw;sw;s;e;n;w;n;w;e;s;ne;ne;ne;s;bl.command {push stone};s;e;ed;ed;bl.command {push men};e;n;s;e;w;s;out;guo qiao;s;bl.truce;se;wu;
 		};
-	};
-	#if {"${CurrentPosition}" == "gy"} {
-		#list bl_path create {w;e;e;e;w;e;n;n;w;w;w;e;e;n;s;s;n;e;s;s;s;n;e;e;e;s;n;w;w;w;w;w;sd;sd;out;w;w;n;n;u;d;s;s;n;w;n;s;s;n;w;s;n;nu;nu;sd;sd;w;w;w;w;w;s;n;e;e;e;e;e;e;e;w;s;e;w;n;e;e;e;enter;nu;nu}
 	};
 	#if {"${CurrentPosition}" == "qf"} {
 		#list bl_path create {enter;out;s;w;n;n;w;w;sw;sw;sw;sw;sw;w;e;se;nw;ne;ne;ne;ne;ne;e;e;n;e;e;n;n;ne;e;w;sw;nw;nw;nw;w;e;e;w;se;se;se;s;s;s;e;n;s;w;s;e;ne;eu;enter;out;wd;sw;w;s;s;s;s;s;s;n;n;n;n;n;w;n}	
