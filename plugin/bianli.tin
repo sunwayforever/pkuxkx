@@ -48,7 +48,15 @@
 	};
 	#if {"${CurrentPosition}" == "cll"} {
         #list bl_path create {
-			
+			n;nd;nd;nd;nd;n;w;w;e;e;n;se;nw;w;e;s;s;su;su;su;su;s;wu;ed;
+
+			nd;nd;nu;sd;wd;nd;wd;nd;nw;ne;sw;n;s;w;w;s;n;w;n;s;w;n;s;s;e;w;n;w;s;n;nw;se;e;e;e;e;e;se;su;eu;su;eu;su;su;
+
+			sd;wu;u;d;ed;eu;wd;su;s;s;s;e;w;s;n;n;s;w;bl.clear {liang fa};n;s;s;n;w;e;e;n;n;n;
+
+			e;sd;sd;sd;nu;climb cliff;bl.wait 3;u;climb west;bl.wait 3;wd;nu;ed;e;se;n;
+
+			nd;nu;
 		};
 	};
 	#if {"${CurrentPosition}" == "hs"} {
