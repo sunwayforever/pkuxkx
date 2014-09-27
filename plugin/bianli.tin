@@ -22,11 +22,9 @@
     };
 	#if {"${CurrentPosition}" == "fzl"} {
         #list bl_path create {
-			
 		};
     };
 	#if {"${CurrentPosition}" == "kf"} {
-		#nop bj
         #list bl_path create {
 			
 		};
@@ -43,7 +41,11 @@
 	};
 	#if {"${CurrentPosition}" == "zp"} {
         #list bl_path create {
-			
+			n;w;e;e;w;n;ne;e;nd;w;e;e;w;n;w;e;e;w;n;w;e;e;ne;n;ne;n;n;n;n;w;e;e;w;n;s;s;s;s;s;sw;s;sw;w;s;s;su;w;sw;s;n;n;nu;ne;sw;sd;eu;wd;s;s;s;
+
+			e;w;s;w;e;e;w;s;w;e;e;w;s;e;se;se;ed;ed;ed;e;e;s;n;w;w;wu;wu;wu;nw;nw;w;n;n;n;
+
+			w;w;n;s;w;nw;ne;n;s;s;n;w;nw;se;e;sw;se;e;e;e;
 		};
 	};
 	#if {"${CurrentPosition}" == "cll"} {
@@ -54,14 +56,24 @@
 
 			sd;wu;u;d;ed;eu;wd;su;s;s;s;e;w;s;n;n;s;w;bl.clear {liang fa};n;s;s;n;w;e;e;n;n;n;
 
-			e;sd;sd;sd;nu;climb cliff;bl.wait 3;u;climb west;bl.wait 3;wd;nu;ed;e;se;n;
+			e;sd;sd;sd;nu;climb cliff;u;climb west;wd;nu;ed;e;se;n;
 
 			nd;nu;
 		};
 	};
 	#if {"${CurrentPosition}" == "hs"} {
         #list bl_path create {
-			
+			e;e;n;n;n;nd;nu;
+
+			n;nd;nd;nd;nd;n;w;w;e;e;n;se;nw;w;e;s;s;su;su;su;su;s;wu;ed;
+
+			nd;nd;nu;sd;wd;nd;wd;nd;nw;ne;sw;n;s;w;w;s;n;w;n;s;w;n;s;s;e;w;n;w;s;n;nw;se;e;e;e;e;e;se;su;eu;su;eu;su;su;
+
+			sd;wu;u;d;ed;eu;wd;su;s;s;s;e;w;s;n;n;s;w;bl.clear {liang fa};n;s;s;n;w;e;e;n;n;n;
+
+			e;sd;sd;sd;nu;climb cliff;u;climb west;wd;nu;ed;e;se;n;
+
+			nd;nu;
 		};
 	};
 	#if {"${CurrentPosition}" == "lxc"} {
@@ -265,6 +277,10 @@
 	on_truce {
 		bl.walk;
 	};
+	#action {^ÄãÏëÉ±Ë­} {
+		#unaction {^ÄãÏëÉ±Ë­};
+		#showme truce;
+	};
 };
 
 #alias {bl.stop} {
@@ -285,6 +301,12 @@
 			bl.walk;
 		} {0.05};
 	} {1};
+	
+	#action {busy_for_move} {
+		#math bl_path_index ${bl_path_index}-1;
+		bl.wait 1;
+	};
+
 	#alias {bl.walk} {
 		#math bl_path_index ${bl_path_index}+1;
 		#if {${bl_path_index} > ${bl_path_size}} {

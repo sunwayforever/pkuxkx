@@ -166,24 +166,19 @@
 	we;
 };
 
-#action {^你不小心被什么东西绊了一下} {
-	#showme busy_for_move;	
+#list busy_for_move create {
+	青海湖畔美不胜收;
+	你不小心被什么东西绊了一下;
+	你现在正忙着哩;
+	你逃跑失败;
+	不能移动;
+	你还是先把对手解决了再说吧;
 };
 
-#action {你现在正忙着哩} {
-	#showme busy_for_move;
-};
-
-#action {你逃跑失败} {
-	#showme busy_for_move;	
-};
-
-#action {不能移动} {
-	#showme busy_for_move;
-};
-
-#action {你还是先把对手解决了再说吧} {
-	#showme busy_for_move;
+#foreach {${busy_for_move}[%*]} {name} {
+	#action {${name}} {
+		#showme busy_for_move;
+	};
 };
 
 #action {大车停稳了下来} {
