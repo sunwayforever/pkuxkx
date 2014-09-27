@@ -1,6 +1,11 @@
 #class bianli open;
 
 #alias {create_bl_path} {
+	#if {"${CurrentPosition}" == "jx"} {
+		#list bl_path create {
+			
+			};		
+	};
 	#if {"${CurrentPosition}" == "gy"} {
         #list bl_path create {
 			
@@ -13,7 +18,7 @@
     };
 	#if {"${CurrentPosition}" == "ywm"} {
         #list bl_path create {
-			
+
 		};
     };
 	#if {"${CurrentPosition}" == "ssb"} {
@@ -37,18 +42,18 @@
         #list bl_path create {
 			bl.comment {xx 往西};
 			s;wu;nw;ne;ne;sw;sw;sw;sw;ne;ne;se;ed;n;
-			bl.comment {xx 往东, 到达小镇};
-			s;ed;nw;
-			bl.comment {小镇以北};
-			w;e;nw;se;e;w;ne;sw;nu;n;w;w;w;w;e;e;e;e;n;nu;nu;sd;sd;s;s;sd;
-			bl.comment {小镇以南};
-			se;n;n;s;s;se;sd;e;n;n;s;s;e;w;w;nu;sw;sd;e;w;sw;ne;nu;ne;wd;bl.truce;bl.command {open men};eu;nw;nw;
-			bl.comment {回到xx};
-			se;wu;n;
 			bl.comment {星宿海};
 			bl.clear {tianlang zi};n;nd;n;nw;w;e;ne;se;eu;wd;sw;n;s;s;su;
 			bl.comment {回到湖泊};
 			nu;n;bl.clear {chuchen zi};enter;out;n;w;w;n;n;s;s;e;e;s;s;sd;s;
+		};
+	};
+	#if {"${CurrentPosition}" == "xz"} {
+        #list bl_path create {
+			bl.comment {小镇以北};
+			w;e;nw;se;e;w;ne;sw;nu;n;w;w;w;w;e;e;e;e;n;nu;nu;sd;sd;s;s;sd;
+			bl.comment {小镇以南};
+			se;n;n;s;s;se;sd;e;n;n;s;s;e;w;w;nu;sw;sd;e;w;sw;ne;nu;ne;wd;bl.truce;bl.command {open men};eu;nw;nw;
 		};
 	};
 	#if {"${CurrentPosition}" == "zp"} {
@@ -221,9 +226,6 @@
 	};
 	#if {"${CurrentPosition}" == "xy"} {
 		#list bl_path create {s;w;w;w;w;n;n;s;s;w;w;w;w;e;e;e;e;e;e;e;e;s;n;e;n;s;s;n;e;n;e;w;n;w;n;s;e;e;w;n;w;e;e;e;w;w;n;n;n;n;n;n;n;n;n;s;s;s;s;s;s;s;s;s;s;s;s;w;e;e;w;s;w;e;s;w;e;e;w;s;s;s;s;e;w;s;s;s;s;s;se;s;n;nw;n;n;n;n;n;n;n;n;n;n;n;n;e;n;s;e;sw;s;w;e;e;w;n;ne;n;n;w;e;s;s;e;s;n;e;e;se;e;e;w;w;nw;e;n;s;w;w;w;w;w;w;w;w;n} 	
-	};
-	#if {"${CurrentPosition}" == "jx"} {
-		#list bl_path create {n;n;n;s;s;s;w;nu;nw;nw;n;nw;w;e;ne;sw;se;s;se;se;sd;e;s;sw;w;nw;se;e;sw;s;enter;enter;s;n;out;out;n;e;w;ne;ne;s;s;n;sw;ne;e;w;se;nw;n;e;s;n;n;n;s;s;n;se;s;n;ne;sw;nw;e;w;nd;e;e;e;e;n;s;s;s;se;nw;n;n;n;enter boat;bl.wait 5;n;n;nu;nu;nu;n;n;e;s;s;e;n;n;e;w;w;n;e;e;w;w;w;n;w;wu;ed;nu;ed;wu;sd;nu;ed;ed;wu;sd;e;e;e;e;n;s;n;w;e;s;s;w;e;s;n;e;w;n;e;w;w;w;w;s;s;s;s;sd;sd;sd;s;s;enter boat;bl.wait 5;s;w;w;w;w;su;w}		
 	};
 	#if {"${CurrentPosition}" == "tls"} {
 		#list bl_path create {
@@ -460,6 +462,7 @@
 };
 
 #alias {bl.comment} {
+	#nop %1;
 	bl.walk;
 };
 #class bianli close;
