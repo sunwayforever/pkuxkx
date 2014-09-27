@@ -31,33 +31,47 @@
     };
 	#if {"${CurrentPosition}" == "xkt"} {
         #list bl_path create {
-			
 		};
 	};
 	#if {"${CurrentPosition}" == "xx"} {
         #list bl_path create {
-			
+			bl.comment {xx 往西};
+			s;wu;nw;ne;ne;sw;sw;sw;sw;ne;ne;se;ed;n;
+			bl.comment {xx 往东, 到达小镇};
+			s;ed;nw;
+			bl.comment {小镇以北};
+			w;e;nw;se;e;w;ne;sw;nu;n;w;w;w;w;e;e;e;e;n;nu;nu;sd;sd;s;s;sd;
+			bl.comment {小镇以南};
+			se;n;n;s;s;se;sd;e;n;n;s;s;e;w;w;nu;sw;sd;e;w;sw;ne;nu;ne;wd;bl.truce;bl.command {open men};eu;nw;nw;
+			bl.comment {回到xx};
+			se;wu;n;
+			bl.comment {星宿海};
+			bl.clear {tianlang zi};n;nd;n;nw;w;e;ne;se;eu;wd;sw;n;s;s;su;
+			bl.comment {回到湖泊};
+			nu;n;bl.clear {chuchen zi};enter;out;n;w;w;n;n;s;s;e;e;s;s;sd;s;
 		};
 	};
 	#if {"${CurrentPosition}" == "zp"} {
         #list bl_path create {
+			bl.comment {赞普以北};
 			n;w;e;e;w;n;ne;e;nd;w;e;e;w;n;w;e;e;w;n;w;e;e;ne;n;ne;n;n;n;n;w;e;e;w;n;s;s;s;s;s;sw;s;sw;w;s;s;su;w;sw;s;n;n;nu;ne;sw;sd;eu;wd;s;s;s;
-
+			bl.comment {赞普以南};
 			e;w;s;w;e;e;w;s;w;e;e;w;s;e;se;se;ed;ed;ed;e;e;s;n;w;w;wu;wu;wu;nw;nw;w;n;n;n;
-
+			bl.comment {赞普以西};
 			w;w;n;s;w;nw;ne;n;s;s;n;w;nw;se;e;sw;se;e;e;e;
 		};
 	};
 	#if {"${CurrentPosition}" == "cll"} {
         #list bl_path create {
+			bl.comment {长安方向};
 			n;nd;nd;nd;nd;n;w;w;e;e;n;se;nw;w;e;s;s;su;su;su;su;s;wu;ed;
-
+			bl.comment {小村方向};
 			nd;nd;nu;sd;wd;nd;wd;nd;nw;ne;sw;n;s;w;w;s;n;w;n;s;w;n;s;s;e;w;n;w;s;n;nw;se;e;e;e;e;e;se;su;eu;su;eu;su;su;
-
+			bl.comment {华山方向};
 			sd;wu;u;d;ed;eu;wd;su;s;s;s;e;w;s;n;n;s;w;bl.clear {liang fa};n;s;s;n;w;e;e;n;n;n;
-
+			bl.comment {从玉女峰到悬崖};
 			e;sd;sd;sd;nu;climb cliff;u;climb west;wd;nu;ed;e;se;n;
-
+			bl.comment {从玉女峰到苍龙岭};
 			nd;nu;
 		};
 	};
@@ -296,6 +310,11 @@
 		bl.continue;
 	};
 	#class bl.inner open;
+	#action {^    这里没有任何明显的出路} {
+		#delay {bl.delay} {
+			bl.walk;
+		} {0.05};
+	} {1};
 	#action {^    这里%*的出口是%*} {
 		#delay {bl.delay} {
 			bl.walk;
@@ -438,5 +457,9 @@
 	#list bl_path size bl_path_size;
 	#var bl_path_index 0;
 	bl.continue "nop";
-}
+};
+
+#alias {bl.comment} {
+	bl.walk;
+};
 #class bianli close;
