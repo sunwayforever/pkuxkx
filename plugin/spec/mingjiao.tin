@@ -9,8 +9,9 @@
 };
 
 #alias {attack.normal} {
+	pfm chan;
+	pfm duo;
 	#class attack.inner open;
-	pfm_all chan duo;
 	#ticker {yf} {
 		yinfeng;
 	} {1};

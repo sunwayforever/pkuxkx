@@ -3,7 +3,16 @@
 #alias {create_bl_path} {
 	#if {"${CurrentPosition}" == "jx"} {
 		#list bl_path create {
-			
+			bl.comment {½¨¿µ·½Ïò};
+			w;nu;nw;nw;n;nw;ne;sw;w;nw;nw;n;s;se;se;e;se;s;se;se;sd;e;
+			bl.comment {Â½¼Ò×¯};
+			s;sw;w;nw;se;e;sw;e;w;s;enter;enter;s;n;out;out;n;ne;ne;n;
+			bl.comment {ÈªÖİ};
+			s;e;w;s;e;n;n;s;e;w;s;w;sw;w;sw;w;w;e;e;ne;e;ne;se;se;sd;s;s;s;n;w;e;n;n;nu;nw;nw;s;nw;n;nw;n;n;s;s;se;s;se;s;s;s;n;w;e;e;w;n;n;n;n;n;
+			bl.comment {ÑÌÓêÂ¥};
+			e;s;s;n;w;e;n;e;w;se;ne;e;ne;ne;e;e;w;w;sw;sw;w;sw;s;u;enter;out;d;n;nw;w;
+			bl.comment {ÌÒ»¨µº};
+			e;n;s;nd;w;bl.truce;e;e;e;e;e;n;s;w;w;w;w;bl.command {ask diao about ¶À¹ÂÇó°Ü};nu;se;nw;sd;sd;su;w;
 			};		
 	};
 	#if {"${CurrentPosition}" == "gy"} {
