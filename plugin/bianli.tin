@@ -2,6 +2,7 @@
 
 #alias {bl.setup} {
 	#if {"${CurrentPosition}" == "jx"} {
+		#list bl_connections create {qz;ywm;fz;ys};
 		#list bl_path create {
 			bl.comment {建康方向};
 			w;nu;nw;nw;n;nw;ne;sw;w;nw;nw;n;s;se;se;e;se;s;se;se;sd;e;
@@ -216,6 +217,7 @@
 		#list bl_path create {n;n;n;n;n;n;nw;n;nw;nw;se;se;ne;ne;nw;se;n;nw;se;ne;ne;nw;se;sw;sw;s;sw;sw;s;se;s;sw;s;w;wu;ed;eu;n;s;s;nw;se;e;n;s;w;n;ne;n;s;sw;wd;e;n;ne;s;s;n;n;s;s;s;w;e;sw;ne;e;e;w;w;s;sw;n;s;s;n;w;e;nw;se;w;n;s;s;n;w;w;w;w;nw;enter;e;out;n;s;enter;w;out;se;w;w;e;nw;ne;sw;se;e;s;n;e;e;e;e;e;se;ne;n;w;e;n;s;ne;e;se;nw;w;sw;s;s;n;e;n;s;s;n;e;e;e;e;w;w;w;w;w;sw;s;w;e;sw;ne;ne;sw;e;ne;sw;e;se;e;s;n;w;nw;w;w;s;w;w;w;sw;ne;e;e;e;e;w;s;s;s;w;nu;nw;se;sd;e;e;n;s;s;s;n;w;e;n;e;w;se;nw;n;s;w;s;n;n;n;n;n;n}		
 	};
 	#if {"${CurrentPosition}" == "qz"} {
+		#list bl_connections create {jx;fz;nc;ywm;};
 		#list bl_path create {ne;ne;ne;n;w;e;n;ne;ne;e;e;n;enter;out;s;s;e;w;n;e;n;n;n;n;nu;nw;se;sd;s;s;s;s;s;n;n;e;n;n;s;s;s;n;e;w;w;w;w;w;sw;sw;s;s;sw;sw;sw;n;s;s;n;w;n;n;n;e;n;n;s;e;s;s;n;ne;n;n;s;s;e;e;e;e;w;w;w;sw;w;s;w;se;se;nw;nw;s;s;n;nw;n;nw;se;s;se;n;s;s;s;s;s;e;w;n;n;w;n;s;s;n;w;n;s;ne;w;e;se;e;e}	
 	};
 	#if {"${CurrentPosition}" == "hz"} {
@@ -227,12 +229,27 @@
 		#list bl_path create {w;e;s;s;su;su;su;ed;nu;enter;n;s;w;e;e;w;out;sd;ed;ed;wu;wu;wu;nd;nd;nd;nd;n;n;e;w;n;e;n;s;s;n;e;e;ed;se;nw;wu;w;w;w;n;e;w;n;n;w;w;e;e;ne;sw;s;s;s;w;n;s;s;n;w;w;u;d;s;w;e;sd;su;se;sw;ne;nd;n;e;e;e;s}
 	};
 	#if {"${CurrentPosition}" == "ys"} {
-		#list bl_path create {e;n;s;e;n;s;e;w;w;w;n;w;e;e;w;n;s;s;s;w;e;e;w;s;w;e;e;u;w;s;n;n;n;w;n;s;s;n;w;s;n;w;w;w;w;w;sw;sw;w;sw;s;n;nw;se;ne;e;ne;ne;e;e;e;e;e;e;e}		
+		#nop 牙山;
+		#list bl_connections create {jx;};
+		#list bl_path create {
+			e;n;s;e;n;s;e;w;w;w;n;w;e;e;w;n;s;s;s;w;e;e;w;s;w;e;e;w;s;n;n;n;w;n;s;s;n;w;s;n;w;w;w;w;w;sw;sw;w;sw;s;n;nw;se;ne;e;ne;ne;e;e;e;e;e;e;e
+			};
 	};
 	#if {"${CurrentPosition}" == "nc"} {
-		#list bl_path create {s;s;enter;w;e;e;w;out;n;w;n;w;enter;e;e;w;n;n;nw;ne;sw;se;nw;nd;su;se;s;s;s;s;w;e;e;w;s;s;s;se;s;se;nw;n;nw;n;n;n;w;e;n;w;n;s;s;n;w;w;wu;wu;nu;enter;w;e;n;s;e;w;out;sd;ed;ed;e;e;e;e;e;e;eu;eu;wd;wd;wd;w;w;n}		
+		#list bl_connections create {qz;};
+		#list bl_path create {
+			bl.comment {东面};
+			s;s;enter;w;e;e;w;out;n;e;e;eu;eu;wd;wd;w;w;n;
+			bl.comment {南面到泉州};
+			s;w;s;w;e;e;w;s;s;s;se;s;se;s;n;n;s;nw;n;nw;n;n;n;n;
+			bl.comment {西面到岳阳};
+			w;n;s;s;n;w;w;wu;wu;nu;enter;w;e;e;w;n;s;out;sd;wu;nd;nd;nd;n;s;su;su;su;ed;ed;ed;e;e;e;
+			bl.comment {北面到江州};
+			n;w;e;e;w;n;n;nw;ne;sw;nd;n;n;s;s;su;se;s;s;s;e;n;
+			};
 	};
 	#if {"${CurrentPosition}" == "fz"} {
+		#list bl_connections create {qz;jx;ywm};
 		#list bl_path create {n;s;s;e;w;s;n;w;n;w;e;e;w;n;n;nu;nw;nw;n;s;s;n;e;w;se;se;sd;s;s;s;w;n;enter;out;s;s;e;w;n;w;w;sw;sw;s;n;ne;ne;e;e;e;s;s;n;n;e;n}		
 	};
 	#if {"${CurrentPosition}" == "xc"} {
