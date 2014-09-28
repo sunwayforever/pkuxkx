@@ -55,6 +55,7 @@
 							#list AreaAbbr_list get $AreaId k;
 							#show 你要前往的地区是：$i ($j,$k);
 							unload record;
+							#var critical_running 1;
 							routecreate;
 						};
 					} {#show 不能确定当前位置};
@@ -294,6 +295,7 @@
 			#var CurrentPosition $Destination;
 			#class walk kill;
 			rec;
+			#var critical_running 0;
 			#show 抵达目的地。;
 		};
 
