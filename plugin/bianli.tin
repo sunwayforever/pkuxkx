@@ -80,6 +80,7 @@
 	};
 	#if {"${CurrentPosition}" == "zp"} {
 		#nop 赞普;
+		#list bl_connections create {dls;lz};
         #list bl_path create {
 			bl.comment {赞普以北};
 			n;w;e;e;w;n;ne;e;nd;w;e;e;w;n;w;e;e;w;n;w;e;e;ne;n;ne;n;n;n;n;w;e;e;w;n;s;s;s;s;s;sw;s;sw;w;s;s;su;w;sw;s;n;n;nu;ne;sw;sd;eu;wd;s;s;s;
@@ -288,7 +289,17 @@
 		#list bl_path create {s;s;n;s;n;e;n;s;s;n;w;w;n;n;e;w;n;nu;sd;s;s;s;s;e;w;s;e;e;n;n;e;se;s;n;se;s;n;ne;ne;sw;sw;nw;s;se;nw;s;s;e;w;s;se;sw;sw;nw;se;ne;ne;n;nw;s;s;s;s;se;n;nw;nw;se;s;s;s;w;e;enter;out;w;wd;eu;e;n;n;n;nw;w;n;n;w;w;nu;sd;w;w;nw;u;d;se;s;s;w;nw;nw;w;e;se;se;sw;sw;sw;nu;sd;sw;ne;ne;ne;ne;e;s;n;e;n;s;s;n;e;s;n;w;w;s;s;e;e;n;w;e;e;w;n;n;e};	
 	};
 	#if {"${CurrentPosition}" == "lz"} {
-		#list bl_path create {bl.clear {wei shi}; n;w;n;n;n;n;e;e;n;w;w;e;e;e;e;w;w;s;e;e;s;s;s;s;w;n;w;e;e;w;n;w;e;e;w;n;w;w;e;e;e;e;w;w;n;s;s;s;s;s;s;s;w;n;s;s;n;w;n;s;s;n;nw;nw;ne;sw;sw;ne;se;se;w;e;e;e;s;w;w;e;e;e;e;w;w;s;s;s;s;se;nw;n;n;n;n;n;e;n;s;s;n;e;e;e;e;n;s;s;sd;nu;n;w;w;w;w;w;n;n};	
+		#list bl_connections create {xz;zp};
+		#list bl_path create {
+			bl.comment {皇宫};
+			bl.clear {shi};n;n;w;e;e;w;n;w;e;e;w;n;w;e;e;w;n;n;w;w;e;e;e;e;w;w;s;w;w;s;s;s;s;e;e;n;n;n;n;w;w;s;s;s;s;s;
+			bl.comment {西面到黄河};
+			s;s;w;n;s;s;n;w;n;s;s;n;w;e;nw;nw;ne;ne;sw;sw;sw;sw;ne;n;s;ne;se;se;e;e;
+			bl.comment {南面到赞普};
+			s;w;w;e;e;e;e;w;w;s;s;s;s;se;nw;sw;ne;n;n;n;n;n;
+			bl.comment {东面到小镇};
+			e;n;s;s;bl.clear {wei};s;n;n;e;e;e;e;s;sd;nu;n;n;nu;nu;sd;sd;s;w;w;w;w;w;n;n;
+			};	
 	};
 	#if {"${CurrentPosition}" == "qfa"} {
 		#nop 千佛庵;
