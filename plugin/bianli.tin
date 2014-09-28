@@ -1,6 +1,6 @@
 #class bianli open;
 
-#alias {create_bl_path} {
+#alias {bl.setup} {
 	#if {"${CurrentPosition}" == "jx"} {
 		#list bl_path create {
 			bl.comment {建康方向};
@@ -43,14 +43,24 @@
 			
 		};
     };
-	#if {"${CurrentPosition}" == "xkt"} {
+	#if {"${CurrentPosition}" == "dls"} {
+		#nop 大轮寺;
+		#list bl_connections create {zp};
         #list bl_path create {
+			bl.comment {大轮寺进去};
+			bl.command {knock gate};nu;w;w;e;e;e;e;w;w;nu;wd;w;e;eu;ed;e;e;w;w;wu;n;wd;w;e;eu;ed;e;w;wu;n;wd;bl.clear_force {hu bayin};
+			w;e;eu;ed;e;w;wu;nd;bl.clear {sang};bl.clear {lama};enter;bl.clear_force {lama};w;enter;out;e;e;enter;out;w;n;w;e;e;n;w;w;s;e;nu;
+			bl.clear {lama};nw;w;enter;out;e;se;w;s;e;nu;e;s;w;nu;n;bl.clear {lama};u;d;s;sd;s;out;su;s;s;sd;bl.command {pull gate};sd;
+			bl.comment {大轮寺外};
+			e;w;se;wd;nw;sw;ne;se;eu;ed;ne;sw;se;nw;wu;nw;
+
 		};
 	};
 	#if {"${CurrentPosition}" == "xx"} {
 		#nop 星宿;
+		#list bl_connections create {xz};
         #list bl_path create {
-			bl.comment {xx 往西};
+			bl.comment {西边};
 			s;wu;nw;ne;ne;sw;sw;sw;sw;ne;ne;se;ed;n;
 			bl.comment {星宿海};
 			bl.clear {tianlang zi};n;nd;n;nw;w;e;ne;se;eu;wd;sw;n;s;s;su;
@@ -60,6 +70,7 @@
 	};
 	#if {"${CurrentPosition}" == "xz"} {
 		#nop 小镇;
+		#list bl_connections create {xx};
         #list bl_path create {
 			bl.comment {小镇以北};
 			w;e;nw;se;e;w;ne;sw;nu;n;w;w;w;w;e;e;e;e;n;nu;nu;sd;sd;s;s;sd;
@@ -111,12 +122,15 @@
 	};
 	#if {"${CurrentPosition}" == "lxc"} {
 		#nop 凌霄城;
+		#list bl_connections create {zp};
         #list bl_path create {
+			bl.comment {北边};
 			n;s;e;e;n;n;e;w;n;e;n;n;s;s;w;n;s;w;s;n;n;s;w;n;n;w;e;n;w;e;e;w;s;e;w;s;s;w;n;s;s;n;w;n;s;w;n;n;e;w;s;s;s;n;e;s;w;e;s;e;ne;n;s;s;w;e;e;e;s;w;w;w;w;se;e;e;ne;w;w;
-
+			bl.comment {南边, 不包括城门以外};
 			w;w;sw;s;se;n;s;s;n;e;n;n;ne;sw;s;s;s;n;e;n;s;s;n;e;n;w;e;e;w;nu;sd;s;s;w;u;d;e;e;w;s;w;e;e;w;n;n;e;n;s;s;n;e;n;s;s;n;e;n;s;s;n;ne;n;nw;w;w;
-
-			s;sd;s;s;s;s;bl.command {sheng bridge};bl.wait 3;eu;ne;ne;sw;sw;wu;wd;w;w;w;e;e;e;ed;bl.command {jiang bridge};s;sw;ne;e;e;ne;sw;e;w;s;sd;sd;e;ne;sw;s;wd;s;ne;e;w;sw;s;n;n;nu;wu;w;
+			bl.comment {城门及以外};
+			s;sd;s;s;s;s;bl.command {sheng bridge};bl.wait 3;eu;ne;ne;sw;sw;wu;wd;w;w;w;e;e;e;ed;bl.command {jiang bridge};
+			s;sw;ne;e;e;ne;sw;e;w;s;sd;sd;e;ne;sw;s;wd;s;ne;e;w;sw;s;n;n;nu;wu;w;
 			e;ed;ne;nu;nu;n;w;w;bl.command {yell bridge};n;bl.command {sheng bridge};bl.wait 3;n;n;n;n;nu;n;
 		};
     };
@@ -307,17 +321,26 @@
 };
 
 #alias {bl.clear} {
-	killall %1;
-	on_truce {
+	clear %1;
+	on_cleared {
 		bl.walk;
 	};
-	#action {^你想杀谁} {
-		#unaction {^你想杀谁};
-		#showme truce;
+};
+
+#alias {bl.clear_force} {
+	clear %1;
+	on_cleared {
+		bl.walk;
 	};
 };
 
 #alias {bl.stop} {
+	#var critical_running 0;
+	bl.pause;
+	#class bl.start.inner kill;
+};
+
+#alias {bl.pause} {
 	#class bl.inner kill;
 	#undelay {bl.delay};
 };
@@ -330,12 +353,12 @@
 		bl.continue;
 	};
 	#class bl.inner open;
-	#action {^    这里没有任何明显的出路} {
+	#action {这里没有任何明显的出路} {
 		#delay {bl.delay} {
 			bl.walk;
 		} {0.05};
 	} {1};
-	#action {^    这里%*的出口是%*} {
+	#action {这里%*的出口是} {
 		#delay {bl.delay} {
 			bl.walk;
 		} {0.05};
@@ -349,7 +372,7 @@
 	#alias {bl.walk} {
 		#math bl_path_index ${bl_path_index}+1;
 		#if {${bl_path_index} > ${bl_path_size}} {
-			bl.stop;
+			bl.pause;
 			#list bl_path create {};
 			#showme 遍历结束;
 		};
@@ -377,8 +400,42 @@
 
 
 #alias {bl.start} {
-	create_bl_path;
+	#var critical_running 1;
+	#list bl_connections create {};
+	bl.setup;
+	
+	#class bl.start.inner open;
+	#var original_here ${CurrentPosition};
+	#var connections ${bl_connections};
+	#var connections_index 0;
+	#list connections size connections_count;
 
+	#action {遍历结束} {
+		#if {"${next_area}" != "NULL"} {
+			gt ${next_area};
+			on_there {
+				bl.bianli;
+			};
+		};
+		#else {
+			#showme bianli: done;
+			gt ${original_here};
+			bl.stop;
+		};
+	};
+	#class bl.start.inner close;
+	bl.bianli;
+};
+
+#alias {bl.bianli} {
+	#math connections_index ${connections_index}+1;
+	#if {${connections_index} > ${connections_count}} {
+		#var next_area NULL;
+	};
+	#else {
+		#list connections get ${connections_index} next_area;
+	};
+	bl.setup;
 	#list bl_path size bl_path_size;
 	#var bl_path_index 0;
 	bl.continue %1;

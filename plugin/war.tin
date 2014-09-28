@@ -319,4 +319,29 @@
 	pfm_next;
 };
 
+#gag clear: done;
+#alias {clear} {
+	killall %1;
+	#class clear.inner open;
+	#action {^ÄãÏëÉ±Ë­} {
+		#unaction {^ÄãÏëÉ±Ë­};
+		#class clear.inner kill;
+		raw;
+		#showme clear: done;
+	};
+	#ticker {kill} {
+		killall %1;
+	} {3};
+	#class clear.inner close;
+};
+
+#alias {on_cleared} {
+	#alias tmp_on_cleared %1;
+	#action {clear: done} {
+		#unaction {clear: done};
+		#delay {d} {
+			tmp_on_cleared;
+		} {0.5};
+	};
+}
 #class war close;

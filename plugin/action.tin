@@ -319,6 +319,7 @@
 			};
 			#elseif {"%%%2" == "sociability"} {
 				#alias {bl.clear} {
+					#nop %%%%1;
 					bl.walk;
 				};
 			};

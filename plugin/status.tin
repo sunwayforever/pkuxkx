@@ -8,7 +8,9 @@
 #var money_info nil;
 
 #ticker {uptime} {
-	uptime;
+	#if {${critical_running} == 0} {
+		uptime;
+	};
 } {60};
 
 #action {北大侠客行已经执行了%1分%2秒} {
@@ -28,11 +30,15 @@
 } {1};
 
 #ticker {check_fuzhong} {
-	#send {i};
+	#if {${critical_running} == 0} {
+		#send {i};
+	};
 } {180};
 
 #ticker {check_shaqi} {
-	#send {sc};
+	#if {${critical_running} == 0} {
+		#send {sc};
+	};
 } {200};
 
 #action {杀    气：  %*} {
@@ -44,7 +50,9 @@
 };
 
 #ticker {check_hp} {
-	#send {hp};
+	#if {${critical_running} == 0} {
+		#send {hp};
+	};
 } {180};
 
 #gag npc refreshed;
@@ -88,9 +96,12 @@
 	#var auto_heal 0;
 };
 
+#var critical_running 0;
 #ticker {hpbrief} {
-	#var hpbrief_first 1;
-	hpbrief;
+	#if {${critical_running} == 0} {
+		#var hpbrief_first 1;
+		hpbrief;
+	};
 } {3};
 
 #ticker {jifa} {
@@ -153,7 +164,9 @@
 };
 
 #ticker {time} {
-	time;
+	#if {${critical_running} == 0} {
+		time;
+	};
 } {30};
 
 #var prev_daytime nil;

@@ -646,8 +646,8 @@
 #list Route_dzf_tais create {nu} {nu} {nu} {eu} {nu} {nu} {nu} {nu} {nu} {nu};
 #list Route_tais_dzf create {sd} {sd} {sd} {sd} {sd} {sd} {wd} {sd} {sd} {sd};
 #list Route_zp_qbl create {w} {w} {w} {nw} {ne} {w} {nw};
-#list Route_qbl_dls create {wu} {wd} {wu} {nu} {ne} {se} {eu} {nw};
-#list Route_dls_qbl create {se} {wd} {nw} {sw} {sd} {ed} {eu} {ed};
+#list Route_qbl_dls create {wu} {wd} {goto.clear {bao}} {stop} {wu} {nu} {ne} {se} {eu} {nw};
+#list Route_dls_qbl create {se} {wd} {nw} {sw} {sd} {ed} {goto.clear {bao}} {stop} {eu} {ed};
 #list Route_qbl_zp create {se} {e} {sw} {se} {e} {e} {e};
 #list Route_wd_tyc create {ed} {e} {e} {ed} {sd} {ed} {sd} {ed} {e} {e};
 #list Route_tyc_wd create {w} {w} {wu} {nu} {wu} {nu} {wu} {w} {w} {wu};
@@ -989,6 +989,12 @@
 #var mydodge 0;
 #act {^│%s基本轻功%s(dodge)%s-%*%d/%s%d│$} {#var mydodge %5};
 
+#alias {goto.clear} {
+	clear %1;
+	on_cleared {
+		walk;
+	};
+};
 #class goto close;
 
 #nop ==自定函数==;

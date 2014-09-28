@@ -202,7 +202,7 @@
 		e;s;
 	} {0.5};
 	#class mg.yhb.inner close;
-	bl.stop;
+	bl.pause;
 	s;e;s;	
 };
 #alias mg.hhh {say 红花老祖本姓朱,为救苍生下凡来; enter};
@@ -425,7 +425,7 @@
 		#unaction {抵达目的地};
 		#delay {there_delay} {
 			tmp_there;
-		} {3};
+		} {1.5};
 	};
 };
 
@@ -770,11 +770,13 @@
 };
 
 #alias {log.on} {
+	#var critical_running 1;
 	#log append debug.${char_id}.log;
 	#debug all log;
 };
 
 #alias {log.off} {
+	#var critical_running 0;
 	#log off;
 	#debug all off;
 };
