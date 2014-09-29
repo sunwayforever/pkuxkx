@@ -339,9 +339,7 @@
 	#alias tmp_on_cleared %1;
 	#action {clear: done} {
 		#unaction {clear: done};
-		#delay {d} {
-			tmp_on_cleared;
-		} {0.5};
+		tmp_on_cleared;
 	};
 }
 #class war close;
