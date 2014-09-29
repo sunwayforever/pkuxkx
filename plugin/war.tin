@@ -321,16 +321,16 @@
 
 #gag clear: done;
 #alias {clear} {
-	killall %1;
+	kill %1;
 	#class clear.inner open;
-	#action {^你想杀谁} {
-		#unaction {^你想杀谁};
+	#action {^这里没有这个人} {
+		#unaction {^这里没有这个人};
 		#class clear.inner kill;
 		raw;
 		#showme clear: done;
-	};
+	} {1};
 	#ticker {kill} {
-		killall %1;
+		kill %1;
 	} {3};
 	#class clear.inner close;
 };

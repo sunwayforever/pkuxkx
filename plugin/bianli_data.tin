@@ -1,13 +1,12 @@
 #class bianli_data open
 #list bl_path_qfa create {
+	bl.comment {大殿东西两侧};
 	w;w;s;w;e;e;w;s;w;e;e;w;n;n;n;w;e;e;w;n;w;e;e;w;n;n;s;e;n;s;w;w;w;w;n;s;e;e;e;s;s;s;w;
 	w;nu;sd;sw;nd;nd;su;su;ne;e;e;e;e;e;e;n;w;e;e;w;n;w;e;e;w;n;n;s;w;n;s;w;e;e;e;e;w;w;s;s;s;e;eu;wd;w;s;w;e;e;w;s;w;e;e;w;n;n;w;w;
-
+	bl.comment {大殿向北到云海};
 	n;n;n;u;d;n;w;w;e;n;s;s;n;e;n;n;n;n;s;s;ne;ne;n;s;se;e;w;nw;sw;se;s;se;nw;n;nw;sw;nw;sw;w;nw;w;e;se;e;ne;nw;
-	n;w;e;s;e;e;n;n;n;s;s;
-
-	mg.yhb;se;se;s;s;s;s;s;s;
-
+	n;w;e;s;e;e;n;n;n;s;s;mg.yhb;se;se;s;s;s;s;s;s;
+	bl.comment {大殿向南到成都};
 	s;s;sd;ed;eu;e;w;wd;sd;sd;sd;s;wd;sd;sd;wd;n;s;w;enter;out;w;e;s;e;w;sd;sd;s;se;
 	e;nd;nd;nd;n;n;s;s;su;sw;sw;s;n;ne;ne;su;su;w;nw;n;nu;nu;n;e;eu;nu;nu;eu;n;nu;nu;nu;wu;nu;n;n;	
 };	
@@ -19,7 +18,7 @@
 	bl.comment {南面到赞普};
 	s;w;w;e;e;e;e;w;w;s;s;s;s;se;nw;sw;ne;n;n;n;n;n;
 	bl.comment {东面到小镇};
-	e;n;s;s;bl.clear {wei};bl.command {open door};s;n;n;e;e;e;e;s;sd;nu;n;n;nu;nu;sd;sd;s;w;w;w;w;w;n;n;
+	e;n;s;s;bl.clear_force {wei};bl.command {open door};s;n;n;e;e;e;e;s;sd;nu;n;n;nu;nu;sd;sd;s;w;w;w;w;w;n;n;
 };	
 #list bl_path_fz create {
 	n;s;s;e;w;s;n;w;n;w;e;e;w;n;n;nu;nw;nw;n;s;s;n;e;w;se;se;sd;s;s;s;w;n;enter;out;s;s;e;w;n;w;w;sw;sw;s;n;ne;ne;e;e;e;s;s;n;n;e;n;
