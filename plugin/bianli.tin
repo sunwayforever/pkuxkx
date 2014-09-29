@@ -17,11 +17,13 @@
 			};		
 	};
 	#if {"${CurrentPosition}" == "gy"} {
+		#list bl_connections create {};
         #list bl_path create {
 			
 		};
     };
 	#if {"${CurrentPosition}" == "jk"} {
+		#list bl_connections create {};
         #list bl_path create {
 			
 		};
@@ -36,14 +38,17 @@
 		};
     };
 	#if {"${CurrentPosition}" == "ssb"} {
+		#list bl_connections create {};
         #list bl_path create {
 		};
     };
 	#if {"${CurrentPosition}" == "fzl"} {
+		#list bl_connections create {};
         #list bl_path create {
 		};
     };
 	#if {"${CurrentPosition}" == "kf"} {
+		#list bl_connections create {};
         #list bl_path create {
 			
 		};
@@ -96,7 +101,7 @@
 		};
 	};
 	#if {"${CurrentPosition}" == "cll"} {
-		#nop 苍龙岭;
+		#list bl_connections create {};
         #list bl_path create {
 			bl.comment {长安方向};
 			n;nd;nd;nd;nd;n;w;w;e;e;n;se;nw;w;e;s;s;su;su;su;su;s;wu;ed;
@@ -111,7 +116,7 @@
 		};
 	};
 	#if {"${CurrentPosition}" == "hs"} {
-		#nop 华山;
+		#list bl_connections create {};
         #list bl_path create {
 			e;e;n;n;n;nd;nu;
 
@@ -141,6 +146,7 @@
 		};
     };
 	#if {"${CurrentPosition}" == "px"} {
+		#list bl_connections create {};
         #list bl_path create {
 			n;w;e;e;w;n;n;n;n;w;n;s;e;e;w;n;n;bl.clear {bao biao};w;e;e;w;n;n;n;s;s;s;s;s;s;s;s;s;s;
 
@@ -149,41 +155,53 @@
     };
 
 	#if {"${CurrentPosition}" == "mj"} {
+		#list bl_connections create {};
         #list bl_path create {w;e;nu;nu;nu;s;n;w;e;e;w;n;s;nu;w;e;n;w;w;e;e;e;n;s;e;w;w;n;n;w;n;n;n;n;s;s;s;s;e;e;nd;nd;nd;n;bl.command {open door};n;w;e;n;s;e;w;s;s;su;su;su;w;s;s;s;sd;sd;sd;sd;sd;se;e;n;s;e;w;s;n;w;s;w;n;s;e;e;w;se;nw;sw;ne;se;e;e;e;e;s;s;s;s;e;e;e;e;se;nw;w;w;w;w;w;w;w;n;n;n;w;w;w;sw;w;se;bl.clear {ding};n;w;e;n;w;n;e;e;s;w;s;s;nw;e;ne;nw;n;nw;nu};
     };
 	#if {"${CurrentPosition}" == "dzt"} {
+		#list bl_connections create {};
         #list bl_path create {bl.truce;n;bl.truce;n;n;n;enter;out;s;s;s;bl.truce;e;n;e;e;e;s;s;w;w;bl.truce;w;n;e;w;w;w;n;s;s;n;w;n;enter;out;s;s;s;n;n;w;w;bl.command {ban shan}; bl.wait 1; d;nd;nd;ed;
 		e;s;w;sw;se;ed;nd;enter;out;su;wu;nw;ne;n;wu;su;su;u;e;e;e;e;bl.truce;s;bl.truce;s;s;sd;sd;sw;se;ts;bl.wait 10;sd;sd;s;w;w;w;e;e;e;s;sd;nu;n;n;nu;nu;ts; bl.wait 10;nw;ne;nu;nu;n;n};
     };
 	#if {"${CurrentPosition}" == "th"} {
+		#list bl_connections create {};
         #list bl_path create {n;n;nu;nu;nu;se;e;n;n;e;w;s;s;w;n;w;n;n;n;e;e;e;w;w;w;n;w;wu;ed;nu;ed;wu;sd;e;e;e;e;n;w;e;s;e;w;s;w;e;e;w;s;n;n;w;w;w;s;s;s;s;sd;sd;sd;s;s;enter boat;bl.wait 10;s;w;w;w;w;e;e;e;e;s;s;se;nw;n;n;w;w;w;w;su;w;};
     };
 	#if {"${CurrentPosition}" == "ty"} {
+		#list bl_connections create {};
         #list bl_path create {sw;s;sw;w;e;ne;n;ne;ne;nd;n;s;su;sw;e;sw;s;s;e;n;w;s;s;w;out;ne;ne;ne;climb up;sd;sw;sw;w};
     };
 	#if {"${CurrentPosition}" == "tls"} {
+		#list bl_connections create {};
         #list bl_path create {w;e;nu;n;n;w;e;e;w;n;w;e;e;u;d;w;n;s;enter;out;s;s;s;sd;ed;nw;n;s;nu;nu;nu;sd;sd;sd;se;ne;s;n;ne;ne;n;ne;ne;sw;sw;s;sw;sw;sw;wu};
     };
 	#if {"${CurrentPosition}" == "xt"} {
-		#nop 小厅;
-		#list bl_path create {s;e;n;s;e;w;w;w;w;e;n;n;n;n;s;e;w;s;s;s;e;s;s;s;w;n;n;s;s;w;nw;n;s;se;w;e;s;n;e;e;s;bl.command {ban stone};s;
-
-		w;e;s;s;w;e;s;wu;ed;wu;eu;su;s;s;n;n;nd;wd;ed;n;n;n;
-		
-		e;ne;ne;nd;nw;sw;ne;n;n;s;s;se;su;e;s;se;e;ed;eu;eu;wd;wd;wu;w;nw;n;
-		bl.command {swim river};n;n;e;n;n;w;w;n;n;e;n;w;bl.command {ban stone};w;w;u;bl.command {out};bl.command {juan picture};s;s;e;n;n;n;n};
+		#list bl_connections create {};
+		#list bl_path create {
+			bl.comment {古墓内部};
+			s;e;n;s;e;w;w;w;w;e;n;n;n;n;s;e;w;s;s;s;e;s;s;s;w;n;n;s;s;w;nw;n;s;se;w;e;s;n;e;e;s;bl.command {ban stone};s;
+			bl.comment {断龙石往南到全真};
+			w;e;s;s;w;e;s;wu;ed;wu;eu;su;s;s;n;n;nd;wd;ed;n;n;n;
+			bl.comment {断龙石往东到少林, 长安和中原};		
+			e;ne;ne;nd;nw;sw;ne;n;n;s;s;se;su;e;s;se;e;ed;eu;eu;wd;wd;wu;w;nw;n;
+			bl.comment {地下河};		
+			bl.command {swim river};n;n;e;n;n;w;w;n;n;e;n;w;bl.command {ban stone};w;w;u;bl.command {out};bl.command {juan picture};s;s;e;n;n;n;n
+		};
 	};
 	#if {"${CurrentPosition}" == "qlc"} {
+		#list bl_connections create {};
 		#list bl_path create {e;s;n;e;w;n;w;e;e;s;sw;se;nu;sd;e;e;w;w;nw;nw;se;ne;n;w;n;w;e;e;w;n;w;e;e;w;n;n;s;s;e;ne;n;ne;eu;eu;nu;nw;nu;nu;sd;sd;se;sd;e;w;wd;wd;sw;s;sw;w;s;s;s;w};
 	};
 	#if {"${CurrentPosition}" == "wd"} {
+		#list bl_connections create {};
 		#list bl_path create {sw;n;n;e;s;s;w;ne;n;w;w;e;e;e;e;w;w;n;w;w;e;e;e;e;w;w;n;w;w;u;u;u;d;d;d;e;e;e;w;n;w;w;e;e;e;e;w;s;n;n;s;w;n;n;s;s;s;s;s;s;sd;wu;wu;nu;wu;nu;eu;eu;eu;wd;wd;wd;sd;wu;nu;nu;n;s;wu;ed;sd;sd;ed;ed;sd;ed;ed;sd;nu;nu};		
 	};
 	#if {"${CurrentPosition}" == "jzh"} {
+		#list bl_connections create {};
 		#list bl_path create {n;n;n;n;e;w;n;n;n;n;s;s;s;s;s;s;s;s;s;se;s;w;w;e;e;e;ne;sw;w;n;nw;n};	
 	};
 	#if {"${CurrentPosition}" == "yz"} {
-		#nop 扬州;
+		#list bl_connections create {};
 		#list bl_path create {
 			e;n;w;e;n;s;s;s;n;e;n;n;s;s;s;s;n;n;e;n;s;s;n;e;n;e;n;w;n;e;w;n;s;s;s;s;w;w;e;e;n;n;w;w;w;w;
 
@@ -197,27 +215,35 @@
 		};
 	};
 	#if {"${CurrentPosition}" == "hb2"} {
+		#list bl_connections create {};
 		#list bl_path create {n;ne;ne;sw;sw;s;s;e;se;ne;sw;e;e;ne;sw;w;w;nw;w;n;nw;nw;nw;n;n;ne;n;nw;nw;n;s;sw;sw;sw;sw;nw;se;sw;s;n;sw;sw;sw;w;e;sw;sw;w;e;ne;ne;ne;ne;ne;ne;ne;ne;ne;e;se;s;sw;s;s;se;se;se}
 	};
 	#if {"${CurrentPosition}" == "hn2"} {
+		#list bl_connections create {};
 		#list bl_path create {sd;s;s;n;n;nu;e;se;e;se;se;se;nw;nw;nw;e;ne;sw;w;w;nw;w;w;nw;sw;s;n;ne;nw;nw;n;n;ne;n;nw;w;sw;sw;sw;se;nw;sw;n;s;sw;sw;sw;se;nw;sw;sw;w;e;ne;ne;ne;ne;ne;ne;ne;ne;ne;e;se;s;sw;s;s;se;se;se;e}
 	};
 	#if {"${CurrentPosition}" == "zjk"} {
-			#list bl_path create {n;nw;se;s;s;w;e;e;w;s;w;w;w;e;e;e;e;e;e;w;w;w;s;w;e;e;w;s;s;w;e;s;w;sw;n;ne;sw;s;ne;e;e;nw;nw;se;se;se;nw;w;w;e;n;n;n;n;n;n}
+		#list bl_connections create {};
+		#list bl_path create {n;nw;se;s;s;w;e;e;w;s;w;w;w;e;e;e;e;e;e;w;w;w;s;w;e;e;w;s;s;w;e;s;w;sw;n;ne;sw;s;ne;e;e;nw;nw;se;se;se;nw;w;w;e;n;n;n;n;n;n}
 	};
 	#if {"${CurrentPosition}" == "jb2"} {
+		#list bl_connections create {};
 		#list bl_path create {e;e;e;se;e;e;e;nd;nw;se;su;u;d;e;e;se;w;w;w;w;w;nw;nw;w;w;w;w;sw;sw;sw;w;nw;nw;n;nw;se;s;nw;w;w;sw;sw;sw;sw;w;n;s;w;w;w;nw;se;se;e;e;e;n;nw;n;s;se;s;e;e;ne;ne;ne;ne;e;e;se;se;se;e;ne;ne;ne;e}
 	};
 	#if {"${CurrentPosition}" == "jn2"} {
+		#list bl_connections create {};
 		#list bl_path create {e;sw;ne;e;e;se;e;e;e;se;nw;e;e;se;se;sw;ne;nw;nw;w;w;w;w;w;nw;w;w;w;w;sw;sw;sw;s;n;w;nw;nw;nw;w;w;sw;sw;sw;sw;s;n;w;w;w;w;nw;se;e;e;e;e;ne;ne;ne;ne;e;e;se;se;se;e;ne;ne;ne;e};	
 	};
 	#if {"${CurrentPosition}" == "xh"} {
+		#list bl_connections create {};
 		#list bl_path create {ne;ne;ne;n;n;s;e;e;w;w;s;n;sw;sw;s;n;w;s;se;e;w;s;se;e;ne;e;n;s;e;w;s;n;w;nw;n;s;se;sw;w;nw;e;enter;n;e;enter boat;bl.wait 10;w;e;enter boat;bl.wait 5;w;nw;n;e;s;se}
 	};
 	#if {"${CurrentPosition}" == "xiny"} {
+		#list bl_connections create {};
 		#list bl_path create {n;n;n;n;n;n;s;nw;se;sw;ne;e;w;s;s;s;s;s;s;s;w;e;s;s;sd;se;s;n;nw;nu;n;n;n;e;e;e;e;e;se;e;w;nw;w;se;sd;nu;nw;w;w;w;w;w;n;s;s;n;w;w;nw;w;e;e;n;s;w;se;e;e;e;n};
 	};
 	#if {"${CurrentPosition}" == "sz"} {
+		#list bl_connections create {};
 		#list bl_path create {n;n;n;n;n;n;nw;n;nw;nw;se;se;ne;ne;nw;se;n;nw;se;ne;ne;nw;se;sw;sw;s;sw;sw;s;se;s;sw;s;w;wu;ed;eu;n;s;s;nw;se;e;n;s;w;n;ne;n;s;sw;wd;e;n;ne;s;s;n;n;s;s;s;w;e;sw;ne;e;e;w;w;s;sw;n;s;s;n;w;e;nw;se;w;n;s;s;n;w;w;w;w;nw;enter;e;out;n;s;enter;w;out;se;w;w;e;nw;ne;sw;se;e;s;n;e;e;e;e;e;se;ne;n;w;e;n;s;ne;e;se;nw;w;sw;s;s;n;e;n;s;s;n;e;e;e;e;w;w;w;w;w;sw;s;w;e;sw;ne;ne;sw;e;ne;sw;e;se;e;s;n;w;nw;w;w;s;w;w;w;sw;ne;e;e;e;e;w;s;s;s;w;nu;nw;se;sd;e;e;n;s;s;s;n;w;e;n;e;w;se;nw;n;s;w;s;n;n;n;n;n;n}		
 	};
 	#if {"${CurrentPosition}" == "qz"} {
@@ -233,11 +259,13 @@
 		};
 	};
 	#if {"${CurrentPosition}" == "hz"} {
+		#list bl_connections create {};
 		#list bl_path create  {n;w;e;e;s;n;n;s;w;n;w;e;n;n;n;ne;n;n;n;e;w;nw;se;s;s;nw;nw;nw;se;se;se;s;sw;s;s;s;e;e;e;s;w;e;s;w;e;s;e;n;s;s;n;e;e;e;ne;sw;w;w;w;w;w;w;n;enter;n;w;e;e;w;n;s;s;out;s;w;n;s;w;se;
 		e;ne;w;e;e;w;s;s;n;n;se;nw;w;e;sw;w;w;enter;out;s;s;n;w;e;e;e;w;s;w;n;s;s;n;e;e;w;s;w;sw;u;d;ne;s;e;e;n;s;w;s;w;w;n;s;s;n;w;n;s;s;n;w;n;w;s;s;e;n;e;e;e;e;su;wu;ed;nd;n;e;n;w;n;n;n;nw;w;n;s;s;n;w
 		;w;n;s;sw;sw;w;e;s;se;sw;ne;nw;n;w;s;se;s;se;e;ne;e;e;n;nw}		
 	};
 	#if {"${CurrentPosition}" == "yy"} {
+		#list bl_connections create {};
 		#list bl_path create {w;e;s;s;su;su;su;ed;nu;enter;n;s;w;e;e;w;out;sd;ed;ed;wu;wu;wu;nd;nd;nd;nd;n;n;e;w;n;e;n;s;s;n;e;e;ed;se;nw;wu;w;w;w;n;e;w;n;n;w;w;e;e;ne;sw;s;s;s;w;n;s;s;n;w;w;u;d;s;w;e;sd;su;se;sw;ne;nd;n;e;e;e;s}
 	};
 	#if {"${CurrentPosition}" == "ys"} {
@@ -245,7 +273,7 @@
 		#list bl_connections create {jx;};
 		#list bl_path create {
 			e;n;s;e;n;s;e;w;w;w;n;w;e;e;w;n;s;s;s;w;e;e;w;s;w;e;e;w;s;n;n;n;w;n;s;s;n;w;s;n;w;w;w;w;w;sw;sw;w;sw;s;n;nw;se;ne;e;ne;ne;e;e;e;e;e;e;e
-			};
+		};
 	};
 	#if {"${CurrentPosition}" == "nc"} {
 		#list bl_connections create {qz;};
@@ -261,60 +289,70 @@
 			};
 	};
 	#if {"${CurrentPosition}" == "fz"} {
+		#nop 福州;
 		#list bl_connections create {qz;jx;ywm};
 		#list bl_path create {n;s;s;e;w;s;n;w;n;w;e;e;w;n;n;nu;nw;nw;n;s;s;n;e;w;se;se;sd;s;s;s;w;n;enter;out;s;s;e;w;n;w;w;sw;sw;s;n;ne;ne;e;e;e;s;s;n;n;e;n}		
 	};
 	#if {"${CurrentPosition}" == "xc"} {
+		#list bl_connections create {};
 		#list bl_path create {
 			nw;sw;ne;nw;ne;sw;w;n;s;nw;nw;n;nw;nu;nu;n;nu;e;w;n;n;s;s;sd;s;sd;sd;se;s;se;se;e;se;se;e;n;s;s;e;w;n;e;n;s;e;s;n;e;e;n;s;ne;sw;se;su;eu;su;eu;nu;sd;su;nd;wd;nd;wd;nd;nw;w;w;w;w;
 			w;s;e;e;w;w;s;e;w;w;nw;se;e;s;e;w;s;s;se;n;s;n;n;n;s;s;s;e;w;ne;ne;sw;sw;sw;s;s;n;n;bl.command {bo xiaolu};ne;nw;sw;sd;bl.wait {3};su;bl.wait {3};s;s;n;n;nd;bl.wait {3};nu;bl.wait {3};ne;n;n;n;n;n;
 			};		
 	};
 	#if {"${CurrentPosition}" == "tais"} {
+		#list bl_connections create {};
 		#list bl_path create {bl.clear {jiang};nu;w;nu;sd;e;u;w;e;e;w;d;ed;eu;e;nu;bl.command {ask xiao mao about 老朋友};w;n;s;s;n;e;n;w;e;e;w;s;e;n;s;s;n;w;s;sd;w;wd;wu;sd;e;eu;ed;nu;sd;wu;wd;sd;sd;sd;sd;sd;sd;sd;wd;sd;sd;sd;s;s;sw;w;sw;s;n;nw;se;ne;e;ne;n;n;nu;nu;nu;ed;eu;nu;nu;nu;nu;nu;nu};
 	};
 	#if {"${CurrentPosition}" == "dl"} {
+		#list bl_connections create {};
 		#list bl_path create {e;n;s;s;n;w;s;eu;se;se;nw;n;s;n;nw;n;enter;out;s;se;s;nw;ed;wd;s;w;w;n;enter;n;s;w;u;w;enter;out;e;e;enter;out;e;enter;out;w;w;d;e;out;s;e;e;s;e;se;e;w;nw;w;n;n;n;w;s;w;e;n;n;enter;w;n;s;e;out;s;e;n;w;e;e;u;d;w;n;w;w;e;e;e;e;w;n;s;s;n;w;n;e;s;n;s;w;n;n;n;n;ne;ne;ne;n;s;n;ne;sw;sw;wu;ed;nw;sd;se;ne;ne;sw;s;sw;sw;sw;sw;s;s;s;s;w;#cr;e;s;s;s}		
 	};
 	#if {"${CurrentPosition}" == "qzh"} {
+		#list bl_connections create {};
 		#list bl_path create {s;w;e;e;w;s;e;w;sd;s;sd;sd;se;s;se;se;n;s;e;w;nw;nw;n;nw;nu;nu;n;nu;n;n;w;w;w;s;n;w;s;n;e;e;e;e;e;n;s;e;e;w;w;w;n;n;w;w;s;n;w;w;n;n;n;n;n;n;e;n;e;e;n;bl.truce;n;bl.truce;s;s;e;n;n;nd;su;s;s;e;e;n;n;s;s;e;s;e;s;s;s;n;w;n;s;s;s;s;w;s;n;e;n;n;n;w;n;s;s;s;n;n;w;n;n;s;s;s;s;s;s;s;s;n;n;n;w;e;n;n;n;w;n;s;s;s;w;n;n;n;s;w;s;s;s;s;e;e;e;e;s;s}		
 	};
 	#if {"${CurrentPosition}" == "xch"} {
+		#list bl_connections create {};
 		#list bl_path create {n;s;nw;nw;w;nu;sd;w;nw;se;nu;sd;e;e;se;se;sw;sw;e;w;n;n;n;n;s;s;s;s;w;u;d;e;nw;n;s;sw;ne;se;ne;ne;s;s;s;s;n;n;n;n;e;se;e;ne;ne;ne;ne;ne;e;e;w;w;sw;sw;sw;sw;sw;se;se;se;n;n;n;n;s;s;s;s;s;s;n;n;nw;nw;nw;w;nw;w};		
 	};
 	#if {"${CurrentPosition}" == "jy"} {
+		#list bl_connections create {};
 		#list bl_path create {e;s;s;w;sw;sw;sw;s;s;n;n;ne;ne;ne;s;s;s;se;e;e;n;n;n;n;s;e;ne;sw;s;n;e;ne;sw;e;w;knock gate;s;n;ne;sw;e;e;ne;n;enter;out;s;sw;s;s;sw;e;w;n;s;w;w;s;e;e;e;n;ne;ne;e;e;nu;n;s;sd;ne;ne;sw;sw;w;w;w;n;n;w;w;e;nw;sw;sw;e;e;w;w;sw;ne;w;sw;n;n;e;n;n;nu;nu;ne;sw;sd;sd;s;e;e;e;sw;sw;ne;ne;w;w;w;w;w;w;s;s;s;e;n;n;w}		
 	};
 	#if {"${CurrentPosition}" == "xy"} {
+		#list bl_connections create {};
 		#list bl_path create {s;w;w;w;w;n;n;s;s;w;w;w;w;e;e;e;e;e;e;e;e;s;n;e;n;s;s;n;e;n;e;w;n;w;n;s;e;e;w;n;w;e;e;e;w;w;n;n;n;n;n;n;n;n;n;s;s;s;s;s;s;s;s;s;s;s;s;w;e;e;w;s;w;e;s;w;e;e;w;s;s;s;s;e;w;s;s;s;s;s;se;s;n;nw;n;n;n;n;n;n;n;n;n;n;n;n;e;n;s;e;sw;s;w;e;e;w;n;ne;n;n;w;e;s;s;e;s;n;e;e;se;e;e;w;w;nw;e;n;s;w;w;w;w;w;w;w;w;n} 	
 	};
-	#if {"${CurrentPosition}" == "tls"} {
-		#list bl_path create {
-			w;e;nu;n;n;w;e;e;w;n;enter;out;w;e;e;u;d;w;n;s;s;s;s;sd;
-			ed;nw;bl.truce;n;s;se;ne;s;sw;sw;sw;s;s;n;n;ne;ne;ne;n;ne;ne;n;ne;ne;su;su;w;e;nd;nd;nd;n;w;e;n;s;s;su;sw;sw;s;sw;sw;sw;wu;
-			};
-	};
+
 	#if {"${CurrentPosition}" == "gd"} {
+		#list bl_connections create {};
 		#list bl_path create {
 			e;se;sw;n;s;sw;sw;sw;s;e;n;w;n;w;e;s;ne;ne;ne;s;bl.command {push stone};s;e;ed;ed;bl.command {push men};e;n;s;e;w;s;out;guo qiao;s;bl.truce;se;wu;
 		};
 	};
 	#if {"${CurrentPosition}" == "qf"} {
+		#list bl_connections create {};
 		#list bl_path create {enter;out;s;w;n;n;w;w;sw;sw;sw;sw;sw;w;e;se;nw;ne;ne;ne;ne;ne;e;e;n;e;e;n;n;ne;e;w;sw;nw;nw;nw;w;e;e;w;se;se;se;s;s;s;e;n;s;w;s;e;ne;eu;enter;out;wd;sw;w;s;s;s;s;s;s;n;n;n;n;n;w;n}	
 	};
 	#if {"${CurrentPosition}" == "jz"} {
+		#list bl_connections create {};
 		#list bl_path create {w;w;w;e;s;e;w;n;w;e;s;s;s;s;e;w;su;se;s;n;nw;nd;n;n;n;w;n;n;s;ne;n;s;s;n;ne;sw;sw;sw;w;wu;nw;wu;w;w;e;e;ed;se;ed;e;ne;ne;ne;n;n;s;w;enter;w;e;e;w;out;e;e;s;n;ne;nw;w;e;se;se;nw;ne;e;e;ne;eu;ed;ed;wu;wu;wd;sw;w;w;ne;n;e;w;s;e;ne;u;d;n;s;sw;w;sw;sw;sw;sw;s;e;e};	
 	};
 	#if {"${CurrentPosition}" == "km"} {
+		#list bl_connections create {};
 		#list bl_path create {s;s;n;w;w;s;n;nw;w;nw;w;n;n;n;s;eu;wd;s;w;w;n;s;e;e;s;e;w;e;se;e;se;e;e;e;n;w;e;e;w;n;n;n;n;n;n;s;s;s;s;s;s;s;e;n;s;s;n;n;s;e;e;ne;eu;wd;sw;w;w;w;s;w;e;e;w;s;s;s;w;wu;n;e;e;n}	
 	};
 	#if {"${CurrentPosition}" == "ly"} {
+		#list bl_connections create {};
 		#list bl_path create {n;w;u;u;u;w;e;d;d;d;e;e;w;n;w;e;e;e;se;n;n;s;s;s;e;e;n;s;s;n;w;s;s;sw;s;n;ne;n;n;w;n;nw;w;w;n;nu;nd;n;n;nu;w;e;e;w;sd;s;s;su;sd;s;s;s;w;n;enter;out;s;s;s;w;e;s;s;s;n;n;n;n;n;w;n;s;s;s;s;n;n;w;e;s;w;nw;nw;nw;n;n;w;e;e;w;n;w;e;e;w;n;w;w;e;e;e;e;w;w;n;w;w;w;e;e;e;e;e;w;w;nd;nw;nw;se;se;ne;ne;sw;sw;su;s;s;s;s;s;se;se;se;e;n;n;w;n;s;s;n;wu;w;w;w;w;w;nw;w;e;s;n;se;e;e;e;e;e;ed;e;e;e;se;nw;s;w;e;e;w;s;w;e;e;w;s;w;e;e;s;n;e;n;sw;n;s;ne;n;s;s;e;n;e;e;w;w;s;w;w;n;w;w;e;e;e;e;n;n;n;n;s;w;w;e;e;s;s;nw;se;w;w;n;s;s;w;w;e;s;s;s;s;n;n;n;n;n;n;n;e;n;enter;out;s;s;n;ne;sw;e;n;ne;sw;s;s;s;n;n;e;eu;ed;e;e;e;e;se;ne;sw;se;nw;nw;w;w;w;w;wu;wd;w;w;w};	
 	};
 	#if {"${CurrentPosition}" == "cd"} {
+		#list bl_connections create {};
 		#list bl_path create {enter;out;s;e;n;s;se;n;s;e;e;ne;w;w;nw;nw;n;e;w;w;nw;s;n;n;s;w;w;wu;wu;wu;nw;nw;w;n;s;e;se;se;ed;ed;ed;e;e;se;e;n;w;e;e;w;n;n;nu;nd;sd;su;sd;s;s;s;s;s;s;w;nw;se;e;e;w;s;w;e;s;su;su;su;w;nw;n;nu;sd;s;se;e;nd;nd;sw;sw;s;sw;sw;sw;ne;ne;ne;n;ne;ne;nd;n;n;n;n};
 	};
 	#if {"${CurrentPosition}" == "zj"} {
+		#list bl_connections create {};
 		#list bl_path create {s;s;n;s;n;e;n;s;s;n;w;w;n;n;e;w;n;nu;sd;s;s;s;s;e;w;s;e;e;n;n;e;se;s;n;se;s;n;ne;ne;sw;sw;nw;s;se;nw;s;s;e;w;s;se;sw;sw;nw;se;ne;ne;n;nw;s;s;s;s;se;n;nw;nw;se;s;s;s;w;e;enter;out;w;wd;eu;e;n;n;n;nw;w;n;n;w;w;nu;sd;w;w;nw;u;d;se;s;s;w;nw;nw;w;e;se;se;sw;sw;sw;nu;sd;sw;ne;ne;ne;ne;e;s;n;e;n;s;s;n;e;s;n;w;w;s;s;e;e;n;w;e;e;w;n;n;e};	
 	};
 	#if {"${CurrentPosition}" == "lz"} {
@@ -331,7 +369,7 @@
 			};	
 	};
 	#if {"${CurrentPosition}" == "qfa"} {
-		#nop 千佛庵;
+		#list bl_connections create {};
 		#list bl_path create {
 			w;w;s;w;e;e;w;s;w;e;e;w;n;n;n;w;e;e;w;n;w;e;e;w;n;n;s;e;n;s;w;w;w;w;n;s;e;e;e;s;s;s;w;
 			w;nu;sd;sw;nd;nd;su;su;ne;e;e;e;e;e;e;n;w;e;e;w;n;w;e;e;w;n;n;s;w;n;s;w;e;e;e;e;w;w;s;s;s;e;eu;wd;w;s;w;e;e;w;s;w;e;e;w;n;n;w;w;
@@ -346,6 +384,7 @@
 		};	
 	};
 	#if {"${CurrentPosition}" == "shudong"} {
+		#list bl_connections create {};
 		#list bl_path create {out;enter shudong; say 天堂有路你不走呀;d;1;n;n;n;s;nw;nw;nw;n;nw;se;s;se;se;se;s;s;u;out; shudong 2;ne;ne;sw;sw;sw;u;out; shudong 3;ne;ne;sw;sw;sw;u;out; shudong 4;w;w;e;e;e;u;out; shudong 5;sw;sw;ne;ne;ne;u;out; shudong 7;n;ne;ne;n;s;sw;sw;s;s;u;out; shudong 9; sw;s;sw;sw;nw;se;sw;ne;ne;ne;n;ne;e;u;out; enter shudong};
 	};
 };

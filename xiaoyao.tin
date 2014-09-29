@@ -1,6 +1,6 @@
 #class goto open;
-#var xiaoyao.accu 5;
-#var xiaoyao.delay 0.3;
+#var xiaoyao.accu 10;
+#var xiaoyao.delay 0.5;
 #nop ==Ωªª•ΩÁ√Ê==
 #alias gt
 {
