@@ -22,10 +22,27 @@
 			
 		};
     };
-	#if {"${CurrentPosition}" == "jk"} {
+	#if {"${CurrentPosition}" == "scm"} {
 		#list bl_connections create {};
         #list bl_path create {
-			
+			bl.comment {神策门以北到长江南岸};
+			n;w;e;nu;e;enter;out;w;nw;ne;e;w;w;w;e;e;sw;se;sd;s;
+			bl.comment {神策门往西到军仓};
+			s;nw;se;s;n;sw;w;w;n;s;nw;w;e;se;sw;ne;e;
+			bl.comment {军仓到江州，清凉门};
+			su;su;ed;wu;sd;e;s;nw;w;wu;wu;wd;sw;w;w;e;e;ne;eu;ed;ed;
+			bl.comment {清凉门到三山门和石城门在返回};
+			s;sd;s;s;s;sd;sw;su;wu;s;s;se;e;e;w;w;nw;n;n;ne;ne;se;s;n;e;nu;ne;ne;e;nw;w;
+			bl.comment {北城完毕，到中城};
+			s;s;s;w;w;e;s;n;e;s;w;e;e;w;s;w;e;e;e;n;s;e;e;se;s;n;nw;w;w;w;w;s;w;e;s;s;s;eu;wd;se;se;se;s;sw;s;n;ne;n;nw;nw;nw;n;n;n;s;s;s;eu;
+			bl.comment {南城完毕，到石岗};
+			bl.comment {无想山略过,到达都统制府大门};
+			wd;n;n;n;n;e;e;e;n;
+			bl.comment {都统制府到朝阳门};
+			e;se;s;s;se;se;nw;nw;n;n;nw;w;bl.command {ask shiwei about 通传};n;w;e;e;w;n;n;w;e;e;w;n;w;n;s;s;n;w;e;e;e;s;n;e;w;w;n;n;w;e;e;w;n;n;n;s;s;s;s;s;e;e;e;
+			bl.comment {朝阳门遍历所有外围小道};
+			e;ed;nu;sd;ne;ne;ne;nw;nw;se;se;e;n;s;s;n;e;w;w;sw;sw;sw;se;se;se;se;ne;ne;n;s;nw;se;sw;sw;s;se;s;s;n;n;nw;n;nw;nw;nw;nw;
+			sw;w;nw;nw;se;se;e;se;s;se;se;sd;e;w;nu;nw;nw;n;nw;w;s;s;nw;nw;nw;n;n;s;s;se;se;se;s;sw;s;w;e;s;n;n;ne;n;n;n;e;ne;wu;w;
 		};
     };
 	#if {"${CurrentPosition}" == "ywm"} {
