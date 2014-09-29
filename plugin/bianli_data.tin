@@ -45,14 +45,15 @@
 	ne;ne;ne;n;w;e;n;ne;ne;e;w;sw;sw;s;s;sw;sw;sw;
 };
 #list bl_path_yz create {
+	bl.comment {东};
 	e;n;w;e;n;s;s;s;n;e;n;n;s;s;s;s;n;n;e;n;s;s;n;e;n;e;n;w;n;e;w;n;s;s;s;s;w;w;e;e;n;n;w;w;w;w;
-
+	bl.comment {南};
 	s;nw;se;w;u;w;e;n;s;e;w;s;n;d;d;u;e;e;s;n;w;s;w;w;e;e;e;d;ed;n;s;s;n;wu;u;w;s;w;n;s;w;e;s;n;e;e;n;s;s;n;e;n;s;s;n;e;n;s;s;n;e;w;w;w;w;s;su;wu;wu;n;s;ed;ed;se;su;nd;nw;nd;n;n;n;n;
-
+	bl.comment {北};
 	n;w;s;n;e;se;e;w;nw;e;u;enter;out;d;w;n;e;u;w;e;e;w;u;d;d;w;n;e;w;n;nw;nw;nw;se;se;se;n;n;n;n;w;e;s;s;s;s;s;s;w;u;n;s;d;nw;se;e;s;s;
-
+	bl.comment {发呆室};
 	d;out;enter;up;enter shudong;out;
-
+	bl.comment {西};
 	w;n;bl.clear {ya yi};w;e;n;w;e;n;s;e;w;s;s;s;bl.clear {guan bing};s;n;n;w;n;n;n;bl.clear {cui};w;e;s;s;s;s;n;w;n;s;s;e;e;e;w;w;w;n;w;nw;w;se;nw;e;se;e;e;e;e;
 };
 #list bl_path_xt create {
