@@ -357,5 +357,9 @@
 	show_to_info 认亲;
 	xmpp.notify 认亲;
 };
+
+#action {没有经过通传，任何人等不得擅闯都统治府。} {
+	ask shiwei about 通传;
+};
 #class action close;
 

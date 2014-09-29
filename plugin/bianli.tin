@@ -27,8 +27,12 @@
 		};
     };
 	#if {"${CurrentPosition}" == "ywm"} {
+		#nop 岳王墓;
+		#list bl_connections create {qz;jx;fz;nc};
         #list bl_path create {
-			n;nw;ne;sw;se;s;s;sw;s;n;w;n;s;s;w;n;n;s;s;s;s;n;nw;se;n;e;n;e;ne;e;e;e;bl.truce;e;w;w;w;w;n;
+			n;nw;ne;sw;se;s;s;sw;s;n;w;n;s;s;w;n;n;s;s;s;s;n;nw;se;n;e;n;e;ne;e;e;
+			bl.comment {大内及风波亭略过};
+			w;w;n;
 		};
     };
 	#if {"${CurrentPosition}" == "ssb"} {
@@ -217,8 +221,16 @@
 		#list bl_path create {n;n;n;n;n;n;nw;n;nw;nw;se;se;ne;ne;nw;se;n;nw;se;ne;ne;nw;se;sw;sw;s;sw;sw;s;se;s;sw;s;w;wu;ed;eu;n;s;s;nw;se;e;n;s;w;n;ne;n;s;sw;wd;e;n;ne;s;s;n;n;s;s;s;w;e;sw;ne;e;e;w;w;s;sw;n;s;s;n;w;e;nw;se;w;n;s;s;n;w;w;w;w;nw;enter;e;out;n;s;enter;w;out;se;w;w;e;nw;ne;sw;se;e;s;n;e;e;e;e;e;se;ne;n;w;e;n;s;ne;e;se;nw;w;sw;s;s;n;e;n;s;s;n;e;e;e;e;w;w;w;w;w;sw;s;w;e;sw;ne;ne;sw;e;ne;sw;e;se;e;s;n;w;nw;w;w;s;w;w;w;sw;ne;e;e;e;e;w;s;s;s;w;nu;nw;se;sd;e;e;n;s;s;s;n;w;e;n;e;w;se;nw;n;s;w;s;n;n;n;n;n;n}		
 	};
 	#if {"${CurrentPosition}" == "qz"} {
+		#nop 泉州;
 		#list bl_connections create {jx;fz;nc;ywm;};
-		#list bl_path create {ne;ne;ne;n;w;e;n;ne;ne;e;e;n;enter;out;s;s;e;w;n;e;n;n;n;n;nu;nw;se;sd;s;s;s;s;s;n;n;e;n;n;s;s;s;n;e;w;w;w;w;w;sw;sw;s;s;sw;sw;sw;n;s;s;n;w;n;n;n;e;n;n;s;e;s;s;n;ne;n;n;s;s;e;e;e;e;w;w;w;sw;w;s;w;se;se;nw;nw;s;s;n;nw;n;nw;se;s;se;n;s;s;s;s;s;e;w;n;n;w;n;s;s;n;w;n;s;ne;w;e;se;e;e}	
+		#list bl_path create {
+			bl.comment {泉州自身};
+			n;s;ed;n;s;s;n;wu;s;n;w;s;s;e;w;n;n;w;n;s;s;n;nw;w;e;se;e;e;
+			bl.comment {嘉兴方向};
+			w;n;n;nw;n;nw;se;s;se;n;e;n;s;w;se;se;nw;nw;n;e;w;sw;ne;n;s;s;s;s;s;e;
+			bl.comment {闽南(福州)方向};
+			ne;ne;ne;n;w;e;n;ne;ne;e;w;sw;sw;s;s;sw;sw;sw;
+		};
 	};
 	#if {"${CurrentPosition}" == "hz"} {
 		#list bl_path create  {n;w;e;e;s;n;n;s;w;n;w;e;n;n;n;ne;n;n;n;e;w;nw;se;s;s;nw;nw;nw;se;se;se;s;sw;s;s;s;e;e;e;s;w;e;s;w;e;s;e;n;s;s;n;e;e;e;ne;sw;w;w;w;w;w;w;n;enter;n;w;e;e;w;n;s;s;out;s;w;n;s;w;se;
