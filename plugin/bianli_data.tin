@@ -1,4 +1,20 @@
 #class bianli_data open
+#list bl_path_xch create {
+	bl.comment {东面到信阳，曲阜，扬州};
+	s;s;s;s;s;n;n;n;n;n;e;se;e;se;se;se;s;e;w;s;n;n;n;s;nw;nw;nw;ne;ne;ne;ne;ne;e;e;s;n;n;s;w;w;sw;sw;sw;sw;sw;w;nw;w;n;s;
+	bl.comment {北面到汝州，少林，麒麟村，洛阳，到达南阳};
+	nw;nw;w;nu;nu;wu;wd;wd;wu;w;nw;se;e;ed;eu;eu;nu;sd;ed;sd;sd;w;nu;w;ne;sw;n;n;s;s;nw;se;e;sd;nw;ne;n;w;e;s;sw;nw;w;w;w;e;e;e;se;se;e;e;se;se;sw;sw;
+	bl.comment {南阳到洛阳，小村，襄阳};
+	e;w;w;u;d;e;n;n;n;n;s;s;s;s;nw;n;n;s;s;sw;ne;se;sw;s;s;n;n;bl.command {bo xiaolu};ne;ne;ne;
+};
+#list bl_path_qf create {
+	bl.comment {西面到中原};
+	enter;out;s;w;n;n;n;s;w;w;sw;sw;sw;sw;sw;se;se;nw;nw;w;nw;w;e;se;e;ne;ne;ne;ne;ne;e;e;s;e;
+	bl.comment {南面到扬州};
+	e;w;s;w;e;e;s;s;s;s;nw;nw;se;se;s;s;s;n;n;e;w;n;n;n;n;n;n;w;
+	bl.comment {东面和北面到泰山和黄河};
+	e;e;ne;eu;enter;out;wd;sw;w;n;e;n;s;w;n;w;w;s;n;e;e;n;n;ne;e;ne;n;n;s;s;sw;w;sw;nw;nw;nw;se;se;se;s;s;s;s;w;
+};
 #list bl_path_xiny create {
 	bl.comment {北面到中原，到小广场};
 	n;n;n;n;n;sw;ne;e;w;s;s;s;s;s;s;
