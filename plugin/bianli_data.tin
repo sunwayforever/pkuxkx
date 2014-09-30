@@ -1,4 +1,14 @@
 #class bianli_data open
+#list bl_path_xiny create {
+	bl.comment {北面到中原，到小广场};
+	n;n;n;n;n;sw;ne;e;w;s;s;s;s;s;s;
+	bl.comment {西面到襄阳};
+	w;n;s;s;n;w;w;nw;e;n;s;w;w;e;se;e;e;e;
+	bl.comment {东面到扬州};
+	e;e;e;e;e;se;e;w;nw;w;se;sd;nu;nw;w;w;w;w;
+	bl.comment {南面到渡口};
+	s;w;e;s;s;sd;se;s;n;nw;nu;n;n;n;n;
+};
 #list bl_path_zj create {
 	bl.comment {镇江内部及土路，到南水门};
 	s;s;n;e;n;s;s;n;w;w;n;n;e;w;s;s;w;s;n;w;n;s;s;n;e;e;s;w;e;e;w;s;w;w;n;n;n;n;e;e;e;e;s;s;s;s;w;w;
