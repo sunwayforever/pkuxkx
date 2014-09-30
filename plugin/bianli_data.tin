@@ -1,4 +1,25 @@
 #class bianli_data open
+#list bl_connections_jy create {
+	zjk;ry;bj;
+};
+#list bl_path_jy create {
+	bl.comment {晋阳内城,不包括城墙,到达金肃门};
+	e;n;n;e;e;sw;sw;w;sw;s;s;e;n;ne;e;ne;e;e;s;s;w;w;w;sw;s;e;ne;sw;s;n;e;ne;sw;e;e;ne;n;enter;out;s;sw;s;s;sw;e;w;n;s;w;w;n;n;w;w;
+	bl.comment {金肃门到黄河};
+	sw;sw;sw;s;n;ne;ne;ne;
+	bl.comment {金肃门沿城墙到张家口,停止在怀德门};
+	n;n;n;e;e;e;n;nu;nu;ne;n;s;ne;sw;sw;sd;sd;s;
+	bl.comment {怀德门到日月和北京,停止在朝曦门};
+	e;e;e;sw;sw;sw;e;e;nu;n;ne;nu;nu;sd;sd;sw;s;sd;ne;ne;n;s;s;n;sw;sw;w;w;
+	bl.comment {剩下的城墙};
+	sw;sw;s;w;w;w;w;w;nw;n;n;n;e;n;n;w;
+};
+#list bl_path_zjk create {
+	bl.comment {大境门以北};
+	n;nw;w;w;e;e;nw;n;ne;sw;s;se;se;s;
+	bl.comment {大境门以南到晋阳和北京};
+	s;w;e;e;w;s;w;w;w;sw;s;sw;sd;sd;s;n;nu;nu;ne;ne;e;n;w;e;n;n;w;e;e;w;n;e;e;e;se;se;se;e;e;w;w;sw;s;s;n;n;ne;nw;nw;nw;w;w;w;n;n;
+};
 #list bl_path_qfa create {
 	bl.comment {大殿东西两侧};
 	w;w;s;w;e;e;w;s;w;e;e;w;n;n;n;w;e;e;w;n;w;e;e;w;n;n;s;e;n;s;w;w;w;w;n;s;e;e;e;s;s;s;w;

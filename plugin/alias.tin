@@ -47,7 +47,7 @@
 
 };
 
-#alias {qq} {
+#alias {get.qian} {
 	#class money.qu.inner open;
 	#action {钱眼开说道：「哟，抱歉啊，我这儿正忙着呢……您请稍候。」} {
 		#delay {1} {
@@ -968,3 +968,15 @@
 };
 
 #alias {q} {#cr};
+#alias {qq} {#send {q}};
+
+#alias {path.new} {
+	#path end;
+	#path new;
+};
+
+#alias {path.show} {
+	#path save forward xxx;
+	#path save backward yyy;
+	#var xxx;
+};
