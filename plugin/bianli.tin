@@ -236,4 +236,18 @@ load bianli_data;
 	#nop %1;
 	bl.walk;
 };
+
+#alias {bl.action.xiangyang} {
+	eu;
+	#class bl.action.xiangyang.inner open;
+	#action {^此去往东是荒郊野岭，盗贼猛兽出没之地} {
+		#delay {0.5} {
+			eu;
+		};
+	} {1};
+	#action {^半山坡} {
+		#class bl.action.xiangyang.inner kill;		
+	} {1};
+	#class bl.action.xiangyang.inner close;
+};
 #class bianli close;

@@ -1,4 +1,18 @@
 #class bianli_data open
+#list bl_path_xy create {
+	bl.comment {往东到荆西镖局，到城中心};
+	s;s;bl.clear {jun};s;n;n;w;w;w;w;n;n;s;s;w;w;w;w;w;n;s;w;w;s;sw;ne;n;e;e;e;e;e;e;e;e;e;e;e;e;n;s;s;n;e;
+	bl.comment {往南到荆州};
+	s;w;e;e;w;s;w;e;s;w;e;e;w;s;s;s;s;e;w;s;s;s;s;s;se;bl.clear {zei};s;n;nw;n;n;n;n;n;n;n;n;n;n;n;n;
+	bl.comment {往北到蒙古营门};
+	n;e;w;n;w;n;bl.clear_force {bing};u;d;s;e;e;w;n;w;e;e;e;w;w;n;n;n;n;n;n;n;n;s;s;s;s;s;s;s;s;s;s;s;
+	bl.comment {往东城东小路};
+	e;n;s;se;s;w;e;e;w;n;nw;e;n;n;w;e;s;s;e;s;n;e;e;se;e;e;w;w;nw;e;n;s;w;
+	bl.comment {黑松寨，不包括乱葬岗};
+	bl.action.xiangyang;e;eu;ed;wu;wd;w;wd;
+	bl.comment {黑松寨到当铺};
+	w;w;w;w;w;w;w;n;
+};
 #list bl_path_xch create {
 	bl.comment {东面到信阳，曲阜，扬州};
 	s;s;s;s;s;n;n;n;n;n;e;se;e;se;se;se;s;e;w;s;n;n;n;s;nw;nw;nw;ne;ne;ne;ne;ne;e;e;s;n;n;s;w;w;sw;sw;sw;sw;sw;w;nw;w;n;s;
