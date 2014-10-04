@@ -21,6 +21,7 @@
 #alias {attack.hubiao} {
 	pfm chan;
 	pfm suxin;
+	pfm zhua;
 	#class attack.inner open;
 	#ticker {suxin} {
 		pfm suxin;
