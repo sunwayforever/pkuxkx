@@ -1,5 +1,6 @@
 #class gumu_spec open
-
+#var jiali_zhua 150;
+#var jiali_shexin 10;
 #alias {attack.prepare} {
 	yun xinjing;
 	#class attack.inner open;
@@ -20,8 +21,8 @@
 
 #alias {attack.hubiao} {
 	pfm chan;
-	pfm suxin;
 	pfm zhua;
+	pfm shexin;
 	#class attack.inner open;
 	#ticker {suxin} {
 		pfm suxin;
@@ -132,7 +133,7 @@
 
 #alias {zhua} {
 	unwi;
-	jiali 1;
+	jiali ${jiali_zhua};
 	perform jiuyin-baiguzhao.zhua;
 	jiali none;
 	wi;
@@ -140,7 +141,7 @@
 
 #alias {shexin} {
 	unwi;
-	jiali max;
+	jiali ${jiali_shexin};
 	perform meinu-quan.shexin;
 	jiali none;
 	wi;
