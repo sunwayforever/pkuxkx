@@ -21,12 +21,13 @@
 
 #alias {attack.hubiao} {
 	pfm chan;
-	pfm zhua;
 	pfm shexin;
+	pfm zhua;
+	pfm suxin;
 	#class attack.inner open;
-	#ticker {suxin} {
-		pfm suxin;
-	} {8.8};
+	#ticker {shexin} {
+		pfm shexin;
+	} {4.8};
 	#class attack.inner close;
 };
 
