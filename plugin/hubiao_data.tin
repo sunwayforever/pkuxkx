@@ -67,7 +67,7 @@
 				#return -1;
 			};
 			#else {
-				#return 5;				
+				#return -1;				
 			};
 		};
 		#else {
@@ -144,7 +144,7 @@
 				#return -1;
 			};
 			#else {
-				#return 2;
+				#return -1;
 			};
 		};
 		#elseif {"%1" == "Îäµ±¾£Î÷ïÚ¾Ö"} {
