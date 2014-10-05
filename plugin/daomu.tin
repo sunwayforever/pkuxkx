@@ -32,6 +32,10 @@
 		#action {你运功完毕} {
 			watch_qiang;
 		};
+
+		#action {收功站了起来} {
+			watch_qiang;	
+		};
 		
 		#ticker {restart_watch} {
 			watch_qiang;
