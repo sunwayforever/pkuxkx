@@ -25,6 +25,7 @@
 #alias {attack.hubiao} {
 	pfm jingmo;
 	pfm fmq;
+	pfm zuida;
 	#class attack.inner open;
 	#class attack.inner close;
 };
@@ -92,7 +93,7 @@
 
 #alias {chan} {
 	unwi;
-	wield whip;
+	wield qixing;
 	perform riyue-bian.chan;
 	wi;
 };
@@ -110,7 +111,9 @@
 	wi;
 };
 
-#list my_weapons create {staff; staff 2};
+#list my_weapons create {my spear; my spear 2};
+#list my_secondary_weapons create {my staff;};
+#list my_special_weapons create {qixing};
 
 #var shortcut F1:¾ªÄ§ F2:×í´ò F3:²ø;
 
@@ -148,7 +151,7 @@
 
 #alias {fmq} {
 	unwi;
-	wield whip;
+	wield qixing;
 	#send {perform riyue-bian.fumoquan};
 	wi;
 };
