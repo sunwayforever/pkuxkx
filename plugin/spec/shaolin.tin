@@ -156,8 +156,8 @@
 	wi;
 };
 
-stat.register 惊魔 hit 结果他胸前大穴被你指力点中，全身动弹不得;
-stat.register 惊魔 miss 可是他看破了你的企图，侧身避过指力;
+stat.register 惊魔 hit 胸前大穴被你指力点中，全身动弹不得;
+stat.register 惊魔 miss 看破了你的企图，侧身避过指力;
 
 #var char_menpai_position fzl;
 #var shifu laozu;
