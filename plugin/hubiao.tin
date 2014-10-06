@@ -548,6 +548,7 @@ load chaos;
 		#else {
 			#math hb_rotate_location_count ${hb_rotate_location_count} + 1;
 			#if {${hb_rotate_location_count} > 3 && "${hb_rotate_location}" != "NIL"} {
+				#var hb_rotate_location_count 0;
 				hb.stop;
 				gt ${hb_rotate_location};
 				on_there {
