@@ -4,28 +4,27 @@
 };
 
 #alias {attack.prepare} {
+	yun powerup;
+	pfm fmq;
+	pfm zuida;
+	pfm jingmo;
+	
 	#class attack.inner open;
 	#ticker {fumoquan} {
-		fmq;
+		pfm fmq;
 	} {30};
 	#ticker {jingmo} {
 		pfm jingmo;
-	} {3};
+	} {1.5};
 	#class attack.inner close;
 };
 
 #alias {attack.normal} {
-	pfm jingmo;
-	pfm fmq;
-	pfm zuida;
 	#class attack.inner open;
 	#class attack.inner close;
 };
 
 #alias {attack.hubiao} {
-	pfm jingmo;
-	pfm fmq;
-	pfm zuida;
 	#class attack.inner open;
 	#class attack.inner close;
 };
