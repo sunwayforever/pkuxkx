@@ -220,28 +220,34 @@
 
 #function {hpdraw}
 {
-	#var tmp @eval{%1*7/%2};
+	#var tmp @eval{%1*10/%2};
 	#if {$tmp<0} {#var tmp 0};
 	#elseif {$tmp==0 & %1>0} {#var tmp 1};
-	#elseif {$tmp==7 & %1>%2} {#var tmp 8};
-	#elseif {$tmp>14} {#var tmp 14};
+	#elseif {$tmp==10 & %1>%2} {#var tmp 11};
+	#elseif {$tmp>20} {#var tmp 20};
 	#switch {$tmp}
 	{
-		#case 0  {#var result {<099>       }};
-		#case 1  {#var result {<DAA> <099>      }};
-		#case 2  {#var result {<DBA>  <099>     }};
-		#case 3  {#var result {<DCA>   <099>    }};
-		#case 4  {#var result {<DDA>    <099>   }};
-		#case 5  {#var result {<CDA>     <099>  }};
-		#case 6  {#var result {<BDA>      <099> }};
-		#case 7  {#var result {<ADA>       <099>}};
-		#case 8  {#var result {<AEE> <ADA>      <099>}};
-		#case 9  {#var result {<AEE>  <ADA>     <099>}};
-		#case 10 {#var result {<AEE>   <ADA>    <099>}};
-		#case 11 {#var result {<AEE>    <ADA>   <099>}};
-		#case 12 {#var result {<AEE>     <ADA>  <099>}};
-		#case 13 {#var result {<AEE>      <ADA> <099>}};
-		#case 14 {#var result {<AEE>       <099>}};
+		#case 0  {#var result {<099>          }};
+		#case 1  {#var result {<DAA> <099>         }};
+		#case 2  {#var result {<DBA>  <099>        }};
+		#case 3  {#var result {<DCA>   <099>       }};
+		#case 4  {#var result {<DDA>    <099>      }};
+		#case 5  {#var result {<CDA>     <099>     }};
+		#case 6  {#var result {<BDA>      <099>    }};
+		#case 7  {#var result {<ADA>       <099>   }};
+		#case 8  {#var result {<ADA>        <099>  }};
+		#case 9  {#var result {<ADA>         <099> }};
+		#case 10  {#var result {<ADA>          <099>}};
+		#case 11  {#var result {<AEE> <ADA>         <099>}};
+		#case 12  {#var result {<AEE>  <ADA>        <099>}};
+		#case 13 {#var result {<AEE>   <ADA>       <099>}};
+		#case 14 {#var result {<AEE>    <ADA>      <099>}};
+		#case 15 {#var result {<AEE>     <ADA>     <099>}};
+		#case 16 {#var result {<AEE>      <ADA>    <099>}};
+		#case 17 {#var result {<AEE>       <ADA>   <099>}};
+		#case 18 {#var result {<AEE>        <ADA>  <099>}};
+		#case 19 {#var result {<AEE>         <ADA> <099>}};
+		#case 20 {#var result {<AEE>          <099>}};
 	};
 };
 #function {hpcolor}{
