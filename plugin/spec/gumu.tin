@@ -27,7 +27,7 @@
 	#class attack.inner open;
 	#ticker {shexin} {
 		pfm shexin;
-	} {4.8};
+	} {3.8};
 	#class attack.inner close;
 };
 
