@@ -163,7 +163,7 @@
 				#return -1;
 			};
 			#else {
-				#return 5;
+				#return -1;
 			};
 		};
 		#else {
@@ -437,7 +437,9 @@
 	    #elseif {"${tmp}" == "¡È÷›"} {
 	     	#list hb_path create {
 	     		gn;gw;gw;gw;gnu;gne;gnw;gnw;gnu;gn;gw;gw;gw;gw;gw;gn;gn;
-	     		gs;gs;gs;gw;gw;ge;ge;ge;ge;gw;gw;gs;gs;gs;gs;gn;gn;gn;gn;gn;gw;gn;gs;gs;gn;gw;gn;gs;gs;gn;gw;ge;gnw;gnw;gse;gse;ge;ge;ge;gn;gs;gs;gn;ge;ge;ge;ge;gw;gw;gw;gw;gw;gn;gn;
+	     		gs;gs;gs;gw;gw;ge;ge;ge;ge;gw;gw;gs;gs;gs;gs;gse;gnw;gsw;gs;gn;gne;gn;gn;gn;gn;gn;
+				gw;gn;gs;gs;gn;gw;gn;gs;gs;gn;gw;ge;gnw;gnw;gse;gse;gs;gn;ge;ge;
+				ge;gn;gs;gs;clear_blocker {wei};gn;ge;ge;ge;ge;gn;gnu;gsd;gs;gw;gw;gw;gw;gw;gn;gn;
 	     	};
 	    };
 	    #elseif {"${tmp}" == "‘ﬁ∆’"} {
