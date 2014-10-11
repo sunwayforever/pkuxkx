@@ -1,8 +1,5 @@
 #class xizao open
-
 #alias {xz.start} {
-	xi pool;
-	show_to_quest ฯดิ่;
 	#class xi.inner open;
 	#ticker {xi.restart} {
 		xi pool;
@@ -16,6 +13,12 @@
 		};
 	};
 	#class xi.inner close;
+	gt qfa;
+	on_there {
+		w;w;w;w;sw;nd;nd;
+		show_to_quest ฯดิ่;
+		xi pool;
+	};
 };
 
 #alias {xz.stop} {
