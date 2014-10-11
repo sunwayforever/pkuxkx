@@ -48,18 +48,42 @@
 };
 
 #alias {get.qian} {
-	#class money.qu.inner open;
-	#action {钱眼开说道：「哟，抱歉啊，我这儿正忙着呢……您请稍候。」} {
+	#alias tmp_get_qian %1;
+	#class money.inner open;
+	#alias delay_action {
 		#delay {1} {
 			qu 1 cash;
 		};
 	};
-	#action {你从银号里取出%*张一千两银票} {
-		#class money.qu.inner kill;
-		e;s;
-		show_to_info 取 @ctd{%%1} cash;
+	#action {钱眼开说道：「哟，抱歉啊，我这儿正忙着呢……您请稍候。」} {
+		delay_action;
 	};
-	#class money.qu.inner close;
+	#action {你从银号里取出%*张一千两银票} {
+		l cash;
+	};
+
+	#action {^%*张一千两银票(Thousand-cash)} {
+		#var cun_count @ctd{%%1};
+		#math cun_count ${cun_count}-1;
+		#if {${cun_count} <= 0} {
+			#showme 你拿出零张一千两银票，存进了银号。;
+		};
+		#else {
+			#alias delay_action {
+				#delay {1} {
+					cun ${cun_count} cash;
+				};
+			};
+			cun ${cun_count} cash;
+		};
+	};
+	#action {你拿出%*张一千两银票，存进了银号。} {
+		#class money.inner kill;
+		#send {sc};
+		e;s;
+		tmp_get_qian;
+	};
+	#class money.inner close;
 	on_there {
 		n;w;
 		qu 1 cash;
@@ -77,7 +101,9 @@
 		buy bao;
 	};
 	#action {你把身上的一个包袱卖掉} {
-		buy bao;
+		#delay {1} {
+			buy bao;
+		};
 	};
 	#action {掌柜的说：客官您这包袱里面还有东西呢。} {
 		#showme 你向当铺买下一个包袱;
@@ -425,7 +451,7 @@
 		#unaction {抵达目的地};
 		#delay {there_delay} {
 			tmp_there;
-		} {1.5};
+		} {1.8};
 	};
 };
 

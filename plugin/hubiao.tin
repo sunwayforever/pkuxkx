@@ -69,15 +69,15 @@ load chaos;
 			#if {${eff_qx_percent} < 50} {
 				#2 yun lifeheal;
 			};
+			#ticker {hb_walk} {
+				#if {${hb_force_wait} == 0 && ${hb_paused} == 0 && ${hb_wait} == 0} {
+					${hb_next_step};
+				};
+			} {8};
 			#delay {hb_move} {
 				#if {${hb_force_wait} == 0 && ${hb_paused} == 0 && ${hb_wait} == 0} {
 					${hb_next_step};
 				};
-				#ticker {hb_walk} {
-					#if {${hb_force_wait} == 0 && ${hb_paused} == 0 && ${hb_wait} == 0} {
-						${hb_next_step};
-					};
-				} {8};
 			} {3};
 		};
 	};
@@ -273,6 +273,7 @@ load chaos;
 	};
 
 	#alias {hb.recover} {
+		#class hb.recover.inner open;
 		#action {chaos ok: %*} {
 			#if {"%%%1" != "fake"} {
 				#math hb_path_index ${hb_path_index}-1;
@@ -282,6 +283,7 @@ load chaos;
 			#delay {hb_delay} {
 				hb.resume;
 			} {10};
+			#class hb.recover.inner kill;
 		};
 
 		#action {chaos error} {
@@ -291,8 +293,9 @@ load chaos;
 			#alias {hb.recover} {
 				#cr;
 			};
+			#class hb.recover.inner kill;
 		};
-		
+		#class hb.recover.inner close;		
 		chaos.find;
 	};
 
@@ -324,7 +327,7 @@ load chaos;
 			#else {
 				${hb_next_step};
 			};
-		} {2.8};
+		} {1.8};
 	}
 };
 
@@ -778,13 +781,7 @@ load chaos;
 };
 
 #alias {hb.p} {
-	get.san {
-		get.fan {
-			get.bao {
-				repair;
-			};
-		};
-	};
+	chain get.san get.qian get.fan get.bao repair;
 };
 
 #action {你给%*一些失踪的财物} {
