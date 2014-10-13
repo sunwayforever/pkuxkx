@@ -177,8 +177,8 @@
 	map.go {Ð¡ÎÝ};
 };
 
-#list my_weapons create {my spear; my spear 2};
-#list my_secondary_weapons create {my sword;};
+#list my_weapons create {my sword; my sword 2};
+
 #var shifu zhang;
 
 #alias {wi_xiaofeng} {
