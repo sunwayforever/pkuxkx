@@ -522,11 +522,11 @@ load chaos;
 		notify.alert 挂了; 
 		xmpp.notify 挂了;
 		hb.teardown;
-		hb.back;			
+		hb.back;
 	};
 	
 	#action {^你的眼前一黑，接著什么也不知道了} {
-		hb.pause;
+		hb.end;
 	};
 
 	#action {使用命令【getesc 任务序号】来认领押镖任务。} {
