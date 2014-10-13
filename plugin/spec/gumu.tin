@@ -1,6 +1,10 @@
 #class gumu_spec open
 #var jiali_zhua 150;
 #var jiali_shexin 10;
+
+#var first_sword zidian;
+#var second_sword qingshuang;
+
 #alias {attack.prepare} {
 	yun xinjing;
 	#class attack.inner open;
@@ -22,7 +26,6 @@
 #alias {attack.hubiao} {
 	pfm chan;
 	pfm shexin;
-	pfm zhua;
 	pfm suxin;
 	#class attack.inner open;
 	#ticker {shexin} {
@@ -117,7 +120,7 @@
 
 #alias {xiongyong} {
 	unwield all;
-	wield sword;
+	wield ${first_sword};
 	#send {jifa parry xuantie-jian};
 	perform xuantie-jian.xiongyong;
 	#send {jifa parry meinu-quan};
@@ -127,7 +130,7 @@
 
 #alias {qixing} {
 	unwi;
-	wield sword;;
+	wield ${second_sword};
 	perform quanzhen-jian.qixing;
 	unwi;
 };
@@ -150,8 +153,8 @@
 
 #alias {suxin} {
 	unwield all;
-	wield sword;
-	wield sword 2;
+	wield ${first_sword};
+	wield ${second_sword};
 	perform yunu-jianfa.suxin;
 	unwield all;
 	wi;
@@ -185,7 +188,7 @@
 	wi;	
 };
 
-#list my_weapons create {my sword; my sword 2};
+#list my_weapons create {my spear; my spear 2};
 #list my_secondary_weapons create {my whip;};
 #list my_special_weapons create {zidian;qingshuang};
 
