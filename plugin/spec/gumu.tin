@@ -25,12 +25,14 @@
 
 #alias {attack.hubiao} {
 	pfm chan;
-	pfm shexin;
 	pfm suxin;
 	#class attack.inner open;
-	#ticker {shexin} {
-		pfm shexin;
-	} {3.8};
+	#ticker {suxin} {
+		pfm suxin;
+	    } {3.8};
+       #ticker {xiongyong} {
+		pfm xiongyong;
+	} {5.8};
 	#class attack.inner close;
 };
 
@@ -194,6 +196,8 @@
 
 stat.register 缠 miss 可是他看破了你的企图，并没有上当;
 stat.register 缠 hit 结果他被你攻了个措手不及！
+stat.register 汹涌 hit 只觉得犹如身陷洪涛巨浪，跌跌撞撞;
+stat.register 汹涌 miss 你的凌厉攻势;
 
 #var char_menpai_position xt;
 #var shifu yang;
