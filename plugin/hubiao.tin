@@ -98,10 +98,10 @@ load chaos;
 	};
 
 	#action {^你赶着镖车驶了过来。$} {
-		#math hb_path_index ${hb_path_index}+1;
-		#list hb_path get ${hb_path_index} hb_next_step;
 		#unticker {hb_walk};
 		#if {${hb_paused} == 0} {
+                #math hb_path_index ${hb_path_index}+1;
+		    #list hb_path get ${hb_path_index} hb_next_step;
 			#if {@getenv{mixin_lunci} == 5} {
 				hb.move;
 			};
@@ -681,6 +681,7 @@ load chaos;
 			#action {所有人被赶下了渡船} {
 				#unaction {所有人被赶下了渡船};
 				#class guohe.inner kill;
+                		#math hb_path_index ${hb_path_index}+1;
 				hb.resume;
 			};
 		};

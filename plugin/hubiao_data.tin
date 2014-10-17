@@ -547,13 +547,15 @@
 			};
 		};
 		#elseif {"${tmp}" == "‘¿—Ù"} {
-	     	#list hb_path create  {
-				gn;gsw;gsw;gsw;gsw;gw;gwu;gnw;gwu;gw;gw;gw;
-				gn;gn;gn;gs;gs;ge;gw;gs;ge;gn;gs;gs;gn;ge;ge;gw;gw;gw;gw;gn;gs;gs;gn;gw;gw;gu;gd;gs;gn;ge;ge;ge;gs;gw;ge;ge;gw;gs;gs;gn;gn;
+	        #list hb_path create  {
+				gn;gsw;gsw;gsw;gsw;gw;gwu;gnw;gwu;gw;gw;gn;gs;gs;gn;gw;gs;
+                w;ge;ge;gw;gs;gs;gsu;gsu;gsu;ged;gnu;gsd;ged;gwu;gwu;gnd;gnd;gnd;gn;gn;
+                n;gn;ge;gw;gn;gn;gw;ge;gne;gsw;gs;gs;gs;
+                w;gn;gs;gs;gn;gw;gw;gu;gd;gs;gsu;gsw;ge;gw;gne;gnd;gw;gwu;ged;ge;gn;ge;ge;ge;gs;
 			};
 		};
 		#elseif {"${tmp}" == "œÂ—Ù"} {
-	     	#list hb_path create  {
+	        #list hb_path create  {
 				#nop NOT USED;
 				gn;gne;gne;gne;gn;gnw;gnw;hb.guohe {jiang};gn;gnw;gnu;gn;gn;gn;gw;gw;gw;gnw;gw;gw;gw;gw;gw;gw;gw;gn;
 			};
