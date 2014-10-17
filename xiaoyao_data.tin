@@ -156,5 +156,4 @@
 #act {^后堂$} {#var CurrentPosition ht};#act {^后堂 - $} {#var CurrentPosition ht};
 #act {^天福镖局$} {#var CurrentPosition tf};#act {^天福镖局 - $} {#var CurrentPosition tf};
 #act {^丹陛桥$} {#var CurrentPosition tt};#act {^丹陛桥 - $} {#var CurrentPosition tt};
-#act {^${char_name}的甜蜜小屋$} {#var CurrentPosition bs};#act {^${char_name}的甜蜜小屋 - $} {#var CurrentPosition bs};
 #class xiaoyao_data close

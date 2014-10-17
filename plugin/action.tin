@@ -8,7 +8,7 @@
 #macro {\el} {
        #buffer lock;
        #if {$buffer_locked == 0} {
-       	   #var buffer_locked 1;
+           #var buffer_locked 1;
        };
        #else {
            #var buffer_locked 0;
@@ -16,20 +16,20 @@
 };
 
 #action {^http://pkuxkx.net/antirobot/robot.php?filename=%1} {
-	xmpp.notify http://pkuxkx.net/antirobot/robot.php?filename=%1;
-	#system {google-chrome http://pkuxkx.net/antirobot/robot.php?filename=%1 1>/dev/null 2>&1 &};
+    xmpp.notify http://pkuxkx.net/antirobot/robot.php?filename=%1;
+    #system {google-chrome http://pkuxkx.net/antirobot/robot.php?filename=%1 1>/dev/null 2>&1 &};
 };
 
 #action {以你目前的级别，你放不了更多宝石。} {
-	show_to_info 宝石放不下了;
+    show_to_info 宝石放不下了;
 };
 
 #action {你告诉%*：notify %*} {
-	#cr;
+    #cr;
 } {1};
 
 #ticker {check_baowei} {
-	check_baowei;
+    check_baowei;
 } {60};
 
 @mapcreate{menpai};
@@ -48,316 +48,316 @@
 @mapset{menpai;天龙寺;tianlong};
 #gag get_char_info;
 #alias {get_char_info} {
-	#class get_char_info.inner open;
-	#action {【%*】%*(%*)} {
-		#var char_id @lower{%%3};	
-	};
-	#action {你是%*第} {
-		#var char_menpai_zh %%1;
-		#var char_menpai @mapget{menpai;%%1};
-		load spec/${char_menpai};
-		show_to_shortcut ${shortcut};
-		wi;
-		we;
-	};
-	#action {≡━━━━━━━━━━━━━━━━━━━━━━◎北大侠客行◎━━≡} {
-		#class get_char_info.inner kill;
+    #class get_char_info.inner open;
+    #action {【%*】%*(%*)} {
+        #var char_id @lower{%%3};
+    };
+    #action {你是%*第} {
+        #var char_menpai_zh %%1;
+        #var char_menpai @mapget{menpai;%%1};
+        load spec/${char_menpai};
+        show_to_shortcut ${shortcut};
+        wi;
+        we;
+    };
+    #action {≡━━━━━━━━━━━━━━━━━━━━━━◎北大侠客行◎━━≡} {
+        #class get_char_info.inner kill;
 
-		#class get_name.inner open;
-		#action {姓    名：	%*} {
-			#var char_name %%%1;
-			#class get_name.inner kill;
-			update_status;
-			#showme get_char_info;
-		};
-		#class get_name.inner close;
-		
-		#class get_st.inner open;
-		#action {姓名:%*%sID:%S} {
-			#var char_name %%%1;
-			update_status;
-			#showme get_char_info;
-		};
-		#action {内力恢复：+%*  } {
-			#var char_nl_recovery %%%1;
-		};
-		#action {系统喘气中} {
-			#delay {10} {
-				#send {status_me};		
-			};
-		};
-		#action {≡━━━━━━━━━━━━━━━━━━━━━━━◎北大侠客行◎━━≡} {
-			#class get_st.inner kill;
-		};
-		#class get_st.inner close;
-		on_unbusy {
-			#send {finger ${char_id}};
-			#send {status_me};
-		};
-	};
-	#class get_char_info.inner close;
-	on_unbusy {
-		#send {sc};
-	};
+        #class get_name.inner open;
+        #action {姓    名： %*} {
+            #var char_name %%%1;
+            #class get_name.inner kill;
+            update_status;
+            #showme get_char_info;
+        };
+        #class get_name.inner close;
+
+        #class get_st.inner open;
+        #action {姓名:%*%sID:%S} {
+            #var char_name %%%1;
+            update_status;
+            #showme get_char_info;
+        };
+        #action {内力恢复：+%*  } {
+            #var char_nl_recovery %%%1;
+        };
+        #action {系统喘气中} {
+            #delay {10} {
+                #send {status_me};
+            };
+        };
+        #action {≡━━━━━━━━━━━━━━━━━━━━━━━◎北大侠客行◎━━≡} {
+            #class get_st.inner kill;
+        };
+        #class get_st.inner close;
+        on_unbusy {
+            #send {finger ${char_id}};
+            #send {status_me};
+        };
+    };
+    #class get_char_info.inner close;
+    on_unbusy {
+        #send {sc};
+    };
 };
 
 #alias {login} {
-	get_char_info;
-	#action {get_char_info} {
-		#unaction {get_char_info};
-		show_to_quest   ;
-		#send {i};
-		#send {hpbrief};
-		#send {uptime};
-		#send {time};
-		init_set;
-		update_env;
-		show.init;
-		check_baowei;
-		xmpp.start;
-		#delay {1} {
-			check_naijiu;
-			#send {hp};
-			#send {jifa};
-			#send {l};
-			pfm_special;
-		};
-	};
+    get_char_info;
+    #action {get_char_info} {
+        #unaction {get_char_info};
+        #act {^${char_name}的甜蜜小屋$} {#var CurrentPosition bs};#act {^${char_name}的甜蜜小屋 - $} {#var CurrentPosition bs};
+        show_to_quest   ;
+        #send {i};
+        #send {hpbrief};
+        #send {uptime};
+        #send {time};
+        init_set;
+        update_env;
+        show.init;
+        check_baowei;
+        xmpp.start;
+        #delay {1} {
+            check_naijiu;
+            #send {hp};
+            #send {jifa};
+            #send {l};
+            pfm_special;
+        };
+    };
 };
 
 #action {此ID档案已存在} {
-	#delay {3} {
-		login;
-	};
+    #delay {3} {
+        login;
+    };
 };
 
 #alias {we} {
-	remove all;
-	wear my boots;
-	wear my cloth;
-	wear my surcoat;
-	wear my head;
-	wear my armor;
-	wear my hands;
-	wear my waist;
-	wear my wrists;
-	wear my ring;
-	wear my ring 2;
-	wear my necklace;
-	wear my shield;
-	wear all;
+    remove all;
+    wear my boots;
+    wear my cloth;
+    wear my surcoat;
+    wear my head;
+    wear my armor;
+    wear my hands;
+    wear my waist;
+    wear my wrists;
+    wear my ring;
+    wear my ring 2;
+    wear my necklace;
+    wear my shield;
+    wear all;
 };
 
 #action {原来是你的肚子在叫了} {
-	eat_food;
+    eat_food;
 };
 
 #action {你舔了舔干裂的嘴唇，看来是很久没有喝水了。} {
-	eat_food;
+    eat_food;
 };
 
 #action {你渴得眼冒金星} {
-	eat_food;
+    eat_food;
 };
 
 #action {好了，你走吧} {
-	remove all;
-	wi;
-	we;
+    remove all;
+    wi;
+    we;
 };
 
 #list busy_for_move create {
-	青海湖畔美不胜收;
-	你不小心被什么东西绊了一下;
-	你现在正忙着哩;
-	你逃跑失败;
-	不能移动;
-	你还是先把对手解决了再说吧;
+    青海湖畔美不胜收;
+    你不小心被什么东西绊了一下;
+    你现在正忙着哩;
+    你逃跑失败;
+    不能移动;
+    你还是先把对手解决了再说吧;
 };
 
 #foreach {${busy_for_move}[%*]} {name} {
-	#action {${name}} {
-		#showme busy_for_move;
-	};
+    #action {${name}} {
+        #showme busy_for_move;
+    };
 };
 
 #action {大车停稳了下来} {
-	xia;
+    xia;
 };
 
 #event {SCREEN RESIZE} {
-	show_to_shortcut ${shortcut};
-	show.init;
-	update_status;
+    show_to_shortcut ${shortcut};
+    show.init;
+    update_status;
 };
 
 #action {你确定要升级吗} {
-	y;
+    y;
 };
 
 #action {您要将另一个连线中的相同人物赶出去} {
-	y;
+    y;
 };
 
 #action {你确实要存储%*点潜能吗} {
-	y;
+    y;
 };
 
 #action {没钱怎么坐船} {
-	set brief 2;
+    set brief 2;
 };
 
 #action {丑雕神情冷漠地拦住了你的去路} {
-	ask diao about 独孤求败;
+    ask diao about 独孤求败;
 };
 
 #action {爸爸说不能给陌生人进去的} {
-	ask xiao mao about 老朋友;
+    ask xiao mao about 老朋友;
 };
 
 #action {褚万里喝道} {
-	kill zhu;
-	on_dead {
-		enter;
-	};
+    kill zhu;
+    on_dead {
+        enter;
+    };
 };
 
 #action {江百胜伸手拦住你说道} {
-	kill jiang;
-	on_dead {
-		nu;
-	};
+    kill jiang;
+    on_dead {
+        nu;
+    };
 };
 
 #action {天狼子伸手拦住了你的去路} {
-	kill tianlang zi;
-	on_dead {
-		n;
-	};
+    kill tianlang zi;
+    on_dead {
+        n;
+    };
 };
 
 #action {出尘子一言不发} {
-	kill chuchen zi;
-	on_dead {
-		enter;
-	};
+    kill chuchen zi;
+    on_dead {
+        enter;
+    };
 };
 
 #action {陆大有喝道：你不是华山弟子，不得入内。} {
-	kill dayou;
-	on_dead {
-        s;w;w;  
-	};
+    kill dayou;
+    on_dead {
+        s;w;w;
+    };
 };
 
 #action {守将大声喝到:干什么的} {
-	answer 送信;
+    answer 送信;
 };
 
 #action {你确定要升级吗} {
-	#send {y};
+    #send {y};
 };
 
 #action {你确定要把%*自动加载} {
-	#send {y};	
+    #send {y};
 };
 
 #action {你的东西根本没坏} {
-	show_to_info 不需要修理;
+    show_to_info 不需要修理;
 };
 
 #action {爱爱告诉你：“修这把兵器共花了} {
-	#delay {delay_temp_repaired} {
-		check_naijiu;
-	} {1};
+    #delay {delay_temp_repaired} {
+        check_naijiu;
+    } {1};
 };
 
 #action {你花费了%*,修好%*！} {
-	show_to_info %2 修好了, 花费%1;
-	#delay {delay_temp_repaired} {
-		check_naijiu;
-	} {1};
+    show_to_info %2 修好了, 花费%1;
+    #delay {delay_temp_repaired} {
+        check_naijiu;
+    } {1};
 };
 
 #action {你喜欢原地逛逛么} {
-	#showme 抵达目的地;
+    #showme 抵达目的地;
 };
 
 #action {“你已经把装备放入熔炉并打算让我帮你锻造了么？”(回答yes or no)} {
-	#send {yes};
+    #send {yes};
 };
 
 #action {有人从别处%*连线取代你所控制的人物。} {
-	#end;
+    #end;
 };
 
 #action {请注意，你的活跃度已经偏低。如果你不是机器人，请在半小时内执行fullme命令补充你的活跃度。} {
-	#delay {fm} {
-		#var fm_info on;
-		update_status;
-	} {1200};
+    #delay {fm} {
+        #var fm_info on;
+        update_status;
+    } {1200};
 };
 
 #action {也许是上天垂青于你的勤奋和努力吧，一个小时之内你不用担心被判为机器人。} {
-	#var fm_info off;
-	#send {hp};
-	update_status;
+    #var fm_info off;
+    #send {hp};
+    update_status;
 };
 
 #alias {pfm_special} {
-	#class pfm_special.inner open;
-	#action {你现在会以下这些特技：} {
-		#action {%S(%S)} {
-			special %%%2;
-			#if {"%%%2" == "chainless"} {
-				chainless.setup;
-			};
-			#elseif {"%%%2" == "perceive"} {
-				load pp;
-			};
-			#elseif {"%%%2" == "sociability"} {
-				#alias {bl.clear} {
-					#nop %%%%1;
-					bl.walk;
-				};
-			};
-		};
-		#action {^>} {
-			#unaction {^>};
-			#unaction {%S(%S)};
-			#class pfm_special.inner kill;
-		};
-	};
-	#class pfm_special.inner close;
-	special;
+    #class pfm_special.inner open;
+    #action {你现在会以下这些特技：} {
+        #action {%S(%S)} {
+            special %%%2;
+            #if {"%%%2" == "chainless"} {
+                chainless.setup;
+            };
+            #elseif {"%%%2" == "perceive"} {
+                load pp;
+            };
+            #elseif {"%%%2" == "sociability"} {
+                #alias {bl.clear} {
+                    #nop %%%%1;
+                    bl.walk;
+                };
+            };
+        };
+        #action {^>} {
+            #unaction {^>};
+            #unaction {%S(%S)};
+            #class pfm_special.inner kill;
+        };
+    };
+    #class pfm_special.inner close;
+    special;
 };
 
 #action {侠客岛赏善使者「赏善使者」张 三(Zhang san)} {
-	xmpp.notify 张三!;
-	notify.alert 张三!;
-	show_to_info 张三!;
-	accept zhang;
+    xmpp.notify 张三!;
+    notify.alert 张三!;
+    show_to_info 张三!;
+    accept zhang;
 };
 
 #action {张 三双手抱拳，对着${char_name}作了个揖道} {
-	xmpp.notify 张三!;
-	notify.alert 张三!;
-	show_to_info 张三!;
+    xmpp.notify 张三!;
+    notify.alert 张三!;
+    show_to_info 张三!;
 };
 
 #action {你端起一碗酥油茶喝了一大口，长出了口气，满意的点了点头。} {
-	#delay {delay_hp} {
-		#send {hp};
-	} {1};
+    #delay {delay_hp} {
+        #send {hp};
+    } {1};
 };
 
 #action {游方和尚(youfang heshang)告诉你：你还没找到之前失散的亲戚吧？} {
-	show_to_info 认亲;
-	xmpp.notify 认亲;
+    show_to_info 认亲;
+    xmpp.notify 认亲;
 };
 
 #action {没有经过通传，任何人等不得擅闯都统治府。} {
-	ask shiwei about 通传;
+    ask shiwei about 通传;
 };
 #class action close;
-

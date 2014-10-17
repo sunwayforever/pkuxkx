@@ -502,73 +502,73 @@
                 gn;gn;gn;gn;gn;gsw;gsw;gn;gn;gn;gn;gn;gn;gn;
                 gn;gn;gn;gnu;gnd;gn;gn;gnu;hb.guohe {huanghe};gn;gne;gne;gne;ge;gn;gn;gw;
 
-            };
+};
+};
+#elseif {"${tmp}" == "华山"} {
+    #format {tmp} {%.6s} {%1};
+    #if {"${tmp}" == "华山村"} {
+        #list hb_path create  {
+            gw;gn;gn;gnw;gnd;gn;gn;gn;gn;gn;gne;gne;gne;gne;gn;gnw;gnw;hb.guohe {jiang};
+            gn;gnw;gnu;gn;gn;gn;gn;gn;gn;gn;gn;gn;gsw;gsw;gnw;gn;gn;gn;gn;gn;
         };
-        #elseif {"${tmp}" == "华山"} {
-            #format {tmp} {%.6s} {%1};
-            #if {"${tmp}" == "华山村"} {
-                #list hb_path create  {
-                    gw;gn;gn;gnw;gnd;gn;gn;gn;gn;gn;gne;gne;gne;gne;gn;gnw;gnw;hb.guohe {jiang};
-                    gn;gnw;gnu;gn;gn;gn;gn;gn;gn;gn;gn;gn;gsw;gsw;gnw;gn;gn;gn;gn;gn;
-                };
-            };
-            #else {
-                #var tmp 华山;
-                #list hb_path create {
+    };
+    #else {
+        #var tmp 华山;
+        #list hb_path create {
 
-                };
-            };
+};
+};
+};
+};
+#elseif {"${hb_owner}" == "wang"} {
+    #if {"${tmp}" == "南昌"} {
+        #list hb_path create  {
+            gn;gsw;gs;gs;gs;gs;gs;gsu;gse;gs;gs;gs;ge;gn;
+            gs;ge;ge;geu;geu;gwd;gwd;gw;gw;gs;gn;gw;gw;gn;gs;gs;gn;gw;gw;gwu;gwu;gnu;genter;gw;ge;ge;gw;gn;gs;gout;gsd;
+            gwu;gnd;gsu;ged;ged;ged;ge;ge;ge;gs;gw;ge;ge;gw;gs;gs;gs;gse;gs;gse;gnw;gn;gnw;gn;gn;gn;ge;gw;gn;gn;gw;ge;ge;gw;gn;gs;gs;ge;gn;
         };
     };
-    #elseif {"${hb_owner}" == "wang"} {
-        #if {"${tmp}" == "南昌"} {
-            #list hb_path create  {
-                gn;gsw;gs;gs;gs;gs;gs;gsu;gse;gs;gs;gs;ge;gn;
-                gs;ge;ge;geu;geu;gwd;gwd;gw;gw;gs;gn;gw;gw;gn;gs;gs;gn;gw;gw;gwu;gwu;gnu;genter;gw;ge;ge;gw;gn;gs;gout;gsd;
-                gwu;gnd;gsu;ged;ged;ged;ge;ge;ge;gs;gw;ge;ge;gw;gs;gs;gs;gse;gs;gse;gnw;gn;gnw;gn;gn;gn;ge;gw;gn;gn;gw;ge;ge;gw;gn;gs;gs;ge;gn;
-            };
-        };
-        #elseif {"${tmp}" == "牙山"} {
-            #list hb_path create  {
-                gn;gsw;gs;gs;gs;gs;gs;gsu;gse;gs;gs;gs;gs;gs;gs;gs;gse;gs;gse;gn;gn;gn;ge;gse;gne;ge;gne;gne;ge;ge;ge;ge;ge;ge;ge;
-                gn;gw;ge;ge;gw;gn;gs;gs;ge;gn;gs;ge;gn;gs;ge;gw;gw;gw;gs;gw;ge;ge;gw;gs;gw;ge;ge;gw;gs;gn;gn;gn;gw;gn;gs;gs;gn;gw;gs;gn;ge;ge;
-            };
-        };
-        #elseif {"${tmp}" == "泉州"} {
-            #list hb_path create  {
-                gn;gsw;gs;gs;gs;gs;gs;gsu;gse;gs;gs;gs;gs;gs;gs;gs;gse;gs;gse;gs;gs;ge;
-                gn;gs;gne;gne;gne;gn;gs;gsw;gsw;gsw;gs;gn;ged;gn;gs;gs;gn;gwu;gw;gn;gs;gs;gs;ge;gw;gn;gn;gw;gn;gs;gs;gn;gnw;gw;ge;gse;ge;ge;
-            };
-        };
-        #elseif {"${tmp}" == "嘉兴"} {
-            #list hb_path create  {
-                #nop NOT USED;
-                gn;gsw;gs;gs;gs;gs;gs;gsu;gse;gs;gs;gs;gs;gs;gs;gs;gse;gs;gse;gn;gn;gn;
-            };
-        };
-        #elseif {"${tmp}" == "岳阳"} {
-            #list hb_path create  {
-                gn;gsw;gsw;gsw;gsw;gw;gwu;gnw;gwu;gw;gw;gn;gs;gs;gn;gw;gs;
-                gw;ge;ge;gw;gs;gs;gsu;gsu;gsu;ged;gnu;gsd;ged;gwu;gwu;gnd;gnd;gnd;gn;gn;
-                gn;gn;ge;gw;gn;gn;gw;ge;gne;gsw;gs;gs;gs;
-                gw;gn;gs;gs;gn;gw;gw;gu;gd;gs;gsu;gsw;ge;gw;gne;gnd;gw;gwu;ged;ge;gn;ge;ge;ge;gs;
-            };
-        };
-        #elseif {"${tmp}" == "襄阳"} {
-            #list hb_path create  {
-                #nop NOT USED;
-                gn;gne;gne;gne;gn;gnw;gnw;hb.guohe {jiang};gn;gnw;gnu;gn;gn;gn;gw;gw;gw;gnw;gw;gw;gw;gw;gw;gw;gw;gn;
-            };
-        };
-        #elseif {"${tmp}" == "武当"} {
-            #list hb_path create  {
-                gn;gne;gne;gne;gn;gnw;gnw;hb.guohe {jiang};gn;gnw;gnu;gn;gn;gn;gw;gw;gw;gnw;gw;gw;gw;gw;gw;gw;gw;gw;gw;gw;gw;gw;gw;gw;gw;gw;gn;
-                gs;gw;gw;gs;gsw;gw;gw;gnw;gw;ge;gn;gs;gse;ge;ge;gne;gn;ge;ge;gn;
-            };
+    #elseif {"${tmp}" == "牙山"} {
+        #list hb_path create  {
+            gn;gsw;gs;gs;gs;gs;gs;gsu;gse;gs;gs;gs;gs;gs;gs;gs;gse;gs;gse;gn;gn;gn;ge;gse;gne;ge;gne;gne;ge;ge;ge;ge;ge;ge;ge;
+            gn;gw;ge;ge;gw;gn;gs;gs;ge;gn;gs;ge;gn;gs;ge;gw;gw;gw;gs;gw;ge;ge;gw;gs;gw;ge;ge;gw;gs;gn;gn;gn;gw;gn;gs;gs;gn;gw;gs;gn;ge;ge;
         };
     };
-    #list hb_path size hb_path_size;
-    #var hb_path_index 1;
+    #elseif {"${tmp}" == "泉州"} {
+        #list hb_path create  {
+            gn;gsw;gs;gs;gs;gs;gs;gsu;gse;gs;gs;gs;gs;gs;gs;gs;gse;gs;gse;gs;gs;ge;
+            gn;gs;gne;gne;gne;gn;gs;gsw;gsw;gsw;gs;gn;ged;gn;gs;gs;gn;gwu;gw;gn;gs;gs;gs;ge;gw;gn;gn;gw;gn;gs;gs;gn;gnw;gw;ge;gse;ge;ge;
+        };
+    };
+    #elseif {"${tmp}" == "嘉兴"} {
+        #list hb_path create  {
+            #nop NOT USED;
+            gn;gsw;gs;gs;gs;gs;gs;gsu;gse;gs;gs;gs;gs;gs;gs;gs;gse;gs;gse;gn;gn;gn;
+        };
+    };
+    #elseif {"${tmp}" == "岳阳"} {
+        #list hb_path create  {
+            gn;gsw;gsw;gsw;gsw;gw;gwu;gnw;gwu;gw;gw;gn;gs;gs;gn;gw;gs;
+            gw;ge;ge;gw;gs;gs;gsu;gsu;gsu;ged;gnu;gsd;ged;gwu;gwu;gnd;gnd;gnd;gn;gn;
+            gn;gn;ge;gw;gn;gn;gw;ge;gne;gsw;gs;gs;gs;
+            gw;gn;gs;gs;gn;gw;gw;gu;gd;gs;gsu;gsw;ge;gw;gne;gnd;gw;gwu;ged;ge;gn;ge;ge;ge;gs;
+        };
+    };
+    #elseif {"${tmp}" == "襄阳"} {
+        #list hb_path create  {
+            #nop NOT USED;
+            gn;gne;gne;gne;gn;gnw;gnw;hb.guohe {jiang};gn;gnw;gnu;gn;gn;gn;gw;gw;gw;gnw;gw;gw;gw;gw;gw;gw;gw;gn;
+        };
+    };
+    #elseif {"${tmp}" == "武当"} {
+        #list hb_path create  {
+            gn;gne;gne;gne;gn;gnw;gnw;hb.guohe {jiang};gn;gnw;gnu;gn;gn;gn;gw;gw;gw;gnw;gw;gw;gw;gw;gw;gw;gw;gw;gw;gw;gw;gw;gw;gw;gw;gw;gn;
+            gs;gw;gw;gs;gsw;gw;gw;gnw;gw;ge;gn;gs;gse;ge;ge;gne;gn;ge;ge;gn;
+        };
+    };
+};
+#list hb_path size hb_path_size;
+#var hb_path_index 1;
 };
 
 #class hubiao_data close
