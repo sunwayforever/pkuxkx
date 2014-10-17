@@ -17,7 +17,7 @@
                 #return -1;
             };
             #else {
-                #return -1; 
+                #return -1;
             };
         };
         #elseif {"%1" == "洛阳四海钱庄"} {
@@ -59,7 +59,7 @@
                 #return -1;
             };
             #else {
-                #return 4;  
+                #return 4;
             };
         };
         #elseif {"%1" == "襄阳当铺"} {
@@ -67,7 +67,7 @@
                 #return -1;
             };
             #else {
-                #return -1;             
+                #return -1;
             };
         };
         #else {
@@ -110,7 +110,7 @@
                 #return -1;
             };
             #else {
-                #return 5;  
+                #return 5;
             };
         };
         #else {
@@ -501,7 +501,7 @@
                 gw;gn;gn;gnw;gnd;gn;gn;gn;gn;gn;gne;gne;gne;gne;gn;gnw;gnw;hb.guohe {jiang};gn;gnw;gnu;gn;gn;gn;gn;
                 gn;gn;gn;gn;gn;gsw;gsw;gn;gn;gn;gn;gn;gn;gn;
                 gn;gn;gn;gnu;gnd;gn;gn;gnu;hb.guohe {huanghe};gn;gne;gne;gne;ge;gn;gn;gw;
-                
+
             };
         };
         #elseif {"${tmp}" == "华山"} {
@@ -515,7 +515,7 @@
             #else {
                 #var tmp 华山;
                 #list hb_path create {
-                    
+
                 };
             };
         };
@@ -549,9 +549,9 @@
         #elseif {"${tmp}" == "岳阳"} {
             #list hb_path create  {
                 gn;gsw;gsw;gsw;gsw;gw;gwu;gnw;gwu;gw;gw;gn;gs;gs;gn;gw;gs;
-                w;ge;ge;gw;gs;gs;gsu;gsu;gsu;ged;gnu;gsd;ged;gwu;gwu;gnd;gnd;gnd;gn;gn;
-                n;gn;ge;gw;gn;gn;gw;ge;gne;gsw;gs;gs;gs;
-                w;gn;gs;gs;gn;gw;gw;gu;gd;gs;gsu;gsw;ge;gw;gne;gnd;gw;gwu;ged;ge;gn;ge;ge;ge;gs;
+                gw;ge;ge;gw;gs;gs;gsu;gsu;gsu;ged;gnu;gsd;ged;gwu;gwu;gnd;gnd;gnd;gn;gn;
+                gn;gn;ge;gw;gn;gn;gw;ge;gne;gsw;gs;gs;gs;
+                gw;gn;gs;gs;gn;gw;gw;gu;gd;gs;gsu;gsw;ge;gw;gne;gnd;gw;gwu;ged;ge;gn;ge;ge;ge;gs;
             };
         };
         #elseif {"${tmp}" == "襄阳"} {
