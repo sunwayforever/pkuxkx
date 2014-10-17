@@ -13,837 +13,837 @@ load chaos;
 #var hb_rotate_location_count 0;
 
 #alias {hb.teardown} {
-	#class hb_setup_inner kill;
-	#class clear_npc.inner kill;
-	#unticker {kill_npc};
-	#alias ge {\east};
-	#alias genter {\enter};
-	#alias geu {\eastup};
-	#alias gn {\north};
-	#alias gne {\northeast};
-	#alias gnu {\northup};
-	#alias gnw {\northwest};
-	#alias gout {\out};
-	#alias gs {\south};
-	#alias gse {\southeast};
-	#alias gsu {\southup};
-	#alias gsw {\southwest};
-	#alias gw {\west};
-	#alias gwu {\westup};
-	#alias ged {\eastdown};
-	#alias gnd {\northdown};
-	#alias gwd {\westdown};
-	#alias gsd {\southdown};
-	#alias gd {\down};
-	#alias gu {\up};
-	#alias {attack} {
-		attack.normal;
-	};
-	#unticker {hb_ticker};
+    #class hb_setup_inner kill;
+    #class clear_npc.inner kill;
+    #unticker {kill_npc};
+    #alias ge {\east};
+    #alias genter {\enter};
+    #alias geu {\eastup};
+    #alias gn {\north};
+    #alias gne {\northeast};
+    #alias gnu {\northup};
+    #alias gnw {\northwest};
+    #alias gout {\out};
+    #alias gs {\south};
+    #alias gse {\southeast};
+    #alias gsu {\southup};
+    #alias gsw {\southwest};
+    #alias gw {\west};
+    #alias gwu {\westup};
+    #alias ged {\eastdown};
+    #alias gnd {\northdown};
+    #alias gwd {\westdown};
+    #alias gsd {\southdown};
+    #alias gd {\down};
+    #alias gu {\up};
+    #alias {attack} {
+        attack.normal;
+    };
+    #unticker {hb_ticker};
 };
 
 #alias {hb.move} {
-	#if {${qx_percent} < 50 || ${js_percent} < 50 || ${nl_percent} < 20} {
-		#unticker {hb_walk};
-		#delay {hb_move} {
-			show_to_info ∆¯—™ªÚæ´…Òπ˝µÕ,Õ∆≥µ‘›Õ£;
-			notify escort paused;
-			on_truce {
-				on_health {hb.move};
-			};
-		} {3};
-	};
-	#else {
-		#if {${hb_path_index} > ${hb_path_size}} {
-			#delay {hb_move} {
-				hb.pause;
-				show_to_info µΩ¥Ô;
-				notify.alert escort arrived;
-				xmpp.notify µΩ¥Ô, √ª’“µΩ ’ªı»À;
-			} {3};
-		};
-		#else {
-			#if {${eff_qx_percent} < 95} {
-				#2 yun heal;
-			};
-			#if {${eff_qx_percent} < 50} {
-				#2 yun lifeheal;
-			};
-			#ticker {hb_walk} {
-				#if {${hb_force_wait} == 0 && ${hb_paused} == 0 && ${hb_wait} == 0} {
-					${hb_next_step};
-				};
-			} {8};
-			#delay {hb_move} {
-				#if {${hb_force_wait} == 0 && ${hb_paused} == 0 && ${hb_wait} == 0} {
-					${hb_next_step};
-				};
-			} {3};
-		};
-	};
+    #if {${qx_percent} < 50 || ${js_percent} < 50 || ${nl_percent} < 20} {
+        #unticker {hb_walk};
+        #delay {hb_move} {
+            show_to_info ∆¯—™ªÚæ´…Òπ˝µÕ,Õ∆≥µ‘›Õ£;
+            notify escort paused;
+            on_truce {
+                on_health {hb.move};
+            };
+        } {3};
+    };
+    #else {
+        #if {${hb_path_index} > ${hb_path_size}} {
+            #delay {hb_move} {
+                hb.pause;
+                show_to_info µΩ¥Ô;
+                notify.alert escort arrived;
+                xmpp.notify µΩ¥Ô, √ª’“µΩ ’ªı»À;
+            } {3};
+        };
+        #else {
+            #if {${eff_qx_percent} < 95} {
+                #2 yun heal;
+            };
+            #if {${eff_qx_percent} < 50} {
+                #2 yun lifeheal;
+            };
+            #ticker {hb_walk} {
+                #if {${hb_force_wait} == 0 && ${hb_paused} == 0 && ${hb_wait} == 0} {
+                    ${hb_next_step};
+                };
+            } {8};
+            #delay {hb_move} {
+                #if {${hb_force_wait} == 0 && ${hb_paused} == 0 && ${hb_wait} == 0} {
+                    ${hb_next_step};
+                };
+            } {3};
+        };
+    };
 };
 
 #alias {hb.setup} {
-	#foreach {${clear_npcs}[%*]} {npc} {clear_npc ${npc}};
-	#unaction {^    ’‚¿Ô%*≥ˆø⁄};
-	#unaction {ƒ„œÎ…±À≠};
-	#class hb_setup_inner open;
-	#action {Ô⁄≥µ∫Ù¿≤“ª…˘…¢¡Àº‹} {
-		hb.pause;
-		show_to_tuiche Ô⁄≥µ∫Ù¿≤“ª…˘…¢¡Àº‹;
-	};
+    #foreach {${clear_npcs}[%*]} {npc} {clear_npc ${npc}};
+    #unaction {^    ’‚¿Ô%*≥ˆø⁄};
+    #unaction {ƒ„œÎ…±À≠};
+    #class hb_setup_inner open;
+    #action {Ô⁄≥µ∫Ù¿≤“ª…˘…¢¡Àº‹} {
+        hb.pause;
+        show_to_tuiche Ô⁄≥µ∫Ù¿≤“ª…˘…¢¡Àº‹;
+    };
 
-	#action {chaos.remember: done} {
-		hb.move;
-	};
+    #action {chaos.remember: done} {
+        hb.move;
+    };
 
-	#action {^ƒ„∏œ◊≈Ô⁄≥µ ª¡Àπ˝¿¥°£$} {
-		#unticker {hb_walk};
-		#if {${hb_paused} == 0} {
-                #math hb_path_index ${hb_path_index}+1;
-		    #list hb_path get ${hb_path_index} hb_next_step;
-			#if {@getenv{mixin_lunci} == 5} {
-				hb.move;
-			};
-			#else {
-				chaos.remember;
-			};
-		};
-	};
+    #action {^ƒ„∏œ◊≈Ô⁄≥µ ª¡Àπ˝¿¥°£$} {
+        #unticker {hb_walk};
+        #if {${hb_paused} == 0} {
+            #math hb_path_index ${hb_path_index}+1;
+            #list hb_path get ${hb_path_index} hb_next_step;
+            #if {@getenv{mixin_lunci} == 5} {
+                hb.move;
+            };
+            #else {
+                chaos.remember;
+            };
+        };
+    };
 
-	#action {ΩŸ∑À∏ˆ∆◊›∂›»Î∞µ¿Ô≤ªº˚¡À} {
-		hb.detect_enemy;
-		#var hb_wait 0;
-		raw;
-	};
+    #action {ΩŸ∑À∏ˆ∆◊›∂›»Î∞µ¿Ô≤ªº˚¡À} {
+        hb.detect_enemy;
+        #var hb_wait 0;
+        raw;
+    };
 
-	#action {^’‚∏ˆ∑ΩœÚ} {
-		#if {${hb_paused} == 0} {
-			hb.pause;
-			show_to_info ¬∑æ∂≥ˆ¥Ì;
-			xmpp.notify ¬∑æ∂≥ˆ¥Ì;
-			#alias {hb.recover} {
-				#cr;
-			};
-		};
-	};
-	
-	#action {ΩŸ∑À≥√ƒ„≤ª◊¢“‚£¨Õ∆◊≈Ô⁄≥µæÕ≈‹£¨ƒ„∏œΩÙ◊∑¡À…œ»•°£} {
-		hb.pause;
-		@setenv{mixin_lunci;6};
-		#delay {hb_delay} {
-			hb.recover;
-		} {3};
-	};
+    #action {^’‚∏ˆ∑ΩœÚ} {
+        #if {${hb_paused} == 0} {
+            hb.pause;
+            show_to_info ¬∑æ∂≥ˆ¥Ì;
+            xmpp.notify ¬∑æ∂≥ˆ¥Ì;
+            #alias {hb.recover} {
+                #cr;
+            };
+        };
+    };
+    
+    #action {ΩŸ∑À≥√ƒ„≤ª◊¢“‚£¨Õ∆◊≈Ô⁄≥µæÕ≈‹£¨ƒ„∏œΩÙ◊∑¡À…œ»•°£} {
+        hb.pause;
+        @setenv{mixin_lunci;6};
+        #delay {hb_delay} {
+            hb.recover;
+        } {3};
+    };
 
-	#action {ΩŸ∑À…Ï ÷“ª¿πµ¿} {
-		war;
-		hb.wait;
-	};
+    #action {ΩŸ∑À…Ï ÷“ª¿πµ¿} {
+        war;
+        hb.wait;
+    };
 
-	#action {ƒ„≥§–¶“ª…˘£¨ø™ º∂‘÷‹Œß÷⁄»ÀÕ¥œ¬…± ÷£°} {
-		#var hb_first_kill 1;
-	};
-	
-	#action {ΩŸ∑ÀÕª»ª¥”∞µ¥¶Ã¯¡À≥ˆ¿¥} {
-		hb.detect_enemy;
-		hb.wait;
-		#if {${hb_first_kill} == 0} {
-			killall robber;
-		};
-		#else {
-			war;
-		};
-	};
+    #action {ƒ„≥§–¶“ª…˘£¨ø™ º∂‘÷‹Œß÷⁄»ÀÕ¥œ¬…± ÷£°} {
+        #var hb_first_kill 1;
+    };
+    
+    #action {ΩŸ∑ÀÕª»ª¥”∞µ¥¶Ã¯¡À≥ˆ¿¥} {
+        hb.detect_enemy;
+        hb.wait;
+        #if {${hb_first_kill} == 0} {
+            killall robber;
+        };
+        #else {
+            war;
+        };
+    };
 
-	#action {Œß…œ¿¥º∏∏ˆªÔº∆Ω´Ô⁄≥µ¿≠¡ÀΩ¯»•} {
-		@setenv{hb_state;ENDED};
-		hb.end;
-		raw;
-		show_to_tuiche »ŒŒÒÕÍ≥…;
-		notify escort done;
-		hb.teardown;
-		hb.back;			
-	} {1};
+    #action {Œß…œ¿¥º∏∏ˆªÔº∆Ω´Ô⁄≥µ¿≠¡ÀΩ¯»•} {
+        @setenv{hb_state;ENDED};
+        hb.end;
+        raw;
+        show_to_tuiche »ŒŒÒÕÍ≥…;
+        notify escort done;
+        hb.teardown;
+        hb.back;            
+    } {1};
 
-	#class hb_setup_inner close;
-	
-	#alias ge {gan che to east};
-	#alias genter {gan che to enter};
-	#alias geu {gan che to eastup};
-	#alias gn {gan che to north};
-	#alias gne {gan che to northeast};
-	#alias gnu {gan che to northup};
-	#alias gnw {gan che to northwest};
-	#alias gout {gan che to out};
-	#alias gs {gan che to south};
-	#alias gse {gan che to southeast};
-	#alias gsu {gan che to southup};
-	#alias gsw {gan che to southwest};
-	#alias gw {gan che to west};
-	#alias gwu {gan che to westup};
-	#alias ged {gan che to eastdown};
-	#alias gnd {gan che to northdown};
-	#alias gwd {gan che to westdown};
-	#alias gsd {gan che to southdown};
-	#alias gd {gan che to down};
-	#alias gu {gan che to up};
+    #class hb_setup_inner close;
+    
+    #alias ge {gan che to east};
+    #alias genter {gan che to enter};
+    #alias geu {gan che to eastup};
+    #alias gn {gan che to north};
+    #alias gne {gan che to northeast};
+    #alias gnu {gan che to northup};
+    #alias gnw {gan che to northwest};
+    #alias gout {gan che to out};
+    #alias gs {gan che to south};
+    #alias gse {gan che to southeast};
+    #alias gsu {gan che to southup};
+    #alias gsw {gan che to southwest};
+    #alias gw {gan che to west};
+    #alias gwu {gan che to westup};
+    #alias ged {gan che to eastdown};
+    #alias gnd {gan che to northdown};
+    #alias gwd {gan che to westdown};
+    #alias gsd {gan che to southdown};
+    #alias gd {gan che to down};
+    #alias gu {gan che to up};
 
-	#alias {attack} {
-		attack.hubiao;
-	};
+    #alias {attack} {
+        attack.hubiao;
+    };
 
-	#var hb_elapsed_time 0;
-	#ticker {hb_ticker} {
-		#math hb_elapsed_time ${hb_elapsed_time}+1;
-		show_to_tuiche ${hb_info} --> ${hb_elapsed_time}:00;
-	} {60};
+    #var hb_elapsed_time 0;
+    #ticker {hb_ticker} {
+        #math hb_elapsed_time ${hb_elapsed_time}+1;
+        show_to_tuiche ${hb_info} --> ${hb_elapsed_time}:00;
+    } {60};
 };
 
 #alias {hb.wait} {
-	#var hb_wait 1;
-	#delay {hb_wait} {
-		#var hb_wait 0;
-	} {8};
+    #var hb_wait 1;
+    #delay {hb_wait} {
+        #var hb_wait 0;
+    } {8};
 };
 
 #alias {hb.pause} {
-	hb.end;
-	#alias {hb.back} {
-		#cr;
-	};
+    hb.end;
+    #alias {hb.back} {
+        #cr;
+    };
 };
 
 #alias {hb.end} {
-	#var hb_paused 1;
-	#var hb_force_wait 1;
-	#unticker {hb_walk};
-	#undelay {hb_move};
+    #var hb_paused 1;
+    #var hb_force_wait 1;
+    #unticker {hb_walk};
+    #undelay {hb_move};
 };
 
 #alias {hb.escape} {
-	#if {${hb_path_index} > ${hb_path_size}} {
-		on_truce {
-			hb.resume;
-		};
-	};
-	#else {
-		#class hb.escape.inner open;
-		#action {≤ªƒ‹“∆∂Ø} {
-			#showme ƒ„Ã”≈‹ ß∞‹;
-		};
-		
-		#action {^ƒ„Ã”≈‹ ß∞‹} {
-			#class hb.escape.inner kill;
-			on_truce {
-				#delay {hb_delay} {
-					hb.resume;
-				} {3};
-			};
-		};
-		
-		#action {^    ’‚¿Ô%*≥ˆø⁄} {
-			#class hb.escape.inner kill;
-			#math hb_path_index ${hb_path_index}+1;
-			#delay {hb_delay} {
-				hb.resume;
-			} {3}
-		} {1};
-		
-		#delay {hb_delay} {
-			#showme ƒ„Ã”≈‹ ß∞‹;				
-		} {5};
-		#class hb.escape.inner close;
-		
-		#list hb_path get ${hb_path_index} escape_exit;
-		#3 halt;
-		#delay {1} {
-			${escape_exit};
-		};
-	};
+    #if {${hb_path_index} > ${hb_path_size}} {
+        on_truce {
+            hb.resume;
+        };
+    };
+    #else {
+        #class hb.escape.inner open;
+        #action {≤ªƒ‹“∆∂Ø} {
+            #showme ƒ„Ã”≈‹ ß∞‹;
+        };
+        
+        #action {^ƒ„Ã”≈‹ ß∞‹} {
+            #class hb.escape.inner kill;
+            on_truce {
+                #delay {hb_delay} {
+                    hb.resume;
+                } {3};
+            };
+        };
+        
+        #action {^    ’‚¿Ô%*≥ˆø⁄} {
+            #class hb.escape.inner kill;
+            #math hb_path_index ${hb_path_index}+1;
+            #delay {hb_delay} {
+                hb.resume;
+            } {3}
+        } {1};
+        
+        #delay {hb_delay} {
+            #showme ƒ„Ã”≈‹ ß∞‹;             
+        } {5};
+        #class hb.escape.inner close;
+        
+        #list hb_path get ${hb_path_index} escape_exit;
+        #3 halt;
+        #delay {1} {
+            ${escape_exit};
+        };
+    };
 };
 
 #alias {hb.resume} {
-	#var hb_paused 0;
-	#var hb_force_wait 0;
+    #var hb_paused 0;
+    #var hb_force_wait 0;
 
-	#alias {hb.back} {
-		hb.merge_path;
-		hb.escape;
-	};
+    #alias {hb.back} {
+        hb.merge_path;
+        hb.escape;
+    };
 
-	#alias {hb.recover} {
-		#class hb.recover.inner open;
-		#action {chaos ok: %*} {
-			#if {"%%%1" != "fake"} {
-				#math hb_path_index ${hb_path_index}-1;
-				#list hb_path set ${hb_path_index} {gan che to %%%1};
-			};
-			#nop chaos.remember;
-			#delay {hb_delay} {
-				hb.resume;
-			} {10};
-			#class hb.recover.inner kill;
-		};
+    #alias {hb.recover} {
+        #class hb.recover.inner open;
+        #action {chaos ok: %*} {
+            #if {"%%%1" != "fake"} {
+                #math hb_path_index ${hb_path_index}-1;
+                #list hb_path set ${hb_path_index} {gan che to %%%1};
+            };
+            #nop chaos.remember;
+            #delay {hb_delay} {
+                hb.resume;
+            } {10};
+            #class hb.recover.inner kill;
+        };
 
-		#action {chaos error} {
-			show_to_info ¬“»Î;
-			notify.alert escort chaos;
-			xmpp.notify ¬“»Î;
-			#alias {hb.recover} {
-				#cr;
-			};
-			#class hb.recover.inner kill;
-		};
-		#class hb.recover.inner close;		
-		chaos.find;
-	};
+        #action {chaos error} {
+            show_to_info ¬“»Î;
+            notify.alert escort chaos;
+            xmpp.notify ¬“»Î;
+            #alias {hb.recover} {
+                #cr;
+            };
+            #class hb.recover.inner kill;
+        };
+        #class hb.recover.inner close;      
+        chaos.find;
+    };
 
-	#list hb_path get ${hb_path_index} hb_next_step;
-	#if {"@getenv{hb_state}" == "STARTED"} {
-		hb.move;
-	};
-	#else {
-		#action {^    ’‚¿Ô%*≥ˆø⁄} {
-			#math hb_path_index ${hb_path_index}+1;
-			#list hb_path get ${hb_path_index} hb_next_step;
-		} {1};
-		#alias {l} {#cr};
-		
-		#ticker {hb_walk} {
-			#if {${hb_path_index} > ${hb_path_size}} {
-				#unaction {^    ’‚¿Ô%*≥ˆø⁄};
-				#unalias {l};
-				hb.pause;
-				#delay {5} {
-					#if {@getenv{hb_lunci} == @getenv{mixin_lunci}} {
-						chain on_sell get.qian get.san repair special_repair gem.combine hb.b;
-					};
-					#else {
-						hb.b;	
-					};
-				};
-			};
-			#else {
-				${hb_next_step};
-			};
-		} {1.8};
-	}
+    #list hb_path get ${hb_path_index} hb_next_step;
+    #if {"@getenv{hb_state}" == "STARTED"} {
+        hb.move;
+    };
+    #else {
+        #action {^    ’‚¿Ô%*≥ˆø⁄} {
+            #math hb_path_index ${hb_path_index}+1;
+            #list hb_path get ${hb_path_index} hb_next_step;
+        } {1};
+        #alias {l} {#cr};
+        
+        #ticker {hb_walk} {
+            #if {${hb_path_index} > ${hb_path_size}} {
+                #unaction {^    ’‚¿Ô%*≥ˆø⁄};
+                #unalias {l};
+                hb.pause;
+                #delay {5} {
+                    #if {@getenv{hb_lunci} == @getenv{mixin_lunci}} {
+                        chain on_sell get.qian get.san repair special_repair gem.combine hb.b;
+                    };
+                    #else {
+                        hb.b;   
+                    };
+                };
+            };
+            #else {
+                ${hb_next_step};
+            };
+        } {1.8};
+    }
 };
 
 #alias {hb.get_owner} {
-	#if {"${CurrentPosition}" == "zuo"} {
-		#var hb_owner zuo;
-		#var hb_rotate_location fm;
-	};
-	#elseif {"${CurrentPosition}" == "zz"} {
-		#var hb_owner zhang;
-	};
-	#elseif {"${CurrentPosition}" == "fm"} {
-		#var hb_owner ma;
-		#var hb_rotate_location tf;
-	};
-	#elseif {"${CurrentPosition}" == "fh"} {
-		#var hb_owner chu;
-	};
-	#elseif {"${CurrentPosition}" == "tf"} {
-		#var hb_owner wang;
-		#var hb_rotate_location zuo;
-	};
+    #if {"${CurrentPosition}" == "zuo"} {
+        #var hb_owner zuo;
+        #var hb_rotate_location fm;
+    };
+    #elseif {"${CurrentPosition}" == "zz"} {
+        #var hb_owner zhang;
+    };
+    #elseif {"${CurrentPosition}" == "fm"} {
+        #var hb_owner ma;
+        #var hb_rotate_location tf;
+    };
+    #elseif {"${CurrentPosition}" == "fh"} {
+        #var hb_owner chu;
+    };
+    #elseif {"${CurrentPosition}" == "tf"} {
+        #var hb_owner wang;
+        #var hb_rotate_location zuo;
+    };
 };
 
 #alias {hb.d} {
-	hb.get_owner;
-	#if {"@getenv{hb_state}" == "GOT_CAIWU"} {
-		give cai wu to ${hb_owner};
-	};
-	#else {
-		#if {@getenv{hb_lunci} == @getenv{mixin_lunci}} {
-			@setenv{hb_lunci;0};
-			notify.alert next mixin;
-			xmpp.notify next mixin;
-			play alert.wav;
-		};
-		#else {
-			ask ${hb_owner} about finish;			
-		};
-	};
+    hb.get_owner;
+    #if {"@getenv{hb_state}" == "GOT_CAIWU"} {
+        give cai wu to ${hb_owner};
+    };
+    #else {
+        #if {@getenv{hb_lunci} == @getenv{mixin_lunci}} {
+            @setenv{hb_lunci;0};
+            notify.alert next mixin;
+            xmpp.notify next mixin;
+            play alert.wav;
+        };
+        #else {
+            ask ${hb_owner} about finish;           
+        };
+    };
 };
 
 #alias {hb.q} {
-	hb.get_owner;
-	#if {"%1" != ""} {
-		getesc %1;
-	};
-	#else {
-		listesc;
-	}
+    hb.get_owner;
+    #if {"%1" != ""} {
+        getesc %1;
+    };
+    #else {
+        listesc;
+    }
 };
 
 
 #alias {hb.f} {
-	@setenv{hb_lunci;0};
-	@setenv{hb_lunci_total;0};
-	@setenv{hb_state;NIL};
-	@setenv{mixin_lunci;6};
-	hb.teardown;
-	hb.get_owner;
-	ask ${hb_owner} about fail;
+    @setenv{hb_lunci;0};
+    @setenv{hb_lunci_total;0};
+    @setenv{hb_state;NIL};
+    @setenv{mixin_lunci;6};
+    hb.teardown;
+    hb.get_owner;
+    ask ${hb_owner} about fail;
 };
 
 #alias {hb.b} {
-	#if {"${hb_owner}" == "zuo"} {
-		gt zuo;
-	};
-	#elseif {"${hb_owner}" == "zhang"} {
-		gt zz;
-	};
-	#elseif {"${hb_owner}" == "ma"} {
-		gt fm;
-	};
-	#elseif {"${hb_owner}" == "wang"} {
-		gt tf;
-	};
+    #if {"${hb_owner}" == "zuo"} {
+        gt zuo;
+    };
+    #elseif {"${hb_owner}" == "zhang"} {
+        gt zz;
+    };
+    #elseif {"${hb_owner}" == "ma"} {
+        gt fm;
+    };
+    #elseif {"${hb_owner}" == "wang"} {
+        gt tf;
+    };
 
-	on_there {
-		hb.d;
-	};
+    on_there {
+        hb.d;
+    };
 };
 
 #alias {hb.bxs} {
-	#class hb.auto.inner open;
-	#action {${char_name}∞—’‚≈˙∫ÏªıÀÕµΩ%*À˚“—æ≠≈…¡À∏ˆªÔº∆√˚Ω–%*µΩ%*∏ΩΩ¸Ω”ƒ„} {
-		hb.get_path %%1;
-		show_to_quest Õ∆≥µ: ${tmp}|%%2|%%3;
-		hb.setup;
-		hb.resume;
-	} {1};
-	#class hb.auto.inner close;
-	hb.get_owner;
-	ask ${hb_owner} about —∫Ô⁄;
+    #class hb.auto.inner open;
+    #action {${char_name}∞—’‚≈˙∫ÏªıÀÕµΩ%*À˚“—æ≠≈…¡À∏ˆªÔº∆√˚Ω–%*µΩ%*∏ΩΩ¸Ω”ƒ„} {
+        hb.get_path %%1;
+        show_to_quest Õ∆≥µ: ${tmp}|%%2|%%3;
+        hb.setup;
+        hb.resume;
+    } {1};
+    #class hb.auto.inner close;
+    hb.get_owner;
+    ask ${hb_owner} about —∫Ô⁄;
 };
 
 #alias {hb.start} {
-	set brief 2;
-	#var hb_auto 1;
-	#var getesc_current_score 0;
-	#var getesc_current_id 0;
+    set brief 2;
+    #var hb_auto 1;
+    #var getesc_current_score 0;
+    #var getesc_current_id 0;
 
-	#class hb.auto.inner open;
-	#action {^ƒ„≤ª «≤≈“™¡À»ŒŒÒ¬} {
-		hb.f;
-		on_unbusy {
-			hb.start;
-		};
-	};
-	
-	#action {ƒ„“ªπ≤±ªΩ±¿¯¡À£∫} {
-		#class tmp.inner open;
-		#action {%*µ„æ≠—È£ª} {
-			#class tmp.inner kill;
-			show_to_info @ctd{%%%1} µ„æ≠—È;
-		};
-		#delay {hb_auto_delay} {
-			#if {${hb_auto} == 1} {
-				hb.start;
-			};
-		} {3};
-		#class tmp.inner close;
-	};
+    #class hb.auto.inner open;
+    #action {^ƒ„≤ª «≤≈“™¡À»ŒŒÒ¬} {
+        hb.f;
+        on_unbusy {
+            hb.start;
+        };
+    };
+    
+    #action {ƒ„“ªπ≤±ªΩ±¿¯¡À£∫} {
+        #class tmp.inner open;
+        #action {%*µ„æ≠—È£ª} {
+            #class tmp.inner kill;
+            show_to_info @ctd{%%%1} µ„æ≠—È;
+        };
+        #delay {hb_auto_delay} {
+            #if {${hb_auto} == 1} {
+                hb.start;
+            };
+        } {3};
+        #class tmp.inner close;
+    };
 
-	#action {${char_name}∞Ô%*◊∑ªÿ≤∆ŒÔ£¨∂ÓÕ‚ªÒµ√%*µ„æ≠—È} {
-		show_to_info ∂ÓÕ‚ªÒµ√ @ctd{%%2} µ„æ≠—È;
-	};
+    #action {${char_name}∞Ô%*◊∑ªÿ≤∆ŒÔ£¨∂ÓÕ‚ªÒµ√%*µ„æ≠—È} {
+        show_to_info ∂ÓÕ‚ªÒµ√ @ctd{%%2} µ„æ≠—È;
+    };
 
-	#alias {got_gem} {
-		#action {ƒ„Ω´ ÷÷–%*{°Ú|°Ó|°Ô}%*∑≈Ω¯¡À±¶ Ø¥¸} {
-			show_to_info µÙ±¶: %%%1%%%2%%%3;
-			notify.info %%%1%%%2%%%3;
-			gem.record %%%1%%%2%%%3;
-			#var gem_level @gemlevel{%%%1};
-			#if {${gem_level} > 3} {
-				play gem2.wav;
-				xmpp.notify µÙ±¶: %%%1%%%2%%%3;
-			};
-			#else {
-				play gem.wav;	
-			};
-		};
-		pack gem;
-		#delay {pack_gem} {
-			#unaction {ƒ„Ω´ ÷÷–%*{°Ú|°Ó|°Ô}%*∑≈Ω¯¡À±¶ Ø¥¸};
-		} {3};
-	};
-	
-	#action {Õ€£¨ƒ„Ã´¿˜∫¶¡À£¨’‚√¥øÏæÕ∞—’‚–©≤∆ŒÔ◊∑ªÿ£¨Œ“”–÷ÿ–ª£°} {
-		got_gem;
-	};
-	
-	#action {µÙ¡À≥ˆ¿¥“ªø≈} {
-		got_gem;
-	};
-	
-	#action {¥”ΩŸ∑À…Ì…œµÙ¡À≥ˆ¿¥“ª%*÷Æ%*} {
-		jianding @mapget{jianding;%%2}
-	};
+    #alias {got_gem} {
+        #action {ƒ„Ω´ ÷÷–%*{°Ú|°Ó|°Ô}%*∑≈Ω¯¡À±¶ Ø¥¸} {
+            show_to_info µÙ±¶: %%%1%%%2%%%3;
+            notify.info %%%1%%%2%%%3;
+            gem.record %%%1%%%2%%%3;
+            #var gem_level @gemlevel{%%%1};
+            #if {${gem_level} > 3} {
+                play gem2.wav;
+                xmpp.notify µÙ±¶: %%%1%%%2%%%3;
+            };
+            #else {
+                play gem.wav;   
+            };
+        };
+        pack gem;
+        #delay {pack_gem} {
+            #unaction {ƒ„Ω´ ÷÷–%*{°Ú|°Ó|°Ô}%*∑≈Ω¯¡À±¶ Ø¥¸};
+        } {3};
+    };
+    
+    #action {Õ€£¨ƒ„Ã´¿˜∫¶¡À£¨’‚√¥øÏæÕ∞—’‚–©≤∆ŒÔ◊∑ªÿ£¨Œ“”–÷ÿ–ª£°} {
+        got_gem;
+    };
+    
+    #action {µÙ¡À≥ˆ¿¥“ªø≈} {
+        got_gem;
+    };
+    
+    #action {¥”ΩŸ∑À…Ì…œµÙ¡À≥ˆ¿¥“ª%*÷Æ%*} {
+        jianding @mapget{jianding;%%2}
+    };
 
-	#action {^ƒ„≈ı◊≈%*÷Æ%*…œ…œœ¬œ¬◊–◊–œ∏œ∏µƒ¥Ú¡ø¡À“ª±È°£} {
-		#action {ø…À‹–‘:%*(%*)} {
-			#unaction {ø…À‹–‘:%*(%*)};
-			#var kong %%%1;
-			#var type @mapget{jianding;%%2};
-			#if {"${type}" == "ring" || "${type}" == "necklace"} {
-				#if {${kong} > 1} {
-					put ${type} in bao;	
-				};
-			};
-			#else {
-				#if {${kong} > 2} {
-					put ${type} in bao;	
-				};
-			};
-		};
-		#action {ƒ„Ω´“ª%*÷Æ%*∑≈Ω¯∞¸∏§} {
-			#unaction {ƒ„Ω´“ª%*÷Æ%*∑≈Ω¯∞¸∏§};
-			show_to_info µÙ◊∞±∏: ${kong} ø◊ ${type};
-			notify.alert µÙ◊∞±∏: ${kong} ø◊ ${type};
-			xmpp.notify µÙ◊∞±∏: ${kong} ø◊ ${type};
-		};
-	};
+    #action {^ƒ„≈ı◊≈%*÷Æ%*…œ…œœ¬œ¬◊–◊–œ∏œ∏µƒ¥Ú¡ø¡À“ª±È°£} {
+        #action {ø…À‹–‘:%*(%*)} {
+            #unaction {ø…À‹–‘:%*(%*)};
+            #var kong %%%1;
+            #var type @mapget{jianding;%%2};
+            #if {"${type}" == "ring" || "${type}" == "necklace"} {
+                #if {${kong} > 1} {
+                    put ${type} in bao; 
+                };
+            };
+            #else {
+                #if {${kong} > 2} {
+                    put ${type} in bao; 
+                };
+            };
+        };
+        #action {ƒ„Ω´“ª%*÷Æ%*∑≈Ω¯∞¸∏§} {
+            #unaction {ƒ„Ω´“ª%*÷Æ%*∑≈Ω¯∞¸∏§};
+            show_to_info µÙ◊∞±∏: ${kong} ø◊ ${type};
+            notify.alert µÙ◊∞±∏: ${kong} ø◊ ${type};
+            xmpp.notify µÙ◊∞±∏: ${kong} ø◊ ${type};
+        };
+    };
 
-	#action {ø¥¿¥∏√’“ª˙ª·Ã”≈‹¡À} {
-		hb.pause;
-		show_to_tuiche ∂™Ô⁄;
-		xmpp.notify ∂™Ô⁄;
-	};
+    #action {ø¥¿¥∏√’“ª˙ª·Ã”≈‹¡À} {
+        hb.pause;
+        show_to_tuiche ∂™Ô⁄;
+        xmpp.notify ∂™Ô⁄;
+    };
 
-	#action {^¬˝¬˝µÿƒ„÷’”⁄”÷”–¡À÷™æı....} {
-		show_to_tuiche π“¡À;
-		notify.alert π“¡À; 
-		xmpp.notify π“¡À;
-		hb.teardown;
-		hb.back;
-	};
-	
-	#action {^ƒ„µƒ—€«∞“ª∫⁄£¨Ω”÷¯ ≤√¥“≤≤ª÷™µ¿¡À} {
-		hb.end;
-	};
+    #action {^¬˝¬˝µÿƒ„÷’”⁄”÷”–¡À÷™æı....} {
+        show_to_tuiche π“¡À;
+        notify.alert π“¡À; 
+        xmpp.notify π“¡À;
+        hb.teardown;
+        hb.back;
+    };
+    
+    #action {^ƒ„µƒ—€«∞“ª∫⁄£¨Ω”÷¯ ≤√¥“≤≤ª÷™µ¿¡À} {
+        hb.end;
+    };
 
-	#action { π”√√¸¡Ó°ægetesc »ŒŒÒ–Ú∫≈°ø¿¥»œ¡Ï—∫Ô⁄»ŒŒÒ°£} {
-		#buffer lock;
-	};
-	
-	#action {%d%s%S%s%S%s¥˝»œ¡Ï} {
-		#var getesc_id %%1;
-		#var getesc_address %%3;
-		#var score @getesc_get_score{${getesc_address}};
-		#if {${score} > ${getesc_current_score}} {
-			#var getesc_current_score $score;
-			#var getesc_current_id ${getesc_id};
-		};
-	};
+    #action { π”√√¸¡Ó°ægetesc »ŒŒÒ–Ú∫≈°ø¿¥»œ¡Ï—∫Ô⁄»ŒŒÒ°£} {
+        #buffer lock;
+    };
+    
+    #action {%d%s%S%s%S%s¥˝»œ¡Ï} {
+        #var getesc_id %%1;
+        #var getesc_address %%3;
+        #var score @getesc_get_score{${getesc_address}};
+        #if {${score} > ${getesc_current_score}} {
+            #var getesc_current_score $score;
+            #var getesc_current_id ${getesc_id};
+        };
+    };
 
-	#action {¿¥»œ¡Ï—∫Ô⁄»ŒŒÒ} {
-		#if {${getesc_current_id} != 0} {
-			#var hb_rotate_location_count 0;
-			hb.q ${getesc_current_id};
-		};
-		#else {
-			#math hb_rotate_location_count ${hb_rotate_location_count} + 1;
-			#if {${hb_rotate_location_count} > 3 && "${hb_rotate_location}" != "NIL"} {
-				#var hb_rotate_location_count 0;
-				hb.stop;
-				gt ${hb_rotate_location};
-				on_there {
-					hb.start;
-				};
-			};
-			#else {
-				#delay {hb_auto_delay} {
-					hb.start;
-				} {10};
-			};
-		};
-	};
+    #action {¿¥»œ¡Ï—∫Ô⁄»ŒŒÒ} {
+        #if {${getesc_current_id} != 0} {
+            #var hb_rotate_location_count 0;
+            hb.q ${getesc_current_id};
+        };
+        #else {
+            #math hb_rotate_location_count ${hb_rotate_location_count} + 1;
+            #if {${hb_rotate_location_count} > 3 && "${hb_rotate_location}" != "NIL"} {
+                #var hb_rotate_location_count 0;
+                hb.stop;
+                gt ${hb_rotate_location};
+                on_there {
+                    hb.start;
+                };
+            };
+            #else {
+                #delay {hb_auto_delay} {
+                    hb.start;
+                } {10};
+            };
+        };
+    };
 
-	#action {«Î—°‘Ò∆‰À˚»ŒŒÒ} {
-		#delay {hb_auto_delay} {
-			#var getesc_current_score 0;
-			#var getesc_current_id 0;
-			hb.q;
-		} {2};
-	};
+    #action {«Î—°‘Ò∆‰À˚»ŒŒÒ} {
+        #delay {hb_auto_delay} {
+            #var getesc_current_score 0;
+            #var getesc_current_id 0;
+            hb.q;
+        } {2};
+    };
 
-	#action {ƒ„…œ¥Œ‘ÀÔ⁄Ã´–¡ø‡¡À} {
-		#delay {hb_auto_delay} {
-			hb.q;
-		} {10};
-	};
+    #action {ƒ„…œ¥Œ‘ÀÔ⁄Ã´–¡ø‡¡À} {
+        #delay {hb_auto_delay} {
+            hb.q;
+        } {10};
+    };
 
-	#action {ƒ„À˘¡Ïµƒ»ŒŒÒ‘⁄»ŒŒÒ¡–±Ì÷–≤¢≤ª¥Ê‘⁄} {
-		#delay {hb_auto_delay} {
-			hb.q;
-		} {2};
-	};
-	
-	#action {${char_name}∞—’‚≈˙∫ÏªıÀÕµΩ%*À˚“—æ≠≈…¡À∏ˆªÔº∆√˚Ω–%*µΩ%*∏ΩΩ¸Ω”ƒ„} {
-		hb.get_path %%1;
+    #action {ƒ„À˘¡Ïµƒ»ŒŒÒ‘⁄»ŒŒÒ¡–±Ì÷–≤¢≤ª¥Ê‘⁄} {
+        #delay {hb_auto_delay} {
+            hb.q;
+        } {2};
+    };
+    
+    #action {${char_name}∞—’‚≈˙∫ÏªıÀÕµΩ%*À˚“—æ≠≈…¡À∏ˆªÔº∆√˚Ω–%*µΩ%*∏ΩΩ¸Ω”ƒ„} {
+        hb.get_path %%1;
 
-		@setenv{hb_state;STARTED};
-		@setenv{hb_lunci;@eval{@getenv{hb_lunci}+1}};
+        @setenv{hb_state;STARTED};
+        @setenv{hb_lunci;@eval{@getenv{hb_lunci}+1}};
 
-		#var hb_info ${tmp}|%%2|%%3;
-		show_to_tuiche ${hb_info};
-		pp %%2;
-		notify escort start;
+        #var hb_info ${tmp}|%%2|%%3;
+        show_to_tuiche ${hb_info};
+        pp %%2;
+        notify escort start;
 
-		hb.setup;
-		hb.resume;
-	} {1};
+        hb.setup;
+        hb.resume;
+    } {1};
 
-	#action {µ›∏¯ƒ„“ª∑‚√‹–≈} {
-		@setenv{hb_state;GOT_MIXIN};
-		@setenv{hb_lunci_total;@eval{@getenv{hb_lunci_total}+1}};
-		@setenv{hb_lunci;0};
-		show_to_tuiche √‹–≈;
-		notify.alert √‹–≈;
-		xmpp.notify √‹–≈;
-		play alert.wav;
-		chifan;
-		mx.o;
-	};
+    #action {µ›∏¯ƒ„“ª∑‚√‹–≈} {
+        @setenv{hb_state;GOT_MIXIN};
+        @setenv{hb_lunci_total;@eval{@getenv{hb_lunci_total}+1}};
+        @setenv{hb_lunci;0};
+        show_to_tuiche √‹–≈;
+        notify.alert √‹–≈;
+        xmpp.notify √‹–≈;
+        play alert.wav;
+        chifan;
+        mx.o;
+    };
 
-	#class hb.auto.inner close;
+    #class hb.auto.inner close;
 
-	@declarenv{hb_state;NIL};
-	@declarenv{mixin_lunci;6};
-	
-	#if {"@getenv{hb_state}" == "GOT_CAIWU"} {
-		show_to_info Ωª≤∆ŒÔœ»;
-	};
-	#if {"@getenv{hb_state}" == "GOT_MIXIN"} {
-		show_to_info √‹–≈;
-	};
-	#elseif {"@getenv{hb_state}" == "STARTED"} {
-		hb.f;
-	};
-	#else {
-		#math next_lunci @getenv{hb_lunci}+1;
-		show_to_quest Õ∆≥µ: @getenv{hb_lunci_total}+${next_lunci}: ◊º±∏;
-		on_health {hb.q};		
-	};
+    @declarenv{hb_state;NIL};
+    @declarenv{mixin_lunci;6};
+    
+    #if {"@getenv{hb_state}" == "GOT_CAIWU"} {
+        show_to_info Ωª≤∆ŒÔœ»;
+    };
+    #if {"@getenv{hb_state}" == "GOT_MIXIN"} {
+        show_to_info √‹–≈;
+    };
+    #elseif {"@getenv{hb_state}" == "STARTED"} {
+        hb.f;
+    };
+    #else {
+        #math next_lunci @getenv{hb_lunci}+1;
+        show_to_quest Õ∆≥µ: @getenv{hb_lunci_total}+${next_lunci}: ◊º±∏;
+        on_health {hb.q};       
+    };
 };
 
 
 #alias {hb.stop} {
-	#var hb_auto 0;
-	#class hb.auto.inner kill;
-	#undelay {hb_auto_delay};
-	dz.cancel;
+    #var hb_auto 0;
+    #class hb.auto.inner kill;
+    #undelay {hb_auto_delay};
+    dz.cancel;
 };
 
 #alias {hb.merge_path} {
-	@stackcreate{tmp};
-	@stackpush{tmp;#cr};
+    @stackcreate{tmp};
+    @stackpush{tmp;#cr};
 
-	#while {${hb_path_index} <= ${hb_path_size}} {
-		#list hb_path get ${hb_path_index} v;
-		#list tmp_path get ${tmp_index} tmp_top;
-		#if {"@opposite{${v}}" == "@stacktop{tmp}"} {
-			#var nil @stackpop{tmp};
-		};
-		#elseif {"@opposite{${v}}" != "NULL"} {
-			@stackpush{tmp;${v}};			
-		}
-		#math hb_path_index ${hb_path_index}+1;
-	}
-	#var hb_path @stacktolist{tmp};
-	#var hb_path_index 2;
-	#list hb_path size hb_path_size;
+    #while {${hb_path_index} <= ${hb_path_size}} {
+        #list hb_path get ${hb_path_index} v;
+        #list tmp_path get ${tmp_index} tmp_top;
+        #if {"@opposite{${v}}" == "@stacktop{tmp}"} {
+            #var nil @stackpop{tmp};
+        };
+        #elseif {"@opposite{${v}}" != "NULL"} {
+            @stackpush{tmp;${v}};           
+        }
+        #math hb_path_index ${hb_path_index}+1;
+    }
+    #var hb_path @stacktolist{tmp};
+    #var hb_path_index 2;
+    #list hb_path size hb_path_size;
 };
 
 
 #alias {hb.guohe} {
-	#action {^%*Ω”π˝ƒ„µ›∏¯µƒ¥¨◊ } {
-		#class guohe.inner open;
-		#ticker {sw/yell_boat} {
-			yell boat;
-		} {5};
-		#action {’˝µ»◊≈ƒ„ƒÿ£¨…œ¿¥∞…°£} {
-			genter;
-		};
-		#action {Ùππ´Ω´“ªøÈÃ§Ω≈∞Â¥Ó…œµÃ∞∂£¨} {
-			genter;
-		};
-		#alias {shangchuan} {
-			#unticker {sw/yell_boat};
-			#unticker {hb_walk};
-			#action {À˘”–»À±ª∏œœ¬¡À∂…¥¨} {
-				#unaction {À˘”–»À±ª∏œœ¬¡À∂…¥¨};
-				#class guohe.inner kill;
-                		#math hb_path_index ${hb_path_index}+1;
-				hb.resume;
-			};
-		};
-		#action {^ª∆∫”∂…¥¨$} {
-			shangchuan;
-		};
-		#action {^≥§Ω≠∂…¥¨$} {
-			shangchuan;
-		};
-		#class guohe.inner close;
-	};
-	#var hb_paused 1;
-	ask shao gong about %1;		
+    #action {^%*Ω”π˝ƒ„µ›∏¯µƒ¥¨◊ } {
+        #class guohe.inner open;
+        #ticker {sw/yell_boat} {
+            yell boat;
+        } {5};
+        #action {’˝µ»◊≈ƒ„ƒÿ£¨…œ¿¥∞…°£} {
+            genter;
+        };
+        #action {Ùππ´Ω´“ªøÈÃ§Ω≈∞Â¥Ó…œµÃ∞∂£¨} {
+            genter;
+        };
+        #alias {shangchuan} {
+            #unticker {sw/yell_boat};
+            #unticker {hb_walk};
+            #action {À˘”–»À±ª∏œœ¬¡À∂…¥¨} {
+                #unaction {À˘”–»À±ª∏œœ¬¡À∂…¥¨};
+                #class guohe.inner kill;
+                #math hb_path_index ${hb_path_index}+1;
+                hb.resume;
+            };
+        };
+        #action {^ª∆∫”∂…¥¨$} {
+            shangchuan;
+        };
+        #action {^≥§Ω≠∂…¥¨$} {
+            shangchuan;
+        };
+        #class guohe.inner close;
+    };
+    #var hb_paused 1;
+    ask shao gong about %1;     
 };
 
 #alias {clear_blocker} {
-	#var tmp_blocker %1;
-	#class clear_blocker.inner open;
-	#action {ƒ„œÎ…±À≠} {
-		#class clear_blocker.inner kill;
-		#math hb_path_index ${hb_path_index}+1;
-		hb.resume;
-	};
-	#ticker {tmp_blocker_ticker_kill} {
-		killall ${tmp_blocker};	
-	} {5};
-	#class clear_blocker.inner close;
-	hb.pause;
-	killall ${tmp_blocker};
+    #var tmp_blocker %1;
+    #class clear_blocker.inner open;
+    #action {ƒ„œÎ…±À≠} {
+        #class clear_blocker.inner kill;
+        #math hb_path_index ${hb_path_index}+1;
+        hb.resume;
+    };
+    #ticker {tmp_blocker_ticker_kill} {
+        killall ${tmp_blocker}; 
+    } {5};
+    #class clear_blocker.inner close;
+    hb.pause;
+    killall ${tmp_blocker};
 };
 
 #alias {clear_npc} {
-	#var npc_zh %1;
-	#class clear_npc.inner open;
-	#action {ƒ„œÎ…±À≠} {
-		#var hb_force_wait 0;
-	};
-	#action {${npc_zh}À¿¡À} {
-		#var hb_force_wait 0;
-	} {1};
-
-	#action {ƒ„ªπ «œ»∞—∂‘ ÷Ω‚æˆ¡À‘ŸÀµ∞…} {
-		l;
-	} {1};
-	
-	#action {${npc_zh}(%*)} {
-		#action {ø¥∆¿¥${npc_zh}œÎ…±À¿ƒ„} {
-			#var hb_force_wait 1;
-		} {1};
-		#var npc_en @lower{%%1};
-		killall ${npc_en};
+    #var npc_zh %1;
+    #class clear_npc.inner open;
+    #action {ƒ„œÎ…±À≠} {
+        #var hb_force_wait 0;
+    };
+    #action {${npc_zh}À¿¡À} {
+        #var hb_force_wait 0;
     } {1};
-	#class clear_npc.inner close;
+
+    #action {ƒ„ªπ «œ»∞—∂‘ ÷Ω‚æˆ¡À‘ŸÀµ∞…} {
+        l;
+    } {1};
+    
+    #action {${npc_zh}(%*)} {
+        #action {ø¥∆¿¥${npc_zh}œÎ…±À¿ƒ„} {
+            #var hb_force_wait 1;
+        } {1};
+        #var npc_en @lower{%%1};
+        killall ${npc_en};
+    } {1};
+    #class clear_npc.inner close;
 };
 
 #alias {mx.o} {
-	xian mixin;
+    xian mixin;
 };
 
 #alias {mx.re} {
-	hb.get_owner;
-	give mixin to ${hb_owner};
-	mx.o;
+    hb.get_owner;
+    give mixin to ${hb_owner};
+    mx.o;
 };
 
 #alias {mx.q} {
-	#class mx.inner open;	
-	#action {“ª∏ˆªÔº∆Õ⁄◊≈±« ∫◊ﬂ¡À≥ˆ¿¥£¨µ¿£∫ƒ„’“Œ“…∂ ¬} {
-		l;
-	};
-	#action {≤∆ŒÔµƒªÔº∆ %S(%S)} {
-		#format {tmp_huoji} {%l} {%%2};
-		#class mx.yao.inner open;
-		#action {∞—“ª∞¸≤∆ŒÔ‘“œÚƒ„£¨“ª◊™—€≤ªº˚¡À°£} {
-			@setenv{hb_state;GOT_CAIWU};
-			show_to_tuiche ƒ√µΩ≤∆±¶;
-			play get_item.wav;
-			#class mx.yao.inner kill;
-			#class mx.inner kill;
-			back;
-		};
-		#action {’‚¿Ô√ª”–’‚∏ˆ»À} {
-			#class mx.yao.inner kill;	
-		};
-		#ticker {yao} {
-			ask $tmp_huoji about yao;
-		} {0.5};
-		#class mx.yao.inner close;
-	} {1};
-	#class mx.inner close;
-	zhao;
-};
+    #class mx.inner open;   
+    #action {“ª∏ˆªÔº∆Õ⁄◊≈±« ∫◊ﬂ¡À≥ˆ¿¥£¨µ¿£∫ƒ„’“Œ“…∂ ¬} {
+        l;
+    };
+    #action {≤∆ŒÔµƒªÔº∆ %S(%S)} {
+        #format {tmp_huoji} {%l} {%%2};
+        #class mx.yao.inner open;
+        #action {∞—“ª∞¸≤∆ŒÔ‘“œÚƒ„£¨“ª◊™—€≤ªº˚¡À°£} {
+            @setenv{hb_state;GOT_CAIWU};
+            show_to_tuiche ƒ√µΩ≤∆±¶;
+            play get_item.wav;
+            #class mx.yao.inner kill;
+            #class mx.inner kill;
+            back;
+        };
+        #action {’‚¿Ô√ª”–’‚∏ˆ»À} {
+            #class mx.yao.inner kill;   
+        };
+        #ticker {yao} {
+            ask $tmp_huoji about yao;
+        }{0.5};
+            #class mx.yao.inner close;
+        } {1};
+        #class mx.inner close;
+        zhao;
+    };
 
-#alias {mx.d} {
-	hb.get_owner;
-	give cai wu to ${hb_owner};
-	#class mx.inner kill;
-};
+    #alias {mx.d} {
+        hb.get_owner;
+        give cai wu to ${hb_owner};
+        #class mx.inner kill;
+    };
 
-#alias {hb.p} {
-	chain get.san get.qian get.fan get.bao repair;
-};
+    #alias {hb.p} {
+        chain get.san get.qian get.fan get.bao repair;
+    };
 
-#action {ƒ„∏¯%*“ª–© ß◊Ÿµƒ≤∆ŒÔ} {
-	@setenv{hb_state;NIL};
-	@setenv{mixin_lunci;5};
-	#delay {hb_auto_delay} {
-		#if {${hb_auto} == 1} {
-			hb.start;
-		};
-	} {3};
-};
+    #action {ƒ„∏¯%*“ª–© ß◊Ÿµƒ≤∆ŒÔ} {
+        @setenv{hb_state;NIL};
+        @setenv{mixin_lunci;5};
+        #delay {hb_auto_delay} {
+            #if {${hb_auto} == 1} {
+                hb.start;
+            };
+        } {3};
+    };
 
-#alias {show_to_tuiche} {
-	show_to_quest Õ∆≥µ: @getenv{hb_lunci_total}+@getenv{hb_lunci}: %0;
-};
+    #alias {show_to_tuiche} {
+        show_to_quest Õ∆≥µ: @getenv{hb_lunci_total}+@getenv{hb_lunci}: %0;
+    };
 
-#alias {got_robber} {
-	#delay {detect_enemy_delay} {
-		#class detect_enemy.inner kill;	
-	} {1};
-	#math robber_count ${robber_count}+1;
-	#var tmp_score @mapget{robber_score;%1};
-	#if {${tmp_score} > ${robber_score}} {
-		#var robber_score ${tmp_score};
-		#var enemy ${char_id}'s robber ${robber_count};
-	};
-};
+    #alias {got_robber} {
+        #delay {detect_enemy_delay} {
+            #class detect_enemy.inner kill; 
+        } {1};
+        #math robber_count ${robber_count}+1;
+        #var tmp_score @mapget{robber_score;%1};
+        #if {${tmp_score} > ${robber_score}} {
+            #var robber_score ${tmp_score};
+            #var enemy ${char_id}'s robber ${robber_count};
+        };
+    };
 
-#alias {hb.detect_enemy} {
-	#class detect_enemy.inner open;
-	#action {~[1;31mΩŸ∑À[2;37;0m(@capital{${char_id}}'s robber)} {
-		got_robber quanzhen;
-	};
-	#action {~[1;32mΩŸ∑À[2;37;0m(@capital{${char_id}}'s robber)} {
-		got_robber shaolin;
-	};
-	#action {~[1;33mΩŸ∑À[2;37;0m(@capital{${char_id}}'s robber)} {
-		got_robber gaibang;
-	};
-	#action {~[1;34mΩŸ∑À[2;37;0m(@capital{${char_id}}'s robber)} {
-		got_robber xingxiu;
-	};
-	#action {~[1;35mΩŸ∑À[2;37;0m(@capital{${char_id}}'s robber)} {
-		got_robber huashan;
-	};
-	#action {~[1;36mΩŸ∑À[2;37;0m(@capital{${char_id}}'s robber)} {
-		got_robber taohua;
-	};
-	#action {~[1;37mΩŸ∑À[2;37;0m(@capital{${char_id}}'s robber)} {
-		got_robber wudang;		
-	};
-	#action {∑Áæ∞“™¬˝¬˝µƒø¥} {
-		#delay {0.5} {
-			l;
-		};
-	};
-	#class detect_enemy.inner close;
-	#undelay {detect_enemy_delay};
-	#var enemy NULL;
-	#var robber_count 0;
-	#var robber_score 0;
-	l;
-};
-#class hubiao close
+    #alias {hb.detect_enemy} {
+        #class detect_enemy.inner open;
+        #action {~[1;31mΩŸ∑À[2;37;0m(@capital{${char_id}}'s robber)} {
+            got_robber quanzhen;
+        };
+        #action {~[1;32mΩŸ∑À[2;37;0m(@capital{${char_id}}'s robber)} {
+            got_robber shaolin;
+        };
+        #action {~[1;33mΩŸ∑À[2;37;0m(@capital{${char_id}}'s robber)} {
+            got_robber gaibang;
+        };
+        #action {~[1;34mΩŸ∑À[2;37;0m(@capital{${char_id}}'s robber)} {
+            got_robber xingxiu;
+        };
+        #action {~[1;35mΩŸ∑À[2;37;0m(@capital{${char_id}}'s robber)} {
+            got_robber huashan;
+        };
+        #action {~[1;36mΩŸ∑À[2;37;0m(@capital{${char_id}}'s robber)} {
+            got_robber taohua;
+        };
+        #action {~[1;37mΩŸ∑À[2;37;0m(@capital{${char_id}}'s robber)} {
+            got_robber wudang;      
+        };
+        #action {∑Áæ∞“™¬˝¬˝µƒø¥} {
+            #delay {0.5} {
+                l;
+            };
+        };
+        #class detect_enemy.inner close;
+        #undelay {detect_enemy_delay};
+        #var enemy NULL;
+        #var robber_count 0;
+        #var robber_score 0;
+        l;
+    };
+    #class hubiao close
