@@ -4,7 +4,7 @@
 	#class attack.inner open;
 	#ticker {poqi} {
 		pfm poqi;
-	} {2.8};
+    } {1.8};
 	#class attack.inner close;
 };
 
@@ -41,12 +41,15 @@
 
 #alias {attack.normal} {
 	pfm poqi;
-	pfm po;
-	pfm zongjue;
+	pfm pobing;
+    pfm sqf;
 	#class attack.inner open;
-	#ticker {pobing} {
+	#ticker {po} {
 		pfm po;
-	} {3.8};
+    } {3.8};
+    #ticker {sfq} {
+		pfm sqf;
+    } {5.8};
 	#class attack.inner close;
 };
 
@@ -253,4 +256,16 @@
 
 stat.register 飞龙 miss 莫非这就是传说中穆人清老爷子的天外飞龙;
 stat.register 飞龙 hit 这一记“天外飞龙”，却是华山派穆人清的绝招。;
+
+#alias {reborn} {
+	#send {jifa force huashan-neigong};
+	#send {jifa dodge huashan-shenfa};
+	#send {jifa parry dugu-jiujian};
+	#send {jifa cuff poyu-quan};
+    #send {jifa strike hunyuan-zhang};
+	#send {jifa sword dugu-jiujian};
+    #send {jifa spear yuejia-qiangfa};
+	bei cuff;
+};
+
 #class wudang_spec close

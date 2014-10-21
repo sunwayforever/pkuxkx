@@ -1,5 +1,5 @@
 #class gem open
-#var combine_target 5;
+#var gem_combine_level 6;
 #list gem_types create {µØ;É½;Ë®;·ç;À×;»ð;Ôó;Ìì};
 #var gem.combine_count 0;
 #alias {gem} {
@@ -16,7 +16,7 @@
 	#var gem_type %2;
 	#var gem_count %3;
 	#list gem_types find ${gem_type} gem_type_index;
-	#if {${gem_count} >=3 && ${gem_type_index} < ${combine_target}} {
+	#if {${gem_count} >=3 && ${gem_type_index} < ${gem_combine_level}} {
 		#var target_gem_id ${gem_id};
 	};
 	
@@ -134,7 +134,7 @@
 	#var gem_yinyang %3;
 	#var gem_name %4;
 	#list gem_types find ${gem_type} gem_type_index;
-	#if {${gem_type_index} <= ${combine_target}} {
+	#if {${gem_type_index} <= ${gem_combine_level}} {
 		#if {"${gem_name}" == "ÉñÁú¹Ç" || "${gem_name}" == "·ï»ËÓð" || "${gem_name}" == "ÐþÎä¼×" || "${gem_name}" == "÷è÷ë½Ç" } {
 			#var key ${gem_type}${gem_yinyang}${gem_name};
 			@mapset{gem_mark;$key;${gem_id}};

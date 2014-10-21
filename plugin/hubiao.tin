@@ -287,7 +287,7 @@ load chaos;
         };
 
         #action {chaos error} {
-            show_to_info брхК;
+            show_to_info брхК:${hb_next_step};
             notify.alert escort chaos;
             xmpp.notify брхК;
             #alias {hb.recover} {
