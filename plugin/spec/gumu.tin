@@ -6,188 +6,189 @@
 #var second_sword qingshuang;
 
 #alias {attack.prepare} {
-	yun xinjing;
-	#class attack.inner open;
-	#ticker {perf_chan} {
-		pfm chan;
-	} {0.5};
-	#ticker {xinjing} {
-		yun xinjing;
-	} {30};
-	#class attack.inner close;
+    yun xinjing;
+    #class attack.inner open;
+    #ticker {perf_chan} {
+        pfm chan;
+    } {0.5};
+    #ticker {xinjing} {
+        yun xinjing;
+    } {30};
+    #class attack.inner close;
 };
 
 #alias {attack.bare} {
-	pfm chan;
-	#class attack.inner open;
-	#class attack.inner close;
+    pfm chan;
+    #class attack.inner open;
+    #class attack.inner close;
 };
 
 #alias {attack.hubiao} {
-	pfm chan;
-	pfm suxin;
-	#class attack.inner open;
-	#ticker {suxin} {
-		pfm suxin;
-	    } {3.8};
-       #ticker {xiongyong} {
-		pfm xiongyong;
-	} {5.8};
-	#class attack.inner close;
+    pfm chan;
+    pfm shexin;
+    pfm suxin;
+    #class attack.inner open;
+    #ticker {suxin} {
+        pfm suxin;
+        } {3.8};
+       #ticker {shexin} {
+        pfm shexin;
+    } {5.8};
+    #class attack.inner close;
 };
 
 #alias {attack.normal} {
-	pfm chan;
-	pfm shexin;
-	pfm suxin;
-	pfm zhua;
-	#class attack.inner open;
-	#ticker {zhua} {
-		pfm zhua;
-	} {3.8};
-	#ticker {suxin} {
-		pfm suxin;
-	} {8.8};
-	#ticker {shexin} {
-		pfm shexin;
-	} {5.8};
-	#class attack.inner close;
+    pfm chan;
+    pfm shexin;
+    pfm suxin;
+    pfm zhua;
+    #class attack.inner open;
+    #ticker {zhua} {
+        pfm zhua;
+    } {3.8};
+    #ticker {suxin} {
+        pfm suxin;
+    } {8.8};
+    #ticker {shexin} {
+        pfm shexin;
+    } {5.8};
+    #class attack.inner close;
 };
 
 #alias {attack.xiaofeng.qin} {
-	pfm chan;
-	pfm zhua;
-	pfm suxin;
-	#class attack.inner open;
-	#class attack.inner close;
+    pfm chan;
+    pfm zhua;
+    pfm suxin;
+    #class attack.inner open;
+    #class attack.inner close;
 };
 
 #alias {attack.xiaofeng.quan} {
-	pfm chan;
-	pfm zhua;
-	pfm suxin;
-	#class attack.inner open;
-	#class attack.inner close;
+    pfm chan;
+    pfm zhua;
+    pfm suxin;
+    #class attack.inner open;
+    #class attack.inner close;
 };
 
 #alias {attack.xiaofeng.sheng} {
-	pfm chan;
-	pfm zhua;
-	pfm suxin;
-	#class attack.inner open;
-	#class attack.inner close;
+    pfm chan;
+    pfm zhua;
+    pfm suxin;
+    #class attack.inner open;
+    #class attack.inner close;
 };
 
 #alias {attack.mingjiao} {
-	pfm chan;
-	#class attack.inner open;
-	#ticker {qixing} {
-		pfm qixing;
-	} {1.8};
-	#class attack.inner close;
+    pfm chan;
+    #class attack.inner open;
+    #ticker {qixing} {
+        pfm qixing;
+    } {1.8};
+    #class attack.inner close;
 };
 
 #var shortcut F1:²ø F2:ÉãÐÄ F3:ËØÐÄ F4:×¥ F5:ÐÚÓ¿ F6:ÆßÐÇ F7:°µÆ÷;
 #macro {\eOP} {
-	pfm_oob chan;
+    pfm_oob chan;
 };
 
 #macro {\eOQ} {
-	pfm_oob shexin;
+    pfm_oob shexin;
 };
 
 #macro {\eOR} {
-	pfm_oob suxin;
+    pfm_oob suxin;
 };
 
 #macro {\eOS} {
-	pfm_oob zhua;
+    pfm_oob zhua;
 };
 
 #macro {\e[15~} {
-	pfm_oob xiongyong;
+    pfm_oob xiongyong;
 };
 
 #macro {\e[17~} {
-	pfm_oob qixing;
+    pfm_oob qixing;
 };
 
 #macro {\e[18~} {
-	pfm_oob shuai;
+    pfm_oob shuai;
 };
 
 #alias {shuai} {
-	perform throwing.shuai;
+    perform throwing.shuai;
 };
 
 #alias {xiongyong} {
-	unwield all;
-	wield ${first_sword};
-	#send {jifa parry xuantie-jian};
-	perform xuantie-jian.xiongyong;
-	#send {jifa parry meinu-quan};
-	unwield all;
-	wi;
+    unwield all;
+    wield ${first_sword};
+    #send {jifa parry xuantie-jian};
+    perform xuantie-jian.xiongyong;
+    #send {jifa parry meinu-quan};
+    unwield all;
+    wi;
 };
 
 #alias {qixing} {
-	unwi;
-	wield ${second_sword};
-	perform quanzhen-jian.qixing;
-	unwi;
+    unwi;
+    wield ${second_sword};
+    perform quanzhen-jian.qixing;
+    unwi;
 };
 
 #alias {zhua} {
-	unwi;
-	jiali ${jiali_zhua};
-	perform jiuyin-baiguzhao.zhua;
-	jiali none;
-	wi;
+    unwi;
+    jiali ${jiali_zhua};
+    perform jiuyin-baiguzhao.zhua;
+    jiali none;
+    wi;
 };
 
 #alias {shexin} {
-	unwi;
-	jiali ${jiali_shexin};
-	perform meinu-quan.shexin;
-	jiali none;
-	wi;
+    unwi;
+    jiali ${jiali_shexin};
+    perform meinu-quan.shexin;
+    jiali none;
+    wi;
 };
 
 #alias {suxin} {
-	unwield all;
-	wield ${first_sword};
-	wield ${second_sword};
-	perform yunu-jianfa.suxin;
-	unwield all;
-	wi;
+    unwield all;
+    wield ${first_sword};
+    wield ${second_sword};
+    perform yunu-jianfa.suxin;
+    unwield all;
+    wi;
 };
 
 #macro {\eOP} {
-	chan;
+    chan;
 };
 
 #alias {map_goto_lingwu} {
-	map.go {ÑÝÎä¶´};
+    map.go {ÑÝÎä¶´};
 };
 
 #alias {map_goto_rest} {
-	map.go {ÐÝÏ¢ÊÒ};
+    map.go {ÐÝÏ¢ÊÒ};
 };
 
 #alias {map_goto_start} {
-	map.go {Ð¡Ìü};
+    map.go {Ð¡Ìü};
 };
 
 #alias {map_goto_shifu} {
-	map.go {´óÌü};
+    map.go {´óÌü};
 };
 
 #alias {chan} {
-	unwield all;
-	wield whip;
-	perform whip.chan;
-	unwield all;
-	wi;	
+    unwield all;
+    wield whip;
+    perform whip.chan;
+    unwield all;
+    wi; 
 };
 
 #list my_weapons create {my spear; my spear 2};
@@ -203,14 +204,14 @@ stat.register ÐÚÓ¿ miss ÄãµÄÁèÀ÷¹¥ÊÆ;
 #var shifu yang;
 
 #alias {reborn} {
-	#send {jifa force yunu-xinfa};
-	#send {jifa dodge xianyun};
-	#send {jifa parry meinu-quan};
-	#send {jifa cuff meinu-quan};
-	#send {jifa sword xuantie-jian};
-	#send {jifa throwing qianmie-shou};
-	#send {jifa claw jiuyin-baiguzhao};
-	bei cuff;
+    #send {jifa force yunu-xinfa};
+    #send {jifa dodge xianyun};
+    #send {jifa parry meinu-quan};
+    #send {jifa cuff meinu-quan};
+    #send {jifa sword xuantie-jian};
+    #send {jifa throwing qianmie-shou};
+    #send {jifa claw jiuyin-baiguzhao};
+    bei cuff;
 };
 
 #class gumu_spec close
