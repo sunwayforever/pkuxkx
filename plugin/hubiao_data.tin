@@ -88,7 +88,7 @@
             #return 5;
         };
         #elseif {"%1" == "南昌飞虎镖局"} {
-            #return 4;
+            #return -2;
         };
         #elseif {"%1" == "杭州江南钱庄"} {
             #return -1;
@@ -211,7 +211,7 @@
             #return 1;
         };
         #elseif {"%1" == "泉州当铺"} {
-            #return 5;
+            #return -2;
         };
         #elseif {"%1" == "岳阳车马行"} {
             #return 6;
@@ -533,6 +533,7 @@
             };
         };
         #elseif {"${tmp}" == "泉州"} {
+            #nop fixme;
             #list hb_path create  {
                 gn;gsw;gs;gs;gs;gs;gs;gsu;gse;gs;gs;gs;gs;gs;gs;gs;gse;gs;gse;gs;gs;ge;
                 gn;gs;gne;gne;gne;gn;gs;gsw;gsw;gsw;gs;gn;ged;gn;gs;gs;gn;gwu;gw;gn;gs;gs;gs;ge;gw;gn;gn;gw;gn;gs;gs;gn;gnw;gw;ge;gse;ge;ge;
