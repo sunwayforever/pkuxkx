@@ -11,7 +11,7 @@
 #alias {show.init} {
 	#alias {show_to_status} {
 		#var show_status %%0;
-		#echo {{<099>${show_status}<099> => <cfa>${show_quest}<099>}{-1}};
+        update_status_line;
 	};
 
 	#loop {1} {&info_window[]} {cnt}
@@ -60,9 +60,18 @@
 	} {0.2};
 }
 
+#alias {update_status_line} {
+	#echo {{<099>${show_status}<099> | ${show_pp} => <cfa>${show_quest}<099>}{-1}};    
+};
+
 #alias {show_to_quest} {
 	#var show_quest %0;
-	#echo {{<099>${show_status}<099> => <cfa>${show_quest}<099>}{-1}};
+    update_status_line;
+};
+
+#alias {show_to_pp} {
+	#var show_pp %0;
+    update_status_line;
 };
 
 #gag {¡¾ÏÐÁÄ¡¿%*};

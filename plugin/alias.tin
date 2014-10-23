@@ -369,6 +369,7 @@
 };
 
 #alias {pp} {
+    show_to_pp ...;
 	#if {"%0" == ""} {
 		#if {"${pp_target}" != ""} {
 			autopp;
@@ -385,6 +386,18 @@
 			autopp.set_zh %0;	
 		};
 	};
+    #class pp.inner open;
+    #action {告诉你：【%*】目前在【%*】,快去摁死它吧!} {
+		#unticker {pp};
+        #class pp.inner kill;
+        show_to_pp %%1 @ %%2;
+	} {1};
+	#action {告诉你：【%*】并不存在} {
+		#unticker {pp};
+        #class pp.inner kill;
+        show_to_pp %%1 @ ...;
+	} {1};
+    #class pp.inner close;
 };
 
 #alias {autopp} {
@@ -395,16 +408,6 @@
 			helpme ...;
 			helpme find ${pp_target};
 		} {15};
-
-		#action {%*告诉你：【%*】目前在%*} {
-			#unticker {pp};
-			show_to_chat 【私聊】%%0;
-		} {1};
-
-		#action {%*告诉你：%*并不存在} {
-			#unticker {pp};
-			show_to_chat 【私聊】%%0;
-		} {1};		
 	};
 };
 
