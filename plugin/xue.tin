@@ -1,4 +1,5 @@
 #class xue open;
+#var xue_count 10;
 #var xue_tired 0;
 #alias {xue.start} {
 	load_map;
@@ -12,7 +13,7 @@
 
 	#ticker {xue} {
 		#if {$xue_tired == 0} {
-     		xue ${shifu} for ${xue.gongfu} 10;
+     		xue ${shifu} for ${xue.gongfu} ${xue_count};
 		};
 	} {0.5};
 
