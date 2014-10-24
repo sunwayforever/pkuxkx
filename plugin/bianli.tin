@@ -110,7 +110,7 @@ load bianli_data;
 		#if {"${next_area}" != "NULL"} {
 			gt ${next_area};
 			on_there {
-				bl.bianli;
+				bl.bianli %1;
 			};
 		};
 		#else {
@@ -120,7 +120,7 @@ load bianli_data;
 		};
 	};
 	#class bl.start.inner close;
-	bl.bianli;
+	bl.bianli %1;
 };
 
 #alias {bl.bianli} {
