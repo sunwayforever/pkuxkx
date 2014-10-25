@@ -30,8 +30,8 @@
     #class attack.inner open;
     #ticker {suxin} {
         pfm suxin;
-        } {3.8};
-       #ticker {shexin} {
+    } {3.8};
+    #ticker {shexin} {
         pfm shexin;
     } {5.8};
     #class attack.inner close;
