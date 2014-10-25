@@ -10,19 +10,12 @@
 
 #alias {attack.normal} {
 	pfm chan;
-	pfm duo;
 	#class attack.inner open;
-	#ticker {yf} {
-		yinfeng;
-	} {1};
 	#class attack.inner close;
 };
 
 #alias {attack.mingjiao} {
 	#class attack.inner open;
-	#ticker {yf} {
-		yinfeng;
-	} {1};
 	#class attack.inner close;
 };
 

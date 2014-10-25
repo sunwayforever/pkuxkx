@@ -2,118 +2,118 @@
 
 #var mr_auto 0;
 #alias {mr.start} {
-	#class mr.inner open;
-	#action {一脚踢向你的屁股} {
-		mr.f;
-	};
+    #class mr.inner open;
+    #action {一脚踢向你的屁股} {
+        mr.f;
+    };
 
-	#action {由于你没有找回大燕传国玉玺} {
-		#if {${mr_auto} == 1} {
-            #delay {3} {
-                mr.q;           
-            };
-		};	
-	};
-	
-	#action {你身上没有 xi 这样东西。} {
-		mr.f;
-	};
-	
-    #action {由于你成功的找回大燕传国玉玺} {
-		show_to_quest 慕容任务: 完成;
+    #action {由于你没有找回大燕传国玉玺} {
         #if {${mr_auto} == 1} {
             #delay {3} {
                 mr.q;           
             };
+            };  
         };
-    };
-
-	#action {大燕传国玉玺在以下地点附近出现} {
-		show_to_quest 慕容任务: 未知;	
-	};
-	
-    #action {慕容复说道：大燕传国玉玺在『%*』附近出现，快去吧！} {
-		show_to_quest 慕容任务: %%1;
-        #if {"%%1" == "福州密室" || "%%1" == "桃花岛桃林"} {
+        
+        #action {你身上没有 xi 这样东西。} {
             mr.f;
         };
-        #else {
-            #var dest @area_mapping{%%1};
-            #if {"${dest}" != "0"} {
-                gt $dest;
-                on_there {
-                    mr.bl;
+        
+        #action {由于你成功的找回大燕传国玉玺} {
+            show_to_quest 慕容任务: 完成;
+            #if {${mr_auto} == 1} {
+                #delay {3} {
+                    mr.q;           
                 };
             };
         };
-    } {1};
 
-    #action {慕容复忙着呢} {
-        #delay {2} {
-            mr.d;
+        #action {大燕传国玉玺在以下地点附近出现} {
+            show_to_quest 慕容任务: 未知;   
+        };
+        
+        #action {慕容复说道：大燕传国玉玺在『%*』附近出现，快去吧！} {
+            show_to_quest 慕容任务: %%1;
+            #if {"%%1" == "福州密室" || "%%1" == "桃花岛桃林"} {
+                mr.f;
+            };
+            #else {
+                #var dest @area_mapping{%%1};
+                #if {"${dest}" != "0"} {
+                    gt $dest;
+                    on_there {
+                        mr.bl;
+                    };
+                };
+            };
+        } {1};
+
+        #action {慕容复忙着呢} {
+            #delay {2} {
+                mr.d;
+            };
+        };
+
+        #action {姑苏慕容叛徒死了。} {
+            get all from corpse;
+        } {1};
+        
+        #action {你从姑苏慕容叛徒的尸体身上搜出一块玉玺。} {
+            show_to_quest 慕容任务: 收工;
+        };
+
+        #action {${char_name}发现的%*叛徒} {
+            killall pantu;
+        };
+        
+        #action {找到目标} {
+            follow pantu;
+            #delay {2} {killall pantu};
+            #action {你从姑苏慕容叛徒的尸体身上搜出一块玉玺} {
+                #unaction {你从姑苏慕容叛徒的尸体身上搜出一块玉玺};
+                show_to_quest 慕容任务: 收工;
+                #delay {1} {
+                    bl.back;
+                };
+                #action {遍历结束} {
+                    #unaction {遍历结束};
+                    mr.b;
+                };
+            };
+        };
+        #class mr.inner close;
+
+        #var mr_auto 1;
+        mr.q;
+    };
+
+    #alias {mr.stop} {
+        #var mr_auto 0;
+        #class mr.inner kill;   
+    };
+
+    #alias {mr.q} {
+        ask murong about job;
+    };
+
+    #alias {mr.d} {
+        give murong xi;
+    };
+
+    #alias {mr.bl} {
+        bl.start ${char_name}%*叛徒;
+    };
+
+    #alias {mr.b} {
+        gt mrf;
+        on_there {
+            give xi to murong;
         };
     };
 
-	#action {姑苏慕容叛徒死了。} {
-		get all from corpse;
-	} {1};
-	
-    #action {你从姑苏慕容叛徒的尸体身上搜出一块玉玺。} {
-		show_to_quest 慕容任务: 收工;
-	};
-
-	#action {${char_name}发现的%*叛徒} {
-		killall pantu;
-	};
-	
-    #action {找到目标} {
-        follow pantu;
-        #delay {2} {killall pantu};
-        #action {你从姑苏慕容叛徒的尸体身上搜出一块玉玺} {
-            #unaction {你从姑苏慕容叛徒的尸体身上搜出一块玉玺};
-			show_to_quest 慕容任务: 收工;
-            #delay {1} {
-                bl.back;
-            };
-            #action {遍历结束} {
-                #unaction {遍历结束};
-                mr.b;
-            };
-        };
+    #alias {mr.f} {
+        show_to_quest 慕容任务: 失败;
+        ask murong about fail;
     };
-    #class mr.inner close;
 
-	#var mr_auto 1;
-	mr.q;
-};
-
-#alias {mr.stop} {
-	#var mr_auto 0;
-    #class mr.inner kill;	
-};
-
-#alias {mr.q} {
-	ask murong about job;
-};
-
-#alias {mr.d} {
-	give murong xi;
-};
-
-#alias {mr.bl} {
-    bl.start ${char_name}%*叛徒;
-};
-
-#alias {mr.b} {
-    gt mrf;
-	on_there {
-		give xi to murong;
-	};
-};
-
-#alias {mr.f} {
-	show_to_quest 慕容任务: 失败;
-    ask murong about fail;
-};
-
-#class murong cloe;
+    #class murong cloe;

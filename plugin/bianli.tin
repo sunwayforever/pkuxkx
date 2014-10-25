@@ -2,252 +2,251 @@
 load bianli_data;
 
 #alias {bl.setup} {
-	#var bl_path ${bl_path_${CurrentPosition}};
-	#var bl_connections ${bl_connections_${CurrentPosition}};
+    #var bl_path ${bl_path_${CurrentPosition}};
+    #var bl_connections ${bl_connections_${CurrentPosition}};
 };
 
 #action {^树洞内部 -}{
-	#var CurrentPosition shudong;
+    #var CurrentPosition shudong;
 };
 
 #alias {bl.command} {
-	#alias tmp_command %1;
-	tmp_command;
-	bl.walk;
+    #alias tmp_command %1;
+    tmp_command;
+    bl.walk;
 };
 
 #alias {bl.clear} {
-	clear %1;
-	on_cleared {
-		bl.walk;
-	};
+    clear %1;
+    on_cleared {
+        bl.walk;
+    };
 };
 
 #alias {bl.clear_force} {
-	clear %1;
-	on_cleared {
-		bl.walk;
-	};
+    clear %1;
+    on_cleared {
+        bl.walk;
+    };
 };
 
 #alias {bl.stop} {
-	#var critical_running 0;
-	bl.pause;
-	#class bl.start.inner kill;
+    #var critical_running 0;
+    bl.pause;
+    #class bl.start.inner kill;
 };
 
 #alias {bl.pause} {
-	#class bl.inner kill;
-	#undelay {bl.delay};
+    #class bl.inner kill;
+    #undelay {bl.delay};
 };
 
 #var bl_path_index 0;
 
 #alias {bl.continue} {
-	#alias {bl.back} {
-		bl.merge;
-		bl.continue;
-	};
-	#class bl.inner open;
-	#action {这里没有任何明显的出路} {
-		#delay {bl.delay} {
-			bl.walk;
-		} {0.05};
-	} {1};
-	#action {这里%*的出口是} {
-		#delay {bl.delay} {
-			bl.walk;
-		} {0.05};
-	} {1};
-	
-	#action {busy_for_move} {
-		#math bl_path_index ${bl_path_index}-1;
-		bl.wait 1;
-	};
+    #alias {bl.back} {
+        bl.merge;
+        bl.continue;
+    };
+    #class bl.inner open;
+    #action {这里没有任何明显的出路} {
+        #delay {bl.delay} {
+            bl.walk;
+        } {0.05};
+    } {1};
+    #action {这里%*的出口是} {
+        #delay {bl.delay} {
+            bl.walk;
+        } {0.05};
+    } {1};
+    
+    #action {busy_for_move} {
+        #math bl_path_index ${bl_path_index}-1;
+        bl.wait 1;
+    };
 
-	#alias {bl.walk} {
-		#math bl_path_index ${bl_path_index}+1;
-		#if {${bl_path_index} > ${bl_path_size}} {
-			bl.pause;
-			#list bl_path create {};
-			#showme 遍历结束;
-		};
-		#else {
-			#list bl_path get ${bl_path_index} bl_path_next;
-			${bl_path_next};
-		};
-	};
-	#action {这个方向没有出路} {
-		bl.stop;
-	};
-	#action {忽然发现江水决堤} {
-		bl.stop;
-	};
-	#class bl.inner close;
-	#if {"%1" != ""} {
-		#action {%1} {
-			#unaction {%1};
-			bl.stop;
-			#showme 找到目标: %1;
-		} {1};
-	};
-	bl.walk;
+    #alias {bl.walk} {
+        #math bl_path_index ${bl_path_index}+1;
+        #if {${bl_path_index} > ${bl_path_size}} {
+            bl.pause;
+            #list bl_path create {};
+            #showme 遍历结束;
+        };
+        #else {
+            #list bl_path get ${bl_path_index} bl_path_next;
+            ${bl_path_next};
+        };
+    };
+    #action {这个方向没有出路} {
+        bl.stop;
+    };
+    #action {忽然发现江水决堤} {
+        bl.stop;
+    };
+    #if {"%1" != ""} {
+        #action {%1} {
+            bl.stop;
+            #showme 找到目标: %1;
+        } {1};
+    };
+    #class bl.inner close;
+    bl.walk;
 };
 
 
 #alias {bl.start} {
-	#var critical_running 1;
-	#list bl_connections create {};
-	bl.setup;
-	
-	#class bl.start.inner open;
-	#var original_here ${CurrentPosition};
-	#var connections ${bl_connections};
-	#var connections_index 0;
-	#list connections size connections_count;
+    #var critical_running 1;
+    #list bl_connections create {};
+    bl.setup;
+    
+    #class bl.start.inner open;
+    #var original_here ${CurrentPosition};
+    #var connections ${bl_connections};
+    #var connections_index 0;
+    #list connections size connections_count;
 
-	#action {遍历结束} {
-		#if {"${next_area}" != "NULL"} {
-			gt ${next_area};
-			on_there {
-				bl.bianli %1;
-			};
-		};
-		#else {
-			#showme bianli: done;
-			gt ${original_here};
-			bl.stop;
-		};
-	};
-	#class bl.start.inner close;
-	bl.bianli %1;
+    #action {遍历结束} {
+        #if {"${next_area}" != "NULL"} {
+            gt ${next_area};
+            on_there {
+                bl.bianli %1;
+            };
+        };
+        #else {
+            #showme bianli: done;
+            gt ${original_here};
+            bl.stop;
+        };
+    };
+    #class bl.start.inner close;
+    bl.bianli %1;
 };
 
 #alias {bl.bianli} {
-	#math connections_index ${connections_index}+1;
-	#if {${connections_index} > ${connections_count}} {
-		#var next_area NULL;
-	};
-	#else {
-		#list connections get ${connections_index} next_area;
-	};
-	bl.setup;
-	#list bl_path size bl_path_size;
-	#var bl_path_index 0;
-	bl.continue %1;
+    #math connections_index ${connections_index}+1;
+    #if {${connections_index} > ${connections_count}} {
+        #var next_area NULL;
+    };
+    #else {
+        #list connections get ${connections_index} next_area;
+    };
+    bl.setup;
+    #list bl_path size bl_path_size;
+    #var bl_path_index 0;
+    bl.continue %1;
 };
 
 #alias {bl.go} {
-	#list bl_path size bl_path_size;
-	#var bl_path_index 0;
-	bl.continue;
+    #list bl_path size bl_path_size;
+    #var bl_path_index 0;
+    bl.continue;
 };
 
 #alias {bl.truce} {
-	on_truce {
-		bl.walk;
-	};
+    on_truce {
+        bl.walk;
+    };
 };
 
 #alias {bl.wait} {
-	#delay {%1} {
-		bl.walk;
-	};
+    #delay {%1} {
+        bl.walk;
+    };
 };
 
 #list area_mappings_from create {麒麟;灵州;灵鹫;临安;荆州;中原;全真;信阳;苏州;张家;大理;小山;曲阜;泉州;荆州;黄河南岸;长江北岸;福州;岳阳;黄河北岸;晋阳;归云;南昌;江州;嘉兴;牙山;梦溪;镇江;长江岸边;黄河岸边;天龙;晋阳;泰山;桃花;桃源;昆明;襄阳;长江长江;西湖};
 #list area_mappings_to create {qlc;lz;dzt;hz;jingzhou;xuchang;quanzhen;xinyang;sz;zjk;dali;xc;qf;quanzhou;jingzhou;hn2;jb2;fz;yy;hb2;jinyang;taihu;nc;jiangzhou;jiaxing;yashan;zhenjiang;zhenjiang;jn2;hn2;tls;jy;tais;th;ty;km;xy;jn2;xh};
 
 #function {area_mapping} {
-	#format {tmp} {%.4s} {%1};
-	#list area_mappings_from find $tmp index;
+    #format {tmp} {%.4s} {%1};
+    #list area_mappings_from find $tmp index;
 
-	#if {${index} == 0} {
-		#format {tmp} {%.8s} {%1};
-		#list area_mappings_from find $tmp index;
-	};
-	
-	#list area_mappings_to get $index result;
+    #if {${index} == 0} {
+        #format {tmp} {%.8s} {%1};
+        #list area_mappings_from find $tmp index;
+    };
+    
+    #list area_mappings_to get $index result;
 }
 
 #alias {bl.merge} {
-	#list tmp_path create;
-	#list tmp_path add #cr;
-	#var tmp_index 1;
+    #list tmp_path create;
+    #list tmp_path add #cr;
+    #var tmp_index 1;
 
-	#math bl_path_index ${bl_path_index}+1;
-	#while {${bl_path_index} <= ${bl_path_size}} {
-		#list bl_path get ${bl_path_index} v;
-		#list tmp_path get ${tmp_index} tmp_top;
-		mergeable_bl ${v} ${tmp_top};
-		#if {${merge_result} == 1} {
-			#list tmp_path delete $tmp_index;
-			#math tmp_index ${tmp_index}-1;
-		};
-		#else {
-			#list tmp_path add ${v};
-			#math tmp_index ${tmp_index}+1;			
-		};
-		#math bl_path_index ${bl_path_index}+1;
-	}
-	#var bl_path ${tmp_path};
-	#var bl_path_index 1;
-	#list bl_path size bl_path_size;
+    #math bl_path_index ${bl_path_index}+1;
+    #while {${bl_path_index} <= ${bl_path_size}} {
+        #list bl_path get ${bl_path_index} v;
+        #list tmp_path get ${tmp_index} tmp_top;
+        mergeable_bl ${v} ${tmp_top};
+        #if {${merge_result} == 1} {
+            #list tmp_path delete $tmp_index;
+            #math tmp_index ${tmp_index}-1;
+        };
+        #else {
+            #list tmp_path add ${v};
+            #math tmp_index ${tmp_index}+1;         
+        };
+        #math bl_path_index ${bl_path_index}+1;
+    }
+    #var bl_path ${tmp_path};
+    #var bl_path_index 1;
+    #list bl_path size bl_path_size;
 };
 
 #alias {mergeable_bl} {
-	#if {"%1" == "n" && "%2" == "s"
-	||"%1" == "s" && "%2" == "n"
-	||"%1" == "w" && "%2" == "e"
-	||"%1" == "e" && "%2" == "w"
-	||"%1" == "se" && "%2" == "nw"
-	||"%1" == "nw" && "%2" == "se"
-	||"%1" == "sw" && "%2" == "ne"
-	||"%1" == "ne" && "%2" == "sw"
-	||"%1" == "u" && "%2" == "d"
-	||"%1" == "d" && "%2" == "u"
-	||"%1" == "nu" && "%2" == "sd"
-	||"%1" == "sd" && "%2" == "nu"
-	||"%1" == "su" && "%2" == "nd"
-	||"%1" == "nd" && "%2" == "su"
-	||"%1" == "eu" && "%2" == "wd"
-	||"%1" == "wd" && "%2" == "eu"
-	||"%1" == "wu" && "%2" == "ed"
-	||"%1" == "ed" && "%2" == "wu"
-	||"%1" == "enter" && "%2" == "out"
-	||"%1" == "out" && "%2" == "enter"}
-	{
-		#var merge_result 1;
-	};
-	#else {
-		#var merge_result 0;
-	};
+    #if {"%1" == "n" && "%2" == "s"
+    ||"%1" == "s" && "%2" == "n"
+    ||"%1" == "w" && "%2" == "e"
+    ||"%1" == "e" && "%2" == "w"
+    ||"%1" == "se" && "%2" == "nw"
+    ||"%1" == "nw" && "%2" == "se"
+    ||"%1" == "sw" && "%2" == "ne"
+    ||"%1" == "ne" && "%2" == "sw"
+    ||"%1" == "u" && "%2" == "d"
+    ||"%1" == "d" && "%2" == "u"
+    ||"%1" == "nu" && "%2" == "sd"
+    ||"%1" == "sd" && "%2" == "nu"
+    ||"%1" == "su" && "%2" == "nd"
+    ||"%1" == "nd" && "%2" == "su"
+    ||"%1" == "eu" && "%2" == "wd"
+    ||"%1" == "wd" && "%2" == "eu"
+    ||"%1" == "wu" && "%2" == "ed"
+    ||"%1" == "ed" && "%2" == "wu"
+    ||"%1" == "enter" && "%2" == "out"
+    ||"%1" == "out" && "%2" == "enter"}
+    {
+        #var merge_result 1;
+    };
+    #else {
+        #var merge_result 0;
+    };
 };
 
 #alias {bl.test} {
-	#list bl_path create {
-	};
-	#list bl_path size bl_path_size;
-	#var bl_path_index 0;
-	bl.continue "nop";
+    #list bl_path create {
+    };
+    #list bl_path size bl_path_size;
+    #var bl_path_index 0;
+    bl.continue "nop";
 };
 
 #alias {bl.comment} {
-	#nop %1;
-	bl.walk;
+    #nop %1;
+    bl.walk;
 };
 
 #alias {bl.action.xiangyang} {
-	eu;
-	#class bl.action.xiangyang.inner open;
-	#action {^此去往东是荒郊野岭，盗贼猛兽出没之地} {
-		#delay {0.5} {
-			eu;
-		};
-	} {1};
-	#action {^半山坡} {
-		#class bl.action.xiangyang.inner kill;		
-	} {1};
-	#class bl.action.xiangyang.inner close;
+    eu;
+    #class bl.action.xiangyang.inner open;
+    #action {^此去往东是荒郊野岭，盗贼猛兽出没之地} {
+        #delay {0.5} {
+            eu;
+        };
+    } {1};
+    #action {^半山坡} {
+        #class bl.action.xiangyang.inner kill;      
+    } {1};
+    #class bl.action.xiangyang.inner close;
 };
 #class bianli close;
