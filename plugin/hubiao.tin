@@ -3,9 +3,7 @@ load hubiao_data;
 load chaos;
 
 #var hb_first_kill 0;
-#var hb_wait 0;
 #var hb_paused 0;
-#var hb_hb_force_wait 0;
 #var hb_paused 0;
 #var hb_auto 0;
 #var hb_info nil;
@@ -42,9 +40,29 @@ load chaos;
     #unticker {hb_ticker};
 };
 
+#alias {hb.move2} {
+    #if {${hb_path_index} > ${hb_path_size}} {
+        #unaction {^    ÕâÀï%*³ö¿Ú};
+        #unalias {l};
+        hb.pause;
+        #delay {5} {
+            #if {@getenv{hb_lunci} == @getenv{mixin_lunci}} {
+                chain on_sell get.qian get.san repair special_repair gem.combine hb.b;
+            };
+            #else {
+                hb.b;   
+            };
+        };
+    };
+    #else {
+        #delay {hb_move} {
+            ${hb_next_step};
+        } {1.8};
+    };    
+};
+
 #alias {hb.move} {
     #if {${qx_percent} < 50 || ${js_percent} < 50 || ${nl_percent} < 20} {
-        #unticker {hb_walk};
         #delay {hb_move} {
             show_to_info ÆøÑª»ò¾«Éñ¹ýµÍ,ÍÆ³µÔÝÍ£;
             notify escort paused;
@@ -69,13 +87,8 @@ load chaos;
             #if {${eff_qx_percent} < 50} {
                 #2 yun lifeheal;
             };
-            #ticker {hb_walk} {
-                #if {${hb_force_wait} == 0 && ${hb_paused} == 0 && ${hb_wait} == 0} {
-                    ${hb_next_step};
-                };
-            } {8};
             #delay {hb_move} {
-                #if {${hb_force_wait} == 0 && ${hb_paused} == 0 && ${hb_wait} == 0} {
+                #if {${hb_paused} == 0} {
                     ${hb_next_step};
                 };
             } {3};
@@ -86,8 +99,16 @@ load chaos;
 #alias {hb.setup} {
     #foreach {${clear_npcs}[%*]} {npc} {clear_npc ${npc}};
     #unaction {^    ÕâÀï%*³ö¿Ú};
-    #unaction {ÄãÏëÉ±Ë­};
     #class hb_setup_inner open;
+    #action {ÄãÏëÉ±Ë­} {
+        hb.retry;
+    };
+
+    #action {Äã»¹ÊÇÏÈ°Ñ¶ÔÊÖ½â¾öÁËÔÙËµ°É} {
+        l;
+        hb.retry;
+    } {1};
+
     #action {ïÚ³µºôÀ²Ò»ÉùÉ¢ÁË¼Ü} {
         hb.pause;
         show_to_tuiche ïÚ³µºôÀ²Ò»ÉùÉ¢ÁË¼Ü;
@@ -97,8 +118,11 @@ load chaos;
         hb.move;
     };
 
+    #action {busy_for_move} {
+        hb.retry;
+    };
+    
     #action {^Äã¸Ï×ÅïÚ³µÊ»ÁË¹ýÀ´¡£$} {
-        #unticker {hb_walk};
         #if {${hb_paused} == 0} {
             #math hb_path_index ${hb_path_index}+1;
             #list hb_path get ${hb_path_index} hb_next_step;
@@ -113,7 +137,6 @@ load chaos;
 
     #action {½Ù·Ë¸öÆð×Ý¶ÝÈë°µÀï²»¼ûÁË} {
         hb.detect_enemy;
-        #var hb_wait 0;
         raw;
     };
 
@@ -138,7 +161,7 @@ load chaos;
 
     #action {½Ù·ËÉìÊÖÒ»À¹µÀ} {
         war;
-        hb.wait;
+        hb.retry;
     };
 
     #action {Äã³¤Ð¦Ò»Éù£¬¿ªÊ¼¶ÔÖÜÎ§ÖÚÈËÍ´ÏÂÉ±ÊÖ£¡} {
@@ -147,7 +170,6 @@ load chaos;
     
     #action {½Ù·ËÍ»È»´Ó°µ´¦ÌøÁË³öÀ´} {
         hb.detect_enemy;
-        hb.wait;
         #if {${hb_first_kill} == 0} {
             killall robber;
         };
@@ -200,11 +222,10 @@ load chaos;
     } {60};
 };
 
-#alias {hb.wait} {
-    #var hb_wait 1;
-    #delay {hb_wait} {
-        #var hb_wait 0;
-    } {8};
+#alias {hb.retry} {
+    #delay {hb_move} {
+        hb.move;
+    } {5};
 };
 
 #alias {hb.pause} {
@@ -216,8 +237,6 @@ load chaos;
 
 #alias {hb.end} {
     #var hb_paused 1;
-    #var hb_force_wait 1;
-    #unticker {hb_walk};
     #undelay {hb_move};
 };
 
@@ -231,8 +250,8 @@ load chaos;
         #class hb.escape.inner open;
         #action {²»ÄÜÒÆ¶¯} {
             #showme ÄãÌÓÅÜÊ§°Ü;
-        };
-        
+        } {1};
+
         #action {^ÄãÌÓÅÜÊ§°Ü} {
             #class hb.escape.inner kill;
             on_truce {
@@ -240,7 +259,7 @@ load chaos;
                     hb.resume;
                 } {3};
             };
-        };
+        } {1};
         
         #action {^    ÕâÀï%*³ö¿Ú} {
             #class hb.escape.inner kill;
@@ -265,7 +284,6 @@ load chaos;
 
 #alias {hb.resume} {
     #var hb_paused 0;
-    #var hb_force_wait 0;
 
     #alias {hb.back} {
         hb.merge_path;
@@ -307,28 +325,11 @@ load chaos;
         #action {^    ÕâÀï%*³ö¿Ú} {
             #math hb_path_index ${hb_path_index}+1;
             #list hb_path get ${hb_path_index} hb_next_step;
+            hb.move2;
         } {1};
         #alias {l} {#cr};
-        
-        #ticker {hb_walk} {
-            #if {${hb_path_index} > ${hb_path_size}} {
-                #unaction {^    ÕâÀï%*³ö¿Ú};
-                #unalias {l};
-                hb.pause;
-                #delay {5} {
-                    #if {@getenv{hb_lunci} == @getenv{mixin_lunci}} {
-                        chain on_sell get.qian get.san repair special_repair gem.combine hb.b;
-                    };
-                    #else {
-                        hb.b;   
-                    };
-                };
-            };
-            #else {
-                ${hb_next_step};
-            };
-        } {1.8};
-    }
+        hb.move2;
+    };
 };
 
 #alias {hb.get_owner} {
@@ -716,21 +717,7 @@ load chaos;
 #alias {clear_npc} {
     #var npc_zh %1;
     #class clear_npc.inner open;
-    #action {ÄãÏëÉ±Ë­} {
-        #var hb_force_wait 0;
-    };
-    #action {${npc_zh}ËÀÁË} {
-        #var hb_force_wait 0;
-    } {1};
-
-    #action {Äã»¹ÊÇÏÈ°Ñ¶ÔÊÖ½â¾öÁËÔÙËµ°É} {
-        l;
-    } {1};
-    
     #action {${npc_zh}(%*)} {
-        #action {¿´ÆðÀ´${npc_zh}ÏëÉ±ËÀÄã} {
-            #var hb_force_wait 1;
-        } {1};
         #var npc_en @lower{%%1};
         killall ${npc_en};
     } {1};
@@ -769,81 +756,81 @@ load chaos;
         #ticker {yao} {
             ask $tmp_huoji about yao;
         }{0.5};
-            #class mx.yao.inner close;
-        } {1};
-        #class mx.inner close;
-        zhao;
-    };
+        #class mx.yao.inner close;
+    } {1};
+    #class mx.inner close;
+    zhao;
+};
 
-    #alias {mx.d} {
-        hb.get_owner;
-        give cai wu to ${hb_owner};
-        #class mx.inner kill;
-    };
+#alias {mx.d} {
+    hb.get_owner;
+    give cai wu to ${hb_owner};
+    #class mx.inner kill;
+};
 
-    #alias {hb.p} {
-        chain get.san get.qian get.fan get.bao repair;
-    };
+#alias {hb.p} {
+    chain get.san get.qian get.fan get.bao repair;
+};
 
-    #action {Äã¸ø%*Ò»Ð©Ê§×ÙµÄ²ÆÎï} {
-        @setenv{hb_state;NIL};
-        @setenv{mixin_lunci;5};
-        #delay {hb_auto_delay} {
-            #if {${hb_auto} == 1} {
-                hb.start;
-            };
-        } {3};
-    };
+#action {Äã¸ø%*Ò»Ð©Ê§×ÙµÄ²ÆÎï} {
+    @setenv{hb_state;NIL};
+    @setenv{mixin_lunci;5};
+    #delay {hb_auto_delay} {
+        #if {${hb_auto} == 1} {
+            hb.start;
+        };
+    } {3};
+};
 
-    #alias {show_to_tuiche} {
-        show_to_quest ÍÆ³µ: @getenv{hb_lunci_total}+@getenv{hb_lunci}: %0;
-    };
+#alias {show_to_tuiche} {
+    show_to_quest ÍÆ³µ: @getenv{hb_lunci_total}+@getenv{hb_lunci}: %0;
+};
 
-    #alias {got_robber} {
-        #delay {detect_enemy_delay} {
-            #class detect_enemy.inner kill; 
-        } {1};
-        #math robber_count ${robber_count}+1;
-        #var tmp_score @mapget{robber_score;%1};
-        #if {${tmp_score} > ${robber_score}} {
-            #var robber_score ${tmp_score};
-            #var enemy ${char_id}'s robber ${robber_count};
-        };
+#alias {got_robber} {
+    #delay {detect_enemy_delay} {
+        #class detect_enemy.inner kill; 
+    } {1};
+    #math robber_count ${robber_count}+1;
+    #var tmp_score @mapget{robber_score;%1};
+    #if {${tmp_score} > ${robber_score}} {
+        #var robber_score ${tmp_score};
+        #var enemy ${char_id}'s robber ${robber_count};
     };
+};
 
-    #alias {hb.detect_enemy} {
-        #class detect_enemy.inner open;
-        #action {~[1;31m½Ù·Ë[2;37;0m(@capital{${char_id}}'s robber)} {
-            got_robber quanzhen;
-        };
-        #action {~[1;32m½Ù·Ë[2;37;0m(@capital{${char_id}}'s robber)} {
-            got_robber shaolin;
-        };
-        #action {~[1;33m½Ù·Ë[2;37;0m(@capital{${char_id}}'s robber)} {
-            got_robber gaibang;
-        };
-        #action {~[1;34m½Ù·Ë[2;37;0m(@capital{${char_id}}'s robber)} {
-            got_robber xingxiu;
-        };
-        #action {~[1;35m½Ù·Ë[2;37;0m(@capital{${char_id}}'s robber)} {
-            got_robber huashan;
-        };
-        #action {~[1;36m½Ù·Ë[2;37;0m(@capital{${char_id}}'s robber)} {
-            got_robber taohua;
-        };
-        #action {~[1;37m½Ù·Ë[2;37;0m(@capital{${char_id}}'s robber)} {
-            got_robber wudang;      
-        };
-        #action {·ç¾°ÒªÂýÂýµÄ¿´} {
-            #delay {0.5} {
-                l;
-            };
-        };
-        #class detect_enemy.inner close;
-        #undelay {detect_enemy_delay};
-        #var enemy NULL;
-        #var robber_count 0;
-        #var robber_score 0;
-        l;
+#alias {hb.detect_enemy} {
+    #class detect_enemy.inner open;
+    #action {~[1;31m½Ù·Ë[2;37;0m(@capital{${char_id}}'s robber)} {
+        got_robber quanzhen;
     };
-    #class hubiao close
+    #action {~[1;32m½Ù·Ë[2;37;0m(@capital{${char_id}}'s robber)} {
+        got_robber shaolin;
+    };
+    #action {~[1;33m½Ù·Ë[2;37;0m(@capital{${char_id}}'s robber)} {
+        got_robber gaibang;
+    };
+    #action {~[1;34m½Ù·Ë[2;37;0m(@capital{${char_id}}'s robber)} {
+        got_robber xingxiu;
+    };
+    #action {~[1;35m½Ù·Ë[2;37;0m(@capital{${char_id}}'s robber)} {
+        got_robber huashan;
+    };
+    #action {~[1;36m½Ù·Ë[2;37;0m(@capital{${char_id}}'s robber)} {
+        got_robber taohua;
+    };
+    #action {~[1;37m½Ù·Ë[2;37;0m(@capital{${char_id}}'s robber)} {
+        got_robber wudang;      
+    };
+    #action {·ç¾°ÒªÂýÂýµÄ¿´} {
+        #delay {0.5} {
+            l;
+        };
+    };
+    #class detect_enemy.inner close;
+    #undelay {detect_enemy_delay};
+    #var enemy NULL;
+    #var robber_count 0;
+    #var robber_score 0;
+    l;
+};
+#class hubiao close
