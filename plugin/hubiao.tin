@@ -4,7 +4,6 @@ load chaos;
 
 #var hb_first_kill 0;
 #var hb_paused 0;
-#var hb_paused 0;
 #var hb_auto 0;
 #var hb_info nil;
 #var hb_rotate_location NIL;
@@ -678,7 +677,6 @@ load chaos;
         };
         #alias {shangchuan} {
             #unticker {sw/yell_boat};
-            #unticker {hb_walk};
             #action {所有人被赶下了渡船} {
                 #unaction {所有人被赶下了渡船};
                 #class guohe.inner kill;
