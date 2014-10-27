@@ -137,6 +137,7 @@ load chaos;
     #action {劫匪个起纵遁入暗里不见了} {
         hb.detect_enemy;
         raw;
+        hb.retry;
     };
 
     #action {^这个方向} {
