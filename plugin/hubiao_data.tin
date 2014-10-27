@@ -359,10 +359,10 @@
             };
         };
         #elseif {"${tmp}" == "’ÚΩ≠"} {
-            #nop fixme;
             #list hb_path create {
-                gs;gs;gsw;gn;gn;gn;gn;gn;gn;gnw;gn;gne;gne;gnw;gn;gn;gn;gn;gnw;gw;gw;gw;gw;gn;ge;gw;gn;ge;gw;gn;gnu;gsd;gw;
-                ge;ge;gw;gs;gs;gs;gw;gs;gn;gw;gn;gs;gs;gn;gw;ge;ge;ge;ge;gs;gn;gw;gs;gw;ge;ge;gw;gs;gn;gn;gn;ge;
+                gs;gs;gsw;gn;gn;gn;gn;gn;gn;gnw;gn;gne;gne;gnw;gn;gn;gn;gn;gnw;gw;gw;gw;gn;gw;gn;ge;gw;gn;gnu;gsd;gw;
+                ge;ge;gw;gs;gs;gs;gw;gs;gn;gw;gn;gs;gs;gn;gw;ge;ge;ge;ge;gs;gn;gw;gs;gw;ge;ge;gw;gs;gn;gn;gn;gn;gn;
+                gw;gw;gs;gs;gw;ge;gs;gs;ge;ge;ge;ge;gn;gn;gn;gn;gw;gw;gs;gs;ge;
             };
         };
         #elseif {"${tmp}" == "πÈ‘∆"} {
