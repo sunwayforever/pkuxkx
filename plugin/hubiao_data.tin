@@ -79,7 +79,7 @@
             #return -1;
         };
         #elseif {"%1" == "ÈªÖÝµ±ÆÌ"} {
-            #return 6;
+            #return -2;
         };
         #elseif {"%1" == "ËÕÖÝ¾Û±¦Õ«"} {
             #return -1;
@@ -335,6 +335,7 @@
             };
         };
         #elseif {"${tmp}" == "ÈªÖÝ"} {
+            #nop fixme
             #list hb_path create {
                 gs;gs;gsw;gs;gs;gs;gs;gs;gs;gs;ge;gw;gs;gs;gs;ge;gn;gs;gne;gne;gne;gn;gw;ge;gn;gs;gs;gsw;
                 gsw;gsw;ged;gn;gs;gs;gn;gwu;gs;gn;gw;gs;gs;ge;gw;gn;gn;gw;gn;gs;gs;gn;gn;gs;gs;gn;ge;ge

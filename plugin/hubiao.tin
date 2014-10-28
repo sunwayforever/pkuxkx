@@ -223,9 +223,11 @@ load chaos;
 };
 
 #alias {hb.retry} {
-    #delay {hb_move} {
-        hb.move;
-    } {5};
+    #if {${hb_paused} == 0} {
+        #delay {hb_move} {
+            hb.move;
+        } {3};
+    };
 };
 
 #alias {hb.pause} {
