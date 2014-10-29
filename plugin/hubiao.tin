@@ -54,9 +54,7 @@ load chaos;
         };
     };
     #else {
-        #delay {hb_move} {
-            ${hb_next_step};
-        } {1.8};
+        ${hb_next_step};
     };    
 };
 
