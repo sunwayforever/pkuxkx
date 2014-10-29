@@ -150,15 +150,21 @@
 };
 
 #action {原来是你的肚子在叫了} {
-    eat_food;
+    #if {${critical_running} == 0} {
+        eat_food;
+    };
 };
 
 #action {你舔了舔干裂的嘴唇，看来是很久没有喝水了。} {
-    eat_food;
+    #if {${critical_running} == 0} {
+        eat_food;
+    };
 };
 
 #action {你渴得眼冒金星} {
-    eat_food;
+    #if {${critical_running} == 0} {
+        eat_food;
+    };
 };
 
 #action {好了，你走吧} {
@@ -191,10 +197,6 @@
     show_to_shortcut ${shortcut};
     show.init;
     update_status;
-};
-
-#action {你确定要升级吗} {
-    y;
 };
 
 #action {您要将另一个连线中的相同人物赶出去} {
