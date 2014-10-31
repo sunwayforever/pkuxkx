@@ -201,9 +201,9 @@
 #var menzhong_didian txg;
 #var char_menpai_position xx;
 
-stat.register 木灵盾 hit 你盔甲上镶嵌的钻石发挥了作用;
-stat.register 木灵盾 hit 攻击落在你身上显得软弱无力;
-stat.register 木灵盾 hit 攻击力似乎有所减弱。;
+#nop stat.register 木灵盾 hit 你盔甲上镶嵌的钻石发挥了作用;
+#nop stat.register 木灵盾 hit 攻击落在你身上显得软弱无力;
+#nop stat.register 木灵盾 hit 攻击力似乎有所减弱。;
 
 #alias {suck} {
 	unwi;

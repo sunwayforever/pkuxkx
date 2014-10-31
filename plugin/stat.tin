@@ -11,16 +11,13 @@
 
 	#var ${category}_hit 0;
 	#var ${category}_miss 0;
-	#gag {${category}: ${kind}};
 	#if {"%2" == "hit"} {
 		#action {%3} {
-			#showme ${category}: hit;
 			#math %1_hit ${%1_hit}+1;
 		};
 	};
 	#elseif {"%2" == "miss"} {
 		#action {%3} {
-			#showme ${category}: miss;
 			#math %1_miss ${%1_miss}+1;
 		};
 	};
@@ -38,7 +35,7 @@
 		#format {tmp_category} {%-9s} {${category}:};
 		#format {tmp_hit} {%-5s} {${${category}_hit}};
 		#format {tmp_miss} {%-5s} {${${category}_miss}};
-		#format {tmp_percent} {%-5s} {${stat_percent}%%};
+		#format {tmp_percent} {%s} {${stat_percent}%%};
 		#echo {${tmp_category}ÃüÖÐ:${tmp_hit}¶ªÊ§:${tmp_miss}ÃüÖÐÂÊ:${tmp_percent}};
 	};
 	#buffer lock;
