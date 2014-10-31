@@ -29,12 +29,15 @@
 
 #alias {suck.stop} {
 	show_to_quest suck ½áÊø;
-	#alias wi wi_normal;
-	#alias attack attack.normal;
-	bei strike;
-	#unticker {suck};
-	#unticker {chifan};
-	tao;
+    #5 halt;
+    on_unbusy {
+	    nw;s;
+        #alias wi wi_normal;
+	    #alias attack attack.normal;
+	    bei strike;
+	    #unticker {suck};
+	    #unticker {chifan};
+	};
 };
 
 #alias {suck.p} {

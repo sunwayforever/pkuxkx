@@ -316,6 +316,7 @@
     #elseif {"${hb_owner}" == "zuo"} {
         #if {"${tmp}" == "бяжн"} {
             #list hb_path create {
+                #nop here;
                 gs;gs;gnw;gn;gn;gn;gn;gn;gnw;gn;gne;gne;gn;gne;gne;gnw;gnw;gw;hb.guohe {jiang};gw;gnd;gnw;gnd;gn;gn;gn;gn;gd;gu;
                 gn;gse;ge;gw;gnw;gw;gs;gn;ge;ge;gu;genter;gout;gd;gw;gn;ge;gu;gu;gd;ge;gw;gw;ge;gd;gw;gw;ge;gn;ge;gw;gn;gnw;gnw;gse;gse;gn;gn;gs;gs;gs;gs;gs;gw;gs;
                 gn;ge;ge;gw;gs;ge;gn;gs;gs;gn;ge;gn;gn;gs;gs;gs;gs;gn;gn;ge;gw;gw;gw;gs;gw;ge;ge;gs;gn;gw;gs;gw;gw;ge;ge;ge;gw;gs;gw;ge;ge;gw;gs;gn;gn;gn;gn;
@@ -571,6 +572,18 @@
     };
     #list hb_path size hb_path_size;
     #var hb_path_index 1;
+
+    @stackcreate{tmp};
+    #while {${hb_path_index} <= ${hb_path_size}} {
+        #list hb_path get ${hb_path_index} v;
+        #if {@iscomment{${v}} == 0} {
+            @stackpush{tmp;${v}};            
+        };
+        #math hb_path_index ${hb_path_index}+1;
+    }
+    #var hb_path @stacktolist{tmp};
+    #var hb_path_index 1;
+    #list hb_path size hb_path_size;
 };
 
 #class hubiao_data close

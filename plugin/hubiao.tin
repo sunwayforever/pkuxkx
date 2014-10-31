@@ -649,7 +649,6 @@ load chaos;
 
     #while {${hb_path_index} <= ${hb_path_size}} {
         #list hb_path get ${hb_path_index} v;
-        #list tmp_path get ${tmp_index} tmp_top;
         #if {"@opposite{${v}}" == "@stacktop{tmp}"} {
             #var nil @stackpop{tmp};
         };
