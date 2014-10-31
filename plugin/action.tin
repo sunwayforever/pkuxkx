@@ -173,11 +173,15 @@
     we;
 };
 
+#action {你现在正忙着哩} {
+    #showme busy_for_move;
+    #showme busy_for_action;
+};
+
 #list busy_for_move create {
     劫匪伸手一拦道;
     青海湖畔美不胜收;
     你不小心被什么东西绊了一下;
-    你现在正忙着哩;
     你逃跑失败;
     不能移动;
     你还是先把对手解决了再说吧;
@@ -316,7 +320,7 @@
         #action {%S(%S)} {
             special %%%2;
             #if {"%%%2" == "chainless"} {
-                chainless.setup;
+                load chainless;
             };
             #elseif {"%%%2" == "perceive"} {
                 load pp;

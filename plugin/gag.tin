@@ -25,6 +25,7 @@
 #gag {太极剑法的 chan 只能对战斗中的对手使用};
 #gag {东西有下面这些};
 #gag {busy_for_move};
+#gag {busy_for_action};
 
 #gag {你要把什么东西放进宝石袋};
 #gag {你身上没有id为};
