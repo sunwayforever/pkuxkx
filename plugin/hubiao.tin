@@ -40,7 +40,12 @@ load chaos;
 };
 
 #alias {hb.move2} {
-    #if {${hb_path_index} > ${hb_path_size}} {
+    #if {@iscomment{${hb_next_step}} == 1} {
+        #math hb_path_index ${hb_path_index}+1;
+        #list hb_path get ${hb_path_index} hb_next_step;
+        hb.move2;
+    };
+    #elseif {${hb_path_index} > ${hb_path_size}} {
         #unaction {^    这里%*出口};
         #unalias {l};
         hb.pause;
@@ -59,7 +64,12 @@ load chaos;
 };
 
 #alias {hb.move} {
-    #if {${qx_percent} < 50 || ${js_percent} < 50 || ${nl_percent} < 20} {
+    #if {@iscomment{${hb_next_step}} == 1} {
+        #math hb_path_index ${hb_path_index}+1;
+        #list hb_path get ${hb_path_index} hb_next_step;
+        hb.move;
+    };
+    #elseif {${qx_percent} < 50 || ${js_percent} < 50 || ${nl_percent} < 20} {
         #delay {hb_move} {
             show_to_info 气血或精神过低,推车暂停;
             notify escort paused;
@@ -649,12 +659,14 @@ load chaos;
 
     #while {${hb_path_index} <= ${hb_path_size}} {
         #list hb_path get ${hb_path_index} v;
-        #if {"@opposite{${v}}" == "@stacktop{tmp}"} {
-            #var nil @stackpop{tmp};
+        #if {@iscomment{${v}} == 0} {
+            #if {"@opposite{${v}}" == "@stacktop{tmp}"} {
+                #var nil @stackpop{tmp};
+            };
+            #elseif {"@opposite{${v}}" != "NULL"} {
+                @stackpush{tmp;${v}};           
+            }
         };
-        #elseif {"@opposite{${v}}" != "NULL"} {
-            @stackpush{tmp;${v}};           
-        }
         #math hb_path_index ${hb_path_index}+1;
     }
     #var hb_path @stacktolist{tmp};
