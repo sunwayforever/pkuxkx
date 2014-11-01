@@ -1009,3 +1009,22 @@
 	#path save backward yyy;
 	#var xxx;
 };
+
+#alias {n} {north};
+#alias {s} {south};
+#alias {e} {east};
+#alias {w} {west};
+#alias {u} {up};
+#alias {d} {down};
+#alias {ne} {northeast};
+#alias {sw} {southwest};
+#alias {nw} {northwest};
+#alias {se} {southeast};
+#alias {nd} {northdown};
+#alias {su} {southup};
+#alias {nu} {northup};
+#alias {sd} {southdown};
+#alias {eu} {eastup};
+#alias {wd} {westdown};
+#alias {ed} {eastdown};
+#alias {wu} {westup};
