@@ -1,3 +1,4 @@
 #class highlight open
 #highlight {清心散} {green};
+#highlight {当前位置} {cyan};
 #class highlight close
