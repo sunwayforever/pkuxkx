@@ -234,7 +234,7 @@ load chaos;
     #if {${hb_paused} == 0} {
         #delay {hb_move} {
             hb.move;
-        } {3};
+        } {1.5};
     };
 };
 
