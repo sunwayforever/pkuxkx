@@ -609,6 +609,7 @@
 };
 
 #alias {map.go} {
+    #var critical_running 1;
 	#var map_go_wait 0;
 	#var map_go_ended 0;
 	#path end;
@@ -623,6 +624,7 @@
 		
 	#event {END OF PATH} {
 		#class map.go.inner kill;
+        #var critical_running 0;
 		#if {${map_go_wait} == 0} {
 			#showme map arrived;
 		};

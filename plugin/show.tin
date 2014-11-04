@@ -8,6 +8,12 @@
 #var info_window_offset 6;
 #math chat_window_offset $info_window_offset+&info_window[]+1;
 
+#alias {show.clear} {
+    #var info_window {{1}{ } {2}{ } {3}{ } {4}{ } {5}{ }};
+    #var chat_window {{1}{ } {2}{ } {3}{ } {4}{ } {5}{ } {6}{ }};
+    show.init;
+};
+
 #alias {show.init} {
 	#alias {show_to_status} {
 		#var show_status %%0;
