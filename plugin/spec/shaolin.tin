@@ -6,7 +6,6 @@
 #alias {attack.prepare} {
 	yun powerup;
 	pfm fmq;
-	pfm zuida;
 	pfm jingmo;
 	
 	#class attack.inner open;
