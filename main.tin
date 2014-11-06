@@ -58,7 +58,6 @@
 #read plugin/show.tin;
 #read plugin/xiulian.tin;
 #read plugin/zuiquan.tin;
-#read plugin/chainless.tin;
 #read plugin/suck.tin;
 #read plugin/mapi.tin;
 #read plugin/xmpp.tin;
