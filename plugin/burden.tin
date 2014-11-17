@@ -2,14 +2,27 @@
 #alias {burden.check} {
     #class burden.check.inner open;
     #var burden_all {};
-    #action {~©¦\S+.*©¦} {
-        #var burden_all ${burden_all}%0
+    #var burden_start_cap 0;
+    #action {[×ã²¿]} {
+        #var burden_start_cap 1;
+    };
+    #action {©¦%*©¦} {
+        #if {${burden_start_cap} == 1} {
+            #var burden_all ${burden_all}%%1;
+        }
     };
     #action {¨t©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤¨s} {
-        #showme ${burden_all};
+        #system {bin/burden.rb "${burden_all}"};
+        #class burden_tmp kill;
         #class burden.check.inner kill;
+        #read /tmp/pkuxkx_burden;
     };
     #class burden.check.inner close;
     #send {i};
+};
+
+#function {burdenget} {
+    #var result @ctd{@mapget{burden;%0}};
 }
+
 #class burden close
