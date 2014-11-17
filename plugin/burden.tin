@@ -1,0 +1,15 @@
+#class burden open
+#alias {burden.check} {
+    #class burden.check.inner open;
+    #var burden_all {};
+    #action {~©¦\S+.*©¦} {
+        #var burden_all ${burden_all}%0
+    };
+    #action {¨t©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤¨s} {
+        #showme ${burden_all};
+        #class burden.check.inner kill;
+    };
+    #class burden.check.inner close;
+    #send {i};
+}
+#class burden close
