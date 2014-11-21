@@ -396,9 +396,14 @@
         };
         #elseif {"${tmp}" == "岳阳"} {
             #list hb_path create {
-                gs;gs;gsw;gs;gs;gs;gs;gs;gs;gs;gs;  gnw;gn;gnw;gn;gn;gn;gn;gn;gn;gn;gnw;gnd;gn;gn;gn;gn;gn;
-                gsw;gsw;gsw;gw;gwu;gnw;gwu;gw;gw;gw;
-                gn;gn;gn;gs;gs;ge;gw;gs;ge;gn;gs;gs;gn;ge;ge;gw;gw;gw;gw;gn;gs;gs;gn;gw;gw;gu;gd;gs;gn;ge;ge;ge;gs;gw;ge;ge;gw;gs;gs;gn;gn;
+                #nop 从东面到达城中心;
+                gs;gs;gsw;gs;gs;gs;gs;gs;gs;gs;gs;gnw;gn;gnw;gn;gn;gn;gn;gn;gn;gn;gnw;gnd;gn;gn;gn;gn;gn;gsw;gsw;gsw;gw;gwu;gnw;gwu;gw;gw;gw;
+                #nop 城中心往北;
+                gn;gn;gn;gs;gs;ge;gw;gs;ge;gn;gs;gs;gn;ge;ge;gw;gw;gw;
+                #nop 城中心往西
+                gw;gn;gs;gs;gn;gw;gw;gu;gd;gs;gn;ge;ge;ge;
+                #nop 城中心往南;
+                gs;gw;ge;ge;gw;gs;gs;gsu;gsu;gsu;ged;ged;gwu;gwu;gnd;gnd;gnd;gn;gn;
             };
         };
     };

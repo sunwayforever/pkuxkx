@@ -1,5 +1,6 @@
 #class burden open
 #alias {burden.check} {
+    #alias burden_action %0;
     #class burden.check.inner open;
     #var burden_all {};
     #var burden_start_cap 0;
@@ -16,12 +17,13 @@
         #class burden_tmp kill;
         #class burden.check.inner kill;
         #read /tmp/pkuxkx_burden;
+        burden_action;
     };
     #class burden.check.inner close;
     #send {i};
 };
 
-#function {burdenget} {
+#function {getburden} {
     #var result @ctd{@mapget{burden;%0}};
 }
 
