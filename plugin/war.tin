@@ -99,7 +99,7 @@
 
 #alias {wi_normal} {
 	unwi;
-	#foreach {${my_weapons}[%*]} {weapon} {wield ${weapon}};
+	#foreach {${weapons}[%*]} {weapon} {wield ${weapon}};
 };
 
 #alias {wi_bare} {
@@ -341,5 +341,31 @@
 		#unaction {clear: done};
 		tmp_on_cleared;
 	};
-}
+};
+
+#var current_weapons_set 0;
+
+#alias {switch_weapons} {
+    #math current_weapons_set ${current_weapons_set}+1;
+    #list my_weapons_${current_weapons_set} size tmp_size;
+    #if {${tmp_size} == 0} {
+        #var current_weapons_set 0;
+    };
+    #if {${current_weapons_set} == 0} {
+        #var weapons ${my_weapons};
+    };
+    #else {
+        #var weapons ${my_weapons_${current_weapons_set}};        
+    };
+    #show weapons switched to ${weapons};
+    wi;
+};
+
+#function {firstweapon} {
+    #list weapons get {1} result;
+};
+
+#function {secondweapon} {
+    #list weapons get {2} result;
+};
 #class war close;

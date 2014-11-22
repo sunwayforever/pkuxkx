@@ -1,122 +1,122 @@
 #class wudang_spec open
 #alias {attack.prepare} {
-	yun powerup;
-	#class attack.inner open;
-	#delay {7.8} {
-		pfm zong;
-	};
-	#ticker {perf_chan} {
-		pfm chan;
-	} {0.5};
-	#class attack.inner close;
+    yun powerup;
+    #class attack.inner open;
+    #delay {7.8} {
+        pfm zong;
+    };
+    #ticker {perf_chan} {
+        pfm chan;
+    } {0.5};
+    #class attack.inner close;
 };
 
 #alias {attack.bare} {
-	pfm_all chan;
-	#class attack.inner open;
-	#class attack.inner close;
+    pfm_all chan;
+    #class attack.inner open;
+    #class attack.inner close;
 };
 
 #alias {attack.hubiao} {
-	pfm chan;
-	#class attack.inner open;
-	#class attack.inner close;
+    pfm chan;
+    #class attack.inner open;
+    #class attack.inner close;
 };
 
 #alias {attack.normal} {
-	pfm chan;
-	pfm lzj;
-	#class attack.inner open;
-	#ticker {lzj} {
-		pfm lzj;
-	} {6.8};
-	#class attack.inner close;
+    pfm chan;
+    pfm lzj;
+    #class attack.inner open;
+    #ticker {lzj} {
+        pfm lzj;
+    } {6.8};
+    #class attack.inner close;
 };
 
 #alias {attack.xiaofeng.qin} {
-	pfm chan;
-	pfm wuying;
-	#class attack.inner open;
-	#ticker {wuying} {
-		pfm wuying;
-	} {6.8};
-	#class attack.inner close;
+    pfm chan;
+    pfm wuying;
+    #class attack.inner open;
+    #ticker {wuying} {
+        pfm wuying;
+    } {6.8};
+    #class attack.inner close;
 };
 
 #alias {attack.xiaofeng.quan} {
-	pfm chan;
-	pfm wuying;
-	#class attack.inner open;
-	#ticker {wuying} {
-		pfm wuying;
-	} {4.8};
-	#class attack.inner close;
+    pfm chan;
+    pfm wuying;
+    #class attack.inner open;
+    #ticker {wuying} {
+        pfm wuying;
+    } {4.8};
+    #class attack.inner close;
 };
 
 #alias {attack.xiaofeng.sheng} {
-	pfm chan;
-	pfm wuying;	
-	#class attack.inner open;
-	#ticker {wuying} {
-		pfm wuying;
-	} {4.8};
-	#class attack.inner close;
+    pfm chan;
+    pfm wuying; 
+    #class attack.inner open;
+    #ticker {wuying} {
+        pfm wuying;
+    } {4.8};
+    #class attack.inner close;
 };
 
 #alias {attack.mingjiao} {
-	pfm chan;
-	#class attack.inner open;
-	#ticker {perf_zhen} {
-		pfm zhen;
-	} {0.8};
-	#ticker {wuying} {
-		pfm wuying;
-	} {5.8};
-	#ticker {gangrou} {
-		pfm gangrou;
-	} {6.8};
-	#class attack.inner close;
+    pfm chan;
+    #class attack.inner open;
+    #ticker {perf_zhen} {
+        pfm zhen;
+    } {0.8};
+    #ticker {wuying} {
+        pfm wuying;
+    } {5.8};
+    #ticker {gangrou} {
+        pfm gangrou;
+    } {6.8};
+    #class attack.inner close;
 };
 
 #var shortcut F1:缠 F2:无影 F3:连字诀 F4:刚柔;
 #macro {\eOQ} {
-	pfm_oob wuying;
+    pfm_oob wuying;
 };
 
 #macro {\eOR} {
-	pfm_oob lzj;
+    pfm_oob lzj;
 };
 
 #macro {\eOP} {
-	pfm_oob chan;
+    pfm_oob chan;
 };
 
 #macro {\eOS} {
-	pfm_oob gangrou;
+    pfm_oob gangrou;
 };
 
 #alias {chan} {
-	unwield all;
-	wield my sword;
-	#2 perform sword.chan;
-	wi;
+    unwield all;
+    wield @firstweapon{};
+    #2 perform sword.chan;
+    wi;
 };
 
 #alias {sanhuan} {
-	unwield all;
-	wield my sword;
-	jiali 10;
+    unwield all;
+    wield @firstweapon{};
+    jiali 10;
     perform sword.sanhuan;
-	#if {${gangrou_ing} == 0} {
-		jiali none;
-	};
-	wi;
+    #if {${gangrou_ing} == 0} {
+        jiali none;
+    };
+    wi;
 };
 
 #alias {zhen} {
-	unwi;
+    unwi;
     perform cuff.zhen;
-	wi;
+    wi;
 };
 
 #alias {zong} {
@@ -124,78 +124,79 @@
 };
 
 #alias {lzj} {
-	unwi;
-	wield my sword;
-	jiali 10;
+    unwi;
+    wield @firstweapon{};
+    jiali 10;
     perform sword.lian;
-	#if {${gangrou_ing} == 0} {
-		jiali none;
-	};
-	wi;
+    #if {${gangrou_ing} == 0} {
+        jiali none;
+    };
+    wi;
 };
 
 #alias {wuying} {
-	unwield all;
-	jiali 10;
-	perform claw.wuying;
-	#if {${gangrou_ing} == 0} {
-		jiali none;
-	};
-	wi;
+    unwield all;
+    jiali 10;
+    perform claw.wuying;
+    #if {${gangrou_ing} == 0} {
+        jiali none;
+    };
+    wi;
 };
 
 #var gangrou_ing 0;
 #alias {gangrou} {
-	#var gangrou_ing 1;
-	unwi;
-	jiali max;
-	perform cuff.gangrou;
-	#delay {5} {
-		#var gangrou_ing 0;
-		jiali none;
-	};
-	wi;
+    #var gangrou_ing 1;
+    unwi;
+    jiali max;
+    perform cuff.gangrou;
+    #delay {5} {
+        #var gangrou_ing 0;
+        jiali none;
+    };
+    wi;
 };
 
 #alias {lianhuan} {
-	perform spear.lianhuan;
+    perform spear.lianhuan;
 };
 
 #alias {map_goto_lingwu} {
-	map.go {静修阁};
+    map.go {静修阁};
 };
 
 #alias {map_goto_rest} {
-	map.go {客房};
+    map.go {客房};
 };
 
 #alias {map_goto_start} {
-	map.go {武当广场};
+    map.go {武当广场};
 };
 
 #alias {map_goto_shifu} {
-	map.go {小屋};
+    map.go {小屋};
 };
 
 #list my_weapons create {my sword; my sword 2};
+#list my_weapons_1 create {zhujian; zhujian 2};
 
 #var shifu zhang;
 
 #alias {wi_xiaofeng} {
-	unwi;
-	wield sword;
+    unwi;
+    wield sword;
 };
 
 #alias {reborn} {
-	#send {jifa cuff taiji-quan};
-	#send {jifa dodge tiyunzong};
-	#send {jifa parry taiji-quan};
-	#send {jifa sword taiji-jian};
-	#send {jifa blade xuanxu-dao};
-	#send {jifa claw taiji-zhao};
-	#send {jifa force taiji-shengong};
-	bei cuff claw;
-	wbei taiji-jian xuanxu-dao;
+    #send {jifa cuff taiji-quan};
+    #send {jifa dodge tiyunzong};
+    #send {jifa parry taiji-quan};
+    #send {jifa sword taiji-jian};
+    #send {jifa blade xuanxu-dao};
+    #send {jifa claw taiji-zhao};
+    #send {jifa force taiji-shengong};
+    bei cuff claw;
+    wbei taiji-jian xuanxu-dao;
 };
 #var char_menpai_position wd;
 

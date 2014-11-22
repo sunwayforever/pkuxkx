@@ -56,6 +56,7 @@
         #var char_menpai_zh %%1;
         #var char_menpai @mapget{menpai;%%1};
         load spec/${char_menpai};
+        #var weapons ${my_weapons};
         show_to_shortcut ${shortcut};
         wi;
         we;
