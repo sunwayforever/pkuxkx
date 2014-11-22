@@ -1,7 +1,7 @@
 #class goto open;
-#var xiaoyao.accu 10;
+#var xiaoyao.accu 5;
 #var xiaoyao.delay 0.1;
-#nop ==交互界面==
+
 #alias gt {
 	#if {"%1"==""} {
 		#show {欢迎使用北侠逍遥行v1.5h1(for tt++) by Alucar@pkuxkx 2013/5};
@@ -24,7 +24,7 @@
 				#show 当前地区地标房间为：$j;
 			};
             #else {
-                #show 不能确定当前位置
+                #show 不能确定当前位置;
             };
 		};
         #else {
@@ -266,7 +266,8 @@
 						#var stepaccu 1;
 					};
                     #else {
-                        #delay {${xiaoyao.delay}} {walk};
+                        walk;
+                        #nop #delay {${xiaoyao.delay}} {walk};
 					};
 				};
 			};
@@ -282,6 +283,7 @@
 		rec;
 		#var critical_running 0;
 		#show 抵达目的地。;
+        rec;
 	};
 
 	#alias guojiang {ask shao gong about jiang};
