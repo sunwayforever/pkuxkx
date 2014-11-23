@@ -26,9 +26,13 @@
 #alias {attack.normal} {
     pfm chan;
     pfm lzj;
+    pfm wuying;
     #class attack.inner open;
     #ticker {lzj} {
         pfm lzj;
+    } {7.8};
+    #ticker {wuying} {
+        pfm wuying;
     } {6.8};
     #class attack.inner close;
 };
@@ -36,6 +40,7 @@
 #alias {attack.xiaofeng.qin} {
     pfm chan;
     pfm wuying;
+    pfm gangrou;
     #class attack.inner open;
     #ticker {wuying} {
         pfm wuying;
@@ -55,10 +60,10 @@
 
 #alias {attack.xiaofeng.sheng} {
     pfm chan;
-    pfm wuying; 
+    pfm gangrou; 
     #class attack.inner open;
-    #ticker {wuying} {
-        pfm wuying;
+    #ticker {gangrou} {
+        pfm gangrou;
     } {4.8};
     #class attack.inner close;
 };
@@ -75,6 +80,15 @@
     #ticker {gangrou} {
         pfm gangrou;
     } {6.8};
+    #class attack.inner close;
+};
+
+#alias {attack.minor} {
+    pfm chan;
+    #class attack.inner open;
+    #ticker {perf_zhen} {
+        pfm zhen;
+    } {0.8};
     #class attack.inner close;
 };
 
@@ -136,7 +150,7 @@
 
 #alias {wuying} {
     unwield all;
-    jiali 10;
+    jiali max;
     perform claw.wuying;
     #if {${gangrou_ing} == 0} {
         jiali none;

@@ -1,255 +1,283 @@
 #class xiaofeng open
 #var xf.type -1;
 #alias {xf.q} {
-	#class xiaofeng.inner open;
-	#var xf.requested 0;
-	#action {%*向萧峰打听有关『job』的消息} {
-		#if {"%%1" == "你"} {
-			#var xf.requested 1;
-		};
-		#else {
-			#var xf.requested 0;
-		};
-	};
+    #class xiaofeng.inner open;
+    #var xf.requested 0;
+    #action {^由于放弃任务} {
+        show_to_quest 萧峰: 失败;
+        #var xf.type -1;
+        #var xf.requested 0;
+        #alias {wi} {wi_normal};
+        wi;
+        #alias {attack} {
+            attack.normal;
+        };
+        #class xiaofeng.inner kill; 
+    };
+    #action {^你已经完成了} {
+        show_to_quest 萧峰: 完成;
+        #var xf.type -1;
+        #var xf.requested 0;
+        #alias {wi} {wi_normal};
+        wi;
+        #alias {attack} {
+            attack.normal;
+        };
+        #class xiaofeng.inner kill;
+    };
+    #action {%*向萧峰打听有关『job』的消息} {
+        #if {"%%1" == "你"} {
+            #var xf.requested 1;
+        };
+        #else {
+            #var xf.requested 0;
+        };
+    };
 
-	#var xf.type -1;
-	#action {传闻西夏一品堂派出了若干蒙面杀手，最近出现在%*附近的%*} {
-		#if {${xf.requested} == 1} {
-			#var xf.target %%1:%%2;
-		};
-	};
+    #var xf.type -1;
+    #action {传闻西夏一品堂派出了若干蒙面杀手，最近出现在%*附近的%*} {
+        #if {${xf.requested} == 1} {
+            #var xf.target %%1:%%2;
+        };
+    };
 
-	#action {你去将他擒回这里交给我} {
-		#if {${xf.requested} == 1} {
-			#var xf.type 2;
-			show_to_quest 萧峰: 擒回: ${xf.target};
-		};
-	};
+    #action {你去将他擒回这里交给我} {
+        #if {${xf.requested} == 1} {
+            #var xf.type 2;
+            show_to_quest 萧峰: 擒回: ${xf.target};
+        };
+    };
 
-	#action {你去将他除掉，取其首级回来。} {
-		#if {${xf.requested} == 1} {
-			#var xf.type 1;
-			show_to_quest 萧峰: 杀死: ${xf.target};
-			#alias {wi} {wi_normal};
-		};
-	};
+    #action {你去将他除掉，取其首级回来。} {
+        #if {${xf.requested} == 1} {
+            #var xf.type 1;
+            show_to_quest 萧峰: 杀死: ${xf.target};
+            #alias {wi} {wi_normal};
+        };
+    };
 
-	#action {『蒙面杀手(%*气血:%*\%/%*\%)』} {
-		#if {%%2 < 50 || %%3 < 50} {
-			xf.slow_down;
-		};
-	} {1};
+    #action {『蒙面杀手(%*气血:%*\%/%*\%)』} {
+        #if {%%2 < 20 || %%3 < 20} {
+            xf.slow_down_2;
+        };
+        #elseif {%%2 < 50 || %%3 < 50} {
+            xf.slow_down_1;
+        };
+    } {1};
 
-	#action {看来杀手有点怕你了} {
-		raw;
-		on_unbusy {
-			halt;
-			quan;
-		};
-	};
+    #action {看来杀手有点怕你了} {
+        raw;
+        on_unbusy {
+            halt;
+            quan;
+        };
+    };
 
-	#alias {xf.slow_down} {
-		#if {${xf.type} == 3 || ${xf.type} == 4} {
-			show_to_info 红血了, 慢点;
-			raw;
-			on_unbusy {
-				halt;
-			};
-			#class xiaofeng.inner open;
-			#action {跳出战圈不打了} {
-				#if {${xf.type} == 3} {
-					quan;
-				};
-			};
-			#action {你想停下来} {
-				on_unbusy {
-					halt;
-				};
-			};
-			#class xiaofeng.inner close;
-		};
-	};
+    #alias {xf.slow_down_1} {
+        #if {${xf.type} == 3 || ${xf.type} == 4} {
+            show_to_info 快不行了, 停手!;
+            raw;
+            #alias {attack} {
+                attack.minor;
+            };
+            #if {${xf.type} == 4} {
+                ask shashou about 认输;
+            };
+        };
+    };
 
-	#action {尚可教化} {
-		#if {${xf.requested} == 1} {
-			#var xf.type 3;
-			show_to_quest 萧峰: 劝: ${xf.target};
-		};
-	};
+    #alias {xf.slow_down_2} {
+        #if {${xf.type} == 3 || ${xf.type} == 4} {
+            show_to_info 红血了, 慢点;
+            raw;
+            on_unbusy {
+                halt;
+            };
+            #class xiaofeng.inner open;
+            #action {跳出战圈不打了} {
+                #if {${xf.type} == 3} {
+                    quan;
+                };
+                #elseif {${xf.type} == 4} {
+                    ask shashou about 认输;
+                };
+            };
+            #action {你想停下来} {
+                on_unbusy {
+                    halt;
+                };
+            };
+            #class xiaofeng.inner close;
+        };
+    };
 
-	#action {让他认输就好} {
-		#if {${xf.requested} == 1} {
-			#var xf.type 4;
-			show_to_quest 萧峰: 战胜: ${xf.target};
-		};
-	};
+    #action {尚可教化} {
+        #if {${xf.requested} == 1} {
+            #var xf.type 3;
+            show_to_quest 萧峰: 劝: ${xf.target};
+        };
+    };
 
-	#action {你将%*扶了起来背在背上} {
-		show_to_quest 萧峰: 已擒获 ${xf.real_name};
-		#action {${xf.real_name}略一凝神，精神看起来好多了} {
-			#unaction {${xf.real_name}略一凝神，精神看起来好多了};
-			dian ${xf.real_first_name};
-			get ${xf.real_first_name};
-		};
-	};
-	
-	#action {西夏一品堂 %*(%* %*)} {
-		#unaction {西夏一品堂 %*(%* %*)};
-		#var xf.real_name %%1;
-		pp %%1;
-		#var xf.real_first_name @lower{%%2};
-		
-		#if {${xf.type} == 2} {
-			show_to_quest 萧峰: 擒回: ${xf.real_name};
-			#delay {2} {
-				get ${xf.real_first_name};
-			};
-		};
-		#if {${xf.type} == 4} {
-			show_to_quest 萧峰: 战胜: ${xf.real_name};
-		};
-	} {2};
+    #action {让他认输就好} {
+        #if {${xf.requested} == 1} {
+            #var xf.type 4;
+            show_to_quest 萧峰: 战胜: ${xf.target};
+        };
+    };
 
-	#action {西夏一品堂 蒙面杀手(Mengmian shashou)} {
-		#if {${xf.type} != -1} {
-			xf.check;
-		};
-	} {1};
+    #action {你将%*扶了起来背在背上} {
+        show_to_quest 萧峰: 已擒获 ${xf.real_name};
+        #action {${xf.real_name}略一凝神，精神看起来好多了} {
+            #unaction {${xf.real_name}略一凝神，精神看起来好多了};
+            dian ${xf.real_first_name};
+            get ${xf.real_first_name};
+        };
+    };
 
-	#action {要打便打} {
-		#class xf.bl.inner kill;
-		#if {${xf.type} != -1} {
-			follow shashou;
-		};
-	};
+    #action {西夏一品堂 %*(%* %*)} {
+        #unaction {西夏一品堂 %*(%* %*)};
+        #var xf.real_name %%1;
+        pp %%1;
+        #var xf.real_first_name @lower{%%2};
 
-	#action {显是蒙面杀手姓名} {
-		#if {${xf.type} == 1} {
-			#delay {2} {
-				zhan corpse;
-				#delay {2} {
-					get shouji;
-					show_to_quest 萧峰: 已杀死;
-				};
-			};
-		};
-		l;
-	} {1};
+        #if {${xf.type} == 2} {
+            show_to_quest 萧峰: 擒回: ${xf.real_name};
+            #delay {2} {
+                get ${xf.real_first_name};
+            };
+        };
+        #if {${xf.type} == 4} {
+            show_to_quest 萧峰: 战胜: ${xf.real_name};
+        };
+    } {2};
 
-	#action {蒙面杀手深深地叹了口气} {
-		raw;
-		#if {${xf.type} == 3} {
-			show_to_quest 萧峰: 已经劝服;
-		};
-		#elseif {${xf.type} == 4} {
-			show_to_quest 萧峰: 已经战胜;	
-		};
-	};
+    #action {西夏一品堂 蒙面杀手(Mengmian shashou)} {
+        #if {${xf.type} != -1} {
+            xf.check;
+        };
+    } {1};
 
-	
-	#alias {xf.n} {
-		detect_mingjiao shashou;
-		#if {${xf.type} == 1} {
-			kill shashou;
-			#action {xf.dead} {
-				#delay {2} {
-					zhan corpse;
-					#delay {2} {
-						get shouji;
-					};
-					show_to_quest 萧峰: 已杀死;
-				};
-				#unaction {xf.dead};
-			};
-		};
-		#elseif {${xf.type} == 2} {
-			#alais {wi} {wi_xiaofeng};
-			#alias {attack} {
-				attack.xiaofeng.qin;
-			};
-			hit shashou;
-		};
-		#elseif {${xf.type} == 3} {
-			#alais {wi} {wi_xiaofeng};
-			#alias {attack} {
-				attack.xiaofeng.quan;
-			};
-			hit shashou;
-		};
-		#elseif {${xf.type} == 4} {
-			#alais {wi} {wi_xiaofeng};
-			#alias {attack} {
-				attack.xiaofeng.sheng;
-			};
-			fight shashou;
-		};
-	};
+    #action {要打便打} {
+        #class xf.bl.inner kill;
+        #if {${xf.type} != -1} {
+            follow shashou;
+        };
+    };
 
-	#alias {xf.check} {
-		ask shashou about fight;
-	};
+    #action {显是蒙面杀手姓名} {
+        #if {${xf.type} == 1} {
+            #delay {2} {
+                zhan corpse;
+                #delay {2} {
+                    get shouji;
+                    show_to_quest 萧峰: 已杀死;
+                };
+            };
+        };
+        l;
+    } {1};
 
-	#class xiaofeng.inner close;
+    #action {蒙面杀手深深地叹了口气} {
+        raw;
+        #if {${xf.type} == 3} {
+            show_to_quest 萧峰: 已经劝服;
+        };
+        #elseif {${xf.type} == 4} {
+            show_to_quest 萧峰: 已经战胜;
+        };
+    };
 
-	ask xiao feng about job;
+
+    #alias {xf.n} {
+        detect_mingjiao shashou;
+        #if {${xf.type} == 1} {
+            kill shashou;
+            #action {xf.dead} {
+                #delay {2} {
+                    zhan corpse;
+                    #delay {2} {
+                        get shouji;
+                    };
+                    show_to_quest 萧峰: 已杀死;
+                };
+                #unaction {xf.dead};
+            };
+        };
+        #elseif {${xf.type} == 2} {
+            #alais {wi} {wi_xiaofeng};
+            #alias {attack} {
+                attack.xiaofeng.qin;
+            };
+            hit shashou;
+        };
+        #elseif {${xf.type} == 3} {
+            #alais {wi} {wi_xiaofeng};
+            #alias {attack} {
+                attack.xiaofeng.quan;
+            };
+            hit shashou;
+        };
+        #elseif {${xf.type} == 4} {
+            #alais {wi} {wi_xiaofeng};
+            #alias {attack} {
+                attack.xiaofeng.sheng;
+            };
+            fight shashou;
+        };
+    };
+
+    #alias {xf.check} {
+        ask shashou about fight;
+    };
+
+    #class xiaofeng.inner close;
+
+    ask xiao feng about job;
 };
 
 #alias {xf.d} {
-	#class xiaofeng.inner kill;
-	#class xf.bl.inner kill;
-	#if {${xf.type} == 1} {
-		give shouji to xiao;
-	};
-	#if {${xf.type} == 2} {
-		give ${xf.real_first_name} to xiao;
-	};
-	#if {${xf.type} == 3} {
-		ask xiao feng about 完成;
-	};
-	#if {${xf.type} == 4} {
-		ask xiao feng about 完成;
-	};
-	show_to_quest 萧峰: 完成;
-	#var xf.type -1;
-	#var xf.requested 0;
-	#alias {wi} {wi_normal};
-	wi;
-	#alias {attack} {
-		attack.normal;
-	};
+    #class xf.bl.inner kill;
+    #if {${xf.type} == 1} {
+        give shouji to xiao;
+    };
+    #if {${xf.type} == 2} {
+        give ${xf.real_first_name} to xiao;
+    };
+    #if {${xf.type} == 3} {
+        ask xiao feng about 完成;
+    };
+    #if {${xf.type} == 4} {
+        ask xiao feng about 完成;
+    };
 };
 
 #alias {xf.f} {
-	#class xiaofeng.inner kill;
-	#class xf.bl.inner kill;
-	ask xiao feng about fail;
-	#var xf.type -1;
-	#var xf.requested 0;
-	show_to_quest 萧峰: 失败;
-	#alias {wi} {wi_normal};
-	wi;
+    ask xiao feng about fail;
 };
 
 #alias {xf.bl} {
-	#class xf.bl.inner open;
-	#action {蒙面杀手说道：「就你也配跟我讨教功夫？！」} {
-		#delay {xf.bl} {
-			bl.continue {杀手};
-		} {1};
-	};	
-	#action {找到目标} {
-		xf.check;	
-	};
-	#class xf.bl.inner close;	
-	bl.start 杀手;
+    #class xf.bl.inner open;
+    #action {蒙面杀手说道：「就你也配跟我讨教功夫？！」} {
+        #delay {xf.bl} {
+            bl.continue {杀手};
+        } {1};
+    };
+    #action {找到目标} {
+        xf.check;
+    };
+    #class xf.bl.inner close;
+    bl.start 杀手;
 };
 
 #alias {xf.b} {
-	gt xf;
+    gt xf;
+    on_there {
+        xf.d;
+    };
 };
 
 #alias {xf.heal} {
-	yun lifeheal shashou;
-	l shashou;
+    yun lifeheal shashou;
+    l shashou;
 };
 #class xiaofeng close
