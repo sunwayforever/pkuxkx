@@ -1,5 +1,22 @@
 #class chainless open
+#list busy_actions create {
+    点中几处穴道;
+    你看起来可能有些累了;
+    你只觉剑势连绵不绝;
+    你左支右绌苦苦支撑;
+    你已完全陷入世俗争斗的自责中无法自拔;
+    身形已不可辨;
+    你在黄沙漫天中什么也看不见;
+    打了个措手不及;
+    彻底神志不清了;
+    已经封住了你四肢各大要穴;
+};
 
+#foreach {${busy_actions}[%*]} {busy_action} {
+    #action {${busy_action}} {
+        special chainless;
+    } {1};
+};
 #action {busy_for_action} {
     special chainless;
 };

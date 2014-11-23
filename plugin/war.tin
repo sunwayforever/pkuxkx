@@ -345,7 +345,7 @@
 
 #var current_weapons_set 0;
 
-#alias {switch_weapons} {
+#alias {ss} {
     #math current_weapons_set ${current_weapons_set}+1;
     #list my_weapons_${current_weapons_set} size tmp_size;
     #if {${tmp_size} == 0} {

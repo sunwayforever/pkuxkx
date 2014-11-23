@@ -1,4 +1,6 @@
 #class wudang_spec open
+#var jiali_count max;
+
 #alias {attack.prepare} {
     yun powerup;
     #class attack.inner open;
@@ -27,44 +29,36 @@
     pfm chan;
     pfm lzj;
     pfm wuying;
+    pfm gangrou;
     #class attack.inner open;
     #ticker {lzj} {
         pfm lzj;
-    } {7.8};
+    } {8.8};
     #ticker {wuying} {
         pfm wuying;
     } {6.8};
+    #ticker {gangrou} {
+        pfm gangrou;
+    } {5.8};
     #class attack.inner close;
 };
 
 #alias {attack.xiaofeng.qin} {
     pfm chan;
     pfm wuying;
-    pfm gangrou;
     #class attack.inner open;
-    #ticker {wuying} {
-        pfm wuying;
-    } {6.8};
     #class attack.inner close;
 };
 
 #alias {attack.xiaofeng.quan} {
     pfm chan;
-    pfm wuying;
     #class attack.inner open;
-    #ticker {wuying} {
-        pfm wuying;
-    } {4.8};
     #class attack.inner close;
 };
 
 #alias {attack.xiaofeng.sheng} {
     pfm chan;
-    pfm gangrou; 
     #class attack.inner open;
-    #ticker {gangrou} {
-        pfm gangrou;
-    } {4.8};
     #class attack.inner close;
 };
 
@@ -80,15 +74,6 @@
     #ticker {gangrou} {
         pfm gangrou;
     } {6.8};
-    #class attack.inner close;
-};
-
-#alias {attack.minor} {
-    pfm chan;
-    #class attack.inner open;
-    #ticker {perf_zhen} {
-        pfm zhen;
-    } {0.8};
     #class attack.inner close;
 };
 
@@ -112,15 +97,15 @@
 #alias {chan} {
     unwield all;
     wield @firstweapon{};
-    #2 perform sword.chan;
+    #2 perform taiji-jian.chan;
     wi;
 };
 
 #alias {sanhuan} {
     unwield all;
     wield @firstweapon{};
-    jiali 10;
-    perform sword.sanhuan;
+    jiali ${jiali_count};
+    perform taiji-jian.sanhuan;
     #if {${gangrou_ing} == 0} {
         jiali none;
     };
@@ -129,12 +114,12 @@
 
 #alias {zhen} {
     unwi;
-    perform cuff.zhen;
+    perform taiji-quan.zhen;
     wi;
 };
 
 #alias {zong} {
-    perform dodge.zong;
+    perform tiyunzong.zong;
 };
 
 #alias {lzj} {
@@ -150,7 +135,7 @@
 
 #alias {wuying} {
     unwield all;
-    jiali max;
+    jiali ${jiali_count};
     perform claw.wuying;
     #if {${gangrou_ing} == 0} {
         jiali none;
@@ -162,11 +147,21 @@
 #alias {gangrou} {
     #var gangrou_ing 1;
     unwi;
-    jiali max;
-    perform cuff.gangrou;
-    #delay {5} {
-        #var gangrou_ing 0;
-        jiali none;
+    jiali ${jiali_count};
+    perform taiji-quan.gangrou;
+    #action {抬手就封住了你这一掌！} {
+        #unaction {抬手就封住了你这一掌！};
+        #ticker {perf_zhen_2} {
+            pfm zhen;
+        } {1};
+        #delay {delay_gangrou} {
+            #unticker {perf_zhen_2};
+            #var gangrou_ing 0;
+            jiali none;
+        } {5};
+    };
+    #delay {delay_gangrou} {
+        #unaction {抬手就封住了你这一掌！};
     };
     wi;
 };
@@ -192,7 +187,7 @@
 };
 
 #list my_weapons create {my sword; my sword 2};
-#list my_weapons_1 create {zhujian; zhujian 2};
+#list my_weapons_1 create {sword; sword 2};
 
 #var shifu zhang;
 

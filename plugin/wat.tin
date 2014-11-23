@@ -1,79 +1,79 @@
 #class wat open
 #var wat_max_level 3;
 #alias {wat.q} {
-	on_health {
-		ask ke about 进塔;	
-		detect_mingjiao wushi;
-		killall wushi;
-	};	
+    on_health {
+        ask ke about 进塔;
+        detect_mingjiao wushi;
+        killall wushi;
+    };
 };
 
 #alias {wat.up} {
-	up;
-	detect_mingjiao wushi;
-	killall wushi;
+    up;
+    detect_mingjiao wushi;
+    killall wushi;
 };
 
 #alias {wat.d} {
-	qiao luo;
+    qiao luo;
 };
 
 #alias {wat.start} {
-	wat.q;
-	
-	#class wat.auto.inner open;
-	#var wat_count 0;
-	#var wat_level 0;
-	#action {如果你继续上楼闯关} {
-		#math wat_level ${wat_level}+1;
-		#if {${wat_level} <= ${wat_max_level}} {
-			on_health {
-				wat.up;
-			};
-		};
-		#else {
-			#math wat_count ${wat_count}+1;
-			show_to_info wat 次数: ${wat_count};
-			wat.d;
-			#delay {5} {
-				jq;
-			};
-		};
-	};
+    wat.q;
 
-	#action {阁下刚刚来过} {
-		jq;
-	};
+    #class wat.auto.inner open;
+    #var wat_count 0;
+    #var wat_level 0;
+    #action {如果你继续上楼闯关} {
+        #math wat_level ${wat_level}+1;
+        #if {${wat_level} <= ${wat_max_level}} {
+            on_health {
+                wat.up;
+            };
+        };
+        #else {
+            #math wat_count ${wat_count}+1;
+            show_to_info wat 次数: ${wat_count};
+            wat.d;
+            #delay {5} {
+                jq;
+            };
+        };
+    };
 
-	#action {万安塔任务%s仍需%*秒才能接到下个任务} {
-		#var wat_level 0;
-		#var second @ctd{%%2};
-		#math delay_time ${second}+10;
-		show_to_info wat 等待 ${delay_time} 秒;
-		#delay {wat} {
-			wat.q;
-		} {${delay_time}};
-	} {2};
+    #action {阁下刚刚来过} {
+        jq;
+    };
 
-	#action {万安塔任务%s仍需%S分%S秒才能接到下个任务。} {
-		#var wat_level 0;
-		#var minute @ctd{%%2};
-		#var second @ctd{%%3};
-		#math delay_time ${minute}*60+${second}+10;
-		show_to_info wat 等待 ${delay_time} 秒;
-		#delay {wat} {
-			wat.q;
-		} {${delay_time}};
-	} {1};
+    #action {万安塔任务%s仍需%*秒才能接到下个任务} {
+        #var wat_level 0;
+        #var second @ctd{%%2};
+        #math delay_time ${second}+10;
+        show_to_info wat 等待 ${delay_time} 秒;
+        #delay {wat} {
+            wat.q;
+        } {${delay_time}};
+    } {2};
 
-	#class wat.auto.inner close;	
+    #action {万安塔任务%s仍需%S分%S秒才能接到下个任务。} {
+        #var wat_level 0;
+        #var minute @ctd{%%2};
+        #var second @ctd{%%3};
+        #math delay_time ${minute}*60+${second}+10;
+        show_to_info wat 等待 ${delay_time} 秒;
+        #delay {wat} {
+            wat.q;
+        } {${delay_time}};
+    } {1};
+
+    #class wat.auto.inner close;
 };
 
 #alias {wat.stop} {
-	#class wat.auto.inner kill;		
+    #class wat.auto.inner kill;
 };
 
 #action {^恭喜你，答对了口令，你可以敲锣离开了} {
-	wat.d;
+    wat.d;
 };
 #class wat close

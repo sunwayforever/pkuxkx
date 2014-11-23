@@ -1,29 +1,27 @@
 #class xiaofeng open
 #var xf.type -1;
+#alias {xf.teardown} {
+    #var jiali_count max;
+    #var xf.type -1;
+    #var xf.requested 0;
+    #alias {wi} {wi_normal};
+    wi;
+    #alias {attack} {
+        attack.normal;
+    };
+    #class xiaofeng.inner kill; 
+};
+
 #alias {xf.q} {
     #class xiaofeng.inner open;
     #var xf.requested 0;
     #action {^由于放弃任务} {
         show_to_quest 萧峰: 失败;
-        #var xf.type -1;
-        #var xf.requested 0;
-        #alias {wi} {wi_normal};
-        wi;
-        #alias {attack} {
-            attack.normal;
-        };
-        #class xiaofeng.inner kill; 
+        xf.teardown;
     };
     #action {^你已经完成了} {
         show_to_quest 萧峰: 完成;
-        #var xf.type -1;
-        #var xf.requested 0;
-        #alias {wi} {wi_normal};
-        wi;
-        #alias {attack} {
-            attack.normal;
-        };
-        #class xiaofeng.inner kill;
+        xf.teardown;
     };
     #action {%*向萧峰打听有关『job』的消息} {
         #if {"%%1" == "你"} {
@@ -44,6 +42,7 @@
     #action {你去将他擒回这里交给我} {
         #if {${xf.requested} == 1} {
             #var xf.type 2;
+            #var jiali_count 9;
             show_to_quest 萧峰: 擒回: ${xf.target};
         };
     };
@@ -51,13 +50,14 @@
     #action {你去将他除掉，取其首级回来。} {
         #if {${xf.requested} == 1} {
             #var xf.type 1;
+            #var jiali_count max;
             show_to_quest 萧峰: 杀死: ${xf.target};
             #alias {wi} {wi_normal};
         };
     };
 
     #action {『蒙面杀手(%*气血:%*\%/%*\%)』} {
-        #if {%%2 < 20 || %%3 < 20} {
+        #if {%%2 < 35 || %%3 < 35} {
             xf.slow_down_2;
         };
         #elseif {%%2 < 50 || %%3 < 50} {
@@ -68,44 +68,61 @@
     #action {看来杀手有点怕你了} {
         raw;
         on_unbusy {
-            halt;
+            #3 halt;
             quan;
         };
     };
 
     #alias {xf.slow_down_1} {
         #if {${xf.type} == 3 || ${xf.type} == 4} {
-            show_to_info 快不行了, 停手!;
             raw;
-            #alias {attack} {
-                attack.minor;
-            };
             #if {${xf.type} == 4} {
-                ask shashou about 认输;
+                #delay {xf_delay} {
+                    ask shashou about 认输;
+                } {0.3};
             };
         };
     };
 
+    #action {蒙面杀手说道：「我不服，等我休息一下，咱们再打过！」} {
+        raw;
+        #3 halt;
+        #class xiaofeng.inner open;
+        #action {你想停下来} {
+            #10 halt;
+        };
+        #class xiaofeng.inner close;
+    };
+
+    #action {蒙面杀手说道：「我还没恢复好，你想乘人之危么？」} {
+        raw;
+        #3 halt;
+        #class xiaofeng.inner open;
+        #action {你想停下来} {
+            #10 halt;
+        };
+        #class xiaofeng.inner close;
+    };
+    
     #alias {xf.slow_down_2} {
         #if {${xf.type} == 3 || ${xf.type} == 4} {
-            show_to_info 红血了, 慢点;
             raw;
-            on_unbusy {
-                halt;
-            };
+            #3 halt;
             #class xiaofeng.inner open;
             #action {跳出战圈不打了} {
                 #if {${xf.type} == 3} {
-                    quan;
+                    #delay {xf_delay} {
+                        quan;
+                    } {0.3};
                 };
                 #elseif {${xf.type} == 4} {
-                    ask shashou about 认输;
+                    #delay {xf_delay} {
+                        ask shashou about 认输;
+                    } {0.3};
                 };
             };
             #action {你想停下来} {
-                on_unbusy {
-                    halt;
-                };
+                #10 halt;
             };
             #class xiaofeng.inner close;
         };
@@ -114,6 +131,7 @@
     #action {尚可教化} {
         #if {${xf.requested} == 1} {
             #var xf.type 3;
+            #var jiali_count 9;
             show_to_quest 萧峰: 劝: ${xf.target};
         };
     };
@@ -121,6 +139,7 @@
     #action {让他认输就好} {
         #if {${xf.requested} == 1} {
             #var xf.type 4;
+            #var jiali_count 9;
             show_to_quest 萧峰: 战胜: ${xf.target};
         };
     };
@@ -178,6 +197,8 @@
     } {1};
 
     #action {蒙面杀手深深地叹了口气} {
+        #unaction {『蒙面杀手(%*气血:%*\%/%*\%)』};
+        #undelay {xf_delay};
         raw;
         #if {${xf.type} == 3} {
             show_to_quest 萧峰: 已经劝服;

@@ -1,6 +1,7 @@
 #class goto open;
-#var xiaoyao.accu 10;
-#var xiaoyao.delay 0.05;
+#var xiaoyao.accu 15;
+#var xiaoyao.delay_long 0.5;
+#var xiaoyao.delay_short 0.05;
 
 #alias gt {
     #if {"%1"==""} {
@@ -262,11 +263,11 @@
                     #math stepaccu {$stepaccu+1};
                     #math step {$step+1};
                     #if {$stepaccu>=${xiaoyao.accu}} {
-                        #delay {${xiaoyao.delay}} {walk};
+                        #delay {${xiaoyao.delay_long}} {walk};
                         #var stepaccu 1;
                     };
                     #else {
-                        #delay {${xiaoyao.delay}} {walk};
+                        #delay {${xiaoyao.delay_short}} {walk};
                     };
                 };
             };
