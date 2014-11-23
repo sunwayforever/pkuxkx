@@ -60,6 +60,13 @@
             } {5.8};
             #class attack.inner close;
         };
+        #elseif {${xf.type} == 2} {
+            #class attack.inner open;
+            #ticker {zhen} {
+                pfm zhen;
+            } {0.8};
+            #class attack.inner close;
+        };
         #else {
             #class attack.inner open;
             #class attack.inner close;
@@ -116,10 +123,17 @@
     unwi;
     wield @firstweapon{};
     jiali 10;
-    perform sword.lian;
+    perform taiji-jian.lian;
     #if {${gangrou_ing} == 0} {
         jiali none;
     };
+    wi;
+};
+
+#alias {szj} {
+    unwi;
+    wield @firstweapon{};
+    perform taiji-jian.sui;
     wi;
 };
 
@@ -205,4 +219,11 @@ stat.register 缠 hit 只能见招拆招，疲于应对，不觉已深陷太极剑意之中，无法出招。;
 #var menzhong zhang;
 #var menzhong_didian ht;
 
+#alias {jifa_none} {
+    jifa sword none;
+};
+
+#alias {jifa_all} {
+    jifa sword taiji-jian;
+};
 #class wudang_spec close

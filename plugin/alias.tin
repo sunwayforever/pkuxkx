@@ -179,6 +179,8 @@
     #delay {2} {nw;#3 {nu};set brief 2}
 };
 
+#alias mg.chlb {w;n;w;s;s;e;e;w;w;};
+#alias mg.chl {e;s;n;w;n;n;e;s;e;};
 #alias mg.yubi {set brief 1;e;se;#4 {sw};s;e;n;w;n;set brief 2}
 #alias shiban {say 上报四重恩，下济三途苦;#4 {pull stone up};#3 {push stone down}};
 #alias mg.zsf {set brief 1;n;n;n;n;w;w;w;sw;s;se;e;ne;n;nw;sw;s;e;set brief 2;open door;n};

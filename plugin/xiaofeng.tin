@@ -1,6 +1,7 @@
 #class xiaofeng open
 #var xf.type -1;
 #alias {xf.teardown} {
+    jifa_all;
     #var quest NIL;
     #var xf.type -1;
     #var xf.requested 0;
@@ -51,7 +52,7 @@
     };
 
     #action {『蒙面杀手(%*气血:%*\%/%*\%)』} {
-        #if {%%2 < 35 || %%3 < 35} {
+        #if {%%2 < 45 || %%3 < 45} {
             xf.slow_down_2;
         };
         #elseif {%%2 < 50 || %%3 < 50} {
@@ -90,20 +91,20 @@
 
     #action {蒙面杀手说道：「我还没恢复好，你想乘人之危么？」} {
         raw;
+        unwi;
         #3 halt;
-        #class xiaofeng.inner open;
-        #action {你想停下来} {
-            #10 halt;
-        };
-        #class xiaofeng.inner close;
     };
     
     #alias {xf.slow_down_2} {
         #if {${xf.type} == 3 || ${xf.type} == 4} {
+            #showme 快死了, 停手~;
+            jifa_none;
             raw;
+            unwi;
             #3 halt;
             #class xiaofeng.inner open;
             #action {跳出战圈不打了} {
+                jifa_all;
                 #if {${xf.type} == 3} {
                     #delay {xf_delay} {
                         quan;
@@ -115,13 +116,14 @@
                     } {0.3};
                 };
             };
-            #action {你想停下来} {
-                #10 halt;
-            };
             #class xiaofeng.inner close;
         };
     };
 
+     #action {你想停下来} {
+         #10 halt;
+     };
+     
     #action {尚可教化} {
         #if {${xf.requested} == 1} {
             #var xf.type 3;
@@ -175,14 +177,24 @@
         };
     };
 
+    #action {你捡起一颗%*的首级} {
+        show_to_quest 萧峰: 已杀死;
+    };
+    
+    #action {将血淋淋的首级提在手中} {
+        show_to_quest 萧峰: 已杀死;        
+    };
+
+    #action {血淋淋的首级咕噜噜的滚落在地} {
+        on_unbusy {
+            get shouji;
+        };
+    };
+    
     #action {显是蒙面杀手姓名} {
         #if {${xf.type} == 1} {
-            #delay {2} {
+            on_unbusy {
                 zhan corpse;
-                #delay {2} {
-                    get shouji;
-                    show_to_quest 萧峰: 已杀死;
-                };
             };
         };
         l;
@@ -192,6 +204,8 @@
         #unaction {『蒙面杀手(%*气血:%*\%/%*\%)』};
         #undelay {xf_delay};
         raw;
+        #3 halt;
+        
         #if {${xf.type} == 3} {
             show_to_quest 萧峰: 已经劝服;
         };
@@ -204,16 +218,6 @@
         detect_mingjiao shashou;
         #if {${xf.type} == 1} {
             kill shashou;
-            #action {xf.dead} {
-                #delay {2} {
-                    zhan corpse;
-                    #delay {2} {
-                        get shouji;
-                    };
-                    show_to_quest 萧峰: 已杀死;
-                };
-                #unaction {xf.dead};
-            };
         };
         #elseif {${xf.type} == 2} {
             hit shashou;
