@@ -10,6 +10,7 @@ load chaos;
 #var hb_rotate_location_count 0;
 
 #alias {hb.teardown} {
+    #var quest NIL;
     #class hb_setup_inner kill;
     #class clear_npc.inner kill;
     #unticker {kill_npc};
@@ -104,6 +105,7 @@ load chaos;
 };
 
 #alias {hb.setup} {
+    #var quest hb;
     #foreach {${clear_npcs}[%*]} {npc} {clear_npc ${npc}};
     #unaction {^    这里%*出口};
     #class hb_setup_inner open;

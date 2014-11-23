@@ -2,17 +2,17 @@
 
 #alias {re} {
     yun recover;
-	yun regenerate;
+    yun regenerate;
 };
 
 #var heal_count 1;
 #alias {heal} {
-	re;
-	#var heal_count %1;
-	#loop {1} {${heal_count}} {tmp} {
-		yun heal;
-		yun inspire;
-	};
+    re;
+    #var heal_count %1;
+    #loop {1} {${heal_count}} {tmp} {
+        yun heal;
+        yun inspire;
+    };
 };
 
 #alias {unwi} {
@@ -20,11 +20,11 @@
 };
 
 #action {看起来%1想杀死你} {
-	war;
+    war;
 };
 
 #action{「%1」%2(%3) <战斗中>} {
-	show_to_info %1:%2:%3;
+    show_to_info %1:%2:%3;
 }
 
 #alias {qi} {
@@ -35,14 +35,14 @@
     down;
     out;
     remove all;
-	#foreach {${my_weapons}[%*]} {weapon} {draw ${weapon}};
+    #foreach {${my_weapons}[%*]} {weapon} {draw ${weapon}};
     draw armor;
     draw head;
     draw cloth;
     draw surcoat;
     draw boots;
     wear all;
-	wi;
+    wi;
     enter; up;
 };
 
@@ -51,296 +51,280 @@
 #action {你看起来已经力不从心了} {re} {1};
 
 #list poisions create {
-	你一中掌，身子一晃，看来已经中了毒！;
-	你突然打了个寒战，明显感到一股寒流已经侵入体内！;
-	忽然一阵刺骨的奇寒袭来;
-	突然你打了个寒战，你中的冰魄寒毒发作了！;
-	他的剧毒散至你的全身;
+    你一中掌，身子一晃，看来已经中了毒！;
+    你突然打了个寒战，明显感到一股寒流已经侵入体内！;
+    忽然一阵刺骨的奇寒袭来;
+    突然你打了个寒战，你中的冰魄寒毒发作了！;
+    他的剧毒散至你的全身;
 };
 #foreach {${poisions}[%*]} {poision} {
-	#action {${poision}} {
-		qudu;
-	} {1};
+    #action {${poision}} {
+        qudu;
+    } {1};
 };
 
 #alias {chan_a_chan} {
-	chan;
-	#ticker {chan_a_chan} {
-		chan;
-	} {1};
-	#action {缠: miss} {
-		halt;
-	};
+    chan;
+    #ticker {chan_a_chan} {
+        chan;
+    } {1};
+    #action {缠: miss} {
+        halt;
+    };
     #delay {2} {
-		#unaction {缠: miss};
-		#unticker {chan_a_chan};
-	};
+        #unaction {缠: miss};
+        #unticker {chan_a_chan};
+    };
 };
 
 #alias {kill} {
-	war;
-	#send kill %0;
+    war;
+    #send kill %0;
 };
 
 #alias {killall} {
-	war;
-	#send killall %0;
+    war;
+    #send killall %0;
 };
 
 #alias {hit} {
-	war;
-	#send hit %0;
+    war;
+    #send hit %0;
 };
 
 #alias {fight} {
-	war;
-	#send fight %0;
+    war;
+    #send fight %0;
 };
 
 #alias {wi_normal} {
-	unwi;
-	#foreach {${weapons}[%*]} {weapon} {wield ${weapon}};
+    unwi;
+    #foreach {${weapons}[%*]} {weapon} {wield ${weapon}};
 };
 
 #alias {wi_bare} {
-	unwi;
-};
-
-#alias {wi_xiaofeng} {
-	wi_normal;
+    unwi;
 };
 
 #alias {wi} {
-	wi_normal;
+    wi_normal;
 };
 
 #action {你似乎十分疲惫，看来需要好好休息了} {
-	re;
+    re;
 };
 
 #action {已经断为两截} {
-	show_to_info 武器断了;
-	wi;
+    show_to_info 武器断了;
+    wi;
 };
 
 #alias {detect_mingjiao} {
-	l %0;
-	#action {这是一位明教} {
-		mj.start;
-	};
-	
-	#action {圣火令} {
-		mj.start;
-	};
-	
-	#delay {2} {
-		#unaction {圣火令};
-		#unaction {这是一位明教};
-	};
+    l %0;
+    #action {这是一位明教} {
+        mj.start;
+    };
+
+    #action {圣火令} {
+        mj.start;
+    };
+
+    #delay {2} {
+        #unaction {圣火令};
+        #unaction {这是一位明教};
+    };
 };
 
 #var mj_started 0;
 #alias {mj.start} {
-	#if {${mj_started} == 0} {
-		#var mj_started 1;
-		show_to_info >>明教;
-		#alias {wi} {wi_bare};
-		unwi;
-		#class war.inner kill;
-		#class attack.inner kill;
-		#alias {attack} {
-			attack.mingjiao;
-		};
-		war;		
-	};
+    #if {${mj_started} == 0} {
+        #var mj_started 1;
+        #nop show_to_info >>明教;
+        war;
+    };
 };
 
 #var mj_id {};
 #alias {mj.stop} {
-	#if {${mj_started} == 1} {
-		#var mj_started 0;
-		#var mj_id {};
-		show_to_info <<明教;
-		#alias {wi} {wi_normal};
-		wi;
-		#class attack.inner kill;
-		#alias {attack} {
-			attack.normal;
-		};
-	};
+    #if {${mj_started} == 1} {
+        #var mj_started 0;
+        #var mj_id {};
+        #nop show_to_info <<明教;
+        war;
+    };
 };
 
 #alias {qudu} {
-	eat san;
+    eat san;
 };
 
 #alias {raw} {
-	#class war.inner kill;
-	#class attack.inner kill;
-	#undelay {attack.delay};
-	attack.end;
-	jiali none;
-	mj.stop;
-	#showme truce;
+    #class war.inner kill;
+    #class attack.inner kill;
+    #undelay {attack.delay};
+    attack.end;
+    jiali none;
+    mj.stop;
+    #showme truce;
 };
 
 #var pfming 0;
 #alias {pfm_next} {
-	#if {${pfming} == 0} {
-		#var pfm_action @stackpoll{pfm};
-		#if {"${pfm_action}" != "NULL"} {
-			#var pfming 1;
-			on_unbusy {
-				${pfm_action};
-				#var pfming 0;
-				pfm_next;
-			};
-		};
-		#else {
-			#var pfming 0;
-		};
-	};
+    #if {${pfming} == 0} {
+        #var pfm_action @stackpoll{pfm};
+        #if {"${pfm_action}" != "NULL"} {
+            #var pfming 1;
+            on_unbusy {
+                ${pfm_action};
+                #var pfming 0;
+                pfm_next;
+            };
+        };
+        #else {
+            #var pfming 0;
+        };
+    };
 };
 
 #gag {wait_for_fight};
 #alias {war} {
-	#class war.inner open;
-	#action {你全身放松，坐下来开始运功疗伤。} {
-		raw;
-	};
-	#ticker {fighting} {
-		yun heal;
-	} {5};
-	#ticker {yun} {
-		yun qi;
-		yun jing;
-	} {10};
-	#action {{只能对战斗中的对手使用|只能在战斗中使用}} {
-		#delay {attack.delay} {
-			@stackcreate{pfm};
-			attack;
-		} {0.3};
-	};
-	#class war.inner close;
-	@stackcreate{pfm};
-	#var pfming 0;
-	yun qi;
-	yun jing;
-	#class attack.inner kill;
-	attack.prepare;
-	attack;
+    #class war.inner open;
+    #action {你全身放松，坐下来开始运功疗伤。} {
+        raw;
+    };
+    #ticker {fighting} {
+        yun heal;
+    } {5};
+    #ticker {yun} {
+        yun qi;
+        yun jing;
+    } {10};
+    #action {{只能对战斗中的对手使用|只能在战斗中使用}} {
+        #delay {attack.delay} {
+            @stackcreate{pfm};
+            attack;
+        } {0.3};
+    };
+    #class war.inner close;
+    @stackcreate{pfm};
+    #var pfming 0;
+    yun qi;
+    yun jing;
+    #class attack.inner kill;
+    attack.prepare;
+    attack;
 };
 
 #alias {attack.end} {#cr};
 #alias {attack}  {
-	attack.normal;
+    attack.normal;
 };
 
 #alias {attack.hubiao} {
-	attack.normal;
+    attack.normal;
 };
 
 #action {乾坤大挪移自然激发而出，将你的攻势反击了回去。} {
-	mj.start;	
+    mj.start;
 };
 
 #action {^%*运起九阳神功} {
-	mj.start;
-	#showme mingjiao enemy:%1;
+    mj.start;
+    #showme mingjiao enemy:%1;
 };
 
 #alias {tao} {
-	#action {get_exits: done} {
-		#unaction {get_exits_done};
-		#list exits_list get 1 exit;
-		on_unbusy {
-			${exit};
-		};
-	};
-	get_exits;
-	#5 halt;
+    #action {get_exits: done} {
+        #unaction {get_exits_done};
+        #list exits_list get 1 exit;
+        on_unbusy {
+            ${exit};
+        };
+    };
+    get_exits;
+    #5 halt;
 };
 
 #action {${char_name}%*不由自主的放开了兵器} {
-	wi;
+    wi;
 };
 
 #var enemy NULL;
 #alias {perform} {
-	#if {"${enemy}" == "NULL"} {
-		#send {perform %0};
-	};
-	#else {
-		#send {perform %0 ${enemy}};	
-	};
+    #if {"${enemy}" == "NULL"} {
+        #send {perform %0};
+    };
+    #else {
+        #send {perform %0 ${enemy}};
+    };
 };
 
 #alias {disarm.start} {
-	unwi;
-	#alias {wi} {#cr};
-	#alias {attack} {#cr};
-    bei none;		
+    unwi;
+    #alias {wi} {#cr};
+    #alias {attack} {#cr};
+    bei none;
 };
 
 #alias {disarm.stop} {
-	#alias {wi} {wi_normal};
-	#alias {attack} {attach.normal};
-	reborn;
-	wi;
+    #alias {wi} {wi_normal};
+    #alias {attack} {attach.normal};
+    reborn;
+    wi;
 };
 
 #alias {busy.start} {
-	#var busy_target %0;
-	disarm.start;
-	#send {hit ${busy_target}};
-	#class busy.start.inner open;
-	#action {你战胜了} {
-		#send {hit ${busy_target}};		
-	};
-	#ticker {busy} {
-		chan;
-	} {0.5};
-	#class busy.start.inner close;
+    #var busy_target %0;
+    disarm.start;
+    #send {hit ${busy_target}};
+    #class busy.start.inner open;
+    #action {你战胜了} {
+        #send {hit ${busy_target}};
+    };
+    #ticker {busy} {
+        chan;
+    } {0.5};
+    #class busy.start.inner close;
 };
 
 #alias {busy.stop} {
-	#class busy.start.inner kill;
-	disarm.stop;
+    #class busy.start.inner kill;
+    disarm.stop;
 };
 
 @stackcreate{pfm};
 #alias {pfm} {
-	@stackpush{pfm;%1};
-	pfm_next;
+    @stackpush{pfm;%1};
+    pfm_next;
 };
 
 #alias {pfm_oob} {
-	@stackadd{pfm;%1};
-	pfm_next;
+    @stackadd{pfm;%1};
+    pfm_next;
 };
 
 #gag clear: done;
 #alias {clear} {
-	kill %1;
-	#class clear.inner open;
-	#action {^这里没有这个人} {
-		#unaction {^这里没有这个人};
-		#class clear.inner kill;
-		raw;
-		#showme clear: done;
-	} {1};
-	#ticker {kill} {
-		kill %1;
-	} {3};
-	#class clear.inner close;
+    kill %1;
+    #class clear.inner open;
+    #action {^这里没有这个人} {
+        #unaction {^这里没有这个人};
+        #class clear.inner kill;
+        raw;
+        #showme clear: done;
+    } {1};
+    #ticker {kill} {
+        kill %1;
+    } {3};
+    #class clear.inner close;
 };
 
 #alias {on_cleared} {
-	#alias tmp_on_cleared %1;
-	#action {clear: done} {
-		#unaction {clear: done};
-		tmp_on_cleared;
-	};
+    #alias tmp_on_cleared %1;
+    #action {clear: done} {
+        #unaction {clear: done};
+        tmp_on_cleared;
+    };
 };
 
 #var current_weapons_set 0;
@@ -355,7 +339,7 @@
         #var weapons ${my_weapons};
     };
     #else {
-        #var weapons ${my_weapons_${current_weapons_set}};        
+        #var weapons ${my_weapons_${current_weapons_set}};
     };
     #show weapons switched to ${weapons};
     wi;

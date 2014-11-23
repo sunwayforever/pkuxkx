@@ -1,14 +1,9 @@
 #class xiaofeng open
 #var xf.type -1;
 #alias {xf.teardown} {
-    #var jiali_count max;
+    #var quest NIL;
     #var xf.type -1;
     #var xf.requested 0;
-    #alias {wi} {wi_normal};
-    wi;
-    #alias {attack} {
-        attack.normal;
-    };
     #class xiaofeng.inner kill; 
 };
 
@@ -26,6 +21,7 @@
     #action {%*向萧峰打听有关『job』的消息} {
         #if {"%%1" == "你"} {
             #var xf.requested 1;
+            #var quest xf;
         };
         #else {
             #var xf.requested 0;
@@ -42,7 +38,6 @@
     #action {你去将他擒回这里交给我} {
         #if {${xf.requested} == 1} {
             #var xf.type 2;
-            #var jiali_count 9;
             show_to_quest 萧峰: 擒回: ${xf.target};
         };
     };
@@ -50,7 +45,6 @@
     #action {你去将他除掉，取其首级回来。} {
         #if {${xf.requested} == 1} {
             #var xf.type 1;
-            #var jiali_count max;
             show_to_quest 萧峰: 杀死: ${xf.target};
             #alias {wi} {wi_normal};
         };
@@ -131,7 +125,6 @@
     #action {尚可教化} {
         #if {${xf.requested} == 1} {
             #var xf.type 3;
-            #var jiali_count 9;
             show_to_quest 萧峰: 劝: ${xf.target};
         };
     };
@@ -139,7 +132,6 @@
     #action {让他认输就好} {
         #if {${xf.requested} == 1} {
             #var xf.type 4;
-            #var jiali_count 9;
             show_to_quest 萧峰: 战胜: ${xf.target};
         };
     };
@@ -208,7 +200,6 @@
         };
     };
 
-
     #alias {xf.n} {
         detect_mingjiao shashou;
         #if {${xf.type} == 1} {
@@ -225,24 +216,12 @@
             };
         };
         #elseif {${xf.type} == 2} {
-            #alais {wi} {wi_xiaofeng};
-            #alias {attack} {
-                attack.xiaofeng.qin;
-            };
             hit shashou;
         };
         #elseif {${xf.type} == 3} {
-            #alais {wi} {wi_xiaofeng};
-            #alias {attack} {
-                attack.xiaofeng.quan;
-            };
             hit shashou;
         };
         #elseif {${xf.type} == 4} {
-            #alais {wi} {wi_xiaofeng};
-            #alias {attack} {
-                attack.xiaofeng.sheng;
-            };
             fight shashou;
         };
     };

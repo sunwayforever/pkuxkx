@@ -9,72 +9,62 @@
     };
     #ticker {perf_chan} {
         pfm chan;
-    } {0.5};
+    } {0.6};
     #class attack.inner close;
 };
 
-#alias {attack.bare} {
-    pfm_all chan;
-    #class attack.inner open;
-    #class attack.inner close;
-};
-
-#alias {attack.hubiao} {
+#alias {attack} {
     pfm chan;
-    #class attack.inner open;
-    #class attack.inner close;
-};
-
-#alias {attack.normal} {
-    pfm chan;
-    pfm lzj;
-    pfm wuying;
-    pfm gangrou;
-    #class attack.inner open;
-    #ticker {lzj} {
-        pfm lzj;
-    } {8.8};
-    #ticker {wuying} {
-        pfm wuying;
-    } {6.8};
-    #ticker {gangrou} {
-        pfm gangrou;
-    } {5.8};
-    #class attack.inner close;
-};
-
-#alias {attack.xiaofeng.qin} {
-    pfm chan;
-    pfm wuying;
-    #class attack.inner open;
-    #class attack.inner close;
-};
-
-#alias {attack.xiaofeng.quan} {
-    pfm chan;
-    #class attack.inner open;
-    #class attack.inner close;
-};
-
-#alias {attack.xiaofeng.sheng} {
-    pfm chan;
-    #class attack.inner open;
-    #class attack.inner close;
-};
-
-#alias {attack.mingjiao} {
-    pfm chan;
-    #class attack.inner open;
-    #ticker {perf_zhen} {
-        pfm zhen;
-    } {0.8};
-    #ticker {wuying} {
-        pfm wuying;
-    } {5.8};
-    #ticker {gangrou} {
-        pfm gangrou;
-    } {6.8};
-    #class attack.inner close;
+    #if {"${quest}" == "hb"} {
+        #class attack.inner open;
+        #class attack.inner close;
+    };
+    #elseif {${mj_started}  == 1} {
+        #if {${xf.type} == -1 || ${xf.type} == 1} {
+            pfm wuying;
+            pfm gangrou;
+            #class attack.inner open;
+            #ticker {perf_zhen} {
+                pfm zhen;
+            } {1};
+            #ticker {wuying} {
+                pfm wuying;
+            } {5.8};
+            #ticker {gangrou} {
+                pfm gangrou;
+            } {6.8};
+            #class attack.inner close;
+        };
+        #else {
+            #class attack.inner open;
+            #ticker {perf_zhen} {
+                pfm zhen;
+            } {0.8};
+            #class attack.inner close;
+        };
+    };
+    #else {
+        #if {${xf.type} == -1 || ${xf.type} == 1} {
+            pfm lzj;
+            pfm wuying;
+            pfm gangrou;
+            #class attack.inner open;
+            #ticker {lzj} {
+                pfm lzj;
+            } {8.8};
+            #ticker {wuying} {
+                pfm wuying;
+            } {6.8};
+            #ticker {gangrou} {
+                pfm gangrou;
+            } {5.8};
+            #class attack.inner close;
+        };
+        #else {
+            #class attack.inner open;
+            #class attack.inner close;
+        };
+    };
 };
 
 #var shortcut F1:²ø F2:ÎÞÓ° F3:Á¬×Ö¾÷ F4:¸ÕÈá;
