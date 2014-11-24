@@ -2,45 +2,45 @@
 #var xmpp_listener salonbus;
 
 #alias {xmpp.listen} {
-	#system {/usr/bin/killall xmpp_listen.rb &>/dev/null};
-	#system {rvm use 1.8.7;bin/xmpp_listen.rb ${char_id} &>/dev/null &};	
+    #system {/usr/bin/killall xmpp_listen.rb &>/dev/null};
+    #system {rvm use 1.8.7;bin/xmpp_listen.rb ${char_id} &>/dev/null &};
 };
 
 #alias {xmpp.send} {
-	#script {response} {bin/xmpp_send.rb ${char_id} messenger "%0"};
+    #script {response} {bin/xmpp_send.rb ${char_id} messenger "%0"};
 };
 
 #alias {xmpp.read.start} {
-	#ticker {xmpp.read} {
-		#script {command} {bin/xmpp_read.rb ${char_id}};
-		#if {"${command}[1]" != "nil"} {
-			#var sender ${command}[1];
-			#var content ${command}[2];
-			tell ${sender} ${content}
-		};
-	} {5}
+    #ticker {xmpp.read} {
+        #script {command} {bin/xmpp_read.rb ${char_id}};
+        #if {"${command}[1]" != "nil"} {
+            #var sender ${command}[1];
+            #var content ${command}[2];
+            tell ${sender} ${content}
+        };
+    } {5}
 };
 
 #alias {xmpp.read.stop} {
-	#unticker {xmpp.read};
+    #unticker {xmpp.read};
 };
 
 #alias {xmpp.start} {
-	#if {"${char_id}" == "${xmpp_listener}"} {
-		xmpp.listen;
-		#nop xmpp.read.start;
-		#show xmpp listener started;
-	};
+    #if {"${char_id}" == "${xmpp_listener}"} {
+        xmpp.listen;
+        #nop xmpp.read.start;
+        #show xmpp listener started;
+    };
 };
 
 #action {(%*)¸æËßÄã£ºnotify %*} {
-	#var receiver %1;
-	#var content %2;
-	xmpp.send ${receiver} ${content}
+    #var receiver %1;
+    #var content %2;
+    xmpp.send ${receiver} ${content}
 } {1};
 
 #alias {xmpp.notify} {
-	tell ${xmpp_listener} notify %0;
+    tell ${xmpp_listener} notify %0;
 };
 
 #class xmpp close

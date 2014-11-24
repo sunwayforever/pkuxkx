@@ -1,90 +1,90 @@
 #class suck open
 #alias {suck.start} {
-	#alias wi #cr;
-	#alias attack #cr;
-	unwi;
-	bei none;
-	gt yz;
-	on_there {
-		n;se;
-		#math max_nl ${youxiao_neigong} * 14;
-		show_to_quest suck 开始;
-		do_suck;
-	};
+    #alias wi #cr;
+    #alias attack #cr;
+    unwi;
+    bei none;
+    gt yz;
+    on_there {
+        n;se;
+        #math max_nl ${youxiao_neigong} * 14;
+        show_to_quest suck 开始;
+        do_suck;
+    };
 };
 
-#alias {do_suck} {	
+#alias {do_suck} {
     #ticker {suck} {
-		#if {${hpbrief_max_nl} > ${max_nl}} {
-			suck.stop;
-		};
-		#else {
-			hit gu jia; maxsuck; halt;
-		};
-	} {1.5};
-	#ticker {chifan} {
-		chifan;
-	} {30};
+        #if {${hpbrief_max_nl} > ${max_nl}} {
+            suck.stop;
+        };
+        #else {
+            hit gu jia; maxsuck; halt;
+        };
+    } {1.5};
+    #ticker {chifan} {
+        chifan;
+    } {30};
 };
 
 #alias {suck.stop} {
-	show_to_quest suck 结束;
+    show_to_quest suck 结束;
     #5 halt;
     on_unbusy {
-	    nw;s;
+        nw;s;
         #alias wi wi_normal;
-	    #alias attack attack.normal;
-	    bei strike;
-	    #unticker {suck};
-	    #unticker {chifan};
-	};
+        #alias attack attack.normal;
+        bei strike;
+        #unticker {suck};
+        #unticker {chifan};
+    };
 };
 
 #alias {suck.p} {
-	gt taihu;
-	on_there {
-		nu;nu;nu;
-		on_truce {
-			n;
-			on_truce {
-				bei none;
-				jifa dodge none;
-				jifa parry none;
-				n;
-				fight gu jia;
-				halt;
-				reborn;
-				#ticker {hit_gujia} {
-					hit gu jia;					
-				} {5};
-			};
-		};
-		reborn;
-	};
-	#class suckhelper.inner open;
-	#action {白骨架脚下一个不稳，跌在地上一动也不动了。} {
-		#unticker {hit_gujia};
-		#ticker {getgujia} {
-			get gu jia;
-		} {3};
-	};
-	#action {你将白骨架扶了起来背在背上。} {
-		#class suckhelper.inner kill;
-		#unticker {getgujia};
-		on_truce {
-			#delay {1} {
-				s;s;sd;sd;sd;				
-			};
-			#delay {2} {
-				gt yz;
-			};
-			on_there {
-				n;se;
-				drop gu jia;
-				nw;s;
-			};
-		};
-	};
-	#class suckhelper.inner close;
+    gt taihu;
+    on_there {
+        nu;nu;nu;
+        on_truce {
+            n;
+            on_truce {
+                bei none;
+                jifa dodge none;
+                jifa parry none;
+                n;
+                fight gu jia;
+                halt;
+                reborn;
+                #ticker {hit_gujia} {
+                    hit gu jia;
+                } {5};
+            };
+        };
+        reborn;
+    };
+    #class suckhelper.inner open;
+    #action {白骨架脚下一个不稳，跌在地上一动也不动了。} {
+        #unticker {hit_gujia};
+        #ticker {getgujia} {
+            get gu jia;
+        } {3};
+    };
+    #action {你将白骨架扶了起来背在背上。} {
+        #class suckhelper.inner kill;
+        #unticker {getgujia};
+        on_truce {
+            #delay {1} {
+                s;s;sd;sd;sd;
+            };
+            #delay {2} {
+                gt yz;
+            };
+            on_there {
+                n;se;
+                drop gu jia;
+                nw;s;
+            };
+        };
+    };
+    #class suckhelper.inner close;
 };
 #class suck close

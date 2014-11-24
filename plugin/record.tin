@@ -3,29 +3,29 @@
 #var area "";
 
 #action {^%S - $} {
-	#var record_state 1;
-	#var current_room %1;
+    #var record_state 1;
+    #var current_room %1;
 } {1};
 
 #action {^    %*} {
-	#if {$record_state == 1} {
-		#var description %1;
-		#var record_state 2;
-	};
-	#elseif {$record_state == 2} {
-		#var record_state 0;
-		gt here;
-		#if {"${current_area}" != ""} {
-			#nop #system {bin/record.sh "${current_area}@@${current_room}@@${description}"};
-			show_to_info "$current_area:$current_room";
-		};
-	};
+    #if {$record_state == 1} {
+        #var description %1;
+        #var record_state 2;
+    };
+    #elseif {$record_state == 2} {
+        #var record_state 0;
+        gt here;
+        #if {"${current_area}" != ""} {
+            #nop #system {bin/record.sh "${current_area}@@${current_room}@@${description}"};
+            show_to_info "$current_area:$current_room";
+        };
+    };
 } {9};
 
 #action {^%S%*} {
-	#if {$record_state == 2} {
-		#var description ${description}%1%2
-	}
+    #if {$record_state == 2} {
+        #var description ${description}%1%2
+    }
 } {9}
 
 #alias {n} {north;l}

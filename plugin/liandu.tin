@@ -1,177 +1,177 @@
 #class liandu open
 #alias {ld.start} {
-	#var ld_count 0;
-	show_to_quest 炼毒: ${ld_count};
-	#class ld.inner open;
+    #var ld_count 0;
+    show_to_quest 炼毒: ${ld_count};
+    #class ld.inner open;
 
-	#action {炼毒时需要双手的配合，所以你最好还是不要拿武器} {
-		unwi;
-		liandu;
-	};
+    #action {炼毒时需要双手的配合，所以你最好还是不要拿武器} {
+        unwi;
+        liandu;
+    };
 
-	#action {你刚刚炼毒完成不久，频繁炼毒会有生命危险的！} {
-		#delay {ld} {
-			unwi;
-			liandu;
-		} {10};
-	};
+    #action {你刚刚炼毒完成不久，频繁炼毒会有生命危险的！} {
+        #delay {ld} {
+            unwi;
+            liandu;
+        } {10};
+    };
 
-	#action {你身上没有 corpse 这样东西。} {
-		#unticker {give_corpse};
-		ask piaoran about 炼毒;
-	};
+    #action {你身上没有 corpse 这样东西。} {
+        #unticker {give_corpse};
+        ask piaoran about 炼毒;
+    };
 
-	#action {你给飘然子一具%*的尸体} {
-		#unticker {give_corpse};
-	};
+    #action {你给飘然子一具%*的尸体} {
+        #unticker {give_corpse};
+    };
 
-	#action {飘然子不想要%*的尸体，你就自个留着吧。} {
-		#delay {give_corpse} {
-			give piaoran corpse;
-		} {10};
-	};
+    #action {飘然子不想要%*的尸体，你就自个留着吧。} {
+        #delay {give_corpse} {
+            give piaoran corpse;
+        } {10};
+    };
 
-	#action {这一瞬间，你发觉那至阴的毒气和自己体内原本的毒气相互融合，一同归纳进了气海！} {
-		#math ld_count ${ld_count}+1;
-		show_to_quest 炼毒: ${ld_count};
-		#delay {3} {
-			chifan;
-			dz.full {
-				tn.full {
-					ask piaoran about 炼毒;
-				};
-			};
-		};
-	};
+    #action {这一瞬间，你发觉那至阴的毒气和自己体内原本的毒气相互融合，一同归纳进了气海！} {
+        #math ld_count ${ld_count}+1;
+        show_to_quest 炼毒: ${ld_count};
+        #delay {3} {
+            chifan;
+            dz.full {
+                tn.full {
+                    ask piaoran about 炼毒;
+                };
+            };
+        };
+    };
 
-	#action {飘然子对着你嘿嘿一笑：“想练毒是吧？先去给你自己找具有用的尸体来} {
-		#delay {delay} {
-			ld.get_corpse;
-		} {2};
-	};
+    #action {飘然子对着你嘿嘿一笑：“想练毒是吧？先去给你自己找具有用的尸体来} {
+        #delay {delay} {
+            ld.get_corpse;
+        } {2};
+    };
 
-	#action {你的手掌刚刚伸出，却被一股无形的大力给震了回来。} {
-		#ticker {give_corpse} {
-			give piaoran corpse;
-		} {20};
-	};
+    #action {你的手掌刚刚伸出，却被一股无形的大力给震了回来。} {
+        #ticker {give_corpse} {
+            give piaoran corpse;
+        } {20};
+    };
 
-	#action {飘然子说道：「好吧，你来试着练习(liandu)一下毒技吧。」} {
-		#unticker {give_corpse};
-		unwi;
-		liandu;
-	};
+    #action {飘然子说道：「好吧，你来试着练习(liandu)一下毒技吧。」} {
+        #unticker {give_corpse};
+        unwi;
+        liandu;
+    };
 
-	#class ld.inner close;
-	load_map;
-	map.go 山洞;
-	on_truce {
-		#action {zuan ok} {
-			#unaction {zuan ok};
-			dz.full {
-				tn.full {
-					ask piaoran about 炼毒;
-				};
-			};
-		};
-		zuan_dong;
-	};
+    #class ld.inner close;
+    load_map;
+    map.go 山洞;
+    on_truce {
+        #action {zuan ok} {
+            #unaction {zuan ok};
+            dz.full {
+                tn.full {
+                    ask piaoran about 炼毒;
+                };
+            };
+        };
+        zuan_dong;
+    };
 };
 
 #alias {ld.stop} {
-	#class ld.innder kill;
-	show_to_quest 炼毒结束;
+    #class ld.innder kill;
+    show_to_quest 炼毒结束;
 };
 
 #alias {ld.get_corpse} {
-	drop gangzhang;
-	drop tonghao;
-	drop tonggu;
-	drop tongbo;
-	wi;
-	#action {zuan ok} {
-		#unaction {zuan ok};
-		on_truce {
-			map.go 巨岩;
-			#delay {5} {
-				kill_somebody;
-			};
-		};
-	};
-	#delay {1} {
-		zuan_dong;
-	};
+    drop gangzhang;
+    drop tonghao;
+    drop tonggu;
+    drop tongbo;
+    wi;
+    #action {zuan ok} {
+        #unaction {zuan ok};
+        on_truce {
+            map.go 巨岩;
+            #delay {5} {
+                kill_somebody;
+            };
+        };
+    };
+    #delay {1} {
+        zuan_dong;
+    };
 };
 
 #alias {kill_somebody} {
-	#class kill_somebody.inner open;
-	#action {^    星宿派鼓手} {
-		#delay {kill} {
-			kill gushou;
-		} {3};
-	};
-	#action {^    星宿派号手} {
-		#delay {kill} {
-			kill haoshou;
-		} {3};
-	};
-	#action {^    星宿派钹手} {
-		#delay {kill} {
-			kill boshou;
-		} {3};
-	};
-	#ticker {l} {
-		l;
-	} {105};
-	#action {你将自身精力内力灌注入%*的尸体} {
-		#delay {3} {
-			get corpse;
-		};
-	};
-	#action {你将%*尸体扶了起来背在背上} {
-		#class kill_somebody.inner kill;
-		#undelay {move};
-		#delay {1} {
-			map.go 山洞;
-			on_truce {
-				#action {zuan ok} {
-					#unaction {zuan ok};
-					on_unbusy {
-						give piaoran corpse;
-					};
-					#ticker {give_corpse} {
-						give piaoran corpse;
-					} {20};
-				};
-				zuan_dong;
-			};
-		};
-	};
-	#action {星宿派%*死了} {
-		zhishi corpse;
-	} {1};
-	#delay {move} {
-		n;
-	} {60};
-	#class kill_somebody.inner close;
-	l;
+    #class kill_somebody.inner open;
+    #action {^    星宿派鼓手} {
+        #delay {kill} {
+            kill gushou;
+        } {3};
+    };
+    #action {^    星宿派号手} {
+        #delay {kill} {
+            kill haoshou;
+        } {3};
+    };
+    #action {^    星宿派钹手} {
+        #delay {kill} {
+            kill boshou;
+        } {3};
+    };
+    #ticker {l} {
+        l;
+    } {105};
+    #action {你将自身精力内力灌注入%*的尸体} {
+        #delay {3} {
+            get corpse;
+        };
+    };
+    #action {你将%*尸体扶了起来背在背上} {
+        #class kill_somebody.inner kill;
+        #undelay {move};
+        #delay {1} {
+            map.go 山洞;
+            on_truce {
+                #action {zuan ok} {
+                    #unaction {zuan ok};
+                    on_unbusy {
+                        give piaoran corpse;
+                    };
+                    #ticker {give_corpse} {
+                        give piaoran corpse;
+                    } {20};
+                };
+                zuan_dong;
+            };
+        };
+    };
+    #action {星宿派%*死了} {
+        zhishi corpse;
+    } {1};
+    #delay {move} {
+        n;
+    } {60};
+    #class kill_somebody.inner close;
+    l;
 };
 
 #alias {zuan_dong} {
-	#class zuan.inner open;
-	#action {你取出火折，用火石把它点着。} {
-		#delay {1} {
-			use fire;
-		};
-	};
-	#action {你点燃了火折，发现%*石壁%*一道裂缝} {
-		#delay {1} {
-			#send {zuan};
-			#showme zuan ok;
-		};
-		#class zuan.inner kill;
-	};
-	#class zuan.inner close;
-	use fire;
+    #class zuan.inner open;
+    #action {你取出火折，用火石把它点着。} {
+        #delay {1} {
+            use fire;
+        };
+    };
+    #action {你点燃了火折，发现%*石壁%*一道裂缝} {
+        #delay {1} {
+            #send {zuan};
+            #showme zuan ok;
+        };
+        #class zuan.inner kill;
+    };
+    #class zuan.inner close;
+    use fire;
 }
 #class liandu close

@@ -1,44 +1,44 @@
 #class statistics open
 #list stat_category create {};
 #alias {stat.register} {
-	#var category %1;
-	#var kind %2;
+    #var category %1;
+    #var kind %2;
 
-	#list stat_category find ${category} found;
-	#if {${found} == 0} {
-		#list stat_category add ${category};
-	};
+    #list stat_category find ${category} found;
+    #if {${found} == 0} {
+        #list stat_category add ${category};
+    };
 
-	#var ${category}_hit 0;
-	#var ${category}_miss 0;
-	#if {"%2" == "hit"} {
-		#action {%3} {
-			#math %1_hit ${%1_hit}+1;
-		};
-	};
-	#elseif {"%2" == "miss"} {
-		#action {%3} {
-			#math %1_miss ${%1_miss}+1;
-		};
-	};
-	#elseif {"%2" == "all"} {
-		#action {%3} {
-			#math %1_all ${%1_all}+1;
-			#math %1_miss ${%1_all} - ${%1_hit};
-		};
-	};
+    #var ${category}_hit 0;
+    #var ${category}_miss 0;
+    #if {"%2" == "hit"} {
+        #action {%3} {
+            #math %1_hit ${%1_hit}+1;
+        };
+    };
+    #elseif {"%2" == "miss"} {
+        #action {%3} {
+            #math %1_miss ${%1_miss}+1;
+        };
+    };
+    #elseif {"%2" == "all"} {
+        #action {%3} {
+            #math %1_all ${%1_all}+1;
+            #math %1_miss ${%1_all} - ${%1_hit};
+        };
+    };
 };
 
 #alias {stat} {
-	#foreach {${stat_category}[%*]} {category} {
-		#math stat_percent ${${category}_hit}*100/(${${category}_hit}+${${category}_miss});
-		#format {tmp_category} {%-9s} {${category}:};
-		#format {tmp_hit} {%-5s} {${${category}_hit}};
-		#format {tmp_miss} {%-5s} {${${category}_miss}};
-		#format {tmp_percent} {%s} {${stat_percent}%%};
-		#echo {${tmp_category}命中:${tmp_hit}丢失:${tmp_miss}命中率:${tmp_percent}};
-	};
-	#buffer lock;
+    #foreach {${stat_category}[%*]} {category} {
+        #math stat_percent ${${category}_hit}*100/(${${category}_hit}+${${category}_miss});
+        #format {tmp_category} {%-9s} {${category}:};
+        #format {tmp_hit} {%-5s} {${${category}_hit}};
+        #format {tmp_miss} {%-5s} {${${category}_miss}};
+        #format {tmp_percent} {%s} {${stat_percent}%%};
+        #echo {${tmp_category}命中:${tmp_hit}丢失:${tmp_miss}命中率:${tmp_percent}};
+    };
+    #buffer lock;
 };
 
 #class statistics close

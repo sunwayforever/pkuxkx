@@ -1,101 +1,101 @@
 #class util open
 #function {mapcreate} {
-	#var map_name map_%1;
-	#list ${map_name}_keys create {};
-	#list ${map_name}_values create {};
-	#var result #cr;
+    #var map_name map_%1;
+    #list ${map_name}_keys create {};
+    #list ${map_name}_values create {};
+    #var result #cr;
 };
 
 #function {mapset} {
-	#var map_name map_%1;
-	#var map_key %2;
-	#var map_value %3;
-	#list ${map_name}_keys find ${map_key} map_index;
-	#if {${map_index} == 0} {
-		#list ${map_name}_keys add ${map_key};
-		#list ${map_name}_values add ${map_value};
-	};
-	#else {
-		#list ${map_name}_values set ${map_index} ${map_value};
-	};
-	#var result #cr;
+    #var map_name map_%1;
+    #var map_key %2;
+    #var map_value %3;
+    #list ${map_name}_keys find ${map_key} map_index;
+    #if {${map_index} == 0} {
+        #list ${map_name}_keys add ${map_key};
+        #list ${map_name}_values add ${map_value};
+    };
+    #else {
+        #list ${map_name}_values set ${map_index} ${map_value};
+    };
+    #var result #cr;
 };
 
 #function {mapget} {
-	#var map_name map_%1;
-	#var map_key %2;
-	#list ${map_name}_keys find ${map_key} map_index;
-	#if {${map_index} == 0} {
-		#var result NULL;
-	};
-	#else {
-		#list ${map_name}_values get ${map_index} result;
-	};
+    #var map_name map_%1;
+    #var map_key %2;
+    #list ${map_name}_keys find ${map_key} map_index;
+    #if {${map_index} == 0} {
+        #var result NULL;
+    };
+    #else {
+        #list ${map_name}_values get ${map_index} result;
+    };
 };
 
 #function {stackcreate} {
-	#var stack_name stack_%1;
-	#list ${stack_name} create {};
-	#var result #cr;
+    #var stack_name stack_%1;
+    #list ${stack_name} create {};
+    #var result #cr;
 };
 
 #function {stackpush} {
-	#var stack_name stack_%1;
-	#list ${stack_name} add %2;
-	#var result #cr;
+    #var stack_name stack_%1;
+    #list ${stack_name} add %2;
+    #var result #cr;
 };
 
 #function {stackadd} {
-	#var stack_name stack_%1;
-	#list ${stack_name} insert 1 %2;
-	#var result #cr;
+    #var stack_name stack_%1;
+    #list ${stack_name} insert 1 %2;
+    #var result #cr;
 };
 
 #function {stacktop} {
-	#var stack_name stack_%1;
-	#list ${stack_name} size tmp_size;
-	#if {${tmp_size} == 0} {
-		#var result NULL;
-	};
-	#else {
-		#list ${stack_name} get ${tmp_size} result;
-	};
+    #var stack_name stack_%1;
+    #list ${stack_name} size tmp_size;
+    #if {${tmp_size} == 0} {
+        #var result NULL;
+    };
+    #else {
+        #list ${stack_name} get ${tmp_size} result;
+    };
 };
 
 #function {stacktolist} {
-	#var stack_name stack_%1;
-	#var result ${${stack_name}};
+    #var stack_name stack_%1;
+    #var result ${${stack_name}};
 };
 
 #function {stackpop} {
-	#var stack_name stack_%1;
-	#list ${stack_name} size tmp_size;
-	#if {${tmp_size} == 0} {
-		#var result NULL;
-	};
-	#else {
-		#list ${stack_name} get ${tmp_size} result;
-		#list ${stack_name} delete ${tmp_size};
-	};
+    #var stack_name stack_%1;
+    #list ${stack_name} size tmp_size;
+    #if {${tmp_size} == 0} {
+        #var result NULL;
+    };
+    #else {
+        #list ${stack_name} get ${tmp_size} result;
+        #list ${stack_name} delete ${tmp_size};
+    };
 };
 
 #function {stackpoll} {
-	#var stack_name stack_%1;
-	#list ${stack_name} size tmp_size;
-	#if {${tmp_size} == 0} {
-		#var result NULL;
-	};
-	#else {
-		#list ${stack_name} get 1 result;
-		#list ${stack_name} delete 1;
-	};
+    #var stack_name stack_%1;
+    #list ${stack_name} size tmp_size;
+    #if {${tmp_size} == 0} {
+        #var result NULL;
+    };
+    #else {
+        #list ${stack_name} get 1 result;
+        #list ${stack_name} delete 1;
+    };
 };
 
 #function {isalphabet} {
-	#regexp {%1} {^%w$} {#var result 1} {#var result 0};
+    #regexp {%1} {^%w$} {#var result 1} {#var result 0};
 };
 
 #function {iscomment} {
-	#regexp {%1} {^#nop} {#var result 1} {#var result 0};
+    #regexp {%1} {^#nop} {#var result 1} {#var result 0};
 };
 #class util close

@@ -38,76 +38,76 @@
 @mapset{jd_value;shield;300};
 
 #function {jd_get_method} {
-	#if {
-		"%1" == "sword"
-		|| "%1" == "blade"
-		|| "%1" == "staff"
-		|| "%1" == "whip"
-		|| "%1" == "spear"
-		|| "%1" == "hammer"
-	} {
-		#var result wield;
-	};
-	#else {
-		#var result wear;	
-	};
-};
+    #if {
+        "%1" == "sword"
+        || "%1" == "blade"
+        || "%1" == "staff"
+        || "%1" == "whip"
+        || "%1" == "spear"
+        || "%1" == "hammer"
+        } {
+            #var result wield;
+        };
+        #else {
+            #var result wear;
+        };
+    };
 
-#alias {jd.start} {
-	#alias tmp_jd %1;
-	#class jd.inner open;
-	#action {你从包袱中拿出%*之%*。} {
-		#var jd_item @mapget{jianding;%%2};
-		@stackpush{tmp;${jd_item}};
-	};
-	#action {之%*(+%*)} {
-		#var jd_current_value %%2;
-		#var jd_item @mapget{jianding;%%1};
-		#var required_value @mapget{jd_value;${jd_item}};
-		unwi;
-		remove all;
-		#delay {3} {
-			#if {${required_value} <= ${jd_current_value}} {
-				show_to_info 保留: ${jd_item}:${jd_current_value};
-				put ${jd_item} in bao;
-			};
-			#else {
-				show_to_info 卖掉: ${jd_item}:${jd_current_value};
-				sell ${jd_item};
-			};
-			#delay {1} {
-				jd.next;			
-			};
-		};
-	} {1};
-	
-	#class jd.inner close;
-	@stackcreate{tmp};
-	gt rbz;
-	on_there {
-		remove all;
-		unwield all;
-		get all from bao;
-		#delay {3} {
-			jd.next;
-		};		
-	};
-};
+    #alias {jd.start} {
+        #alias tmp_jd %1;
+        #class jd.inner open;
+        #action {你从包袱中拿出%*之%*。} {
+            #var jd_item @mapget{jianding;%%2};
+            @stackpush{tmp;${jd_item}};
+        };
+        #action {之%*(+%*)} {
+            #var jd_current_value %%2;
+            #var jd_item @mapget{jianding;%%1};
+            #var required_value @mapget{jd_value;${jd_item}};
+            unwi;
+            remove all;
+            #delay {3} {
+                #if {${required_value} <= ${jd_current_value}} {
+                    show_to_info 保留: ${jd_item}:${jd_current_value};
+                    put ${jd_item} in bao;
+                };
+                #else {
+                    show_to_info 卖掉: ${jd_item}:${jd_current_value};
+                    sell ${jd_item};
+                };
+                #delay {1} {
+                    jd.next;
+                };
+            };
+        } {1};
 
-#alias {jd.next} {
-	#var item @stackpop{tmp};
-	#if {"${item}" != "NULL"} {
-		@jd_get_method{${item}} ${item};
-		#send {i};
-	};
-	#else {
-		#class jd.inner kill;
-		we;
-		wi;
-		#delay {3} {
-			tmp_jd;
-		};
-	};
-};
+        #class jd.inner close;
+        @stackcreate{tmp};
+        gt rbz;
+        on_there {
+            remove all;
+            unwield all;
+            get all from bao;
+            #delay {3} {
+                jd.next;
+            };
+        };
+    };
 
-#class jianding close
+    #alias {jd.next} {
+        #var item @stackpop{tmp};
+        #if {"${item}" != "NULL"} {
+            @jd_get_method{${item}} ${item};
+            #send {i};
+        };
+        #else {
+            #class jd.inner kill;
+            we;
+            wi;
+            #delay {3} {
+                tmp_jd;
+            };
+        };
+    };
+
+    #class jianding close

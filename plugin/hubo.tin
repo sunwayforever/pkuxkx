@@ -1,72 +1,72 @@
 #class hubo open
 
 #alias {hubo.stop} {
-	show_to_quest 解互搏结束;
-	#class hubo.inner kill;
+    show_to_quest 解互搏结束;
+    #class hubo.inner kill;
 };
 
 #alias {hubo.start} {
-	show_to_quest 解互搏中;
-	#var hubo_count 0;
+    show_to_quest 解互搏中;
+    #var hubo_count 0;
 
-	#class hubo.inner open;
-	#ticker {hubo} {hua fangyuan} {120};
-	#action {你对双手互搏多了一点认识。} {
-		#math hubo_count ${hubo_count} + 1;
-		show_to_info 你对双手互搏多了一点认识 / ${hubo_count};
-	};
+    #class hubo.inner open;
+    #ticker {hubo} {hua fangyuan} {120};
+    #action {你对双手互搏多了一点认识。} {
+        #math hubo_count ${hubo_count} + 1;
+        show_to_info 你对双手互搏多了一点认识 / ${hubo_count};
+    };
 
-	#action {你对双手互搏加深了一些理解} {
-		#math hubo_count ${hubo_count} + 1;
-		show_to_info 你对双手互搏加深了一些理解 / ${hubo_count};
-	};
+    #action {你对双手互搏加深了一些理解} {
+        #math hubo_count ${hubo_count} + 1;
+        show_to_info 你对双手互搏加深了一些理解 / ${hubo_count};
+    };
 
-	#action {你对双手互搏的要领有了一些理解} {
-		#math hubo_count ${hubo_count} + 1;
-		show_to_info 你对双手互搏的要领有了一些理解 / ${hubo_count};
-	};
+    #action {你对双手互搏的要领有了一些理解} {
+        #math hubo_count ${hubo_count} + 1;
+        show_to_info 你对双手互搏的要领有了一些理解 / ${hubo_count};
+    };
 
-	#action {你对双手互搏要领大部分都掌握了} {
-		#math hubo_count ${hubo_count} + 1;
-		show_to_info 你对双手互搏要领大部分都掌握了 / ${hubo_count};
-	};
+    #action {你对双手互搏要领大部分都掌握了} {
+        #math hubo_count ${hubo_count} + 1;
+        show_to_info 你对双手互搏要领大部分都掌握了 / ${hubo_count};
+    };
 
-	#action {你对双手互搏的要领已经很熟练了} {
-		#math hubo_count ${hubo_count} + 1;
-		show_to_info 你对双手互搏的要领已经很熟练了 / ${hubo_count};
-	};
+    #action {你对双手互搏的要领已经很熟练了} {
+        #math hubo_count ${hubo_count} + 1;
+        show_to_info 你对双手互搏的要领已经很熟练了 / ${hubo_count};
+    };
 
-	#action {你现在的气太少了} {
-		#delay {3} {
-			hua fangyuan;
-		};
-	};
-	
-	#action {你运功完毕，深深吸了口气，站了起来。} {
-		hua fangyuan;
-	} {1};
+    #action {你现在的气太少了} {
+        #delay {3} {
+            hua fangyuan;
+        };
+    };
 
-	#action {你只觉神元归一，全身精力弥漫，无以复加，忍不住长啸一声，徐徐站了起来} {
-		hua fangyuan;
-	} {1};
-	
-	#action {你累得满头大汗, 暂停了画方圆。} {
-		eat_food;
-		dazuo 200;
-	};
+    #action {你运功完毕，深深吸了口气，站了起来。} {
+        hua fangyuan;
+    } {1};
 
-	#action {你现在精不够} {
-		hua fangyuan;
-	};
+    #action {你只觉神元归一，全身精力弥漫，无以复加，忍不住长啸一声，徐徐站了起来} {
+        hua fangyuan;
+    } {1};
 
-	#action {思维似乎变得迟钝了一些} {
-		xmpp.notify 已经掌握了左右互博绝技;
-		hubo.stop;
-	};
-	
-	#class hubo.inner close;
-	
-	hua fangyuan;
+    #action {你累得满头大汗, 暂停了画方圆。} {
+        eat_food;
+        dazuo 200;
+    };
+
+    #action {你现在精不够} {
+        hua fangyuan;
+    };
+
+    #action {思维似乎变得迟钝了一些} {
+        xmpp.notify 已经掌握了左右互博绝技;
+        hubo.stop;
+    };
+
+    #class hubo.inner close;
+
+    hua fangyuan;
 };
 
 #class hubo close

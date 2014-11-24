@@ -1,21 +1,21 @@
 #class xiulian open
 #alias {xl.start} {
-	#class xl.inner open;
-	#action {顿觉内功修为增进不小} {xiulian ${xl_kungfu}};
-	#action {由于缺乏实战经验} {
-		xl.stop;
-	};
-	#action {你的潜能必须大于%*才能修炼。} {
-		xl.stop;	
-	};
-	#class xl.inner close;
-	#var xl_kungfu %1;
-	xiulian ${xl_kungfu};
-	show_to_quest 修炼内功;
+    #class xl.inner open;
+    #action {顿觉内功修为增进不小} {xiulian ${xl_kungfu}};
+    #action {由于缺乏实战经验} {
+        xl.stop;
+    };
+    #action {你的潜能必须大于%*才能修炼。} {
+        xl.stop;
+    };
+    #class xl.inner close;
+    #var xl_kungfu %1;
+    xiulian ${xl_kungfu};
+    show_to_quest 修炼内功;
 };
 
 #alias {xl.stop} {
-	#class xl.inner kill;
-	show_to_quest 修炼结束;
+    #class xl.inner kill;
+    show_to_quest 修炼结束;
 };
 #class xiulian close

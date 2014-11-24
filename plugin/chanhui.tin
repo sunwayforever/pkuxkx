@@ -1,23 +1,23 @@
 #class chanhui open
 #alias {ch.start} {
-	#class ch.inner open;
-	#action {你感觉心中的杀气渐渐消失} {
-		#delay {2} {
-			chanhui;
-		};
-	};
-	#class ch.inner close;
-	gt wm;
-	on_there {
-		show_to_quest 忏悔;
-		chanhui;
-	};
+    #class ch.inner open;
+    #action {你感觉心中的杀气渐渐消失} {
+        #delay {2} {
+            chanhui;
+        };
+    };
+    #class ch.inner close;
+    gt wm;
+    on_there {
+        show_to_quest 忏悔;
+        chanhui;
+    };
 };
 
 #alias {ch.stop} {
-	#class ch.inner kill;
-	on_unbusy {
-		show_to_quest 忏悔结束;	
-	};
+    #class ch.inner kill;
+    on_unbusy {
+        show_to_quest 忏悔结束;
+    };
 };
 #class chanhui close

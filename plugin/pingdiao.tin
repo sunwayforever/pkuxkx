@@ -1,24 +1,24 @@
 #class pingdiao open;
 
 #alias {pd.start} {
-	#class pd.inner open;
-	#ticker {pingdiao} {
-		pingdiao;
-	} {300};
-	#action {你凭吊完毕,站起身来} {
-		#delay {1} {
-			eat_food;
-			#delay {2} {
-				pingdiao;
-			};
-		};
-	};
-	#class pd.inner open;
-	pingdiao;
+    #class pd.inner open;
+    #ticker {pingdiao} {
+        pingdiao;
+    } {300};
+    #action {你凭吊完毕,站起身来} {
+        #delay {1} {
+            eat_food;
+            #delay {2} {
+                pingdiao;
+            };
+        };
+    };
+    #class pd.inner open;
+    pingdiao;
 };
 
 #alias {pd.stop} {
-	#class pd.inner kill;
+    #class pd.inner kill;
 };
 
 #class pingdiao close;

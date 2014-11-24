@@ -1,425 +1,425 @@
 #class newbie_wd open;
 #alias {newbie.q} {
-	#class newbie.inner open;
-	#action {%1Ïò³åĞéµÀ³¤´òÌıÓĞ¹Ø} {#var character  %1}
-	#action {½ñÌìÈ«ÅÉµÜ×ÓÒªÔÚ} {
-		#if {"$character" == "Äã"} {
-			#delay {2} {
-				ask chongxu about cancel;
-				ask chongxu about quest;
-			}
-		};
-	};
-	#action {µ½ÌìÖù·å½ÅÏÂ²ÉÆø} {
-		#IF {"$character" == "Äã"} {
-			#delay {2} {
-				ask chongxu about cancel;
-				ask chongxu about quest;
-			};
-		};
-	};
-	#action {ÏÖÔÚ»¹Ã»ÓĞĞÂµÄ¹¤×÷¿ÉÒÔ·ÖÅä¸øÄã} {
-		#IF {"$character" == "Äã"} {
-			#var character  ¿Õ;
-			#delay {get_request} {ask chongxu about quest} {20};
-		};
-	};
-	#action {¸Ï½ôÏòÓáá·ÑÒ±¨¸æ£¡} {zhan; n; ask yu about Á¶µ¤; w;w;s;s;s;s;ask chongxu about success; ask chongxu about quest;};
-	#action {Äãµ½Óáá·ÑÒÄÇÀï°ïËû¿´¿´Â¯»ğ°É} {
-		#IF {"$character" == "Äã"} {
-			#delay {kanluhuo} {
-				n;n;n;n;e;e;
-				ask yu about Á¶µ¤;
-				s;zuo;kan;
-			} {3}
-		};
-	};
+    #class newbie.inner open;
+    #action {%1Ïò³åĞéµÀ³¤´òÌıÓĞ¹Ø} {#var character  %1}
+    #action {½ñÌìÈ«ÅÉµÜ×ÓÒªÔÚ} {
+        #if {"$character" == "Äã"} {
+            #delay {2} {
+                ask chongxu about cancel;
+                ask chongxu about quest;
+            }
+        };
+    };
+    #action {µ½ÌìÖù·å½ÅÏÂ²ÉÆø} {
+        #IF {"$character" == "Äã"} {
+            #delay {2} {
+                ask chongxu about cancel;
+                ask chongxu about quest;
+            };
+        };
+    };
+    #action {ÏÖÔÚ»¹Ã»ÓĞĞÂµÄ¹¤×÷¿ÉÒÔ·ÖÅä¸øÄã} {
+        #IF {"$character" == "Äã"} {
+            #var character  ¿Õ;
+            #delay {get_request} {ask chongxu about quest} {20};
+        };
+    };
+    #action {¸Ï½ôÏòÓáá·ÑÒ±¨¸æ£¡} {zhan; n; ask yu about Á¶µ¤; w;w;s;s;s;s;ask chongxu about success; ask chongxu about quest;};
+    #action {Äãµ½Óáá·ÑÒÄÇÀï°ïËû¿´¿´Â¯»ğ°É} {
+        #IF {"$character" == "Äã"} {
+            #delay {kanluhuo} {
+                n;n;n;n;e;e;
+                ask yu about Á¶µ¤;
+                s;zuo;kan;
+            } {3}
+        };
+    };
 
-	#action {ÎÒ»¹Ã»ÓĞ¿ªÊ¼Á¶µ¤ÄØ£¬²»Òª×Å¼±} {
-		zhan;n;
-		w;w;s;s;s;s;ask chongxu about cancel; ask chongxu about quest;
-	};
+    #action {ÎÒ»¹Ã»ÓĞ¿ªÊ¼Á¶µ¤ÄØ£¬²»Òª×Å¼±} {
+        zhan;n;
+        w;w;s;s;s;s;ask chongxu about cancel; ask chongxu about quest;
+    };
 
-	#action {~*********[1;35m^[2;37;0m********} {change M};
-	#action {~*********[1;31m^[2;37;0m********} {change L};
-	#action {~*********[1;33m^[2;37;0m********} {change H};
+    #action {~*********[1;35m^[2;37;0m********} {change M};
+    #action {~*********[1;31m^[2;37;0m********} {change L};
+    #action {~*********[1;33m^[2;37;0m********} {change H};
 
-	#action {³åĞéµÀ³¤ËµµÀ£º¡¸½ñÌìÈ«ÅÉµÜ×ÓÒªÔÚ%1Êì¶Áµä¼®£¬¾İËµÒªËĞ³ª%2µÄ%3(%4)} {
-		#IF {"$character" == "Äã"} {
-			#var sj_address %1;
-			#var sj_book %2;
-			#var sj_article %3;
-			#var sj_page %4;
-			tell erq $sj_address $sj_book $sj_article $sj_page;
-			check_jing;
-		};
-	}
+    #action {³åĞéµÀ³¤ËµµÀ£º¡¸½ñÌìÈ«ÅÉµÜ×ÓÒªÔÚ%1Êì¶Áµä¼®£¬¾İËµÒªËĞ³ª%2µÄ%3(%4)} {
+        #IF {"$character" == "Äã"} {
+            #var sj_address %1;
+            #var sj_book %2;
+            #var sj_article %3;
+            #var sj_page %4;
+            tell erq $sj_address $sj_book $sj_article $sj_page;
+            check_jing;
+        };
+    }
 
-	#action {³åĞéµÀ³¤ËµµÀ£º¡¸½ñÌìÈ«ÅÉµÜ×ÓÒªÔÚ%1Êì¶Áµä¼®£¬¾İËµÒªËĞ³ª%2µÄµÚ%3ÕÂ} {
-		#IF {"$character" == "Äã"} {
-			#var sj_address %1;
-			#var sj_book %2;
-			#var sj_article %2;
+    #action {³åĞéµÀ³¤ËµµÀ£º¡¸½ñÌìÈ«ÅÉµÜ×ÓÒªÔÚ%1Êì¶Áµä¼®£¬¾İËµÒªËĞ³ª%2µÄµÚ%3ÕÂ} {
+        #IF {"$character" == "Äã"} {
+            #var sj_address %1;
+            #var sj_book %2;
+            #var sj_article %2;
 
-			#var sj_page 0;
-			#IF {"%3" == "Ò»"} {#var sj_page 1};
-			#ELSEIF {"%3" == "¶ş"} {#var sj_page 2};
-			#ELSEIF {"%3" == "Èı"} {#var sj_page 3};
-			#ELSEIF {"%3" == "ËÄ"} {#var sj_page 4};
-			#ELSEIF {"%3" == "Îå"} {#var sj_page 5};
-			#ELSEIF {"%3" == "Áù"} {#var sj_page 6};
-			#ELSEIF {"%3" == "Æß"} {#var sj_page 7};
-			#ELSEIF {"%3" == "°Ë"} {#var sj_page 8};
-			#ELSEIF {"%3" == "¾Å"} {#var sj_page 9};
-    		#ELSEIF {"%3" == "Ê®"} {#var sj_page 10};
+            #var sj_page 0;
+            #IF {"%3" == "Ò»"} {#var sj_page 1};
+            #ELSEIF {"%3" == "¶ş"} {#var sj_page 2};
+            #ELSEIF {"%3" == "Èı"} {#var sj_page 3};
+            #ELSEIF {"%3" == "ËÄ"} {#var sj_page 4};
+            #ELSEIF {"%3" == "Îå"} {#var sj_page 5};
+            #ELSEIF {"%3" == "Áù"} {#var sj_page 6};
+            #ELSEIF {"%3" == "Æß"} {#var sj_page 7};
+            #ELSEIF {"%3" == "°Ë"} {#var sj_page 8};
+            #ELSEIF {"%3" == "¾Å"} {#var sj_page 9};
+            #ELSEIF {"%3" == "Ê®"} {#var sj_page 10};
 
-			tell erq $sj_address $sj_book $sj_article $sj_page;
-			check_jing;
-		};
-	}
+            tell erq $sj_address $sj_book $sj_article $sj_page;
+            check_jing;
+        };
+    }
 
-	#action {³åĞéµÀ³¤ËµµÀ£º¡¸½ñÌìÈ«ÅÉµÜ×ÓÒªÔÚ%1Êì¶Áµä¼®£¬¾İËµÒªËĞ³ª%2µÄµÚ%3Ê®%4ÕÂ} {
-		#IF {"$character" == "Äã"} {
-			#var sj_address %1;
-			#var sj_book %2;
-			#var sj_article %2;
+    #action {³åĞéµÀ³¤ËµµÀ£º¡¸½ñÌìÈ«ÅÉµÜ×ÓÒªÔÚ%1Êì¶Áµä¼®£¬¾İËµÒªËĞ³ª%2µÄµÚ%3Ê®%4ÕÂ} {
+        #IF {"$character" == "Äã"} {
+            #var sj_address %1;
+            #var sj_book %2;
+            #var sj_article %2;
 
-			#var sj_page 0;
-			#IF {"%3" == "Ò»"} {#var sj_page 10};
-			#ELSEIF {"%3" == "¶ş"} {#var sj_page 20};
-			#ELSEIF {"%3" == "Èı"} {#var sj_page 30};
-			#ELSEIF {"%3" == "ËÄ"} {#var sj_page 40};
-			#ELSEIF {"%3" == "Îå"} {#var sj_page 50};
-			#ELSEIF {"%3" == "Áù"} {#var sj_page 60};
-			#ELSEIF {"%3" == "Æß"} {#var sj_page 70};
-			#ELSEIF {"%3" == "°Ë"} {#var sj_page 80};
-			#ELSEIF {"%3" == "¾Å"} {#var sj_page 90};
+            #var sj_page 0;
+            #IF {"%3" == "Ò»"} {#var sj_page 10};
+            #ELSEIF {"%3" == "¶ş"} {#var sj_page 20};
+            #ELSEIF {"%3" == "Èı"} {#var sj_page 30};
+            #ELSEIF {"%3" == "ËÄ"} {#var sj_page 40};
+            #ELSEIF {"%3" == "Îå"} {#var sj_page 50};
+            #ELSEIF {"%3" == "Áù"} {#var sj_page 60};
+            #ELSEIF {"%3" == "Æß"} {#var sj_page 70};
+            #ELSEIF {"%3" == "°Ë"} {#var sj_page 80};
+            #ELSEIF {"%3" == "¾Å"} {#var sj_page 90};
 
-			#IF {"%4" == "Ò»"} {#math sj_page $sj_page+1};
-			#ELSEIF {"%4" == "¶ş"} {#math sj_page $sj_page+2};
-			#ELSEIF {"%4" == "Èı"} {#math sj_page $sj_page+3};
-			#ELSEIF {"%4" == "ËÄ"} {#math sj_page $sj_page+4};
-			#ELSEIF {"%4" == "Îå"} {#math sj_page $sj_page+5};
-			#ELSEIF {"%4" == "Áù"} {#math sj_page $sj_page+6};
-			#ELSEIF {"%4" == "Æß"} {#math sj_page $sj_page+7};
-			#ELSEIF {"%4" == "°Ë"} {#math sj_page $sj_page+8};
-			#ELSEIF {"%4" == "¾Å"} {#math sj_page $sj_page+9};
+            #IF {"%4" == "Ò»"} {#math sj_page $sj_page+1};
+            #ELSEIF {"%4" == "¶ş"} {#math sj_page $sj_page+2};
+            #ELSEIF {"%4" == "Èı"} {#math sj_page $sj_page+3};
+            #ELSEIF {"%4" == "ËÄ"} {#math sj_page $sj_page+4};
+            #ELSEIF {"%4" == "Îå"} {#math sj_page $sj_page+5};
+            #ELSEIF {"%4" == "Áù"} {#math sj_page $sj_page+6};
+            #ELSEIF {"%4" == "Æß"} {#math sj_page $sj_page+7};
+            #ELSEIF {"%4" == "°Ë"} {#math sj_page $sj_page+8};
+            #ELSEIF {"%4" == "¾Å"} {#math sj_page $sj_page+9};
 
-			tell erq $sj_address $sj_book $sj_article $sj_page;
-			check_jing;
-		};
-	}
+            tell erq $sj_address $sj_book $sj_article $sj_page;
+            check_jing;
+        };
+    }
 
-	#alias {check_jing} {
-		#system {notify-send -t 8000 "mud: song jing"};
-		#var sj_start_page 0;
-		#IF {"$sj_book" == "×¯×Ó¡¤ÍâÆª¡¸ÉÏ¾í¡¹"} {
-       		#IF {"$sj_article" == "×¯×Ó¡¤ÍâÆª¡¤æéÄ´"} {#math sj_start_page $sj_page+0};
-			#ELSEIF {"$sj_article" == "×¯×Ó¡¤ÍâÆª¡¤ÂíÌã"} {#math sj_start_page $sj_page+3};
-			#ELSEIF {"$sj_article" == "×¯×Ó¡¤ÍâÆª¡¤Ãlóæ"} {#math sj_start_page $sj_page+11};
-			#ELSEIF {"$sj_article" == "×¯×Ó¡¤ÍâÆª¡¤ÔÚå¶"} {#math sj_start_page $sj_page+30};
-			#ELSEIF {"$sj_article" == "×¯×Ó¡¤ÍâÆª¡¤ÌìµØ"} {#math sj_start_page $sj_page+65};
-			#ELSEIF {"$sj_article" == "×¯×Ó¡¤ÍâÆª¡¤ÌìµÀ"} {#math sj_start_page $sj_page+115};
-			#ELSEIF {"$sj_article" == "×¯×Ó¡¤ÍâÆª¡¤ÌìÔË"} {#math sj_start_page $sj_page+150};
-			#ELSEIF {"$sj_article" == "×¯×Ó¡¤ÍâÆª¡¤¿ÌÒâ"} {#math sj_start_page $sj_page+189};
-			#ELSEIF {"$sj_article" == "×¯×Ó¡¤ÍâÆª¡¤ÉÉĞÔ"} {#math sj_start_page $sj_page+200};
-		};
-		#ELSEIF {"$sj_book" == "×¯×Ó¡¤ÍâÆª¡¸ÏÂ¾í¡¹"} {
-       		#IF {"$sj_article" == "×¯×Ó¡¤ÍâÆª¡¤ÇïË®"} {#math sj_start_page $sj_page+0};
-			#ELSEIF {"$sj_article" == "×¯×Ó¡¤ÍâÆª¡¤ÖÁÀÖ"} {#math sj_start_page $sj_page+50};
-			#ELSEIF {"$sj_article" == "×¯×Ó¡¤ÍâÆª¡¤´ïÉú"} {#math sj_start_page $sj_page+68};
-			#ELSEIF {"$sj_article" == "×¯×Ó¡¤ÍâÆª¡¤É½Ä¾"} {#math sj_start_page $sj_page+106};
-			#ELSEIF {"$sj_article" == "×¯×Ó¡¤ÍâÆª¡¤Ìï×Ó·½"} {#math sj_start_page $sj_page+142};
-			#ELSEIF {"$sj_article" == "×¯×Ó¡¤ÍâÆª¡¤Öª±±ÓÎ"} {#math sj_start_page $sj_page+176};
-		};
-		#ELSEIF {"$sj_book" == "×¯×Ó¡¤ÄÚÆª¡¸ÉÏ¾í¡¹"} {
-       		#IF {"$sj_article" == "×¯×Ó¡¤ÄÚÆª¡¤åĞÒ£ÓÎ"} {#math sj_start_page $sj_page+0};
-			#ELSEIF {"$sj_article" == "×¯×Ó¡¤ÄÚÆª¡¤ÆëÎïÂÛ"} {#math sj_start_page $sj_page+20};
-			#ELSEIF {"$sj_article" == "×¯×Ó¡¤ÄÚÆª¡¤ÑøÉúÖ÷"} {#math sj_start_page $sj_page+68};
-		};
-		#ELSEIF {"$sj_book" == "×¯×Ó¡¤ÄÚÆª¡¸ÏÂ¾í¡¹"} {
-			#IF {"$sj_article" == "×¯×Ó¡¤ÄÚÆª¡¤ÈË¼äÊÀ"} {#math sj_start_page $sj_page+0};
-			#ELSEIF {"$sj_article" == "×¯×Ó¡¤ÄÚÆª¡¤µÂ³ä·û"} {#math sj_start_page $sj_page+45};
-			#ELSEIF {"$sj_article" == "×¯×Ó¡¤ÄÚÆª¡¤´ó×ÚÊ¦"} {#math sj_start_page $sj_page+76};
-			#ELSEIF {"$sj_article" == "×¯×Ó¡¤ÄÚÆª¡¤Ó¦µÛÍõ"} {#math sj_start_page $sj_page+123};
-		};
-		#ELSEIF {"$sj_book" == "×¯×Ó¡¤ÔÓÆª¡¸ÉÏ¾í¡¹"} {
-			#IF {"$sj_article" == "×¯×Ó¡¤ÔÓÆª¡¤¸ıÉ£³ş"} {#math sj_start_page $sj_page+0};
-			#ELSEIF {"$sj_article" == "×¯×Ó¡¤ÔÓÆª¡¤ĞìÎŞ¹í"} {#math sj_start_page $sj_page+41};
-			#ELSEIF {"$sj_article" == "×¯×Ó¡¤ÔÓÆª¡¤ÔòÑô"} {#math sj_start_page $sj_page+97};
-			#ELSEIF {"$sj_article" == "×¯×Ó¡¤ÔÓÆª¡¤ÍâÎï"} {#math sj_start_page $sj_page+140};
-			#ELSEIF {"$sj_article" == "×¯×Ó¡¤ÔÓÆª¡¤Ô¢ÑÔ"} {#math sj_start_page $sj_page+167};
-		};
-		#ELSEIF {"$sj_book" == "×¯×Ó¡¤ÔÓÆª¡¸ÏÂ¾í¡¹"} {
-			#IF {"$sj_article" == "×¯×Ó¡¤ÔÓÆª¡¤ÈÃÍõ"} {#math sj_start_page $sj_page+0};
-			#ELSEIF {"$sj_article" == "×¯×Ó¡¤ÔÓÆª¡¤µÁõÅ"} {#math sj_start_page $sj_page+46};
-			#ELSEIF {"$sj_article" == "×¯×Ó¡¤ÔÓÆª¡¤Ëµ½£"} {#math sj_start_page $sj_page+98};
-			#ELSEIF {"$sj_article" == "×¯×Ó¡¤ÔÓÆª¡¤Óæ¸¸"} {#math sj_start_page $sj_page+1113};
-			#ELSEIF {"$sj_article" == "×¯×Ó¡¤ÔÓÆª¡¤ÁĞÓù¿Ü"} {#math sj_start_page $sj_page+138};
-			#ELSEIF {"$sj_article" == "×¯×Ó¡¤ÔÓÆª¡¤ÌìÏÂ"} {#math sj_start_page $sj_page+164};
-		};
-		#ELSEIF {"$sj_book" == "µÀµÂ¾­¡¸ÉÏ¾í¡¹"} {
-			#IF {$sj_page <= 15} {#var sj_start_page $sj_page};
-			#ELSEIF {$sj_page >=16 && $sj_page <= 20} {#math sj_start_page $sj_page+1};
-			#ELSE {#math sj_start_page $sj_page+2};
-			#var sj_start_page $sj_page;
-		};
-		#ELSEIF {"$sj_book" == "µÀµÂ¾­¡¸ÏÂ¾í¡¹"} {
-			#math sj_start_page $sj_page-40;
-		};
-		#ELSEIF {"$sj_book" == "µÀµÂ¾­¡¸ÉÏ¾í¡¹"} {
-			#var sj_start_page $sj_page;
-		};
+    #alias {check_jing} {
+        #system {notify-send -t 8000 "mud: song jing"};
+        #var sj_start_page 0;
+        #IF {"$sj_book" == "×¯×Ó¡¤ÍâÆª¡¸ÉÏ¾í¡¹"} {
+            #IF {"$sj_article" == "×¯×Ó¡¤ÍâÆª¡¤æéÄ´"} {#math sj_start_page $sj_page+0};
+            #ELSEIF {"$sj_article" == "×¯×Ó¡¤ÍâÆª¡¤ÂíÌã"} {#math sj_start_page $sj_page+3};
+            #ELSEIF {"$sj_article" == "×¯×Ó¡¤ÍâÆª¡¤Ãlóæ"} {#math sj_start_page $sj_page+11};
+            #ELSEIF {"$sj_article" == "×¯×Ó¡¤ÍâÆª¡¤ÔÚå¶"} {#math sj_start_page $sj_page+30};
+            #ELSEIF {"$sj_article" == "×¯×Ó¡¤ÍâÆª¡¤ÌìµØ"} {#math sj_start_page $sj_page+65};
+            #ELSEIF {"$sj_article" == "×¯×Ó¡¤ÍâÆª¡¤ÌìµÀ"} {#math sj_start_page $sj_page+115};
+            #ELSEIF {"$sj_article" == "×¯×Ó¡¤ÍâÆª¡¤ÌìÔË"} {#math sj_start_page $sj_page+150};
+            #ELSEIF {"$sj_article" == "×¯×Ó¡¤ÍâÆª¡¤¿ÌÒâ"} {#math sj_start_page $sj_page+189};
+            #ELSEIF {"$sj_article" == "×¯×Ó¡¤ÍâÆª¡¤ÉÉĞÔ"} {#math sj_start_page $sj_page+200};
+        };
+        #ELSEIF {"$sj_book" == "×¯×Ó¡¤ÍâÆª¡¸ÏÂ¾í¡¹"} {
+            #IF {"$sj_article" == "×¯×Ó¡¤ÍâÆª¡¤ÇïË®"} {#math sj_start_page $sj_page+0};
+            #ELSEIF {"$sj_article" == "×¯×Ó¡¤ÍâÆª¡¤ÖÁÀÖ"} {#math sj_start_page $sj_page+50};
+            #ELSEIF {"$sj_article" == "×¯×Ó¡¤ÍâÆª¡¤´ïÉú"} {#math sj_start_page $sj_page+68};
+            #ELSEIF {"$sj_article" == "×¯×Ó¡¤ÍâÆª¡¤É½Ä¾"} {#math sj_start_page $sj_page+106};
+            #ELSEIF {"$sj_article" == "×¯×Ó¡¤ÍâÆª¡¤Ìï×Ó·½"} {#math sj_start_page $sj_page+142};
+            #ELSEIF {"$sj_article" == "×¯×Ó¡¤ÍâÆª¡¤Öª±±ÓÎ"} {#math sj_start_page $sj_page+176};
+        };
+        #ELSEIF {"$sj_book" == "×¯×Ó¡¤ÄÚÆª¡¸ÉÏ¾í¡¹"} {
+            #IF {"$sj_article" == "×¯×Ó¡¤ÄÚÆª¡¤åĞÒ£ÓÎ"} {#math sj_start_page $sj_page+0};
+            #ELSEIF {"$sj_article" == "×¯×Ó¡¤ÄÚÆª¡¤ÆëÎïÂÛ"} {#math sj_start_page $sj_page+20};
+            #ELSEIF {"$sj_article" == "×¯×Ó¡¤ÄÚÆª¡¤ÑøÉúÖ÷"} {#math sj_start_page $sj_page+68};
+        };
+        #ELSEIF {"$sj_book" == "×¯×Ó¡¤ÄÚÆª¡¸ÏÂ¾í¡¹"} {
+            #IF {"$sj_article" == "×¯×Ó¡¤ÄÚÆª¡¤ÈË¼äÊÀ"} {#math sj_start_page $sj_page+0};
+            #ELSEIF {"$sj_article" == "×¯×Ó¡¤ÄÚÆª¡¤µÂ³ä·û"} {#math sj_start_page $sj_page+45};
+            #ELSEIF {"$sj_article" == "×¯×Ó¡¤ÄÚÆª¡¤´ó×ÚÊ¦"} {#math sj_start_page $sj_page+76};
+            #ELSEIF {"$sj_article" == "×¯×Ó¡¤ÄÚÆª¡¤Ó¦µÛÍõ"} {#math sj_start_page $sj_page+123};
+        };
+        #ELSEIF {"$sj_book" == "×¯×Ó¡¤ÔÓÆª¡¸ÉÏ¾í¡¹"} {
+            #IF {"$sj_article" == "×¯×Ó¡¤ÔÓÆª¡¤¸ıÉ£³ş"} {#math sj_start_page $sj_page+0};
+            #ELSEIF {"$sj_article" == "×¯×Ó¡¤ÔÓÆª¡¤ĞìÎŞ¹í"} {#math sj_start_page $sj_page+41};
+            #ELSEIF {"$sj_article" == "×¯×Ó¡¤ÔÓÆª¡¤ÔòÑô"} {#math sj_start_page $sj_page+97};
+            #ELSEIF {"$sj_article" == "×¯×Ó¡¤ÔÓÆª¡¤ÍâÎï"} {#math sj_start_page $sj_page+140};
+            #ELSEIF {"$sj_article" == "×¯×Ó¡¤ÔÓÆª¡¤Ô¢ÑÔ"} {#math sj_start_page $sj_page+167};
+        };
+        #ELSEIF {"$sj_book" == "×¯×Ó¡¤ÔÓÆª¡¸ÏÂ¾í¡¹"} {
+            #IF {"$sj_article" == "×¯×Ó¡¤ÔÓÆª¡¤ÈÃÍõ"} {#math sj_start_page $sj_page+0};
+            #ELSEIF {"$sj_article" == "×¯×Ó¡¤ÔÓÆª¡¤µÁõÅ"} {#math sj_start_page $sj_page+46};
+            #ELSEIF {"$sj_article" == "×¯×Ó¡¤ÔÓÆª¡¤Ëµ½£"} {#math sj_start_page $sj_page+98};
+            #ELSEIF {"$sj_article" == "×¯×Ó¡¤ÔÓÆª¡¤Óæ¸¸"} {#math sj_start_page $sj_page+1113};
+            #ELSEIF {"$sj_article" == "×¯×Ó¡¤ÔÓÆª¡¤ÁĞÓù¿Ü"} {#math sj_start_page $sj_page+138};
+            #ELSEIF {"$sj_article" == "×¯×Ó¡¤ÔÓÆª¡¤ÌìÏÂ"} {#math sj_start_page $sj_page+164};
+        };
+        #ELSEIF {"$sj_book" == "µÀµÂ¾­¡¸ÉÏ¾í¡¹"} {
+            #IF {$sj_page <= 15} {#var sj_start_page $sj_page};
+            #ELSEIF {$sj_page >=16 && $sj_page <= 20} {#math sj_start_page $sj_page+1};
+            #ELSE {#math sj_start_page $sj_page+2};
+            #var sj_start_page $sj_page;
+        };
+        #ELSEIF {"$sj_book" == "µÀµÂ¾­¡¸ÏÂ¾í¡¹"} {
+            #math sj_start_page $sj_page-40;
+        };
+        #ELSEIF {"$sj_book" == "µÀµÂ¾­¡¸ÉÏ¾í¡¹"} {
+            #var sj_start_page $sj_page;
+        };
 
-		#var sj_content {};
-		tell erq "ÇëÇ°Íù¸´Õæ¹Û¶ş²ã, È»ºó jieshu";
-		#nop #map run "¸´Õæ¹Û¶ş²ã";
-		#nop jie $sj_book;
-		#nop #delay {delay} {#map run "${sj_address}";page $sj_start_page;} {5};
-	}
+        #var sj_content {};
+        tell erq "ÇëÇ°Íù¸´Õæ¹Û¶ş²ã, È»ºó jieshu";
+        #nop #map run "¸´Õæ¹Û¶ş²ã";
+        #nop jie $sj_book;
+        #nop #delay {delay} {#map run "${sj_address}";page $sj_start_page;} {5};
+    }
 
-	#alias {jieshu} {
-		jie $sj_book;
-		tell erq "ÇëÇ°Íù${sj_address}, È»ºó songjing";
-	}
+    #alias {jieshu} {
+        jie $sj_book;
+        tell erq "ÇëÇ°Íù${sj_address}, È»ºó songjing";
+    }
 
-	#alias {songjing} {
-		page $sj_start_page;
-	};
+    #alias {songjing} {
+        page $sj_start_page;
+    };
 
-	#ACTION {ÄãËĞ¾­µÄÄÚÈİºÍ} {
-		#delay (3) {
-			#math sj_chanted {$sj_chanted + 1};
-			#IF {$sj_chanted > 2} {sj_fail;};
-			#ELSE {page $sj_start_page;}
-		};
-	};
+    #ACTION {ÄãËĞ¾­µÄÄÚÈİºÍ} {
+        #delay (3) {
+            #math sj_chanted {$sj_chanted + 1};
+            #IF {$sj_chanted > 2} {sj_fail;};
+            #ELSE {page $sj_start_page;}
+        };
+    };
 
-	#alias {sj_fail} {
-		#delay {3} {
-			#nop #map run "¸´Õæ¹Û¶ş²ã";
-			#nop give zhike jing;
-			#nop ask zhike about ÒÅÊ§;
-			tell erq "ÇëÇ°Íù¸´Õæ¹Û¶ş²ã, È»ºó songjing_fail";
-		};
-	};
+    #alias {sj_fail} {
+        #delay {3} {
+            #nop #map run "¸´Õæ¹Û¶ş²ã";
+            #nop give zhike jing;
+            #nop ask zhike about ÒÅÊ§;
+            tell erq "ÇëÇ°Íù¸´Õæ¹Û¶ş²ã, È»ºó songjing_fail";
+        };
+    };
 
-	#alias {songjing_fail} {
-		give zhike jing;
-		ask zhike about ÒÅÊ§;
-	};
+    #alias {songjing_fail} {
+        give zhike jing;
+        ask zhike about ÒÅÊ§;
+    };
 
-	#ACTION {Õâ±¾%1Ò»¹²Ö»ÓĞ} {
-		sj_fail;
-	}
+    #ACTION {Õâ±¾%1Ò»¹²Ö»ÓĞ} {
+        sj_fail;
+    }
 
-	#ACTION {ËĞ¾­ÈÎÎñÒªÇóÄãÄÃ×Å} {
-		sj_fail;
-	}
+    #ACTION {ËĞ¾­ÈÎÎñÒªÇóÄãÄÃ×Å} {
+        sj_fail;
+    }
 
-	#ACTION {=={ +}%1%s==} {
-		#var sj_content ${sj_content}%1;
-	}
+    #ACTION {=={ +}%1%s==} {
+        #var sj_content ${sj_content}%1;
+    }
 
-	#ACTION {==========} {
-		#delay (chant) {
-			chanting $sj_start_page $sj_content;
-			#var sj_content {};
-			#var sj_chanted 1;
-		} {5};
-	}
+    #ACTION {==========} {
+        #delay (chant) {
+            chanting $sj_start_page $sj_content;
+            #var sj_content {};
+            #var sj_chanted 1;
+        } {5};
+    }
 
-	#ACTION {Ì«ÀÛÁË%*ËĞ¾­} {
-		#delay {sj_tired} {#showme =============================;} {15};
-	}
+    #ACTION {Ì«ÀÛÁË%*ËĞ¾­} {
+        #delay {sj_tired} {#showme =============================;} {15};
+    }
 
-	#ACTION {ÄãËĞ³ªÍêÁËÕû¶Î¾­Êé£¬¶ÔµÀ¼ÒÑøÉúÊõµÄÀí½âÓÖ½øÁËÒ»²½} {
-		#delay {3} {
-			#map run "¸´Õæ¹Û¶ş²ã";
-			give zhike jing;
-		};
-	}
+    #ACTION {ÄãËĞ³ªÍêÁËÕû¶Î¾­Êé£¬¶ÔµÀ¼ÒÑøÉúÊõµÄÀí½âÓÖ½øÁËÒ»²½} {
+        #delay {3} {
+            #map run "¸´Õæ¹Û¶ş²ã";
+            give zhike jing;
+        };
+    }
 
-	#action {ÄãÏÖÔÚÏÂÉ½Ò»ÌË°ïËû½â¾öÂé·³} {
-		xiashan;
-	}
+    #action {ÄãÏÖÔÚÏÂÉ½Ò»ÌË°ïËû½â¾öÂé·³} {
+        xiashan;
+    }
 
-	#alias {xiashan} {
-		gt wdc;
-		#var done 0;
-		#delay {2} {
-			e;s;se;w;
-			#delay {1} {
-				w;
-				ask cui about Âé·³;
-			};
-			#delay {2} {
-				e; enter;
-				killall;
-				#delay {10} {
-					n;sw;
-					#ticker {zoudong} {move_and_kill;} {4};
-				};
-			};
-		};
-	};
+    #alias {xiashan} {
+        gt wdc;
+        #var done 0;
+        #delay {2} {
+            e;s;se;w;
+            #delay {1} {
+                w;
+                ask cui about Âé·³;
+            };
+            #delay {2} {
+                e; enter;
+                killall;
+                #delay {10} {
+                    n;sw;
+                    #ticker {zoudong} {move_and_kill;} {4};
+                };
+            };
+        };
+    };
 
-	#alias {move_and_kill} {
-		#if {$done != 1} {
-			#if {${last_direction} == 0} {
-				w;
-				#var last_direction 1;
-			};
-			#else {
-				e;
-				#var last_direction 0;
-			};
-			killall tu fei;
-		};
-	};
+    #alias {move_and_kill} {
+        #if {$done != 1} {
+            #if {${last_direction} == 0} {
+                w;
+                #var last_direction 1;
+            };
+            #else {
+                e;
+                #var last_direction 0;
+            };
+            killall tu fei;
+        };
+    };
 
-	#var last_direction 0;
+    #var last_direction 0;
 
-	#action {ÄãÏûÃğÁËÎäµ±É½ÖÜÎ§ÎŞ¶ñ²»×÷µÄÍÁ·Ë} {
-		#delay {mak} {
-			move_and_kill;
-		} {1}
-	};
+    #action {ÄãÏûÃğÁËÎäµ±É½ÖÜÎ§ÎŞ¶ñ²»×÷µÄÍÁ·Ë} {
+        #delay {mak} {
+            move_and_kill;
+        } {1}
+    };
 
-	#action {ÄãÔÚĞ¡Ê÷ÁÖÀïÃæ´ıÁËÌ«³¤Ê±¼ä} {
-		#var done 1;
-		#unticker {zoudong};
-		#undelay {mak};
-		raw;
-		#delay {15} {
-			s;
-			give zu 10 silver;
-			#delay {2} {
-				s;
-				killall;
-				#delay {20} {
-					eu;
-					killall tufei;
-					#delay {20} {
-						n;nd;w;w;
-						gt wd;
-						raw;
-						#delay {5} {
-							ask chongxu about cancel;
-							eat_food;
-							dazuo 1000;
-							#delay {40} {
-								ask chongxu about quest;
-							};
-						}
-					}
-				}
-			}
-		}
-	};
+    #action {ÄãÔÚĞ¡Ê÷ÁÖÀïÃæ´ıÁËÌ«³¤Ê±¼ä} {
+        #var done 1;
+        #unticker {zoudong};
+        #undelay {mak};
+        raw;
+        #delay {15} {
+            s;
+            give zu 10 silver;
+            #delay {2} {
+                s;
+                killall;
+                #delay {20} {
+                    eu;
+                    killall tufei;
+                    #delay {20} {
+                        n;nd;w;w;
+                        gt wd;
+                        raw;
+                        #delay {5} {
+                            ask chongxu about cancel;
+                            eat_food;
+                            dazuo 1000;
+                            #delay {40} {
+                                ask chongxu about quest;
+                            };
+                        }
+                    }
+                }
+            }
+        }
+    };
 
-	#action {ÍÁ·Ë°ÑÂ·Ò»µ²£¬ÄüĞ¦µÀ£ºÔõÃ´£¬ÏëÁï£¬Ã»ÄÇÃ´ÈİÒ×£¡} {
-		kill tu fei;
-	};
-	#class wudang.xiake close
+    #action {ÍÁ·Ë°ÑÂ·Ò»µ²£¬ÄüĞ¦µÀ£ºÔõÃ´£¬ÏëÁï£¬Ã»ÄÇÃ´ÈİÒ×£¡} {
+        kill tu fei;
+    };
+    #class wudang.xiake close
 
-	#class wudang.zhenfa open
+    #class wudang.zhenfa open
 
-	#action {%1Ïò³åĞéµÀ³¤´òÌıÓĞ¹Ø} {#var character  %1}
-	#ACTION {È»ºó×¢Òâ°´ÕÕ¡º%1ÎåĞĞÕó¡»¿ªÊ¼×ßÎ»}
-	{
-		#var myvar %1;
-	}
+    #action {%1Ïò³åĞéµÀ³¤´òÌıÓĞ¹Ø} {#var character  %1}
+    #ACTION {È»ºó×¢Òâ°´ÕÕ¡º%1ÎåĞĞÕó¡»¿ªÊ¼×ßÎ»}
+    {
+        #var myvar %1;
+    }
 
-	#ACTION {¶şÇòÒ»»á¶ùÕ¾ÔÚ%2Î»}
-	{
-		#var loc %2;
-		zouwei $loc;
-	}
-	#ACTION {Î»ÖÃ°´ÕÕ¡º%3ÎåĞĞÕó¡»µÄÒªÇóÍùÏÂ×ßÒ»²½}
-	{
-		#var myvar %3;
-		#IF {"$myvar" == "Õı" && "$loc" == "½ğ"}
-		{
-			zouwei Ë®;
-			#var loc Ë®;
-		};
-		#ELSEIF {"$myvar" == "Õı" && "$loc" == "Ë®"}
-		{
-			zouwei Ä¾;
-			#var loc Ä¾;
-		};
-		#ELSEIF {"$myvar" == "Õı" && "$loc" == "Ä¾"}
-		{
-			zouwei »ğ;
-			#var loc »ğ;
-		};
-		#ELSEIF {"$myvar" == "Õı" && "$loc" == "»ğ"}
-		{
-			zouwei ÍÁ;
-			#var loc ÍÁ;
-		};
-		#ELSEIF {"$myvar" == "Õı" && "$loc" == "ÍÁ"}
-		{
-			zouwei ½ğ;
-			#var loc ½ğ;
-		};
-		#ELSEIF {"$myvar" == "·´" && "$loc" == "½ğ"}
-		{
-			zouwei Ä¾;
-			#var loc Ä¾;
-		};
-		#ELSEIF {"$myvar" == "·´" && "$loc" == "Ä¾"}
-		{
-			zouwei ÍÁ;
-			#var loc ÍÁ;
-		};
-		#ELSEIF {"$myvar" == "·´" && "$loc" == "ÍÁ"}
-		{
-			zouwei Ë®;
-			#var loc Ë®;
-		};
-		#ELSEIF {"$myvar" == "·´" && "$loc" == "Ë®"}
-		{
-			zouwei »ğ;
-			#var loc »ğ;
-		};
-		#ELSEIF {"$myvar" == "·´" && "$loc" == "»ğ"}
-		{
-			zouwei ½ğ;
-			#var loc ½ğ;
-		};
-	}
+    #ACTION {¶şÇòÒ»»á¶ùÕ¾ÔÚ%2Î»}
+    {
+        #var loc %2;
+        zouwei $loc;
+    }
+    #ACTION {Î»ÖÃ°´ÕÕ¡º%3ÎåĞĞÕó¡»µÄÒªÇóÍùÏÂ×ßÒ»²½}
+    {
+        #var myvar %3;
+        #IF {"$myvar" == "Õı" && "$loc" == "½ğ"}
+        {
+            zouwei Ë®;
+            #var loc Ë®;
+        };
+        #ELSEIF {"$myvar" == "Õı" && "$loc" == "Ë®"}
+        {
+            zouwei Ä¾;
+            #var loc Ä¾;
+        };
+        #ELSEIF {"$myvar" == "Õı" && "$loc" == "Ä¾"}
+        {
+            zouwei »ğ;
+            #var loc »ğ;
+        };
+        #ELSEIF {"$myvar" == "Õı" && "$loc" == "»ğ"}
+        {
+            zouwei ÍÁ;
+            #var loc ÍÁ;
+        };
+        #ELSEIF {"$myvar" == "Õı" && "$loc" == "ÍÁ"}
+        {
+            zouwei ½ğ;
+            #var loc ½ğ;
+        };
+        #ELSEIF {"$myvar" == "·´" && "$loc" == "½ğ"}
+        {
+            zouwei Ä¾;
+            #var loc Ä¾;
+        };
+        #ELSEIF {"$myvar" == "·´" && "$loc" == "Ä¾"}
+        {
+            zouwei ÍÁ;
+            #var loc ÍÁ;
+        };
+        #ELSEIF {"$myvar" == "·´" && "$loc" == "ÍÁ"}
+        {
+            zouwei Ë®;
+            #var loc Ë®;
+        };
+        #ELSEIF {"$myvar" == "·´" && "$loc" == "Ë®"}
+        {
+            zouwei »ğ;
+            #var loc »ğ;
+        };
+        #ELSEIF {"$myvar" == "·´" && "$loc" == "»ğ"}
+        {
+            zouwei ½ğ;
+            #var loc ½ğ;
+        };
+    }
 
-	#ACTION {ÎåĞĞÕóÑİÁ·µ½´Ë½áÊø}
-	{
-		e;
-		ask chongxu about success;
-		ask chongxu about quest;
-	}
+    #ACTION {ÎåĞĞÕóÑİÁ·µ½´Ë½áÊø}
+    {
+        e;
+        ask chongxu about success;
+        ask chongxu about quest;
+    }
 
-	#ACTION {ÅÔ±ßĞ¡Ğ£³¡ÉÏÓĞ½ÌÏ°½Ì´ó¼ÒÔõÃ´ĞĞ×ßÎåĞĞÕó}
-	{
-		#IF {"$character" == "Äã"} {
-			#delay {lianzhenfa} {
-	       		w;zhenfa;
-			} {2};
-		};
-	}
+    #ACTION {ÅÔ±ßĞ¡Ğ£³¡ÉÏÓĞ½ÌÏ°½Ì´ó¼ÒÔõÃ´ĞĞ×ßÎåĞĞÕó}
+    {
+        #IF {"$character" == "Äã"} {
+            #delay {lianzhenfa} {
+                w;zhenfa;
+            } {2};
+        };
+    }
 
-	#ACTION {ÑİÏ°Õó·¨µÄ½ÌÏ°¶¼ÔÚÊ¹ÓÃÖĞ}
-	{
-		#IF {"$character" == "Äã"} {
-			#delay {5} {
-				e;
-				ask chongxu about cancel;
-				ask chongxu about quest;
-			};
-		};
-	};
-	#class newbie.inner close;
-	
-	ask chongxu about quest;
+    #ACTION {ÑİÏ°Õó·¨µÄ½ÌÏ°¶¼ÔÚÊ¹ÓÃÖĞ}
+    {
+        #IF {"$character" == "Äã"} {
+            #delay {5} {
+                e;
+                ask chongxu about cancel;
+                ask chongxu about quest;
+            };
+        };
+    };
+    #class newbie.inner close;
+
+    ask chongxu about quest;
 };
 
 #class newbie_wd clsoe;

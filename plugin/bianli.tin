@@ -59,7 +59,7 @@ load bianli_data;
             bl.walk;
         } {0.05};
     } {1};
-    
+
     #action {busy_for_move} {
         #math bl_path_index ${bl_path_index}-1;
         bl.wait 1;
@@ -98,7 +98,7 @@ load bianli_data;
     #var critical_running 1;
     #list bl_connections create {};
     bl.setup;
-    
+
     #class bl.start.inner open;
     #var original_here ${CurrentPosition};
     #var connections ${bl_connections};
@@ -165,7 +165,7 @@ load bianli_data;
         #format {tmp} {%.8s} {%1};
         #list area_mappings_from find $tmp index;
     };
-    
+
     #list area_mappings_to get $index result;
 }
 
@@ -185,7 +185,7 @@ load bianli_data;
         };
         #else {
             #list tmp_path add ${v};
-            #math tmp_index ${tmp_index}+1;         
+            #math tmp_index ${tmp_index}+1;
         };
         #math bl_path_index ${bl_path_index}+1;
     }
@@ -245,7 +245,7 @@ load bianli_data;
         };
     } {1};
     #action {^°ëÉ½ÆÂ} {
-        #class bl.action.xiangyang.inner kill;      
+        #class bl.action.xiangyang.inner kill;
     } {1};
     #class bl.action.xiangyang.inner close;
 };

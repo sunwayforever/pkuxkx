@@ -4,7 +4,7 @@
     #action {你将散入经脉的真气收回丹田} {
         dz;
     };
-    
+
     #ticker {tongmai} {
         dz;
     } {300};
@@ -16,7 +16,7 @@
     #action {你的内力修为似乎已经达到了瓶颈} {
         dz;
     };
-    
+
     #action {你的任督二脉已经被打通了} {
         tm.stop;
         show_to_quest 已经打通任督二脉;

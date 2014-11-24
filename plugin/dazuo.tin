@@ -3,76 +3,76 @@
 #var dz_total_count 0;
 #var max_dz 180;
 #alias {dz.cancel} {
-	#class dz.full.inner kill;
-	#unticker {dz};
+    #class dz.full.inner kill;
+    #unticker {dz};
 };
 
 #alias {dz.full} {
-	#alias tmp_dz %1;
-	#class dz.full.inner open;
-	#action {你现在精不够} {
-		heal 1;
-	};
-	#class dz.full.inner close;
-	#delay {dz_delay} {
-		#ticker {dz} {
-			#if {${nl_percent} < ${max_dz}} {
-			    yun recover; dazuo ${dazuo_count};  
-			};
-			#else {
-				#unticker {dz};
-				#class dz.full.inner kill;
-				#delay {dz_delay} {
-					tmp_dz;
-				    #showme dz.full;    
-    			} {3};
-			};
-		} {1};
-	}{1};
+    #alias tmp_dz %1;
+    #class dz.full.inner open;
+    #action {你现在精不够} {
+        heal 1;
+    };
+    #class dz.full.inner close;
+    #delay {dz_delay} {
+        #ticker {dz} {
+            #if {${nl_percent} < ${max_dz}} {
+                yun recover; dazuo ${dazuo_count};
+            };
+            #else {
+                #unticker {dz};
+                #class dz.full.inner kill;
+                #delay {dz_delay} {
+                    tmp_dz;
+                    #showme dz.full;
+                } {3};
+            };
+        } {1};
+    }{1};
 };
 
 #alias {dz.start} {
-	autoheal.off;
-	#class dz.inner open;
-	#action {你现在的气太少了} {
-		sleep;
-	};
-	#ticker {dz} {
-		#if {${qx_percent} < 10} {
-			sleep;
-		};
-		#else {
-                dazuo ${dazuo_count};
-		};
+    autoheal.off;
+    #class dz.inner open;
+    #action {你现在的气太少了} {
+        sleep;
+    };
+    #ticker {dz} {
+        #if {${qx_percent} < 10} {
+            sleep;
+        };
+        #else {
+            dazuo ${dazuo_count};
+        };
     } {1};
-   #action {你的内力增加了} {
-		#math dz_total_count ${dz_total_count}+1;
-		show_to_info force +${dz_total_count};
-		#send {jifa};
-		#delay {2} {
-			dz.check;
-		};
-	};	
-	#class dz.inner close;
-	dz.check;	
+    #action {你的内力增加了} {
+        #math dz_total_count ${dz_total_count}+1;
+        show_to_info force +${dz_total_count};
+        #send {jifa};
+        #delay {2} {
+            dz.check;
+        };
+    };
+    #class dz.inner close;
+    dz.check;
 };
 
 #alias {dz.check} {
-	#math max_neili ${youxiao_neigong} * 10 -1;
-	#if {${max_neili} < ${hpbrief_max_nl}} {
-		dz.stop;
-		#showme dz done;
-		show_to_quest 内力到达瓶颈: ${hpbrief_max_nl} => ${max_neili};
-	};
-	#else {
-		show_to_quest 打坐: ${hpbrief_max_nl} => ${max_neili};			
-	};
+    #math max_neili ${youxiao_neigong} * 10 -1;
+    #if {${max_neili} < ${hpbrief_max_nl}} {
+        dz.stop;
+        #showme dz done;
+        show_to_quest 内力到达瓶颈: ${hpbrief_max_nl} => ${max_neili};
+    };
+    #else {
+        show_to_quest 打坐: ${hpbrief_max_nl} => ${max_neili};
+    };
 };
 
 #alias {dz.stop} {
-	autoheal.on;
-	show_to_quest 打坐完毕;
-	#class dz.inner kill;
+    autoheal.on;
+    show_to_quest 打坐完毕;
+    #class dz.inner kill;
 };
 
 #class dazuo close

@@ -15,89 +15,89 @@
 };
 
 #alias {show.init} {
-	#alias {show_to_status} {
-		#var show_status %%0;
+    #alias {show_to_status} {
+        #var show_status %%0;
         update_status_line;
-	};
+    };
 
-	#loop {1} {&info_window[]} {cnt}
-	{
-		#math pos $cnt+${info_window_offset};
-		#echo {{<aff>$info_window[$cnt]<099>} {-$pos}};
-	}
+    #loop {1} {&info_window[]} {cnt}
+    {
+        #math pos $cnt+${info_window_offset};
+        #echo {{<aff>$info_window[$cnt]<099>} {-$pos}};
+    }
 
-	#loop {1} {&chat_window[]} {cnt}
-	{
-		#math pos $cnt+${chat_window_offset};
-		#echo {{<aff>$chat_window[$cnt]<099>} {-$pos}};
-	}
+    #loop {1} {&chat_window[]} {cnt}
+    {
+        #math pos $cnt+${chat_window_offset};
+        #echo {{<aff>$chat_window[$cnt]<099>} {-$pos}};
+    }
 };
 
 #alias {show_to_shortcut} {
-	#var show_key %0;
-	#echo {{<cfa>${show_key}<099>}{-5}};
+    #var show_key %0;
+    #echo {{<cfa>${show_key}<099>}{-5}};
 };
 
 #alias {show_to_info} {
-	#format {tmp_time} {%t} {%T};
-	#var temp ${tmp_time} <099> %0;
-	#list info_window ins -1 $temp;
-	#list info_window del 1;
+    #format {tmp_time} {%t} {%T};
+    #var temp ${tmp_time} <099> %0;
+    #list info_window ins -1 $temp;
+    #list info_window del 1;
 
-	#loop {1} {&info_window[]} {info_cnt}
-	{
-		#math info_pos $info_cnt+${info_window_offset};
-		#echo {{<aff>$info_window[$info_cnt]<099>} {-$info_pos}};
-	}
+    #loop {1} {&info_window[]} {info_cnt}
+    {
+        #math info_pos $info_cnt+${info_window_offset};
+        #echo {{<aff>$info_window[$info_cnt]<099>} {-$info_pos}};
+    }
 }
 
 #alias {show_to_chat} {
-	#delay {chat_delay} {
-		#format {tmp_time} {%t} {%T};
-		#var temp ${tmp_time} <099> %0;
-		#list chat_window ins -1 {$temp};
-		#list chat_window del 1;
+    #delay {chat_delay} {
+        #format {tmp_time} {%t} {%T};
+        #var temp ${tmp_time} <099> %0;
+        #list chat_window ins -1 {$temp};
+        #list chat_window del 1;
 
-		#loop {1} {&chat_window[]} {chat_cnt}
-		{
-			#math chat_pos $chat_cnt+${chat_window_offset};
-			#echo {{<aff>$chat_window[$chat_cnt]<099>} {-$chat_pos}};
-		}		
-	} {0.2};
+        #loop {1} {&chat_window[]} {chat_cnt}
+        {
+            #math chat_pos $chat_cnt+${chat_window_offset};
+            #echo {{<aff>$chat_window[$chat_cnt]<099>} {-$chat_pos}};
+        }
+    } {0.2};
 }
 
 #alias {update_status_line} {
-	#echo {{<099>${show_status}<099> | ${show_pp} => <cfa>${show_quest}<099>}{-1}};    
+    #echo {{<099>${show_status}<099> | ${show_pp} => <cfa>${show_quest}<099>}{-1}};
 };
 
 #alias {show_to_quest} {
-	#var show_quest %0;
+    #var show_quest %0;
     update_status_line;
 };
 
 #alias {show_to_pp} {
-	#var show_pp %0;
+    #var show_pp %0;
     update_status_line;
 };
 
 #gag {【闲聊】%*};
 #action {【闲聊】%*} {
-    show_to_chat %0;	
+    show_to_chat %0;
 };
 
 #action {我找不到,请看其他的回复} {
-	#cr;
+    #cr;
 } {1};
 
 #action {连续的重复查询是不起作用的} {
-	#cr;
+    #cr;
 } {1};
 
 #action {%1{回答|告诉}你：%2} {
-	show_to_chat 【私聊】%0;
+    show_to_chat 【私聊】%0;
 };
 
 #action {你{回答|告诉}%1：%2} {
-	show_to_chat 【私聊】%0;
+    show_to_chat 【私聊】%0;
 };
 #class show close;

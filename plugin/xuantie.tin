@@ -1,46 +1,46 @@
 #class xuantie open
 #alias {xt.start} {
-	show_to_quest 江中练剑;
-	#send {jifa sword xuantie-jian};
-	#class xuantie.inner open;
-	#alias {start_lian} {
-		#ticker {check} {
-			#if {${hpbrief_curr_nl} < 1000 || ${hpbrief_curr_qx} < 300 || ${hpbrief_curr_js} < 300} {
-				#unticker {check};
-				halt;
-				jump out;
-				chifan;
-				on_health {
-					start_lian;
-				};
-			};
-		} {1};
-		unwi;
-		wield sword;
-		jump jiang;
-		lianjian;
-	};
+    show_to_quest 江中练剑;
+    #send {jifa sword xuantie-jian};
+    #class xuantie.inner open;
+    #alias {start_lian} {
+        #ticker {check} {
+            #if {${hpbrief_curr_nl} < 1000 || ${hpbrief_curr_qx} < 300 || ${hpbrief_curr_js} < 300} {
+                #unticker {check};
+                halt;
+                jump out;
+                chifan;
+                on_health {
+                    start_lian;
+                };
+            };
+        } {1};
+        unwi;
+        wield sword;
+        jump jiang;
+        lianjian;
+    };
 
-	#ticker {xuantie} {
-		start_lian;
-	} {300};
-	
-	#action {你见海潮退去} {
-		#delay {5} {
-			lianjian;
-		};
-	};
-	#class xuantie.inner close;
+    #ticker {xuantie} {
+        start_lian;
+    } {300};
 
-	start_lian;
+    #action {你见海潮退去} {
+        #delay {5} {
+            lianjian;
+        };
+    };
+    #class xuantie.inner close;
+
+    start_lian;
 };
 
 #alias {xt.stop} {
-	#class xuetie.inner kill;
-	#unticker {check};
-	halt;
-	jump out;
-	show_to_quest 练剑结束;
+    #class xuetie.inner kill;
+    #unticker {check};
+    halt;
+    jump out;
+    show_to_quest 练剑结束;
 };
 
 #class xuantie close

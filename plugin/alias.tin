@@ -7,147 +7,147 @@
 };
 
 #alias {eat_food} {
-	#6 {drink cha};
+    #6 {drink cha};
 };
 
 #alias {load_map} {
-	map.load ${char_menpai};
+    map.load ${char_menpai};
 };
 
 #alias {cq} {
-	#class money.cun.inner open;
-	#action {^%*张一千两银票(Thousand-cash)} {
-		#var cun_count @ctd{%%1};
-		#math cun_count ${cun_count}-1;
-		#if {${cun_count} <= 0} {
-			#class money.cun.inner kill;
-			show_to_info 没钱存什么存?;
-			#return;
-		};
-		on_there {
-			n;w;
-			cun ${cun_count} cash;
-			#delay {1} {
-				e;s;
-			};
-		};
-		gt yz;
-	};
-	#action {你拿出%*张一千两银票，存进了银号。} {
-		#class money.cun.inner kill;
-		show_to_info 存 @ctd{%%1} cash;
-		#send {sc};
-	};
-	#action {你要看什么} {
-		#class money.cun.inner kill;
-		show_to_info 没钱存什么存?;
-	};
-	#class money.cun.inner close;
-	l cash;
+    #class money.cun.inner open;
+    #action {^%*张一千两银票(Thousand-cash)} {
+        #var cun_count @ctd{%%1};
+        #math cun_count ${cun_count}-1;
+        #if {${cun_count} <= 0} {
+            #class money.cun.inner kill;
+            show_to_info 没钱存什么存?;
+            #return;
+        };
+        on_there {
+            n;w;
+            cun ${cun_count} cash;
+            #delay {1} {
+                e;s;
+            };
+        };
+        gt yz;
+    };
+    #action {你拿出%*张一千两银票，存进了银号。} {
+        #class money.cun.inner kill;
+        show_to_info 存 @ctd{%%1} cash;
+        #send {sc};
+    };
+    #action {你要看什么} {
+        #class money.cun.inner kill;
+        show_to_info 没钱存什么存?;
+    };
+    #class money.cun.inner close;
+    l cash;
 
 };
 
 #alias {get.qian} {
-	#alias tmp_get_qian %1;
-	#class money.inner open;
-	#alias delay_action {
-		#delay {1} {
-			qu 1 cash;
-		};
-	};
-	#action {钱眼开说道：「哟，抱歉啊，我这儿正忙着呢……您请稍候。」} {
-		delay_action;
-	};
-	#action {你从银号里取出%*张一千两银票} {
-		l cash;
-	};
+    #alias tmp_get_qian %1;
+    #class money.inner open;
+    #alias delay_action {
+        #delay {1} {
+            qu 1 cash;
+        };
+    };
+    #action {钱眼开说道：「哟，抱歉啊，我这儿正忙着呢……您请稍候。」} {
+        delay_action;
+    };
+    #action {你从银号里取出%*张一千两银票} {
+        l cash;
+    };
 
-	#action {^%*张一千两银票(Thousand-cash)} {
-		#var cun_count @ctd{%%1};
-		#math cun_count ${cun_count}-1;
-		#if {${cun_count} <= 0} {
-			#showme 你拿出零张一千两银票，存进了银号。;
-		};
-		#else {
-			#alias delay_action {
-				#delay {1} {
-					cun ${cun_count} cash;
-				};
-			};
-			cun ${cun_count} cash;
-		};
-	};
-	#action {你拿出%*张一千两银票，存进了银号。} {
-		#class money.inner kill;
-		#send {sc};
-		e;s;
-		tmp_get_qian;
-	};
-	#class money.inner close;
-	on_there {
-		n;w;
-		qu 1 cash;
-	};
-	gt yz;
+    #action {^%*张一千两银票(Thousand-cash)} {
+        #var cun_count @ctd{%%1};
+        #math cun_count ${cun_count}-1;
+        #if {${cun_count} <= 0} {
+            #showme 你拿出零张一千两银票，存进了银号。;
+        };
+        #else {
+            #alias delay_action {
+                #delay {1} {
+                    cun ${cun_count} cash;
+                };
+            };
+            cun ${cun_count} cash;
+        };
+    };
+    #action {你拿出%*张一千两银票，存进了银号。} {
+        #class money.inner kill;
+        #send {sc};
+        e;s;
+        tmp_get_qian;
+    };
+    #class money.inner close;
+    on_there {
+        n;w;
+        qu 1 cash;
+    };
+    gt yz;
 };
 
 #alias {chifan} {
-	eat_food;
+    eat_food;
 };
 
 #alias {get.bao} {
-	#class get.bao.inner open;
-	#action {你身上没有bao} {
-		buy bao;
-	};
-	#action {你把身上的一个包袱卖掉} {
-		#delay {1} {
-			buy bao;
-		};
-	};
-	#action {掌柜的说：客官您这包袱里面还有东西呢。} {
-		#showme 你向当铺买下一个包袱;
-	};
-	#action {你向当铺买下一个包袱} {
-		#class get.bao.inner kill;
-		#delay {3} {
-			s;
-			#if {"%%1" != ""} {
-				%%1;
-			};					
-		};
-	};
-	#class get.bao.inner close;
-	gt rbz;
-	on_there {
-		n;
-		sell bao;
-	};
+    #class get.bao.inner open;
+    #action {你身上没有bao} {
+        buy bao;
+    };
+    #action {你把身上的一个包袱卖掉} {
+        #delay {1} {
+            buy bao;
+        };
+    };
+    #action {掌柜的说：客官您这包袱里面还有东西呢。} {
+        #showme 你向当铺买下一个包袱;
+    };
+    #action {你向当铺买下一个包袱} {
+        #class get.bao.inner kill;
+        #delay {3} {
+            s;
+            #if {"%%1" != ""} {
+                %%1;
+            };
+        };
+    };
+    #class get.bao.inner close;
+    gt rbz;
+    on_there {
+        n;
+        sell bao;
+    };
 }
 
 #alias {get.fan} {
-	#var orig_here ${CurrentPosition};
-	#class get.fan.inner open;
-	#action {哟，抱歉啊，我这儿正忙着呢……您请稍候。} {
-		buy tea 30;	
-	};
-	#action {你从江来福那里买下了%*酥油茶} {
-		#class get.fan.inner kill;
-		e;s;
-		gt ${orig_here};
-		on_there {
-			#if {"%1" != ""} {
-				%1;
-			};		
-		};
-	};
-	#class get.fan.inner close;
-	gt zp;
-	on_there {
-		n;w;
-		buy tea 30;
+    #var orig_here ${CurrentPosition};
+    #class get.fan.inner open;
+    #action {哟，抱歉啊，我这儿正忙着呢……您请稍候。} {
+        buy tea 30;
+    };
+    #action {你从江来福那里买下了%*酥油茶} {
+        #class get.fan.inner kill;
+        e;s;
+        gt ${orig_here};
+        on_there {
+            #if {"%1" != ""} {
+                %1;
+            };
+        };
+    };
+    #class get.fan.inner close;
+    gt zp;
+    on_there {
+        n;w;
+        buy tea 30;
 
-	};
+};
 };
 
 #alias {lm} {
@@ -163,14 +163,14 @@
 };
 
 #action {(%1)告诉你：query %2} {
-	query_npc %2;
-	#list query_npc_output size tmp_size;
-	#var tmp_index 0;
-	#while {$tmp_index < ${tmp_size}} {
-		#math tmp_index ${tmp_index}+1;
-		#list query_npc_output get $tmp_index tmp_value;
-		tell %1 $tmp_value;
-	};
+    query_npc %2;
+    #list query_npc_output size tmp_size;
+    #var tmp_index 0;
+    #while {$tmp_index < ${tmp_size}} {
+        #math tmp_index ${tmp_index}+1;
+        #list query_npc_output get $tmp_index tmp_value;
+        tell %1 $tmp_value;
+    };
 } {1};
 
 #alias wuliang {
@@ -186,18 +186,18 @@
 #alias mg.zsf {set brief 1;n;n;n;n;w;w;w;sw;s;se;e;ne;n;nw;sw;s;e;set brief 2;open door;n};
 #alias mg.zsfb {set brief 1;s;w;n;ne;se;w;e;e;s;s;s;s;set brief 2};
 #alias {mg.mhz} {
-	e;n;w;s;w;e;e;e;n;break men;s
+    e;n;w;s;w;e;e;e;n;break men;s
 };
 #alias mg.dmd {
-	open door;n;sw;se;n;s;w;e;
-	#delay {1} {
-		w;e;e;s;w;n;nw;n
-	};
+    open door;n;sw;se;n;s;w;e;
+    #delay {1} {
+        w;e;e;s;w;n;nw;n
+    };
 };
 #alias mg.chahua {w;n;w;s;s;e;e;w;w};
 #alias mg.chahuab {e;s;n;w;n;n;e;s;e};
 #alias mg.gumu {
-	swim river;n;n;e;n;n;w;w;n;n;e;ban stone;w;w;
+    swim river;n;n;e;n;n;w;w;n;n;e;ban stone;w;w;
 };
 #alias mg.wxd {n;w;n;e;s;u;out};
 #alias mg.fmq {set brief 1;w;e;s;e;n;n;e;w;s;set brief 0}
@@ -207,31 +207,31 @@
 #alias mg.hz {s;e;n;w;s;s;w};
 
 #alias mg.yh {
-	#class mg.yhb.inner open;
-	#action {^云海出口} {
-		#class mg.yhb.inner kill;
-		bl.continue;
-	};
-	#ticker {mg.yhb.ticker} {
-		n;w;e;s;e;e;n;
-	} {1.5};
-	#class mg.yhb.inner close;
-	bl.stop;
-	n;w;e;s;e;e;n;
+    #class mg.yhb.inner open;
+    #action {^云海出口} {
+        #class mg.yhb.inner kill;
+        bl.continue;
+    };
+    #ticker {mg.yhb.ticker} {
+        n;w;e;s;e;e;n;
+    } {1.5};
+    #class mg.yhb.inner close;
+    bl.stop;
+    n;w;e;s;e;e;n;
 };
 
 #alias mg.yhb {
-	#class mg.yhb.inner open;
-	#action {^云海入口} {
-		#class mg.yhb.inner kill;
-		bl.continue;
-	};
-	#ticker {mg.yhb.ticker} {
-		e;s;
-	} {0.5};
-	#class mg.yhb.inner close;
-	bl.pause;
-	s;e;s;	
+    #class mg.yhb.inner open;
+    #action {^云海入口} {
+        #class mg.yhb.inner kill;
+        bl.continue;
+    };
+    #ticker {mg.yhb.ticker} {
+        e;s;
+    } {0.5};
+    #class mg.yhb.inner close;
+    bl.pause;
+    s;e;s;
 };
 #alias mg.hhh {say 红花老祖本姓朱,为救苍生下凡来; enter};
 #alias {shudong} {enter shudong;say 天堂有路你不走呀;d;%1};
@@ -246,772 +246,772 @@
 
 
 #alias {i} {
-	#send {i %0};
-	lock 你身上带著下列;
+    #send {i %0};
+    lock 你身上带著下列;
 };
 
 #alias {sc} {
-	#send {sc %0};
-	lock 你是一位;
+    #send {sc %0};
+    lock 你是一位;
 };
 
 #alias {st} {
-	#send {status_me};
-	lock ≡━◎;
+    #send {status_me};
+    lock ≡━◎;
 };
 
 #alias {hp} {
-	#send {hp};
-	lock ≡━━━━;
+    #send {hp};
+    lock ≡━━━━;
 };
 
 #alias {sk} {
-	#send {sk};
-	lock 你目前所学过的技能;
+    #send {sk};
+    lock 你目前所学过的技能;
 };
 
 #alias {jifa} {
-	#send {jifa %0};
-	lock 以下是你目前使用中的特殊技能;
+    #send {jifa %0};
+    lock 以下是你目前使用中的特殊技能;
 };
 
 #alias {lock} {
-	#if {"%0" != ""} {
-		#action {%0} {
-			#action {^>} {
-				#buffer lock;
-				#unaction {^>}
-			};
-			#unaction {%0};
-		};
-	};
+    #if {"%0" != ""} {
+        #action {%0} {
+            #action {^>} {
+                #buffer lock;
+                #unaction {^>}
+            };
+            #unaction {%0};
+        };
+    };
 };
 
 #alias {Q} {
-	quest;
+    quest;
 };
 
 #alias {jd} {
-	jianding %0;
+    jianding %0;
 };
 
 #alias {special_repair} {
-	#alias tmp_special_repair %1;
-	#if {${special_min_naijiu} < 100} {
-		#action {抵达目的地} {
-			#unaction {抵达目的地};
-			d;out;
-			#delay {2} {
-				#foreach {${my_special_weapons}[%*]} {weapon} {
-					fix ${weapon};
-				};
-				#delay {3} {
-					enter; up;
-					#delay {3} {
-						tmp_special_repair;
-					};
-				};
-			};
-		};
-		gt yz;
-	};
-	#else {
-		tmp_special_repair;
-	};
+    #alias tmp_special_repair %1;
+    #if {${special_min_naijiu} < 100} {
+        #action {抵达目的地} {
+            #unaction {抵达目的地};
+            d;out;
+            #delay {2} {
+                #foreach {${my_special_weapons}[%*]} {weapon} {
+                    fix ${weapon};
+                };
+                #delay {3} {
+                    enter; up;
+                    #delay {3} {
+                        tmp_special_repair;
+                    };
+                };
+            };
+        };
+        gt yz;
+    };
+    #else {
+        tmp_special_repair;
+    };
 };
 
 #alias {iall} {
-	#echo {≡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━≡};
-	#send {i ring};
-	#send {i necklace};
-	#send {i spear};
-	#send {i staff};
-	#send {i shield};
-	#send {i sword};
-	#send {i whip};
-	#send {i head};
-	#send {i hands};
-	#send {i waist};
-	#send {i armor};
-	#send {i cloth};
-	#send {i boots};
-	#send {i wrists};
-	#send {i surcoat};
-	#action {你身上id为surcoat的东西有下面这些} {
-		#delay {0.5} {
-			#echo {≡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━≡};
-			#buffer lock;
-		};
-	};
+    #echo {≡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━≡};
+    #send {i ring};
+    #send {i necklace};
+    #send {i spear};
+    #send {i staff};
+    #send {i shield};
+    #send {i sword};
+    #send {i whip};
+    #send {i head};
+    #send {i hands};
+    #send {i waist};
+    #send {i armor};
+    #send {i cloth};
+    #send {i boots};
+    #send {i wrists};
+    #send {i surcoat};
+    #action {你身上id为surcoat的东西有下面这些} {
+        #delay {0.5} {
+            #echo {≡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━≡};
+            #buffer lock;
+        };
+    };
 };
 
 #alias {rec} {
-	#path end;
-	#path new;
+    #path end;
+    #path new;
 };
 
 #alias {back} {
-	#var tmp_back NULL;
-	#path save backward tmp_back;
-	#if {"${tmp_back}" != "NULL"} {
-		#path load tmp_back;
-		#path run;
-	};
+    #var tmp_back NULL;
+    #path save backward tmp_back;
+    #if {"${tmp_back}" != "NULL"} {
+        #path load tmp_back;
+        #path run;
+    };
 };
 
 #alias {reload} {
-	gt wm;
-	#delay {1} {
-		u;
-		#send {reload};
-		#delay {2} {
-			d;gt yz;
-		};
-	};
+    gt wm;
+    #delay {1} {
+        u;
+        #send {reload};
+        #delay {2} {
+            d;gt yz;
+        };
+    };
 };
 
 #alias {pp} {
     show_to_pp ...;
-	#if {"%0" == ""} {
-		#if {"${pp_target}" != ""} {
-			autopp;
-		};
-		#else {
-			show_to_info no target;
-		};
-	};
-	#else {
-		#if {@isalphabet{%1} == 1} {
-			autopp.set_en %0;
-		};
-		#else {
-			autopp.set_zh %0;	
-		};
-	};
+    #if {"%0" == ""} {
+        #if {"${pp_target}" != ""} {
+            autopp;
+        };
+        #else {
+            show_to_info no target;
+        };
+    };
+    #else {
+        #if {@isalphabet{%1} == 1} {
+            autopp.set_en %0;
+        };
+        #else {
+            autopp.set_zh %0;
+        };
+    };
     #class pp.inner open;
     #action {告诉你：【%*】目前在【%*】,快去摁死它吧!} {
-		#unticker {pp};
+        #unticker {pp};
         #class pp.inner kill;
         show_to_pp %%1 @ %%2;
-	} {1};
-	#action {告诉你：【%*】并不存在} {
-		#unticker {pp};
+    } {1};
+    #action {告诉你：【%*】并不存在} {
+        #unticker {pp};
         #class pp.inner kill;
         show_to_pp %%1 @ ...;
-	} {1};
+    } {1};
     #class pp.inner close;
 };
 
 #alias {autopp} {
-	#if {"${pp_target}" != ""} {
-		helpme ...;
-		helpme find ${pp_target};
-		#ticker {pp} {
-			helpme ...;
-			helpme find ${pp_target};
-		} {15};
-	};
+    #if {"${pp_target}" != ""} {
+        helpme ...;
+        helpme find ${pp_target};
+        #ticker {pp} {
+            helpme ...;
+            helpme find ${pp_target};
+        } {15};
+    };
 };
 
 #alias {autopp.set_en} {
-	#var pp_target @lower{%0};
-	autopp;
+    #var pp_target @lower{%0};
+    autopp;
 };
 
 #alias {autopp.set_zh} {
-	#var pp_target @py{%1};
-	autopp;
+    #var pp_target @py{%1};
+    autopp;
 };
 
 #alias {jq} {
-	jobquery;
+    jobquery;
 };
 
 #alias {heal.stop} {
-	#unticker {heal};
+    #unticker {heal};
 };
 
 #alias {heal.start} {
-	#ticker {heal} {
-		yun lifeheal %1;
-		#edelay {2} {
-			dazuo 100;
-		};
-	} {5};
+    #ticker {heal} {
+        yun lifeheal %1;
+        #edelay {2} {
+            dazuo 100;
+        };
+    } {5};
 };
 
 #alias {running} {
-	#delay {idler} {
-		idle;
-	} {300};
+    #delay {idler} {
+        idle;
+    } {300};
 };
 
 #alias {fm} {
-	fullme %0;
+    fullme %0;
 };
 
 #alias {on_there} {
-	#alias tmp_there %0;
-	#action {抵达目的地} {
-		#unaction {抵达目的地};
-		#delay {there_delay} {
-			tmp_there;
-		} {1.8};
-	};
+    #alias tmp_there %0;
+    #action {抵达目的地} {
+        #unaction {抵达目的地};
+        #delay {there_delay} {
+            tmp_there;
+        } {1.8};
+    };
 };
 
 #alias {on_truce} {
-	#alias tmp_truce %0;
-	#class truce.inner open;
-	#action {truce} {
-		#class truce.inner kill;
-		#delay {tmp_delay_on_truce} {
-			tmp_truce;
-		} {1.8};
-	};
-	#class truce.inner close;
-	war;
+    #alias tmp_truce %0;
+    #class truce.inner open;
+    #action {truce} {
+        #class truce.inner kill;
+        #delay {tmp_delay_on_truce} {
+            tmp_truce;
+        } {1.8};
+    };
+    #class truce.inner close;
+    war;
 };
 
 #alias {on_unbusy} {
-	#alias tmp_unbusy %0;
-	#class unbusy.inner open;
-	#gag {你不忙};
-	#ticker {checkbusy} {
-		checkbusy;
-	} {0.3};
-	#action {你不忙} {
-		#unaction {你不忙};
-		#class unbusy.inner kill;
-		#delay {0.3} {
-			tmp_unbusy;
-		};
-	};
-	#class unbusy.inner close;
-	checkbusy;
+    #alias tmp_unbusy %0;
+    #class unbusy.inner open;
+    #gag {你不忙};
+    #ticker {checkbusy} {
+        checkbusy;
+    } {0.3};
+    #action {你不忙} {
+        #unaction {你不忙};
+        #class unbusy.inner kill;
+        #delay {0.3} {
+            tmp_unbusy;
+        };
+    };
+    #class unbusy.inner close;
+    checkbusy;
 };
 
 #alias {pfm_all}  {
-	#if {"%1" != ""}  {on_unbusy {%1; #if {"%2" != ""}  {on_unbusy {%2; #if {"%3" != ""}  {on_unbusy {%3; #if {"%4" != ""}  {on_unbusy {%4;#if {"%5" != ""}  {on_unbusy {%5; #if {"%6" != ""}  {on_unbusy {%6;  #if {"%7" != ""}  {on_unbusy {%7; #if {"%8" != ""}  {on_unbusy {%8; #if {"%9" != ""}  {on_unbusy {%9; };}; };}; };};};}; };};};}; };}; };};};};
+    #if {"%1" != ""}  {on_unbusy {%1; #if {"%2" != ""}  {on_unbusy {%2; #if {"%3" != ""}  {on_unbusy {%3; #if {"%4" != ""}  {on_unbusy {%4;#if {"%5" != ""}  {on_unbusy {%5; #if {"%6" != ""}  {on_unbusy {%6;  #if {"%7" != ""}  {on_unbusy {%7; #if {"%8" != ""}  {on_unbusy {%8; #if {"%9" != ""}  {on_unbusy {%9; };}; };}; };};};}; };};};}; };}; };};};};
 };
 
 #alias {on_hit} {
-	#alias tmp_hit %0;
-	#action {你战胜了} {
-		#unaction {你战胜了};
-		#delay {2} {
-			halt;
-			tmp_hit;
-		};
-	};
+    #alias tmp_hit %0;
+    #action {你战胜了} {
+        #unaction {你战胜了};
+        #delay {2} {
+            halt;
+            tmp_hit;
+        };
+    };
 };
 
 #alias {on_dead} {
-	#alias tmp_dead %0;
-	#action {死了} {
-		#unaction {死了};
-		#delay {2} {
-			halt;
-			tmp_dead;
-		};
-	} {1};
+    #alias tmp_dead %0;
+    #action {死了} {
+        #unaction {死了};
+        #delay {2} {
+            halt;
+            tmp_dead;
+        };
+    } {1};
 };
 
 #alias {on_health} {
-	#alias tmp_health %0;
-	#class health.inner open;
-	#alias {check_qx} {
-		#if {${eff_qx_percent} < 99} {
-			#if {${qx_percent} < 50} {
-				yun lifeheal ${char_id};				
-			};
-			#else {
-				yun heal;				
-			}
-			#delay {0.5} {
-				check_qx;
-			};
-		};
-		#else {
-			check_js;
-		};
-	};
-	#alias {check_js} {
-		#if {${eff_js_percent} < 99} {
-			yun inspire;
-			#delay {0.5} {
-				check_js;
-			};
-		};
-		#else {
-			#class health.inner kill;
-			re;
-			#delay {0.5} {
-				tmp_health;
-			};
-		};
-	};	
+    #alias tmp_health %0;
+    #class health.inner open;
+    #alias {check_qx} {
+        #if {${eff_qx_percent} < 99} {
+            #if {${qx_percent} < 50} {
+                yun lifeheal ${char_id};
+            };
+            #else {
+                yun heal;
+            }
+            #delay {0.5} {
+                check_qx;
+            };
+        };
+        #else {
+            check_js;
+        };
+    };
+    #alias {check_js} {
+        #if {${eff_js_percent} < 99} {
+            yun inspire;
+            #delay {0.5} {
+                check_js;
+            };
+        };
+        #else {
+            #class health.inner kill;
+            re;
+            #delay {0.5} {
+                tmp_health;
+            };
+        };
+    };
 
-	#alias {check_health} {
-		dz.full {
-			tn.full {
-				check_qx;
-			};
-		};
-	};
-	#class health.inner close;
+    #alias {check_health} {
+        dz.full {
+            tn.full {
+                check_qx;
+            };
+        };
+    };
+    #class health.inner close;
 
-	check_health;
+    check_health;
 };
 
 #alias {b2} {
-	set brief 2;
+    set brief 2;
 };
 
 #alias {b1} {
-	set brief 1;
+    set brief 1;
 };
 
 #alias {map.edit.on} {
-	show_to_quest map editing ...;
-	#map flag {static} {off};
+    show_to_quest map editing ...;
+    #map flag {static} {off};
 };
 
 #alias {map.edit.off} {
-	show_to_quest map editing ... done;
-	#map flag {static} {on};
+    show_to_quest map editing ... done;
+    #map flag {static} {on};
 };
 
 #alias {map.room.static} {
-	show_to_info set room as static;
-	#map roomflag {static} {on};
+    show_to_info set room as static;
+    #map roomflag {static} {on};
 };
 
 #alias {map.dig} {
-	#map dig {%1} {%2};
+    #map dig {%1} {%2};
 };
 
 #alias {map.name} {
-	#map name %1;
+    #map name %1;
 };
 
 #alias {map.info} {
-	#map info;
+    #map info;
 };
 
 #alias {map.go.wait} {
-	#var map_go_wait 1;
+    #var map_go_wait 1;
 };
 
 #alias {map.go.resume} {
-	#var map_go_wait 0;
-	#if {${map_go_ended} == 1} {
-		#showme map arrived;
-	};
+    #var map_go_wait 0;
+    #if {${map_go_ended} == 1} {
+        #showme map arrived;
+    };
 };
 
 #alias {map.go} {
     #var critical_running 1;
-	#var map_go_wait 0;
-	#var map_go_ended 0;
-	#path end;
-	#map find %0;
-	#class map.go.inner open;
-	#ticker {map_go_ticker} {
-		#if {${map_go_wait} == 0} {
-			#path walk;
-		};
-	} {0.1};
-	#class map.go.inner close;
-		
-	#event {END OF PATH} {
-		#class map.go.inner kill;
+    #var map_go_wait 0;
+    #var map_go_ended 0;
+    #path end;
+    #map find %0;
+    #class map.go.inner open;
+    #ticker {map_go_ticker} {
+        #if {${map_go_wait} == 0} {
+            #path walk;
+        };
+    } {0.1};
+    #class map.go.inner close;
+
+    #event {END OF PATH} {
+        #class map.go.inner kill;
         #var critical_running 0;
-		#if {${map_go_wait} == 0} {
-			#showme map arrived;
-		};
-		#else {
-			#var map_go_ended 1;
-		};
-	};
+        #if {${map_go_wait} == 0} {
+            #showme map arrived;
+        };
+        #else {
+            #var map_go_ended 1;
+        };
+    };
 };
 
 #alias {on_arrived} {
-	#alias tmp_on_arrived %0;
-	#action {map arrived} {
-		#unaction {map arrived};
-		tmp_on_arrived;
-	};
+    #alias tmp_on_arrived %0;
+    #action {map arrived} {
+        #unaction {map arrived};
+        tmp_on_arrived;
+    };
 };
 
 #alias {map.load} {
-	#map read map/%1.map;
-	#map flag vtmap off;
-	#map flag ascii off;
-	#map flag nofollow off;
-	#map flag static on;
-	#if {"%1" == "yangzhou"} {
-		#map goto 6;	
-	};
-	#else {
-		#map goto 1;
-	};
+    #map read map/%1.map;
+    #map flag vtmap off;
+    #map flag ascii off;
+    #map flag nofollow off;
+    #map flag static on;
+    #if {"%1" == "yangzhou"} {
+        #map goto 6;
+    };
+    #else {
+        #map goto 1;
+    };
 };
 
 #alias {on_wakeup} {
-	#alias tmp_wakeup %0;
-	#class on_wakeup.inner open;
-	#action {翻来覆去无法入眠!} {
-		#delay {sleep} {
-       		sleep;
-		} {10};
-	};
-	#action {睡过一觉} {
-		#delay {sleep} {
-       		sleep;
-		} {10};
-	};
-	#action {你一觉醒来} {
-		#class on_wakeup.inner kill;
-		#delay {wakeup} {
-			tmp_wakeup;
-		} {3};
-	};
-	#class on_wakeup.inner close;
+    #alias tmp_wakeup %0;
+    #class on_wakeup.inner open;
+    #action {翻来覆去无法入眠!} {
+        #delay {sleep} {
+            sleep;
+        } {10};
+    };
+    #action {睡过一觉} {
+        #delay {sleep} {
+            sleep;
+        } {10};
+    };
+    #action {你一觉醒来} {
+        #class on_wakeup.inner kill;
+        #delay {wakeup} {
+            tmp_wakeup;
+        } {3};
+    };
+    #class on_wakeup.inner close;
 };
 
 #alias {init_set} {
-	set brief 2;
-	set hubiao_additional 5;
-	set learn_emote 1;
-	set nowieldmsg 1;
-	set nowiki 1;
-	set skip_combat 2;
-	set wimpy 20;
+    set brief 2;
+    set hubiao_additional 5;
+    set learn_emote 1;
+    set nowieldmsg 1;
+    set nowiki 1;
+    set skip_combat 2;
+    set wimpy 20;
 };
 
 #var get_san_count 20;
 #alias {get.san} {
-	#action {%S          清心散} {
-		#unaction {%S          清心散};
-		getout %%1;
-		#delay {1} {
-			out;
-			drop ${get_san_count} san;
-			enter ${char_id};
-			store san;
-			out;
-			get san;
-			enter ${char_id};
-		};
-	};
+    #action {%S          清心散} {
+        #unaction {%S          清心散};
+        getout %%1;
+        #delay {1} {
+            out;
+            drop ${get_san_count} san;
+            enter ${char_id};
+            store san;
+            out;
+            get san;
+            enter ${char_id};
+        };
+    };
 
-	#action {你没有那么多的清心散} {
-		#unaction {你没有那么多的清心散};
-		get.san;
-	};
-	
-	#action {你捡起一些清心散} {
-		#unaction {你捡起一些清心散};
-		show_to_info 清心散;
-		#delay {2} {
-			gt yz;
-			#if {"%1" != ""} {
-				on_there {
-					%1;
-				};
-			};
-		};
-	};
-	gt bs;
-	on_there {
-		find;
-	};
+    #action {你没有那么多的清心散} {
+        #unaction {你没有那么多的清心散};
+        get.san;
+    };
+
+    #action {你捡起一些清心散} {
+        #unaction {你捡起一些清心散};
+        show_to_info 清心散;
+        #delay {2} {
+            gt yz;
+            #if {"%1" != ""} {
+                on_there {
+                    %1;
+                };
+            };
+        };
+    };
+    gt bs;
+    on_there {
+        find;
+    };
 };
 
 #alias {get.bpz} {
-	s;e;
-	buy bingpo zhang;
-	#delay {1} {
-		buy bingpo zhang;
-		#delay {1} {
-			w;n;
-		};
-	};
+    s;e;
+    buy bingpo zhang;
+    #delay {1} {
+        buy bingpo zhang;
+        #delay {1} {
+            w;n;
+        };
+    };
 };
 
 #alias {get.xtj} {
-	n;n;w;
-	get xuantie sword from xiang;
-	#delay {1} {
-		e;s;s;
-	};
+    n;n;w;
+    get xuantie sword from xiang;
+    #delay {1} {
+        e;s;s;
+    };
 };
 
 #list baowei_time create {3;7;11;15;19;23};
 #alias {check_baowei} {
-	#format {epoch} {%T};
-	#format {current_time} {%t} {{%T}{$epoch}};
-	#var tmp_baowei 0;
-	#foreach {${baowei_time}[%*]} {single_time} {
-		#format from_time {%d:40:99} ${single_time}-1;
-		#format to_time {%d:35:99} ${single_time};
-		#if {"${current_time}" > "${from_time}" && "${current_time}" < "${to_time}"} {
-			#var tmp_baowei 1;
-		};
-	};
-	#if {${tmp_baowei} == 1} {
-		#var xy_info on;
-	};
-	#else {
-		#var xy_info off;
-	};
+    #format {epoch} {%T};
+    #format {current_time} {%t} {{%T}{$epoch}};
+    #var tmp_baowei 0;
+    #foreach {${baowei_time}[%*]} {single_time} {
+        #format from_time {%d:40:99} ${single_time}-1;
+        #format to_time {%d:35:99} ${single_time};
+        #if {"${current_time}" > "${from_time}" && "${current_time}" < "${to_time}"} {
+            #var tmp_baowei 1;
+        };
+    };
+    #if {${tmp_baowei} == 1} {
+        #var xy_info on;
+    };
+    #else {
+        #var xy_info off;
+    };
 };
 
 #list directions create {
-	north;south;east;west;up;down;enter;out;northeast;southwest;northwest;southeast;northdown;southup;northup;southdown;eastup;westdown;eastdown;westup;
-	n;s;e;w;u;d;ne;sw;nw;se;nd;su;nu;sd;eu;wd;ed;wu;
-	gn;gs;ge;gw;gu;gd;gne;gsw;gnw;gse;gnd;gsu;gnu;gsd;geu;gwd;ged;gwu;genter;gout;
+    north;south;east;west;up;down;enter;out;northeast;southwest;northwest;southeast;northdown;southup;northup;southdown;eastup;westdown;eastdown;westup;
+    n;s;e;w;u;d;ne;sw;nw;se;nd;su;nu;sd;eu;wd;ed;wu;
+    gn;gs;ge;gw;gu;gd;gne;gsw;gnw;gse;gnd;gsu;gnu;gsd;geu;gwd;ged;gwu;genter;gout;
 };
 #list abbrev_directions create {
-	n;s;e;w;u;d;enter;out;ne;sw;nw;se;nd;su;nu;sd;eu;wd;ed;wu;
+    n;s;e;w;u;d;enter;out;ne;sw;nw;se;nd;su;nu;sd;eu;wd;ed;wu;
 };
 #list opposite_directions create {
-	south;north;west;east;down;up;out;enter;southwest;northeast;southeast;northwest;southup;northdown;southdown;northup;westdown;eastup;westup;eastdown;
-	s;n;w;e;d;u;sw;ne;se;nw;su;nd;sd;nu;wd;eu;wu;ed;
-	gs;gn;gw;ge;gd;gu;gsw;gne;gse;gnw;gsu;gnd;gsd;gnu;gwd;geu;gwu;ged;gout;genter;
+    south;north;west;east;down;up;out;enter;southwest;northeast;southeast;northwest;southup;northdown;southdown;northup;westdown;eastup;westup;eastdown;
+    s;n;w;e;d;u;sw;ne;se;nw;su;nd;sd;nu;wd;eu;wu;ed;
+    gs;gn;gw;ge;gd;gu;gsw;gne;gse;gnw;gsu;gnd;gsd;gnu;gwd;geu;gwu;ged;gout;genter;
 };
 #function {opposite} {
-	#list {directions} {find} {%1} {opposite_index};
-	#if {${opposite_index} == 0} {
-		#return NULL;
-	};
-	#else {
-		#list opposite_directions get ${opposite_index} result;		
-	};
+    #list {directions} {find} {%1} {opposite_index};
+    #if {${opposite_index} == 0} {
+        #return NULL;
+    };
+    #else {
+        #list opposite_directions get ${opposite_index} result;
+    };
 };
 #function {abbrev} {
-	#list {directions} {find} {%1} {abbrev_index};
-	#list abbrev_directions get ${abbrev_index} result;
+    #list {directions} {find} {%1} {abbrev_index};
+    #list abbrev_directions get ${abbrev_index} result;
 };
 
 #alias {log.clear} {
-	#log overwrite debug.${char_id}.log;
-	#debug all log;
-	#var debug_info on;
-	update_status;
+    #log overwrite debug.${char_id}.log;
+    #debug all log;
+    #var debug_info on;
+    update_status;
 };
 
 #alias {log.on} {
-	#var critical_running 1;
-	#log append debug.${char_id}.log;
-	#debug all log;
+    #var critical_running 1;
+    #log append debug.${char_id}.log;
+    #debug all log;
 };
 
 #alias {log.off} {
-	#var critical_running 0;
-	#log off;
-	#debug all off;
+    #var critical_running 0;
+    #log off;
+    #debug all off;
 };
 
 #alias {on_echo} {
-	#alias tmp_echo %1;
-	#class on_echo.inner open;
-	#action {你有一搭，没一搭的「嗯」了一声。} {
-		#unaction {你有一搭，没一搭的「嗯」了一声。};
-		#class on_echo.inner kill;
-		tmp_echo;
-	};
-	#delay {1} {
-		#class on_echo.inner kill;	
-	};
-	#class on_echo.inner close;
-	#send {en};
+    #alias tmp_echo %1;
+    #class on_echo.inner open;
+    #action {你有一搭，没一搭的「嗯」了一声。} {
+        #unaction {你有一搭，没一搭的「嗯」了一声。};
+        #class on_echo.inner kill;
+        tmp_echo;
+    };
+    #delay {1} {
+        #class on_echo.inner kill;
+    };
+    #class on_echo.inner close;
+    #send {en};
 };
 
 #alias {gj.watch} {
-	gt wm;
-	on_there {
-		u;
-		ask jin about 参观劫难;
-	};
+    gt wm;
+    on_there {
+        u;
+        ask jin about 参观劫难;
+    };
 };
 
 #alias {al} {
-	autoload %0;
+    autoload %0;
 };
 
 #alias {dl} {
-	disload %0;
+    disload %0;
 };
 
 #alias {play} {
-	#system {mplayer sound/%1 1>/dev/null 2>&1 &};
+    #system {mplayer sound/%1 1>/dev/null 2>&1 &};
 };
 
 #alias {walk_to} {
-	#var  direction %1;
-	#var  action #cr;
-	#action {get_exits: done} {
-		#unaction {get_exits: done};
-		#if {@ismember{${direction};exits_list}} {
-			@abbrev{${direction}};
-		};
-		#else {
-			#foreach {${exits_list}[%*]} {exit} {
-				#regexp {${exit}} {%*${direction}%*} {#var action ${exit}};
-			};
-			@abbrev{${action}};
-		};
-	};
-	get_exits;
+    #var  direction %1;
+    #var  action #cr;
+    #action {get_exits: done} {
+        #unaction {get_exits: done};
+        #if {@ismember{${direction};exits_list}} {
+            @abbrev{${direction}};
+        };
+        #else {
+            #foreach {${exits_list}[%*]} {exit} {
+                #regexp {${exit}} {%*${direction}%*} {#var action ${exit}};
+            };
+            @abbrev{${action}};
+        };
+    };
+    get_exits;
 };
 
 #macro {\e[1;3A} {
-	walk_to north;
+    walk_to north;
 };
 #macro {\e[1;3B} {
-	walk_to south;
+    walk_to south;
 };
 #macro {\e[1;3D} {
-	walk_to west;
+    walk_to west;
 };
 #macro {\e[1;3C} {
-	walk_to east;
+    walk_to east;
 };
 
 #alias {chain} {
-	%1 {%2 {%3 {%4 {%5 {%6 {%7 {%8 {%9 {%10 {};};};};};};};};};};
+    %1 {%2 {%3 {%4 {%5 {%6 {%7 {%8 {%9 {%10 {};};};};};};};};};};
 };
 
 #alias {on_goto} {
-	#alias tmp_goto %2;
-	on_there {
-		tmp_goto;
-	};
-	gt %1;
+    #alias tmp_goto %2;
+    on_there {
+        tmp_goto;
+    };
+    gt %1;
 };
 
 #alias {on_sell} {
-	#alias tmp_sell %1;
-	on_there {
-		sell all;
-		#delay {3} {
-			tmp_sell;
-		};
-	};
-	gt rbz;
+    #alias tmp_sell %1;
+    on_there {
+        sell all;
+        #delay {3} {
+            tmp_sell;
+        };
+    };
+    gt rbz;
 };
 
 #alias {repair} {
-	#alias tmp_repair %1;
-	#if {${min_naijiu} < 250} {
-		#action {抵达目的地} {
-			#unaction {抵达目的地};
-			e;ne;
-			#delay {2} {
-				#foreach {${my_weapons}[%*]} {weapon} {
-					fix ${weapon};
-				};
-				#foreach {${my_secondary_weapons}[%*]} {weapon} {
-					fix ${weapon};
-				};
-				play repair.wav;
-				#delay {3} {
-					sw;w;
-					#delay {3} {
-						tmp_repair;
-					};
-				};
-				};		
-			};
-			gt ly;
-	};
-	#else {
-		tmp_repair;
-	};
+    #alias tmp_repair %1;
+    #if {${min_naijiu} < 250} {
+        #action {抵达目的地} {
+            #unaction {抵达目的地};
+            e;ne;
+            #delay {2} {
+                #foreach {${my_weapons}[%*]} {weapon} {
+                    fix ${weapon};
+                };
+                #foreach {${my_secondary_weapons}[%*]} {weapon} {
+                    fix ${weapon};
+                };
+                play repair.wav;
+                #delay {3} {
+                    sw;w;
+                    #delay {3} {
+                        tmp_repair;
+                    };
+                };
+            };
+        };
+        gt ly;
+    };
+    #else {
+        tmp_repair;
+    };
 };
 
 #function {py} {
-	#script {ret} {bin/pinyin.rb %0};
-	#var result $ret[1]
+    #script {ret} {bin/pinyin.rb %0};
+    #var result $ret[1]
 };
 
 #var min_naijiu 10000;
 #alias {check_naijiu} {
-	#action {耐久度:%*} {
-		#if {${tmp_min_naijiu} > %%1} {
-			#var tmp_min_naijiu %%1;
-		};
-		#delay {d} {
-			#unaction {耐久度:%*};
-			#if {${tmp_min_naijiu} != 10000} {
-				#var min_naijiu ${tmp_min_naijiu};
-				update_status;
-			};
-			#if {@numitems{my_special_weapons} > 0} {
-				check_special_naijiu;
-			};
-		} {3};
-	} {1};
-	#var tmp_min_naijiu 10000;
-	#foreach {${my_weapons}[%*]} {weapon} {#send {l ${weapon}}};
-	#foreach {${my_secondary_weapons}[%*]} {weapon} {#send {l ${weapon}}};
+    #action {耐久度:%*} {
+        #if {${tmp_min_naijiu} > %%1} {
+            #var tmp_min_naijiu %%1;
+        };
+        #delay {d} {
+            #unaction {耐久度:%*};
+            #if {${tmp_min_naijiu} != 10000} {
+                #var min_naijiu ${tmp_min_naijiu};
+                update_status;
+            };
+            #if {@numitems{my_special_weapons} > 0} {
+                check_special_naijiu;
+            };
+        } {3};
+    } {1};
+    #var tmp_min_naijiu 10000;
+    #foreach {${my_weapons}[%*]} {weapon} {#send {l ${weapon}}};
+    #foreach {${my_secondary_weapons}[%*]} {weapon} {#send {l ${weapon}}};
 };
 
 #var special_min_naijiu 10000;
 #alias {check_special_naijiu} {
-	#action {耐久度:%*} {
-		#if {${tmp_min_naijiu} > %%1} {
-			#var tmp_min_naijiu %%1;
-		};
-		#delay {d} {
-			#unaction {耐久度:%*};
-			#if {${tmp_min_naijiu} != 10000} {
-				#var special_min_naijiu ${tmp_min_naijiu};
-			};
-		} {3};
-	} {1};
-	#var tmp_min_naijiu 10000;
-	#foreach {${my_special_weapons}[%*]} {weapon} {#send {l ${weapon}}};
+    #action {耐久度:%*} {
+        #if {${tmp_min_naijiu} > %%1} {
+            #var tmp_min_naijiu %%1;
+        };
+        #delay {d} {
+            #unaction {耐久度:%*};
+            #if {${tmp_min_naijiu} != 10000} {
+                #var special_min_naijiu ${tmp_min_naijiu};
+            };
+        } {3};
+    } {1};
+    #var tmp_min_naijiu 10000;
+    #foreach {${my_special_weapons}[%*]} {weapon} {#send {l ${weapon}}};
 };
 
 #ticker {check_naijiu} {
-	check_naijiu;
+    check_naijiu;
 } {300};
 
 #alias {path.test} {
-	#list test_path create {
-		n;sw;s;s;s;s;s;su;se;s;s;s;s;s;s;s;se;s;se;n;n;n;e;se;ne;e;ne;ne;e;e;e;e;e;e;e;
-		n;w;e;e;w;n;s;s;e;n;s;e;n;s;e;w;w;w;s;w;e;e;w;s;w;e;e;w;s;n;n;n;w;n;s;s;n;w;s;n;e;e;
-	};
-	
-	#list test_path size test_path_size;
-	#var test_path_index 0;
-	#ticker {test_walk} {
-		#math test_path_index ${test_path_index}+1;
-		#if {${test_path_index} > ${test_path_size}} {
-			#untick {test_walk};
-		};
-		#else {
-			#list test_path get ${test_path_index} test_path_next;
-			${test_path_next};
-		};
-	} {1};
+    #list test_path create {
+        n;sw;s;s;s;s;s;su;se;s;s;s;s;s;s;s;se;s;se;n;n;n;e;se;ne;e;ne;ne;e;e;e;e;e;e;e;
+        n;w;e;e;w;n;s;s;e;n;s;e;n;s;e;w;w;w;s;w;e;e;w;s;w;e;e;w;s;n;n;n;w;n;s;s;n;w;s;n;e;e;
+    };
+
+    #list test_path size test_path_size;
+    #var test_path_index 0;
+    #ticker {test_walk} {
+        #math test_path_index ${test_path_index}+1;
+        #if {${test_path_index} > ${test_path_size}} {
+            #untick {test_walk};
+        };
+        #else {
+            #list test_path get ${test_path_index} test_path_next;
+            ${test_path_next};
+        };
+    } {1};
 };
 
 #alias {q} {#cr};
 #alias {qq} {#send {q}};
 
 #alias {path.new} {
-	#path end;
-	#path new;
+    #path end;
+    #path new;
 };
 
 #alias {path.show} {
-	#path save forward xxx;
-	#path save backward yyy;
-	#var xxx;
+    #path save forward xxx;
+    #path save backward yyy;
+    #var xxx;
 };
 
 #alias {n} {north};

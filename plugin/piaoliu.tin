@@ -1,188 +1,188 @@
 #class piaoliu open
 #var pl_npc_c nil;
 #alias {pl.q} {
-	ask ren about job;
+    ask ren about job;
 };
 
 #alias {pl.start} {
-	#if {"%2" == "n"} {
-		#var hua_direction north;
-	};
-	#elseif {"%2" == "s"} {
-		#var hua_direction south;
-	};
-	#elseif {"%2" == "e"} {
-		#var hua_direction east;
-	};
-	#elseif {"%2" == "w"} {
-		#var hua_direction west;
-	};
-	#var hua_count %3;
-	#var pl_count %1;
-	show_to_quest 漂流: ${pl_count} 里后, 往 ${hua_direction} 划 ${hua_count} 里;
-	shang boat;
-	jie sheng;
+    #if {"%2" == "n"} {
+        #var hua_direction north;
+    };
+    #elseif {"%2" == "s"} {
+        #var hua_direction south;
+    };
+    #elseif {"%2" == "e"} {
+        #var hua_direction east;
+    };
+    #elseif {"%2" == "w"} {
+        #var hua_direction west;
+    };
+    #var hua_count %3;
+    #var pl_count %1;
+    show_to_quest 漂流: ${pl_count} 里后, 往 ${hua_direction} 划 ${hua_count} 里;
+    shang boat;
+    jie sheng;
 
-	#class piaoliu.inner open;
-	#action {小船被你向%*划出了%*里了} {
-		#math hua_count ${hua_count}-1;
-		show_to_quest 漂流: ${pl_count} 里后, 往 ${hua_direction} 划 ${hua_count} 里;
-		#if {${hua_count} > 0} {
-			on_unbusy {
-				hua ${hua_direction};
-			};
-		};
-		#else {
-			xiamao;
-			#showme 你决定再接再厉;
-		};
-	};
+    #class piaoliu.inner open;
+    #action {小船被你向%*划出了%*里了} {
+        #math hua_count ${hua_count}-1;
+        show_to_quest 漂流: ${pl_count} 里后, 往 ${hua_direction} 划 ${hua_count} 里;
+        #if {${hua_count} > 0} {
+            on_unbusy {
+                hua ${hua_direction};
+            };
+        };
+        #else {
+            xiamao;
+            #showme 你决定再接再厉;
+        };
+    };
 
-	#action {你决定再接再厉} {
-		#delay {5} {
-			dalao;
-		};
-	};
+    #action {你决定再接再厉} {
+        #delay {5} {
+            dalao;
+        };
+    };
 
-	#action {船上的机关被你修复了一些} {
-		#var need_xiufu 0;
-	};
-	
-	#action {你总共击退了%*名水贼} {
-		#if {${pl_count} == 0} {
-			on_unbusy {
-				hua ${hua_direction};
-			};
-		};
-		#else {
-			#if {${need_xiufu} == 1} {
-				#if {${nl_percent} > 50} {
-					xiufu;
-				};
-				#else {
-					show_to_info 内力不足, 无法修复机关;
-				};
-			};
-		};
-	};
-	
-	#action {也许你可以返航了} {
-		pl.d;
-	};
+    #action {船上的机关被你修复了一些} {
+        #var need_xiufu 0;
+    };
 
-	#var use_jiguan 0;
-	#action {小船已经顺流漂出了%*里开外了} {
-		#math pl_count ${pl_count}-1;
-		show_to_quest 漂流: ${pl_count} 里后, 往 ${hua_direction} 划 ${hua_count} 里;
-		#if {"%%1" == "十" || ${pl_count} == 2} {
-			sheng;
-			#var use_jiguan 1;
-		};
-		#if {${pl_count} == 0} {
-			sheng;
-			hua ${hua_direction};
-		};
-	};
+    #action {你总共击退了%*名水贼} {
+        #if {${pl_count} == 0} {
+            on_unbusy {
+                hua ${hua_direction};
+            };
+        };
+        #else {
+            #if {${need_xiufu} == 1} {
+                #if {${nl_percent} > 50} {
+                    xiufu;
+                };
+                #else {
+                    show_to_info 内力不足, 无法修复机关;
+                };
+            };
+        };
+    };
 
-	#action {一个鄱阳水贼爬上了你的小船} {	
-	    killall;
-	};
+    #action {也许你可以返航了} {
+        pl.d;
+    };
 
-	#action {^%*凝神静气，暗运神功，顷刻间碧海神功的内力遍布全身。} {
-		#var pl_npc_c %%1;
-		show_to_info 桃花:${pl_npc_c};
-		step;
-		check_shuizei;
-	};
-	
-	#action {^%*突然神秘的一笑，双眼紧叮着你，象要把你的魂摄下来。} {
-		#var pl_npc_c %%1;
-		show_to_info 古墓:${pl_npc_c};
-		step;
-		check_shuizei;
-	};
+    #var use_jiguan 0;
+    #action {小船已经顺流漂出了%*里开外了} {
+        #math pl_count ${pl_count}-1;
+        show_to_quest 漂流: ${pl_count} 里后, 往 ${hua_direction} 划 ${hua_count} 里;
+        #if {"%%1" == "十" || ${pl_count} == 2} {
+            sheng;
+            #var use_jiguan 1;
+        };
+        #if {${pl_count} == 0} {
+            sheng;
+            hua ${hua_direction};
+        };
+    };
 
-	#action {mingjiao enemy:%*} {
-		#var pl_npc_c %%1;
-		show_to_info 明教:${pl_npc_c};
-		step;
-		check_shuizei;
-		#var pl_mj_npc ${pl_npc_c};
-		#action {你终于打退了${pl_npc_c}的攻击} {
-			#unaction {你终于打退了${pl_npc_c}的攻击};
-			mj.stop;
-		};
-	};
+    #action {一个鄱阳水贼爬上了你的小船} {
+        killall;
+    };
 
-	#action {你想用机关对付谁} {
-		#unticker {zhi};	
-	};
+    #action {^%*凝神静气，暗运神功，顷刻间碧海神功的内力遍布全身。} {
+        #var pl_npc_c %%1;
+        show_to_info 桃花:${pl_npc_c};
+        step;
+        check_shuizei;
+    };
 
-	#var need_xiufu 0;
-	#action {机关已经使用殆尽} {
-		#var need_xiufu 1;		
-		#unticker {zhi};
-	};
-	
-	#action {机关刚刚完全运转} {
-		#unticker {zhi};
-	};
-	
-	#action {^机关继续推动，把%*生生挤下水去。} {
-		#unticker {zhi};
-		#if {"${pl_mj_npc}" == "%%1"} {
-			mj.stop;
-		};
-		#if {${pl_count} == 0} {
-			#delay {2} {
-				hua ${hua_direction};
-			};
-		};
-	};
+    #action {^%*突然神秘的一笑，双眼紧叮着你，象要把你的魂摄下来。} {
+        #var pl_npc_c %%1;
+        show_to_info 古墓:${pl_npc_c};
+        step;
+        check_shuizei;
+    };
 
-	#class piaoliu.inner close;
+    #action {mingjiao enemy:%*} {
+        #var pl_npc_c %%1;
+        show_to_info 明教:${pl_npc_c};
+        step;
+        check_shuizei;
+        #var pl_mj_npc ${pl_npc_c};
+        #action {你终于打退了${pl_npc_c}的攻击} {
+            #unaction {你终于打退了${pl_npc_c}的攻击};
+            mj.stop;
+        };
+    };
+
+    #action {你想用机关对付谁} {
+        #unticker {zhi};
+    };
+
+    #var need_xiufu 0;
+    #action {机关已经使用殆尽} {
+        #var need_xiufu 1;
+        #unticker {zhi};
+    };
+
+    #action {机关刚刚完全运转} {
+        #unticker {zhi};
+    };
+
+    #action {^机关继续推动，把%*生生挤下水去。} {
+        #unticker {zhi};
+        #if {"${pl_mj_npc}" == "%%1"} {
+            mj.stop;
+        };
+        #if {${pl_count} == 0} {
+            #delay {2} {
+                hua ${hua_direction};
+            };
+        };
+    };
+
+    #class piaoliu.inner close;
 };
 
 #alias {pl.d} {
-	hua back;
-	give ren xiang;
-	#action {钓鱼人给你一枚%*。} {
-		#unaction {钓鱼人给你一枚%*。};
-		pack gem;
-		show_to_info 掉宝: %%1;
-		show_to_quest 漂流完成;
-		#action {%*点实战经验，} {
-			#unaction {%*点实战经验，} ;
-			show_to_info @ctd{%%%1} 点经验;
-		};
-	};
-	#class piaoliu.inner kill;
+    hua back;
+    give ren xiang;
+    #action {钓鱼人给你一枚%*。} {
+        #unaction {钓鱼人给你一枚%*。};
+        pack gem;
+        show_to_info 掉宝: %%1;
+        show_to_quest 漂流完成;
+        #action {%*点实战经验，} {
+            #unaction {%*点实战经验，} ;
+            show_to_info @ctd{%%%1} 点经验;
+        };
+    };
+    #class piaoliu.inner kill;
 };
 
 #alias {pl.f} {
-	ask ren about fail;
-	#class piaoliu.inner kill;
+    ask ren about fail;
+    #class piaoliu.inner kill;
 };
 
 #alias {check_shuizei} {
-	#delay {2} {
-		#send {l};
-	};
-	#action {水贼 %S(%S %S)} {	
-	      #if {"${pl_npc_c}" == "%%1"} {
-			  #if {${use_jiguan} == 1} {
-				  show_to_info zhi @lower{%%2};
-				  #ticker {zhi} {
-					  zhi @lower{%%2};
-				  } {2};
-			  };
-		  };
-		  #if {"${pl_mj_npc}" == "%%1"} {
-			  #var mj_id @lower{%%2};
-		  };
-	};
-	#delay {5} {
-		#unaction {水贼 %S(%S %S)};
-	};
+    #delay {2} {
+        #send {l};
+    };
+    #action {水贼 %S(%S %S)} {
+        #if {"${pl_npc_c}" == "%%1"} {
+            #if {${use_jiguan} == 1} {
+                show_to_info zhi @lower{%%2};
+                #ticker {zhi} {
+                    zhi @lower{%%2};
+                } {2};
+            };
+        };
+        #if {"${pl_mj_npc}" == "%%1"} {
+            #var mj_id @lower{%%2};
+        };
+    };
+    #delay {5} {
+        #unaction {水贼 %S(%S %S)};
+    };
 };
 #class piaoliu close

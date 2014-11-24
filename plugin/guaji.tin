@@ -1,122 +1,122 @@
 #class guaji open
 #var guaji_item nil;
 #alias {guatieqiao.start} {
-	#var tq_count 0;
-	#class guatieqiao.inner open;
-	#action {^│%*柄铁锹} {
-		#var tq_count @ctd{%%1};
-	} {1};
-	
-	#action { %*柄铁锹} {
-		#var tq_count @ctd{%1%};
-	} {1};
-	
-	#action {(%*)告诉你：tq} {
-		tell %%1 现在有${tq_count}柄铁锹;
-		give %%1 tie qiao;
-	} {1};
+    #var tq_count 0;
+    #class guatieqiao.inner open;
+    #action {^│%*柄铁锹} {
+        #var tq_count @ctd{%%1};
+    } {1};
 
-	#alias {ticker.gua.start} {
-		#ticker {gua} {
-			kill gaoshou;
-		} {5};
-		
-		on_dead {
-			#3 halt;
-			get tie qiao from corpse;
-			#ticker {gua} {
-				get tie qiao from corpse;
-			} {1};
-		};
-	};
-		
-	#alias {ticker.gua.end} {
-		#unticker {gua};
-	};
+    #action { %*柄铁锹} {
+        #var tq_count @ctd{%1%};
+    } {1};
 
-	#class guatieqiao.inner close;
-	guaji.start tieqiao;
+    #action {(%*)告诉你：tq} {
+        tell %%1 现在有${tq_count}柄铁锹;
+        give %%1 tie qiao;
+    } {1};
+
+    #alias {ticker.gua.start} {
+        #ticker {gua} {
+            kill gaoshou;
+        } {5};
+
+        on_dead {
+            #3 halt;
+            get tie qiao from corpse;
+            #ticker {gua} {
+                get tie qiao from corpse;
+            } {1};
+        };
+    };
+
+    #alias {ticker.gua.end} {
+        #unticker {gua};
+    };
+
+    #class guatieqiao.inner close;
+    guaji.start tieqiao;
 };
 
 #alias {guatieqiao.stop} {
-	#class guatieqiao.inner kill;
-	guaji.stop;
+    #class guatieqiao.inner kill;
+    guaji.stop;
 };
 
 #alias {guasan.start} {
-	#var san_count 0;
-	#class guasan.inner open;
-	#action {^│%*包清心散} {
-		#var san_count @ctd{%%1};
-	} {1};
-	
-	#action { %*包清心散} {
-		#var san_count @ctd{%1%};
-	} {1};
-	
-	#action {(%*)告诉你：san} {
-		tell %%1 现在有${san_count}包清心散;
-		give %%1 qingxin san;
-	} {1};
-	
-	#alias {ticker.gua.start} {
-		#ticker {gua} {
-			get qingxin san;
-		} {0.05}
-	};
-		
-	#alias {ticker.gua.end} {
-		#unticker {gua};
-	};
-	
-	#class guasan.inner close;
-	
-	guaji.start qingxin san;
+    #var san_count 0;
+    #class guasan.inner open;
+    #action {^│%*包清心散} {
+        #var san_count @ctd{%%1};
+    } {1};
+
+    #action { %*包清心散} {
+        #var san_count @ctd{%1%};
+    } {1};
+
+    #action {(%*)告诉你：san} {
+        tell %%1 现在有${san_count}包清心散;
+        give %%1 qingxin san;
+    } {1};
+
+    #alias {ticker.gua.start} {
+        #ticker {gua} {
+            get qingxin san;
+        } {0.05}
+    };
+
+    #alias {ticker.gua.end} {
+        #unticker {gua};
+    };
+
+    #class guasan.inner close;
+
+    guaji.start qingxin san;
 };
 
 #alias {guasan.stop} {
-	#class guasan.inner kill;
-	guaji.stop;
+    #class guasan.inner kill;
+    guaji.stop;
 };
 
 #alias {guaji.start} {
-	#var guaji_item %0;
-	show_to_quest 挂机: %0;
-	#class guaji.inner open;
-	#action {guaji.update %*} {
-		#var tmp_minute @ctd{%%1};
-		#if {${tmp_minute} == 59 || ${tmp_minute} == 29 || ${tmp_minute} == 14 || ${tmp_minute} == 44} {
-			show_to_info 抢东西...;
-			ticker.gua.start;
-		};
-		
-		#if {${tmp_minute} == 1 || ${tmp_minute} == 31 || ${tmp_minute} == 16 || ${tmp_minute} == 46} {
-			show_to_info 抢完了...;
-			ticker.gua.end;
-			#send {i};
-		};
-	};
+    #var guaji_item %0;
+    show_to_quest 挂机: %0;
+    #class guaji.inner open;
+    #action {guaji.update %*} {
+        #var tmp_minute @ctd{%%1};
+        #if {${tmp_minute} == 59 || ${tmp_minute} == 29 || ${tmp_minute} == 14 || ${tmp_minute} == 44} {
+            show_to_info 抢东西...;
+            ticker.gua.start;
+        };
 
-	#class guaji.inner close;
-	#send {i};
+        #if {${tmp_minute} == 1 || ${tmp_minute} == 31 || ${tmp_minute} == 16 || ${tmp_minute} == 46} {
+            show_to_info 抢完了...;
+            ticker.gua.end;
+            #send {i};
+        };
+    };
+
+    #class guaji.inner close;
+    #send {i};
 };
 
 #alias {guaji.stop} {
-	#var guaji_item nil;
-	#class guaji.inner kill;
-	show_to_quest 挂机结束;
+    #var guaji_item nil;
+    #class guaji.inner kill;
+    show_to_quest 挂机结束;
 };
 
 #alias {guazs.start} {
-	#alias {ticker.gua.start} {
-		#ticker {gua} {
-			accept zhang;
-		} {0.1};
-	};
-	
-	#alias {ticker.gua.end} {
-		#unticker {gua};
-	};
-	guaji.start 张三;
+    #alias {ticker.gua.start} {
+        #ticker {gua} {
+            accept zhang;
+        } {0.1};
+    };
+
+    #alias {ticker.gua.end} {
+        #unticker {gua};
+    };
+    guaji.start 张三;
 };
 #class guaji close

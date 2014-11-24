@@ -1,11 +1,11 @@
 #class help open
 #alias {hb.help} {
-	#showme 自己买好散, 不必买药, 然后走到长安镖局, 荆西镖局或苏州镖局处, 用 hb.start 开始;
-	#showme 护镖途中用 hb.pause 暂停, 并在原地点用 hb.resume 继续. 若当前临近襄阳保卫时间, 则路过襄阳的镖在自动领取任务时会被忽略. 可以支持一步乱入及自动打坐;
-	#showme 收到密信后无法自动领任务, 需要用 mx.o 查看密信, 然后到达密信地点后用 mx.q 拿财宝, 然后回去用 hb.d 交差.;
+    #showme 自己买好散, 不必买药, 然后走到长安镖局, 荆西镖局或苏州镖局处, 用 hb.start 开始;
+    #showme 护镖途中用 hb.pause 暂停, 并在原地点用 hb.resume 继续. 若当前临近襄阳保卫时间, 则路过襄阳的镖在自动领取任务时会被忽略. 可以支持一步乱入及自动打坐;
+    #showme 收到密信后无法自动领任务, 需要用 mx.o 查看密信, 然后到达密信地点后用 mx.q 拿财宝, 然后回去用 hb.d 交差.;
 };
 #alias {lw.help} {
-	#showme 目前支持 gumu, wudang, huashan, dalunsi, xingxiu, dasong 的领悟, 其它门派需要自己参考 spec/gumu.tin 自己提交一些地点信息;
-	#showme 在 ct, 输入 lw.start 即可. 
+    #showme 目前支持 gumu, wudang, huashan, dalunsi, xingxiu, dasong 的领悟, 其它门派需要自己参考 spec/gumu.tin 自己提交一些地点信息;
+    #showme 在 ct, 输入 lw.start 即可.
 };
 #class help close

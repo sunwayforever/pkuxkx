@@ -2,85 +2,85 @@
 #var xue_count 10;
 #var xue_tired 0;
 #alias {xue.start} {
-	load_map;
-	map_goto_shifu;
-	autoheal.off;
-	#var xue_tired 0;
+    load_map;
+    map_goto_shifu;
+    autoheal.off;
+    #var xue_tired 0;
 
-	#class xue.inner open;
-	#var xue.gongfu %1;
-	show_to_quest 学习: ${shifu}/${xue.gongfu};
+    #class xue.inner open;
+    #var xue.gongfu %1;
+    show_to_quest 学习: ${shifu}/${xue.gongfu};
 
-	#ticker {xue} {
-		#if {$xue_tired == 0} {
-     		xue ${shifu} for ${xue.gongfu} ${xue_count};
-		};
-	} {0.5};
+    #ticker {xue} {
+        #if {$xue_tired == 0} {
+            xue ${shifu} for ${xue.gongfu} ${xue_count};
+        };
+    } {0.5};
 
-	#action {切磋} {
-		xue.stop;
-		#showme xue done;
-	};
+    #action {切磋} {
+        xue.stop;
+        #showme xue done;
+    };
 
-	#action {也许是缺乏实战经验} {
-		xue.stop;
-		#showme xue done;
-	};
+    #action {也许是缺乏实战经验} {
+        xue.stop;
+        #showme xue done;
+    };
 
 
-	#action {你今天太累了} {
-		yun regenerate;
-	};
+    #action {你今天太累了} {
+        yun regenerate;
+    };
 
-	#action {指令选择你要使用的内功} {
-		#if {${xue_tired} == 0} {
-			#var xue_tired 1;
-			map_goto_rest;
-			on_arrived {
-				sleep;
-			};
-		};
-	};
+    #action {指令选择你要使用的内功} {
+        #if {${xue_tired} == 0} {
+            #var xue_tired 1;
+            map_goto_rest;
+            on_arrived {
+                sleep;
+            };
+        };
+    };
 
-	#action {你的内力不够} {
-		#if {${xue_tired} == 0} {
-			#var xue_tired 1;
-			map_goto_rest;
-			on_arrived {
-				sleep;
-			};
-		};
-	};
+    #action {你的内力不够} {
+        #if {${xue_tired} == 0} {
+            #var xue_tired 1;
+            map_goto_rest;
+            on_arrived {
+                sleep;
+            };
+        };
+    };
 
-	#action {多睡对身体有害无益! } {
-		#delay {shui} {
-			sleep;
-		} {10};
-	};
+    #action {多睡对身体有害无益! } {
+        #delay {shui} {
+            sleep;
+        } {10};
+    };
 
-	#action {你一觉醒来} {
-		eat_food;
-		map_goto_shifu;
-		#var xue_tired 0;
-	};
+    #action {你一觉醒来} {
+        eat_food;
+        map_goto_shifu;
+        #var xue_tired 0;
+    };
 
-	#action {你的潜能已经发挥到极限了} {
-		xue.stop;
-		xmpp.notify 学习完成;
-	};
-	
-	#action {没有办法学习这种技能} {
-		xue.stop;
-		xmpp.notify 学习完成;
-	};
+    #action {你的潜能已经发挥到极限了} {
+        xue.stop;
+        xmpp.notify 学习完成;
+    };
 
-	#class xue.inner close;
+    #action {没有办法学习这种技能} {
+        xue.stop;
+        xmpp.notify 学习完成;
+    };
+
+    #class xue.inner close;
 };
 
 #alias {xue.stop} {
-	#class xue.inner kill;
-	show_to_quest 学习结束;
-	autoheal.on;
-	map_goto_start;
+    #class xue.inner kill;
+    show_to_quest 学习结束;
+    autoheal.on;
+    map_goto_start;
 };
 #class xue close;

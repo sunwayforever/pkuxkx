@@ -1,31 +1,31 @@
 #class han open
 
 #alias {han.q} {
-	ask han about job;
+    ask han about job;
 };
 
 #action {韩员外说道：%1} {
-	#var han_quest %0;
+    #var han_quest %0;
 };
 
 #action {其人奸诈似鬼，疑心甚重，你须变换容貌前去将其刺杀。} {
-	show_to_quest 奸诈似鬼: ${han_quest};
+    show_to_quest 奸诈似鬼: ${han_quest};
 };
 
 #action {其人轻功甚是了得，就地诛杀，不可让他逃脱} {
-	show_to_quest 轻功高手: ${han_quest};
+    show_to_quest 轻功高手: ${han_quest};
 };
 
 #ation {其人不足为惧，只是真凶的爪牙，你把他就地处决即可。} {
-	show_to_quest 沙袋: ${han_quest};
+    show_to_quest 沙袋: ${han_quest};
 };
 
 #alias {han.d} {
-	ask han about finish;
+    ask han about finish;
 };
 
 #alias {han.b} {
-	gt jiangzhou;
+    gt jiangzhou;
 };
 
 #class han close

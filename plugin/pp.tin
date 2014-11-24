@@ -2,27 +2,27 @@
 @mapcreate{pp};
 #list pp_customer create {bakerli;erq;sunxm;gamester;beige;milli;uncletuu;bbkin;salonbus};
 #action {【求助】%*(%*): find %*} {
-	#var caller @lower{%2};
-	#if {@ismember{${caller};pp_customer}>0 && ${critical_running} == 0} {
-		@mapset{pp;%3;${caller}};
-		perceive %3;
-		#ticker {pp_${caller}} {
-			perceive %3;
-		} {5};
-		#delay {30} {
-			#unticker {pp_${caller}};
-		};		
-	};
+    #var caller @lower{%2};
+    #if {@ismember{${caller};pp_customer}>0 && ${critical_running} == 0} {
+        @mapset{pp;%3;${caller}};
+        perceive %3;
+        #ticker {pp_${caller}} {
+            perceive %3;
+        } {5};
+        #delay {30} {
+            #unticker {pp_${caller}};
+        };
+    };
 };
 
 #action {你掐指一算，感觉%*(%*)现在好象在%*一带活动。} {
-	#var target @lower{%2};
-	#var caller2 @mapget{pp;${target}};
-	tell ${caller2} 【%1(%2)】目前在【%3】,快去摁死它吧!;
-	#unticker {pp_${caller2}};
+    #var target @lower{%2};
+    #var caller2 @mapget{pp;${target}};
+    tell ${caller2} 【%1(%2)】目前在【%3】,快去摁死它吧!;
+    #unticker {pp_${caller2}};
 };
 
 #ticker {reset_pp} {
-	@mapcreate{pp};
+    @mapcreate{pp};
 } {1800};
 #class pp close

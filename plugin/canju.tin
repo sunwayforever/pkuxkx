@@ -1,25 +1,25 @@
 #class canju open
 #alias {canju.start} {
-	#class canju.inner open;
-	#ticker {watch} {
-		watch canju;
-	} {3};
-	#action {你精力不够} {
-		yun jing;
-	};
-	#action {内力不够} {
-		dazuo 100;
-	};
-	#action {发现残局对你太浅了} {
-		canju.stop;
-	};
-	#class canju.inner close;
-	autoheal.off;
-	watch canju;
+    #class canju.inner open;
+    #ticker {watch} {
+        watch canju;
+    } {3};
+    #action {你精力不够} {
+        yun jing;
+    };
+    #action {内力不够} {
+        dazuo 100;
+    };
+    #action {发现残局对你太浅了} {
+        canju.stop;
+    };
+    #class canju.inner close;
+    autoheal.off;
+    watch canju;
 };
 
 #alias {canju.stop} {
-	#class canju.inner kill;
-	autoheal.off;
+    #class canju.inner kill;
+    autoheal.off;
 };
 #class canju close

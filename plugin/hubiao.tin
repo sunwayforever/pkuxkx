@@ -55,13 +55,13 @@ load chaos;
                 chain on_sell get.qian get.san repair special_repair gem.combine hb.b;
             };
             #else {
-                hb.b;   
+                hb.b;
             };
         };
     };
     #else {
         ${hb_next_step};
-    };    
+    };
 };
 
 #alias {hb.move} {
@@ -130,7 +130,7 @@ load chaos;
     #action {busy_for_move} {
         hb.retry;
     };
-    
+
     #action {^Äã¸Ï×ÅïÚ³µÊ»ÁË¹ıÀ´¡£$} {
         #if {${hb_paused} == 0} {
             #math hb_path_index ${hb_path_index}+1;
@@ -160,7 +160,7 @@ load chaos;
             };
         };
     };
-    
+
     #action {½Ù·Ë³ÃÄã²»×¢Òâ£¬ÍÆ×ÅïÚ³µ¾ÍÅÜ£¬Äã¸Ï½ô×·ÁËÉÏÈ¥¡£} {
         hb.pause;
         @setenv{mixin_lunci;6};
@@ -177,7 +177,7 @@ load chaos;
     #action {Äã³¤Ğ¦Ò»Éù£¬¿ªÊ¼¶ÔÖÜÎ§ÖÚÈËÍ´ÏÂÉ±ÊÖ£¡} {
         #var hb_first_kill 1;
     };
-    
+
     #action {½Ù·ËÍ»È»´Ó°µ´¦ÌøÁË³öÀ´} {
         hb.detect_enemy;
         #if {${hb_first_kill} == 0} {
@@ -195,11 +195,11 @@ load chaos;
         show_to_tuiche ÈÎÎñÍê³É;
         notify escort done;
         hb.teardown;
-        hb.back;            
+        hb.back;
     } {1};
 
     #class hb_setup_inner close;
-    
+
     #alias ge {gan che to east};
     #alias genter {gan che to enter};
     #alias geu {gan che to eastup};
@@ -272,7 +272,7 @@ load chaos;
                 } {3};
             };
         } {1};
-        
+
         #action {^    ÕâÀï%*³ö¿Ú} {
             #class hb.escape.inner kill;
             #math hb_path_index ${hb_path_index}+1;
@@ -280,12 +280,12 @@ load chaos;
                 hb.resume;
             } {3}
         } {1};
-        
+
         #delay {hb_delay} {
-            #showme ÄãÌÓÅÜÊ§°Ü;             
+            #showme ÄãÌÓÅÜÊ§°Ü;
         } {5};
         #class hb.escape.inner close;
-        
+
         #list hb_path get ${hb_path_index} escape_exit;
         #3 halt;
         #delay {1} {
@@ -325,7 +325,7 @@ load chaos;
             };
             #class hb.recover.inner kill;
         };
-        #class hb.recover.inner close;      
+        #class hb.recover.inner close;
         chaos.find;
     };
 
@@ -378,7 +378,7 @@ load chaos;
             play alert.wav;
         };
         #else {
-            ask ${hb_owner} about finish;           
+            ask ${hb_owner} about finish;
         };
     };
 };
@@ -449,7 +449,7 @@ load chaos;
             hb.start;
         };
     };
-    
+
     #action {ÄãÒ»¹²±»½±ÀøÁË£º} {
         #class tmp.inner open;
         #action {%*µã¾­Ñé£»} {
@@ -479,7 +479,7 @@ load chaos;
                 xmpp.notify µô±¦: %%%1%%%2%%%3;
             };
             #else {
-                play gem.wav;   
+                play gem.wav;
             };
         };
         pack gem;
@@ -487,15 +487,15 @@ load chaos;
             #unaction {Äã½«ÊÖÖĞ%*{¡ò|¡î|¡ï}%*·Å½øÁË±¦Ê¯´ü};
         } {3};
     };
-    
+
     #action {ÍÛ£¬ÄãÌ«À÷º¦ÁË£¬ÕâÃ´¿ì¾Í°ÑÕâĞ©²ÆÎï×·»Ø£¬ÎÒÓĞÖØĞ»£¡} {
         got_gem;
     };
-    
+
     #action {µôÁË³öÀ´Ò»¿Å} {
         got_gem;
     };
-    
+
     #action {´Ó½Ù·ËÉíÉÏµôÁË³öÀ´Ò»%*Ö®%*} {
         jianding @mapget{jianding;%%2}
     };
@@ -507,12 +507,12 @@ load chaos;
             #var type @mapget{jianding;%%2};
             #if {"${type}" == "ring" || "${type}" == "necklace"} {
                 #if {${kong} > 1} {
-                    put ${type} in bao; 
+                    put ${type} in bao;
                 };
             };
             #else {
                 #if {${kong} > 2} {
-                    put ${type} in bao; 
+                    put ${type} in bao;
                 };
             };
         };
@@ -532,12 +532,12 @@ load chaos;
 
     #action {^ÂıÂıµØÄãÖÕÓÚÓÖÓĞÁËÖª¾õ....} {
         show_to_tuiche ¹ÒÁË;
-        notify.alert ¹ÒÁË; 
+        notify.alert ¹ÒÁË;
         xmpp.notify ¹ÒÁË;
         hb.teardown;
         hb.back;
     };
-    
+
     #action {^ÄãµÄÑÛÇ°Ò»ºÚ£¬½ÓÖøÊ²Ã´Ò²²»ÖªµÀÁË} {
         hb.end;
     };
@@ -545,7 +545,7 @@ load chaos;
     #action {Ê¹ÓÃÃüÁî¡¾getesc ÈÎÎñĞòºÅ¡¿À´ÈÏÁìÑºïÚÈÎÎñ¡£} {
         #buffer lock;
     };
-    
+
     #action {%d%s%S%s%S%s´ıÈÏÁì} {
         #var getesc_id %%1;
         #var getesc_address %%3;
@@ -598,7 +598,7 @@ load chaos;
             hb.q;
         } {2};
     };
-    
+
     #action {${char_name}°ÑÕâÅúºì»õËÍµ½%*ËûÒÑ¾­ÅÉÁË¸ö»ï¼ÆÃû½Ğ%*µ½%*¸½½ü½ÓÄã} {
         hb.get_path %%1;
 
@@ -630,7 +630,7 @@ load chaos;
 
     @declarenv{hb_state;NIL};
     @declarenv{mixin_lunci;6};
-    
+
     #if {"@getenv{hb_state}" == "GOT_CAIWU"} {
         show_to_info ½»²ÆÎïÏÈ;
     };
@@ -643,7 +643,7 @@ load chaos;
     #else {
         #math next_lunci @getenv{hb_lunci}+1;
         show_to_quest ÍÆ³µ: @getenv{hb_lunci_total}+${next_lunci}: ×¼±¸;
-        on_health {hb.q};       
+        on_health {hb.q};
     };
 };
 
@@ -666,7 +666,7 @@ load chaos;
                 #var nil @stackpop{tmp};
             };
             #elseif {"@opposite{${v}}" != "NULL"} {
-                @stackpush{tmp;${v}};           
+                @stackpush{tmp;${v}};
             }
         };
         #math hb_path_index ${hb_path_index}+1;
@@ -707,7 +707,7 @@ load chaos;
         #class guohe.inner close;
     };
     #var hb_paused 1;
-    ask shao gong about %1;     
+    ask shao gong about %1;
 };
 
 #alias {clear_blocker} {
@@ -719,7 +719,7 @@ load chaos;
         hb.resume;
     };
     #ticker {tmp_blocker_ticker_kill} {
-        killall ${tmp_blocker}; 
+        killall ${tmp_blocker};
     } {5};
     #class clear_blocker.inner close;
     hb.pause;
@@ -747,7 +747,7 @@ load chaos;
 };
 
 #alias {mx.q} {
-    #class mx.inner open;   
+    #class mx.inner open;
     #action {Ò»¸ö»ï¼ÆÍÚ×Å±ÇÊº×ßÁË³öÀ´£¬µÀ£ºÄãÕÒÎÒÉ¶ÊÂ} {
         l;
     };
@@ -763,7 +763,7 @@ load chaos;
             back;
         };
         #action {ÕâÀïÃ»ÓĞÕâ¸öÈË} {
-            #class mx.yao.inner kill;   
+            #class mx.yao.inner kill;
         };
         #ticker {yao} {
             ask $tmp_huoji about yao;
@@ -800,7 +800,7 @@ load chaos;
 
 #alias {got_robber} {
     #delay {detect_enemy_delay} {
-        #class detect_enemy.inner kill; 
+        #class detect_enemy.inner kill;
     } {1};
     #math robber_count ${robber_count}+1;
     #var tmp_score @mapget{robber_score;%1};
@@ -831,7 +831,7 @@ load chaos;
         got_robber taohua;
     };
     #action {~[1;37m½Ù·Ë[2;37;0m(@capital{${char_id}}'s robber)} {
-        got_robber wudang;      
+        got_robber wudang;
     };
     #action {·ç¾°ÒªÂıÂıµÄ¿´} {
         #delay {0.5} {

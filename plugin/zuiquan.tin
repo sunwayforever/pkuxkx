@@ -1,36 +1,36 @@
 #class zuiquan open
 #alias {zq.start} {
-	#class zq.inner open;
-	#ticker {fight} {
-		hit lxiao npc;
-	} {10};
-	#ticker {pfm} {
-		perform cuff.lingwu;
-	} {10};
-	#ticker {check} {
-		#if {${jl_percent} < 80} {
-			zq.stop
-			#delay {20} {
-				raw;
-				halt;
-				#3 chifan;
-				on_health {
-					zq.start;
-				};
-			};
-		};
-	} {60};
-	#class zq.inner open;
-	unload war;
-	bei none;
-	bei zui-quan;
-	#alias attack.normal {#cr};
-	#alias attack.prepare {#cr};
+    #class zq.inner open;
+    #ticker {fight} {
+        hit lxiao npc;
+    } {10};
+    #ticker {pfm} {
+        perform cuff.lingwu;
+    } {10};
+    #ticker {check} {
+        #if {${jl_percent} < 80} {
+            zq.stop
+            #delay {20} {
+                raw;
+                halt;
+                #3 chifan;
+                on_health {
+                    zq.start;
+                };
+            };
+        };
+    } {60};
+    #class zq.inner open;
+    unload war;
+    bei none;
+    bei zui-quan;
+    #alias attack.normal {#cr};
+    #alias attack.prepare {#cr};
 };
 
 #alias {zq.stop} {
-	#class zq.inner kill;
-	#3 halt;
-	load war;
+    #class zq.inner kill;
+    #3 halt;
+    load war;
 };
 #class zuiquan close

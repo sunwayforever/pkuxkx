@@ -1,74 +1,74 @@
 #class chanding open
 #alias {chanding.start} {
-	#class chanding.inner open;
-	#action {石柱上的经文你已经领悟透彻了} {
-		#alias cd_action mingxiang;
-	};
-	#alias cd_action chanding;
-	#alias {cd.start} {
-		#ticker {cd} {
-			cd_action;
-		} {0.8};
-	};
+    #class chanding.inner open;
+    #action {石柱上的经文你已经领悟透彻了} {
+        #alias cd_action mingxiang;
+    };
+    #alias cd_action chanding;
+    #alias {cd.start} {
+        #ticker {cd} {
+            cd_action;
+        } {0.8};
+    };
 
-	#alias {cd.stop} {
-		#unticker {cd};
-	};
+    #alias {cd.stop} {
+        #unticker {cd};
+    };
 
-	#alias {ck.stop} {
-		#unticker {check};
-	};
-	
-	#alias {ck.start} {
-		#ticker {check} {
-			#if {${nl_percent} < 10} {
-				cd.stop;
-				ck.stop;
-				#delay {3} {
-					map_goto_rest;
-					on_arrived {
-						sleep;
-					};
-					on_wakeup {
-						eat_food;
-						map.go 大经堂;
-						on_arrived {
-							cd.start;
-							ck.start;
-						};
-					};
-				};
-			};
-			#elseif {${js_percent} < 30} {
-				cd.stop;
-				ck.stop;
-				#delay {1} {
-					w;
-					yun regenerate;
-					e;
-					cd.start;
-					ck.start;
-				};
-			};
-		} {3};
-	};
-	#class chanding.inner close;
-	gt xkt;
-	on_there {
-		load_map;
-		map.go 大经堂;
-		on_arrived {
-			cd.start;
-			ck.start;
-			show_to_quest 禅定中...;
-		};
-	};
+    #alias {ck.stop} {
+        #unticker {check};
+    };
+
+    #alias {ck.start} {
+        #ticker {check} {
+            #if {${nl_percent} < 10} {
+                cd.stop;
+                ck.stop;
+                #delay {3} {
+                    map_goto_rest;
+                    on_arrived {
+                        sleep;
+                    };
+                    on_wakeup {
+                        eat_food;
+                        map.go 大经堂;
+                        on_arrived {
+                            cd.start;
+                            ck.start;
+                        };
+                    };
+                };
+            };
+            #elseif {${js_percent} < 30} {
+                cd.stop;
+                ck.stop;
+                #delay {1} {
+                    w;
+                    yun regenerate;
+                    e;
+                    cd.start;
+                    ck.start;
+                };
+            };
+        } {3};
+    };
+    #class chanding.inner close;
+    gt xkt;
+    on_there {
+        load_map;
+        map.go 大经堂;
+        on_arrived {
+            cd.start;
+            ck.start;
+            show_to_quest 禅定中...;
+        };
+    };
 };
 
 #alias {cd.stop} {
-	cd.stop;
-	ck.stop;
-	#class chanding.inner kill;
-	show_to_quest 禅定结束;
+    cd.stop;
+    ck.stop;
+    #class chanding.inner kill;
+    show_to_quest 禅定结束;
 };
 #class chanding close

@@ -1,49 +1,49 @@
 #class yue open;
 
 #alias {yue.q} {
-	#class yue.inner open;
-	#action {岳不群(Yue buqun)} {
-		yue.d;
-	};
+    #class yue.inner open;
+    #action {岳不群(Yue buqun)} {
+        yue.d;
+    };
 
-	#action {请将这封密函火速送到%*手上} {
-		show_to_quest 送信: %%1;
-	};
-	
-	#action {你现在应该去%*送信} {
-		#var songxin_target %%1;
-	};
+    #action {请将这封密函火速送到%*手上} {
+        show_to_quest 送信: %%1;
+    };
 
-	#action {把密函给我乖乖交出来吧} {
-		notify emergence;
-	};
-	#class yue.inner close;
-	
+    #action {你现在应该去%*送信} {
+        #var songxin_target %%1;
+    };
+
+    #action {把密函给我乖乖交出来吧} {
+        notify emergence;
+    };
+    #class yue.inner close;
+
     ask yue buqun about job;
 };
 
 #alias {yue.d} {
-	#class yue.inner kill;
+    #class yue.inner kill;
     ask yue buqun about finish;
 };
 
 #alias {yue.f} {
-	#class yue.inner kill;
+    #class yue.inner kill;
     ask yue buqun about fail;
 };
 
 #alias {yue.b} {
     gt huashan;
-	on_there {
-		yue.d;
-	};
+    on_there {
+        yue.d;
+    };
 };
 
 #alias {yue.bl} {
     quest;
     #delay {2} {
-       	bl.start ${songxin_target};
-	    #var songxin_target {};
+        bl.start ${songxin_target};
+        #var songxin_target {};
     };
 };
 #class yue cloe;

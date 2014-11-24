@@ -1,19 +1,19 @@
 #class mapi open
 #alias {mp.start} {
-	#class mp.inner open;
-	#ticker {hit} {
-		#send {hit lxiao npc};
-		#delay {1} {
-			perform flatter.qiurao;
-			halt;
-		};
-	} {3};
-	#class mp.inner close;
-	disarm.start;
+    #class mp.inner open;
+    #ticker {hit} {
+        #send {hit lxiao npc};
+        #delay {1} {
+            perform flatter.qiurao;
+            halt;
+        };
+    } {3};
+    #class mp.inner close;
+    disarm.start;
 };
 
 #alias {mp.stop} {
-	#class mp.inner kill;
-	disarm.stop;
+    #class mp.inner kill;
+    disarm.stop;
 };
 #class mapi close

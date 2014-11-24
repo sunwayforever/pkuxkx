@@ -1,9 +1,9 @@
 #class task open
 #action {在一个有着%1的出口的地方} {
-	#var task_exists %1;
+    #var task_exists %1;
 };
 
 #action {这个地方的描述中含有这样的字眼：%1,%2} {
-	query_room ${task_exists} %1%2
+    query_room ${task_exists} %1%2
 };
 #class task close

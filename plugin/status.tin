@@ -8,114 +8,114 @@
 #var money_info nil;
 
 #ticker {uptime} {
-	#if {${critical_running} == 0} {
-		uptime;
-	};
+    #if {${critical_running} == 0} {
+        uptime;
+    };
 } {60};
 
 #action {北大侠客行已经执行了%1分%2秒} {
-	zhengdian %1;
+    zhengdian %1;
 } {4};
 
 #action {北大侠客行已经执行了%1小时%2分%3秒} {
-	zhengdian %2;
+    zhengdian %2;
 } {3};
 
 #action {北大侠客行已经执行了%1天%2分%3秒} {
-	zhengdian %2;
+    zhengdian %2;
 } {2};
 
 #action {北大侠客行已经执行了%1天%2小时%3分%4秒} {
-	zhengdian %3;
+    zhengdian %3;
 } {1};
 
 #ticker {check_fuzhong} {
-	#if {${critical_running} == 0} {
-		#send {i};
-	};
+    #if {${critical_running} == 0} {
+        #send {i};
+    };
 } {180};
 
 #ticker {check_shaqi} {
-	#if {${critical_running} == 0} {
-		#send {sc};
-	};
+    #if {${critical_running} == 0} {
+        #send {sc};
+    };
 } {200};
 
 #action {杀    气：  %*} {
-	#var shaqi_info %1;
+    #var shaqi_info %1;
 };
 
 #action {银行存款：  %*两黄金} {
-	#var money_info @ctd{%1} G;
+    #var money_info @ctd{%1} G;
 };
 
 #ticker {check_hp} {
-	#if {${critical_running} == 0} {
-		#send {hp};
-	};
+    #if {${critical_running} == 0} {
+        #send {hp};
+    };
 } {180};
 
 #gag npc refreshed;
 #alias {zhengdian} {
-	#showme guaji.update %1;
-	#var tmp_minute @ctd{%1};
-	#var uptime_info ${tmp_minute}分;
-	update_status;
-	#if {${tmp_minute} == 0 || ${tmp_minute} == 30 || ${tmp_minute} == 15 || ${tmp_minute} == 45} {
-		#showme npc refreshed;
-	};
+    #showme guaji.update %1;
+    #var tmp_minute @ctd{%1};
+    #var uptime_info ${tmp_minute}分;
+    update_status;
+    #if {${tmp_minute} == 0 || ${tmp_minute} == 30 || ${tmp_minute} == 15 || ${tmp_minute} == 45} {
+        #showme npc refreshed;
+    };
 };
 
 #alias {update_status} {
-	#if {${special_min_naijiu} == 10000} {
-		#var naijiu_info ${min_naijiu};
-	};
-	#else {
-		#var naijiu_info ${min_naijiu}/${special_min_naijiu};
-	};
-	#var status_content ${char_name}: ${shaqi_info} | ${exp_info} | ${naijiu_info} 耐久 | ${money_info} | ${daytime_info} | ${uptime_info} | ${week_info};
-	#if {"${xy_info}" == "on"} {
-		#var status_content ${status_content} | 保卫;
-	};
-	#if {"${fm_info}" == "on"} {
-	};
-	show_to_status ${status_content};
-	drawhp;
+    #if {${special_min_naijiu} == 10000} {
+        #var naijiu_info ${min_naijiu};
+    };
+    #else {
+        #var naijiu_info ${min_naijiu}/${special_min_naijiu};
+    };
+    #var status_content ${char_name}: ${shaqi_info} | ${exp_info} | ${naijiu_info} 耐久 | ${money_info} | ${daytime_info} | ${uptime_info} | ${week_info};
+    #if {"${xy_info}" == "on"} {
+        #var status_content ${status_content} | 保卫;
+    };
+    #if {"${fm_info}" == "on"} {
+    };
+    show_to_status ${status_content};
+    drawhp;
 };
 
 #action {你身上带著下列这些东西(负重 %1\%)：} {
-	#var fuzhong %1;
-	drawhp;
+    #var fuzhong %1;
+    drawhp;
 };
 
 #alias {autoheal.on} {
-	#var auto_heal 1;
+    #var auto_heal 1;
 };
 
 #alias {autoheal.off} {
-	#var auto_heal 0;
+    #var auto_heal 0;
 };
 
 #var critical_running 0;
 #ticker {hpbrief} {
-	#if {${critical_running} == 0} {
-		#var hpbrief_first 1;
-		hpbrief;
-	};
+    #if {${critical_running} == 0} {
+        #var hpbrief_first 1;
+        hpbrief;
+    };
 } {3};
 
 #ticker {jifa} {
-	#send {jifa};
+    #send {jifa};
 } {600};
 
 #action {内功 (force)%*有效等级：{ *}%d} {
     #var youxiao_neigong %3;
     #math dazuo_count ${youxiao_neigong}*3/10+1;
     #if {${dazuo_count} < 10} {
-		#var dazuo_count 10;
-	};
- };
- 
+        #var dazuo_count 10;
+    };
+};
+
 #var qx_percent 100;
 #var js_percent 100;
 #var nl_percent 100;
@@ -123,156 +123,156 @@
 
 #var hpbrief_first 1;
 #action {^#%1,%2,%3,%4,%5,%6$} {
-	#if {${hpbrief_first} == 1} {
-		#var hpbrief_first 0;
-		#var hpbrief_exp %1;
-		#var hpbrief_pot %2;
-		#var hpbrief_max_nl %3;
-		#var hpbrief_curr_nl %4;
-		#var hpbrief_max_jl %5;
-		#var hpbrief_curr_jl %6;
-	};
-	#else {
-		#var hpbrief_first 1;
-		#var hpbrief_max_qx %1;
-		#var hpbrief_eff_qx %2;
-		#var hpbrief_curr_qx %3;
-		#var hpbrief_max_js %4;
-		#var hpbrief_eff_js %5;
-		#var hpbrief_curr_js %6;
-		#math eff_qx_percent ${hpbrief_eff_qx} *100 / ${hpbrief_max_qx};
-		#math eff_js_percent ${hpbrief_eff_js} *100 / ${hpbrief_max_js};
-		#math qx_percent ${hpbrief_curr_qx} *100 / ${hpbrief_max_qx};
-		#math js_percent ${hpbrief_curr_js} * 100 / ${hpbrief_max_js};
-		#math nl_percent ${hpbrief_curr_nl} * 100 / ${hpbrief_max_nl};
-		#math jl_percent ${hpbrief_curr_jl} * 100 / ${hpbrief_max_jl};
+    #if {${hpbrief_first} == 1} {
+        #var hpbrief_first 0;
+        #var hpbrief_exp %1;
+        #var hpbrief_pot %2;
+        #var hpbrief_max_nl %3;
+        #var hpbrief_curr_nl %4;
+        #var hpbrief_max_jl %5;
+        #var hpbrief_curr_jl %6;
+    };
+    #else {
+        #var hpbrief_first 1;
+        #var hpbrief_max_qx %1;
+        #var hpbrief_eff_qx %2;
+        #var hpbrief_curr_qx %3;
+        #var hpbrief_max_js %4;
+        #var hpbrief_eff_js %5;
+        #var hpbrief_curr_js %6;
+        #math eff_qx_percent ${hpbrief_eff_qx} *100 / ${hpbrief_max_qx};
+        #math eff_js_percent ${hpbrief_eff_js} *100 / ${hpbrief_max_js};
+        #math qx_percent ${hpbrief_curr_qx} *100 / ${hpbrief_max_qx};
+        #math js_percent ${hpbrief_curr_js} * 100 / ${hpbrief_max_js};
+        #math nl_percent ${hpbrief_curr_nl} * 100 / ${hpbrief_max_nl};
+        #math jl_percent ${hpbrief_curr_jl} * 100 / ${hpbrief_max_jl};
 
-		#nop #var exp_info 气: ${qx_percent} 神: ${js_percent} 内: ${nl_percent} 精: ${jl_percent} 经验: ${hpbrief_exp};
-		#var exp_info ${hpbrief_exp};
-		update_status;
+        #nop #var exp_info 气: ${qx_percent} 神: ${js_percent} 内: ${nl_percent} 精: ${jl_percent} 经验: ${hpbrief_exp};
+        #var exp_info ${hpbrief_exp};
+        update_status;
 
-		#if {${auto_heal} == 1} {
-			#if {${qx_percent} < 30} {
-				yun recover;
-			};
+        #if {${auto_heal} == 1} {
+            #if {${qx_percent} < 30} {
+                yun recover;
+            };
 
-			#if {${js_percent} < 30} {
-				yun regenerate;
-			};
-		};
-	};
+            #if {${js_percent} < 30} {
+                yun regenerate;
+            };
+        };
+    };
 };
 
 #ticker {time} {
-	#if {${critical_running} == 0} {
-		time;
-	};
+    #if {${critical_running} == 0} {
+        time;
+    };
 } {30};
 
 #var prev_daytime nil;
 #action {北大侠客行现在大约是%1时分} {
-	#var curr_daytime %1;
-	#if {"${curr_daytime}" != "${prev_daytime}"} {
-		#showme ${curr_daytime}到了;
-		#var daytime_info ${curr_daytime};
-		update_status;
-		#var prev_daytime ${curr_daytime};
-		#if {
-			"${curr_daytime}" == "凌晨" ||
-			"${curr_daytime}" == "早晨" ||
-			"${curr_daytime}" == "正午" ||
-			"${curr_daytime}" == "晌午" ||
-			"${curr_daytime}" == "下午"
-			} {
-				#var daytime 1;
-		};
-		#else {
-			#var daytime 0;
-		};
-	};
-};
+    #var curr_daytime %1;
+    #if {"${curr_daytime}" != "${prev_daytime}"} {
+        #showme ${curr_daytime}到了;
+        #var daytime_info ${curr_daytime};
+        update_status;
+        #var prev_daytime ${curr_daytime};
+        #if {
+            "${curr_daytime}" == "凌晨" ||
+            "${curr_daytime}" == "早晨" ||
+            "${curr_daytime}" == "正午" ||
+            "${curr_daytime}" == "晌午" ||
+            "${curr_daytime}" == "下午"
+            } {
+                #var daytime 1;
+            };
+            #else {
+                #var daytime 0;
+            };
+        };
+    };
 
-#action {本周为%*之周，} {
-	#var week_info %1;
-	update_status;
-};
+    #action {本周为%*之周，} {
+        #var week_info %1;
+        update_status;
+    };
 
-#var food 0;
-#var maxfood 100;
-#var water 0;
-#var maxwater 100;
+    #var food 0;
+    #var maxfood 100;
+    #var water 0;
+    #var maxwater 100;
 
-#action {【 食物 】%s%S%s/ %S} {
-	#var food %2;
-	#var maxfood %4;
-	drawhp;
-};
+    #action {【 食物 】%s%S%s/ %S} {
+        #var food %2;
+        #var maxfood %4;
+        drawhp;
+    };
 
-#action {【 饮水 】%s%S%s/ %S} {
-	#var water %2;
-	#var maxwater %4;
-	drawhp;
-};
+    #action {【 饮水 】%s%S%s/ %S} {
+        #var water %2;
+        #var maxwater %4;
+        drawhp;
+    };
 
-#alias {drawhp} {
-	#echo {{<099>@hpcolor{气血[;$hpbrief_curr_qx}@hpdraw{$hpbrief_curr_qx;$hpbrief_max_qx}@hpcolor{];$hpbrief_curr_qx} @hpcolor{精神[;$hpbrief_curr_js}@hpdraw{$hpbrief_curr_js;$hpbrief_max_js}@hpcolor{];$hpbrief_curr_js} @hpcolor{精力[;$hpbrief_curr_jl}@hpdraw{$hpbrief_curr_jl;$hpbrief_max_jl}@hpcolor{];$hpbrief_curr_jl} @hpcolor{内力[;$hpbrief_curr_nl}@hpdraw{$hpbrief_curr_nl;$hpbrief_max_nl}@hpcolor{];$hpbrief_curr_nl} @hpcolor{食物[;$food}@hpdraw{$food;$maxfood}@hpcolor{];$food} @hpcolor{饮水[;$water}@hpdraw{$water;$maxwater}@hpcolor{];$water} @hpcolor{负重[;$fuzhong}@fzdraw{$fuzhong;100}@hpcolor{];$fuzhong}<099>} {-3}};
-};
+    #alias {drawhp} {
+        #echo {{<099>@hpcolor{气血[;$hpbrief_curr_qx}@hpdraw{$hpbrief_curr_qx;$hpbrief_max_qx}@hpcolor{];$hpbrief_curr_qx} @hpcolor{精神[;$hpbrief_curr_js}@hpdraw{$hpbrief_curr_js;$hpbrief_max_js}@hpcolor{];$hpbrief_curr_js} @hpcolor{精力[;$hpbrief_curr_jl}@hpdraw{$hpbrief_curr_jl;$hpbrief_max_jl}@hpcolor{];$hpbrief_curr_jl} @hpcolor{内力[;$hpbrief_curr_nl}@hpdraw{$hpbrief_curr_nl;$hpbrief_max_nl}@hpcolor{];$hpbrief_curr_nl} @hpcolor{食物[;$food}@hpdraw{$food;$maxfood}@hpcolor{];$food} @hpcolor{饮水[;$water}@hpdraw{$water;$maxwater}@hpcolor{];$water} @hpcolor{负重[;$fuzhong}@fzdraw{$fuzhong;100}@hpcolor{];$fuzhong}<099>} {-3}};
+    };
 
-#function {hpdraw}
-{
-	#var tmp @eval{%1*10/%2};
-	#if {$tmp<0} {#var tmp 0};
-	#elseif {$tmp==0 & %1>0} {#var tmp 1};
-	#elseif {$tmp==10 & %1>%2} {#var tmp 11};
-	#elseif {$tmp>20} {#var tmp 20};
-	#switch {$tmp}
-	{
-		#case 0  {#var result {<099>          }};
-		#case 1  {#var result {<DAA> <099>         }};
-		#case 2  {#var result {<DBA>  <099>        }};
-		#case 3  {#var result {<DCA>   <099>       }};
-		#case 4  {#var result {<DDA>    <099>      }};
-		#case 5  {#var result {<CDA>     <099>     }};
-		#case 6  {#var result {<BDA>      <099>    }};
-		#case 7  {#var result {<ADA>       <099>   }};
-		#case 8  {#var result {<ADA>        <099>  }};
-		#case 9  {#var result {<ADA>         <099> }};
-		#case 10  {#var result {<ADA>          <099>}};
-		#case 11  {#var result {<AEE> <ADA>         <099>}};
-		#case 12  {#var result {<AEE>  <ADA>        <099>}};
-		#case 13 {#var result {<AEE>   <ADA>       <099>}};
-		#case 14 {#var result {<AEE>    <ADA>      <099>}};
-		#case 15 {#var result {<AEE>     <ADA>     <099>}};
-		#case 16 {#var result {<AEE>      <ADA>    <099>}};
-		#case 17 {#var result {<AEE>       <ADA>   <099>}};
-		#case 18 {#var result {<AEE>        <ADA>  <099>}};
-		#case 19 {#var result {<AEE>         <ADA> <099>}};
-		#case 20 {#var result {<AEE>          <099>}};
-	};
-};
+    #function {hpdraw}
+    {
+        #var tmp @eval{%1*10/%2};
+        #if {$tmp<0} {#var tmp 0};
+        #elseif {$tmp==0 & %1>0} {#var tmp 1};
+        #elseif {$tmp==10 & %1>%2} {#var tmp 11};
+        #elseif {$tmp>20} {#var tmp 20};
+        #switch {$tmp}
+        {
+            #case 0  {#var result {<099>          }};
+            #case 1  {#var result {<DAA> <099>         }};
+            #case 2  {#var result {<DBA>  <099>        }};
+            #case 3  {#var result {<DCA>   <099>       }};
+            #case 4  {#var result {<DDA>    <099>      }};
+            #case 5  {#var result {<CDA>     <099>     }};
+            #case 6  {#var result {<BDA>      <099>    }};
+            #case 7  {#var result {<ADA>       <099>   }};
+            #case 8  {#var result {<ADA>        <099>  }};
+            #case 9  {#var result {<ADA>         <099> }};
+            #case 10  {#var result {<ADA>          <099>}};
+            #case 11  {#var result {<AEE> <ADA>         <099>}};
+            #case 12  {#var result {<AEE>  <ADA>        <099>}};
+            #case 13 {#var result {<AEE>   <ADA>       <099>}};
+            #case 14 {#var result {<AEE>    <ADA>      <099>}};
+            #case 15 {#var result {<AEE>     <ADA>     <099>}};
+            #case 16 {#var result {<AEE>      <ADA>    <099>}};
+            #case 17 {#var result {<AEE>       <ADA>   <099>}};
+            #case 18 {#var result {<AEE>        <ADA>  <099>}};
+            #case 19 {#var result {<AEE>         <ADA> <099>}};
+            #case 20 {#var result {<AEE>          <099>}};
+        };
+    };
 
-#function {fzdraw}
-{
-	#var tmp @eval{%1*10/%2};
-	#if {$tmp<0} {#var tmp 0};
-	#elseif {$tmp==0 & %1>0} {#var tmp 1};
-	#elseif {$tmp>10} {#var tmp 10};
-	#switch {$tmp}
-	{
-		#case 0  {#var result {<099>          }};
-		#case 1  {#var result {<ADA> <099>         }};
-		#case 2  {#var result {<ADA>  <099>        }};
-		#case 3  {#var result {<ADA>   <099>       }};
-		#case 4  {#var result {<ADA>    <099>      }};
-		#case 5  {#var result {<BDA>     <099>     }};
-		#case 6  {#var result {<CDA>      <099>    }};
-		#case 7  {#var result {<DDA>       <099>   }};
-		#case 8  {#var result {<DCA>        <099>  }};
-		#case 9  {#var result {<DBA>         <099> }};
-		#case 10  {#var result {<DAA>          <099>}};
-	};
-};
-#function {hpcolor}{
-	#var result <099>%1;
-};
-#class status close
+    #function {fzdraw}
+    {
+        #var tmp @eval{%1*10/%2};
+        #if {$tmp<0} {#var tmp 0};
+        #elseif {$tmp==0 & %1>0} {#var tmp 1};
+        #elseif {$tmp>10} {#var tmp 10};
+        #switch {$tmp}
+        {
+            #case 0  {#var result {<099>          }};
+            #case 1  {#var result {<ADA> <099>         }};
+            #case 2  {#var result {<ADA>  <099>        }};
+            #case 3  {#var result {<ADA>   <099>       }};
+            #case 4  {#var result {<ADA>    <099>      }};
+            #case 5  {#var result {<BDA>     <099>     }};
+            #case 6  {#var result {<CDA>      <099>    }};
+            #case 7  {#var result {<DDA>       <099>   }};
+            #case 8  {#var result {<DCA>        <099>  }};
+            #case 9  {#var result {<DBA>         <099> }};
+            #case 10  {#var result {<DAA>          <099>}};
+        };
+    };
+    #function {hpcolor}{
+        #var result <099>%1;
+    };
+    #class status close

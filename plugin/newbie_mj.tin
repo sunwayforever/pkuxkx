@@ -1,225 +1,225 @@
 #class newbie_mj open
 #alias {liaowang.start} {
-	#class liaowang.inner open;
-	#action {ÑîåĞËµµÀ£º¡¸ÁËÍûËşÊÇÎÒ½ÌÒ»´¦¹Ø¼üËùÔÚ£¬ÄãÈ¥ÁËÍû(liaowang)É½ÏÂ£¬¹Û²ìµĞ×Ù°É¡£¡¹} {
-		#delay {3} {
-			sd;sd;sd;sd;w;
-			liaowang;
-		};
-	};
+    #class liaowang.inner open;
+    #action {ÑîåĞËµµÀ£º¡¸ÁËÍûËşÊÇÎÒ½ÌÒ»´¦¹Ø¼üËùÔÚ£¬ÄãÈ¥ÁËÍû(liaowang)É½ÏÂ£¬¹Û²ìµĞ×Ù°É¡£¡¹} {
+        #delay {3} {
+            sd;sd;sd;sd;w;
+            liaowang;
+        };
+    };
 
-	#action {Äã¸Õ×öÍêÈÎÎñ²»¾Ã£¬ÏÈÈ¥ĞİÏ¢Ò»»á°É¡£} {
-		#delay {5} {
-			ask yang about job;			
-		};
-	};
-	
-	#action {ÄãÕ¾¸ÚÍê±Ï£¬»ØÑî×óÊ¹´¦¸´Ãü°É¡£} {
-		#delay {3} {
-			e;nu;nu;nu;nu;
-			ask yang about fuming;
-		};
-	};
+    #action {Äã¸Õ×öÍêÈÎÎñ²»¾Ã£¬ÏÈÈ¥ĞİÏ¢Ò»»á°É¡£} {
+        #delay {5} {
+            ask yang about job;
+        };
+    };
 
-	#action {ÑîåĞ¶ÔÄãµÀ£ºĞÒ¿àÁË¡£} {
-		#delay {3} {
-			ask yang about job;	
-		};
-	};
-	#class liaowang.inner close;
-	ask yang about job;
+    #action {ÄãÕ¾¸ÚÍê±Ï£¬»ØÑî×óÊ¹´¦¸´Ãü°É¡£} {
+        #delay {3} {
+            e;nu;nu;nu;nu;
+            ask yang about fuming;
+        };
+    };
+
+    #action {ÑîåĞ¶ÔÄãµÀ£ºĞÒ¿àÁË¡£} {
+        #delay {3} {
+            ask yang about job;
+        };
+    };
+    #class liaowang.inner close;
+    ask yang about job;
 };
 
 #alias {liaowang.stop} {
-	#class liaowang.inner kill;	
+    #class liaowang.inner kill;
 };
 
 #action {ÄãÏòÑîåĞ´òÌıÓĞ¹Ø¡ºjob¡»µÄÏûÏ¢¡£} {
-	load_map;
-	#map goto 10;
+    load_map;
+    #map goto 10;
 };
 
 #action {Íê³ÉÈÎÎñºó£¬Äã±»½±ÀøÁË£º} {
-	#delay {3} {
-		map.go ¹ã³¡;
-		on_arrived {
-			ask yang about job;
-		};
-	};
+    #delay {3} {
+        map.go ¹ã³¡;
+        on_arrived {
+            ask yang about job;
+        };
+    };
 };
 
 #action {Äã¸Õ×öÍêÈÎÎñ²»¾Ã£¬ÏÈÈ¥ĞİÏ¢Ò»»á°É¡£} {
-	#delay {10} {
-		ask yang about job;		
-	};
+    #delay {10} {
+        ask yang about job;
+    };
 };
 #nop Ó¥Íõ
 #action {ÑîåĞËµµÀ£º¡¸ÏÖÔÚ°×Ã¼Ó¥ÍõÕıÔÚÕÒÈË°ïÃ¦£¬ÄãÈ¥¿´¿´°É¡£¡¹} {
-	#delay {3} {
-		map.go Ó¥Íõ¹¬;
-		on_arrived {
-			ask yin about job;
-		};
-	};
+    #delay {3} {
+        map.go Ó¥Íõ¹¬;
+        on_arrived {
+            ask yin about job;
+        };
+    };
 };
 
 #action {~ÄãÈ¥Á·¹¦·¿ÕÒ(zhao)Ò»¼ş[1;%*m¸Ö%*[2;37;0mÈ¥Îä³¡} {
-	#var mo_color %1;
-	#var mo_type %2;
-	#if {"${mo_type}" == "µ¶"} {
-		#var mo_type_en blade;
-	};
-	#else {
-		#var mo_type_en sword;		
-	};
-	map.go Á·¹¦·¿;
-	on_arrived {
-		zhao;
-	};
+    #var mo_color %1;
+    #var mo_type %2;
+    #if {"${mo_type}" == "µ¶"} {
+        #var mo_type_en blade;
+    };
+    #else {
+        #var mo_type_en sword;
+    };
+    map.go Á·¹¦·¿;
+    on_arrived {
+        zhao;
+    };
 };
 
 #action {~ÄãÕÒµ½Ò»±ú[1;%*m¸Ö%*[2;37;0m¡£} {
-	#if {"%2" == "µ¶"} {
-		#var tmp_type_en blade;
-	};
-	#else {
-		#var tmp_type_en sword;		
-	};
-	
-	#if {${mo_color} == %1 && "${mo_type}" == "%2"} {
-		map.go Îä³¡;
-		on_arrived {
-			mo ${mo_type_en};
-			map.go Ó¥Íõ¹¬;
-			on_arrived {
-				give ${mo_type_en} to yin;				
-			};
-		};
-	};
-	#else {
-		drop ${tmp_type_en};
-		zhao;
-	};
+    #if {"%2" == "µ¶"} {
+        #var tmp_type_en blade;
+    };
+    #else {
+        #var tmp_type_en sword;
+    };
+
+    #if {${mo_color} == %1 && "${mo_type}" == "%2"} {
+        map.go Îä³¡;
+        on_arrived {
+            mo ${mo_type_en};
+            map.go Ó¥Íõ¹¬;
+            on_arrived {
+                give ${mo_type_en} to yin;
+            };
+        };
+    };
+    #else {
+        drop ${tmp_type_en};
+        zhao;
+    };
 };
 
 #nop Ê¨Íõ
 #action {ÑîåĞËµµÀ£º¡¸ÏÖÔÚ½ğÃ«Ê¨ÍõÕıÔÚÕÒÈË°ïÃ¦£¬ÄãÈ¥¿´¿´°É¡£¡¹} {
-	#delay {3} {
-		map.go ×ßÀÈ;
-		on_arrived {
-			ask xie about job;			
-		};
-	};
+    #delay {3} {
+        map.go ×ßÀÈ;
+        on_arrived {
+            ask xie about job;
+        };
+    };
 };
 
 #action {Ê¥»ğÌ³¿ÉÊÇÎÒ½ÌÒ»¸ö´óÃØÃÜ£¬ÔÚÃ÷½Ì´óµîenter¾Í½øÈ¥ÁË¡£} {
-	#var jian_count 0;
-	#delay {3} {
-		map.go ºóÉ½Ğ¡Â·;
-		#ticker {jian} {
-			jian;
-		} {3};
-	};
+    #var jian_count 0;
+    #delay {3} {
+        map.go ºóÉ½Ğ¡Â·;
+        #ticker {jian} {
+            jian;
+        } {3};
+    };
 };
 
 #action {Äã¼ğÆğÁËÒ»¶Î¸É²ñ£¡} {
-	#math jian_count ${jian_count}+1;
-	#if {${jian_count} > 10} {
-		#unticker {jian};
-		#delay {3} {
-			map.go Ê¥»ğÌ³;
-			on_arrived {
-				kanshou;
-			};
-		};
-	};
+    #math jian_count ${jian_count}+1;
+    #if {${jian_count} > 10} {
+        #unticker {jian};
+        #delay {3} {
+            map.go Ê¥»ğÌ³;
+            on_arrived {
+                kanshou;
+            };
+        };
+    };
 };
 
 #action {{¿ìµãÉÈ·ç°É|ÂíÉÏÉÈÑ½|ºÜ±ØÒªÓÃÉÈ×Ó|¿ìÉÈ·ç°¡|ÉÈÉÈÉÈ|Ò²Ğí¸Ï½ôÉÈ·ç|ÉÈ£¡|´óÔ¼µ«ÊÇ·ç²»¹»´óÀ²|ºÃÏñ¸Ï½ôÉÈ·ç|´óÔ¼¸Ï½ôÉÈ·ç|Ò²Ğíµ«ÊÇ·ç²»¹»´óÀ²| ÓĞ±ØÒªÓÃÉÈ×Ó| ¸Ï½ôÉÈ·ç|´óÔ¼ÓĞ±ØÒªÓÃÉÈ×Ó|Ó¦¸ÃÓĞ±ØÒªÓÃÉÈ×Ó|Ó¦¸Ãµ«ÊÇ·ç²»¹»´óÀ²|ËÆºõ¸Ï½ôÉÈ·ç|ËÆºõÓĞ±ØÒªÓÃÉÈ×Ó| µ«ÊÇ·ç²»¹»´óÀ²|ËÆºõµ«ÊÇ·ç²»¹»´óÀ²|ºÃÏñÓĞ±ØÒªÓÃÉÈ×Ó|Ó¦¸Ã¸Ï½ôÉÈ·ç|¿ÉÄÜ¸Ï½ôÉÈ·ç|¿ÉÄÜµ«ÊÇ·ç²»¹»´óÀ²|¿ÉÄÜÓĞ±ØÒªÓÃÉÈ×Ó|ºÃÏñµ«ÊÇ·ç²»¹»´óÀ²|Ò²ĞíÓĞ±ØÒªÓÃÉÈ×Ó}} {
-	shanfeng;
+    shanfeng;
 };
 
 #action {{ÓĞ¶àÉÙ²ñ»ğ¶¼¼Ó½øÈ¥°É|²ñ»ğ¿ìÉÕ¹âÁË|ºÃÏñ¿ì¼Óµã²ñ»ğ°É|Ì«ĞèÒª¼Ó²ñ»ğÁË|¿ì¼Óµã²ñ»ğ°É|´óÔ¼ÂíÉÏ¼Ó²ñ»ğ|Ê¥»ğ¾ÍÒªÏ¨ÃğÁË|¿ÉÄÜÂíÉÏ¼Ó²ñ»ğ|Ò²ĞíÂíÉÏ¼Ó²ñ»ğ|  ºÜĞèÒª¼Ó²ñ»ğ|´óÔ¼ºÜĞèÒª¼Ó²ñ»ğ| ÂíÉÏ¼Ó²ñ»ğ|ËÆºõÂíÉÏ¼Ó²ñ»ğ|ËÆºõºÜĞèÒª¼Ó²ñ»ğ|£¬Ó¦¸ÃÂíÉÏ¼Ó²ñ»ğ| ÓĞĞèÒª¼Ó²ñ»ğ|ºÃÏñÓĞĞèÒª¼Ó²ñ»ğ|Ó¦¸ÃÓĞĞèÒª¼Ó²ñ»ğ|´óÔ¼ÓĞĞèÒª¼Ó²ñ»ğ|ºÃÏñºÜĞèÒª¼Ó²ñ»ğ|Ò²ĞíÓĞĞèÒª¼Ó²ñ»ğ|Ò²ĞíºÜĞèÒª¼Ó²ñ»ğ|¿ÉÄÜºÜĞèÒª¼Ó²ñ»ğ|ËÆºõÓĞĞèÒª¼Ó²ñ»ğ|Ó¦¸ÃºÜĞèÒª¼Ó²ñ»ğ|¿ÉÄÜÓĞĞèÒª¼Ó²ñ»ğ| ºÜĞèÒª¼Ó²ñ»ğ|ºÃÏñÂíÉÏ¼Ó²ñ»ğ}} {
-	jiachai;
+    jiachai;
 };
 
 #action {ÄãÒÑ¾­¿´ÊØÁË×ã¹»¾ÃÊ±¼äµÄÊ¥»ğ£¬¿ÉÒÔ»áÊ¨ÍõÄÇÀï¸´ÃüÁË¡£} {
-	#delay {3} {
-		map.go ×ßÀÈ;
-		on_arrived {
-			ask xie about fuming;
-		};
-	};
+    #delay {3} {
+        map.go ×ßÀÈ;
+        on_arrived {
+            ask xie about fuming;
+        };
+    };
 };
 #nop ÁúÍõ
 #action {ÑîåĞËµµÀ£º¡¸ÏÖÔÚ×ÏÉ¼ÁúÍõÕıÔÚÕÒÈË°ïÃ¦£¬ÄãÈ¥¿´¿´°É¡£¡¹} {
-	#delay {3} {
-		map.go ±ÌË®Ì¶ÅÏ;
-		on_arrived {
-			drop guan;
-			ask dai about job;
-		};
-	};
+    #delay {3} {
+        map.go ±ÌË®Ì¶ÅÏ;
+        on_arrived {
+            drop guan;
+            ask dai about job;
+        };
+    };
 };
 
 #action {÷ìç²Ë¿¸øÄãÒ»¸öÍß¹Ş} {
-	fill guan;
+    fill guan;
 };
 
 #action {Äã½«Íß¹Ş×°ÂúÇåË®} {
-	#delay {5} {
-		map.go ºó»¨Ô°;
-		on_arrived {
-			dao gang;
-		};
-	};
+    #delay {5} {
+        map.go ºó»¨Ô°;
+        on_arrived {
+            dao gang;
+        };
+    };
 }
 
 #action {Ë®¸×»¹ÓĞºÜ¶à¿ÕÓà} {
-	#delay {5} {
-		map.go ±ÌË®Ì¶ÅÏ;
-		on_arrived {
-			fill guan;			
-		};
-	};
+    #delay {5} {
+        map.go ±ÌË®Ì¶ÅÏ;
+        on_arrived {
+            fill guan;
+        };
+    };
 };
 
 #action {Äã¿ÉÒÔ»ØÈ¥ºÍÁúÍõ¸´ÃüÁË¡£} {
-	#delay {5} {
-		map.go ±ÌË®Ì¶ÅÏ;
-		on_arrived {
-			ask dai about fuming;
-		};
-	};
+    #delay {5} {
+        map.go ±ÌË®Ì¶ÅÏ;
+        on_arrived {
+            ask dai about fuming;
+        };
+    };
 };
 
 #nop òğÍõ
 #action {ÑîåĞËµµÀ£º¡¸ÏÖÔÚÇàÒíòğÍõÕıÔÚÕÒÈË°ïÃ¦£¬ÄãÈ¥¿´¿´°É¡£¡¹} {
-	#delay {3} {
-		map.go ×ßÀÈ;
-		on_arrived {
-			ask wei about job;
-		};
-	};
+    #delay {3} {
+        map.go ×ßÀÈ;
+        on_arrived {
+            ask wei about job;
+        };
+    };
 };
 
 #action {ÎÒºÃ¾ÃÃ»ÓĞÒûÈËÑªÁË£¬ÌıËµÁù´óÅÉÅÉÁËÒ»¸ö½Ğ%*µÄ¼éÏ¸À´µ½Ã÷½Ì¸½½ü£¬ÄãÈ¥°ÑËû¾¾³öÀ´°É¡£} {
-	#var jianxi_name %1;
-	show_to_info ¼éÏ¸: ${jianxi_name};
-	map_goto_start;
-	on_arrived {
-		bl.start ${jianxi_name};
-	};
+    #var jianxi_name %1;
+    show_to_info ¼éÏ¸: ${jianxi_name};
+    map_goto_start;
+    on_arrived {
+        bl.start ${jianxi_name};
+    };
 };
 
 #action {ÕÒµ½Ä¿±ê} {
-	kill @py{${jianxi_name}};
+    kill @py{${jianxi_name}};
 };
 
 #action {¿ÉÒÔ»ØòğÍõÄÇÀï¸´ÃüÁË¡£} {
-	map.go ×ßÀÈ;
-	on_arrived {
-		ask wei about fuming;
-	};
+    map.go ×ßÀÈ;
+    on_arrived {
+        ask wei about fuming;
+    };
 };
 #class newbie_mj close

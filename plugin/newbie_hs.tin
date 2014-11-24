@@ -1,118 +1,118 @@
 #class newbie_hs open
 #alias {xunshan.start} {
-	#class xunshan.inner open;
-	#action {岳灵珊拿出一张地图} {
-		n;
-	};
-	#action {你在练武场巡弋} {
-		n;
-	};
+    #class xunshan.inner open;
+    #action {岳灵珊拿出一张地图} {
+        n;
+    };
+    #action {你在练武场巡弋} {
+        n;
+    };
 
-	#action {你在玉女峰巡弋} {
-		e;
-	};
-	#action {你在玉女祠巡弋} {
-		sd;
-	};
+    #action {你在玉女峰巡弋} {
+        e;
+    };
+    #action {你在玉女祠巡弋} {
+        sd;
+    };
 
-	#action {你在后山小路巡弋} {
-		sd;
-	};
+    #action {你在后山小路巡弋} {
+        sd;
+    };
 
-	#action {你在小院巡弋} {
-		nu;nu;nu;w;nd;
-	};
+    #action {你在小院巡弋} {
+        nu;nu;nu;w;nd;
+    };
 
-	#action {你在镇岳宫巡弋} {
-		eu;
-		#action {不能移动} {
-			#unaction {不能移动};
-			#delay {d} {eu} {5};
-		};
-	};
+    #action {你在镇岳宫巡弋} {
+        eu;
+        #action {不能移动} {
+            #unaction {不能移动};
+            #delay {d} {eu} {5};
+        };
+    };
 
-	#action {你在朝阳峰巡弋} {
-		wd;nu;
-		#action {不能移动} {
-			#unaction {不能移动};
-			#delay {d} {nu} {5};
-		};
-	};
+    #action {你在朝阳峰巡弋} {
+        wd;nu;
+        #action {不能移动} {
+            #unaction {不能移动};
+            #delay {d} {nu} {5};
+        };
+    };
 
-	#action {你在苍龙岭巡弋} {
-		wu;
-	};
+    #action {你在苍龙岭巡弋} {
+        wu;
+    };
 
-	#action {你在舍身崖巡弋} {
-		ed;nd;
-	};
+    #action {你在舍身崖巡弋} {
+        ed;nd;
+    };
 
-	#action {你在猢狲愁巡弋} {
-		nd;
-	};
+    #action {你在猢狲愁巡弋} {
+        nd;
+    };
 
-	#action {你在老君沟巡弋} {
-		nu;
-	};
+    #action {你在老君沟巡弋} {
+        nu;
+    };
 
-	#action {你在华山别院巡弋} {
-		sd;wd;
-	};
+    #action {你在华山别院巡弋} {
+        sd;wd;
+    };
 
-	#action {你在百尺峡巡弋} {
-		nd;
-	};
+    #action {你在百尺峡巡弋} {
+        nd;
+    };
 
-	#action {你在千尺幢巡弋} {
-		wd;
-	};
+    #action {你在千尺幢巡弋} {
+        wd;
+    };
 
-	#action {你在青柯坪巡弋} {
-		nd;
-	};
+    #action {你在青柯坪巡弋} {
+        nd;
+    };
 
-	#action {你在莎萝坪巡弋} {
-		nw;
-	};
+    #action {你在莎萝坪巡弋} {
+        nw;
+    };
 
-	#action {你在华山脚下巡弋} {
-		n;
-	};
+    #action {你在华山脚下巡弋} {
+        n;
+    };
 
-	#action {你在玉泉院巡弋} {
-		s;se;su;eu;su;eu;su;su;sd;
-		su;s;s; xunshan.d;
-		#action {不能移动} {
-			#unaction {不能移动};
-			#delay {d} {su;s;s; xunshan.d} {5};
-		};
-	};
+    #action {你在玉泉院巡弋} {
+        s;se;su;eu;su;eu;su;su;sd;
+        su;s;s; xunshan.d;
+        #action {不能移动} {
+            #unaction {不能移动};
+            #delay {d} {su;s;s; xunshan.d} {5};
+        };
+    };
 
-	#alias {xunshan.d} {
-		give ling pai to yue;
-	};
+    #alias {xunshan.d} {
+        give ling pai to yue;
+    };
 
-	#action {这么快就回来了} {
-		#delay {5} {
-			xunshan.d;
-		};
-	};
+    #action {这么快就回来了} {
+        #delay {5} {
+            xunshan.d;
+        };
+    };
 
-	#action {你给岳灵珊一块令牌} {
-		#delay {5} {
-			ask yue about job;
-		};
-	};
+    #action {你给岳灵珊一块令牌} {
+        #delay {5} {
+            ask yue about job;
+        };
+    };
 
-	#action {你刚刚做过任务} {
-		#delay {5} {
-			ask yue about job;
-		};
-	};
-	#class xunshan.inner close;
-	ask yue about job;
+    #action {你刚刚做过任务} {
+        #delay {5} {
+            ask yue about job;
+        };
+    };
+    #class xunshan.inner close;
+    ask yue about job;
 };
 #alias {xunshan.stop} {
-	#class xunshan.inner kill;
+    #class xunshan.inner kill;
 };
 #class newbie_hs close

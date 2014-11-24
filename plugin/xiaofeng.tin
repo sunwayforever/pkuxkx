@@ -5,7 +5,7 @@
     #var quest NIL;
     #var xf.type -1;
     #var xf.requested 0;
-    #class xiaofeng.inner kill; 
+    #class xiaofeng.inner kill;
 };
 
 #alias {xf.q} {
@@ -94,7 +94,7 @@
         unwi;
         #3 halt;
     };
-    
+
     #alias {xf.slow_down_2} {
         #if {${xf.type} == 3 || ${xf.type} == 4} {
             #showme 快死了, 停手~;
@@ -120,10 +120,10 @@
         };
     };
 
-     #action {你想停下来} {
-         #10 halt;
-     };
-     
+    #action {你想停下来} {
+        #10 halt;
+    };
+
     #action {尚可教化} {
         #if {${xf.requested} == 1} {
             #var xf.type 3;
@@ -180,9 +180,9 @@
     #action {你捡起一颗%*的首级} {
         show_to_quest 萧峰: 已杀死;
     };
-    
+
     #action {将血淋淋的首级提在手中} {
-        show_to_quest 萧峰: 已杀死;        
+        show_to_quest 萧峰: 已杀死;
     };
 
     #action {血淋淋的首级咕噜噜的滚落在地} {
@@ -190,7 +190,7 @@
             get shouji;
         };
     };
-    
+
     #action {显是蒙面杀手姓名} {
         #if {${xf.type} == 1} {
             on_unbusy {
@@ -205,7 +205,7 @@
         #undelay {xf_delay};
         raw;
         #3 halt;
-        
+
         #if {${xf.type} == 3} {
             show_to_quest 萧峰: 已经劝服;
         };

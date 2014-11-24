@@ -2,232 +2,232 @@
 
 #alias {lw_action} {#cr;};
 #alias {lw.start} {
-	#var lw_paused 0;
-	#list skills create  {force;cuff;strike;whip;staff;sword;parry;claw;blade;spear;dodge;hand;finger;dagger;throwing};
-	#list skills size skill_size;
-	#list level_a create {};
-	#list level_b create {};
-	#list level_a clear;
-	#list level_b clear;
-	#loop 1 $skill_size tmp {#list level_b add 0;#list level_a add 0};
-	#var skill_index 1;
-	#list skills get $skill_index skill;
+    #var lw_paused 0;
+    #list skills create  {force;cuff;strike;whip;staff;sword;parry;claw;blade;spear;dodge;hand;finger;dagger;throwing};
+    #list skills size skill_size;
+    #list level_a create {};
+    #list level_b create {};
+    #list level_a clear;
+    #list level_b clear;
+    #loop 1 $skill_size tmp {#list level_b add 0;#list level_a add 0};
+    #var skill_index 1;
+    #list skills get $skill_index skill;
 
-	#class lingwu.inner open;
-	#action {(%*)%s： %S[互备]%s有效等级：} {
-		#var basic_skill %%1;
-		#var special_skill %%3;
-		#list special_skills find ${special_skill} tmp;
-		#if {${tmp} != 0} {
-			#list special_skills_level get ${tmp} tmp_level;
-			record_level_b ${basic_skill} ${tmp_level};
-		};
-	} {1};
+    #class lingwu.inner open;
+    #action {(%*)%s： %S[互备]%s有效等级：} {
+        #var basic_skill %%1;
+        #var special_skill %%3;
+        #list special_skills find ${special_skill} tmp;
+        #if {${tmp} != 0} {
+            #list special_skills_level get ${tmp} tmp_level;
+            record_level_b ${basic_skill} ${tmp_level};
+        };
+    } {1};
 
-	#action {(%*)%s： %S%s有效等级：} {
-		#var basic_skill %%1;
-		#var special_skill %%3;
-		#list special_skills find ${special_skill} tmp;
-		#if {${tmp} != 0} {
-			#list special_skills_level get ${tmp} tmp_level;
-			record_level_b ${basic_skill} ${tmp_level};
-		};
-	} {2};
+    #action {(%*)%s： %S%s有效等级：} {
+        #var basic_skill %%1;
+        #var special_skill %%3;
+        #list special_skills find ${special_skill} tmp;
+        #if {${tmp} != 0} {
+            #list special_skills_level get ${tmp} tmp_level;
+            record_level_b ${basic_skill} ${tmp_level};
+        };
+    } {2};
 
-	#action {^│  %S (%S)%s-%*%d/%s%d│$} {
-		#var basic_skill %%2;
-		#var basic_skill_level %%5;
-		record_level_a  ${basic_skill} ${basic_skill_level};
-	};
+    #action {^│  %S (%S)%s-%*%d/%s%d│$} {
+        #var basic_skill %%2;
+        #var basic_skill_level %%5;
+        record_level_a  ${basic_skill} ${basic_skill_level};
+    };
 
-	#action {□%S%s(%*)%s-%*%d/%s%d│$} {
-		#var special_skill %%1;
-		#var special_skill_level %%6;
-		#list special_skills add ${special_skill};
-		#list special_skills_level add ${special_skill_level};
-	};
+    #action {□%S%s(%*)%s-%*%d/%s%d│$} {
+        #var special_skill %%1;
+        #var special_skill_level %%6;
+        #list special_skills add ${special_skill};
+        #list special_skills_level add ${special_skill_level};
+    };
 
-	#action {~\e[1;31m%d%s%d\e[2;37;0m} {
-		#var max_level %%1;
-	};
+    #action {~\e[1;31m%d%s%d\e[2;37;0m} {
+        #var max_level %%1;
+    };
 
-	#alias {do_lingwu} {
-		lingwu $skill 100;
-	};
+    #alias {do_lingwu} {
+        lingwu $skill 100;
+    };
 
-	#alias {do_lian} {
-		lian $skill 50;
-	};
+    #alias {do_lian} {
+        lian $skill 50;
+    };
 
-	#alias {get_level_a} {
-		#var skill_level_a 0;
-		#list skills find %%1 tmp_index;
-		#if {$tmp_index != 0} {
-			#list level_a get $tmp_index tmp;
-			#var skill_level_a $tmp;
-		};
-	};
+    #alias {get_level_a} {
+        #var skill_level_a 0;
+        #list skills find %%1 tmp_index;
+        #if {$tmp_index != 0} {
+            #list level_a get $tmp_index tmp;
+            #var skill_level_a $tmp;
+        };
+    };
 
-	#alias {get_level_b} {
-		#var skill_level_b 0;
-		#list skills find %%1 tmp_index;
-		#if {$tmp_index != 0} {
-			#list level_b get $tmp_index tmp;
-			#var skill_level_b $tmp;
-		};
-	};
+    #alias {get_level_b} {
+        #var skill_level_b 0;
+        #list skills find %%1 tmp_index;
+        #if {$tmp_index != 0} {
+            #list level_b get $tmp_index tmp;
+            #var skill_level_b $tmp;
+        };
+    };
 
-	#alias {record_level_a} {
-		#list skills find %%1 tmp_index;
-		#if {$tmp_index != 0} {
-			#list level_a set $tmp_index %%2;
-		};
-	};
+    #alias {record_level_a} {
+        #list skills find %%1 tmp_index;
+        #if {$tmp_index != 0} {
+            #list level_a set $tmp_index %%2;
+        };
+    };
 
-	#alias {record_level_b} {
-		#list skills find %%1 tmp_index;
-		#if {$tmp_index != 0} {
-			#list level_b set $tmp_index %%2;
-		};
-	};
+    #alias {record_level_b} {
+        #list skills find %%1 tmp_index;
+        #if {$tmp_index != 0} {
+            #list level_b set $tmp_index %%2;
+        };
+    };
 
-	#ticker {lw_ticker} {
-		#if {${lw_paused} == 0} {
-			#if {${nl_percent} < 10} {
-				#var lw_paused 1;
-				map_goto_rest;
-				on_wakeup {
-					chifan;
-					map_goto_lingwu;
-					on_arrived {
-						#var lw_paused 0;						
-					};
-				};
-				on_arrived {
-					sleep;
-				};
-			};
-			#else {
-				lw_action;
-			};
-		};
-	} {1};
-	
-	#action {必须空手} {
-		unwi;
-	};
+    #ticker {lw_ticker} {
+        #if {${lw_paused} == 0} {
+            #if {${nl_percent} < 10} {
+                #var lw_paused 1;
+                map_goto_rest;
+                on_wakeup {
+                    chifan;
+                    map_goto_lingwu;
+                    on_arrived {
+                        #var lw_paused 0;
+                    };
+                };
+                on_arrived {
+                    sleep;
+                };
+            };
+            #else {
+                lw_action;
+            };
+        };
+    } {1};
 
-	#action {你使用的武器不对} {
-		#showme {火候太浅};
-	};
+    #action {必须空手} {
+        unwi;
+    };
 
-	#action {乾坤大挪移心法只能用学习} {
-		#showme {火候太浅};		
-	};
-	
-	#action {道德小于零才能练这种阴毒功夫} {
-		#showme {火候太浅};	
-	};
-	
-	#action {你的基本功夫比你的高级功夫还高} {
-		#if {"${skill}" == "force"} {
-			#math skill_index ${skill_index}+1;
-		};
-		lw.restart;
-	};
+    #action {你使用的武器不对} {
+        #showme {火候太浅};
+    };
 
-	#action {你需要提高基本功} {
-		lw.restart;
-	};
+    #action {乾坤大挪移心法只能用学习} {
+        #showme {火候太浅};
+    };
 
-	#action {火候太浅} {
-		#math skill_index ${skill_index}+1;
- 		#if {$skill_index <= $skill_size} {
-			lw.restart;
-		};
-		#else {
-			#showme lingwu done;
-			lw.stop;
-		};
-	};
+    #action {道德小于零才能练这种阴毒功夫} {
+        #showme {火候太浅};
+    };
 
-	#action {你的「%*」进步了！} {
-		lw.restart;
-	};
+    #action {你的基本功夫比你的高级功夫还高} {
+        #if {"${skill}" == "force"} {
+            #math skill_index ${skill_index}+1;
+        };
+        lw.restart;
+    };
 
-	#action {你不能练} {
-		#showme {火候太浅};
-	};
+    #action {你需要提高基本功} {
+        lw.restart;
+    };
 
-	#action {特殊内功无法练习} {
-		#showme {火候太浅};
-	};
+    #action {火候太浅} {
+        #math skill_index ${skill_index}+1;
+        #if {$skill_index <= $skill_size} {
+            lw.restart;
+        };
+        #else {
+            #showme lingwu done;
+            lw.stop;
+        };
+    };
 
-	#action {你现在只能在岳王墓中观看墙壁才能继续提高岳家枪法} {
-		#showme {火候太浅};
-	};
+    #action {你的「%*」进步了！} {
+        lw.restart;
+    };
 
-	#action {你要装备 %* 类武器才能练习} {
-		#showme {火候太浅};	
-	};
+    #action {你不能练} {
+        #showme {火候太浅};
+    };
 
-	#action {你必须先找一杆枪才能练此枪法} {
-		#showme {火候太浅};
-	};
+    #action {特殊内功无法练习} {
+        #showme {火候太浅};
+    };
 
-	#action {你还没学过这项技能吧} {
-		#showme {火候太浅};
-	};
+    #action {你现在只能在岳王墓中观看墙壁才能继续提高岳家枪法} {
+        #showme {火候太浅};
+    };
 
-	#class lingwu.inner close;
-	gt ${char_menpai_position};
-	on_there {
-		show_to_quest 领悟;
-		load_map;
-		map_goto_lingwu;
-		on_arrived {
-			lw.restart;
-		};
-	};
+    #action {你要装备 %* 类武器才能练习} {
+        #showme {火候太浅};
+    };
+
+    #action {你必须先找一杆枪才能练此枪法} {
+        #showme {火候太浅};
+    };
+
+    #action {你还没学过这项技能吧} {
+        #showme {火候太浅};
+    };
+
+    #class lingwu.inner close;
+    gt ${char_menpai_position};
+    on_there {
+        show_to_quest 领悟;
+        load_map;
+        map_goto_lingwu;
+        on_arrived {
+            lw.restart;
+        };
+    };
 };
 
 #alias {lw.stop} {
-	#class lingwu.inner kill;
-	show_to_quest 领悟结束;
-	map_goto_start;
+    #class lingwu.inner kill;
+    show_to_quest 领悟结束;
+    map_goto_start;
 };
 
 #alias {lw.restart} {
-	#var lw_paused 1;
-	#list special_skills clear;
-	#list special_skills_level clear;
-	exp;
+    #var lw_paused 1;
+    #list special_skills clear;
+    #list special_skills_level clear;
+    exp;
     #send {sk};
-	#delay {3} {#send {jifa}};
+    #delay {3} {#send {jifa}};
     #list skills get $skill_index skill;
     #delay {lw.restart} {
-       	get_level_a $skill;
-	    get_level_b $skill;
-		#if {${skill_level_a == 0} || ${skill_level_b} == 0} {
-			#showme {火候太浅};
-			#return;
-		};
-	    show_to_quest 领悟 $skill: $skill_level_a / $skill_level_b;
-	    #if {$skill_level_a >= $max_level && $skill_level_b >= $max_level} {
-	      	#showme {火候太浅};
-			#return;
-	    };
+        get_level_a $skill;
+        get_level_b $skill;
+        #if {${skill_level_a == 0} || ${skill_level_b} == 0} {
+            #showme {火候太浅};
+            #return;
+        };
+        show_to_quest 领悟 $skill: $skill_level_a / $skill_level_b;
+        #if {$skill_level_a >= $max_level && $skill_level_b >= $max_level} {
+            #showme {火候太浅};
+            #return;
+        };
 
-		unwi;
-		wield ${skill};
+        unwi;
+        wield ${skill};
 
-       	#if {$skill_level_a <= $skill_level_b} {
-			#alias {lw_action} {do_lingwu};
-	    };
-	    #else {
-			#alias {lw_action} {do_lian};
-	    };
-		#var lw_paused 0;
+        #if {$skill_level_a <= $skill_level_b} {
+            #alias {lw_action} {do_lingwu};
+        };
+        #else {
+            #alias {lw_action} {do_lian};
+        };
+        #var lw_paused 0;
     } {5};
 };
 #class lingwu close

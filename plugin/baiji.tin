@@ -1,36 +1,36 @@
 #class baiji open
 #alias {bj.start} {
-	#class bj.inner open;
-	#action {你的精不够} {
-		yun regenerate;
-	};
-	#action {内力不够} {
-		#unticker {bj};
-		#delay {rest} {
-			eat_food;
-			dz.full {
-				#ticker {bj} {
-					baiji xiang;
-				} {0.2};		
-			};			
-		} {3};
-	};
-	#class bj.inner close;
-	gt qf;
-	on_there {
-		enter;
-		#ticker {bj} {
-			baiji xiang;
-		} {0.2};		
-	};
+    #class bj.inner open;
+    #action {你的精不够} {
+        yun regenerate;
+    };
+    #action {内力不够} {
+        #unticker {bj};
+        #delay {rest} {
+            eat_food;
+            dz.full {
+                #ticker {bj} {
+                    baiji xiang;
+                } {0.2};
+            };
+        } {3};
+    };
+    #class bj.inner close;
+    gt qf;
+    on_there {
+        enter;
+        #ticker {bj} {
+            baiji xiang;
+        } {0.2};
+    };
 };
 
 #alias {bj.stop} {
-	#class bj.inner kill;
-	#unticker {bj};
-	on_unbusy {
-		out;
-	};
+    #class bj.inner kill;
+    #unticker {bj};
+    on_unbusy {
+        out;
+    };
 };
 
 #class baiji close

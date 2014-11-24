@@ -3,103 +3,103 @@
 #var tn_total_count 0;
 
 #alias {tn.cancel} {
-	#unticker {tn};
-	#undelay {tn_delay};
+    #unticker {tn};
+    #undelay {tn_delay};
 };
 
 #alias {tn.full} {
-	#alias tmp_tn %1;
-	#ticker {tn} {
-		#if {${jl_percent} < 100} {
-			tuna 50;
-		};
-		#else {
-			#unticker {tn};
-			#delay {tn_delay} {
-				tmp_tn;
-				#showme tn.full;    
-     		} {3};
-		};
-	} {1};
+    #alias tmp_tn %1;
+    #ticker {tn} {
+        #if {${jl_percent} < 100} {
+            tuna 50;
+        };
+        #else {
+            #unticker {tn};
+            #delay {tn_delay} {
+                tmp_tn;
+                #showme tn.full;
+            } {3};
+        };
+    } {1};
 };
 
 #alias {tn.start} {
-	#send {jifa};
-	#delay {3} {
-		do_tuna;
-	};
+    #send {jifa};
+    #delay {3} {
+        do_tuna;
+    };
 
-	#class tn.inner open;
-	#action {你现在身体状况太差了，无法集中精神！} {
-		on_health {
-			tn.start;
-		};
-	};
-	#action {^│%s基本内功%s(force)%s-%*%d/%s%d│$} {
-		#var jiben_neigong %%5;
-		#math max_jingli ${youxiao_neigong} * 10 -1;
-		#if {${max_jingli} < ${hpbrief_max_jl}} {
-			tn.stop;
-			#showme tn done;
-			show_to_quest 精力到达瓶颈: ${hpbrief_max_jl} => ${max_jingli};
-			xmpp.notify 吐纳完毕;
-		};
-		#else {
-			show_to_quest 吐纳: ${hpbrief_max_jl} => ${max_jingli};			
-		};
-	};
-	#alias {do_tuna} {
-		#nop eat_food;
-		tuna ${dazuo_count};
-	};
-	
-	#ticker {restart_tn} {
-		eat_food;
-		do_tuna;
-	} {600};
-	
-	#action {你现在精不足} {
-		yun regenerate;
-		do_tuna;
-	};
-	
-	#action {你的内力不够} {
-		sleep;
-	};
-	
-	#action {你一觉醒来} {
-		do_tuna;
-	};
-	
-	#action {睡过一觉} {
-		#delay {sleep} {
-       		sleep;
-		} {10};
-	};
-	
-	#action {你吐纳完毕} {
-		do_tuna;
-	};
+    #class tn.inner open;
+    #action {你现在身体状况太差了，无法集中精神！} {
+        on_health {
+            tn.start;
+        };
+    };
+    #action {^│%s基本内功%s(force)%s-%*%d/%s%d│$} {
+        #var jiben_neigong %%5;
+        #math max_jingli ${youxiao_neigong} * 10 -1;
+        #if {${max_jingli} < ${hpbrief_max_jl}} {
+            tn.stop;
+            #showme tn done;
+            show_to_quest 精力到达瓶颈: ${hpbrief_max_jl} => ${max_jingli};
+            xmpp.notify 吐纳完毕;
+        };
+        #else {
+            show_to_quest 吐纳: ${hpbrief_max_jl} => ${max_jingli};
+        };
+    };
+    #alias {do_tuna} {
+        #nop eat_food;
+        tuna ${dazuo_count};
+    };
 
-	#action {你的精力上限增加} {
-		#math tn_total_count ${tn_total_count}+1;
-		show_to_info energy +${tn_total_count};
-		#send {sk};
-	};
+    #ticker {restart_tn} {
+        eat_food;
+        do_tuna;
+    } {600};
 
-	#action {你的精力修为已经达到了瓶颈} {
-		tn.stop;
-		show_to_quest 精力到达瓶颈;
-	};
-	#class tn.inner close;
+    #action {你现在精不足} {
+        yun regenerate;
+        do_tuna;
+    };
 
-	#send {hpbrief};
-	#send {sk};
+    #action {你的内力不够} {
+        sleep;
+    };
+
+    #action {你一觉醒来} {
+        do_tuna;
+    };
+
+    #action {睡过一觉} {
+        #delay {sleep} {
+            sleep;
+        } {10};
+    };
+
+    #action {你吐纳完毕} {
+        do_tuna;
+    };
+
+    #action {你的精力上限增加} {
+        #math tn_total_count ${tn_total_count}+1;
+        show_to_info energy +${tn_total_count};
+        #send {sk};
+    };
+
+    #action {你的精力修为已经达到了瓶颈} {
+        tn.stop;
+        show_to_quest 精力到达瓶颈;
+    };
+    #class tn.inner close;
+
+    #send {hpbrief};
+    #send {sk};
 };
 
 #alias {tn.stop} {
-	show_to_quest 吐纳完毕;
-	#class tn.inner kill;
+    show_to_quest 吐纳完毕;
+    #class tn.inner kill;
 };
 
 #class tuna close

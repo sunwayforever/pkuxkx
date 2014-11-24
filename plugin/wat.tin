@@ -52,28 +52,28 @@
         show_to_info wat 等待 ${delay_time} 秒;
         #delay {wat} {
             wat.q;
-        } {${delay_time}};
-    } {2};
+            } {${delay_time}};
+        } {2};
 
-    #action {万安塔任务%s仍需%S分%S秒才能接到下个任务。} {
-        #var wat_level 0;
-        #var minute @ctd{%%2};
-        #var second @ctd{%%3};
-        #math delay_time ${minute}*60+${second}+10;
-        show_to_info wat 等待 ${delay_time} 秒;
-        #delay {wat} {
-            wat.q;
-        } {${delay_time}};
-    } {1};
+        #action {万安塔任务%s仍需%S分%S秒才能接到下个任务。} {
+            #var wat_level 0;
+            #var minute @ctd{%%2};
+            #var second @ctd{%%3};
+            #math delay_time ${minute}*60+${second}+10;
+            show_to_info wat 等待 ${delay_time} 秒;
+            #delay {wat} {
+                wat.q;
+                } {${delay_time}};
+            } {1};
 
-    #class wat.auto.inner close;
-};
+            #class wat.auto.inner close;
+        };
 
-#alias {wat.stop} {
-    #class wat.auto.inner kill;
-};
+        #alias {wat.stop} {
+            #class wat.auto.inner kill;
+        };
 
-#action {^恭喜你，答对了口令，你可以敲锣离开了} {
-    wat.d;
-};
-#class wat close
+        #action {^恭喜你，答对了口令，你可以敲锣离开了} {
+            wat.d;
+        };
+        #class wat close

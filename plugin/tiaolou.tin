@@ -1,48 +1,48 @@
 #class jump open
 #alias {tl.start} {
-	#class jump.inner open;
-	set brief 1;
-	#alias {do_jump} {
-		enter;u;u;u;u;u;u;out;
-	};
-	#action {你已稳稳地站在地上} {
-		#delay {3} {
-			#if {${qx_percent} < 40} {
-				yun recover;
-			};
-			#if {${js_percent} < 40} {
-				yun regenerate;
-			};
-			#if {${nl_percent} < 40} {
-				chifan;
-				on_health {
-					do_jump;
-				};
-			};
-			#else {
-				do_jump;
-			};
-		};
-	};
-	
-	#ticker {restart} {
-		do_jump;
-	} {60};
-	
-	#class jump.inner close;
-	on_there {
-		s;s;s;sd;s;s;s;e;
-		#delay {1} {
-			do_jump;
-		};
-	};
-	gt fzl;
+    #class jump.inner open;
+    set brief 1;
+    #alias {do_jump} {
+        enter;u;u;u;u;u;u;out;
+    };
+    #action {你已稳稳地站在地上} {
+        #delay {3} {
+            #if {${qx_percent} < 40} {
+                yun recover;
+            };
+            #if {${js_percent} < 40} {
+                yun regenerate;
+            };
+            #if {${nl_percent} < 40} {
+                chifan;
+                on_health {
+                    do_jump;
+                };
+            };
+            #else {
+                do_jump;
+            };
+        };
+    };
+
+    #ticker {restart} {
+        do_jump;
+    } {60};
+
+    #class jump.inner close;
+    on_there {
+        s;s;s;sd;s;s;s;e;
+        #delay {1} {
+            do_jump;
+        };
+    };
+    gt fzl;
 
 };
 
 #alias {tl.stop} {
-	set brief 2;
-	#class jump.inner kill;
+    set brief 2;
+    #class jump.inner kill;
 };
 
 #class jump close

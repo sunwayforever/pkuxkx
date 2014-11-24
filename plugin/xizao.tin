@@ -1,29 +1,29 @@
 #class xizao open
 #alias {xz.start} {
-	#class xi.inner open;
-	#ticker {xi.restart} {
-		xi pool;
-	} {300};
+    #class xi.inner open;
+    #ticker {xi.restart} {
+        xi pool;
+    } {300};
 
-	#action {你把衣服打开} {
-		#delay {1} {
-			eat guo;
-			drink tea;
-			xi pool;
-		};
-	};
-	#class xi.inner close;
-	gt qfa;
-	on_there {
-		w;w;w;w;sw;nd;nd;
-		show_to_quest 洗澡;
-		xi pool;
-	};
+    #action {你把衣服打开} {
+        #delay {1} {
+            eat guo;
+            drink tea;
+            xi pool;
+        };
+    };
+    #class xi.inner close;
+    gt qfa;
+    on_there {
+        w;w;w;w;sw;nd;nd;
+        show_to_quest 洗澡;
+        xi pool;
+    };
 };
 
 #alias {xz.stop} {
-	#class xi.inner kill;
-	show_to_quest 洗澡结束;
+    #class xi.inner kill;
+    show_to_quest 洗澡结束;
 };
 
 #class xizao close

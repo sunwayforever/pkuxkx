@@ -6,13 +6,13 @@
 
 #var buffer_locked 0;
 #macro {\el} {
-       #buffer lock;
-       #if {$buffer_locked == 0} {
-           #var buffer_locked 1;
-       };
-       #else {
-           #var buffer_locked 0;
-       };
+    #buffer lock;
+    #if {$buffer_locked == 0} {
+        #var buffer_locked 1;
+    };
+    #else {
+        #var buffer_locked 0;
+    };
 };
 
 #action {^http://pkuxkx.net/antirobot/robot.php?filename=%1} {
@@ -290,7 +290,7 @@
 
 #action {你喜欢原地逛逛么} {
     #delay {1.5} {
-        #showme 抵达目的地;        
+        #showme 抵达目的地;
     };
 };
 
