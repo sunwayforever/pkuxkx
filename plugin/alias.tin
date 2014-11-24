@@ -361,12 +361,12 @@
 
 #alias {reload} {
     gt wm;
-    #delay {1} {
+    on_there {
         u;
         #send {reload};
         #delay {2} {
-            d;gt yz;
-        };
+            d;
+        };  
     };
 };
 
