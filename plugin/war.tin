@@ -140,6 +140,7 @@
     #if {${mj_started} == 0} {
         #var mj_started 1;
         #nop show_to_info >>明教;
+        jifa_none;
         war;
     };
 };
@@ -150,6 +151,7 @@
         #var mj_started 0;
         #var mj_id {};
         #nop show_to_info <<明教;
+        jifa_all;
         war;
     };
 };

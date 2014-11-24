@@ -69,7 +69,10 @@
     };
 
     #alias {xf.slow_down_1} {
-        #if {${xf.type} == 3 || ${xf.type} == 4} {
+        #if {${xf.type} == 2} {
+            jifa_none;
+        };
+        #elseif {${xf.type} == 3 || ${xf.type} == 4} {
             raw;
             #if {${xf.type} == 4} {
                 #delay {xf_delay} {
