@@ -11,14 +11,26 @@
 #alias {xf.q} {
     #class xiaofeng.inner open;
     #var xf.requested 0;
+    #action {^萧峰说道：「刚刚已经有人前去了} {
+        #delay {xf_delay} {
+            xf.q;
+        } {3};
+    };
+    #action {^从%*身上掉了出来一颗%*} {
+        pack gem;
+        show_to_info 掉宝: %%2;
+    };
+
     #action {^由于放弃任务} {
         show_to_quest 萧峰: 失败;
         xf.teardown;
     };
+    
     #action {^你已经完成了} {
         show_to_quest 萧峰: 完成;
         xf.teardown;
     };
+    
     #action {%*向萧峰打听有关『job』的消息} {
         #if {"%%1" == "你"} {
             #var xf.requested 1;
@@ -69,10 +81,7 @@
     };
 
     #alias {xf.slow_down_1} {
-        #if {${xf.type} == 2} {
-            jifa_none;
-        };
-        #elseif {${xf.type} == 3 || ${xf.type} == 4} {
+        #if {${xf.type} == 3 || ${xf.type} == 4} {
             raw;
             #if {${xf.type} == 4} {
                 #delay {xf_delay} {

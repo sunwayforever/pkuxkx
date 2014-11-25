@@ -159,9 +159,6 @@
 
 #alias set_position {
     #var CurrentPosition %1;
-    #if {${critical_running} == 0} {
-        rec;
-    };
     #showme µ±«∞Œª÷√: %1;
 };
 #class xiaoyao_data close

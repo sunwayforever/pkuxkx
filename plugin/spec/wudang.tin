@@ -20,13 +20,16 @@
         #class attack.inner close;
     };
     #elseif {${mj_started}  == 1} {
+        jifa_none;
+        #class attack.inner open;
+        #ticker {perf_zhen} {
+            pfm zhen;
+        } {1};
+        #class attack.inner close;
         #if {${xf.type} == -1 || ${xf.type} == 1} {
             pfm wuying;
             pfm gangrou;
             #class attack.inner open;
-            #ticker {perf_zhen} {
-                pfm zhen;
-            } {1};
             #ticker {wuying} {
                 pfm wuying;
             } {5.8};
@@ -35,11 +38,21 @@
             } {6.8};
             #class attack.inner close;
         };
+        #elseif {${xf.type} == 2} {
+            pfm wuying;
+            #class attack.inner open;
+            #ticker {wuying} {
+                pfm wuying;
+            } {5.8};
+            #class attack.inner close;
+        };
+        #elseif {${xf.type} == 4} {
+            pfm wuying;
+            #class attack.inner open;
+            #class attack.inner close;
+        };
         #else {
             #class attack.inner open;
-            #ticker {perf_zhen} {
-                pfm zhen;
-            } {0.8};
             #class attack.inner close;
         };
     };
@@ -61,10 +74,17 @@
             #class attack.inner close;
         };
         #elseif {${xf.type} == 2} {
+            jifa_none;
+            pfm wuying;
             #class attack.inner open;
-            #ticker {zhen} {
-                pfm zhen;
-            } {1.8};
+            #ticker {wuying} {
+                pfm wuying;
+            } {5.8};
+            #class attack.inner close;
+        };
+        #elseif {${xf.type} == 4} {
+            pfm wuying;
+            #class attack.inner open;
             #class attack.inner close;
         };
         #else {
@@ -190,7 +210,7 @@
     map.go {Ð¡ÎÝ};
 };
 
-#list my_weapons create {my sword; my sword 2};
+#list my_weapons create {my sword;};
 #list my_weapons_1 create {sword; sword 2};
 
 #var shifu zhang;
