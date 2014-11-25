@@ -14,11 +14,20 @@
         };
     };
     #class pd.inner open;
-    pingdiao;
+    gt ywm;
+    on_there {
+        n;
+        show_to_quest Æ¾µõ¿ªÊ¼;
+        pingdiao;
+    };
 };
 
 #alias {pd.stop} {
     #class pd.inner kill;
+    on_unbusy {
+        s;
+        show_to_quest Æ¾µõ½áÊø;
+    };
 };
 
 #class pingdiao close;

@@ -2,20 +2,26 @@
 #var xue_count 10;
 #var xue_tired 0;
 #alias {xue.start} {
-    load_map;
-    map_goto_shifu;
     autoheal.off;
+    gt ${char_menpai_position};
+    on_there {
+        load_map;
+        map_goto_shifu;
+        #delay {3} {
+            #ticker {xue} {
+                #if {$xue_tired == 0} {
+                    xue ${shifu} for ${xue.gongfu} ${xue_count};
+                };
+            }{0.5};
+        };
+    };
+
     #var xue_tired 0;
 
     #class xue.inner open;
     #var xue.gongfu %1;
     show_to_quest Ñ§Ï°: ${shifu}/${xue.gongfu};
 
-    #ticker {xue} {
-        #if {$xue_tired == 0} {
-            xue ${shifu} for ${xue.gongfu} ${xue_count};
-        };
-    } {0.5};
 
     #action {ÇÐ´è} {
         xue.stop;
