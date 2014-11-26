@@ -1011,6 +1011,12 @@
 #alias {path.show} {
     #path save forward xxx;
     #path save backward yyy;
+    #replace {xxx} {north} {n};
+    #replace {xxx} {south} {s};
+    #replace {xxx} {east} {e};
+    #replace {xxx} {west} {w};
+    #replace {xxx} {up} {u};
+    #replace {xxx} {down} {d};
     #var xxx;
 };
 

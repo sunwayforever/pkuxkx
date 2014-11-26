@@ -234,4 +234,14 @@ load bianli_data;
     } {1};
     #class bl.action.xiangyang.inner close;
 };
+
+#function {blsupport} {
+    #list bl_path_%1 size tmp;
+    #if {${tmp} == 0} {
+        #return 0;
+    };
+    #else {
+        #return 1;
+    };
+};
 #class bianli close;

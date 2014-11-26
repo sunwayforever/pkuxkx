@@ -48,6 +48,9 @@
             #var target_area @area{%%1};
             #if {"${target_area}" != "NULL"} {
                 gt ${target_area};
+                on_there {
+                    #showme ±éÀú: @blsupport{${target_area}};
+                };
             };
         };
     };

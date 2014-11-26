@@ -235,4 +235,15 @@
     bl.comment {大轮寺外};
     e;w;se;wd;nw;sw;ne;se;eu;ed;ne;sw;se;nw;wu;nw;
 };
+
+#list bl_path_tt create {
+    bl.comment {天坛往北};
+    n;ne;sw;nd;n;ne;n;w;e;e;w;s;sw;s;su;s;
+    bl.comment {天坛往南};
+    s;s;se;nw;sd;s;se;se;n;s;nw;nw;n;nu;n;n;
+    bl.comment {天坛往西};
+    wd;n;w;s;w;w;w;e;s;n;e;e;e;eu;
+    bl.comment {天坛往东};
+    ed;e;e;n;n;s;s;s;n;w;w;wu;
+};
 #class bianli_data close
