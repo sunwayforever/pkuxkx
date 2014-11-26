@@ -95,6 +95,11 @@
     bl.comment {东面到小镇};
     e;n;s;s;bl.clear_force {wei};bl.command {open door};s;n;n;e;e;e;e;s;sd;nu;n;n;nu;nu;sd;sd;s;w;w;w;w;w;n;n;
 };
+
+#list bl_connections_fz create {
+    jx;qz;
+};
+
 #list bl_path_fz create {
     n;s;s;e;w;s;n;w;n;w;e;e;w;n;n;nu;nw;nw;n;s;s;n;e;w;se;se;sd;s;s;s;w;n;enter;out;s;s;e;w;n;w;w;sw;sw;s;n;ne;ne;e;e;e;s;s;n;n;e;n;
 };
@@ -111,6 +116,11 @@
 #list bl_path_ys create {
     e;n;s;e;n;s;e;w;w;w;n;w;e;e;w;n;s;s;s;w;e;e;w;s;w;e;e;w;s;n;n;n;w;n;s;s;n;w;s;n;w;w;w;w;w;sw;sw;w;sw;s;n;nw;se;ne;e;ne;ne;e;e;e;e;e;e;e
 };
+
+#list bl_connections_qz create {
+    jx;fz;
+};
+
 #list bl_path_qz create {
     bl.comment {泉州自身};
     n;s;ed;n;s;s;n;wu;s;n;w;s;s;e;w;n;n;w;n;s;s;n;nw;w;e;se;e;e;
@@ -190,6 +200,11 @@
     bl.comment {回到湖泊};
     nu;n;bl.clear {chuchen zi};enter;out;n;w;w;n;n;s;s;e;e;s;s;sd;s;
 };
+
+#list bl_connections_jx create {
+    qz;fz;
+};
+
 #list bl_path_jx create {
     bl.comment {建康方向};
     w;nu;nw;nw;n;nw;ne;sw;w;nw;nw;n;s;se;se;e;se;s;se;se;sd;e;
