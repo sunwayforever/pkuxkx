@@ -246,4 +246,33 @@
     bl.comment {天坛往东};
     ed;e;e;n;n;s;s;s;n;w;w;wu;
 };
+
+#list bl_path_kf create {
+    s;w;e;e;w;s;s;w;e;e;w;s;w;e;e;w;s;w;w;n;s;w;e;s;n;e;sw;s;bl.command {open door};w;e;n;ne;e;e;e;e;w;s;n;w;w;s;w;e;e;w;s;bl.clear_force {shiwei}; bl.clear_force {shi}; s;s;n;n;n;n;n;n;n;n;n;n;nw;se;s;
+};
+
+#list bl_path_zjc create {
+    bl.comment {端门到内金水桥到左侧慈宁宫到内金水桥};
+    s;s;s;w;e;e;w;s;n;n;n;n;n;n;w;w;s;n;w;e;n;w;e;e;w;n;n;n;n;n;w;n;n;s;s;e;s;s;s;s;s;s;e;e;
+    bl.comment {内金水桥到右侧广场到内金水桥};
+    e;e;s;e;w;n;e;w;n;w;e;e;w;n;n;n;n;n;e;w;n;s;s;s;s;s;s;s;w;w;
+    bl.comment {内金水桥到中侧小广场};
+    n;n;w;s;se;ne;n;w;nw;n;n;ne;se;s;s;sw;n;n;n;n;
+    bl.comment {从小广场遍历紫禁城外侧};
+    w;w;n;s;w;n;n;n;n;e;n;e;w;n;n;w;e;e;w;n;s;s;s;s;s;n;e;s;s;s;w;e;s;s;sw;n;s;se;n;n;s;s;w;n;s;w;w;
+    bl.comment {从小广场到紫禁城内城左侧及中线，到乾清门};
+    n;w;w;n;n;n;n;s;s;w;n;n;n;s;e;w;s;s;w;n;n;w;n;n;e;n;n;n;s;w;n;s;e;e;e;n;e;w;n;n;s;s;enter;out;u;d;s;s;s;s;s;s;
+    bl.comment {乾清门到内城右侧到端门};
+    e;e;n;n;e;e;n;n;e;e;w;n;e;w;w;e;n;e;n;s;w;w;w;s;e;w;w;e;s;e;w;s;w;n;n;wu;s;s;s;s;s;s;s;s;s;s;s;
+};
+
+#list bl_path_tls create {
+    bl.comment {天龙寺};
+    w;e;nu;n;n;w;e;e;w;n;enter;out;w;e;e;u;d;w;n;s;s;s;s;sd;
+    bl.comment {山脚到成都大理到山脚};
+    ed;ne;s;sw;sw;sw;s;n;ne;ne;ne;n;ne;ne;n;ne;ne;nd;n;s;su;su;su;nd;nd;sw;sw;s;sw;sw;sw;
+    bl.comment {山脚到无量};
+    nw;n;s;nu;nu;nu;sd;sd;sd;se;wu;
+};
+
 #class bianli_data close

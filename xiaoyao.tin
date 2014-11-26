@@ -380,6 +380,9 @@
 #list Directionsb create {w} {wd} {wu} {n} {nd} {nu} {e} {ed} {eu} {s} {sd} {su} {sw} {se} {nw} {ne} {d} {u} {out} {enter};
 
 #nop ==路径变量==
+#list Route_zjc_kf create {s} {s} {s} {w} {w} {w} {w} {n} {se} {s};
+#list Route_kf_zjc create  {n} {nw} {s} {e} {e} {e} {e} {n} {n} {n};
+
 #list Route_scm_cym create {s} {se} {s} {s} {s} {e} {e} {e} {ne} {se} {se};
 #list Route_cym_scm create  {nw} {nw} {sw} {w} {w} {w} {n} {n} {n} {nw} {n};
 
@@ -854,4 +857,9 @@
     #var result 0;
     #var tmpa 1;
     #parse {%1} {tmp} {#if {"$tmp"=="%2"} {#return $tmpa} {#math tmpa {$tmpa+1}}};
+};
+
+#alias set_position {
+    #var CurrentPosition %1;
+    #showme 当前位置: %1;
 };

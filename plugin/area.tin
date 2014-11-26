@@ -37,6 +37,8 @@
 @mapset{areas;襄阳;xy};
 @mapset{areas;西湖;xh};
 @mapset{areas;天坛;tt};
+@mapset{areas;康亲王府;kf};
+@mapset{areas;紫禁城;zjc};
 
 #function {area} {
     #format {tmp} {%.4s} {%1};
