@@ -38,12 +38,9 @@
             mr.f;
         };
         #else {
-            #var dest @area_mapping{%%1};
-            #if {"${dest}" != "0"} {
+            #var dest @area{%%1};
+            #if {"${dest}" != "NULL"} {
                 gt $dest;
-                on_there {
-                    mr.bl;
-                };
             };
         };
     } {1};

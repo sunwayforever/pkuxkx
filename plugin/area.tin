@@ -1,0 +1,54 @@
+#class area open
+@mapcreate{areas};
+@mapset{areas;麒麟村;qlc};
+@mapset{areas;灵州;lz};
+@mapset{areas;灵鹫;lj};
+@mapset{areas;临安;hz};
+@mapset{areas;荆州;jingzhou};
+@mapset{areas;中原;xuchang};
+@mapset{areas;全真;qzh};
+@mapset{areas;信阳;xiny};
+@mapset{areas;苏州;sz};
+@mapset{areas;张家口;zjk};
+@mapset{areas;大理;dl};
+@mapset{areas;小山村;xc};
+@mapset{areas;曲阜;qf};
+@mapset{areas;泉州;qz};
+@mapset{areas;黄河南岸;hn2};
+@mapset{areas;长江北岸;jb2};
+@mapset{areas;福州;fz};
+@mapset{areas;岳阳;yy};
+@mapset{areas;黄河北岸;hb2};
+@mapset{areas;晋阳;jy};
+@mapset{areas;归云;gy};
+@mapset{areas;南昌;nc};
+@mapset{areas;江州;jiangzhou};
+@mapset{areas;嘉兴;jx};
+@mapset{areas;牙山;ys};
+@mapset{areas;梦溪园;zhenjiang};
+@mapset{areas;镇江;zhenjiang};
+@mapset{areas;长江岸边;jn2};
+@mapset{areas;黄河岸边;hn2};
+@mapset{areas;天龙寺;tls};
+@mapset{areas;泰山;taishan};
+@mapset{areas;桃花岛;th};
+@mapset{areas;桃源;taoyuan};
+@mapset{areas;昆明;km};
+@mapset{areas;襄阳;xy};
+@mapset{areas;西湖;xh};
+
+#function {area} {
+    #format {tmp} {%.4s} {%1};
+    #var result @mapget{areas;${tmp}};
+    #if {"${result}" == "NULL"} {
+        #format {tmp} {%.6s} {%1};
+        #var result @mapget{areas;${tmp}};
+        #if {"${result}" == "NULL"} {
+            #format {tmp} {%.8s} {%1};
+            #var result @mapget{areas;${tmp}};
+        };
+    };
+    #return ${result};
+}
+
+#class area close
