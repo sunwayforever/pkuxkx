@@ -1,5 +1,6 @@
 #class highlight open
 #highlight {清心散} {green};
 #highlight {当前位置} {cyan};
-#highlight {遍历} {green};
+#highlight {支持遍历} {green};
+#highlight {不支持遍历} {green};
 #class highlight close

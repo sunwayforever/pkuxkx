@@ -862,4 +862,10 @@
 #alias set_position {
     #var CurrentPosition %1;
     #showme 当前位置: %1;
+    #if {@blsupport{${CurrentPosition}} == 1} {
+        #showme 支持遍历;
+    };
+    #else {
+        #showme 不支持遍历;  
+    };
 };

@@ -290,4 +290,52 @@
     nw;n;s;nu;nu;nu;sd;sd;sd;se;wu;
 };
 
+#list bl_path_qlc create {
+    bl.comment {岳飞家到汝州,少林};
+    e;s;n;e;w;n;w;e;e;s;sw;nw;w;w;e;e;se;se;e;e;w;nu;nu;wu;ed;sd;sd;w;nu;w;e;sd;nw;ne;n;w;s;w;
+    bl.comment {其它};
+    e;n;w;e;n;w;e;e;w;n;w;e;n;n;s;s;e;ne;n;ne;eu;eu;e;w;nu;nw;nu;nu;sd;sd;se;sd;wd;wd;sw;s;sw;w;s;s;s;w;
+};
+
+#list bl_path_sl create {
+    bl.comment {往南到古墓,汝州};
+    w;sd;sd;eu;wd;sd;wd;wd;wu;w;nw;n;w;e;s;se;e;ed;eu;eu;ed;sd;sd;w;nu;w;nw;se;n;n;s;s;ne;sw;e;sd;nw;
+    nw;w;e;se;se;e;e;se;se;n;s;sw;ne;nw;nw;w;nu;nu;wu;nu;nu;nu;e;
+    bl.comment {往北到少林寺外广场};
+    eu;e;w;nu;e;w;nu;nu;n;w;e;e;w;s;sd;sd;sd;wd;
+};
+
+#list bl_path_fzl create {
+    bl.comment {方丈楼往左上到和尚院,藏经阁};
+    w;n;n;n;w;s;w;bl.clear_force {daoyi};u;bl.truce;s;n;d;e;s;s;e;e;
+    bl.comment {方丈楼往右上到和尚院,防具库};
+    e;n;n;n;e;s;e;n;n;s;s;w;s;s;w;w;
+    bl.comment {方丈楼往上到千佛殿};
+    u;n;s;d;n;nu;u;n;s;d;sd;n;w;e;e;w;nu;
+    bl.comment {达摩洞};
+    bl.command {open door};n;sw;se;n;s;w;e;
+    bl.wait {1};w;e;e;s;w;n;nw;n;
+    bl.comment {达摩洞到方丈楼};
+    out;s;sd;s;s;
+    bl.comment {方丈楼往南到后殿};
+    w;w;sd;s;s;s;s;s;s;s;s;s;e;n;n;e;s;s;e;n;n;e;sd;s;s;s;s;s;s;s;s;s;w;w;
+    bl.comment {后殿到广场9};
+    sd;s;e;w;w;n;n;w;e;s;s;e;s;nu;sd;
+    bl.comment {广场9到鼓楼钟楼山门殿再回方丈楼};
+    w;enter;u;u;u;u;u;u;d;d;d;d;d;d;out;e;e;enter;u;u;u;u;u;u;d;
+    d;d;d;d;d;out;w;s;w;e;e;w;sd;w;e;e;w;s;w;e;e;w;n;nu;n;n;n;nu;n;n;
+};
+
+#list bl_path_qzh create {
+    bl.comment {玄崇台到往南到小村};
+    w;w;w;s;n;w;s;n;e;e;e;e;e;n;s;e;n;n;s;s;e;w;w;w;s;w;e;e;w;s;e;w;sd;s;sd;sd;se;s;se;se;n;s;e;se;se;nw;sw;ne;nw;ne;sw;w;nw;nw;n;nw;nu;nu;n;nu;n;n;
+    bl.comment {玄崇台到往北左侧及中侧到天尊殿};
+    n;n;w;w;s;n;w;s;n;w;n;n;n;n;n;n;e;n;e;e;e;s;s;s;w;n;s;s;n;w;n;s;s;n;w;e;s;s;e;n;s;e;n;n;s;s;s;w;e;s;
+    bl.comment {天尊殿到右侧到苗圃};
+    n;e;s;n;e;n;n;n;w;n;s;s;s;w;n;n;e;n;s;e;n;s;s;n;e;s;n;n;n;w;n;w;n;n;s;s;w;w;
+    bl.comment {小树林};
+    w;n;bl.truce;n;bl.truce;s;s;e;
+    bl.comment {到古墓};
+    n;n;nd;wd;ed;n;w;e;n;n;w;e;e;w;s;s;s;wu;eu;su;s;s;s;s;s;s;s;s;s;s;s;
+};
 #class bianli_data close
