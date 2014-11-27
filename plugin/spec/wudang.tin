@@ -74,7 +74,7 @@
             #class attack.inner close;
         };
         #elseif {${xf.type} == 2} {
-            jifa_none;
+            #nop jifa_none;
             pfm wuying;
             #class attack.inner open;
             #ticker {wuying} {
@@ -88,7 +88,7 @@
             #class attack.inner close;
         };
         #else {
-            jifa_none;
+            #nop jifa_none;
             #class attack.inner open;
             #class attack.inner close;
         };
@@ -114,14 +114,14 @@
 
 #alias {chan} {
     unwield all;
-    wield @firstweapon{};
+    wield my sword;
     #2 perform taiji-jian.chan;
     wi;
 };
 
 #alias {sanhuan} {
     unwield all;
-    wield @firstweapon{};
+    wield my sword;
     jiali ${jiali_count};
     perform taiji-jian.sanhuan;
     #if {${gangrou_ing} == 0} {
@@ -142,7 +142,7 @@
 
 #alias {lzj} {
     unwi;
-    wield @firstweapon{};
+    wield my sword;
     jiali 10;
     perform taiji-jian.lian;
     #if {${gangrou_ing} == 0} {
@@ -153,7 +153,7 @@
 
 #alias {szj} {
     unwi;
-    wield @firstweapon{};
+    wield my sword;
     perform taiji-jian.sui;
     wi;
 };
@@ -211,8 +211,7 @@
     map.go {小屋};
 };
 
-#list my_weapons create {my sword;};
-#list my_weapons_1 create {sword; sword 2};
+#list my_weapons create {my blade;};
 
 #var shifu zhang;
 
@@ -241,10 +240,12 @@ stat.register 缠 hit 只能见招拆招，疲于应对，不觉已深陷太极剑意之中，无法出招。;
 #var menzhong_didian ht;
 
 #alias {jifa_none} {
-    jifa sword none;
+    #nop jifa sword none;
+    jifa blade none;
 };
 
 #alias {jifa_all} {
-    jifa sword taiji-jian;
+    #nop jifa sword taiji-jian;
+    jifa blade xuanxu-dao;
 };
 #class wudang_spec close

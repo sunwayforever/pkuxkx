@@ -89,7 +89,7 @@
             raw;
             #if {${xf.type} == 4} {
                 #delay {xf_delay} {
-                    ask shashou about »œ ‰;
+                    #nop ask shashou about »œ ‰;
                 } {0.3};
             };
         };

@@ -36,18 +36,21 @@
 @mapset{areas;À¥Ã÷;km};
 @mapset{areas;ÏåÑô;xy};
 @mapset{areas;Î÷ºş;xh};
+@mapset{areas;Î÷ºşÃ·×¯;mz};
 @mapset{areas;ÌìÌ³;tt};
 @mapset{areas;¿µÇ×Íõ¸®;kf};
 @mapset{areas;×Ï½û³Ç;zjc};
+@mapset{areas;ÔÀÍõÄ¹;ywm};
+@mapset{areas;ÂåÑô;ly};
 
 #function {area} {
-    #format {tmp} {%.4s} {%1};
+    #format {tmp} {%.8s} {%1};
     #var result @mapget{areas;${tmp}};
     #if {"${result}" == "NULL"} {
         #format {tmp} {%.6s} {%1};
         #var result @mapget{areas;${tmp}};
         #if {"${result}" == "NULL"} {
-            #format {tmp} {%.8s} {%1};
+            #format {tmp} {%.4s} {%1};
             #var result @mapget{areas;${tmp}};
         };
     };
