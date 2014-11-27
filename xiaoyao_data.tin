@@ -156,5 +156,5 @@
 #act {^天福镖局$} {set_position {tf}};#act {^天福镖局 - $} {set_position {tf}};
 #act {^丹陛桥$} {set_position {tt}};#act {^丹陛桥 - $} {set_position {tt}};
 #act {^端门$} {set_position {zjc}};#act {^端门 - $} {set_position {zjc}};
-
+#act {^长江渡口$} {set_position {jb2}};#act {^长江渡口 - $} {set_position {jb2}};
 #class xiaoyao_data close

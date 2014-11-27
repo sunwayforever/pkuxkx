@@ -338,4 +338,54 @@
     bl.comment {到古墓};
     n;n;nd;wd;ed;n;w;e;n;n;w;e;e;w;s;s;s;wu;eu;su;s;s;s;s;s;s;s;s;s;s;s;
 };
+
+#list bl_path_dl create {
+    bl.comment {十字路口往西到土司府};
+    w;s;w;e;n;n;enter;w;n;s;e;out;s;e;
+    bl.comment {十字路口往东到黑龙潭到双鹤桥};
+    e;n;s;s;n;w;s;eu;se;n;nw;n;enter;out;s;se;s;se;nw;nw;wd;s;
+    bl.comment {双鹤桥往西到五华楼和昆明，到十字路口};
+    w;w;n;enter;n;s;w;u;w;enter;out;e;e;enter;out;e;enter;out;w;w;d;e;out;s;e;e;s;e;se;e;se;e;e;e;w;n;s;w;w;s;ed;wu;n;nw;w;nw;w;n;n;n;
+    bl.comment {十字路口往北到天龙寺， 到王府大门};
+    n;w;e;e;u;d;w;n;w;w;e;e;e;e;w;s;n;n;s;w;n;e;s;s;n;w;e;n;n;s;w;n;n;n;n;ne;ne;ne;n;ne;ne;sw;sw;s;sw;ne;n;sw;ne;s;sw;sw;sw;s;s;s;s;w;
+    bl.comment {王府};
+    enter;sw;n;s;w;e;s;n;ne;n;w;n;s;e;n;nw;e;nw;se;n;se;nw;e;w;ne;sw;n;s;s;w;se;s;e;e;enter;nw;ne;se;nw;n;w;ne;se;w;s;sw;se;out;w;w;s;out;e;s;s;s;
+};
+
+#list bl_path_km create {
+    s;s;n;w;w;nw;w;nw;w;n;n;s;w;e;s;e;se;e;se;s;ed;e;n;n;n;w;e;e;w;n;e;n;s;s;n;e;e;ne;eu;eu;wd;wd;sw;w;w;n;s;s;n;w;n;w;e;e;w;n;n;n;n;n;n;s;s;s;s;s;s;s;w;n;
+};
+
+#list bl_path_sz create {
+    bl.comment {宝带桥往南};
+    s;w;e;ne;sw;e;ne;sw;e;se;e;s;n;w;nw;w;w;w;e;sw;ne;s;w;w;w;sw;ne;e;e;e;e;w;s;s;s;w;e;e;w;s;n;n;n;n;n;n;
+    bl.comment {宝带桥往西};
+    nw;n;s;s;n;nw;se;w;n;s;s;n;w;w;w;w;nw;enter;e;out;n;s;enter;w;out;se;s;n;w;nw;ne;se;n;s;nw;sw;se;w;e;e;e;e;e;e;e;se;
+    bl.comment {宝带桥往东};
+    ne;n;n;s;s;s;n;e;nw;w;sw;ne;e;se;s;n;n;s;e;e;e;e;w;w;w;w;w;sw;
+    bl.comment {宝带桥往北};
+    n;n;sw;n;s;ne;e;e;w;w;n;w;e;e;w;n;n;sw;s;w;wu;ed;eu;s;nw;se;e;n;s;w;n;n;s;ne;n;s;
+    sw;wd;e;n;ne;n;nw;n;nw;nw;nw;se;se;se;ne;ne;nw;n;s;se;n;nw;nw;w;e;se;s;n;se;ne;ne;nw;se;sw;sw;s;sw;sw;s;se;s;s;s;s;s;s;
+};
+
+#list bl_path_xc create {
+    s;e;e;w;w;s;w;nw;se;e;e;w;s;e;w;s;s;se;e;w;w;e;n;s;nw;n;n;n;n;n;e;n;s;s;e;w;n;e;n;s;e;s;n;e;e;n;s;ne;sw;se;su;eu;wd;nd;nw;w;w;w;w;w;nw;sw;ne;nw;ne;sw;w;n;s;nw;nw;n;s;se;se;e;se;se;
+};
+
+#list bl_path_hn2 create {
+    e;se;e;e;ne;sw;w;w;nw;w;w;nw;nw;nw;n;n;ne;n;nw;w;sw;sw;sw;sw;sw;sw;sw;sw;sw;w;e;ne;ne;ne;ne;ne;ne;ne;ne;ne;e;se;s;sw;s;s;se;se;se;e;
+};
+
+#list bl_path_hb2 create {
+    s;e;se;e;e;ne;sw;w;w;nw;w;n;nw;nw;nw;n;n;ne;n;nw;nw;sw;e;w;sw;sw;sw;sw;sw;sw;sw;sw;sw;w;e;ne;ne;ne;ne;ne;ne;ne;ne;ne;e;se;s;sw;s;s;se;se;se;
+};
+
+#list bl_path_jn2 create {
+    e;e;e;se;e;e;e;e;e;se;se;sw;ne;nw;nw;w;w;w;w;w;nw;w;w;w;w;sw;sw;sw;w;nw;nw;nw;w;w;sw;sw;sw;sw;w;w;w;w;nw;se;e;e;e;e;ne;ne;ne;ne;e;e;se;se;se;e;ne;ne;ne;e;
+};
+
+#list bl_path_jb2 create {
+    e;e;e;se;e;e;e;e;e;w;w;w;w;w;nw;w;w;w;w;sw;sw;sw;w;nw;nw;nw;w;w;sw;sw;sw;sw;w;w;w;w;nw;se;e;e;e;e;ne;ne;ne;ne;e;e;se;se;se;e;ne;ne;ne;e;
+};
+
 #class bianli_data close
