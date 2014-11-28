@@ -91,14 +91,14 @@
 
 #alias {chan} {
 	unwi;
-	wield qixing;
+	do_wield whip;
 	perform riyue-bian.chan;
 	wi;
 };
 
 #alias {zuida} {
 	unwi;
-	wield staff;
+	do_wield staff;
 	perform zui-gun.zuida;
 	wi;
 };
@@ -109,9 +109,11 @@
 	wi;
 };
 
-#list my_weapons create {my spear; my spear 2};
-#list my_secondary_weapons create {my staff;};
+#list my_weapons create {my spear; my spear 2; my staff};
 #list my_special_weapons create {qixing};
+#var {special_whip} qixing;
+
+#list my_weapons_to_wield create {spear;spear 2};
 
 #var shortcut F1:¾ªÄ§ F2:×í´ò F3:²ø;
 
@@ -149,7 +151,7 @@
 
 #alias {fmq} {
 	unwi;
-	wield qixing;
+	do_wield whip;
 	#send {perform riyue-bian.fumoquan};
 	wi;
 };
