@@ -172,7 +172,7 @@
 
 #action {บรมหฃฌฤใื฿ฐษ} {
     remove all;
-    wi;
+    reset_weapons;
     we;
 };
 
