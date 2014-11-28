@@ -58,10 +58,8 @@
         load spec/${char_menpai};
         show_to_shortcut ${shortcut};
         #var weapons_to_wield ${my_weapons_to_wield};
+        wi;
         we;
-        #delay {5} {
-            reset_weapons;
-        };
     };
     #action {≡━━━━━━━━━━━━━━━━━━━━━━◎北大侠客行◎━━≡} {
         #class get_char_info.inner kill;

@@ -109,11 +109,8 @@
 	wi;
 };
 
-#list my_weapons create {my spear; my spear 2; my staff};
-#list my_special_weapons create {qixing};
-#var {special_whip} qixing;
-
 #list my_weapons_to_wield create {spear;spear 2};
+#var {special_whip} qixing;
 
 #var shortcut F1:¾ªÄ§ F2:×í´ò F3:²ø;
 

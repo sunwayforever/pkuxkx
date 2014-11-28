@@ -192,9 +192,6 @@
 };
 
 
-#list my_weapons create {my spear; my spear 2; my whip};
-#list my_special_weapons create {zidian;qingshuang};
-
 #list my_weapons_to_wield create {spear; spear 2};
 #list my_weapons_to_wield_1 create {sword; sword 2};
 

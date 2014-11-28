@@ -211,8 +211,6 @@
     map.go {Ð¡ÎÝ};
 };
 
-#list my_weapons create {my sword; my sword 2};
-
 #list my_weapons_to_wield create {sword;sword 2};
 #list my_weapons_to_wield_1 create {blade};
 

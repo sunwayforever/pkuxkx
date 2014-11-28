@@ -32,11 +32,29 @@
     reset_weapons;
 };
 
+#var wielding 0;
 #alias {do_wield} {
-    #var target %0;
-    #replace target { } {_};
-    wield ${weapon_${target}};
-}
+    #if {${wielding} == 1} {
+        #delay {0.5} {
+            do_wield %0;
+        };
+    };
+    #else {
+        #var wielding 1;
+        #var target %0;
+        #replace target { } {_};
+        #var current_weapon ${weapon_${target}};
+        wield ${current_weapon};
+        #if {"${current_weapon}" == ""} {
+            wield_1 %0;
+        };
+        #else {
+            wield ${current_weapon};
+            #var wielding 0;
+            #showme weapon wield;
+        };
+    };
+};
 
 #gag weapon wield;
 #alias {wield_1} {
@@ -56,6 +74,8 @@
         #replace target { } {_};
         #var weapon_${target} ${weapon_name};
         #showme weapon_${target} set to ${weapon_name};
+        add_to_my_weapons ${weapon_name};
+        #var wielding 0;
         #showme weapon wield;
     }
 };
@@ -76,6 +96,7 @@
         #replace target { } {_};
         #var weapon_${target} ${weapon_name};
         #showme weapon_${target} set to ${weapon_name};
+        #var wielding 0;
         #showme weapon wield;
     }
 };
@@ -90,12 +111,15 @@
         #unaction {^>};
         #unaction {你身上没有这样东西。};
         #showme 没有可用的武器;
+        #var wielding 0;
         #showme weapon wield;
     };
     #action {^>} {
         #unaction {^>};
         #replace target { } {_};
         #var weapon_${target} ${${weapon_name}};
+        add_to_my_special_weapons ${${weapon_name}};
+        #var wielding 0;
         #showme weapon wield;
     }
 };
@@ -122,4 +146,25 @@
         reset_one_weapon;
     };
 };
+
+#list my_weapons create {};
+#alias {add_to_my_weapons} {
+    #var weapon_name %0;
+    #list my_weapons find ${weapon_name} tmp;
+    #if {${tmp} != 0} {
+        #list my_weapons del ${tmp};
+    };
+    #list my_weapons add ${weapon_name};
+};
+
+#list my_special_weapons create {};
+#alias {add_to_my_special_weapons} {
+    #var weapon_name %0;
+    #list my_special_weapons find ${weapon_name} tmp;
+    #if {${tmp} != 0} {
+        #list my_special_weapons del ${tmp};
+    };
+    #list my_special_weapons add ${weapon_name};
+};
+
 #class wield close
