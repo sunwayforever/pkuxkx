@@ -44,6 +44,7 @@
 @mapset{areas;洛阳;ly};
 @mapset{areas;成都;cd};
 @mapset{areas;扬州;yz};
+@mapset{areas;平西王府;px};
 
 #function {area} {
     #format {tmp} {%.8s} {%1};

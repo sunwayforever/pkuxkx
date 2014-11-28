@@ -40,17 +40,16 @@
         };
     };
     #else {
-        #var wielding 1;
         #var target %0;
         #replace target { } {_};
         #var current_weapon ${weapon_${target}};
         wield ${current_weapon};
         #if {"${current_weapon}" == ""} {
+            #var wielding 1;
             wield_1 %0;
         };
         #else {
             wield ${current_weapon};
-            #var wielding 0;
             #showme weapon wield;
         };
     };

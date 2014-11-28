@@ -206,6 +206,7 @@
 
     #action {显是蒙面杀手姓名} {
         jifa_all;
+        wi;
         #if {${xf.type} == 1} {
             on_unbusy {
                 zhan corpse;
