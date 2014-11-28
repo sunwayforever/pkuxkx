@@ -1,5 +1,6 @@
 #class jianding open
 @mapcreate{jianding};
+@mapset{jianding;¸«;axe};
 @mapset{jianding;Ø°;dagger};
 @mapset{jianding;½£;sword};
 @mapset{jianding;µ¶;blade};

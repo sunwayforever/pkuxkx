@@ -168,7 +168,7 @@
 
         #if {${xf.type} == 2} {
             show_to_quest Ïô·å: ÇÜ»Ø: ${xf.real_name};
-            #delay {2} {
+            on_unbusy {
                 get ${xf.real_first_name};
             };
         };

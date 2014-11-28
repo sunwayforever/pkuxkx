@@ -43,12 +43,22 @@
         #var target %0;
         #replace target { } {_};
         #var current_weapon ${weapon_${target}};
-        wield ${current_weapon};
         #if {"${current_weapon}" == ""} {
             #var wielding 1;
             wield_1 %0;
         };
         #else {
+            #class wield_inner open;
+            #action {你身上没有这样东西。} {
+                #class wield_inner kill;
+                #var wielding 1;
+                #var weapon_${target} {};
+                wield_1 %%0;
+            };
+            #action {^>} {
+                #class wield_inner kill;
+            };
+            #class wield_inner close;
             wield ${current_weapon};
             #showme weapon wield;
         };
@@ -60,44 +70,46 @@
     #var target %0;
     wield my ${target};
     #var weapon_name {my ${target}};
+    #class wield_inner open;
     #action {你身上没有这样东西。} {
-        #unaction {你身上没有这样东西。};
-        #unaction {^>};
+        #class wield_inner kill;
         #undelay {wield};
         #delay {0.1} {
             wield_2 ${target};
         };
     };
     #action {^>} {
-        #unaction {^>};
+        #class wield_inner kill;
         #replace target { } {_};
         #var weapon_${target} ${weapon_name};
         #showme weapon_${target} set to ${weapon_name};
         add_to_my_weapons ${weapon_name};
         #var wielding 0;
         #showme weapon wield;
-    }
+    };
+    #class wield_inner close;
 };
 
 #alias {wield_2} {
     #var target %0;
     wield ${target};
     #var weapon_name {${target}};
+    #class wield_inner open;
     #action {你身上没有这样东西。} {
-        #unaction {^>};
-        #unaction {你身上没有这样东西。};
+        #class wield_inner kill;
         #delay {0.1} {
             wield_3 ${target};
         };
     };
     #action {^>} {
-        #unaction {^>};
+        #class wield_inner kill;
         #replace target { } {_};
         #var weapon_${target} ${weapon_name};
         #showme weapon_${target} set to ${weapon_name};
         #var wielding 0;
         #showme weapon wield;
-    }
+    };
+    #class wield_inner close;
 };
 
 #alias {wield_3} {
@@ -106,21 +118,22 @@
     #replace weapon_name { } {_};
     #show ${weapon_name} -> ${${weapon_name}};
     wield ${${weapon_name}};
+    #class wield_inner open;
     #action {你身上没有这样东西。} {
-        #unaction {^>};
-        #unaction {你身上没有这样东西。};
+        #class wield_inner kill;
         #showme 没有可用的武器;
         #var wielding 0;
         #showme weapon wield;
     };
     #action {^>} {
-        #unaction {^>};
+        #class wield_inner kill;
         #replace target { } {_};
         #var weapon_${target} ${${weapon_name}};
         add_to_my_special_weapons ${${weapon_name}};
         #var wielding 0;
         #showme weapon wield;
-    }
+    };
+    #class wield_inner close;
 };
 
 #alias {reset_weapons} {
