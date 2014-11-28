@@ -1,7 +1,7 @@
 #class bianli_data open
 #list bl_path_xy create {
     bl.comment {往东到荆西镖局，到城中心};
-    s;s;bl.clear {jun};s;n;n;w;w;w;w;n;n;s;s;w;w;w;w;w;n;s;w;w;s;sw;ne;n;e;e;e;e;e;e;e;e;e;e;e;e;n;s;s;n;e;
+    s;s;n;w;w;w;w;n;n;s;s;w;w;w;w;w;n;s;w;w;s;sw;ne;n;e;e;e;e;e;e;e;e;e;e;e;e;n;s;s;n;e;
     bl.comment {往南到荆州};
     s;w;e;e;w;s;w;e;s;w;e;e;w;s;s;s;s;e;w;s;s;s;s;s;se;bl.clear {zei};s;n;nw;n;n;n;n;n;n;n;n;n;n;n;n;
     bl.comment {往北到蒙古营门};

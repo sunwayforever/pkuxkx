@@ -208,8 +208,10 @@
         jifa_all;
         wi;
         #if {${xf.type} == 1} {
-            on_unbusy {
-                zhan corpse;
+            #delay {1} {
+                on_unbusy {
+                    zhan corpse;
+                };
             };
         };
         l;
