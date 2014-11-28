@@ -42,6 +42,8 @@
 @mapset{areas;紫禁城;zjc};
 @mapset{areas;岳王墓;ywm};
 @mapset{areas;洛阳;ly};
+@mapset{areas;成都;cd};
+@mapset{areas;扬州;yz};
 
 #function {area} {
     #format {tmp} {%.8s} {%1};

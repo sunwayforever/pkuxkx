@@ -1,7 +1,6 @@
 #class xiaofeng open
 #var xf.type -1;
 #alias {xf.teardown} {
-    jifa_all;
     #var quest NIL;
     #var xf.type -1;
     #var xf.requested 0;
@@ -11,6 +10,19 @@
 #alias {xf.q} {
     #class xiaofeng.inner open;
     #var xf.requested 0;
+    #action {跳出战圈不打了} {
+        jifa_all;
+        #if {${xf.type} == 3} {
+            #delay {xf_delay} {
+                quan;
+            } {0.3};
+        };
+        #elseif {${xf.type} == 4} {
+            #delay {xf_delay} {
+                ask shashou about 认输;
+            } {0.3};
+        };
+    };
     #action {^萧峰说道：「刚刚已经有人前去了} {
         #delay {xf_delay} {
             xf.q;
@@ -48,6 +60,11 @@
             #var target_area @area{%%1};
             #if {"${target_area}" != "NULL"} {
                 gt ${target_area};
+                on_there {
+                    #if {@blsupport{${target_area} == 1}} {
+                        xf.bl;
+                    };
+                };
             };
         };
     };
@@ -74,13 +91,19 @@
         #elseif {%%2 < 50 || %%3 < 50} {
             xf.slow_down_1;
         };
+        #if {${xf.type} == 4} {
+            #delay {xf_delay} {
+                ask shashou about 认输;
+            } {0.3};
+        }
     } {1};
 
     #action {看来杀手有点怕你了} {
         raw;
         on_unbusy {
-            #3 halt;
-            quan;
+            on_halt {
+                quan;
+            };
         };
     };
 
@@ -97,18 +120,12 @@
 
     #action {蒙面杀手说道：「我不服，等我休息一下，咱们再打过！」} {
         raw;
-        #3 halt;
-        #class xiaofeng.inner open;
-        #action {你想停下来} {
-            #10 halt;
-        };
-        #class xiaofeng.inner close;
+        on_halt;
     };
 
     #action {蒙面杀手说道：「我还没恢复好，你想乘人之危么？」} {
         raw;
         unwi;
-        #3 halt;
     };
 
     #alias {xf.slow_down_2} {
@@ -117,27 +134,8 @@
             jifa_none;
             raw;
             unwi;
-            #3 halt;
-            #class xiaofeng.inner open;
-            #action {跳出战圈不打了} {
-                jifa_all;
-                #if {${xf.type} == 3} {
-                    #delay {xf_delay} {
-                        quan;
-                    } {0.3};
-                };
-                #elseif {${xf.type} == 4} {
-                    #delay {xf_delay} {
-                        ask shashou about 认输;
-                    } {0.3};
-                };
-            };
-            #class xiaofeng.inner close;
+            on_halt;
         };
-    };
-
-    #action {你想停下来} {
-        #10 halt;
     };
 
     #action {尚可教化} {
@@ -208,6 +206,7 @@
     };
 
     #action {显是蒙面杀手姓名} {
+        jifa_all;
         #if {${xf.type} == 1} {
             on_unbusy {
                 zhan corpse;
@@ -220,8 +219,8 @@
         #unaction {『蒙面杀手(%*气血:%*\%/%*\%)』};
         #undelay {xf_delay};
         raw;
-        #3 halt;
-
+        jifa_all;
+        on_halt;
         #if {${xf.type} == 3} {
             show_to_quest 萧峰: 已经劝服;
         };
