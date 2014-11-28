@@ -15,10 +15,6 @@
     };
 };
 
-#alias {unwi} {
-    unwield all;
-};
-
 #action {看起来%1想杀死你} {
     war;
 };
@@ -63,20 +59,6 @@
     } {1};
 };
 
-#alias {chan_a_chan} {
-    chan;
-    #ticker {chan_a_chan} {
-        chan;
-    } {1};
-    #action {缠: miss} {
-        halt;
-    };
-    #delay {2} {
-        #unaction {缠: miss};
-        #unticker {chan_a_chan};
-    };
-};
-
 #alias {kill} {
     war;
     #send kill %0;
@@ -97,26 +79,8 @@
     #send fight %0;
 };
 
-#alias {wi_normal} {
-    unwi;
-    #foreach {${weapons}[%*]} {weapon} {wield ${weapon}};
-};
-
-#alias {wi_bare} {
-    unwi;
-};
-
-#alias {wi} {
-    wi_normal;
-};
-
 #action {你似乎十分疲惫，看来需要好好休息了} {
     re;
-};
-
-#action {已经断为两截} {
-    show_to_info 武器断了;
-    wi;
 };
 
 #alias {detect_mingjiao} {
@@ -263,13 +227,11 @@
 
 #alias {disarm.start} {
     unwi;
-    #alias {wi} {#cr};
     #alias {attack} {#cr};
     bei none;
 };
 
 #alias {disarm.stop} {
-    #alias {wi} {wi_normal};
     #alias {attack} {attach.normal};
     reborn;
     wi;
@@ -329,29 +291,4 @@
     };
 };
 
-#var current_weapons_set 0;
-
-#alias {ss} {
-    #math current_weapons_set ${current_weapons_set}+1;
-    #list my_weapons_${current_weapons_set} size tmp_size;
-    #if {${tmp_size} == 0} {
-        #var current_weapons_set 0;
-    };
-    #if {${current_weapons_set} == 0} {
-        #var weapons ${my_weapons};
-    };
-    #else {
-        #var weapons ${my_weapons_${current_weapons_set}};
-    };
-    #show weapons switched to ${weapons};
-    wi;
-};
-
-#function {firstweapon} {
-    #list weapons get {1} result;
-};
-
-#function {secondweapon} {
-    #list weapons get {2} result;
-};
 #class war close;

@@ -32,7 +32,6 @@
     #5 halt;
     on_unbusy {
         nw;s;
-        #alias wi wi_normal;
         #alias attack attack.normal;
         bei strike;
         #unticker {suck};

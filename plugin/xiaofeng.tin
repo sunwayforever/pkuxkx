@@ -80,7 +80,6 @@
         #if {${xf.requested} == 1} {
             #var xf.type 1;
             show_to_quest œÙ∑Â: …±À¿: ${xf.target};
-            #alias {wi} {wi_normal};
         };
     };
 

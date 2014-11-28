@@ -114,14 +114,14 @@
 
 #alias {chan} {
     unwield all;
-    wield my sword;
+    do_wield sword;
     #2 perform taiji-jian.chan;
     wi;
 };
 
 #alias {sanhuan} {
     unwield all;
-    wield my sword;
+    do_wield sword;
     jiali ${jiali_count};
     perform taiji-jian.sanhuan;
     #if {${gangrou_ing} == 0} {
@@ -142,7 +142,7 @@
 
 #alias {lzj} {
     unwi;
-    wield my sword;
+    do_wield sword;
     jiali 10;
     perform taiji-jian.lian;
     #if {${gangrou_ing} == 0} {
@@ -153,7 +153,7 @@
 
 #alias {szj} {
     unwi;
-    wield my sword;
+    do_wield sword;
     perform taiji-jian.sui;
     wi;
 };
@@ -211,14 +211,12 @@
     map.go {小屋};
 };
 
-#list my_weapons create {my blade;};
+#list my_weapons create {my sword; my sword 2};
+
+#list my_weapons_to_wield create {sword;sword 2};
+#list my_weapons_to_wield_1 create {blade};
 
 #var shifu zhang;
-
-#alias {wi_xiaofeng} {
-    unwi;
-    wield sword;
-};
 
 #alias {reborn} {
     #send {jifa cuff taiji-quan};
@@ -240,12 +238,14 @@ stat.register 缠 hit 只能见招拆招，疲于应对，不觉已深陷太极剑意之中，无法出招。;
 #var menzhong_didian ht;
 
 #alias {jifa_none} {
-    #nop jifa sword none;
+    jifa sword none;
     jifa blade none;
+    jifa spear none;
 };
 
 #alias {jifa_all} {
-    #nop jifa sword taiji-jian;
+    jifa sword taiji-jian;
     jifa blade xuanxu-dao;
+    jifa spear yuejia-qiangfa;
 };
 #class wudang_spec close

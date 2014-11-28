@@ -1,0 +1,125 @@
+#class wield open
+#var current_weapons_set 0;
+
+#alias {unwi} {
+    unwield all;
+};
+#alias {wi} {
+    unwi;
+    #foreach {${weapons_to_wield}[%*]} {weapon} {
+        do_wield ${weapon};
+    };
+};
+
+#action {已经断为两截} {
+    show_to_info 武器断了;
+    wi;
+};
+
+#alias {ss} {
+    #math current_weapons_set ${current_weapons_set}+1;
+    #list my_weapons_to_wield_${current_weapons_set} size tmp_size;
+    #if {${tmp_size} == 0} {
+        #var current_weapons_set 0;
+    };
+    #if {${current_weapons_set} == 0} {
+        #var weapons_to_wield ${my_weapons_to_wield};
+    };
+    #else {
+        #var weapons_to_wield ${my_weapons_to_wield_${current_weapons_set}};
+    };
+    #show weapons_to_wield switched to ${weapons_to_wield};
+    reset_weapons;
+};
+
+#alias {do_wield} {
+    #var target %0;
+    #replace target { } {_};
+    wield ${weapon_${target}};
+}
+
+#gag weapon wield;
+#alias {wield_1} {
+    #var target %0;
+    wield my ${target};
+    #var weapon_name {my ${target}};
+    #action {你身上没有这样东西。} {
+        #unaction {你身上没有这样东西。};
+        #unaction {^>};
+        #undelay {wield};
+        #delay {0.1} {
+            wield_2 ${target};
+        };
+    };
+    #action {^>} {
+        #unaction {^>};
+        #replace target { } {_};
+        #var weapon_${target} ${weapon_name};
+        #showme weapon_${target} set to ${weapon_name};
+        #showme weapon wield;
+    }
+};
+
+#alias {wield_2} {
+    #var target %0;
+    wield ${target};
+    #var weapon_name {${target}};
+    #action {你身上没有这样东西。} {
+        #unaction {^>};
+        #unaction {你身上没有这样东西。};
+        #delay {0.1} {
+            wield_3 ${target};
+        };
+    };
+    #action {^>} {
+        #unaction {^>};
+        #replace target { } {_};
+        #var weapon_${target} ${weapon_name};
+        #showme weapon_${target} set to ${weapon_name};
+        #showme weapon wield;
+    }
+};
+
+#alias {wield_3} {
+    #var target %0;
+    #var weapon_name special_${target};
+    #replace weapon_name { } {_};
+    #show ${weapon_name} -> ${${weapon_name}};
+    wield ${${weapon_name}};
+    #action {你身上没有这样东西。} {
+        #unaction {^>};
+        #unaction {你身上没有这样东西。};
+        #showme 没有可用的武器;
+        #showme weapon wield;
+    };
+    #action {^>} {
+        #unaction {^>};
+        #replace target { } {_};
+        #var weapon_${target} ${${weapon_name}};
+        #showme weapon wield;
+    }
+};
+
+#alias {reset_weapons} {
+    #var weapons_index 0;
+    #var weapons_size 0;
+    #list weapons_to_wield size weapons_size;
+    reset_one_weapon;
+};
+
+#alias {reset_one_weapon} {
+    #math weapons_index ${weapons_index}+1;
+    #if {${weapons_index} <= ${weapons_size}} {
+        #list weapons_to_wield get ${weapons_index} tmp_weapon;
+        wield_1 ${tmp_weapon};
+    };
+    #else {
+        unwi;
+        wi;
+    }
+    #action {weapon wield} {
+        #unaction {weapon wield};
+        reset_one_weapon;
+    };
+};
+#class wield close

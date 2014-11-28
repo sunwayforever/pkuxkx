@@ -931,9 +931,6 @@
                 #foreach {${my_weapons}[%*]} {weapon} {
                     fix ${weapon};
                 };
-                #foreach {${my_secondary_weapons}[%*]} {weapon} {
-                    fix ${weapon};
-                };
                 play repair.wav;
                 #delay {3} {
                     sw;w;
@@ -974,7 +971,6 @@
     } {1};
     #var tmp_min_naijiu 10000;
     #foreach {${my_weapons}[%*]} {weapon} {#send {l ${weapon}}};
-    #foreach {${my_secondary_weapons}[%*]} {weapon} {#send {l ${weapon}}};
 };
 
 #var special_min_naijiu 10000;
