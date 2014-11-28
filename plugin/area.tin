@@ -1,8 +1,9 @@
 #class area open
 @mapcreate{areas};
+@mapset{areas;杭州提督;tdf};
 @mapset{areas;麒麟村;qlc};
 @mapset{areas;灵州;lz};
-@mapset{areas;灵鹫;lj};
+@mapset{areas;灵鹫;dzt};
 @mapset{areas;临安;hz};
 @mapset{areas;荆州;jzh};
 @mapset{areas;中原;xch};

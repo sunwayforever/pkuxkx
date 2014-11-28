@@ -57,7 +57,7 @@ load bianli_data;
     #action {这里%*的出口是} {
         #delay {bl.delay} {
             bl.walk;
-        } {0.05};
+        } {0.1};
     } {1};
 
     #action {busy_for_move} {

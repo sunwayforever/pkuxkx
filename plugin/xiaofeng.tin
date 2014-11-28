@@ -37,12 +37,12 @@
         show_to_quest 萧峰: 失败;
         xf.teardown;
     };
-    
+
     #action {^你已经完成了} {
         show_to_quest 萧峰: 完成;
         xf.teardown;
     };
-    
+
     #action {%*向萧峰打听有关『job』的消息} {
         #if {"%%1" == "你"} {
             #var xf.requested 1;

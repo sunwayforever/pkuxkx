@@ -396,4 +396,8 @@
     bl.comment {блаЬ};
     n;w;e;n;w;n;e;e;s;w;s;s;nw;e;ne;nw;n;nw;nu;
 };
+
+#list bl_path_xh create {
+    ne;ne;ne;n;n;s;e;e;n;s;s;n;e;w;w;w;sw;sw;w;s;se;e;w;s;se;e;ne;nw;n;s;se;e;n;s;s;n;e;w;w;sw;w;nw;n;nw;n;e;s;se;
+};
 #class bianli_data close
