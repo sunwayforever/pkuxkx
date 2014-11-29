@@ -8,7 +8,6 @@
 };
 
 #alias {xf.q} {
-    #var xf.type -1;
     #class xiaofeng.inner open;
     #var xf.requested 0;
     #action {跳出战圈不打了} {
@@ -208,6 +207,7 @@
     };
 
     #action {显是蒙面杀手姓名} {
+        raw;
         jifa_all;
         #if {${xf.type} == 1} {
             #delay {1} {

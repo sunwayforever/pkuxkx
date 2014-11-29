@@ -217,7 +217,7 @@
     bl.comment {桃花岛};
     e;n;s;nd;w;bl.truce;e;e;e;e;e;n;s;w;w;w;w;bl.command {ask diao about 独孤求败};nu;se;nw;sd;sd;su;w;
 };
-#list bl_path_scm create {
+#list bl_path_scmtest create {
     bl.comment {神策门以北到长江南岸};
     n;w;e;nu;e;enter;out;w;nw;ne;e;w;w;w;e;e;sw;se;sd;s;
     bl.comment {神策门往西到军仓};
@@ -400,4 +400,35 @@
 #list bl_path_xh create {
     ne;ne;ne;n;n;s;e;e;n;s;s;n;e;w;w;w;sw;sw;w;s;se;e;w;s;se;e;ne;nw;n;s;se;e;n;s;s;n;e;w;w;sw;w;nw;n;nw;n;e;s;se;
 };
+
+#list bl_connections_yzw create {
+    tx;qy;mt;
+};
+
+#list bl_path_yzw create {
+    s;s;w;s;e;s;e;w;n;n;n;n;n;w;e;e;n;w;w;e;n;w;e;e;w;n;w;e;n;s;s;e;ne;e;n;w;e;e;w;n;w;e;e;w;s;s;e;e;w;w;w;sw;w;s;s;s;
+};
+
+#list bl_path_qy create {
+    w;e;n;e;s;e;w;n;e;s;n;e;w;n;n;n;s;s;jump west;n;w;s;ne;se;jump east;s;w;w;s;
+};
+
+#list bl_path_tx create {
+    s;n;e;s;e;w;s;w;e;se;e;s;e;w;n;w;sw;ne;nw;n;n;w;
+};
+
+#list bl_path_mt create {
+    bl.comment {茶花林};
+    e;e;e;s;w;e;n;w;n;n;e;s;e;w;n;w;s;s;e;e;w;w;w;
+    bl.comment {其他};
+    s;w;nw;w;w;sw;bl.command {open door};w;bl.clear {yan};e;se;e;e;ne;e;n;
+};
+
+#nop 神龙岛;
+#nop 成都;
+#nop 日月;
+#nop 嘉峪关;
+#nop 桃花岛;
+#nop 暗道;
+#nop 洛阳, wat, 梅庄, 归云庄;
 #class bianli_data close

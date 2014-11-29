@@ -171,6 +171,7 @@
 #action {บรมหฃฌฤใื฿ฐษ} {
     remove all;
     reset_weapons;
+    wi;
     we;
 };
 

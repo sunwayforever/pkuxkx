@@ -30,6 +30,7 @@
     };
     #show weapons_to_wield switched to ${weapons_to_wield};
     reset_weapons;
+    wi;
 };
 
 #var wielding 0;
@@ -81,7 +82,11 @@
     #action {^>} {
         #class wield_inner kill;
         #replace target { } {_};
+
+        #class weapons open;
         #var weapon_${target} ${weapon_name};
+        #class weapons close;
+
         #showme weapon_${target} set to ${weapon_name};
         add_to_my_weapons ${weapon_name};
         #var wielding 0;
@@ -104,7 +109,11 @@
     #action {^>} {
         #class wield_inner kill;
         #replace target { } {_};
+        
+        #class weapons open;
         #var weapon_${target} ${weapon_name};
+        #class weapons open;
+        
         #showme weapon_${target} set to ${weapon_name};
         #var wielding 0;
         #showme weapon wield;
@@ -128,35 +137,16 @@
     #action {^>} {
         #class wield_inner kill;
         #replace target { } {_};
+
+        #class weapons open;
         #var weapon_${target} ${${weapon_name}};
+        #class weapons close;
+
         add_to_my_special_weapons ${${weapon_name}};
         #var wielding 0;
         #showme weapon wield;
     };
     #class wield_inner close;
-};
-
-#alias {reset_weapons} {
-    #var weapons_index 0;
-    #var weapons_size 0;
-    #list weapons_to_wield size weapons_size;
-    reset_one_weapon;
-};
-
-#alias {reset_one_weapon} {
-    #math weapons_index ${weapons_index}+1;
-    #if {${weapons_index} <= ${weapons_size}} {
-        #list weapons_to_wield get ${weapons_index} tmp_weapon;
-        wield_1 ${tmp_weapon};
-    };
-    #else {
-        unwi;
-        wi;
-    }
-    #action {weapon wield} {
-        #unaction {weapon wield};
-        reset_one_weapon;
-    };
 };
 
 #list my_weapons create {};
@@ -177,6 +167,10 @@
         #list my_special_weapons del ${tmp};
     };
     #list my_special_weapons add ${weapon_name};
+};
+
+#alias reset_weapons {
+    #class weapons kill;
 };
 
 #class wield close
