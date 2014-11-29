@@ -307,9 +307,9 @@
 
 #list bl_path_fzl create {
     bl.comment {方丈楼往左上到和尚院,藏经阁};
-    w;n;n;n;w;s;w;bl.clear_force {daoyi};u;bl.truce;s;n;d;e;s;s;e;e;
+    w;n;n;n;w;s;w;bl.clear_force {daoyi};u;bl.truce;bl.command {open door};s;n;d;e;s;s;e;e;
     bl.comment {方丈楼往右上到和尚院,防具库};
-    e;n;n;n;e;s;e;n;n;s;s;w;s;s;w;w;
+    e;n;n;n;e;s;bl.command {open door};e;n;n;s;s;w;s;s;w;w;
     bl.comment {方丈楼往上到千佛殿};
     u;n;s;d;n;nu;u;n;s;d;sd;n;w;e;e;w;nu;
     bl.comment {达摩洞};

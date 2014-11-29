@@ -17,11 +17,6 @@
                 quan;
             } {0.3};
         };
-        #elseif {${xf.type} == 4} {
-            #delay {xf_delay} {
-                ask shashou about 认输;
-            } {0.3};
-        };
     };
     #action {^萧峰说道：「刚刚已经有人前去了} {
         #delay {xf_delay} {
@@ -89,11 +84,6 @@
         #elseif {%%2 < 50 || %%3 < 50} {
             xf.slow_down_1;
         };
-        #if {${xf.type} == 4} {
-            #delay {xf_delay} {
-                ask shashou about 认输;
-            } {0.3};
-        }
     } {1};
 
     #action {看来杀手有点怕你了} {
@@ -107,12 +97,7 @@
 
     #alias {xf.slow_down_1} {
         #if {${xf.type} == 3 || ${xf.type} == 4} {
-            raw;
-            #if {${xf.type} == 4} {
-                #delay {xf_delay} {
-                    #nop ask shashou about 认输;
-                } {0.3};
-            };
+            #nop;
         };
     };
 
