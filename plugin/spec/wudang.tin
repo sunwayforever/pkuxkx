@@ -211,8 +211,8 @@
     map.go {小屋};
 };
 
-#list my_weapons_to_wield create {sword;sword 2};
-#list my_weapons_to_wield_1 create {blade};
+#list my_weapons_to_wield create {sword;blade};
+#nop #list my_weapons_to_wield_1 create {blade};
 
 #var shifu zhang;
 
@@ -236,6 +236,7 @@ stat.register 缠 hit 只能见招拆招，疲于应对，不觉已深陷太极剑意之中，无法出招。;
 #var menzhong_didian ht;
 
 #alias {jifa_none} {
+    wbei none;
     jifa sword none;
     jifa blade none;
     jifa spear none;
@@ -245,5 +246,6 @@ stat.register 缠 hit 只能见招拆招，疲于应对，不觉已深陷太极剑意之中，无法出招。;
     jifa sword taiji-jian;
     jifa blade xuanxu-dao;
     jifa spear yuejia-qiangfa;
+    wbei taiji-jian xuanxu-dao;
 };
 #class wudang_spec close

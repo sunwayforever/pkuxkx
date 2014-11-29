@@ -8,6 +8,7 @@
 };
 
 #alias {xf.q} {
+    #var xf.type -1;
     #class xiaofeng.inner open;
     #var xf.requested 0;
     #action {跳出战圈不打了} {
@@ -53,7 +54,6 @@
         };
     };
 
-    #var xf.type -1;
     #action {传闻西夏一品堂派出了若干蒙面杀手，最近出现在%*附近的%*} {
         #if {${xf.requested} == 1} {
             #var xf.target %%1:%%2;
@@ -152,6 +152,7 @@
     };
 
     #action {你将%*扶了起来背在背上} {
+        #showme 收工;
         show_to_quest 萧峰: 已擒获 ${xf.real_name};
         #action {${xf.real_name}略一凝神，精神看起来好多了} {
             #unaction {${xf.real_name}略一凝神，精神看起来好多了};
@@ -191,10 +192,12 @@
     };
 
     #action {你捡起一颗%*的首级} {
+        #showme 收工;
         show_to_quest 萧峰: 已杀死;
     };
 
     #action {将血淋淋的首级提在手中} {
+        #showme 收工;
         show_to_quest 萧峰: 已杀死;
     };
 
@@ -206,10 +209,10 @@
 
     #action {显是蒙面杀手姓名} {
         jifa_all;
-        wi;
         #if {${xf.type} == 1} {
             #delay {1} {
                 on_unbusy {
+                    wi;
                     zhan corpse;
                 };
             };
@@ -224,9 +227,11 @@
         jifa_all;
         on_halt;
         #if {${xf.type} == 3} {
+            #showme 收工;
             show_to_quest 萧峰: 已经劝服;
         };
         #elseif {${xf.type} == 4} {
+            #showme 收工;
             show_to_quest 萧峰: 已经战胜;
         };
     };
