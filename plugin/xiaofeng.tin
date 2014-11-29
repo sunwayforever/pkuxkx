@@ -180,6 +180,11 @@
         show_to_quest 萧峰: 已杀死;
     };
 
+    #action {硬生生的将%*的头颅从尸体上扯了下来，提在手中！} {
+        #showme 收工;
+        show_to_quest 萧峰: 已杀死;
+    };
+    
     #action {将血淋淋的首级提在手中} {
         #showme 收工;
         show_to_quest 萧峰: 已杀死;

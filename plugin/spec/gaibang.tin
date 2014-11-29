@@ -1,145 +1,189 @@
 #class gaibang_spec open
 
 #alias {attack.prepare} {
-	yun powerup;
-	#class attack.inner open;
-	#ticker {perf_chan} {
-		pfm chan;
-	} {1};
-	#class attack.inner close;
+    yun powerup;
+    #class attack.inner open;
+    #ticker {perf_chan} {
+        pfm chan;
+    } {1};
+    #class attack.inner close;
 };
 
-#alias {attack.hubiao} {
-	pfm chan;
-	#class attack.inner open;
-	#class attack.inner close;
-};
 
-#alias {attack.normal} {
-	pfm chan;
-	pfm zhuan;
-	pfm sanhui;
-	#class attack.inner open;
-	#ticker {zhuan} {
-		zhuan;
-	} {6.8};
-	#ticker {sanhui} {
-		sanhui;
-	} {4.8};			
-	#class attack.inner close;
-};
-
-#alias {attack.xiaofeng} {
-	#class attack.inner open;
-	#class attack.inner close;
-};
-
-#alias {attack.mingjiao} {
-	#class attack.inner open;
-	#class attack.inner close;
+#alias {attack} {
+    pfm chan;
+    #if {"${quest}" == "hb"} {
+    };
+    #elseif {${mj_started}  == 1} {
+        #class attack.inner open;
+        #ticker {chuo} {
+            pfm chuo;
+        } {1.8};
+        #class attack.inner close;
+        #if {${xf.type} == -1 || ${xf.type} == 1} {
+            pfm sanhui;
+        };
+        #elseif {${xf.type} == 2} {
+            pfm sanhui;
+        };
+        #elseif {${xf.type} == 3} {
+        };
+        #else {
+        };
+    };
+    #else {
+        #if {${xf.type} == -1 || ${xf.type} == 1} {
+            pfm zhuan;
+            pfm sanhui;
+            #class attack.inner open;
+            #ticker {zhuan} {
+                pfm zhuan;
+            } {6.8};
+            #ticker {sanhui} {
+                pfm sanhui;
+            } {4.8};
+            #class attack.inner close;
+        };
+        #elseif {${xf.type} == 2} {
+            pfm zhuan;
+            #class attack.inner open;
+            #ticker {zhuan} {
+                pfm zhuan;
+            } {6.8};
+            #class attack.inner close;
+        };
+        #elseif {${xf.type} == 3} {
+        };
+        #else {
+        };
+    };
 };
 
 #macro {\eOP} {
-	chan;
+    chan;
 };
 
 #macro {\eOQ} {
-	zhuan;
+    zhuan;
 };
 
 #macro {\eOR} {
-	tiao;
+    tiao;
 };
 
 #macro {\eOS} {
-	chuo;
+    chuo;
 };
 
 #macro {\e[15~} {
-	leiting;
+    leiting;
 };
 
 #macro {\e[17~} {
-	sanhui;
+    sanhui;
 };
 
 #alias {load_map} {
-	#cr;
+    #cr;
 };
 
 #alias {map_goto_lingwu} {
-	#cr;
+    #cr;
 };
 
 #alias {map_goto_rest} {
-	#cr;
+    #cr;
 };
 
 #alias {map_goto_start} {
-	#cr;
+    #cr;
 };
 
 #alias {map_goto_shifu} {
-	#cr;
+    enter;e;
 };
 
 #alias {chan} {
-	unwi;
-	wield staff;
-	perform staff.chan;
-	wi;
+    unwi;
+    do_wield staff;
+    perform dagou-bang.chan;
+    wi;
 };
 
 #alias {zhuan} {
-	unwi;
-	wield staff;
-	perform staff.zhuan;
-	wi;
+    unwi;
+    do_wield staff;
+    perform dagou-bang.zhuan;
+    wi;
 };
 
 #alias {tiao} {
-	unwi;
-	wield staff;
-	perform staff.tiao;
-	wi;
+    unwi;
+    do_wield staff;
+    perform dagou-bang.tiao;
+    wi;
 };
 
 #alias {chuo} {
-	unwi;
-	wield staff;
-	perform staff.chuo;
-	wi;
+    unwi;
+    do_wield staff;
+    perform dagou-bang.chuo;
+    wi;
 };
 
 #alias {leiting} {
-	unwi;
-	perform strike.leiting;
-	wi;
+    unwi;
+    perform strike.leiting;
+    wi;
 };
 
 #alias {yzy} {
-	hit %0;
-	leiting;
-	halt;
+    hit %0;
+    leiting;
+    halt;
 };
 
 #alias {sanhui} {
-	unwi;
-	jiali 10;
-	perform strike.sanhui;
-	jiali none;
-	wi;
+    unwi;
+    jiali max;
+    perform strike.sanhui;
+    jiali none;
+    wi;
+};
+
+#alias {xiao} {
+    unwi;
+    remove shield;
+    perform strike.xiao;
+    wi;
 };
 
 stat.register 缠 miss 你叹了口气知道这“缠”字决已为人所破，只得收回了招式;
 stat.register 缠 hit 你得理不饶人;
 
-#list my_weapons create {my staff;};
-#nop #list my_secondary_weapons create {my staff;};
+#list my_weapons_to_wield create {staff};
 
 #var shortcut F1:缠 F2:转 F3:挑 F4:戳 F5:雷霆降龙 F6:亢龙三悔;
 #var shifu hong;
 #var char_menpai_position gb;
 
+#alias {reborn} {
+    #send {jifa force huntian-qigong};
+    #send {jifa dodge xiaoyaoyou};
+    #send {jifa staff dagou-bang};
+    #send {jifa strike xianglong-zhang};
+    #send {jifa hand shexing-shou};
+    #send {jifa spear yuejia-qiangfa};
+    bei none;
+    bei xianglong-zhang shexing-shou;
+};
+
+#alias {jifa_none} {
+    jifa staff none;
+};
+
+#alias {jifa_all} {
+    jifa staff dagou-bang;
+};
 #class gaibang_spec close
 

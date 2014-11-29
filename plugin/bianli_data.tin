@@ -436,10 +436,13 @@
     9;sw;s;sw;sw;sw;ne;nw;se;ne;ne;n;ne;e;u;
 };
 
-#nop 神龙岛;
-#nop 成都;
-#nop 日月;
-#nop 嘉峪关;
-#nop 桃花岛;
-#nop 洛阳, wat, 梅庄, 归云庄;
+#list bl_path_jz create {
+    bl.comment {往南到南昌，到中央广场};
+    w;w;w;e;s;w;e;e;w;s;s;s;e;w;su;se;s;s;w;e;e;w;s;n;n;n;nw;nd;n;n;n;n;n;
+    bl.comment {岳阳方向， 到中央广场};
+    sw;s;n;n;s;sw;n;s;s;n;sw;w;wu;nw;wu;w;w;s;n;n;s;w;e;e;e;ed;se;ed;e;ne;ne;ne;
+    bl.comment {建康方向};
+    n;n;s;w;enter;w;e;e;w;out;e;e;s;n;ne;se;nw;nw;w;e;se;ne;ne;n;nw;se;e;w;s;e;ne;n;s;sw;w;e;ne;u;d;n;w;e;ne;ne;sw;sw;s;sw;w;sw;e;e;ne;eu;ed;ed;wu;wu;wd;sw;w;w;sw;sw;sw;s;e;e;
+};
+#nop 神龙岛,成都,日月, 嘉峪关, 桃花岛, 洛阳, wat, 梅庄, 归云庄, zz;
 #class bianli_data close

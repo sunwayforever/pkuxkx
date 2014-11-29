@@ -7,13 +7,6 @@
     on_there {
         load_map;
         map_goto_shifu;
-        #delay {3} {
-            #ticker {xue} {
-                #if {$xue_tired == 0} {
-                    xue ${shifu} for ${xue.gongfu} ${xue_count};
-                };
-            }{0.5};
-        };
     };
 
     #var xue_tired 0;
@@ -22,6 +15,11 @@
     #var xue.gongfu %1;
     show_to_quest Ñ§Ï°: ${shifu}/${xue.gongfu};
 
+    #ticker {xue} {
+        #if {$xue_tired == 0} {
+            xue ${shifu} for ${xue.gongfu} ${xue_count};
+        };
+    }{0.5};
 
     #action {ÇÐ´è} {
         xue.stop;
