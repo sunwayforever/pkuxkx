@@ -88,19 +88,20 @@
 };
 
 #alias {map_goto_lingwu} {
-    #cr;
+    #showme map arrived;
 };
 
 #alias {map_goto_rest} {
-    #cr;
+    #showme map arrived;
 };
 
 #alias {map_goto_start} {
-    #cr;
+    #showme map arrived;
 };
 
 #alias {map_goto_shifu} {
     enter;e;
+    #showme map arrived;
 };
 
 #alias {chan} {
