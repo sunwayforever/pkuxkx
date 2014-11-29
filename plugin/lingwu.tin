@@ -95,16 +95,16 @@
         #if {${lw_paused} == 0} {
             #if {${nl_percent} < 10} {
                 #var lw_paused 1;
+                on_arrived {
+                    sleep;
+                };
                 map_goto_rest;
                 on_wakeup {
                     chifan;
-                    map_goto_lingwu;
                     on_arrived {
                         #var lw_paused 0;
                     };
-                };
-                on_arrived {
-                    sleep;
+                    map_goto_lingwu;
                 };
             };
             #else {
@@ -184,10 +184,10 @@
     on_there {
         show_to_quest ÁìÎò;
         load_map;
-        map_goto_lingwu;
         on_arrived {
             lw.restart;
         };
+        map_goto_lingwu;
     };
 };
 
