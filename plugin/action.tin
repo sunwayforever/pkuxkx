@@ -344,13 +344,6 @@
     special;
 };
 
-#action {侠客岛赏善使者「赏善使者」张 三(Zhang san)} {
-    xmpp.notify 张三!;
-    notify.alert 张三!;
-    show_to_info 张三!;
-    accept zhang;
-};
-
 #action {张 三双手抱拳，对着${char_name}作了个揖道} {
     xmpp.notify 张三!;
     notify.alert 张三!;

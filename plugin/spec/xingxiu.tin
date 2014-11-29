@@ -42,17 +42,11 @@
             pfm huose;
             pfm chousui;
             #class attack.inner open;
-            #ticker {huose} {
-                pfm huose;
-            } {3.8};
             #class attack.inner close;
         };
         #else {
             pfm huose;
             #class attack.inner open;
-            #ticker {huose} {
-                pfm huose;
-            } {3.8};
             #class attack.inner close;
         };
     };
