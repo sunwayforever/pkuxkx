@@ -2,56 +2,58 @@
 #read plugin/liandu.tin;
 
 #alias {attack.prepare} {
-	#class attack.inner open;
-	#class attack.inner close;
+    #class attack.inner open;
+    #class attack.inner close;
 };
 
 #alias {attack} {
-    pfm chan;
     #if {"${quest}" == "hb"} {
         pfm huose;
-	    pfm huoqiu;
-	    #class attack.inner open;
-	    #ticker {huose} {
-		    pfm huose;
-	    } {3};
-	    #class attack.inner close;
+        pfm huoqiu;
+        #class attack.inner open;
+        #ticker {huose} {
+            pfm huose;
+        } {3};
+        #class attack.inner close;
     };
     #else {
         #if {${xf.type} == -1 || ${xf.type} == 1} {
-            pfm huoqiu;
-	        #class attack.inner open;
-	        #ticker {huose} {
-		        pfm huose;
-	        } {3};
-	        #ticker {huoqiu} {
-		        pfm huoqiu;
-	        } {4.8};
-	        #class attack.inner close;
+            pfm huose;
+            pfm chousui;
+            #class attack.inner open;
+            #ticker {huose} {
+                pfm huose;
+            } {3};
+            #ticker {huoqiu} {
+                pfm huoqiu;
+            } {4.8};
+            #class attack.inner close;
         };
         #elseif {${xf.type} == 2} {
+            pfm huose;
             pfm chousui;
-	        #class attack.inner open;
-	        #ticker {huose} {
-		        pfm huose;
-	        } {3.8};
-	        #class attack.inner close;
+            #class attack.inner open;
+            #ticker {huose} {
+                pfm huose;
+            } {3.8};
+            #class attack.inner close;
         };
         #elseif {${xf.type} == 3} {
-	        pfm chousui;
-	        #class attack.inner open;
-	        #ticker {huose} {
-		        pfm huose;
-	        } {3.8};
-	        #class attack.inner close;
+            pfm huose;
+            pfm chousui;
+            #class attack.inner open;
+            #ticker {huose} {
+                pfm huose;
+            } {3.8};
+            #class attack.inner close;
         };
         #else {
-	        pfm huoqiu;
-	        #class attack.inner open;
-	        #ticker {huose} {
-		        pfm huose;
-	        } {3.8};
-	        #class attack.inner close;
+            pfm huose;
+            #class attack.inner open;
+            #ticker {huose} {
+                pfm huose;
+            } {3.8};
+            #class attack.inner close;
         };
     };
 };
@@ -74,85 +76,85 @@
 };
 
 #alias {map_goto_lingwu} {
-	map.go 石壁;
+    map.go 石壁;
 };
 
 #alias {map_goto_rest} {
-	map.go 左内殿;
+    map.go 左内殿;
 };
 
 #alias {map_goto_start} {
-	map.go 巨岩;
+    map.go 巨岩;
 };
 
 #alias {map_goto_shifu} {
-	map.go 山谷口;
+    map.go 山谷口;
 };
 
 #list my_weapons_to_wield create {spear; spear 2};
 
 #alias {huose} {
-	unwi;
-	do_wield staff;
-	perform tianshan-zhang.huose;
-	wi;
+    unwi;
+    do_wield staff;
+    perform tianshan-zhang.huose;
+    wi;
 };
 
 #alias {huoqiang} {
-	unwi;
-	yun dianhuo;
-	perform strike.huoqiang;
-	wi;
+    unwi;
+    yun dianhuo;
+    perform xingxiu-duzhang.huoqiang;
+    wi;
 };
 
 #alias {huoqiu} {
-	unwi;
-	yun dianhuo;
-	perform strike.huoqiu;
-	wi;
+    unwi;
+    yun dianhuo;
+    perform xingxiu-duzhang.huoqiu;
+    wi;
 };
 
 #alias {chuanxin} {
-	unwi;
-	perform xingxiu-duzhang.chuanxin;
-	wi;
+    unwi;
+    perform xingxiu-duzhang.chuanxin;
+    wi;
 };
 
 #alias {chousui} {
-	unwi;
-	perform strike.chousui;
-	wi;
+    unwi;
+    perform xingxiu-duzhang.chousui;
+    wi;
 };
 
 #alias {sandu} {
-	unwi;
-	perform strike.sandu;
-	wi;
+    unwi;
+    perform xingxiu-duzhang.sandu;
+    wi;
 };
 
 #var shortcut F1:活色 F2:抽髓 F3:火球 F4:火墙 F5:穿心 F6:散毒;
 #macro {\eOP} {
-	pfm_oob huose;
+    pfm_oob huose;
 };
 
 #macro {\eOQ} {
-	pfm_oob chousui;
+    pfm_oob chousui;
 };
 
 #macro {\eOR} {
-	pfm_oob huoqiu;
+    pfm_oob huoqiu;
 };
 
 #macro {\eOS} {
-	pfm_oob huoqiang;
+    pfm_oob huoqiang;
 };
 
 #macro {\e[15~} {
-	pfm_oob chuanxin;
+    pfm_oob chuanxin;
 };
 
 #macro {\e[17~} {
-	pfm_oob sandu;
+    pfm_oob sandu;
 };
 
 #macro {\e[18~} {
@@ -164,20 +166,20 @@
 };
 
 #alias {qudu} {
-	yun qudu;
-	#action {战斗中运功驱毒} {
-		#unaction {战斗中运功驱毒};
-		eat san;
-	};
+    yun qudu;
+    #action {战斗中运功驱毒} {
+        #unaction {战斗中运功驱毒};
+        eat san;
+    };
 };
 
 #alias {reborn} {
-	#send {jifa strike xingxiu-duzhang};
-	#send {jifa dodge zhaixinggong};
-	#send {jifa parry xingxiu-duzhang};
-	#send {jifa staff tianshan-zhang};
-	#send {jifa hand zhaixing-shou};
-	bei strike hand;
+    #send {jifa strike xingxiu-duzhang};
+    #send {jifa dodge zhaixinggong};
+    #send {jifa parry xingxiu-duzhang};
+    #send {jifa staff tianshan-zhang};
+    #send {jifa hand zhaixing-shou};
+    bei strike hand;
 };
 
 #var shifu li;
@@ -190,21 +192,21 @@
 #nop stat.register 木灵盾 hit 攻击力似乎有所减弱。;
 
 #alias {suck} {
-	unwi;
-	yun neilisuck;
-	wi;
+    unwi;
+    yun neilisuck;
+    wi;
 };
 
 #alias {maxsuck} {
-	unwi;
-	yun maxsuck;
-	wi;
+    unwi;
+    yun maxsuck;
+    wi;
 };
 
 #alias {qisuck} {
-	unwi;
-	yun qisuck;
-	wi;
+    unwi;
+    yun qisuck;
+    wi;
 };
 
 #alias {jifa_none} {

@@ -217,7 +217,7 @@
     bl.comment {桃花岛};
     e;n;s;nd;w;bl.truce;e;e;e;e;e;n;s;w;w;w;w;bl.command {ask diao about 独孤求败};nu;se;nw;sd;sd;su;w;
 };
-#list bl_path_scmtest create {
+#list bl_path_scm create {
     bl.comment {神策门以北到长江南岸};
     n;w;e;nu;e;enter;out;w;nw;ne;e;w;w;w;e;e;sw;se;sd;s;
     bl.comment {神策门往西到军仓};
@@ -225,7 +225,7 @@
     bl.comment {军仓到江州，清凉门};
     su;su;ed;wu;sd;e;s;nw;w;wu;wu;wd;sw;w;w;e;e;ne;eu;ed;ed;
     bl.comment {清凉门到三山门和石城门在返回};
-    s;sd;s;s;s;sd;sw;su;wu;s;s;se;e;e;w;w;nw;n;n;ne;ne;se;s;n;e;nu;ne;ne;e;nw;w;
+    s;sd;s;n;nu;n;e;e;s;e;e;e;
     bl.comment {北城完毕，到中城};
     s;s;s;w;w;e;s;n;e;s;w;e;e;w;s;w;e;e;e;n;s;e;e;se;s;n;nw;w;w;w;w;s;w;e;s;s;s;eu;wd;se;se;se;s;sw;s;n;ne;n;nw;nw;nw;n;n;n;s;s;s;eu;
     bl.comment {南城完毕，到石岗};
@@ -424,11 +424,22 @@
     s;w;nw;w;w;sw;bl.command {open door};w;bl.clear {yan};e;se;e;e;ne;e;n;
 };
 
+#list bl_path_sd create {
+    bl.command {say 天堂有路你不走呀};
+    d;
+    1;n;n;s;nw;nw;nw;n;nw;se;s;se;se;se;s;s;
+    2;ne;ne;sw;sw;sw;
+    3;ne;ne;sw;sw;sw;
+    4;w;w;e;e;e;
+    5;sw;sw;ne;ne;ne;
+    7;n;ne;ne;n;s;sw;sw;s;s;
+    9;sw;s;sw;sw;sw;ne;nw;se;ne;ne;n;ne;e;u;
+};
+
 #nop 神龙岛;
 #nop 成都;
 #nop 日月;
 #nop 嘉峪关;
 #nop 桃花岛;
-#nop 暗道;
 #nop 洛阳, wat, 梅庄, 归云庄;
 #class bianli_data close

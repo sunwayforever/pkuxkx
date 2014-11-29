@@ -380,6 +380,9 @@
 #list Directionsb create {w} {wd} {wu} {n} {nd} {nu} {e} {ed} {eu} {s} {sd} {su} {sw} {se} {nw} {ne} {d} {u} {out} {enter};
 
 #nop ==Â·¾¶±äÁ¿==
+#list Route_yz_sd create {enter shudong};
+#list Route_sd_yz create {out};
+
 #list Route_zjc_kf create {s} {s} {s} {w} {w} {w} {w} {n} {se} {s};
 #list Route_kf_zjc create  {n} {nw} {s} {e} {e} {e} {e} {n} {n} {n};
 

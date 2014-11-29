@@ -1,5 +1,11 @@
 #alias {load} {
-    #read plugin/%1.tin;
+    #var v %1;
+    #if {"${v}" == "spec"} {
+        #read plugin/spec/${char_menpai}.tin;        
+    };
+    #else {
+        #read plugin/%1.tin;
+    };
 };
 
 #alias {unload} {

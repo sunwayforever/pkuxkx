@@ -1,6 +1,7 @@
 #class area open
 @mapcreate{areas};
-@mapset{areas;建康府北;scm};
+@mapset{areas;丐帮暗道;sd};
+@mapset{areas;建康府;scm};
 @mapset{areas;丝绸之路;jyg};
 @mapset{areas;古墓;xt};
 @mapset{areas;少林寺;fzl};
