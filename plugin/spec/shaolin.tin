@@ -18,26 +18,8 @@
 	#class attack.inner close;
 };
 
-#alias {attack.normal} {
-	#class attack.inner open;
-	#class attack.inner close;
-};
+#alias {attack} {
 
-#alias {attack.hubiao} {
-	#class attack.inner open;
-	#class attack.inner close;
-};
-
-#alias {attack.xiaofeng} {
-	#class attack.inner open;
-	pfm_all fmq;
-	#class attack.inner close;
-};
-
-#alias {attack.mingjiao} {
-	#class attack.inner open;
-	pfm_all fmq;
-	#class attack.inner close;
 };
 
 #macro {\eOP} {

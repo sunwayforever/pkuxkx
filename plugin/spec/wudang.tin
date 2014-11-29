@@ -20,7 +20,6 @@
         #class attack.inner close;
     };
     #elseif {${mj_started}  == 1} {
-        jifa_none;
         #class attack.inner open;
         #ticker {perf_zhen} {
             pfm zhen;

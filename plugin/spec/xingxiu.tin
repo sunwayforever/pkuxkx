@@ -6,64 +6,57 @@
 	#class attack.inner close;
 };
 
-#alias {attack.bare} {
-	#class attack.inner open;
-	#class attack.inner close;
+#alias {attack} {
+    pfm chan;
+    #if {"${quest}" == "hb"} {
+        pfm huose;
+	    pfm huoqiu;
+	    #class attack.inner open;
+	    #ticker {huose} {
+		    pfm huose;
+	    } {3};
+	    #class attack.inner close;
+    };
+    #else {
+        #if {${xf.type} == -1 || ${xf.type} == 1} {
+            pfm huoqiu;
+	        #class attack.inner open;
+	        #ticker {huose} {
+		        pfm huose;
+	        } {3};
+	        #ticker {huoqiu} {
+		        pfm huoqiu;
+	        } {4.8};
+	        #class attack.inner close;
+        };
+        #elseif {${xf.type} == 2} {
+            pfm chousui;
+	        #class attack.inner open;
+	        #ticker {huose} {
+		        pfm huose;
+	        } {3.8};
+	        #class attack.inner close;
+        };
+        #elseif {${xf.type} == 3} {
+	        pfm chousui;
+	        #class attack.inner open;
+	        #ticker {huose} {
+		        pfm huose;
+	        } {3.8};
+	        #class attack.inner close;
+        };
+        #else {
+	        pfm huoqiu;
+	        #class attack.inner open;
+	        #ticker {huose} {
+		        pfm huose;
+	        } {3.8};
+	        #class attack.inner close;
+        };
+    };
 };
 
-#alias {attack.hubiao} {
-	pfm huose;
-	pfm huoqiu;
-	#class attack.inner open;
-	#ticker {huose} {
-		pfm huose;
-	} {3};
-	#class attack.inner close;
-};
-
-#alias {attack.normal} {
-	pfm huoqiu;
-	#class attack.inner open;
-	#ticker {huose} {
-		pfm huose;
-	} {3};
-	#ticker {huoqiu} {
-		pfm huoqiu;
-	} {4.8};
-	#class attack.inner close;
-};
-
-#alias {attack.xiaofeng.qin} {
-	pfm chousui;
-	#class attack.inner open;
-	#ticker {huose} {
-		pfm huose;
-	} {3.8};
-	#class attack.inner close;
-};
-
-#alias {attack.xiaofeng.quan} {
-	pfm chousui;
-	#class attack.inner open;
-	#ticker {huose} {
-		pfm huose;
-	} {3.8};
-	#class attack.inner close;
-};
-
-#alias {attack.xiaofeng.sheng} {
-	pfm huoqiu;
-	#class attack.inner open;
-	#ticker {huose} {
-		pfm huose;
-	} {3.8};
-	#class attack.inner close;
-};
-
-#alias {attack.mingjiao} {
-	attack.normal;
-};
-
+;
 #macro {\eOP} {
 
 };
@@ -96,20 +89,11 @@
 	map.go É½¹È¿Ú;
 };
 
-#alias {chan} {
-	#cr;
-};
-
-#alias {chan_robber} {
-	#cr;
-};
-
-#list my_weapons create {my spear; my spear 2};
-#list my_secondary_weapons create {my staff;};
+#list my_weapons_to_wield create {spear; spear 2};
 
 #alias {huose} {
 	unwi;
-	wield staff;
+	do_wield staff;
 	perform tianshan-zhang.huose;
 	wi;
 };
@@ -223,4 +207,11 @@
 	wi;
 };
 
+#alias {jifa_none} {
+    jifa spear none;
+};
+
+#alias {jifa_all} {
+    jifa spear yuejia-qiangfa;
+};
 #class xingxiu_spec close

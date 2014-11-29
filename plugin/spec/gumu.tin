@@ -2,90 +2,78 @@
 #var jiali_zhua 150;
 #var jiali_shexin 10;
 
-#var first_sword zidian;
-#var second_sword qingshuang;
-
 #alias {attack.prepare} {
     yun xinjing;
     #class attack.inner open;
     #ticker {perf_chan} {
         pfm chan;
-    } {0.5};
+    } {0.8};
     #ticker {xinjing} {
         yun xinjing;
     } {30};
     #class attack.inner close;
 };
 
-#alias {attack.bare} {
+#alias {attack} {
     pfm chan;
-    #class attack.inner open;
-    #class attack.inner close;
-};
-
-#alias {attack.hubiao} {
-    pfm chan;
-    pfm shexin;
-    pfm suxin;
-    #class attack.inner open;
-    #ticker {suxin} {
-        pfm suxin;
-    } {3.8};
-    #ticker {shexin} {
+    #if {"${quest}" == "hb"} {
         pfm shexin;
-    } {5.8};
-    #class attack.inner close;
-};
-
-#alias {attack.normal} {
-    pfm chan;
-    pfm shexin;
-    pfm suxin;
-    pfm zhua;
-    #class attack.inner open;
-    #ticker {zhua} {
-        pfm zhua;
-    } {3.8};
-    #ticker {suxin} {
         pfm suxin;
-    } {8.8};
-    #ticker {shexin} {
-        pfm shexin;
-    } {5.8};
-    #class attack.inner close;
-};
-
-#alias {attack.xiaofeng.qin} {
-    pfm chan;
-    pfm zhua;
-    pfm suxin;
-    #class attack.inner open;
-    #class attack.inner close;
-};
-
-#alias {attack.xiaofeng.quan} {
-    pfm chan;
-    pfm zhua;
-    pfm suxin;
-    #class attack.inner open;
-    #class attack.inner close;
-};
-
-#alias {attack.xiaofeng.sheng} {
-    pfm chan;
-    pfm zhua;
-    pfm suxin;
-    #class attack.inner open;
-    #class attack.inner close;
-};
-
-#alias {attack.mingjiao} {
-    pfm chan;
-    #class attack.inner open;
-    #ticker {qixing} {
-        pfm qixing;
-    } {1.8};
-    #class attack.inner close;
+        #class attack.inner open;
+        #ticker {suxin} {
+            pfm suxin;
+        } {3.8};
+        #ticker {shexin} {
+            pfm shexin;
+        } {5.8};
+        #class attack.inner close;
+    };
+    #elseif {${mj_started}  == 1} {
+        #class attack.inner open;
+        #ticker {qixing} {
+            pfm qixing;
+        } {1.8};
+        #class attack.inner close;
+    };
+    #else {
+        #if {${xf.type} == -1 || ${xf.type} == 1} {
+            pfm shexin;
+            pfm suxin;
+            pfm zhua;
+            #class attack.inner open;
+            #ticker {zhua} {
+                pfm zhua;
+            } {3.8};
+            #ticker {suxin} {
+                pfm suxin;
+            } {8.8};
+            #ticker {shexin} {
+                pfm shexin;
+            } {5.8};
+            #class attack.inner close;
+        };
+        #elseif {${xf.type} == 2} {
+            pfm zhua;
+            pfm suxin;
+            #class attack.inner open;
+            #ticker {zhua} {
+                pfm zhua;
+            } {3.8};
+            #class attack.inner close;
+        };
+        #elseif {${xf.type} == 3} {
+            pfm zhua;
+            pfm suxin;
+            #class attack.inner open;
+            #class attack.inner close;
+        };
+        #else {
+            pfm zhua;
+            pfm suxin;
+            #class attack.inner open;
+            #class attack.inner close;
+        };
+    };
 };
 
 #var shortcut F1:²ø F2:ÉãÐÄ F3:ËØÐÄ F4:×¥ F5:ÐÚÓ¿ F6:ÆßÐÇ F7:°µÆ÷;
@@ -218,5 +206,14 @@ stat.register ÐÚÓ¿ miss ÄãµÄÁèÀ÷¹¥ÊÆ;
     bei cuff;
 };
 
+#alias {jifa_none} {
+    jifa sword none;
+    jifa spear none;
+};
+
+#alias {jifa_all} {
+    jifa sword xuantie-jian;
+    jifa spear yuejia-qiangfa;
+};
 #class gumu_spec close
 
