@@ -444,5 +444,26 @@
     bl.comment {建康方向};
     n;n;s;w;enter;w;e;e;w;out;e;e;s;n;ne;se;nw;nw;w;e;se;ne;ne;n;nw;se;e;w;s;e;ne;n;s;sw;w;e;ne;u;d;n;w;e;ne;ne;sw;sw;s;sw;w;sw;e;e;ne;eu;ed;ed;wu;wu;wd;sw;w;w;sw;sw;sw;s;e;e;
 };
+
+#list bl_path_yy create {
+    bl.comment {往南到南昌， 城中心};
+    w;e;e;w;s;s;su;su;su;ed;nu;enter;w;e;n;s;out;sd;ed;ed;e;w;wu;wu;wu;nd;nd;nd;n;n;n;
+    bl.comment {往东到江州};
+    e;n;s;s;n;e;e;ed;se;ed;e;ne;s;n;n;s;ne;sw;sw;w;wu;nw;wu;w;w;w;
+    bl.comment {往北};
+    n;e;w;n;n;w;e;ne;sw;s;s;s;
+    bl.comment {往西到桃源成都};
+    w;n;s;s;n;w;w;u;d;s;su;sw;e;w;sw;ne;ne;nd;w;wu;sw;se;se;nw;nw;ne;ed;e;n;e;e;e;s;
+};
+
+#list bl_path_ssb create {
+    bl.comment {往南到扬州};
+    w;n;s;e;s;s;s;ed;ed;nd;n;w;e;n;s;e;w;s;su;se;su;nd;nw;wu;wu;n;n;n;
+    bl.comment {除果林之外的地方};
+    n;nu;wu;n;w;n;s;s;n;w;n;s;e;e;n;n;n;n;n;n;n;s;s;s;s;s;s;s;e;e;s;w;e;e;w;s;s;n;n;n;ed;ed;ed;wu;wu;wu;
+    bl.comment {果林};
+    n;bl.action.guolin; nu;nu;bl.truce;wu;bl.truce;ed;sd;sd;
+    s;bl.action.guolinb;w;w;s;ed;sd;s;
+};
 #nop 神龙岛,成都,日月, 嘉峪关, 桃花岛, 洛阳, wat, 梅庄, 归云庄, zz;
 #class bianli_data close

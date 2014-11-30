@@ -1,13 +1,10 @@
 #class bianli open;
 load bianli_data;
 
+#var bl_action 0;
 #alias {bl.setup} {
     #var bl_path ${bl_path_${CurrentPosition}};
     #var bl_connections ${bl_connections_${CurrentPosition}};
-};
-
-#action {^树洞内部 -}{
-    #var CurrentPosition shudong;
 };
 
 #alias {bl.command} {
@@ -37,6 +34,7 @@ load bianli_data;
 };
 
 #alias {bl.pause} {
+    #class bl.action.inner kill;
     #class bl.inner kill;
     #undelay {bl.delay};
 };
@@ -50,16 +48,19 @@ load bianli_data;
     };
     #class bl.inner open;
     #action {这里没有任何明显的出路} {
-        #delay {bl.delay} {
-            bl.walk;
-        } {0.05};
+        #if {${bl_action} == 0} {
+            #delay {bl.delay} {
+                bl.walk;
+            } {0.05};
+        };
     } {1};
     #action {这里%*的出口是} {
-        #delay {bl.delay} {
-            bl.walk;
-        } {0.1};
-    } {1};
-
+        #if {${bl_action} == 0} {
+            #delay {bl.delay} {
+                bl.walk;
+            } {0.1};
+        } {1};
+    };
     #action {busy_for_move} {
         #math bl_path_index ${bl_path_index}-1;
         bl.wait 1;
@@ -92,7 +93,6 @@ load bianli_data;
     #class bl.inner close;
     bl.walk;
 };
-
 
 #alias {bl.start} {
     #var critical_running 1;
@@ -210,7 +210,7 @@ load bianli_data;
 
 #alias {bl.test} {
     #list bl_path create {
-            s;w;e;e;w;s;s;w;e;e;w;s;w;e;e;w;s;w;w;n;s;w;e;s;n;e;sw;s;bl.command {open door};w;e;n;ne;e;e;e;e;w;s;n;w;w;s;w;e;e;w;s;bl.clear_force {shiwei}; bl.clear_force {shi}; s;s;n;n;n;n;n;n;n;n;n;n;nw;se;s;
+        s;w;e;e;w;s;s;w;e;e;w;s;w;e;e;w;s;w;w;n;s;w;e;s;n;e;sw;s;bl.command {open door};w;e;n;ne;e;e;e;e;w;s;n;w;w;s;w;e;e;w;s;bl.clear_force {shiwei}; bl.clear_force {shi}; s;s;n;n;n;n;n;n;n;n;n;n;nw;se;s;
     };
     #list bl_path size bl_path_size;
     #var bl_path_index 0;
@@ -244,5 +244,32 @@ load bianli_data;
     #else {
         #return 1;
     };
+};
+
+#alias {bl.action.guolin} {
+    #var bl_action 1;
+    #class bl.action.inner open;
+    #ticker {bl.action} {
+        w;e
+    } {0.8};
+    #action {后山} {
+        #class bl.action.inner kill;
+        #var bl_action 0;
+        s;
+    };
+    #class bl.action.inner close;
+};
+#alias {bl.action.guolinb} {
+    #var bl_action 1;
+    #class bl.action.inner open;
+    #ticker {bl.action} {
+        w;e;
+    } {0.8};
+    #action {大道} {
+        #class bl.action.inner kill;
+        #var bl_action 0;
+        s;
+    };
+    #class bl.action.inner close;
 };
 #class bianli close;
