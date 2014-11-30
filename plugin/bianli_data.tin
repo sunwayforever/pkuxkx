@@ -465,5 +465,14 @@
     n;bl.action.guolin; nu;nu;bl.truce;wu;bl.truce;ed;sd;sd;
     s;bl.action.guolinb;w;w;s;ed;sd;s;
 };
-#nop 神龙岛,成都,日月, 嘉峪关, 桃花岛, 洛阳, wat, 梅庄, 归云庄, zz;
+
+#list bl_path_ry create {
+    bl.comment {小村庄往南到晋阳北京};
+    w;n;s;s;n;e;e;e;w;n;s;s;n;w;se;nw;sd;sd;sw;s;sd;w;w;e;e;ne;ne;sw;sw;nu;n;ne;nu;nu;
+    bl.comment {到黑木崖下};
+    n;w;w;w;s;n;e;n;s;s;n;e;e;e;n;w;w;e;n;w;e;e;e;w;n;e;w;s;w;n;
+    bl.comment {从黑木崖下回来};
+    s;s;s;s;
+};
+#nop 神龙岛,成都, 嘉峪关, 桃花岛, 洛阳, wat, 梅庄, 归云庄, zz;
 #class bianli_data close
