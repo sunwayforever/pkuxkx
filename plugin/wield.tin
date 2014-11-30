@@ -36,7 +36,7 @@
 #var wielding 0;
 #alias {do_wield} {
     #if {${wielding} == 1} {
-        #delay {1.8} {
+        #delay {0.6} {
             do_wield %0;
         };
     };
@@ -69,7 +69,6 @@
 #gag weapon wield;
 #alias {wield_1} {
     #var target %0;
-    wield my ${target};
     #var weapon_name {my ${target}};
     #class wield_inner open;
     #action {你身上没有这样东西。} {
@@ -93,11 +92,11 @@
         #showme weapon wield;
     };
     #class wield_inner close;
+    wield my ${target};
 };
 
 #alias {wield_2} {
     #var target %0;
-    wield ${target};
     #var weapon_name {${target}};
     #class wield_inner open;
     #action {你身上没有这样东西。} {
@@ -119,6 +118,7 @@
         #showme weapon wield;
     };
     #class wield_inner close;
+    wield ${target};
 };
 
 #alias {wield_3} {
@@ -126,7 +126,6 @@
     #var weapon_name special_${target};
     #replace weapon_name { } {_};
     #show ${weapon_name} -> ${${weapon_name}};
-    wield ${${weapon_name}};
     #class wield_inner open;
     #action {你身上没有这样东西。} {
         #class wield_inner kill;
@@ -147,6 +146,7 @@
         #showme weapon wield;
     };
     #class wield_inner close;
+    wield ${${weapon_name}};
 };
 
 #list my_weapons create {};
@@ -173,4 +173,7 @@
     #class weapons kill;
 };
 
+#action {你必须空出一只手来使用武器} {
+    remove shield;
+};
 #class wield close

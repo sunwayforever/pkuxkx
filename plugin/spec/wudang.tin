@@ -45,8 +45,7 @@
             } {5.8};
             #class attack.inner close;
         };
-        #elseif {${xf.type} == 4} {
-            pfm wuying;
+        #elseif {${xf.type} == 3} {
             #class attack.inner open;
             #class attack.inner close;
         };
@@ -81,13 +80,11 @@
             } {5.8};
             #class attack.inner close;
         };
-        #elseif {${xf.type} == 4} {
-            pfm wuying;
+        #elseif {${xf.type} == 3} {
             #class attack.inner open;
             #class attack.inner close;
         };
         #else {
-            #nop jifa_none;
             #class attack.inner open;
             #class attack.inner close;
         };
