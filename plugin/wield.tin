@@ -28,15 +28,16 @@
     #else {
         #var weapons_to_wield ${my_weapons_to_wield_${current_weapons_set}};
     };
-    #show weapons_to_wield switched to ${weapons_to_wield};
+    #show 平砍武器切换为 ${weapons_to_wield};
     reset_weapons;
     wi;
 };
 
+#gag {你身上没有这样东西};
 #var wielding 0;
 #alias {do_wield} {
     #if {${wielding} == 1} {
-        #delay {0.6} {
+        #delay {1} {
             do_wield %0;
         };
     };
@@ -56,9 +57,9 @@
                 #var weapon_${target} {};
                 wield_1 %%0;
             };
-            #action {^>} {
+            #delay {wield_delay} {
                 #class wield_inner kill;
-            };
+            } {0.5};
             #class wield_inner close;
             wield ${current_weapon};
             #showme weapon wield;
@@ -78,7 +79,7 @@
             wield_2 ${target};
         };
     };
-    #action {^>} {
+    #delay {wield_delay} {
         #class wield_inner kill;
         #replace target { } {_};
 
@@ -86,11 +87,11 @@
         #var weapon_${target} ${weapon_name};
         #class weapons close;
 
-        #showme weapon_${target} set to ${weapon_name};
+        #showme ${target} 设置为 ${weapon_name};
         add_to_my_weapons ${weapon_name};
         #var wielding 0;
         #showme weapon wield;
-    };
+    } {0.5};
     #class wield_inner close;
     wield my ${target};
 };
@@ -105,7 +106,7 @@
             wield_3 ${target};
         };
     };
-    #action {^>} {
+    #delay {wield_delay} {
         #class wield_inner kill;
         #replace target { } {_};
         
@@ -113,10 +114,10 @@
         #var weapon_${target} ${weapon_name};
         #class weapons open;
         
-        #showme weapon_${target} set to ${weapon_name};
+        #showme ${target} 设置为 ${weapon_name};
         #var wielding 0;
         #showme weapon wield;
-    };
+    } {0.5};
     #class wield_inner close;
     wield ${target};
 };
@@ -133,7 +134,7 @@
         #var wielding 0;
         #showme weapon wield;
     };
-    #action {^>} {
+    #delay {wield_delay} {
         #class wield_inner kill;
         #replace target { } {_};
 
@@ -141,10 +142,12 @@
         #var weapon_${target} ${${weapon_name}};
         #class weapons close;
 
+        #showme ${target} 设置为 ${weapon_name};
         add_to_my_special_weapons ${${weapon_name}};
         #var wielding 0;
         #showme weapon wield;
-    };
+        
+    } {0.5};
     #class wield_inner close;
     wield ${${weapon_name}};
 };

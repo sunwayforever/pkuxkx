@@ -56,19 +56,15 @@
     };
     #else {
         #if {${xf.type} == -1 || ${xf.type} == 1} {
-            pfm lzj;
             pfm wuying;
             pfm gangrou;
             #class attack.inner open;
-            #ticker {lzj} {
-                pfm lzj;
-            } {8.8};
             #ticker {wuying} {
                 pfm wuying;
-            } {6.8};
+            } {5.8};
             #ticker {gangrou} {
                 pfm gangrou;
-            } {5.8};
+            } {6.8};
             #class attack.inner close;
         };
         #elseif {${xf.type} == 2} {
@@ -172,11 +168,7 @@
     perform taiji-quan.gangrou;
     #action {抬手就封住了你这一掌！} {
         #unaction {抬手就封住了你这一掌！};
-        #ticker {perf_zhen_2} {
-            pfm zhen;
-        } {1};
         #delay {delay_gangrou} {
-            #unticker {perf_zhen_2};
             #var gangrou_ing 0;
             jiali none;
         } {5};

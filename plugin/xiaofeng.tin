@@ -148,7 +148,7 @@
     #action {西夏一品堂 %*(%* %*)} {
         #unaction {西夏一品堂 %*(%* %*)};
         #var xf.real_name %%1;
-        pp %%1;
+        #nop pp %%1;
         #var xf.real_first_name @lower{%%2};
 
         #if {${xf.type} == 2} {
