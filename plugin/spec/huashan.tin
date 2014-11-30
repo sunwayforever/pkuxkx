@@ -1,216 +1,206 @@
 #class wudang_spec open
 #alias {attack.prepare} {
-	yun powerup;
-	#class attack.inner open;
-	#ticker {poqi} {
-		pfm poqi;
+    yun powerup;
+    #class attack.inner open;
+    #ticker {poqi} {
+        pfm poqi;
     } {1.8};
-	#class attack.inner close;
+    #class attack.inner close;
 };
 
-#alias {attack.bare} {
-	pfm poqi;
-	#class attack.inner open;
-	#ticker {po} {
-		zongjue;
-	} {3.8};
-	#class attack.inner close;
+#alias {attack} {
+    pfm chan;
+    #if {"${quest}" == "hb"} {
+    };
+    #elseif {${mj_started}  == 1} {
+        pfm poqi;
+        pfm zongjue;
+        #class attack.inner open;
+        #ticker {zongjue} {
+            pfm zongjue;
+        } {2.8};
+        #ticker {feilong} {
+            pfm feilong;
+        } {6.8};
+        #class attack.inner close;
+    };
+    #else {
+        #if {${xf.type} == -1 || ${xf.type} == 1} {
+            pfm poqi;
+            pfm pobing;
+            pfm sqf;
+            #class attack.inner open;
+            #ticker {po} {
+                pfm po;
+            } {3.8};
+            #ticker {sfq} {
+                pfm sqf;
+            } {5.8};
+            #class attack.inner close;
+        };
+        #elseif {${xf.type} == 2} {
+            pfm poqi;
+            pfm po;
+            pfm sqf;
+            pfm feilong;
+            #class attack.inner open;
+            #ticker {po} {
+                pfm po;
+            } {6.8};
+            #class attack.inner close;
+        };
+        #elseif {${xf.type} == 3} {
+            pfm poqi;
+            pfm po;
+            pfm sqf;
+            #class attack.inner open;
+            #ticker {po} {
+                pfm po;
+            } {6.8};
+            #class attack.inner close;
+        };
+        #else {
+            pfm poqi;
+            pfm po;
+            pfm sqf;
+            #class attack.inner open;
+            #ticker {po} {
+                pfm po;
+            } {6.8};
+            #class attack.inner close;
+        };
+    };
 };
+
 
 #alias {attack.end} {
-	#var with_weapon 1;	
+    #var with_weapon 1;
 };
 
 #action {{对方是空手|对方没有使用兵器}} {
-	#var with_weapon 0;
+    #var with_weapon 0;
 };
 
 #action {对方不是空手} {
-	#var with_weapon 1;
+    #var with_weapon 1;
 };
 
 #var with_weapon 1;
 #alias {po} {
-	#if {${with_weapon} == 1} {
-		pobing;
-	};
-	#else {
-		pozhang;
-	};
-};
-
-#alias {attack.normal} {
-	pfm poqi;
-	pfm pobing;
-    pfm sqf;
-	#class attack.inner open;
-	#ticker {po} {
-		pfm po;
-    } {3.8};
-    #ticker {sfq} {
-		pfm sqf;
-    } {5.8};
-	#class attack.inner close;
-};
-
-#alias {attack.hubiao} {
-	#class attack.inner open;
-
-	#class attack.inner close;
-};
-
-#alias {attack.xiaofeng.qin} {
-	pfm poqi;
-	pfm po;
-	pfm sqf;
-	pfm feilong;
-	#class attack.inner open;
-	#ticker {po} {
-		pfm po;
-	} {6.8};	
-	#class attack.inner close;
-};
-
-#alias {attack.xiaofeng.sheng} {
-	pfm poqi;
-	pfm po;
-	pfm sqf;
-	#class attack.inner open;
-	#ticker {po} {
-		pfm po;
-	} {6.8};
-	#class attack.inner close;
-};
-
-#alias {attack.xiaofeng.quan} {
-	pfm poqi;
-	pfm po;
-	pfm sqf;
-	#class attack.inner open;
-	#ticker {po} {
-		pfm po;
-	} {6.8};
-	#class attack.inner close;
-};
-
-#alias {attack.mingjiao} {
-	pfm poqi feilong zongjue;
-	#class attack.inner open;
-	#ticker {zongjue} {
-		pfm zongjue;
-	} {2.8};
-	#ticker {feilong} {
-		pfm feilong;
-	} {6.8};	
-	#class attack.inner close;
+    #if {${with_weapon} == 1} {
+        pobing;
+    };
+    #else {
+        pozhang;
+    };
 };
 
 #alias {map_goto_lingwu} {
-	map.go {练功房};
+    map.go {练功房};
 };
 
 #alias {map_goto_rest} {
-	map.go {华山休息室};
+    map.go {华山休息室};
 };
 
 #alias {map_goto_start} {
-	map.go {书房};
+    map.go {书房};
 };
 
 #alias {map_goto_shifu} {
-	map.go {书房};
+    map.go {书房};
 };
 
 #alias {pozhang} {
-	unwi;
-	wield sword;
-	perform dugu-jiujian.pozhang;
-	wi;
+    unwi;
+    do_wield sword;
+    perform dugu-jiujian.pozhang;
+    wi;
 };
 
 #alias {zongjue} {
-	unwi;
-	wield sword;
-	perform dugu-jiujian.po;
-	wi;
+    unwi;
+    do_wield sword;
+    perform dugu-jiujian.po;
+    wi;
 };
 
 #alias {pobing} {
-	unwi;
-	wield sword;
-	perform dugu-jiujian.pobing;
-	wi;
+    unwi;
+    do_wield sword;
+    perform dugu-jiujian.pobing;
+    wi;
 };
 
 #alias {poqi} {
-	unwi;
-	wield sword;
-	perform dugu-jiujian.poqi;
-	wi;
+    unwi;
+    do_wield sword;
+    perform dugu-jiujian.poqi;
+    wi;
 };
 
 #alias {kuangfeng} {
-	unwi;
-	wield sword;
-	perform dugu-jiujian.kuangfeng;
-	wi;
+    unwi;
+    do_wield sword;
+    perform dugu-jiujian.kuangfeng;
+    wi;
 };
 
 #alias {feijian} {
-	unwi;
-	wield sword;
-	perform huashan-jianfa.feijian;
-	wi;
+    unwi;
+    do_wield sword;
+    perform huashan-jianfa.feijian;
+    wi;
 };
 
 #alias {jianzhang} {
-	unwi;
-	wield sword;
-	perform huashan-jianfa.jianzhang;
-	wi;
+    unwi;
+    do_wield sword;
+    perform huashan-jianfa.jianzhang;
+    wi;
 };
 
 #alias {sqf} {
-	unwi;
-	jiali max;
-	wield sword;
-	perform huashan-jianfa.sanqingfeng;
-	jiali none;
-	wi;
+    unwi;
+    jiali max;
+    do_wield sword;
+    perform huashan-jianfa.sanqingfeng;
+    jiali none;
+    wi;
 };
 
 #alias {chan} {
-	unwi;
-	wield sword;
-	perform huashan-jianfa.yangwu;
-	wi;
+    unwi;
+    do_wield sword;
+    perform huashan-jianfa.yangwu;
+    wi;
 };
 
 #alias {feilong} {
-	unwi;
-	wield sword;
-	perform huashan-jianfa.feilong;
-	wi;
+    unwi;
+    do_wield sword;
+    perform huashan-jianfa.feilong;
+    wi;
 };
 
 #alias {lianhuan} {
-	unwi;
-	wield sword;
-	perform huashan-jianfa.lianhuan;
-	wi;
+    unwi;
+    do_wield sword;
+    perform huashan-jianfa.lianhuan;
+    wi;
 };
 
 #var shortcut F1:破气 F2:飞剑 F3:三青风 F5:缠 F6:飞龙 F7:狂风 F8: 破 F9: 破兵 F10: 破掌;
 #macro {\eOP} {
-	pfm_oob poqi;
+    pfm_oob poqi;
 };
 
 #macro {\eOQ} {
-	pfm_oob feijian;
+    pfm_oob feijian;
 };
 
 #macro {\eOR} {
-	pfm_oob sqf;
+    pfm_oob sqf;
 };
 
 #macro {\eOS} {
@@ -218,38 +208,38 @@
 };
 
 #macro {\e[15~} {
-	pfm_oob chan;
+    pfm_oob chan;
 };
 
 #macro {\e[17~} {
-	pfm_oob feilong;
+    pfm_oob feilong;
 };
 
 #macro {\e[18~} {
-	pfm_oob kuangfeng;
+    pfm_oob kuangfeng;
 };
 
 #macro {\e[19~} {
-	pfm_oob zongjue;
+    pfm_oob zongjue;
 };
 
 #macro {\e[20~} {
-	pfm_oob pobing;
+    pfm_oob pobing;
 };
 
 #macro {\e[21~} {
-	pfm_oob pozhang;
+    pfm_oob pozhang;
 };
 
 
 #alias {yzy} {
-	hit %0;
-	pfm_oob feilong;
-	halt;
+    hit %0;
+    pfm_oob feilong;
+    halt;
 };
 #var shifu yue;
-#list my_weapons create {my sword;};
-#list my_secondary_weapons create {my sword;};
+#list my_weapons_to_wield create {sword};
+
 #var menzhong ning;
 #var menzhong_didian hs;
 #var char_menpai_position hs;
@@ -258,14 +248,21 @@ stat.register 飞龙 miss 莫非这就是传说中穆人清老爷子的天外飞龙;
 stat.register 飞龙 hit 这一记“天外飞龙”，却是华山派穆人清的绝招。;
 
 #alias {reborn} {
-	#send {jifa force huashan-neigong};
-	#send {jifa dodge huashan-shenfa};
-	#send {jifa parry dugu-jiujian};
-	#send {jifa cuff poyu-quan};
+    #send {jifa force huashan-neigong};
+    #send {jifa dodge huashan-shenfa};
+    #send {jifa parry dugu-jiujian};
+    #send {jifa cuff poyu-quan};
     #send {jifa strike hunyuan-zhang};
-	#send {jifa sword dugu-jiujian};
+    #send {jifa sword dugu-jiujian};
     #send {jifa spear yuejia-qiangfa};
-	bei cuff;
+    bei cuff;
 };
 
+#alias {jifa_none} {
+    jifa sword none;
+};
+
+#alias {jifa_all} {
+    jifa sword dugu-jiujian;
+};
 #class wudang_spec close
