@@ -43,7 +43,7 @@
     bl.comment {镇江内部及土路，到南水门};
     s;s;n;e;n;s;s;n;w;w;n;n;e;w;s;s;w;s;n;w;n;s;s;n;e;e;s;w;e;e;w;s;w;w;n;n;n;n;e;e;e;e;s;s;s;s;w;w;
     bl.comment {南面鸡笼山到南水门};
-    s;s;sw;s;n;nd;su;ne;se;s;n;nw;n;n;
+    s;s;sw;se;nw;ne;eu;wd;sd;s;n;nu;n;n;
     bl.comment {西面到建康，长江，到登云门};
     w;w;n;n;w;nw;nw;se;se;sw;sw;sw;nu;sd;sw;ne;wu;ed;se;se;se;se;nw;nw;nw;nw;ne;ne;ne;e;
     bl.comment {北面到青阳门};

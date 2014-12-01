@@ -1,3 +1,4 @@
 #!/bin/bash
-name=`curl http://pkuxkx.net/antirobot/robot.php?filename=$1 | sed 's/[^"]*="\([^"]*\)"[^"]*/\1/g;s/"/\n/g;' | sed -n 1p | sed s/\.// `
+name=`curl -s http://pkuxkx.net/antirobot/robot.php?filename=$1 | sed 's/[^"]*="\([^"]*\)"[^"]*/\1/g;s/"/\n/g;' | sed -n 1p | sed s/\.// `
 DISPLAY=:0.0 display http://pkuxkx.net/antirobot$name 1>/dev/null 2>&1 &
+echo $!
