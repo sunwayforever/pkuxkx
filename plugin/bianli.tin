@@ -1,7 +1,7 @@
 #class bianli open;
 load bianli_data;
 
-#var bl_action 0;
+#var bl_in_action 0;
 #alias {bl.setup} {
     #var bl_path ${bl_path_${CurrentPosition}};
     #var bl_connections ${bl_connections_${CurrentPosition}};
@@ -48,14 +48,14 @@ load bianli_data;
     };
     #class bl.inner open;
     #action {这里没有任何明显的出路} {
-        #if {${bl_action} == 0} {
+        #if {${bl_in_action} == 0} {
             #delay {bl.delay} {
                 bl.walk;
             } {0.05};
         };
     } {1};
     #action {这里%*的出口是} {
-        #if {${bl_action} == 0} {
+        #if {${bl_in_action} == 0} {
             #delay {bl.delay} {
                 bl.walk;
             } {0.1};
@@ -67,6 +67,7 @@ load bianli_data;
     };
 
     #alias {bl.walk} {
+        #var bl_in_action 0;
         #math bl_path_index ${bl_path_index}+1;
         #if {${bl_path_index} > ${bl_path_size}} {
             bl.pause;
@@ -75,15 +76,17 @@ load bianli_data;
         };
         #else {
             #list bl_path get ${bl_path_index} bl_path_next;
+            #if {@is_bl_action{${bl_path_next}} == 1} {
+                #var bl_in_action 1;
+            };
             ${bl_path_next};
         };
     };
+
     #action {这个方向没有出路} {
         bl.stop;
     };
-    #action {忽然发现江水决堤} {
-        bl.stop;
-    };
+
     #if {"%1" != ""} {
         #action {%1} {
             bl.stop;
@@ -222,20 +225,6 @@ load bianli_data;
     bl.walk;
 };
 
-#alias {bl.action.xiangyang} {
-    eu;
-    #class bl.action.xiangyang.inner open;
-    #action {^此去往东是荒郊野岭，盗贼猛兽出没之地} {
-        #delay {0.5} {
-            eu;
-        };
-    } {1};
-    #action {^半山坡} {
-        #class bl.action.xiangyang.inner kill;
-    } {1};
-    #class bl.action.xiangyang.inner close;
-};
-
 #function {blsupport} {
     #list bl_path_%1 size tmp;
     #if {${tmp} == 0} {
@@ -247,20 +236,18 @@ load bianli_data;
 };
 
 #alias {bl.action.guolin} {
-    #var bl_action 1;
     #class bl.action.inner open;
     #ticker {bl.action} {
         w;e
     } {0.8};
     #action {后山} {
         #class bl.action.inner kill;
-        #var bl_action 0;
         s;
+        bl.walk;
     };
     #class bl.action.inner close;
 };
 #alias {bl.action.guolinb} {
-    #var bl_action 1;
     #class bl.action.inner open;
     #ticker {bl.action} {
         w;e;
@@ -269,7 +256,12 @@ load bianli_data;
         #class bl.action.inner kill;
         #var bl_action 0;
         s;
+        bl.walk;
     };
     #class bl.action.inner close;
+};
+
+#function {is_bl_action} {
+    #regexp {%1} {^bl.action} {#var result 1} {#var result 0};
 };
 #class bianli close;
