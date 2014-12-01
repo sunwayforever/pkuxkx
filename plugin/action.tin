@@ -17,7 +17,7 @@
 
 #action {^http://pkuxkx.net/antirobot/robot.php?filename=%1} {
     xmpp.notify http://pkuxkx.net/antirobot/robot.php?filename=%1;
-    #system {google-chrome http://pkuxkx.net/antirobot/robot.php?filename=%1 1>/dev/null 2>&1 &};
+    #system {bin/fullme %1};
 };
 
 #action {以你目前的级别，你放不了更多宝石。} {
@@ -315,6 +315,7 @@
 
 #action {也许是上天垂青于你的勤奋和努力吧，一个小时之内你不用担心被判为机器人。} {
     #var fm_info off;
+    #system {killall display 1>/dev/null 2>&1};
     #send {hp};
     update_status;
 };

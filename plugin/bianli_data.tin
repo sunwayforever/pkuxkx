@@ -474,5 +474,19 @@
     bl.comment {从黑木崖下回来};
     s;s;s;s;
 };
-#nop 神龙岛,成都, 嘉峪关, 桃花岛, 洛阳, wat, 梅庄, 归云庄, zz;
+
+#list bl_path_taih create {
+    bl.comment {往西到苏州};
+    w;w;w;w;w;s;e;s;nw;sw;se;w;e;e;nw;se;s;n;e;w;w;nw;ne;se;n;w;n;e;e;e;e;e;
+    bl.comment {往北到黑风山洞};
+    bl.comment {往东到归云亭};
+    e;n;s;s;e;w;n;e;n;u;d;s;s;n;e;e;enter;nu;nu;w;e;
+    bl.comment {归云亭到后花园};
+    e;e;n;n;w;n;s;s;n;w;w;e;e;e;s;s;s;w;e;bl.clear_force {zong};s;n;n;e;e;e;s;n;
+    bl.comment {回到太湖};
+    w;w;w;w;w;sd;sd;out;w;w;w;w;
+    bl.comment {黑风山};
+    nu;nu;bl.truce;nu;bl.truce;w;bl.truce;w;bl.truce;e;e;n;bl.truce;n;bl.truce;s;s;sd;sd;sd;
+};
+#nop 神龙岛,成都, 嘉峪关, 桃花岛, 洛阳, wat, 梅庄, zz, 武当;
 #class bianli_data close
