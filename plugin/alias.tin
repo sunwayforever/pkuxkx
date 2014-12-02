@@ -452,10 +452,6 @@
     } {300};
 };
 
-#alias {fm} {
-    fullme %0;
-};
-
 #alias {on_there} {
     #alias tmp_there %0;
     #action {抵达目的地} {

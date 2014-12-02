@@ -15,11 +15,6 @@
     };
 };
 
-#action {^http://pkuxkx.net/antirobot/robot.php?filename=%1} {
-    xmpp.notify http://pkuxkx.net/antirobot/robot.php?filename=%1;
-    #script {fm_pid} {bin/fullme %1};
-};
-
 #action {以你目前的级别，你放不了更多宝石。} {
     show_to_info 宝石放不下了;
 };
@@ -59,7 +54,6 @@
         show_to_shortcut ${shortcut};
         #var weapons_to_wield ${my_weapons_to_wield};
         wi;
-        we;
     };
     #action {≡━━━━━━━━━━━━━━━━━━━━━━◎北大侠客行◎━━≡} {
         #class get_char_info.inner kill;
@@ -123,6 +117,7 @@
             #send {jifa};
             #send {l};
             pfm_special;
+            we;
         };
     };
 };
@@ -306,19 +301,6 @@
     #end;
 };
 
-#action {请注意，你的活跃度已经偏低。如果你不是机器人，请在半小时内执行fullme命令补充你的活跃度。} {
-    #delay {fm} {
-        #var fm_info on;
-        update_status;
-    } {1200};
-};
-
-#action {也许是上天垂青于你的勤奋和努力吧，一个小时之内你不用担心被判为机器人。} {
-    #var fm_info off;
-    #system {kill -9 ${fm_pid}[1] 1>/dev/null 2>&1};
-    #send {hp};
-    update_status;
-};
 
 #alias {pfm_special} {
     #class pfm_special.inner open;

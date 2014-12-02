@@ -1,0 +1,48 @@
+#class fullme open
+
+#var fm_last_image {};
+
+#action {^你刚刚用过这个命令不久} {
+    #var fm_last_image {};
+};
+
+#action {^太遗憾了} {
+    #system {kill -9 ${fm_pid}[1] 1>/dev/null 2>&1};
+    #var fm_last_image {};
+};
+
+#alias {fm} {
+    #if {"%0" != ""} {
+        fullme %0;
+    };
+    #elseif {"${fm_last_image}" != ""} {
+        #system {kill -9 ${fm_pid}[1] 1>/dev/null 2>&1};
+        #script {fm_pid} {bin/fullme ${fm_last_image}};
+    };
+    #else {
+        fullme;
+    }
+};
+
+#action {^http://pkuxkx.net/antirobot/robot.php?filename=%1} {
+    #var fm_last_image %1;
+    xmpp.notify http://pkuxkx.net/antirobot/robot.php?filename=%1;
+    #script {fm_pid} {bin/fullme %1};
+};
+
+#action {请注意，你的活跃度已经偏低。如果你不是机器人，请在半小时内执行fullme命令补充你的活跃度。} {
+    #delay {fm} {
+        #var fm_info on;
+        update_status;
+    } {1200};
+};
+
+#action {也许是上天垂青于你的勤奋和努力吧，一个小时之内你不用担心被判为机器人。} {
+    #var fm_info off;
+    #var fm_last_image {};
+    #system {kill -9 ${fm_pid}[1] 1>/dev/null 2>&1};
+    #send {hp};
+    update_status;
+};
+
+#class fullme close

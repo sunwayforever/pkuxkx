@@ -64,6 +64,7 @@
 #read plugin/burden.tin;
 #read plugin/area.tin;
 #read plugin/wield.tin;
+#read plugin/fullme.tin;
 
 #read plugin/os/linux-gnu.tin;
 #script {os_name} {ruby -e "require 'os'; puts OS.host_os();"};

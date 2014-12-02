@@ -488,5 +488,45 @@
     bl.comment {黑风山};
     nu;nu;bl.truce;nu;bl.truce;w;bl.truce;w;bl.truce;e;e;n;bl.truce;n;bl.truce;s;s;sd;sd;sd;
 };
-#nop 神龙岛,成都, 嘉峪关, 桃花岛, 洛阳, wat, 梅庄, zz, 武当;
+
+#list bl_path_cd create {
+    bl.comment {往南到天龙寺,峨眉};
+    s;s;w;nw;se;e;e;w;s;w;e;s;su;sw;sw;s;sw;ne;n;ne;ne;su;su;w;nw;n;s;se;e;nd;nd;nd;n;n;n;n;
+    bl.comment {往西到赞普};
+    nw;n;s;nw;n;s;s;n;w;w;wu;wu;wu;nw;nw;w;e;se;se;ed;ed;ed;e;e;se;se;
+    bl.comment {往北到长安};
+    n;w;e;e;w;n;w;e;e;w;n;n;nu;nd;nw;ne;nd;e;e;ne;sw;w;w;nw;nu;nd;ne;sw;su;sd;se;su;sw;se;su;sd;s;s;s;s;
+    bl.comment {往东到岳阳};
+    se;n;s;se;n;s;e;e;ne;ne;nw;nw;ne;ed;e;n;s;su;sw;ne;nd;w;wu;sw;se;se;sw;sw;w;w;nw;nw;
+};
+
+#list bl_path_jyg create {
+    se;e;se;e;e;sw;sw;ne;ne;ne;ne;sw;sw;w;w;nw;climb mount;w;e;ne;w;nw;
+};
+
+#list bl_path_zz create {
+    bl.comment {到达黄土路};
+    s;e;e;e;e;e;n;n;s;s;e;e;e;e;n;s;s;n;e;w;w;w;w;w;w;w;w;w;w;w;w;s;sw;w;w;nw;n;n;nd;nu;ne;
+    n;n;e;w;n;s;s;s;se;nw;sw;sd;su;s;s;w;w;w;wu;nu;nu;sd;sd;ed;s;n;e;s;se;w;e;s;n;nw;n;e;e;
+    bl.comment {返回};
+    se;e;e;ne;n;e;e;n;
+};
+
+#list bl_path_wd create {
+    bl.comment {武当广场往南};
+    sd;sd;wd;wd;sd;sd;e;sd;sd;sd;ed;e;e;w;w;s;n;wu;nu;nu;nu;w;nu;nu;eu;eu;nu;nu;
+    bl.comment {武当广场往西};
+    sd;wu;wu;nu;wu;wu;nu;nu;wu;ed;n;s;sd;sd;ed;nu;eu;eu;eu;
+    bl.comment {天柱峰忽略, 回到武当广场};
+    wd;wd;wd;sd;ed;sd;ed;ed;nu;
+    bl.comment {到北侧门};
+    n;w;w;e;e;e;e;w;w;bl.clear {song};n;w;w;u;d;e;e;e;e;w;w;n;w;w;n;s;u;u;u;d;d;d;e;e;e;w;n;e;n;s;s;n;e;s;n;w;w;n;n;s;s;w;w;
+    bl.comment {张三丰};
+    bl.clear {zhang};w;sw;s;se;e;ne;n;nw;sw;s;e;bl.command {open door};n;s;e;w;w;w;e;e;s;s;s;s;
+    bl.comment {武当广场往东};
+    ed;e;e;ed;sd;ed;sd;ed;n;s;s;n;e;e;n;s;s;n;e;eu;wd;w;w;w;wu;nu;wu;nu;wu;w;w;wu;
+    bl.comment {小较场};
+    w;n;e;s;s;w;n;e;
+};
+#nop 神龙岛, 桃花岛, 洛阳, wat, 梅庄;
 #class bianli_data close
