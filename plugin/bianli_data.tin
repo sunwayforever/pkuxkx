@@ -70,7 +70,7 @@
 };
 #list bl_path_zjk create {
     bl.comment {大境门以北};
-    n;nw;w;w;e;e;nw;n;ne;sw;s;se;se;s;
+    n;nw;w;w;e;e;nw;se;se;s;
     bl.comment {大境门以南到晋阳和北京};
     s;w;e;e;w;s;w;w;w;sw;s;sw;sd;sd;s;n;nu;nu;ne;ne;e;n;w;e;n;n;w;e;e;w;n;e;e;e;se;se;se;e;e;w;w;sw;s;s;n;n;ne;nw;nw;nw;w;w;w;n;n;
 };
@@ -397,6 +397,9 @@
     n;w;e;n;w;n;e;e;s;w;s;s;nw;e;ne;nw;n;nw;nu;
 };
 
+#list bl_connections_xh create {
+    hhh;
+};
 #list bl_path_xh create {
     ne;ne;ne;n;n;s;e;e;n;s;s;n;e;w;w;w;sw;sw;w;s;se;e;w;s;se;e;ne;nw;n;s;se;e;n;s;s;n;e;w;w;sw;w;nw;n;nw;n;e;s;se;
 };
@@ -507,9 +510,11 @@
 #list bl_path_zz create {
     bl.comment {到达黄土路};
     s;e;e;e;e;e;n;n;s;s;e;e;e;e;n;s;s;n;e;w;w;w;w;w;w;w;w;w;w;w;w;s;sw;w;w;nw;n;n;nd;nu;ne;
-    n;n;e;w;n;s;s;s;se;nw;sw;sd;su;s;s;w;w;w;wu;nu;nu;sd;sd;ed;s;n;e;s;se;w;e;s;n;nw;n;e;e;
+    n;n;e;w;n;s;s;s;se;nw;sw;sd;su;s;s;w;w;w;wu;nu;nu;sd;sd;ed;s;n;e;s;se;w;e;s;n;nw;n;e;
+    bl.comment {土匪};
+    su;bl.clear_force {tufei};s;bl.clear_force {tufei};e;bl.clear_force {tufei};bl.clear_force {tou};enter;bl.clear_force {tou};out;bl.clear_force {tufei};w; bl.clear_force {tufei};n;nd;
     bl.comment {返回};
-    se;e;e;ne;n;e;e;n;
+    e;se;e;e;ne;n;e;e;n;
 };
 
 #list bl_path_wd create {
@@ -527,6 +532,12 @@
     ed;e;e;ed;sd;ed;sd;ed;n;s;s;n;e;e;n;s;s;n;e;eu;wd;w;w;w;wu;nu;wu;nu;wu;w;w;wu;
     bl.comment {小较场};
     w;n;e;s;s;w;n;e;
+};
+
+#list bl_path_hhh create {
+    w;n;s;s;n;w;w;n;s;s;n;w;n;w;s;w;e;s;e;n;e;e;e;e;
+    bl.comment {竹林};
+    e;e;e;w;w;w;w;w;w;
 };
 #nop 神龙岛, 桃花岛, 洛阳, wat, 梅庄;
 #class bianli_data close

@@ -14,17 +14,17 @@ load bianli_data;
 };
 
 #alias {bl.clear} {
-    clear %1;
     on_cleared {
         bl.walk;
     };
+    clear %1;
 };
 
 #alias {bl.clear_force} {
-    clear %1;
     on_cleared {
         bl.walk;
     };
+    clear %1;
 };
 
 #alias {bl.stop} {
