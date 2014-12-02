@@ -499,14 +499,13 @@
     #gag {你现在不忙};
     #ticker {checkbusy} {
         halt;
-    } {0.2};
+    } {0.6};
     #action {你现在不忙} {
-        #unaction {你现在不忙};
         #class halt.inner kill;
         #delay {0.3} {
             tmp_halt;
         };
-    };
+    } {1};
     #class halt.inner close;
     halt;
 };
