@@ -34,9 +34,6 @@ load chaos;
     #alias gsd {\southdown};
     #alias gd {\down};
     #alias gu {\up};
-    #alias {attack} {
-        attack.normal;
-    };
     #unticker {hb_ticker};
 };
 
@@ -220,10 +217,6 @@ load chaos;
     #alias gsd {gan che to southdown};
     #alias gd {gan che to down};
     #alias gu {gan che to up};
-
-    #alias {attack} {
-        attack.hubiao;
-    };
 
     #var hb_elapsed_time 0;
     #ticker {hb_ticker} {

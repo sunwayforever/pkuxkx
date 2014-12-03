@@ -19,7 +19,7 @@
 };
 
 #alias {attack} {
-
+    #cr;
 };
 
 #macro {\eOP} {
