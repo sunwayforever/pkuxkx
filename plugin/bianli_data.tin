@@ -72,7 +72,8 @@
     bl.comment {大境门以北};
     n;nw;w;w;e;e;nw;se;se;s;
     bl.comment {大境门以南到晋阳和北京};
-    s;w;e;e;w;s;w;w;w;sw;s;sw;sd;sd;s;n;nu;nu;ne;ne;e;n;w;e;n;n;w;e;e;w;n;e;e;e;se;se;se;e;e;w;w;sw;s;s;n;n;ne;nw;nw;nw;w;w;w;n;n;
+    s;w;e;
+    s;w;w;w;sw;s;sw;sd;sd;s;n;nu;nu;ne;ne;e;n;w;e;n;n;w;e;e;w;n;e;e;e;se;se;se;e;e;w;w;sw;s;s;n;n;ne;nw;nw;nw;w;w;w;n;n;
 };
 #list bl_path_qfa create {
     bl.comment {大殿东西两侧};
