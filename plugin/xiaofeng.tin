@@ -11,7 +11,9 @@
     #class xiaofeng.inner open;
     #var xf.requested 0;
     #action {跳出战圈不打了} {
-        jifa_all;
+        on_unbusy {
+            jifa_all;
+        };
         #if {${xf.type} == 3} {
             #delay {xf_delay} {
                 quan;
@@ -78,11 +80,11 @@
     };
 
     #action {『蒙面杀手(%*气血:%*\%/%*\%)』} {
-        #if {%%2 < 45 || %%3 < 45} {
-            xf.slow_down_2;
-        };
-        #elseif {%%2 < 50 || %%3 < 50} {
+        #if {%%2 < 50 || %%3 < 50} {
             xf.slow_down_1;
+        };
+        #if {%%2 < 30 || %%3 < 30} {
+            xf.slow_down_2;
         };
     } {1};
 
@@ -96,8 +98,8 @@
     };
 
     #alias {xf.slow_down_1} {
-        #if {${xf.type} == 3 || ${xf.type} == 4} {
-            #nop;
+        #if {${xf.type} == 4} {
+            ask shashou about 认输;
         };
     };
 
