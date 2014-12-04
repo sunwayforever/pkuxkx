@@ -20,6 +20,11 @@
             } {0.3};
         };
     };
+    #action {^萧峰(xiao feng)告诉你：你先下去休息休息吧。} {
+        #delay {xf_delay} {
+            xf.q;
+        } {10};
+    };
     #action {^萧峰说道：%*刚刚已经有人前去了} {
         #delay {xf_delay} {
             xf.q;
