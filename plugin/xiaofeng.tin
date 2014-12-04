@@ -24,7 +24,7 @@
         #delay {xf_delay} {
             xf.q;
         } {10};
-    };
+    } {1};
     #action {^萧峰说道：%*刚刚已经有人前去了} {
         #delay {xf_delay} {
             xf.q;
