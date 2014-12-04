@@ -508,14 +508,20 @@
     se;e;se;e;e;sw;sw;ne;ne;ne;ne;sw;sw;w;w;nw;climb mount;w;e;ne;w;nw;
 };
 
+ #nop 土匪;
+#nop {su;bl.clear_force {tufei};s;bl.clear_force {tufei};e;bl.clear_force {tufei};bl.clear_force {tou};enter;bl.clear_force {tou};out;bl.clear_force {tufei};w; bl.clear_force {tufei};n;nd};
+
 #list bl_path_zz create {
     bl.comment {到达黄土路};
     s;e;e;e;e;e;n;n;s;s;e;e;e;e;n;s;s;n;e;w;w;w;w;w;w;w;w;w;w;w;w;s;sw;w;w;nw;n;n;nd;nu;ne;
     n;n;e;w;n;s;s;s;se;nw;sw;sd;su;s;s;w;w;w;wu;nu;nu;sd;sd;ed;s;n;e;s;se;w;e;s;n;nw;n;e;
     bl.comment {土匪};
-    su;bl.clear_force {tufei};s;bl.clear_force {tufei};e;bl.clear_force {tufei};bl.clear_force {tou};enter;bl.clear_force {tou};out;bl.clear_force {tufei};w; bl.clear_force {tufei};n;nd;
     bl.comment {返回};
     e;se;e;e;ne;n;e;e;n;
+};
+
+#list bl_connections_wd create {
+    zz;
 };
 
 #list bl_path_wd create {

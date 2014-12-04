@@ -350,4 +350,8 @@
 #action {没有经过通传，任何人等不得擅闯都统治府。} {
     ask shiwei about 通传;
 };
+
+#action {^%s%S点经验；$} {
+    show_to_info @ctd{%2} 点经验;
+};
 #class action close;
