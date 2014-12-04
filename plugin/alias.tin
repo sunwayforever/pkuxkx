@@ -565,6 +565,7 @@
         #else {
             #class health.inner kill;
             re;
+            chifan;
             #delay {0.5} {
                 tmp_health;
             };

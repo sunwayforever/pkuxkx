@@ -2,6 +2,7 @@
 
 #alias {lw_action} {#cr;};
 #alias {lw.start} {
+    #class lingwu.inner open;
     #var lw_paused 0;
     #list skills create  {force;cuff;strike;whip;staff;sword;parry;claw;blade;spear;dodge;hand;finger;dagger;throwing};
     #list skills size skill_size;
@@ -13,7 +14,6 @@
     #var skill_index 1;
     #list skills get $skill_index skill;
 
-    #class lingwu.inner open;
     #action {(%*)%s： %S[互备]%s有效等级：} {
         #var basic_skill %%1;
         #var special_skill %%3;
