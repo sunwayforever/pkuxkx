@@ -391,7 +391,7 @@
 
 #list bl_path_mj create {
     bl.comment {半山门往北};
-    w;e;nu;nu;nu;s;n;w;e;e;w;n;s;nu;w;e;n;w;w;e;e;e;e;w;n;s;w;n;n;w;n;n;n;n;s;s;s;s;e;e;nd;nd;nd;n;n;w;e;e;w;n;s;s;s;su;su;su;w;s;s;s;sd;sd;sd;sd;
+    w;e;nu;nu;nu;s;n;w;e;e;w;n;s;nu;w;e;n;w;w;e;e;e;e;w;n;s;w;n;n;w;n;n;n;n;s;s;s;s;e;e;nd;nd;nd;n;bl.command {open door};n;w;e;e;w;n;s;s;s;su;su;su;w;s;s;s;sd;sd;sd;sd;
     bl.comment {到绿柳山庄};
     sd;se;e;n;s;e;w;s;n;w;s;bl.truce;w;n;s;e;e;w;sw;ne;se;e;e;e;e;s;s;s;s;e;e;e;e;se;nw;w;w;w;w;w;w;w;n;n;n;w;w;w;sw;w;se;
     bl.comment {绿柳};

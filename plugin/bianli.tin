@@ -58,7 +58,7 @@ load bianli_data;
         #if {${bl_in_action} == 0} {
             #delay {bl.delay} {
                 bl.walk;
-            } {0.1};
+            } {0.15};
         } {1};
     };
     #action {busy_for_move} {

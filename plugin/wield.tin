@@ -50,17 +50,6 @@
             wield_1 %0;
         };
         #else {
-            #class wield_inner open;
-            #action {你身上没有这样东西。} {
-                #class wield_inner kill;
-                #var wielding 1;
-                #var weapon_${target} {};
-                wield_1 %%0;
-            };
-            #delay {wield_delay} {
-                #class wield_inner kill;
-            } {0.5};
-            #class wield_inner close;
             wield ${current_weapon};
             #showme weapon wield;
         };

@@ -2,22 +2,20 @@
 
 #var fm_last_image {};
 
-#action {^你刚刚用过这个命令不久} {
-    #var fm_last_image {};
-};
-
 #action {^太遗憾了} {
     #system {kill -9 ${fm_pid}[1] 1>/dev/null 2>&1};
-    #var fm_last_image {};
+};
+
+#alias {ref} {
+    #if {"${fm_last_image}" != ""} {
+        #system {kill -9 ${fm_pid}[1] 1>/dev/null 2>&1};
+        #script {fm_pid} {bin/fullme ${fm_last_image}};
+    };
 };
 
 #alias {fm} {
     #if {"%0" != ""} {
         fullme %0;
-    };
-    #elseif {"${fm_last_image}" != ""} {
-        #system {kill -9 ${fm_pid}[1] 1>/dev/null 2>&1};
-        #script {fm_pid} {bin/fullme ${fm_last_image}};
     };
     #else {
         fullme;
@@ -39,7 +37,6 @@
 
 #action {也许是上天垂青于你的勤奋和努力吧，一个小时之内你不用担心被判为机器人。} {
     #var fm_info off;
-    #var fm_last_image {};
     #system {kill -9 ${fm_pid}[1] 1>/dev/null 2>&1};
     #send {hp};
     update_status;

@@ -504,13 +504,13 @@
     #class halt.inner open;
     #gag {你现在不忙};
     #ticker {checkbusy} {
-        halt;
+        #10 halt;
     } {0.6};
     #action {你现在不忙} {
         #class halt.inner kill;
-        #delay {0.3} {
+        #delay {tmp_halt_delay} {
             tmp_halt;
-        };
+        } {0.3};
     } {1};
     #class halt.inner close;
     halt;
