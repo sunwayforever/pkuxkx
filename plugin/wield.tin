@@ -37,7 +37,7 @@
 #var wielding 0;
 #alias {do_wield} {
     #if {${wielding} == 1} {
-        #delay {1} {
+        #delay {2} {
             do_wield %0;
         };
     };

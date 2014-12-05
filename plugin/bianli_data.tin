@@ -546,5 +546,14 @@
     bl.comment {竹林};
     e;e;e;w;w;w;w;w;w;
 };
+
+#list bl_path_dzt create {
+    bl.comment {到花园};
+    bl.truce;n;bl.truce;e;n;e;e;e;s;s;w;w;w;n;e;w;w;bl.truce;n;n;n;enter;out;s;s;s;bl.truce;w;n;s;s;n;w;n;enter;out;s;s;s;n;n;w;w;
+    bl.comment {密室};
+    bl.command {ban shan};d;nd;nd;ed;e;s;w;sw;se;ed;nd;enter;out;su;wu;nw;ne;n;wu;su;su;u;e;e;e;e;bl.truce;s;bl.truce;
+    bl.comment {往南到灵州，小镇};
+    s;s;sd;sd;sw;se;bl.command {zou tiesuo};sd;sd;s;w;w;w;w;e;e;e;e;s;sd;nw;se;e;w;ne;sw;se;nw;w;e;nu;n;n;nu;nu;bl.command {zou tiesuo};nw;ne;nu;nu;n;n;
+};
 #nop 神龙岛, 桃花岛, 洛阳, wat, 梅庄;
 #class bianli_data close
