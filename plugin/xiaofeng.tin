@@ -11,9 +11,7 @@
     #class xiaofeng.inner open;
     #var xf.requested 0;
     #action {跳出战圈不打了} {
-        on_unbusy {
-            jifa_all;
-        };
+        jifa_all;
         #if {${xf.type} == 3} {
             #delay {xf_delay} {
                 quan;
@@ -121,9 +119,9 @@
     #alias {xf.slow_down_2} {
         #if {${xf.type} == 3 || ${xf.type} == 4} {
             #showme 快死了, 停手~;
-            jifa_none;
             raw;
             unwi;
+            jifa_none;
             on_halt;
         };
     };

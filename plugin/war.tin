@@ -131,6 +131,7 @@
     attack.end;
     jiali none;
     mj.stop;
+    jifa_all;
     #showme truce;
 };
 
