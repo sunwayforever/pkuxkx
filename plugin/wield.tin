@@ -2,12 +2,16 @@
 #var current_weapons_set 0;
 
 #alias {unwi} {
-    unwield all;
+    #if {${wielding} == 0} {
+        unwield all;
+    };
 };
 #alias {wi} {
-    unwi;
-    #foreach {${weapons_to_wield}[%*]} {weapon} {
-        do_wield ${weapon};
+    #if {${wielding} == 0} {
+        unwi;
+        #foreach {${weapons_to_wield}[%*]} {weapon} {
+            do_wield ${weapon};
+        };
     };
 };
 
@@ -37,7 +41,7 @@
 #var wielding 0;
 #alias {do_wield} {
     #if {${wielding} == 1} {
-        #delay {2} {
+        #delay {3} {
             do_wield %0;
         };
     };
@@ -114,7 +118,6 @@
     #var target %0;
     #var weapon_name special_${target};
     #replace weapon_name { } {_};
-    #show ${weapon_name} -> ${${weapon_name}};
     #class wield_inner open;
     #action {你身上没有这样东西。} {
         #class wield_inner kill;

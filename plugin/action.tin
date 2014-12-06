@@ -53,7 +53,6 @@
         load spec/${char_menpai};
         show_to_shortcut ${shortcut};
         #var weapons_to_wield ${my_weapons_to_wield};
-        wi;
     };
     #action {≡━━━━━━━━━━━━━━━━━━━━━━◎北大侠客行◎━━≡} {
         #class get_char_info.inner kill;
@@ -111,7 +110,8 @@
         show.init;
         check_baowei;
         xmpp.start;
-        #delay {1} {
+        wi;
+        #delay {5} {
             check_naijiu;
             #send {hp};
             #send {jifa};
