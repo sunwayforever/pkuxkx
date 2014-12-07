@@ -50,8 +50,10 @@
         #replace target { } {_};
         #var current_weapon ${weapon_${target}};
         #if {"${current_weapon}" == ""} {
-            #var wielding 1;
-            wield_1 %0;
+            #if {${wielding} == 0} {
+                #var wielding 1;
+                wield_1 %0;
+            };
         };
         #else {
             wield ${current_weapon};
