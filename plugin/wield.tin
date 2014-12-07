@@ -41,7 +41,7 @@
 #var wielding 0;
 #alias {do_wield} {
     #if {${wielding} == 1} {
-        #delay {3} {
+        #delay {1} {
             do_wield %0;
         };
     };
@@ -50,10 +50,8 @@
         #replace target { } {_};
         #var current_weapon ${weapon_${target}};
         #if {"${current_weapon}" == ""} {
-            #if {${wielding} == 0} {
-                #var wielding 1;
-                wield_1 %0;
-            };
+            #var wielding 1;
+            wield_1 %0;
         };
         #else {
             wield ${current_weapon};
@@ -67,13 +65,13 @@
     #var target %0;
     #var weapon_name {my ${target}};
     #class wield_inner open;
-    #action {你身上没有这样东西。} {
+    #action {你要看什么？} {
         #class wield_inner kill;
         #delay {0.1} {
             wield_2 ${target};
         };
     };
-    #delay {wield_delay} {
+    #action {==========%*==========} {
         #class wield_inner kill;
         #replace target { } {_};
 
@@ -84,23 +82,24 @@
         #showme ${target} 设置为 ${weapon_name};
         add_to_my_weapons ${weapon_name};
         #var wielding 0;
+        wield ${weapon_name};
         #showme weapon wield;
-    } {0.5};
+    };
     #class wield_inner close;
-    wield my ${target};
+    l my ${target};
 };
 
 #alias {wield_2} {
     #var target %0;
     #var weapon_name {${target}};
     #class wield_inner open;
-    #action {你身上没有这样东西。} {
+    #action {你要看什么？} {
         #class wield_inner kill;
         #delay {0.1} {
             wield_3 ${target};
         };
     };
-    #delay {wield_delay} {
+    #action {==========%*==========} {
         #class wield_inner kill;
         #replace target { } {_};
         
@@ -111,9 +110,10 @@
         #showme ${target} 设置为 ${weapon_name};
         #var wielding 0;
         #showme weapon wield;
-    } {0.5};
+        wield ${weapon_name};
+    };
     #class wield_inner close;
-    wield ${target};
+    l ${target};
 };
 
 #alias {wield_3} {
@@ -121,13 +121,13 @@
     #var weapon_name special_${target};
     #replace weapon_name { } {_};
     #class wield_inner open;
-    #action {你身上没有这样东西。} {
+    #action {你要看什么？} {
         #class wield_inner kill;
         #showme 没有可用的武器;
         #var wielding 0;
         #showme weapon wield;
     };
-    #delay {wield_delay} {
+    #action {==========%*==========} {
         #class wield_inner kill;
         #replace target { } {_};
 
@@ -139,10 +139,10 @@
         add_to_my_special_weapons ${${weapon_name}};
         #var wielding 0;
         #showme weapon wield;
-        
-    } {0.5};
+        wield ${${weapon_name}};        
+    };
     #class wield_inner close;
-    wield ${${weapon_name}};
+    l ${${weapon_name}};
 };
 
 #list my_weapons create {};
