@@ -165,7 +165,7 @@
 
 #action {ºÃÁË£¬Äã×ß°É} {
     remove all;
-    reset_weapons;
+    weapons.reset;
     wi;
     we;
 };

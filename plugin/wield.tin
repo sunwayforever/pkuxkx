@@ -20,7 +20,7 @@
     wi;
 };
 
-#alias {ss} {
+#alias {weapons.switch} {
     #math current_weapons_set ${current_weapons_set}+1;
     #list my_weapons_to_wield_${current_weapons_set} size tmp_size;
     #if {${tmp_size} == 0} {
@@ -33,7 +33,7 @@
         #var weapons_to_wield ${my_weapons_to_wield_${current_weapons_set}};
     };
     #show 平砍武器切换为 ${weapons_to_wield};
-    reset_weapons;
+    weapons.reset;
     wi;
 };
 
@@ -165,11 +165,15 @@
     #list my_special_weapons add ${weapon_name};
 };
 
-#alias reset_weapons {
+#alias weapons.reset {
     #class weapons kill;
 };
 
 #action {你必须空出一只手来使用武器} {
     remove shield;
+};
+
+#alias {weapons} {
+    #class weapons;
 };
 #class wield close

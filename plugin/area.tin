@@ -1,5 +1,6 @@
 #class area open
 @mapcreate{areas};
+@mapset{areas;凌霄城;lxc};
 @mapset{areas;杀手帮;ssb};
 @mapset{areas;华山;cll};
 @mapset{areas;武当;wd};
