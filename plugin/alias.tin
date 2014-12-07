@@ -485,10 +485,10 @@
     #class unbusy.inner open;
     #ticker {checkbusy} {
         checkbusy;
-    } {0.3};
+    } {0.5};
     #action {�㲻æ} {
         #class unbusy.inner kill;
-        #delay {0.3} {
+        #delay {0.5} {
             tmp_unbusy;
         };
     } {1};
