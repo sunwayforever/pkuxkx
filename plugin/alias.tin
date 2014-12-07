@@ -478,21 +478,20 @@
     war;
 };
 
+#gag {你不忙};
 #alias {on_unbusy} {
     #alias tmp_unbusy #cr;
     #alias tmp_unbusy %0;
     #class unbusy.inner open;
-    #gag {你不忙};
     #ticker {checkbusy} {
         checkbusy;
-    } {0.3};
+    } {0.5};
     #action {你不忙} {
-        #unaction {你不忙};
         #class unbusy.inner kill;
-        #delay {0.3} {
+        #delay {0.5} {
             tmp_unbusy;
         };
-    };
+    } {1};
     #class unbusy.inner close;
     checkbusy;
 };
@@ -505,12 +504,12 @@
     #gag {你现在不忙};
     #ticker {checkbusy} {
         #10 halt;
-    } {0.6};
+    } {0.5};
     #action {你现在不忙} {
         #class halt.inner kill;
         #delay {tmp_halt_delay} {
             tmp_halt;
-        } {0.3};
+        } {0.5};
     } {1};
     #class halt.inner close;
     halt;
