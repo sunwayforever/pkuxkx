@@ -7,9 +7,8 @@
     #class xiaofeng.inner kill;
 };
 
-#alias {xf.q} {
+#alias {xf.setup} {
     #class xiaofeng.inner open;
-    #var xf.requested 0;
     #action {跳出战圈不打了} {
         jifa_all;
         #if {${xf.type} == 3} {
@@ -18,6 +17,11 @@
             } {0.3};
         };
     };
+    #action {^萧峰(xiao feng)告诉你：你先去在江湖中历练一番吧。} {
+        #delay {xf_delay} {
+            xf.q;
+        } {20};
+    } {1};
     #action {^萧峰(xiao feng)告诉你：你先下去休息休息吧。} {
         #delay {xf_delay} {
             xf.q;
@@ -252,7 +256,11 @@
     };
 
     #class xiaofeng.inner close;
+};
 
+#alias {xf.q} {
+    #var xf.requested 0;
+    xf.setup;
     ask xiao feng about job;
 };
 
