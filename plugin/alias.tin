@@ -930,7 +930,7 @@
 #alias {repair} {
     #alias tmp_repair #cr;
     #alias tmp_repair %1;
-    #if {${min_naijiu} < 250} {
+    #if {${min_naijiu} < 350} {
         #action {抵达目的地} {
             #unaction {抵达目的地};
             e;ne;
@@ -998,7 +998,9 @@
 };
 
 #ticker {check_naijiu} {
-    check_naijiu;
+    #if {${wielding} == 0} {
+        check_naijiu;
+    };
 } {300};
 
 #alias {path.test} {
@@ -1021,24 +1023,34 @@
     } {1};
 };
 
-#alias {q} {#cr};
-#alias {qq} {#send {q}};
-
 #alias {path.new} {
     #path end;
     #path new;
 };
 
+#alias {path.del} {
+    #path del;
+};
+
 #alias {path.show} {
-    #path save forward xxx;
-    #path save backward yyy;
-    #replace {xxx} {north} {n};
-    #replace {xxx} {south} {s};
-    #replace {xxx} {east} {e};
-    #replace {xxx} {west} {w};
-    #replace {xxx} {up} {u};
-    #replace {xxx} {down} {d};
-    #var xxx;
+    #path save forward forward_path;
+    #path save backward backward_path;
+    
+    #replace {forward_path} {north} {n};
+    #replace {forward_path} {south} {s};
+    #replace {forward_path} {east} {e};
+    #replace {forward_path} {west} {w};
+    #replace {forward_path} {up} {u};
+    #replace {forward_path} {down} {d};
+
+    #replace {backward_path} {north} {n};
+    #replace {backward_path} {south} {s};
+    #replace {backward_path} {east} {e};
+    #replace {backward_path} {west} {w};
+    #replace {backward_path} {up} {u};
+    #replace {backward_path} {down} {d};
+
+    #var forward_path;
 };
 
 #alias {n} {north};

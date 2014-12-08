@@ -89,16 +89,17 @@
     l my ${target};
 };
 
-#alias {wield_2} {
+#alias {wield_3} {
     #var target %0;
     #var weapon_name {${target}};
     #class wield_inner open;
     #action {你要看什么？} {
         #class wield_inner kill;
-        #delay {0.1} {
-            wield_3 ${target};
-        };
+        #showme 没有可用的武器;
+        #var wielding 0;
+        #showme weapon wield;
     };
+    
     #action {==========%*==========} {
         #class wield_inner kill;
         #replace target { } {_};
@@ -116,16 +117,16 @@
     l ${target};
 };
 
-#alias {wield_3} {
+#alias {wield_2} {
     #var target %0;
     #var weapon_name special_${target};
     #replace weapon_name { } {_};
     #class wield_inner open;
     #action {你要看什么？} {
         #class wield_inner kill;
-        #showme 没有可用的武器;
-        #var wielding 0;
-        #showme weapon wield;
+        #delay {0.1} {
+            wield_3 ${target};
+        };
     };
     #action {==========%*==========} {
         #class wield_inner kill;

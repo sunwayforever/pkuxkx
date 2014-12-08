@@ -8,6 +8,7 @@
 };
 
 #alias {dz.full} {
+    #alias tmp_dz #cr;
     #alias tmp_dz %1;
     #class dz.full.inner open;
     #action {你现在精不够} {
