@@ -33,13 +33,13 @@
     #if {${critical_running} == 0} {
         #send {i};
     };
-} {180};
+} {230};
 
 #ticker {check_shaqi} {
     #if {${critical_running} == 0} {
         #send {sc};
     };
-} {200};
+} {350};
 
 #action {É±    Æø£º  %*} {
     #var shaqi_info %1;
@@ -53,7 +53,7 @@
     #if {${critical_running} == 0} {
         #send {hp};
     };
-} {180};
+} {170};
 
 #gag npc refreshed;
 #alias {zhengdian} {
