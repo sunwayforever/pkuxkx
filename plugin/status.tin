@@ -104,10 +104,6 @@
     };
 } {3};
 
-#ticker {jifa} {
-    #send {jifa};
-} {600};
-
 #action {内功 (force)%*有效等级：{ *}%d} {
     #var youxiao_neigong %3;
     #math dazuo_count ${youxiao_neigong}*3/10+1;

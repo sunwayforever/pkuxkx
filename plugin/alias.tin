@@ -1001,7 +1001,7 @@
     #if {${wielding} == 0} {
         check_naijiu;
     };
-} {300};
+} {250};
 
 #alias {path.test} {
     #list test_path create {
