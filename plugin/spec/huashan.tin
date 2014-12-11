@@ -2,9 +2,6 @@
 #alias {attack.prepare} {
     yun powerup;
     #class attack.inner open;
-    #ticker {poqi} {
-        pfm poqi;
-    } {1.8};
     #class attack.inner close;
 };
 
@@ -14,11 +11,11 @@
     };
     #elseif {${mj_started}  == 1} {
         pfm poqi;
-        pfm zongjue;
+        pfm feilong;
         #class attack.inner open;
         #ticker {zongjue} {
             pfm zongjue;
-        } {2.8};
+        } {3.8};
         #ticker {feilong} {
             pfm feilong;
         } {6.8};
@@ -27,46 +24,42 @@
     #else {
         #if {${xf.type} == -1 || ${xf.type} == 1} {
             pfm poqi;
-            pfm pobing;
-            pfm sqf;
+            pfm chan;
+            pfm jianzhang;
             #class attack.inner open;
-            #ticker {po} {
-                pfm po;
+            #ticker {poqi} {
+                pfm poqi;
             } {3.8};
-            #ticker {sfq} {
-                pfm sqf;
+            #ticker {jz} {
+                pfm jianzhang;
             } {5.8};
             #class attack.inner close;
         };
         #elseif {${xf.type} == 2} {
             pfm poqi;
-            pfm po;
-            pfm sqf;
-            pfm feilong;
+            pfm zongjue;
             #class attack.inner open;
-            #ticker {po} {
-                pfm po;
-            } {6.8};
+            #ticker {poqi} {
+                pfm poqi;
+            } {2.8};
             #class attack.inner close;
         };
         #elseif {${xf.type} == 3} {
             pfm poqi;
-            pfm po;
-            pfm sqf;
+            pfm zongjue;
             #class attack.inner open;
-            #ticker {po} {
-                pfm po;
-            } {6.8};
+            #ticker {poqi} {
+                pfm poqi;
+            } {2.8};
             #class attack.inner close;
         };
         #else {
             pfm poqi;
-            pfm po;
-            pfm sqf;
+            pfm kuangfeng;
             #class attack.inner open;
-            #ticker {po} {
-                pfm po;
-            } {6.8};
+            #ticker {poqi} {
+                pfm poqi;
+            } {2.8};
             #class attack.inner close;
         };
     };

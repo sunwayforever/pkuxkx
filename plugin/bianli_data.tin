@@ -305,7 +305,9 @@
     bl.comment {往北到少林寺外广场};
     eu;e;w;nu;e;w;nu;nu;n;w;e;e;w;s;sd;sd;sd;wd;
 };
-
+#list bl_connections_ly create {
+    sl;
+};
 #list bl_path_fzl create {
     bl.comment {方丈楼往左上到和尚院,藏经阁};
     w;n;n;n;w;s;w;bl.clear_force {daoyi};u;bl.truce;bl.command {open door};s;n;d;e;s;s;e;e;
@@ -571,8 +573,18 @@
     bl.comment {王府略过};
     e;n;s;e;n;e;e;w;w;s;w;w;w;s;s;s;s;w;e;e;w;nw;se;ne;sw;n;n;n;n;n;n;n;
 };
+
 #list bl_path_wat create {
     se;se;ne;ne;sw;sw;su;w;w;w;e;s;n;e;e;e;e;w;w;s;w;w;e;e;e;e;w;w;s;w;e;e;w;s;w;e;e;w;s;s;se;se;se;e;w;nw;nw;nw;n;n;n;n;n;nd;nw;nw;
+};
+
+#list bl_path_tais create {
+    bl.comment {往南到曲阜};
+    sd;sd;sd;sd;sd;sd;wd;sd;sd;sd;s;s;sw;w;sw;nw;se;s;s;n;n;ne;e;ne;n;n;nu;nu;nu;eu;nu;nu;nu;nu;nu;nu;
+    bl.comment {往东到天街};
+    eu;eu;e;ed;wu;wd;ed;nu;sd;wu;wd;
+    bl.comment {玉皇顶};
+    nu;w;nu;sd;e;u;w;e;e;w;d;ed;eu;e;ask xiao mao about 老朋友;w;s;e;e;n;n;w;w;s;e;s;sd;w;wd;wu;sd;
 };
 #nop 神龙岛, 桃花岛, 洛阳, wat, 梅庄;
 #class bianli_data close
