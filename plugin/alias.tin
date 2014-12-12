@@ -720,7 +720,7 @@
     set wimpy 20;
 };
 
-#var get_san_count 20;
+#var get_san_count 50;
 #alias {get.san} {
     #action {%S          清心散} {
         #unaction {%S          清心散};
