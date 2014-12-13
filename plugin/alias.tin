@@ -718,6 +718,7 @@
     set nowiki 1;
     set skip_combat 2;
     set wimpy 20;
+    set hansz_new_mode 1;
 };
 
 #var get_san_count 50;

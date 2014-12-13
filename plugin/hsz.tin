@@ -1,0 +1,64 @@
+#class hsz open;
+#var hsz.requested 0;
+#alias {hsz.setup} {
+    #action {你已经完成了%*清除异族奸细的工作} {
+        hsz.teardown;
+        show_to_quest 韩世忠: 完成;
+    };
+    #action {韩世忠(han shizhong)告诉你：你去休息休息，过段时间再来吧。} {
+        #delay {hsz_delay} {
+            hsz.q;
+        } {10};  
+    } {1};
+    #action {韩世忠说道：%*刚刚已经有人前去了} {
+        #delay {hsz_delay} {
+            hsz.q;
+        } {3};  
+    };
+    #action {%*向韩世忠打听有关『job』的消息} {
+        #if {"%%1" == "你"} {
+            #var hsz.requested 1;
+            #var quest hsz;
+        };
+        #else {
+            #var hsz.requested 0;
+        };
+    };
+
+    #action {韩世忠说道：「我听说有一群异族奸细在%*的%*附近出没} {
+        #if {${hsz.requested} == 1} {
+            #var target_area @area{%%1};
+            show_to_quest 韩世忠: %%1: %%2;
+            #if {"${target_area}" != "NULL"} {
+                gt ${target_area};
+                on_there {
+                    #if {@blsupport{${target_area} == 1}} {
+                        bl.start ^%%2;
+                    };
+                };
+            };
+        };
+    };
+};
+#alias {hsz.teardown} {
+    #class hsz.inner kill;
+    #var hsz.requested 0;
+    #var quest  NIL;
+};
+#alias {hsz.q} {
+    hsz.setup;
+    ask han about job;
+};
+#alias {hsz.b} {
+    gt hsz;
+    on_there {
+        hsz.d;
+    };
+};
+#alias {hsz.d} {
+    ask han about finish;
+};
+#alias {hsz.f} {
+    ask han about fail;
+};
+#class hsz close;

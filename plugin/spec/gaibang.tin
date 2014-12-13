@@ -3,15 +3,19 @@
 #alias {attack.prepare} {
     yun powerup;
     #class attack.inner open;
-    #ticker {perf_chan} {
-        pfm chan;
-    } {1};
+    #if {"${quest}" != "hsz"} {
+        #ticker {perf_chan} {
+            pfm chan;
+        } {1};
+    };
     #class attack.inner close;
 };
 
 
 #alias {attack} {
-    pfm chan;
+    #if {"${quest}" != "hsz"} {
+        pfm chan;
+    };
     #if {"${quest}" == "hb"} {
     };
     #elseif {${mj_started}  == 1} {
