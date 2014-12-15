@@ -1,9 +1,9 @@
 #class xmpp open
-#var xmpp_listener salonbus;
+#var xmpp_listener milli;
 
 #alias {xmpp.listen} {
     #system {/usr/bin/killall xmpp_listen.rb &>/dev/null};
-    #system {bin/xmpp_listen.rb ${char_id} &>/dev/null &};
+    #system {bin/xmpp_listen.rb ${char_id} >/dev/null 2>&1 &};
 };
 
 #alias {xmpp.send} {

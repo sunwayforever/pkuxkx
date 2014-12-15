@@ -292,4 +292,11 @@
     };
 };
 
+#alias {jifa_all} {
+    #cr;
+};
+
+#alias {jifa_none} {
+    #cr;
+};
 #class war close;

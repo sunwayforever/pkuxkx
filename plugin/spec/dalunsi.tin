@@ -6,21 +6,8 @@
 	jiali 1;
 };
 
-#alias {attack.normal} {
-	#class attack.inner open;
-	#class attack.inner close;
-};
-
-#alias {attack.xiaofeng} {
-	#class attack.inner open;
-	#cr;
-	#class attack.inner close;
-};
-
-#alias {attack.mingjiao} {
-	#class attack.inner open;
-	#cr;
-	#class attack.inner close;
+#alias {attack} {
+    #cr;
 };
 
 #alias {fen} {
@@ -74,6 +61,8 @@
 #alias {map_goto_shifu} {
 	map.go {·¨ÌÃ¶þÂ¥};
 };
+
+#list my_weapons_to_wield create {staff;staff 2};
 
 #var menzhong bofu;
 #var menzhong_didian bofu;

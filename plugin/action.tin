@@ -110,14 +110,16 @@
         show.init;
         check_baowei;
         xmpp.start;
-        wi;
+        #delay {2} {
+            wi;
+        };
         #delay {5} {
-            check_naijiu;
             #send {hp};
             #send {jifa};
             #send {l};
             pfm_special;
             we;
+            check_naijiu;
         };
     };
 };

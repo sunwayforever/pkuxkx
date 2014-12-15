@@ -143,7 +143,15 @@
         wield ${${weapon_name}};        
     };
     #class wield_inner close;
-    l ${${weapon_name}};
+    #if {"${${weapon_name}}" == ""} {
+        #class wield_inner kill;
+        #delay {0.1} {
+            wield_3 ${target};
+        };
+    };
+    #else {
+        l ${${weapon_name}};
+    };
 };
 
 #list my_weapons create {};
