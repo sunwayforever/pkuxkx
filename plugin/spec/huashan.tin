@@ -2,6 +2,9 @@
 #alias {attack.prepare} {
     yun powerup;
     #class attack.inner open;
+    #ticker {chan} {
+        pfm chan;
+    } {2.8};
     #class attack.inner close;
 };
 
@@ -11,27 +14,24 @@
     };
     #elseif {${mj_started}  == 1} {
         pfm poqi;
-        pfm feilong;
         #class attack.inner open;
         #ticker {zongjue} {
             pfm zongjue;
+        } {5.8};
+        #ticker {poqi} {
+            pfm poqi;
         } {3.8};
-        #ticker {feilong} {
-            pfm feilong;
-        } {6.8};
         #class attack.inner close;
     };
     #else {
         #if {${xf.type} == -1 || ${xf.type} == 1} {
             pfm poqi;
-            pfm chan;
-            pfm jianzhang;
             #class attack.inner open;
             #ticker {poqi} {
                 pfm poqi;
             } {3.8};
-            #ticker {jz} {
-                pfm jianzhang;
+            #ticker {zongjue} {
+                pfm zongjue;
             } {5.8};
             #class attack.inner close;
         };
@@ -41,7 +41,7 @@
             #class attack.inner open;
             #ticker {poqi} {
                 pfm poqi;
-            } {2.8};
+            } {3.8};
             #class attack.inner close;
         };
         #elseif {${xf.type} == 3} {
@@ -50,7 +50,10 @@
             #class attack.inner open;
             #ticker {poqi} {
                 pfm poqi;
-            } {2.8};
+            } {3.8};
+            #ticker {zongjue} {
+                pfm zongjue;
+            } {5.8};
             #class attack.inner close;
         };
         #else {
@@ -59,7 +62,7 @@
             #class attack.inner open;
             #ticker {poqi} {
                 pfm poqi;
-            } {2.8};
+            } {3.8};
             #class attack.inner close;
         };
     };
