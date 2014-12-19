@@ -16,6 +16,7 @@
     #if {"${quest}" != "hsz"} {
         pfm chan;
     };
+    pfm tiao;
     #if {"${quest}" == "hb"} {
     };
     #elseif {${mj_started}  == 1} {
@@ -49,10 +50,9 @@
             #class attack.inner close;
         };
         #elseif {${xf.type} == 2} {
-            pfm zhuan;
             #class attack.inner open;
-            #ticker {zhuan} {
-                pfm zhuan;
+            #ticker {chuo} {
+                pfm chuo;
             } {6.8};
             #class attack.inner close;
         };
