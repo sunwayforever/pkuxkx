@@ -6,9 +6,12 @@
 #read pathdir.tin
 #read xiaoyao.tin
 
+
+
 #read plugin/util.tin
 #read plugin/action.tin
 #read plugin/alias.tin
+
 
 #read plugin/highlight.tin
 #read plugin/status.tin
@@ -60,12 +63,14 @@
 #read plugin/zuiquan.tin;
 #read plugin/suck.tin;
 #read plugin/mapi.tin;
-#read plugin/xmpp.tin;
 #read plugin/burden.tin;
 #read plugin/area.tin;
 #read plugin/wield.tin;
 #read plugin/fullme.tin;
 #read plugin/hsz.tin;
+#read plugin/xmpp.tin;
+
+#read plugin/ruby.tin;
 
 #read plugin/os/linux-gnu.tin;
 #script {os_name} {ruby -e "require 'os'; puts OS.host_os();"};
