@@ -3,7 +3,9 @@
 
 #alias {xmpp.start} {
     #if {"${char_id}" == "${xmpp_listener}"} {
-        #run {xmpp} {./bin/xmpp.rb ${char_id}}
+        #run {xmpp} {./bin/xmpp.rb ${char_id}};
+	#unticker {%*};
+	#sunxm
     };
 };
 

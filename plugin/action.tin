@@ -51,7 +51,6 @@
         #var char_menpai_zh %%1;
         #var char_menpai @mapget{menpai;%%1};
         load spec/${char_menpai};
-        show_to_shortcut ${shortcut};
         #var weapons_to_wield ${my_weapons_to_wield};
     };
     #action {≡━━━━━━━━━━━━━━━━━━━━━━◎北大侠客行◎━━≡} {
@@ -107,9 +106,9 @@
         #send {time};
         init_set;
         update_env;
+        xmpp.start;
         show.init;
         check_baowei;
-        xmpp.start;
         #delay {2} {
             wi;
         };

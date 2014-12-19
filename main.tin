@@ -70,8 +70,6 @@
 #read plugin/hsz.tin;
 #read plugin/xmpp.tin;
 
-#nop #read plugin/ruby.tin;
-
 #read plugin/os/linux-gnu.tin;
 #script {os_name} {ruby -e "require 'os'; puts OS.host_os();"};
 #var os_name ${os_name}[1];

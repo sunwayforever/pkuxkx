@@ -33,5 +33,5 @@ end
 
 xmpp_login ARGV[0]
 while true
-  xmpp_send gets
+  xmpp_send STDIN.gets
 end
