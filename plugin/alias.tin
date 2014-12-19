@@ -927,11 +927,6 @@
     #var result $ret[1]
 };
 
-#function {wait} {
-    #system {bin/wait.rb %0};
-    #var result #cr;
-};
-
 #var min_naijiu 10000;
 #alias {check_naijiu} {
     #action {ÄÍ¾Ã¶È:%*} {

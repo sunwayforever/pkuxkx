@@ -327,7 +327,16 @@
         #act {^只听得江面上隐隐传来：“别急嘛，这儿正忙着呐……”} {#class tmp kill;#delay {3} {yell boat}};
         #class tmp close;
     };
-    #act {^艄公说“到啦，上岸吧”，随即把一块踏脚板搭上堤岸。} {#var stepaccu 1;out;walk};
+    #var in_boat 0;
+    #act {^江心驶去。} {
+        #var in_boat 1;
+    };
+    #act {^艄公说“到啦，上岸吧”，随即把一块踏脚板搭上堤岸。} {
+        #if {${in_boat} == 1} {
+            #var in_boat 0;
+            #var stepaccu 1;out;walk            
+        };
+    };
     #act {^你反应迅速，急忙双手抱头，身体蜷曲。眼前昏天黑地，顺着山路直滚了下去。} {#class walk kill;#var CurrentPosition qbl};
     #act {^你从山上滚了下来，只觉得浑身无处不疼，还受了几处伤。} {#class walk kill;#var CurrentPosition dzf};
     #act {^不知过了多久，船终于靠岸了，你累得满头大汗。} {walk};
