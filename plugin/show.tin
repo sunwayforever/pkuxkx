@@ -20,6 +20,7 @@
         update_status_line;
     };
 
+    show_to_shortcut ${shortcut};
     #loop {1} {&info_window[]} {cnt}
     {
         #math pos $cnt+${info_window_offset};
