@@ -1,0 +1,5 @@
+#class ruby open;
+#run ruby irb -I ./bin -r loader.rb
+#unticker {%*};
+#sunxm
+#class ruby close;

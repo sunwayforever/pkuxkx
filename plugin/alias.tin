@@ -20,39 +20,6 @@
     map.load ${char_menpai};
 };
 
-#alias {cq} {
-    #class money.cun.inner open;
-    #action {^%*张一千两银票(Thousand-cash)} {
-        #var cun_count @ctd{%%1};
-        #math cun_count ${cun_count}-1;
-        #if {${cun_count} <= 0} {
-            #class money.cun.inner kill;
-            show_to_info 没钱存什么存?;
-            #return;
-        };
-        on_there {
-            n;w;
-            cun ${cun_count} cash;
-            #delay {1} {
-                e;s;
-            };
-        };
-        gt yz;
-    };
-    #action {你拿出%*张一千两银票，存进了银号。} {
-        #class money.cun.inner kill;
-        show_to_info 存 @ctd{%%1} cash;
-        #send {sc};
-    };
-    #action {你要看什么} {
-        #class money.cun.inner kill;
-        show_to_info 没钱存什么存?;
-    };
-    #class money.cun.inner close;
-    l cash;
-
-};
-
 #alias {get.qian} {
     #alias tmp_get_qian #cr;
     #alias tmp_get_qian %1;
@@ -958,6 +925,11 @@
 #function {py} {
     #script {ret} {bin/pinyin.rb %0};
     #var result $ret[1]
+};
+
+#function {wait} {
+    #system {bin/wait.rb %0};
+    #var result #cr;
 };
 
 #var min_naijiu 10000;
