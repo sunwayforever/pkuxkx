@@ -22,11 +22,16 @@ def xmpp_login (sender_name)
   end
 end
 
-def xmpp_send(receiver_name, sent_msg)
+def xmpp_send(sent_msg)
   begin
     msg = Message.new(JID.new("messenger@localhost/xkx"))
-    msg.set_body($conv_from_mud.iconv(receiver_name+": "+sent_msg))
+    msg.set_body($conv_from_mud.iconv(sent_msg))
     $cl.send msg
   rescue Exception => e
   end
+end
+
+xmpp_login ARGV[0]
+while true
+  xmpp_send gets
 end
