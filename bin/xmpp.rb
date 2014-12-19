@@ -6,8 +6,8 @@ require 'iconv'
 
 include Jabber
 $cl = nil;
-$conv_to_mud = Iconv.new("UTF-8","GBK")
-$conv_from_mud = Iconv.new("GBK","UTF-8")
+$conv_from_mud = Iconv.new("UTF-8","GBK")
+$conv_to_mud = Iconv.new("GBK","UTF-8")
 
 def xmpp_login (sender_name)
   sender = JID.new(sender_name + '@localhost/xkx')
