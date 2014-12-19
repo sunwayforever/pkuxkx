@@ -3,21 +3,17 @@
 
 #alias {xmpp.start} {
     #if {"${char_id}" == "${xmpp_listener}"} {
-        #xmpp xmpp_login "${char_id}"
+        #ruby xmpp_login "${char_id}"
     };
 };
 
 #action {(%*)¸æËßÄã£ºnotify %*} {
     #var receiver %1;
     #var content %2;
-    #xmpp xmpp_send "${receiver}","${content}";
+    #ruby xmpp_send "${receiver}","${content}";
 } {1};
 
 #alias {xmpp.notify} {
     tell ${xmpp_listener} notify %0;
 };
-
-#run xmpp pry -I ./bin -r xmpp.rb;
-#unticker {%*};
-#sunxm
 #class xmpp close;
