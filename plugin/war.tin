@@ -177,6 +177,9 @@
     #var pfming 0;
     yun qi;
     yun jing;
+    #if {${youxiao_neigong} > 750} {
+        yun shield;
+    };
     #class attack.inner kill;
     attack.prepare;
     attack;

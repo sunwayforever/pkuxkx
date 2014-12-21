@@ -6,12 +6,9 @@
 #read pathdir.tin
 #read xiaoyao.tin
 
-
-
 #read plugin/util.tin
 #read plugin/action.tin
 #read plugin/alias.tin
-
 
 #read plugin/highlight.tin
 #read plugin/status.tin
