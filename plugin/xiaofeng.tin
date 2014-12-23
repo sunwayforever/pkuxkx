@@ -9,6 +9,15 @@
 
 #alias {xf.setup} {
     #class xiaofeng.inner open;
+    #action {蒙面杀手往%*离开。} {
+        #var xf_last_direction @cdirection{%%1};
+    } {6};
+    #action {蒙面杀手往%*边离开。} {
+        #var xf_last_direction @cdirection{%%1};
+    } {5};
+    #action {这里没有 shashou。} {
+        walk_to ${xf_last_direction};
+    };
     #action {跳出战圈不打了} {
         jifa_all;
         #if {${xf.type} == 3} {
@@ -310,3 +319,6 @@
     l shashou;
 };
 #class xiaofeng close
+
+#nop 蒙面杀手往外离开。
+#nop 这里没有 shashou。

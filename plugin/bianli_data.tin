@@ -104,6 +104,10 @@
 #list bl_path_fz create {
     n;s;s;e;w;s;n;w;n;w;e;e;w;n;n;nu;nw;nw;n;s;s;n;e;w;se;se;sd;s;s;s;w;n;enter;out;s;s;e;w;n;w;w;sw;sw;s;n;ne;ne;e;e;e;s;s;n;n;e;n;
 };
+
+#list bl_connections_nc create {
+    qz;yy;jz;
+};
 #list bl_path_nc create {
     bl.comment {东面};
     s;s;enter;w;e;e;w;out;n;e;e;eu;eu;wd;wd;w;w;n;
@@ -442,6 +446,9 @@
     9;sw;s;sw;sw;sw;ne;nw;se;ne;ne;n;ne;e;u;
 };
 
+#list bl_connections_jz create {
+    nc;yy;
+};
 #list bl_path_jz create {
     bl.comment {往南到南昌，到中央广场};
     w;w;w;e;s;w;e;e;w;s;s;s;e;w;su;se;s;s;w;e;e;w;s;n;n;n;nw;nd;n;n;n;n;n;
@@ -451,6 +458,9 @@
     n;n;s;w;enter;w;e;e;w;out;e;e;s;n;ne;se;nw;nw;w;e;se;ne;ne;n;nw;se;e;w;s;e;ne;n;s;sw;w;e;ne;u;d;n;w;e;ne;ne;sw;sw;s;sw;w;sw;e;e;ne;eu;ed;ed;wu;wu;wd;sw;w;w;sw;sw;sw;s;e;e;
 };
 
+#list bl_connections_yy create {
+    nc;jz;
+};
 #list bl_path_yy create {
     bl.comment {往南到南昌， 城中心};
     w;e;e;w;s;s;su;su;su;ed;nu;enter;w;e;n;s;out;sd;ed;ed;e;w;wu;wu;wu;nd;nd;nd;n;n;n;

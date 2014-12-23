@@ -774,6 +774,9 @@
 #list abbrev_directions create {
     n;s;e;w;u;d;enter;out;ne;sw;nw;se;nd;su;nu;sd;eu;wd;ed;wu;
 };
+#list chinese_directions create {
+    北;南;东;西;上;下;里;外;东北;西南;西北;东南;
+};
 #list opposite_directions create {
     south;north;west;east;down;up;out;enter;southwest;northeast;southeast;northwest;southup;northdown;southdown;northup;westdown;eastup;westup;eastdown;
     s;n;w;e;d;u;sw;ne;se;nw;su;nd;sd;nu;wd;eu;wu;ed;
@@ -786,6 +789,15 @@
     };
     #else {
         #list opposite_directions get ${opposite_index} result;
+    };
+};
+#function {cdirection} {
+    #list {chinese_directions} {find} {%1} {chinese_index};
+    #if {${chinese_index} == 0} {
+        #return NULL;
+    };
+    #else {
+        #list directions get ${chinese_index} result;
     };
 };
 #function {abbrev} {
