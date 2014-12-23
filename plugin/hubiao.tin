@@ -106,7 +106,7 @@ load chaos;
     #foreach {${clear_npcs}[%*]} {npc} {clear_npc ${npc}};
     #unaction {^    这里%*出口};
     #class hb_setup_inner open;
-    #action {你想杀谁} {
+    #action {你想杀谁？} {
         hb.retry;
     };
 
