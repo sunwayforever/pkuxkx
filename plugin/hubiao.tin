@@ -8,9 +8,11 @@ load chaos;
 #var hb_info nil;
 #var hb_rotate_location NIL;
 #var hb_rotate_location_count 0;
+#var hb_robber_count 0;
 
 #alias {hb.teardown} {
     #var quest NIL;
+    #var hb_robber_count 0;
     #class hb_setup_inner kill;
     #class clear_npc.inner kill;
     #unticker {kill_npc};
@@ -765,13 +767,14 @@ load chaos;
 
 #alias {got_robber} {
     #delay {detect_enemy_delay} {
+        #var hb_robber_count ${tmp_robber_count};
         #class detect_enemy.inner kill;
     } {1};
-    #math robber_count ${robber_count}+1;
+    #math tmp_robber_count ${tmp_robber_count}+1;
     #var tmp_score @mapget{robber_score;%1};
     #if {${tmp_score} > ${robber_score}} {
         #var robber_score ${tmp_score};
-        #var enemy ${char_id}'s robber ${robber_count};
+        #var enemy ${char_id}'s robber ${tmp_robber_count};
     };
 };
 
@@ -806,7 +809,7 @@ load chaos;
     #class detect_enemy.inner close;
     #undelay {detect_enemy_delay};
     #var enemy NULL;
-    #var robber_count 0;
+    #var tmp_robber_count 0;
     #var robber_score 0;
     l;
 };

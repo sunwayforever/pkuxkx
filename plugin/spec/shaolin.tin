@@ -150,4 +150,21 @@ stat.register 惊魔 miss 看破了你的企图，侧身避过指力;
 #alias {jifa_all} {
     #cr;
 };
+
+#alias {perform} {
+    #if {${hb_robber_count} != 0 && "%0" == "jingmo"} {
+        #var tmp_pfm_index 0;
+        #while {$tmp_pfm_index < ${hb_robber_count}} {
+            #math tmp_pfm_index ${tmp_pfm_index}+1;
+            #send {perform jingmo ${char_id}'s robber ${tmp_pfm_index}};
+        };
+    };
+    #elseif {"${enemy}" == "NULL"} {
+        #send {perform %0};
+    };
+    #else {
+        #send {perform %0 ${enemy}};
+    };
+};
+
 #class template close
