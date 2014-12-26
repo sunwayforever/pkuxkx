@@ -1,21 +1,40 @@
 #class template open
 #action {如何使用「八仙醉打」呀} {
-	drink fenjiu;
+    drink fenjiu;
 };
 
 #alias {attack.prepare} {
-	yun powerup;
-	pfm fmq;
-	pfm jingmo;
-	
-	#class attack.inner open;
-	#ticker {fumoquan} {
-		pfm fmq;
-	} {30};
-	#ticker {jingmo} {
-		pfm jingmo;
-	} {1.5};
-	#class attack.inner close;
+    yun powerup;
+    #if {"${quest}" == "hb"} {
+        unwi;
+        #send {perform yizhi-chan.jingmo ${char_id}'s robber 1};
+        #send {perform yizhi-chan.jingmo ${char_id}'s robber 2};
+        #send {perform yizhi-chan.jingmo ${char_id}'s robber 3};
+        wi;
+    };
+    #else {
+        pfm jingmo;
+    };
+    pfm fmq;
+    #class attack.inner open;
+    #ticker {fumoquan} {
+        pfm fmq;
+    } {30};
+    #ticker {jingmo} {
+        #if {"${quest}" == "hb"} {
+            unwi;
+            #var tmp_pfm_index 0;
+            #while {$tmp_pfm_index < ${hb_robber_count}} {
+                #math tmp_pfm_index ${tmp_pfm_index}+1;
+                #send {perform yizhi-chan.jingmo ${char_id}'s robber ${tmp_pfm_index}};
+            };
+            wi;
+        };
+        #else {
+            pfm jingmo;
+        };
+    } {1.5};
+    #class attack.inner close;
 };
 
 #alias {attack} {
@@ -39,56 +58,56 @@
 };
 
 #alias {map_goto_lingwu} {
-	map.go 达摩院二楼;
+    map.go 达摩院二楼;
 };
 
 #alias {map_goto_rest} {
-	map.go 和尚院五部;
+    map.go 和尚院五部;
 };
 
 #alias {map_goto_start} {
-	map.go 方丈楼;
+    map.go 方丈楼;
 };
 
 #var need_ask_for_damo 1;
 #alias {map_goto_shifu} {
-	#if {${need_ask_for_damo} == 1} {
-		#var need_ask_for_damo 0;
-		map.go 方丈室;
-		on_arrived {
-			ask dashi about 达摩老祖;
-			map.go 达摩洞;
-			on_arrived {
-				map.go 达摩禅房;	
-			};
-		};
-	};
-	#else {
-		map.go 达摩洞;
-		on_arrived {
-			map.go 达摩禅房;	
-		};
-	};
+    #if {${need_ask_for_damo} == 1} {
+        #var need_ask_for_damo 0;
+        map.go 方丈室;
+        on_arrived {
+            ask dashi about 达摩老祖;
+            map.go 达摩洞;
+            on_arrived {
+                map.go 达摩禅房;    
+            };
+        };
+    };
+    #else {
+        map.go 达摩洞;
+        on_arrived {
+            map.go 达摩禅房;    
+        };
+    };
 };
 
 #alias {chan} {
-	unwi;
-	do_wield whip;
-	perform riyue-bian.chan;
-	wi;
+    unwi;
+    do_wield whip;
+    perform riyue-bian.chan;
+    wi;
 };
 
 #alias {zuida} {
-	unwi;
-	do_wield staff;
-	perform zui-gun.zuida;
-	wi;
+    unwi;
+    do_wield staff;
+    perform zui-gun.zuida;
+    wi;
 };
 
 #alias {jingmo} {
-	unwi;
-	perform yizhi-chan.jingmo;
-	wi;
+    unwi;
+    perform yizhi-chan.jingmo;
+    wi;
 };
 
 #list my_weapons_to_wield create {spear;spear 2};
@@ -97,15 +116,15 @@
 #var shortcut F1:惊魔 F2:醉打 F3:缠;
 
 #macro {\eOP} {
-	jingmo;
+    jingmo;
 };
 
 #macro {\eOQ} {
-	zuida;
+    zuida;
 };
 
 #macro {\eOR} {
-	chan;
+    chan;
 };
 
 #macro {\eOS} {
@@ -121,7 +140,7 @@
 };
 
 #alias {qudu} {
-	eat san;
+    eat san;
 };
 
 #alias {reborn} {
@@ -129,10 +148,10 @@
 };
 
 #alias {fmq} {
-	unwi;
-	do_wield whip;
-	#send {perform riyue-bian.fumoquan};
-	wi;
+    unwi;
+    do_wield whip;
+    #send {perform riyue-bian.fumoquan};
+    wi;
 };
 
 stat.register 惊魔 hit 胸前大穴被你指力点中，全身动弹不得;
@@ -149,22 +168,6 @@ stat.register 惊魔 miss 看破了你的企图，侧身避过指力;
 
 #alias {jifa_all} {
     #cr;
-};
-
-#alias {perform} {
-    #if {${hb_robber_count} != 0 && "%0" == "jingmo"} {
-        #var tmp_pfm_index 0;
-        #while {$tmp_pfm_index < ${hb_robber_count}} {
-            #math tmp_pfm_index ${tmp_pfm_index}+1;
-            #send {perform jingmo ${char_id}'s robber ${tmp_pfm_index}};
-        };
-    };
-    #elseif {"${enemy}" == "NULL"} {
-        #send {perform %0};
-    };
-    #else {
-        #send {perform %0 ${enemy}};
-    };
 };
 
 #class template close

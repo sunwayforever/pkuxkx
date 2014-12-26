@@ -810,6 +810,7 @@ load chaos;
     #undelay {detect_enemy_delay};
     #var enemy NULL;
     #var tmp_robber_count 0;
+    #var hb_robber_count 0;
     #var robber_score 0;
     l;
 };
