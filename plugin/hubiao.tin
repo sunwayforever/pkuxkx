@@ -412,6 +412,9 @@ load chaos;
     #elseif {"${hb_owner}" == "wang"} {
         gt tf;
     };
+   #elseif {"${hb_owner}" == "chu"} {
+        gt fh;
+    };
 
     on_there {
         hb.d;

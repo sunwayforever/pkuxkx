@@ -16,6 +16,7 @@
         pfm jingmo;
     };
     pfm fmq;
+    pfm zuida;
     #class attack.inner open;
     #ticker {fumoquan} {
         pfm fmq;
