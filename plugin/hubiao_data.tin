@@ -363,9 +363,11 @@
         };
         #elseif {"${tmp}" == "镇江"} {
             #list hb_path create {
-                gs;gs;gsw;gn;gn;gn;gn;gn;gn;gnw;gn;gne;gne;gnw;gn;gn;gn;gn;gnw;gw;gw;gw;gn;gw;gn;ge;gw;gn;gnu;gsd;gw;
-                ge;ge;gw;gs;gs;gs;gw;gs;gn;gw;gn;gs;gs;gn;gw;ge;ge;ge;ge;gs;gn;gw;gs;gw;ge;ge;gw;gs;gn;gn;gn;gn;gn;
-                gw;gw;gs;gs;gw;ge;gs;gs;ge;ge;ge;ge;gn;gn;gn;gn;gw;gw;gs;gs;ge;
+                gs;gs;gsw;gn;gn;gn;gn;gn;gn;gnw;gn;gne;gne;gnw;gn;gn;gn;gn;gnw;gw;gw;gw;gn;
+                #nop 到底梦溪园;
+                gw;gn;ge;gw;gn;gnu;gsd;gw;ge;ge;gw;gs;gs;gs;gw;gs;gn;gw;gn;gs;gs;gn;gw;ge;ge;ge;ge;gs;gn;gw;gs;gw;ge;ge;gw;gs;gn;gn;gn;gn;gn;
+                #nop 定波门开始遍历土路;
+                gw;gw;gnw;gu;gd;gse;gs;gs;gw;ge;gs;gs;ge;ge;ge;ge;gn;gn;gn;gn;gw;gw;gs;gs;ge;
             };
         };
         #elseif {"${tmp}" == "归云"} {
