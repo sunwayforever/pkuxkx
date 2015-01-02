@@ -40,6 +40,9 @@
         #elseif {${xf.type} == 2} {
             pfm wuying;
             #class attack.inner open;
+            #ticker {wuying} {
+                pfm wuying;
+            } {5.8};
             #class attack.inner close;
         };
         #elseif {${xf.type} == 3} {
@@ -71,6 +74,9 @@
             #ticker {wuying} {
                 pfm wuying;
             } {5.8};
+            #ticker {zhen} {
+                pfm zhen;
+            } {2.8};
             #class attack.inner close;
         };
         #elseif {${xf.type} == 3} {
