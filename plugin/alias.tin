@@ -746,6 +746,15 @@
     };
 };
 
+#var xy_info off;
+#action {保卫襄阳任务启动！} {
+    #var xy_info on;
+};
+
+#action {保卫襄阳任务全部结束！} {
+    #var xy_info off;
+};
+
 #list baowei_time create {3;7;11;15;19;23};
 #alias {check_baowei} {
     #format {epoch} {%T};
@@ -753,7 +762,7 @@
     #var tmp_baowei 0;
     #foreach {${baowei_time}[%*]} {single_time} {
         #format from_time {%d:40:99} ${single_time}-1;
-        #format to_time {%d:35:99} ${single_time};
+        #format to_time {%d:50:99} ${single_time};
         #if {"${current_time}" > "${from_time}" && "${current_time}" < "${to_time}"} {
             #var tmp_baowei 1;
         };

@@ -23,10 +23,6 @@
     #cr;
 } {1};
 
-#ticker {check_baowei} {
-    check_baowei;
-} {60};
-
 @mapcreate{menpai};
 @mapset{menpai;»ªÉ½ÅÉ;huashan};
 @mapset{menpai;¹ÅÄ¹ÅÉ;gumu};
