@@ -741,7 +741,7 @@ load chaos;
         #class mx.yao.inner close;
     } {1};
     #class mx.inner close;
-    zhao;
+    zhaoxun;
 };
 
 #alias {mx.d} {
