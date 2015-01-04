@@ -98,4 +98,15 @@
 #function {iscomment} {
     #regexp {%1} {^#nop} {#var result 1} {#var result 0};
 };
+
+#function {power} {
+    #var a %1;
+    #var b %2;
+    #var tmp 0;
+    #var result 1;
+    #while {${tmp} < ${b}} {
+        #math result ${result}*${a};
+        #math tmp ${tmp}+1;
+    };
+};
 #class util close

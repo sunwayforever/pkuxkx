@@ -3,28 +3,22 @@
 #list gem_types create {地;山;水;风;雷;火;泽;天};
 #var gem.combine_count 0;
 #alias {gem} {
+    #var gem_value 0;
+    gem.setup;
     jiancha jin nang;
     lock 用pack <物品id>将宝石放入其中;
+    #delay {1} {
+        gem.teardown;
+        show_to_info 宝石价值: ${gem_value};
+    };
 };
 
 #function {gemlevel} {
     #list gem_types find %1 result;
 };
 
-#alias {check_gem} {
-    #var gem_id %1;
-    #var gem_type %2;
-    #var gem_count %3;
-    #list gem_types find ${gem_type} gem_type_index;
-    #if {${gem_count} >=3 && ${gem_type_index} < ${gem_combine_level}} {
-        #var target_gem_id ${gem_id};
-    };
-
-};
-
-#alias {gem.combine} {
-    #alias tmp_combine %1;
-    #class gem.combine.inner open;
+#alias {gem.setup} {
+    #class gem.inner open;
     #action {(%s%S)%*{◎|☆|★}%*\*%S%s(%s%S)%*{◎|☆|★}%*\*%S%s(%s%S)%*{◎|☆|★}%*\*%S%s(%s%S)%*{◎|☆|★}%*\*%S%s(%s%S)%*{◎|☆|★}%*\*%S} {
         check_gem {%%2} {%%3} {%%6};
         check_gem {%%9} {%%10} {%%13};
@@ -54,7 +48,27 @@
     #action {(%s%S)%*{◎|☆|★}%*\*%S} {
         check_gem {%%2} {%%3} {%%6};
     } {5};
+    #class gem.inner close;
+};
 
+#alias {gem.teardown} {
+    #classs gem.inner kill;
+};
+
+#alias {check_gem} {
+    #var gem_id %1;
+    #var gem_type %2;
+    #var gem_count %3;
+    #list gem_types find ${gem_type} gem_type_index;
+    #if {${gem_count} >=3 && ${gem_type_index} < ${gem_combine_level}} {
+        #var target_gem_id ${gem_id};
+    };
+    #math gem_value ${gem_value}+@power{3;${gem_type_index}}/3*${gem_count};
+};
+
+#alias {gem.combine} {
+    #alias tmp_combine %1;
+    #class gem.combine.inner open;
     #action {你的宝石袋里空空荡荡} {
         combine_gems_done;
     };
