@@ -1060,3 +1060,18 @@
 #alias {wd} {westdown};
 #alias {ed} {eastdown};
 #alias {wu} {westup};
+
+#list kaimen_actions create {open;push;pull;break};
+#list kaimen_names create {door;gate;men;stone};
+#alias {kaimen} {
+    #gag Ê²Ã´£¿;
+    #foreach {${kaimen_actions}[%*]} {kaimen_action} {
+        #foreach {${kaimen_names}[%*]} {kaimen_name} {
+            #show ${kaimen_action} ${kaimen_name};
+            ${kaimen_action} ${kaimen_name};
+        };
+    };
+    #delay {1} {
+        #ungag Ê²Ã´£¿;        
+    };
+};
