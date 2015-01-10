@@ -60,6 +60,7 @@
 @mapset{areas;成都;cd};
 @mapset{areas;扬州;yz};
 @mapset{areas;平西王府;px};
+@mapset{areas;姑苏慕容;yzw};
 
 #function {area} {
     #format {tmp} {%.8s} {%1};
