@@ -1,0 +1,37 @@
+#class vein open;
+#alias {vein.start} {
+    #var vein_target %1;
+    #if {"${vein_target}" == ""} {
+        vein.stop;
+    };
+    #class vein.inner open;
+    #action {你现在内力不足，强行通脉，有害无益。} {
+        chifan;
+        on_health {
+            do_vein;
+        };
+    };
+
+    #action {你已将内力纳入} {
+        do_vein;
+    };
+    
+    #action {你%*上%*穴已经充盈，你可以尝试下一个穴道%*穴了。} {
+        show_to_info %%2 已通;
+        #var vein_target %%3;
+        do_vein;
+    };
+
+    #alias {do_vein} {
+        vein through ${vein_target};  
+    };
+    #class vein.inner close;
+    show_to_quest 通脉: ${vein_target};
+    do_vein;
+};
+#alias {vein.stop} {
+    dz.cancel;
+    #class vein.inner kill;
+    show_to_quest 通脉结束;
+};
+#class vein close;
