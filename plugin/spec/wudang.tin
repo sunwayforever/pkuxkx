@@ -38,11 +38,11 @@
             #class attack.inner close;
         };
         #elseif {${xf.type} == 2} {
-            pfm wuying;
+            pfm gangrou;
             #class attack.inner open;
-            #ticker {wuying} {
-                pfm wuying;
-            } {5.8};
+            #ticker {gangrou} {
+                pfm gangrou;
+            } {6.8};
             #class attack.inner close;
         };
         #elseif {${xf.type} == 3} {
