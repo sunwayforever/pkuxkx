@@ -22,6 +22,10 @@
         do_vein;
     };
 
+    #action {过多尝试通脉次数} {
+        vein.stop;
+    };
+    
     #alias {do_vein} {
         vein through ${vein_target};  
     };
