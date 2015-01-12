@@ -199,7 +199,7 @@
     map.go {小屋};
 };
 
-#list my_weapons_to_wield create {sword;blade};
+#list my_weapons_to_wield create {sword; sword 2};
 #nop #list my_weapons_to_wield_1 create {blade};
 
 #var shifu zhang;
@@ -208,12 +208,11 @@
     #send {jifa cuff taiji-quan};
     #send {jifa dodge tiyunzong};
     #send {jifa parry taiji-quan};
-    #send {jifa sword taiji-jian};
+    #send {jifa sword hero-jianfa};
     #send {jifa blade xuanxu-dao};
     #send {jifa claw taiji-zhao};
     #send {jifa force taiji-shengong};
     bei cuff claw;
-    wbei taiji-jian xuanxu-dao;
 };
 #var char_menpai_position wd;
 
@@ -224,16 +223,14 @@ stat.register 缠 hit 只能见招拆招，疲于应对，不觉已深陷太极剑意之中，无法出招。;
 #var menzhong_didian ht;
 
 #alias {jifa_none} {
-    wbei none;
     jifa sword none;
     jifa blade none;
     jifa spear none;
 };
 
 #alias {jifa_all} {
-    jifa sword taiji-jian;
+    jifa sword hero-jianfa;
     jifa blade xuanxu-dao;
     jifa spear yuejia-qiangfa;
-    wbei taiji-jian xuanxu-dao;
 };
 #class wudang_spec close
