@@ -104,7 +104,7 @@
         #if {%%2 < 50 || %%3 < 50} {
             xf.slow_down_1;
         };
-        #if {%%2 < 35 || %%3 < 35} {
+        #if {%%2 < 45 || %%3 < 45} {
             xf.slow_down_2;
         };
     } {1};
@@ -321,7 +321,6 @@
 
 #alias {xf.heal} {
     yun lifeheal shashou;
-    l shashou;
 };
 #class xiaofeng close
 

@@ -40,16 +40,18 @@
         #elseif {${xf.type} == 2} {
             pfm gangrou;
             #class attack.inner open;
-            #ticker {gangrou} {
-                pfm gangrou;
-            } {6.8};
+            #ticker {wuying} {
+                pfm wuying;
+            } {4.8};
             #class attack.inner close;
         };
         #elseif {${xf.type} == 3} {
+            pfm gangrou;
             #class attack.inner open;
             #class attack.inner close;
         };
         #else {
+            pfm gangrou;
             #class attack.inner open;
             #class attack.inner close;
         };
@@ -58,6 +60,7 @@
         #if {${xf.type} == -1 || ${xf.type} == 1} {
             pfm wuying;
             pfm gangrou;
+            pfm lzj;
             #class attack.inner open;
             #ticker {wuying} {
                 pfm wuying;
@@ -68,12 +71,12 @@
             #class attack.inner close;
         };
         #elseif {${xf.type} == 2} {
-            #nop jifa_none;
+            jifa_none;
             pfm gangrou;
             #class attack.inner open;
-            #ticker {gangrou} {
-                pfm gangrou;
-            } {6.8};
+            #ticker {wuying} {
+                pfm wuying;
+            } {4.8};
             #class attack.inner close;
         };
         #elseif {${xf.type} == 3} {
@@ -199,7 +202,7 @@
     map.go {Ð¡ÎÝ};
 };
 
-#list my_weapons_to_wield create {sword; sword 2};
+#list my_weapons_to_wield create {blade; blade 2;};
 #nop #list my_weapons_to_wield_1 create {blade};
 
 #var shifu zhang;

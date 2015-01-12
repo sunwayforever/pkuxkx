@@ -479,7 +479,7 @@
         } {0.5};
     } {1};
     #class halt.inner close;
-    halt;
+    #10 halt;
 };
 
 #alias {pfm_all}  {
