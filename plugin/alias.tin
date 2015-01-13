@@ -1075,3 +1075,13 @@
         #ungag  ≤√¥£ø;        
     };
 };
+
+#alias {shouyin} {
+    gt guiyun;
+    on_there {
+        e;e;n;n;w;s;ask ren about  ÷”°;
+        #delay {1} {
+            n;e;s;s;w;w;sd;sd;out;w;w;w;s;e;give shouyin to %1
+        };        
+    };
+};
