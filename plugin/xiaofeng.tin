@@ -9,6 +9,10 @@
 
 #alias {xf.setup} {
     #class xiaofeng.inner open;
+    #action {蒙面杀手往%*落荒而逃了。} {
+        #var xf_last_direction @cdirection{%%1};
+        walk_to ${xf_last_direction};
+    };
     #action {蒙面杀手往%*离开。} {
         #var xf_last_direction @cdirection{%%1};
     } {6};
