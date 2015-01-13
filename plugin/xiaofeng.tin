@@ -321,6 +321,7 @@
 
 #alias {xf.heal} {
     yun lifeheal shashou;
+    l shashou;
 };
 #class xiaofeng close
 
