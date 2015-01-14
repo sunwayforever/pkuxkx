@@ -166,7 +166,7 @@
 stat.register 缠 miss 你叹了口气知道这“缠”字决已为人所破，只得收回了招式;
 stat.register 缠 hit 你得理不饶人;
 
-#list my_weapons_to_wield create {};
+#list my_weapons_to_wield create {spear};
 
 #var shortcut F1:缠 F2:转 F3:挑 F4:戳 F5:雷霆降龙 F6:亢龙三悔;
 #var shifu hong;
@@ -179,16 +179,23 @@ stat.register 缠 hit 你得理不饶人;
     #send {jifa strike xianglong-zhang};
     #send {jifa hand shexing-shou};
     #send {jifa spear yuejia-qiangfa};
+    #send {jifa blade liuhe-dao};
     bei none;
     bei xianglong-zhang shexing-shou;
 };
 
 #alias {jifa_none} {
     jifa staff none;
+    jifa spear none;
+    jifa strike none;
+    jifa blade none;
 };
 
 #alias {jifa_all} {
     jifa staff dagou-bang;
+    jifa spear yuejia-qiangfa;
+    jifa strike xianglong-zhang;
+    jifa blade liuhe-dao;
 };
 #class gaibang_spec close
 
