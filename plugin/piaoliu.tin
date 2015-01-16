@@ -5,6 +5,7 @@
 };
 
 #alias {pl.start} {
+    #var quest pl;
     #if {"%2" == "n"} {
         #var hua_direction north;
     };
@@ -144,6 +145,7 @@
 };
 
 #alias {pl.d} {
+    #var quest NIL;
     hua back;
     give ren xiang;
     #action {µöÓãÈË¸øÄãÒ»Ã¶%*¡£} {
@@ -160,6 +162,7 @@
 };
 
 #alias {pl.f} {
+    #var quest NIL;
     ask ren about fail;
     #class piaoliu.inner kill;
 };

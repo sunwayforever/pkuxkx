@@ -16,7 +16,6 @@
         pfm jingmo;
     };
     pfm fmq;
-    pfm zuida;
     #class attack.inner open;
     #ticker {fumoquan} {
         pfm fmq;
@@ -39,7 +38,22 @@
 };
 
 #alias {attack} {
-    #cr;
+    #if {"${quest}" == "hb"} {
+        #class attack.inner open;
+        #class attack.inner close;
+    };
+    #elseif {${mj_started}  == 1} {
+        pfm luohan;
+        #class attack.inner open;
+        #ticker {luohan} {
+            pfm luohan;
+        } {2.8};
+        #class attack.inner close;
+    };
+    #else {
+        #class attack.inner open;
+        #class attack.inner close;
+    };
 };
 
 #macro {\eOP} {
@@ -105,6 +119,12 @@
     wi;
 };
 
+#alias {luohan} {
+    unwi;
+    perform luohan-quan.luohan;
+    wi;
+};
+
 #alias {jingmo} {
     unwi;
     perform yizhi-chan.jingmo;
@@ -164,11 +184,11 @@ stat.register 惊魔 miss 看破了你的企图，侧身避过指力;
 #var menzhong_didian txg;
 
 #alias {jifa_none} {
-    #cr;
+    jifa spear none;
 };
 
 #alias {jifa_all} {
-    #cr;
+    jifa spear yuejia-qiangfa;
 };
 
 #class template close
