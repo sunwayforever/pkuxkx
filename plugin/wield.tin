@@ -2,10 +2,9 @@
 #var current_weapons_set 0;
 
 #alias {unwi} {
-    #if {${wielding} == 0} {
-        unwield all;
-    };
+    unwield all;
 };
+
 #alias {wi} {
     #if {${wielding} == 0} {
         unwi;
@@ -70,7 +69,7 @@
         #delay {0.1} {
             wield_2 ${target};
         };
-    };
+    } {1};
     #action {==========%*==========} {
         #class wield_inner kill;
         #replace target { } {_};
@@ -84,7 +83,7 @@
         #var wielding 0;
         wield ${weapon_name};
         #showme weapon wield;
-    };
+    } {1};
     #class wield_inner close;
     l my ${target};
 };
@@ -98,7 +97,7 @@
         #showme 没有可用的武器;
         #var wielding 0;
         #showme weapon wield;
-    };
+    } {1};
     
     #action {==========%*==========} {
         #class wield_inner kill;
@@ -112,7 +111,7 @@
         #var wielding 0;
         #showme weapon wield;
         wield ${weapon_name};
-    };
+    } {1};
     #class wield_inner close;
     l ${target};
 };
@@ -127,7 +126,7 @@
         #delay {0.1} {
             wield_3 ${target};
         };
-    };
+    } {1};
     #action {==========%*==========} {
         #class wield_inner kill;
         #replace target { } {_};
@@ -141,7 +140,7 @@
         #var wielding 0;
         #showme weapon wield;
         wield ${${weapon_name}};        
-    };
+    } {1};
     #class wield_inner close;
     #if {"${${weapon_name}}" == ""} {
         #class wield_inner kill;
