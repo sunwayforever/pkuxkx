@@ -12,6 +12,14 @@
         #send {perform yizhi-chan.jingmo ${char_id}'s robber 3};
         wi;
     };
+    #elseif {"${quest}" == "wat"} {
+        unwi;
+        #send {perform yizhi-chan.jingmo wushi 1};
+        #send {perform yizhi-chan.jingmo wushi 2};
+        #send {perform yizhi-chan.jingmo wushi 3};
+        #send {perform yizhi-chan.jingmo wushi 4};
+        wi;
+    };
     #else {
         pfm jingmo;
     };
@@ -121,7 +129,9 @@
 
 #alias {luohan} {
     unwi;
+    jiali max;
     perform luohan-quan.luohan;
+    jiali none;
     wi;
 };
 
