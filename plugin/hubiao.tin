@@ -112,6 +112,10 @@ load chaos;
         hb.retry;
     };
 
+    #action {镖车还没有跟上来呢,走慢点.} {
+        hb.retry;
+    };
+    
     #action {你还是先把对手解决了再说吧} {
         l;
         hb.retry;
