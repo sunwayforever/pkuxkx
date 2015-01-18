@@ -1,187 +1,66 @@
 #class wield open
-#var current_weapons_set 0;
 
 #alias {unwi} {
     unwield all;
 };
 
 #alias {wi} {
-    #if {${wielding} == 0} {
-        unwi;
-        #foreach {${weapons_to_wield}[%*]} {weapon} {
-            do_wield ${weapon};
-        };
+    unwi;
+    #foreach {${weapons_to_wield}[%*]} {weapon} {
+        do_wield ${weapon};
     };
 };
 
-#action {已经断为两截} {
-    show_to_info 武器断了;
-    wi;
-};
-
-#alias {weapons.switch} {
-    #math current_weapons_set ${current_weapons_set}+1;
-    #list my_weapons_to_wield_${current_weapons_set} size tmp_size;
-    #if {${tmp_size} == 0} {
-        #var current_weapons_set 0;
-    };
-    #if {${current_weapons_set} == 0} {
-        #var weapons_to_wield ${my_weapons_to_wield};
-    };
-    #else {
-        #var weapons_to_wield ${my_weapons_to_wield_${current_weapons_set}};
-    };
-    #show 平砍武器切换为 ${weapons_to_wield};
-    weapons.reset;
-    wi;
-};
-
-#gag {你身上没有这样东西};
-#var wielding 0;
 #alias {do_wield} {
-    #if {${wielding} == 1} {
-        #delay {1} {
-            do_wield %0;
-        };
+    #var wield_type %1;
+    #var wield_count 1;
+    #var wield_count %2;
+    wield ${${wield_type}_list}[${wield_count}];
+};
+
+#list weapon_types create {sword; blade; staff; whip; spear};
+#alias {weapons.check} {
+    #foreach {${weapon_types}[%*]} {weapon_type} {
+        #list ${weapon_type}_list clear;        
     };
-    #else {
-        #var target %0;
-        #replace target { } {_};
-        #var current_weapon ${weapon_${target}};
-        #if {"${current_weapon}" == ""} {
-            #var wielding 1;
-            wield_1 %0;
+    #send {id};
+    #class weapons.inner open;
+    #action {%* = {[^,]+}, {[^,]+}$} {
+        #var weapon_type %%2;
+        #var weapon_name %%3;
+        #list ${weapon_type}_list size tmp_size;
+        #math tmp_size ${tmp_size}+1;
+        #if {${tmp_size} == 1} {
+            #list ${weapon_type}_list add ${weapon_name};            
         };
         #else {
-            wield ${current_weapon};
-            #showme weapon wield;
+            #list ${weapon_type}_list add {${weapon_name} ${tmp_size}};
         };
     };
-};
-
-#gag weapon wield;
-#alias {wield_1} {
-    #var target %0;
-    #var weapon_name {my ${target}};
-    #class wield_inner open;
-    #action {你要看什么？} {
-        #class wield_inner kill;
-        #delay {0.1} {
-            wield_2 ${target};
+    #action {%* = {[^,]+}$} {
+        #var weapon_type %%2;
+        #var weapon_name %%2;
+        #math tmp_size ${tmp_size}+1;
+        #if {${tmp_size} == 1} {
+            #list ${weapon_type}_list add ${weapon_name};
         };
-    } {1};
-    #action {==========%*==========} {
-        #class wield_inner kill;
-        #replace target { } {_};
-
-        #class weapons open;
-        #var weapon_${target} ${weapon_name};
-        #class weapons close;
-
-        #showme ${target} 设置为 ${weapon_name};
-        add_to_my_weapons ${weapon_name};
-        #var wielding 0;
-        wield ${weapon_name};
-        #showme weapon wield;
-    } {1};
-    #class wield_inner close;
-    l my ${target};
-};
-
-#alias {wield_3} {
-    #var target %0;
-    #var weapon_name {${target}};
-    #class wield_inner open;
-    #action {你要看什么？} {
-        #class wield_inner kill;
-        #showme 没有可用的武器;
-        #var wielding 0;
-        #showme weapon wield;
-    } {1};
-    
-    #action {==========%*==========} {
-        #class wield_inner kill;
-        #replace target { } {_};
-        
-        #class weapons open;
-        #var weapon_${target} ${weapon_name};
-        #class weapons open;
-        
-        #showme ${target} 设置为 ${weapon_name};
-        #var wielding 0;
-        #showme weapon wield;
-        wield ${weapon_name};
-    } {1};
-    #class wield_inner close;
-    l ${target};
-};
-
-#alias {wield_2} {
-    #var target %0;
-    #var weapon_name special_${target};
-    #replace weapon_name { } {_};
-    #class wield_inner open;
-    #action {你要看什么？} {
-        #class wield_inner kill;
-        #delay {0.1} {
-            wield_3 ${target};
-        };
-    } {1};
-    #action {==========%*==========} {
-        #class wield_inner kill;
-        #replace target { } {_};
-
-        #class weapons open;
-        #var weapon_${target} ${${weapon_name}};
-        #class weapons close;
-
-        #showme ${target} 设置为 ${weapon_name};
-        add_to_my_special_weapons ${${weapon_name}};
-        #var wielding 0;
-        #showme weapon wield;
-        wield ${${weapon_name}};        
-    } {1};
-    #class wield_inner close;
-    #if {"${${weapon_name}}" == ""} {
-        #class wield_inner kill;
-        #delay {0.1} {
-            wield_3 ${target};
+        #else {
+            #list ${weapon_type}_list add {${weapon_name} ${tmp_size}};
         };
     };
-    #else {
-        l ${${weapon_name}};
+    #action {^>} {
+        #class weapons.inner kill;
+        #foreach {${weapon_types}[%*]} {weapon_type} {
+            #list special_${weapon_type} size tmp_size;
+            #if {${tmp_size} != 0} {
+                #foreach {${special_${weapon_type}}[%*]} {sw} {
+                    #list ${weapon_type}_list add ${sw};
+                    #show add ${sw} to ${weapon_type};
+                };                
+            };
+        };
     };
+    #class weapons.inner close;
 };
 
-#list my_weapons create {};
-#alias {add_to_my_weapons} {
-    #var weapon_name %0;
-    #list my_weapons find ${weapon_name} tmp;
-    #if {${tmp} != 0} {
-        #list my_weapons del ${tmp};
-    };
-    #list my_weapons add ${weapon_name};
-};
-
-#list my_special_weapons create {};
-#alias {add_to_my_special_weapons} {
-    #var weapon_name %0;
-    #list my_special_weapons find ${weapon_name} tmp;
-    #if {${tmp} != 0} {
-        #list my_special_weapons del ${tmp};
-    };
-    #list my_special_weapons add ${weapon_name};
-};
-
-#alias weapons.reset {
-    #class weapons kill;
-};
-
-#action {你必须空出一只手来使用武器} {
-    remove shield;
-};
-
-#alias {weapons} {
-    #class weapons;
-};
 #class wield close

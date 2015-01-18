@@ -105,14 +105,15 @@
         xmpp.start;
         show.init;
         check_baowei;
-        #delay {2} {
-            wi;
+        #delay {3} {
+            weapons.check;
         };
         #delay {5} {
             #send {hp};
             #send {jifa};
             #send {l};
             pfm_special;
+            wi;
             we;
             check_naijiu;
         };
@@ -162,9 +163,9 @@
 
 #action {好了，你走吧} {
     remove all;
-    weapons.reset;
-    wi;
+    weapons.check;
     we;
+    wi;
 };
 
 #action {你现在正忙着哩} {

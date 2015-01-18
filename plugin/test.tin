@@ -1,3 +1,12 @@
 #class test open
-    s;s;s;w;w;e;s;n;e;s;w;e;e;w;s;w;e;e;e;n;s;e;e;se;s;n;nw;w;w;w;w;s;w;e;s;s;s;eu;wd;se;se;se;s;sw;s;n;ne;n;nw;nw;nw;n;n;n;s;s;s;eu;
+#action {%* = {[^,]+}, {[^,]+}$} {
+    #show %2;
+    #show %3;
+};
+#action {%* = {[^,]+}$} {
+    #show %2;
+};
+#show a = a, b, c;
+#show b = a, b;
+#show c = ab;
 #class test close

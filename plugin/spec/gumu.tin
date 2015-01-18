@@ -181,11 +181,7 @@
 
 
 #list my_weapons_to_wield create {spear; spear 2};
-#list my_weapons_to_wield_1 create {sword; sword 2};
-
-#var {special_sword} zidian;
-#var {special_sword_2} qingshuang;
-
+#list special_sword create {zidian; qingshuang};
 
 stat.register 缠 miss 可是他看破了你的企图，并没有上当;
 stat.register 缠 hit 结果他被你攻了个措手不及！
