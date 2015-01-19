@@ -60,7 +60,7 @@
 	wi;
 };
 
-#list my_weapons create {sword; sword 2};
+#list my_weapons_to_wield create {sword; sword 2};
 
 #var shortcut F1: Ãﬂ…≥ F2: “ı∑Á F3: ∂· F4: ΩÓ∂∑;
 #macro {\eOP} {

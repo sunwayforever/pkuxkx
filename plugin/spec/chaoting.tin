@@ -117,7 +117,7 @@
 	wi;
 };
 
-#list my_weapons create {staff};
+#list my_weapons_to_wield create {staff};
 
 #alias {qudu} {
 	#send {qudu};

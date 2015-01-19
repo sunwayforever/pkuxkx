@@ -61,10 +61,9 @@
 	#cr;
 };
 
-#list my_weapons create {staff; staff 2};
+#list my_weapons_to_wield create {staff; staff 2};
 
 #var shortcut Nil
-
 
 #alias {reborn} {
 };
