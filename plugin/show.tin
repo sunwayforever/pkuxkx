@@ -84,6 +84,9 @@
 #gag {【闲聊】%*};
 #action {【闲聊】%*} {
     show_to_chat %0;
+    #if {${xmpp_chat} == 1} {
+        #xmpp %0;
+    };
 };
 
 #action {我找不到,请看其他的回复} {

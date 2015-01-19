@@ -144,21 +144,22 @@
 #list my_weapons_to_wield create {spear;spear 2};
 #list special_whip create {qixing};
 
-#var shortcut F1:¾ªÄ§ F2:×í´ò F3:²ø;
+#var shortcut F1:¾ªÄ§ F2:²ø F3:ÂÞºº;
 
 #macro {\eOP} {
     jingmo;
 };
 
 #macro {\eOQ} {
-    zuida;
-};
-
-#macro {\eOR} {
     chan;
 };
 
+#macro {\eOR} {
+    luohan;
+};
+
 #macro {\eOS} {
+
 };
 
 #macro {\e[15~} {
