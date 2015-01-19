@@ -1,4 +1,5 @@
 #class wield open
+#list weapon_types create {blade;sword;staff;whip;spear;hammer;dagger;axe;};
 
 #alias {unwi} {
     unwield all;
@@ -21,7 +22,6 @@
 };
 
 #alias ss weapons.check;
-#list weapon_types create {blade;sword;staff;whip;spear;};
 #alias {weapons.check} {
     #foreach {${weapon_types}[%*]} {weapon_type} {
         #list ${weapon_type}_list clear;
