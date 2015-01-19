@@ -14,15 +14,21 @@
 #alias {do_wield} {
     #var wield_type %1;
     #var wield_count 1;
-    #var wield_count %2;
+    #if {"%2" != ""} {
+        #var wield_count %2;        
+    };
     wield ${${wield_type}_list}[${wield_count}];
 };
 
-#list weapon_types create {sword; blade; staff; whip; spear};
+#alias ss weapons.check;
+#list weapon_types create {blade;sword;staff;whip;spear;};
 #alias {weapons.check} {
     #foreach {${weapon_types}[%*]} {weapon_type} {
-        #list ${weapon_type}_list clear;        
+        #list ${weapon_type}_list clear;
     };
+    #list my_weapons clear;
+    #list my_special_weapons clear;
+    
     #send {id};
     #class weapons.inner open;
     #action {%* = {[^,]+}, {[^,]+}$} {
@@ -31,10 +37,20 @@
         #list ${weapon_type}_list size tmp_size;
         #math tmp_size ${tmp_size}+1;
         #if {${tmp_size} == 1} {
-            #list ${weapon_type}_list add ${weapon_name};            
+            #list ${weapon_type}_list add ${weapon_name};
+            #if {@ismember{${weapon_type};weapon_types} != 0} {
+                #if {@startwith{${weapon_name};my} == 1} {
+                    #list my_weapons add ${weapon_name};
+                };
+            };
         };
         #else {
             #list ${weapon_type}_list add {${weapon_name} ${tmp_size}};
+            #if {@ismember{${weapon_type};weapon_types} != 0} {
+                #if {@startwith{${weapon_name};my} == 1} {
+                    #list my_weapons add {${weapon_name} ${tmp_size}};
+                };
+            };
         };
     };
     #action {%* = {[^,]+}$} {
@@ -55,7 +71,7 @@
             #if {${tmp_size} != 0} {
                 #foreach {${special_${weapon_type}}[%*]} {sw} {
                     #list ${weapon_type}_list add ${sw};
-                    #show add ${sw} to ${weapon_type};
+                    #list my_special_weapons add ${sw};
                 };                
             };
         };

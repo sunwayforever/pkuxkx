@@ -91,6 +91,10 @@
     };
 };
 
+#function {startwith} {
+    #regexp {%1} {^%2} {#var result 1} {#var result 0};
+};
+
 #function {isalphabet} {
     #regexp {%1} {^%w$} {#var result 1} {#var result 0};
 };
