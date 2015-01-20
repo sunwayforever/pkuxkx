@@ -1,4 +1,4 @@
-#class dalunsi_spec open
+#class dalun_spec open
 #read plugin/chanding.tin;
 
 #alias {attack.prepare} {
@@ -70,4 +70,4 @@
 #var shifu zhi;
 
 #var char_menpai_position xkt;
-#class dalunsi_spec close
+#class dalun_spec close

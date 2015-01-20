@@ -53,14 +53,6 @@
 	map.go ศýิชนฌ;
 };
 
-#alias {chan} {
-	#cr;
-};
-
-#alias {chan_robber} {
-	#cr;
-};
-
 #list my_weapons_to_wield create {staff; staff 2};
 
 #var shortcut Nil

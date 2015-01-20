@@ -99,9 +99,11 @@
 
 #action {%1{回答|告诉}你：%2} {
     show_to_chat 【私聊】%0;
+    #xmpp %0;
 };
 
 #action {你{回答|告诉}%1：%2} {
     show_to_chat 【私聊】%0;
+    #xmpp %0;
 };
 #class show close;

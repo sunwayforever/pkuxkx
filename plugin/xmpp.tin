@@ -16,7 +16,7 @@
         #run {xmpp} {./bin/xmpp.rb ${char_id}};
         #unticker {%*};
         #action {xmpp message: %*:%*} {
-            #sunxm chat %%2;
+            #sunxm %%2;
         };
         #sunxm;
     };
