@@ -41,6 +41,11 @@
             #var dest @area{%%1};
             #if {"${dest}" != "NULL"} {
                 gt $dest;
+                on_there {
+                    #if {@blsupport{${dest}} == 1} {
+                        mr.bl;
+                    };
+                };
             };
         };
     } {1};
@@ -64,8 +69,7 @@
     };
 
     #action {找到目标} {
-        follow pantu;
-        #delay {2} {killall pantu};
+        killall pantu;
         #action {你从姑苏慕容叛徒的尸体身上搜出一块玉玺} {
             #unaction {你从姑苏慕容叛徒的尸体身上搜出一块玉玺};
             show_to_quest 慕容任务: 收工;

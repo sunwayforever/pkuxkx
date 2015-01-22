@@ -2,10 +2,10 @@
 
 #alias {yue.q} {
     #class yue.inner open;
-    #action {岳不群(Yue buqun)} {
-        yue.d;
+    #action {岳不群对你道：「我这里正好有封密函，麻烦你跑一趟，交给%*。」} {
+        show_to_quest 送信: %%1;
     };
-
+    
     #action {请将这封密函火速送到%*手上} {
         show_to_quest 送信: %%1;
     };
