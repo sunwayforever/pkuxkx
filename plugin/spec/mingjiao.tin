@@ -41,21 +41,21 @@
 
 #alias {yinfeng} {
 	unwi;
-	wield dagger;
+	do_wield dagger;
 	perform dagger.yinfeng;
 	wi;
 };
 
 #alias {duo} {
 	unwi;
-	wield dagger;
+	do_wield dagger;
 	perform dagger.duo;
 	wi;
 };
 
 #alias {jindou} {
 	unwi;
-	wield dagger;
+	do_wield dagger;
 	perform dagger.jindou;
 	wi;
 };

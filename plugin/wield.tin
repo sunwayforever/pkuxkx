@@ -56,6 +56,7 @@
     #action {%* = {[^,]+}$} {
         #var weapon_type %%2;
         #var weapon_name %%2;
+        #list ${weapon_type}_list size tmp_size;
         #math tmp_size ${tmp_size}+1;
         #if {${tmp_size} == 1} {
             #list ${weapon_type}_list add ${weapon_name};
