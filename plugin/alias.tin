@@ -987,9 +987,7 @@
 };
 
 #ticker {check_naijiu} {
-    #if {${wielding} == 0} {
-        check_naijiu;
-    };
+    check_naijiu;
 } {250};
 
 #alias {path.test} {
