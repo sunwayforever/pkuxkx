@@ -1,20 +1,19 @@
-#class template open
+#class mingjiao open
 #alias {attack.prepare} {
 	yun powerup;
 	#class attack.inner open;
-	#ticker {duo} {
-		duo;
+	#ticker {tisha} {
+		pfm tisha;
 	} {1.8};
+    #ticker {duo} {
+		pfm duo;
+	} {4.8};
 	#class attack.inner close;
 };
 
-#alias {attack.normal} {
-	pfm chan;
-	#class attack.inner open;
-	#class attack.inner close;
-};
-
-#alias {attack.mingjiao} {
+#alias {attack} {
+	pfm tisha;
+    pfm duo;
 	#class attack.inner open;
 	#class attack.inner close;
 };
@@ -35,7 +34,7 @@
 	map.go Ã÷½Ì´óµî;
 };
 
-#alias {chan} {
+#alias {tisha} {
 	perform datengnuo-bufa.tisha;
 };
 
@@ -64,7 +63,7 @@
 
 #var shortcut F1: ÌßÉ³ F2: Òõ·ç F3: ¶á F4: ½î¶·;
 #macro {\eOP} {
-	chan;
+    tisha;
 };
 
 #macro {\eOQ} {
@@ -105,4 +104,4 @@
 #var shifu zhang;
 #var menzhong tang;
 #var menzhong_didian hst;
-#class template close
+#class mingjiao close
