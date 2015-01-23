@@ -1083,3 +1083,33 @@
         };        
     };
 };
+
+#alias {xtj} {
+    gt jx;
+    on_there {
+        e;nd;ask diao about 独孤求败;nu;
+        ask yu about 过河;
+        ask yu about 对岸;
+        ask yu about 疯子;
+        se; catch fish;
+    };
+    #class xuetie.inner open;
+    #action {你将小鱼捉了起来} {
+        nw;
+        give fish to yu;
+    };
+    
+    #action {渔夫说道：给你个水靠，可以游到对岸。} {
+        #delay {1} {
+            swim river;
+            pick sword;
+        };
+    };
+
+    #action {剑已被拿走了。} {
+        show_to_info 剑已被拿走了;
+        swim river;
+        #class xuetie.inner kill;
+    };
+    #class xuetie.inner close;
+};
