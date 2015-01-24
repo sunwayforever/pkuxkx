@@ -1,11 +1,10 @@
 #class mz open
-load menzhong_data;
 
 #var mz_auto 0;
 #alias {mz.start} {
     #var mz_auto 1;
     #class mz.inner open;
-
+    load menzhong_data;
     #action {忠诚度提高了%*点。} {
         show_to_info 门忠: @ctd{%%1} 点;
         #delay {3} {

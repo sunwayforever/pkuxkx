@@ -1,7 +1,7 @@
 #class menzhong_data open
 #list mz_ignore create {手信;华山剑谱;信纸;渔夫;大般;空空儿;无量寿经;大金刚拳法;天山雪莲;飞沙走石;丁坚;道德经;粽子;小喽啰;水靠;李莫愁;洪七公;静道;巡山弟子;铁锤};
 #foreach {${mz_ignore}[%*]} {name} {
-    #action {说道%*${name}} {
+    #action {menzhong:%*${name}} {
         #unaction {menzhong:%*${name}};
         #if {${mz_auto} == 1} {
             mz.q;

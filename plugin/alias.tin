@@ -1098,12 +1098,18 @@
         nw;
         give fish to yu;
     };
-    
+
     #action {渔夫说道：给你个水靠，可以游到对岸。} {
         #delay {1} {
             swim river;
             pick sword;
         };
+    };
+
+    #action {你运起内力将玄铁剑拿了起来} {
+        show_to_info 玄铁剑!;
+        swim river;
+        #class xuetie.inner kill;
     };
 
     #action {剑已被拿走了。} {
