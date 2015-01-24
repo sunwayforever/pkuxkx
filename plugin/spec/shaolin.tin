@@ -195,11 +195,16 @@ stat.register 惊魔 miss 看破了你的企图，侧身避过指力;
 #var menzhong_didian txg;
 
 #alias {jifa_none} {
+    bei none;
     jifa spear none;
+    jifa cuff none;
 };
 
 #alias {jifa_all} {
+    bei none;
     jifa spear yuejia-qiangfa;
+    jifa cuff luohan-quan;
+    bei luohan-quan;
 };
 
 #class template close

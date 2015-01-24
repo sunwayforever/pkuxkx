@@ -20,10 +20,20 @@
             };
         };
     } {60};
+
+    #action {你必须先prepare zui-quan才能使出醉拳的绝技。} {
+        bei zui-quan;
+    };
+
+    #action {基本拳法没有 lingwu 这个武功招式。} {
+        jifa cuff zui-quan;
+    };
+    
     #class zq.inner open;
     unload war;
+    unwi;
     bei none;
-    bei zui-quan;
+    jifa cuff none;
     #alias attack.normal {#cr};
     #alias attack.prepare {#cr};
 };
@@ -32,5 +42,7 @@
     #class zq.inner kill;
     #3 halt;
     load war;
+    wi;
+    jifa_all;
 };
 #class zuiquan close
