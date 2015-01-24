@@ -28,8 +28,8 @@
     #action {基本拳法没有 lingwu 这个武功招式。} {
         jifa cuff zui-quan;
     };
-    
-    #class zq.inner open;
+
+#class zq.inner open;
     unload war;
     unwi;
     bei none;
@@ -44,5 +44,20 @@
     load war;
     wi;
     jifa_all;
+};
+
+#alias {zq.check} {
+    unwi;
+    bei none;
+    jifa cuff zui-quan;
+    bei cuff;
+    perform zui-quan.gfzj;
+    perform zui-quan.lhzj;
+    perform zui-quan.sqzh;
+    perform zui-quan.zsms;
+    perform zui-quan.zwsc;
+    perform zui-quan.zxhc;
+    jifa_all;
+    wi;
 };
 #class zuiquan close
