@@ -156,11 +156,18 @@
     wi;
 };
 
+#alias {shijiujian} {
+    unwi;
+    do_wield sword;
+    perform yunushijiu-jian.shijiu;
+    wi;
+};
+
 #alias {sqf} {
     unwi;
     jiali max;
     do_wield sword;
-    perform huashan-jianfa.sanqingfeng;
+    perform yunushijiu-jian.sanqingfeng;
     jiali none;
     wi;
 };
@@ -168,25 +175,11 @@
 #alias {chan} {
     unwi;
     do_wield sword;
-    perform huashan-jianfa.yangwu;
+    perform yangwu-jian.yangwu;
     wi;
 };
 
-#alias {feilong} {
-    unwi;
-    do_wield sword;
-    perform huashan-jianfa.feilong;
-    wi;
-};
-
-#alias {lianhuan} {
-    unwi;
-    do_wield sword;
-    perform huashan-jianfa.lianhuan;
-    wi;
-};
-
-#var shortcut F1:破气 F2:飞剑 F3:三青风 F5:缠 F6:飞龙 F7:狂风 F8: 破 F9: 破兵 F10: 破掌;
+#var shortcut F1:破气 F2:飞剑 F3:三青风 F5:养吾 F6: 十九剑 F7:狂风 F8: 破 F9: 破兵 F10: 破掌;
 #macro {\eOP} {
     pfm_oob poqi;
 };
@@ -249,7 +242,7 @@ stat.register 飞龙 hit 这一记“天外飞龙”，却是华山派穆人清的绝招。;
     #send {jifa parry dugu-jiujian};
     #send {jifa cuff poyu-quan};
     #send {jifa strike hunyuan-zhang};
-    #send {jifa sword dugu-jiujian};
+    #send {jifa sword yunushijiu-jian};
     #send {jifa spear yuejia-qiangfa};
     bei cuff;
 };

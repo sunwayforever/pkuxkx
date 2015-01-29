@@ -31,7 +31,7 @@
     
     #send {id};
     #class weapons.inner open;
-    #action {%* = {[^,]+}, {[^,]+}$} {
+    #action {%* = {[^,]+}, {[^,]+},} {
         #var weapon_type %%2;
         #var weapon_name %%3;
         #list ${weapon_type}_list size tmp_size;
@@ -53,7 +53,7 @@
             };
         };
     };
-    #action {%* = {[^,]+}$} {
+    #action {%* = {[^,]+},} {
         #var weapon_type %%2;
         #var weapon_name %%2;
         #list ${weapon_type}_list size tmp_size;
