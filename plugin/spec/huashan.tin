@@ -104,7 +104,8 @@
 };
 
 #alias {map_goto_shifu} {
-    map.go {书房};
+    #nop map.go {书房};
+    map.go {小院};
 };
 
 #alias {pozhang} {
@@ -220,21 +221,12 @@
     pfm_oob pozhang;
 };
 
-
-#alias {yzy} {
-    hit %0;
-    pfm_oob feilong;
-    halt;
-};
-#var shifu yue;
+#var shifu gao;
 #list my_weapons_to_wield create {sword};
 
 #var menzhong ning;
 #var menzhong_didian hs;
 #var char_menpai_position hs;
-
-stat.register 飞龙 miss 莫非这就是传说中穆人清老爷子的天外飞龙;
-stat.register 飞龙 hit 这一记“天外飞龙”，却是华山派穆人清的绝招。;
 
 #alias {reborn} {
     #send {jifa force huashan-neigong};
@@ -252,6 +244,6 @@ stat.register 飞龙 hit 这一记“天外飞龙”，却是华山派穆人清的绝招。;
 };
 
 #alias {jifa_all} {
-    jifa sword dugu-jiujian;
+    jifa sword yunushijiu-jian;
 };
 #class wudang_spec close
