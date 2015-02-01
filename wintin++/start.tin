@@ -1,0 +1,4 @@
+#class start open;
+#var os_name win;
+#read profile.tin;
+#class start close;

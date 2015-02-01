@@ -27,6 +27,6 @@ Requirements
 ----------
 1. tintin++ 2.00.7 (更新版本可能某些触发有问题)
 2. sqlite3
-3. ruby 2.0.0 (需要 sqlite3, iconv 两个 gem)
+3. rvm / ruby 2.0.0 (需要 sqlite3, iconv 两个 gem)
 4. 其他: libnotify-bin, notifu (for cygwin), mplayer, xmpp4r (for xmpp notification)
  
