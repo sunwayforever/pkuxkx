@@ -2,9 +2,6 @@
 #alias {attack.prepare} {
     yun powerup;
     #class attack.inner open;
-    #ticker {chan} {
-        pfm chan;
-    } {2.8};
     #class attack.inner close;
 };
 
