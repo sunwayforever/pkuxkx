@@ -22,7 +22,9 @@
 };
 
 #alias ss weapons.check;
+#var need_reload 0;
 #alias {weapons.check} {
+    #var need_reload 1;
     #foreach {${weapon_types}[%*]} {weapon_type} {
         #list ${weapon_type}_list clear;
     };
@@ -34,6 +36,9 @@
     #action {%* = {[^,]+}, {[^,]+},} {
         #var weapon_type %%2;
         #var weapon_name %%3;
+        #if {@startwith{${weapon_name};my} == 1} {
+            #var need_reload 0;
+        };
         #list ${weapon_type}_list size tmp_size;
         #math tmp_size ${tmp_size}+1;
         #if {${tmp_size} == 1} {
@@ -52,7 +57,7 @@
                 };
             };
         };
-    };
+    } {2};
     #action {%* = {[^,]+},} {
         #var weapon_type %%2;
         #var weapon_name %%2;
@@ -64,7 +69,7 @@
         #else {
             #list ${weapon_type}_list add {${weapon_name} ${tmp_size}};
         };
-    };
+    } {3};
     #action {^>} {
         #class weapons.inner kill;
         #foreach {${weapon_types}[%*]} {weapon_type} {

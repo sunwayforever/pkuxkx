@@ -105,17 +105,28 @@
         xmpp.start;
         show.init;
         check_baowei;
-        #delay {3} {
+        #delay {4} {
             weapons.check;
         };
-        #delay {5} {
+        #delay {6} {
+            #send {l};
+        };
+        #delay {8} {
+            #if {${need_reload} == 1} {
+                #showme need reload;
+                #delay {2} {
+                    reload;
+                };
+            };
+            #else {
+                #showme reloaded;
+                wi;
+                we;
+                check_naijiu;
+            };
+            pfm_special;
             #send {hp};
             #send {jifa};
-            #send {l};
-            pfm_special;
-            wi;
-            we;
-            check_naijiu;
         };
     };
 };
@@ -164,8 +175,10 @@
 #action {好了，你走吧} {
     remove all;
     weapons.check;
-    we;
-    wi;
+    #delay {3} {
+        wi;
+        we;
+    };
 };
 
 #action {你现在正忙着哩} {

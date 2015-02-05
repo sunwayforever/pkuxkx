@@ -827,6 +827,8 @@
 #list Route_tt_kf create {wd}{w}{w}{w}{w}{w}{w}{n}{n}{n}{n}{n}{se}{s};
 #list Route_mj_hst create {nu}{nu}{nu}{n};
 #list Route_hst_mj create {s}{sd}{sd}{sd};
+#list Route_yz_kd create {n}{e};
+#list Route_kd_yz create {w}{s};
 
 #read xiaoyao_data.tin
 
