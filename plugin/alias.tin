@@ -334,17 +334,6 @@
     };
 };
 
-#alias {reload} {
-    gt wm;
-    on_there {
-        u;
-        #send {reload};
-        #delay {2} {
-            d;
-        };  
-    };
-};
-
 #alias {pp} {
     show_to_pp ...;
     #if {"%0" == ""} {

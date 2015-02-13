@@ -172,15 +172,6 @@
     };
 };
 
-#action {好了，你走吧} {
-    remove all;
-    weapons.check;
-    #delay {3} {
-        wi;
-        we;
-    };
-};
-
 #action {你现在正忙着哩} {
     #showme busy_for_move;
     #showme busy_for_action;

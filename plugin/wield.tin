@@ -85,4 +85,26 @@
     #class weapons.inner close;
 };
 
+#action {ºÃÁË£¬Äã×ß°É} {
+    remove all;
+    #delay {3} {
+        weapons.check;
+    };
+    #delay {5} {
+        wi;
+        we;
+    };
+};
+
+#alias {reload} {
+    gt wm;
+    on_there {
+        u;
+        #send {reload};
+        #delay {2} {
+            d;
+        };  
+    };
+};
+
 #class wield close
