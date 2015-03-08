@@ -105,6 +105,7 @@
         xmpp.start;
         show.init;
         check_baowei;
+        jifa_all;
         #delay {4} {
             weapons.check;
         };

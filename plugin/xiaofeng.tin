@@ -225,7 +225,6 @@
 
     #action {显是蒙面杀手姓名} {
         raw;
-        jifa_all;
         #if {${xf.type} == 1} {
             #delay {1} {
                 on_unbusy {
