@@ -265,11 +265,6 @@
     pfm_next;
 };
 
-#alias {pfm_oob} {
-    @stackadd{pfm;%1};
-    pfm_next;
-};
-
 #gag clear: done;
 #alias {clear} {
     kill %1;

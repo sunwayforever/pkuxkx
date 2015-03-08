@@ -92,19 +92,19 @@
 
 #var shortcut F1:²ø F2:ÎÞÓ° F3:Á¬×Ö¾÷ F4:¸ÕÈá;
 #macro {\eOQ} {
-    pfm_oob wuying;
+    wuying;
 };
 
 #macro {\eOR} {
-    pfm_oob lzj;
+    lzj;
 };
 
 #macro {\eOP} {
-    pfm_oob chan;
+    chan;
 };
 
 #macro {\eOS} {
-    pfm_oob gangrou;
+    gangrou;
 };
 
 #alias {chan} {

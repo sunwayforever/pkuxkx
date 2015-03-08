@@ -179,15 +179,15 @@
 
 #var shortcut F1:ÆÆÆø F2:·É½£ F3:ÈýÇà·ç F5:ÑøÎá F6: Ê®¾Å½£ F7:¿ñ·ç F8: ÆÆ F9: ÆÆ±ø F10: ÆÆÕÆ;
 #macro {\eOP} {
-    pfm_oob poqi;
+    poqi;
 };
 
 #macro {\eOQ} {
-    pfm_oob feijian;
+    feijian;
 };
 
 #macro {\eOR} {
-    pfm_oob sqf;
+    sqf;
 };
 
 #macro {\eOS} {
@@ -195,27 +195,27 @@
 };
 
 #macro {\e[15~} {
-    pfm_oob chan;
+    chan;
 };
 
 #macro {\e[17~} {
-    pfm_oob feilong;
+    feilong;
 };
 
 #macro {\e[18~} {
-    pfm_oob kuangfeng;
+    kuangfeng;
 };
 
 #macro {\e[19~} {
-    pfm_oob zongjue;
+    zongjue;
 };
 
 #macro {\e[20~} {
-    pfm_oob pobing;
+    pobing;
 };
 
 #macro {\e[21~} {
-    pfm_oob pozhang;
+    pozhang;
 };
 
 #var shifu gao;

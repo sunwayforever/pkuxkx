@@ -128,27 +128,27 @@
 
 #var shortcut F1:»îÉ« F2:³éËè F3:»ðÇò F4:»ðÇ½ F5:´©ÐÄ F6:É¢¶¾;
 #macro {\eOP} {
-    pfm_oob huose;
+    huose;
 };
 
 #macro {\eOQ} {
-    pfm_oob chousui;
+    chousui;
 };
 
 #macro {\eOR} {
-    pfm_oob huoqiu;
+    huoqiu;
 };
 
 #macro {\eOS} {
-    pfm_oob huoqiang;
+    huoqiang;
 };
 
 #macro {\e[15~} {
-    pfm_oob chuanxin;
+    chuanxin;
 };
 
 #macro {\e[17~} {
-    pfm_oob sandu;
+    sandu;
 };
 
 #macro {\e[18~} {

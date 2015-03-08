@@ -78,31 +78,31 @@
 
 #var shortcut F1:²ø F2:ÉãÐÄ F3:ËØÐÄ F4:×¥ F5:ÐÚÓ¿ F6:ÆßÐÇ F7:°µÆ÷;
 #macro {\eOP} {
-    pfm_oob chan;
+    chan;
 };
 
 #macro {\eOQ} {
-    pfm_oob shexin;
+    shexin;
 };
 
 #macro {\eOR} {
-    pfm_oob suxin;
+    suxin;
 };
 
 #macro {\eOS} {
-    pfm_oob zhua;
+    zhua;
 };
 
 #macro {\e[15~} {
-    pfm_oob xiongyong;
+    xiongyong;
 };
 
 #macro {\e[17~} {
-    pfm_oob qixing;
+    qixing;
 };
 
 #macro {\e[18~} {
-    pfm_oob shuai;
+    shuai;
 };
 
 #alias {shuai} {
@@ -145,7 +145,7 @@
 #alias {suxin} {
     unwield all;
     do_wield sword;
-    do_wield {sword 2};
+    do_wield sword 2;
     perform yunu-jianfa.suxin;
     unwield all;
     wi;
