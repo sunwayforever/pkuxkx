@@ -103,9 +103,10 @@ load chaos;
     };
 };
 
+#var hb_retry_count 0;
 #alias {hb.setup} {
     #var quest hb;
-    #foreach {${clear_npcs}[%*]} {npc} {clear_npc ${npc}};
+    #nop #foreach {${clear_npcs}[%*]} {npc} {clear_npc ${npc}};
     #unaction {^    这里%*出口};
     #class hb_setup_inner open;
     #action {你想杀谁？} {
@@ -117,7 +118,11 @@ load chaos;
     };
     
     #action {你还是先把对手解决了再说吧} {
-        l;
+        #math hb_retry_count ${hb_retry_count}+1;
+        #if {${hb_retry_count} > 6} {
+            #var hb_retry_count 0;
+            killall;
+        };
         hb.retry;
     } {1};
 
@@ -135,6 +140,7 @@ load chaos;
     };
 
     #action {^你赶着镖车驶了过来。$} {
+        #var hb_retry_count 0;
         #if {${hb_paused} == 0} {
             #math hb_path_index ${hb_path_index}+1;
             #list hb_path get ${hb_path_index} hb_next_step;
