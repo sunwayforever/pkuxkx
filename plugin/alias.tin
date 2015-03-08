@@ -736,12 +736,14 @@
 };
 
 #var xy_info off;
-#action {保卫襄阳任务启动！} {
-    #var xy_info on;
-};
 
+#ticker {check_baowei} {
+    check_baowei;
+} {300};
+
+#var xy_ended 0;
 #action {保卫襄阳任务全部结束！} {
-    #var xy_info off;
+    #var xy_ended 1;
 };
 
 #list baowei_time create {3;7;11;15;19;23};
@@ -757,9 +759,12 @@
         };
     };
     #if {${tmp_baowei} == 1} {
-        #var xy_info on;
+        #if {${xy_ended} == 0} {
+            #var xy_info on;
+        };
     };
     #else {
+        #var xy_ended 0;
         #var xy_info off;
     };
 };
