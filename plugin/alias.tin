@@ -1108,7 +1108,7 @@
         tmp_echo;
     };
 };
-#nop workaround for a bug?
+
 #alias {l} {
     #ungag {^$};
     on_echo {
