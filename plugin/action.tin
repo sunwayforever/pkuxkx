@@ -108,10 +108,10 @@
         #delay {4} {
             weapons.check;
         };
-        #delay {6} {
+        #delay {7} {
             #send {l};
         };
-        #delay {8} {
+        #delay {9} {
             #if {${need_reload} == 1} {
                 #showme need reload;
                 #delay {2} {

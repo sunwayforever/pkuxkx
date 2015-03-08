@@ -120,8 +120,7 @@
     on_there {
         n;w;
         buy tea 30;
-
-};
+    };
 };
 
 #alias {lm} {
@@ -827,22 +826,6 @@
     #debug all off;
 };
 
-#alias {on_echo} {
-    #alias tmp_echo #cr;
-    #alias tmp_echo %1;
-    #class on_echo.inner open;
-    #action {你有一搭，没一搭的「嗯」了一声。} {
-        #unaction {你有一搭，没一搭的「嗯」了一声。};
-        #class on_echo.inner kill;
-        tmp_echo;
-    };
-    #delay {1} {
-        #class on_echo.inner kill;
-    };
-    #class on_echo.inner close;
-    #send {en};
-};
-
 #alias {gj.watch} {
     gt wm;
     on_there {
@@ -1115,4 +1098,21 @@
         #class xuetie.inner kill;  
     };
     #class xuetie.inner close;
+};
+
+#alias {on_echo} {
+    #alias tmp_echo #cr;
+    #alias tmp_echo %0;
+    #action {^>} {
+        #unaction {^>};
+        tmp_echo;
+    };
+};
+#nop workaround for a bug?
+#alias {l} {
+    #ungag {^$};
+    on_echo {
+        #gag {^$};        
+    };
+    #send {l %0};
 };
