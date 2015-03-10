@@ -152,7 +152,7 @@
                 #return -1;
             };
             #else {
-                #return 6;
+                #return -1;
             };
         };
         #elseif {"%1" == "全真天尊讲经堂"} {
