@@ -115,9 +115,6 @@
         #delay {9} {
             #if {${need_reload} == 1} {
                 #showme need reload;
-                #delay {2} {
-                    reload;
-                };
             };
             #else {
                 #showme reloaded;

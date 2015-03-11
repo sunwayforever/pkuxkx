@@ -1,23 +1,28 @@
 #class burden open
 #alias {burden.check} {
+    #alias burden_action #cr;
     #alias burden_action %0;
     #class burden.check.inner open;
     #var burden_all {};
     #var burden_start_cap 0;
-    #action {[×ã²¿]} {
-        #var burden_start_cap 1;
-    };
     #action {©¦%*©¦} {
         #if {${burden_start_cap} == 1} {
             #var burden_all ${burden_all}%%1;
         }
     };
+    #action {©À©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©È} {
+        #action {©À©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©È} {
+            #var burden_start_cap 1;            
+        } {1};
+    } {1};
     #action {¨t©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤¨s} {
         #system {bin/burden.rb "${burden_all}"};
         #class burden_tmp kill;
         #class burden.check.inner kill;
         #read /tmp/pkuxkx_burden;
-        burden_action;
+        #delay {1} {
+            burden_action;
+        };
     };
     #class burden.check.inner close;
     #send {i};

@@ -3,17 +3,11 @@
 #alias {guatieqiao.start} {
     #var tq_count 0;
     #class guatieqiao.inner open;
-    #action {^│%*柄铁锹} {
-        #var tq_count @ctd{%%1};
-    } {1};
-
-    #action { %*柄铁锹} {
-        #var tq_count @ctd{%1%};
-    } {1};
-
     #action {(%*)告诉你：tq} {
-        tell %%1 现在有${tq_count}柄铁锹;
-        give %%1 tie qiao;
+        burden.check {
+            tell %%1 现在有 @getburden{铁锹} 柄铁锹;
+            give %%1 tie qiao;
+        };
     } {1};
 
     #alias {ticker.gua.start} {
@@ -46,17 +40,11 @@
 #alias {guasan.start} {
     #var san_count 0;
     #class guasan.inner open;
-    #action {^│%*包清心散} {
-        #var san_count @ctd{%%1};
-    } {1};
-
-    #action { %*包清心散} {
-        #var san_count @ctd{%1%};
-    } {1};
-
     #action {(%*)告诉你：san} {
-        tell %%1 现在有${san_count}包清心散;
-        give %%1 qingxin san;
+        burden.check {
+            tell %%1 现在有 @getburden{清心散} 包清心散;
+            give %%1 qingxin san;            
+        };
     } {1};
 
     #alias {ticker.gua.start} {
@@ -86,19 +74,15 @@
     #action {guaji.update %*} {
         #var tmp_minute @ctd{%%1};
         #if {${tmp_minute} == 59 || ${tmp_minute} == 29 || ${tmp_minute} == 14 || ${tmp_minute} == 44} {
-            show_to_info 抢东西...;
             ticker.gua.start;
         };
 
         #if {${tmp_minute} == 1 || ${tmp_minute} == 31 || ${tmp_minute} == 16 || ${tmp_minute} == 46} {
-            show_to_info 抢完了...;
             ticker.gua.end;
-            #send {i};
         };
     };
 
     #class guaji.inner close;
-    #send {i};
 };
 
 #alias {guaji.stop} {
