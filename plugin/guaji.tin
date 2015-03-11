@@ -4,7 +4,9 @@
     #var tq_count 0;
     #class guatieqiao.inner open;
     #action {(%*)告诉你：tq} {
-        burden.check {
+        burden.check;
+        #action {burden.check: done} {
+            #unaction {burden.check: done};
             tell %%1 现在有 @getburden{铁锹} 柄铁锹;
             give %%1 tie qiao;
         };
@@ -41,7 +43,9 @@
     #var san_count 0;
     #class guasan.inner open;
     #action {(%*)告诉你：san} {
-        burden.check {
+        burden.check;
+        #action {burden.check: done} {
+            #unaction {burden.check: done};
             tell %%1 现在有 @getburden{清心散} 包清心散;
             give %%1 qingxin san;            
         };

@@ -1,7 +1,6 @@
-#class burden open
+#class burden open;
+#gag burden.check: done;
 #alias {burden.check} {
-    #alias burden_action #cr;
-    #alias burden_action %0;
     #class burden.check.inner open;
     #var burden_all {};
     #var burden_start_cap 0;
@@ -16,13 +15,12 @@
         } {1};
     } {1};
     #action {¨t©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤¨s} {
+        #showme ${burden_all};
         #system {bin/burden.rb "${burden_all}"};
-        #class burden_tmp kill;
         #class burden.check.inner kill;
+        #class burden_tmp kill;
         #read /tmp/pkuxkx_burden;
-        #delay {1} {
-            burden_action;
-        };
+        #showme burden.check: done;
     };
     #class burden.check.inner close;
     #send {i};
@@ -32,4 +30,4 @@
     #var result @ctd{@mapget{burden;%0}};
 }
 
-#class burden close
+#class burden close;

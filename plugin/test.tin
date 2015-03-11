@@ -1,12 +1,2 @@
 #class test open
-#action {%* = {[^,]+}, {[^,]+}$} {
-    #show %2;
-    #show %3;
-};
-#action {%* = {[^,]+}$} {
-    #show %2;
-};
-#show a = a, b, c;
-#show b = a, b;
-#show c = ab;
 #class test close
