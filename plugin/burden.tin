@@ -15,7 +15,6 @@
         } {1};
     } {1};
     #action {¨t©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤¨s} {
-        #showme ${burden_all};
         #system {bin/burden.rb "${burden_all}"};
         #class burden.check.inner kill;
         #class burden_tmp kill;
