@@ -13,6 +13,7 @@ def xmpp_login (sender_name)
   sender = JID.new(sender_name + '@localhost/xkx')
 
   $cl = Client.new(sender)
+  $cl.allow_tls = false
   $cl.connect("45.62.101.109")
   $cl.auth("123456")
   $cl.send(Presence.new)
