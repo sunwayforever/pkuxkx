@@ -1,6 +1,8 @@
 #class burden open;
 #gag burden.check: done;
 #alias {burden.check} {
+    #alias burden_check_tmp #cr;
+    #alias burden_check_tmp %0;
     #class burden.check.inner open;
     #var burden_all {};
     #var burden_start_cap 0;
@@ -20,6 +22,7 @@
         #class burden_tmp kill;
         #read /tmp/pkuxkx_burden;
         #showme burden.check: done;
+        burden_check_tmp;
     };
     #class burden.check.inner close;
     #send {i};

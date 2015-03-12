@@ -43,11 +43,12 @@
     #var san_count 0;
     #class guasan.inner open;
     #action {(%*)告诉你：san} {
-        burden.check;
-        #action {burden.check: done} {
-            #unaction {burden.check: done};
+        #alias {burden_check_done} {
             tell %%1 现在有 @getburden{清心散} 包清心散;
-            give %%1 qingxin san;            
+            give %%1 qingxin san;  
+        };
+        burden.check {
+            burden_check_done;
         };
     } {1};
 

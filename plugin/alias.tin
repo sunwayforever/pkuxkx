@@ -593,6 +593,7 @@
     };
 };
 
+#var map_got_delay 0.3;
 #alias {map.go} {
     #var critical_running 1;
     #var map_go_wait 0;
@@ -604,7 +605,7 @@
         #if {${map_go_wait} == 0} {
             #path walk;
         };
-    } {0.1};
+    } {${map_go_delay}};
     #class map.go.inner close;
 
     #event {END OF PATH} {
