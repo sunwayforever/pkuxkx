@@ -14,7 +14,9 @@ def xmpp_login (sender_name)
 
   $cl = Client.new(sender)
   $cl.connect("45.62.101.109")
+  puts "connected"
   $cl.auth("123456")
+  puts "authed"
   $cl.send(Presence.new)
 
   $cl.add_message_callback do |m|
@@ -31,7 +33,17 @@ def xmpp_send(sent_msg)
   end
 end
 
-xmpp_login ARGV[0]
+while true
+  begin
+    Timeout::timeout(8) do
+      xmpp_login ARGV[0]
+    end
+    break
+  rescue Timeout::Error
+    puts "retry..."
+  end
+end
+
 while true
   xmpp_send STDIN.gets
 end
