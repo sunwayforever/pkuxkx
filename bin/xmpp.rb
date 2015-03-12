@@ -11,12 +11,13 @@ $conv_to_mud = Iconv.new("GBK","UTF-8")
 
 def xmpp_login (sender_name)
   sender = JID.new(sender_name + '@localhost/xkx')
-
+  sleep 1;
   $cl = Client.new(sender)
+  sleep 1;
   $cl.connect("45.62.101.109")
-  puts "connected"
+  sleep 1;
   $cl.auth("123456")
-  puts "authed"
+  puts "connected"
   $cl.send(Presence.new)
 
   $cl.add_message_callback do |m|

@@ -13,7 +13,7 @@
             #var xmpp_chat 0;
         };
 
-        #run {xmpp} {./bin/xmpp.rb ${char_id}};
+        #run {xmpp} {./bin/xmpp.py ${char_id}};
         #unticker {%*};
         #action {xmpp message: %*:%*} {
             #sunxm %%2;
