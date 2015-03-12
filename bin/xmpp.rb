@@ -33,16 +33,7 @@ def xmpp_send(sent_msg)
   end
 end
 
-while true
-  begin
-    Timeout::timeout(8) do
-      xmpp_login ARGV[0]
-    end
-    break
-  rescue Timeout::Error
-    puts "retry..."
-  end
-end
+xmpp_login ARGV[0]
 
 while true
   xmpp_send STDIN.gets
