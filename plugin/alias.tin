@@ -922,7 +922,7 @@
 };
 
 #function {py} {
-    #script {ret} {bin/pinyin.rb %0};
+    #script {ret} {bin/pinyin.py %0};
     #var result $ret[1]
 };
 
