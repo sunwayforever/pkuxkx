@@ -306,7 +306,14 @@
     #class pfm_special.inner open;
     #action {你现在会以下这些特技：} {
         #action {%S(%S)} {
-            special %%%2;
+            #if {"%%%2" == "might"} {
+                jiali max;
+                special %%%2;
+                jiali 0;
+            };
+            #else {
+                special %%%2;                
+            };
             #if {"%%%2" == "chainless"} {
                 load chainless;
             };
@@ -320,10 +327,9 @@
                 };
             };
         };
-        #action {^>} {
-            #unaction {^>};
+        on_echo {
             #unaction {%S(%S)};
-            #class pfm_special.inner kill;
+            #class pfm_special.inner kill;  
         };
     };
     #class pfm_special.inner close;
