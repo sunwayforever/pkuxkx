@@ -70,7 +70,7 @@
             #list ${weapon_type}_list add {${weapon_name} ${tmp_size}};
         };
     } {3};
-    #delay {} {
+    #delay {3} {
         #class weapons.inner kill;
         #foreach {${weapon_types}[%*]} {weapon_type} {
             #list special_${weapon_type} size tmp_size;
