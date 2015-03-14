@@ -17,7 +17,7 @@
         } {1};
     } {1};
     #action {¨t©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤©¤¨s} {
-        #system {bin/burden.rb "${burden_all}"};
+        #system {bin/burden.py "${burden_all}"};
         #class burden.check.inner kill;
         #class burden_tmp kill;
         #read /tmp/pkuxkx_burden;
