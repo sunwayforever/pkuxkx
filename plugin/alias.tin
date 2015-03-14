@@ -1121,3 +1121,14 @@
 #macro {\eL} {
     show.clear;
 };
+
+#alias {reset} {
+    #unaction {%*};
+    #undelay {%*};
+    #unalias {%*};
+    #unvar {%*};
+    #unticker {%*};
+    #read main.tin;
+    show.clear;
+    login;
+};

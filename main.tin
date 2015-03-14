@@ -70,7 +70,7 @@
 
 #read plugin/os/linux.tin;
 #if {"${os_name}" == ""} {
-    #script {os_name} {python3 -e "import sys; print (sys.platform)"};
+    #script {os_name} {python3 -c "import sys; print (sys.platform)"};
     #var os_name ${os_name}[1];
 };
 #read plugin/os/${os_name}.tin;
