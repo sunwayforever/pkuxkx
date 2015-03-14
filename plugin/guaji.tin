@@ -46,6 +46,7 @@
         #alias {burden_check_done} {
             tell %%1 现在有 @getburden{清心散} 包清心散;
             give %%1 qingxin san;  
+            show_to_info %%1: @getburden{清心散} 包清心散;
         };
         burden.check {
             burden_check_done;

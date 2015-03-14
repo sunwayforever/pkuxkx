@@ -1117,3 +1117,7 @@
     };
     #send {l %0};
 };
+
+#macro {\eL} {
+    show.clear;
+};
