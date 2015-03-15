@@ -1,7 +1,7 @@
 #class dazuo open
 #var min_dazuo_count 60;
 #var dz_total_count 0;
-#var max_dz 180;
+#var dz_max 180;
 #alias {dz.cancel} {
     #class dz.full.inner kill;
     #unticker {dz};
@@ -17,7 +17,7 @@
     #class dz.full.inner close;
     #delay {dz_delay} {
         #ticker {dz} {
-            #if {${nl_percent} < ${max_dz}} {
+            #if {${nl_percent} < ${dz_max}} {
                 yun recover; dazuo ${dazuo_count};
             };
             #else {
