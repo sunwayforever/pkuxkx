@@ -1,7 +1,7 @@
 #class dazuo open
 #var min_dazuo_count 60;
 #var dz_total_count 0;
-#var dz_max 180;
+#var dz_max 95;
 #alias {dz.cancel} {
     #class dz.full.inner kill;
     #unticker {dz};
