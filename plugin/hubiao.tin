@@ -480,13 +480,8 @@ load chaos;
             notify.info %%%1%%%2%%%3;
             gem.record %%%1%%%2%%%3;
             #var gem_level @gemlevel{%%%1};
-            #if {${gem_level} > 3} {
-                play gem2.wav;
-                xmpp.notify µô±¦: %%%1%%%2%%%3;
-            };
-            #else {
-                play gem.wav;
-            };
+            play gem2.wav;
+            xmpp.notify µô±¦: %%%1%%%2%%%3;
         };
         pack gem;
         #delay {pack_gem} {
