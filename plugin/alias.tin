@@ -1112,10 +1112,10 @@
 
 #alias {l} {
     #ungag {^$};
-    on_echo {
+    #send {l %0};
+    #delay {1} {
         #gag {^$};        
     };
-    #send {l %0};
 };
 
 #macro {\eL} {
