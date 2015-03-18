@@ -88,7 +88,7 @@
             #return 5;
         };
         #elseif {"%1" == "南昌飞虎镖局"} {
-            #return -2;
+            #return 1;
         };
         #elseif {"%1" == "杭州江南钱庄"} {
             #return -1;
@@ -392,9 +392,17 @@
         #elseif {"${tmp}" == "南昌"} {
             #nop fixme;
             #list hb_path create {
+                #nop 到城中心;
                 gs;gs;gsw;gs;gs;gs;gs;gs;gs;gs;gs;
-                gnw;gn;gnw;gn;gn;gn;gn;gn;ge;
-                gw;gw;ge;gn;gn;gnw;gse;gs;gs;gs;gw;gn;gs;gs;gn;gw;gw;ge;ge;ge;gs;gw;ge;ge;gw;gs;gs;gs;gn;gn;gn;gn;ge;gs;gn;gn;
+                gnw;gn;gnw;gn;gn;gn;gn;
+                #nop 北面;
+                gn;ge;gw;gw;ge;gn;gn;gnw;gne;gsw;gnd;gn;gn;gs;gs;gsu;gse;gs;gs;gs;
+                #nop 东面;
+                ge;gn;gs;gs;genter;gw;ge;ge;gw;gout;gn;ge;ge;geu;gwd;gw;gw;gw;
+                #nop 西面;
+                gw;gn;gs;gs;gn;gw;gw;gwu;gwu;gnu;genter;gw;ge;gn;gs;ge;gw;gout;gsd;ged;ged;ge;ge;ge;
+                #nop 南面;
+                gs;gw;ge;ge;gw;gs;gs;gs;gse;gnw;gn;gn;gn;gn;ge;gn;
             };
         };
         #elseif {"${tmp}" == "岳阳"} {
