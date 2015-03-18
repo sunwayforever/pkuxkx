@@ -9,7 +9,6 @@
 @mapset{robber_score;shaolin;3};
 @mapset{robber_score;huashan;2};
 
-#list clear_npcs create {山贼;独狼;庙祝;李铁嘴;地痞;小流氓;流氓头;翠花;流氓};
 #function {getesc_get_score} {
     #if {"${hb_owner}" == "zhang"} {
         #if {"%1" == "全真天尊讲经堂"} {
@@ -79,7 +78,7 @@
             #return -1;
         };
         #elseif {"%1" == "泉州当铺"} {
-            #return -2;
+            #return 1;
         };
         #elseif {"%1" == "苏州聚宝斋"} {
             #return -1;
@@ -104,6 +103,9 @@
         };
         #elseif {"%1" == "镇江飞龙镖局"} {
             #return 3;
+        };
+        #elseif {"%1" == "嘉兴钱庄"} {
+            #return 1;
         };
         #elseif {"%1" == "扬州醉仙楼"} {
             #if {"${char_menpai}" == "gaibang"} {
@@ -338,22 +340,35 @@
             };
         };
         #elseif {"${tmp}" == "泉州"} {
-            #nop fixme;
             #list hb_path create {
-                gs;gs;gsw;gs;gs;gs;gs;gs;gs;gs;ge;gw;gs;gs;gs;ge;gn;gs;gne;gne;gne;gn;gw;ge;gn;gs;gs;gsw;
-                gsw;gsw;ged;gn;gs;gs;gn;gwu;gs;gn;gw;gs;gs;ge;gw;gn;gn;gw;gn;gs;gs;gn;gn;gs;gs;gn;ge;ge
+                #nop 到达泉州港;
+                gs;gs;gsw;gs;gs;gs;gs;gs;gs;gs;gs;gs;gs;ge;
+                #nop 西南;
+                gn;gs;gs;gn;gw;gs;gs;ge;gw;gn;gn;gw;gn;gs;gs;gn;gnw;gw;ge;gse;ge;ge;
+                #nop 东面，到闽南;
+                ged;gn;gs;gs;gn;gwu;gne;gne;gne;gn;gw;ge;gn;gne;gne;ge;gw;gsw;gsw;gs;gs;gsw;gsw;gsw;
+                #nop 北面;
+                gw;gn;gn;gnw;gn;gnw;gn;gn;gn;gs;gs;gs;gse;gs;gse;gn;ge;gn;gn;gs;ge;gne;gsw;gs;gn;gw;gs;gw;gse;gse;gsd;gs;gn;gnu;gnw;gnw;gn;gsw;gne;
+                gw;gnw;gse;ge;gsw;ge;gw;gs;gn;gne;ge;gs;gn;gn;gw;gw;ge;gn;gn;gn;gs;gs;gs;gs;gs;gs;gs;gs;ge;
             };
         };
         #elseif {"${tmp}" == "嘉兴"} {
             #list hb_path create {
-                gs;gs;gsw;gs;gs;gs;gs;gs;gw;gnu;gnw;gse;gsd;ge;gs;ge;gs;gn;gw;gs;ge;gw;gs;gn;gse;gnw;gsw;
-                gne;gn;gsw;gne;gn;ge;gn;gs;gnd;gw;ge;ge;ge;ge;gw;gw;gw;gsu;ge;gw;gse;gs;gn;gne;ge;gw;gsw;gnw;gw;
+                #nop 到嘉兴;
+                gs;gs;gsw;gs;gs;gs;gs;gs;
+                #nop 谷底;
+                ge;gnd;ge;ge;ge;ge;gn;gs;gs;gs;gse;gnw;gn;gn;gw;gw;gw;gw;gw;ge;choudiao;gnu;gse;gnw;gsd;gsd;gsu;gw;
+                #nop 南湖;
+                ge;gn;gs;gs;gs;gn;gw;gn;ge;gse;gs;gn;gne;ge;gne;gne;ge;gw;gsw;gsw;gw;gsw;gnw;ge;gw;
+                #nop 建康府;
+                gw;gnu;gnw;gnw;gn;gnw;gse;gs;gse;gse;gsd;ge;
+                #nop 陆家庄;
+                gs;gsw;gw;gnw;gse;ge;gsw;ge;gw;gs;gn;gne;gne;gs;ge;gn;gn;gs;ge;gw;gs;gw;gse;gse;gsd;gs;gn;gnu;gnw;gnw;gsw;gw;gsw;gw;gw;ge;ge;gne;ge;gne;gs;gs;gs;gn;gn;gn;gn;gn;
             };
         };
         #elseif {"${tmp}" == "岳王"} {
             #list hb_path create {
-                gs;gs;gsw;gs;gs;gs;gs;gs;
-                gs;gs;ge;gn;ge;gne;gn;gn;gnw;gne;gsw;gse;gs;gs;gsw;gs;gn;gw;gn;gs;gs;gn;ge;gne;ge;ge;gw;gw;gn;
+
             };
         };
         #elseif {"${tmp}" == "福州"} {

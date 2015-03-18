@@ -2,13 +2,8 @@
 load hubiao_data;
 load chaos;
 
-#var hb_first_kill 0;
-#var hb_paused 0;
 #var hb_auto 0;
-#var hb_info nil;
-#var hb_rotate_location NIL;
-#var hb_rotate_location_count 0;
-#var hb_robber_count 0;
+#var hb_rotate 1;
 
 #alias {hb.teardown} {
     #var quest NIL;
@@ -105,7 +100,6 @@ load chaos;
 #var hb_retry_count 0;
 #alias {hb.setup} {
     #var quest hb;
-    #nop #foreach {${clear_npcs}[%*]} {npc} {clear_npc ${npc}};
     #unaction {^    这里%*出口};
     #class hb_setup_inner open;
     #action {你想杀谁？} {
@@ -447,6 +441,12 @@ load chaos;
     #var hb_auto 1;
     #var getesc_current_score 0;
     #var getesc_current_id 0;
+    #var hb_first_kill 0;
+    #var hb_paused 0;
+    #var hb_info nil;
+    #var hb_rotate_location NIL;
+    #var hb_rotate_location_count 0;
+    #var hb_robber_count 0;
 
     #class hb.auto.inner open;
     #action {^你不是才要了任务吗} {
@@ -536,7 +536,7 @@ load chaos;
         };
         #else {
             #math hb_rotate_location_count ${hb_rotate_location_count} + 1;
-            #if {${hb_rotate_location_count} > 3 && "${hb_rotate_location}" != "NIL"} {
+            #if {${hb_rotate} == 1 && ${hb_rotate_location_count} > 3 && "${hb_rotate_location}" != "NIL"} {
                 #var hb_rotate_location_count 0;
                 hb.stop;
                 gt ${hb_rotate_location};
@@ -638,9 +638,9 @@ load chaos;
             #if {"@opposite{${v}}" == "@stacktop{tmp}"} {
                 #var nil @stackpop{tmp};
             };
-            #elseif {"@opposite{${v}}" != "NULL"} {
+            #else {
                 @stackpush{tmp;${v}};
-            }
+            };
         };
         #math hb_path_index ${hb_path_index}+1;
     }
@@ -697,16 +697,6 @@ load chaos;
     #class clear_blocker.inner close;
     hb.pause;
     killall ${tmp_blocker};
-};
-
-#alias {clear_npc} {
-    #var npc_zh %1;
-    #class clear_npc.inner open;
-    #action {${npc_zh}(%*)} {
-        #var npc_en @lower{%%1};
-        killall ${npc_en};
-    } {1};
-    #class clear_npc.inner close;
 };
 
 #alias {mx.o} {

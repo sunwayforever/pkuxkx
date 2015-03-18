@@ -213,12 +213,6 @@ load bianli_data;
 
 #alias {bl.test} {
     #list bl_path create {
-        s;s;sw;s;s;s;s;s;s;s;s;
-        nw;n;nw;n;n;n;n;
-        n;e;w;w;e;n;n;nw;ne;sw;nd;n;n;s;s;su;se;s;s;s;
-        e;n;s;s;enter;w;e;e;w;out;n;e;e;eu;wd;w;w;w;
-        w;n;s;s;n;w;w;wu;wu;nu;enter;w;e;n;s;e;w;out;sd;ed;ed;e;e;e;
-        s;w;e;e;w;s;s;s;se;nw;n;n;n;n;e;n;
     };
     #list bl_path size bl_path_size;
     #var bl_path_index 0;

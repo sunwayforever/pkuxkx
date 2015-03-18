@@ -1062,6 +1062,10 @@
     };
 };
 
+#alias {choudiao} {
+    ask diao about ¶À¹ÂÇó°Ü;
+};
+
 #alias {xtj} {
     gt jx;
     on_there {
