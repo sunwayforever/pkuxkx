@@ -357,7 +357,7 @@
                 #nop 到嘉兴;
                 gs;gs;gsw;gs;gs;gs;gs;gs;
                 #nop 谷底;
-                ge;gnd;ge;ge;ge;ge;gn;gs;gs;gs;gse;gnw;gn;gn;gw;gw;gw;gw;gw;ge;choudiao;gnu;gse;gnw;gsd;gsd;gsu;gw;
+                ge;gnd;ge;ge;ge;ge;gn;gs;gs;gs;gse;gnw;gn;gn;gw;gw;gw;gw;gw;ge;gsu;gw;
                 #nop 南湖;
                 ge;gn;gs;gs;gs;gn;gw;gn;ge;gse;gs;gn;gne;ge;gne;gne;ge;gw;gsw;gsw;gw;gsw;gnw;gw;
                 #nop 建康府;

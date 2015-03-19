@@ -638,7 +638,7 @@ load chaos;
             #if {"@opposite{${v}}" == "@stacktop{tmp}"} {
                 #var nil @stackpop{tmp};
             };
-            #else {
+            #elseif {"@opposite{${v}}" != "NULL"} {
                 @stackpush{tmp;${v}};
             };
         };
