@@ -1114,14 +1114,6 @@
     };
 };
 
-#alias {l} {
-    #ungag {^$};
-    #send {l %0};
-    #delay {1} {
-        #gag {^$};        
-    };
-};
-
 #macro {\eL} {
     show.clear;
 };
