@@ -1132,6 +1132,7 @@
     #unalias {%*};
     #unvar {%*};
     #unticker {%*};
+    #ungag {%*};
     #read main.tin;
     show.clear;
     login;
