@@ -1114,6 +1114,14 @@
     };
 };
 
+#alias {l} {
+    #ungag {^$};
+    #send {l %0};
+    on_echo {
+        #gag {^$};        
+    };
+};
+
 #macro {\eL} {
     show.clear;
 };
