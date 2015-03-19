@@ -5,6 +5,15 @@ load chaos;
 #var hb_auto 0;
 #var hb_rotate 1;
 
+#var getesc_current_score 0;
+#var getesc_current_id 0;
+#var hb_first_kill 0;
+#var hb_paused 0;
+#var hb_info nil;
+#var hb_rotate_location NIL;
+#var hb_rotate_location_count 0;
+#var hb_robber_count 0;
+
 #alias {hb.teardown} {
     #var quest NIL;
     #var hb_robber_count 0;
@@ -439,14 +448,6 @@ load chaos;
 #alias {hb.start} {
     set brief 2;
     #var hb_auto 1;
-    #var getesc_current_score 0;
-    #var getesc_current_id 0;
-    #var hb_first_kill 0;
-    #var hb_paused 0;
-    #var hb_info nil;
-    #var hb_rotate_location NIL;
-    #var hb_rotate_location_count 0;
-    #var hb_robber_count 0;
 
     #class hb.auto.inner open;
     #action {^你不是才要了任务吗} {
