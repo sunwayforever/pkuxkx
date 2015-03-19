@@ -7,7 +7,9 @@
     gem.setup;
     jiancha jin nang;
     lock 用pack <物品id>将宝石放入其中;
-    #delay {1} {
+    #action {用pack <物品id>将宝石放入其中} {
+        #unaction {用pack <物品id>将宝石放入其中};
+        #buffer lock;
         gem.teardown;
         show_to_info 宝石价值: ${gem_value};
     };
