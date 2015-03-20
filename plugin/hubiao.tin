@@ -88,6 +88,7 @@ load chaos;
                 show_to_info 到达;
                 notify.alert escort arrived;
                 xmpp.notify 到达, 没找到收货人;
+                pp;
             } {3};
         };
         #else {
