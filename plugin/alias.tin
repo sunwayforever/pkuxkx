@@ -1135,8 +1135,9 @@
     login;
 };
 
-#gag get_pos: done;
 #alias {get_pos} {
+    #alias tmp_get_pos #cr;
+    #alias tmp_get_pos %1;
     #var record_state 0;
     #class record.inner open;
     #action {^%S - $} {
@@ -1197,7 +1198,7 @@
         #var pos.desc ${description};
         #var pos.exits ${exits_list};
         #class record.inner kill;
-        #showme get_pos: done;  
+        tmp_get_pos;
     };
 
     #action {^%S%*} {
@@ -1214,13 +1215,18 @@
     #send {l};
 };
 
-#gag get_area: done;
 #alias {get_area} {
+    #alias tmp_get_area #cr;
+    #alias tmp_get_area %1;
     #var pos.area {};
     #class record.inner open;
+    #action {这里暂时没有地图。} {
+        #var pos.area {};
+        tmp_get_area;  
+    };
     #action {【%*地图%*】} {
         #var pos.area %%1;
-        #showme get_area: done;
+        tmp_get_area;
     };
     #class record.inner close;
     localmaps;

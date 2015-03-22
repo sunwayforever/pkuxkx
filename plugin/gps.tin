@@ -2,9 +2,7 @@
 load gps_actions;
 
 #alias {gps.gt} {
-    gps.detect_room;
-    #action {gps.detect_room: done} {
-        #unaction {gps.detect_room: done};
+    #alias {gps_detect_room_done} {
         #if {${gps.roomno} == -1} {
             show_to_info "can't detect current room";
         };
@@ -13,7 +11,10 @@ load gps_actions;
             #var gps_path_index 1;
             #list shortest_path size gps_path_size;
             gps.run;
-        };
+        };  
+    };
+    gps.detect_room {
+        gps_detect_room_done;
     };
 };
 
@@ -34,17 +35,18 @@ load gps_actions;
 };
 
 #alias {gps.detect_room} {
-    get_area;
-    #action {get_area: done} {
-        #unaction {get_area: done};
-        get_pos;
-    };
-    #action {get_pos: done} {
-        #unaction {get_pos: done};
+    #alias tmp_detect_room #cr;
+    #alias tmp_detect_room %1;
+    #alias {get_pos_done} {
         #script {roomno} {bin/gps/detect_room.py "${pos.area}" "${pos.room}" "${pos.desc}" "${pos.exits}"};
         #var gps.roomno ${roomno}[1];
-        #showme gps.detect_room: done;
         show_to_info ${pos.room}: ${gps.roomno};
+        tmp_detect_room;  
+    };
+    get_area {
+        get_pos {
+            get_pos_done;
+        };
     };
 };
 
