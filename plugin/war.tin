@@ -267,7 +267,7 @@
 
 #gag clear: done;
 #alias {clear} {
-    kill %1;
+    kill %0;
     #class clear.inner open;
     #action {^这里没有这个人} {
         #unaction {^这里没有这个人};
@@ -276,16 +276,18 @@
         #showme clear: done;
     } {1};
     #ticker {kill} {
-        kill %1;
+        kill %0;
     } {3};
     #class clear.inner close;
 };
 
 #alias {on_cleared} {
-    #alias tmp_on_cleared %1;
+    #alias tmp_on_cleared %0;
     #action {clear: done} {
         #unaction {clear: done};
-        tmp_on_cleared;
+        #delay {3} {
+            tmp_on_cleared;
+        };
     };
 };
 

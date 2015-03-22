@@ -193,10 +193,6 @@
     };
 };
 
-#action {大车停稳了下来} {
-    xia;
-};
-
 #event {SCREEN RESIZE} {
     show_to_shortcut ${shortcut};
     show.init;

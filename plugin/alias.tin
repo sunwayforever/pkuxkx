@@ -1134,3 +1134,95 @@
     show.clear;
     login;
 };
+
+#gag get_pos: done;
+#alias {get_pos} {
+    #var record_state 0;
+    #class record.inner open;
+    #action {^%S - $} {
+        #var record_state 1;
+        #var current_room %%1;
+    } {1};
+
+    #action {^    %*} {
+        #if {$record_state == 1} {
+            #var description %%1;
+            #replace {description} { } {};
+            #var record_state 2;
+        };
+    } {9};
+
+    #action {这里没有任何明显的出路。} {
+        #var exits_list  {};
+        get_exits_done;        
+    } {7};
+    
+    #action {这里唯一的出口是 %w。} {
+        #var exits_list  {%%1;};
+        get_exits_done;
+    } {7};
+
+    #action {这里明显的出口是 %w 和 %w。} {
+        #var exits_list {%%1;%%2;};
+        get_exits_done;
+    } {7};
+
+    #action {这里明显的出口是 %w、%w 和 %w。} {
+        #var exits_list {%%1;%%2;%%3;};
+        get_exits_done;
+    } {7};
+
+    #action {这里明显的出口是 %w、%w、%w 和 %w。} {
+        #var exits_list {%%1;%%2;%%3;%%4;};
+        get_exits_done;
+    } {7};
+
+    #action {这里明显的出口是 %w、%w、%w、%w 和 %w。} {
+        #var exits_list {%%1;%%2;%%3;%%4;%%5;};
+        get_exits_done;
+    } {7};
+
+    #action {这里明显的出口是 %w、%w、%w、%w、%w 和 %w。} {
+        #var exits_list {%%1;%%2;%%3;%%4;%%5;%%6;};
+        get_exits_done;
+    } {7};
+
+    #action {这里明显的出口是 %w、%w、%w、%w、%w、%w 和 %w。} {
+        #var exits_list {%%1;%%2;%%3;%%4;%%5;%%6;%%7;};
+        get_exits_done;
+    } {7};
+
+    #alias {get_exits_done} {
+        #var pos.room ${current_room};
+        #var pos.desc ${description};
+        #var pos.exits ${exits_list};
+        #class record.inner kill;
+        #showme get_pos: done;  
+    };
+
+    #action {^%S%*} {
+        #if {$record_state == 2} {
+            #var description ${description}%%1%%2;
+            #replace {description} { } {};
+        };
+    } {9};
+
+    #ticker {ticker_get_position_look} {
+        #send {l};
+    } {1.5};
+    #class record.inner close;
+    #send {l};
+};
+
+#gag get_area: done;
+#alias {get_area} {
+    #var pos.area {};
+    #class record.inner open;
+    #action {【%*地图%*】} {
+        #var pos.area %%1;
+        #showme get_area: done;
+    };
+    #class record.inner close;
+    localmaps;
+    q;
+};

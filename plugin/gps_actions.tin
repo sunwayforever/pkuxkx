@@ -1,0 +1,77 @@
+#class gps_actions open;
+#alias {gps.clear} {
+    clear %0;
+    on_cleared {
+        gps.run;
+    };
+};
+
+#alias {gps.delay} {
+    #delay {1.5} {
+        gps.run;
+    };
+};
+
+#alias {gps.guohe} {
+    #class gps.action.inner open;
+    #action {^只听得江面上隐隐传来：“别急嘛，这儿正忙着呐……”} {
+        #delay {3} {
+            yell boat;
+        };
+    };
+    #action {正等着你呢，上来吧。} {
+        enter;
+    };
+    #action {艄公将一块踏脚板搭上堤岸，} {
+        enter;
+    };
+    #alias {shangchuan} {
+        #unticker {sw/yell_boat};
+        #action {所有人被赶下了渡船} {
+            #unaction {所有人被赶下了渡船};
+            #class gps.action.inner kill;
+            gps.run;
+        };
+        #action {艄公说“到啦，上岸吧”，随即把一块踏脚板搭上堤岸。} {
+            #unaction {艄公说“到啦，上岸吧”，随即把一块踏脚板搭上堤岸。};
+            #class gps.action.inner kill;
+            out;
+            gps.run;
+        };
+    };
+    #action {^江心驶去} {
+        shangchuan;
+    };
+    #class gps.action.inner close;
+
+    ask shao gong about huanghe;
+    ask shao gong about jiang;
+    yell boat;
+};
+
+#alias {gps.enter_boat} {
+    enter boat;
+    #action {小舟终于划到近岸，你从船上走了出来。} {
+        #unaction {小舟终于划到近岸，你从船上走了出来。};
+        gps.run;
+    };
+    #action {绿衣少女将小船系在树枝之上，你跨上岸去。} {
+        #unaction {绿衣少女将小船系在树枝之上，你跨上岸去。};
+        gps.run;
+    };
+    #action {你沿着踏板走了上去} {
+        #unaction {你沿着踏板走了上去};
+        gps.run;
+    };
+};
+
+#alias {gps.zuoche} {
+    gu;
+    qu %1;
+    #action {大车停稳了下来} {
+        #unaction {大车停稳了下来};
+        xia;
+        gps.run;
+    };
+};
+#class gps_actions close;
