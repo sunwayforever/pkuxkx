@@ -1222,10 +1222,12 @@
     #var pos.area {};
     #class record.inner open;
     #action {这里暂时没有地图。} {
+        #class record.inner kill;
         #var pos.area {};
         tmp_get_area;  
     };
     #action {【%*地图%*】} {
+        #class record.inner kill;
         #var pos.area %%1;
         tmp_get_area;
     };
