@@ -7,7 +7,10 @@
 };
 
 #alias {gps.delay} {
-    #delay {1.5} {
+    #var gps_delay 1.5;
+    #var gps_delay %1;
+    #echo {gps_delay: ${gps_delay}};
+    #delay {${gps_delay}} {
         gps.run;
     };
 };

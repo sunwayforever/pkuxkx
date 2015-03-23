@@ -1196,6 +1196,8 @@
 
     #alias {get_exits_done} {
         #var pos.room ${current_room};
+        #replace {description} { } {};
+        #replace {description} {	} {};
         #var pos.desc ${description};
         #var pos.exits ${exits_list};
         #class record.inner kill;
@@ -1205,7 +1207,6 @@
     #action {^%S%*} {
         #if {$record_state == 1} {
             #var description ${description}%%1%%2;
-            #replace {description} { } {};
         };
     } {9};
 
