@@ -2,9 +2,9 @@
 load gps_actions;
 
 #alias {gps.gt} {
-    #alias {gps_detect_room_done} {
+    #alias {gps_check_room_done} {
         #if {${gps.roomno} == -1} {
-            show_to_info "can't detect current room";
+            #echo {当前房间未记录, 取消};
         };
         #else {
             gps.get_path ${gps.roomno} %1;
@@ -13,8 +13,8 @@ load gps_actions;
             gps.run;
         };  
     };
-    gps.detect_room {
-        gps_detect_room_done;
+    gps.check_room {
+        gps_check_room_done;
     };
 };
 
@@ -34,14 +34,19 @@ load gps_actions;
     #read /tmp/gps.tin;
 };
 
-#alias {gps.detect_room} {
-    #alias tmp_detect_room #cr;
-    #alias tmp_detect_room %1;
+#macro {\e[24~} {
+    gps.check_link;
+};
+
+#nop operate db;
+#alias {gps.check_room} {
+    #alias tmp_check_room #cr;
+    #alias tmp_check_room %1;
     #alias {get_pos_done} {
-        #script {roomno} {bin/gps/detect_room.py "${pos.area}" "${pos.room}" "${pos.desc}" "${pos.exits}"};
+        #script {roomno} {bin/gps/check_room.py "${pos.area}" "${pos.room}" "${pos.desc}" "${pos.exits}"};
         #var gps.roomno ${roomno}[1];
-        show_to_info ${pos.room}: ${gps.roomno};
-        tmp_detect_room;  
+        #echo {${pos.room}: ${gps.roomno}};
+        tmp_check_room;  
     };
     get_area {
         get_pos {
@@ -50,12 +55,52 @@ load gps_actions;
     };
 };
 
-#macro {\e[24~} {
-    gps.detect_room;
+#alias {gps.insert_room} {
+    #alias {gps_check_room_done} {
+        #if {${gps.roomno} == -1} {
+            #system {bin/gps/insert_room.py "${pos.area}" "${pos.room}" "${pos.desc}" "${pos.exits}"};
+            gps.check_room;
+        };
+        #else {
+            #echo {房间已记录, 取消};
+        };  
+    };
+    gps.check_room {
+        gps_check_room_done;
+    };
 };
 
-#alias {gps.check} {
-    
+#alias {gps.check_link} {
+    #alias {gps_check_room_done} {
+        #if {${gps.roomno} == -1} {
+            #echo {房间未记录, 取消};
+        };
+        #else {
+            #system {bin/gps/check_link.py ${gps.roomno}};
+            #delay {1} {
+                #read /tmp/gps.tin;
+            };
+        };  
+    };
+    gps.check_room {
+        gps_check_room_done;
+    };
 };
-
+#alias {gps.insert_link} {
+    #var target_room_no %1;
+    #var direction %2;
+    #var reverse_direction %3;
+    #alias {gps_check_room_done} {
+        #if {${gps.roomno} == -1} {
+            #echo {房间未记录, 取消};
+        };
+        #else {
+            #system {bin/gps/insert_link.py ${gps.roomno} ${target_room_no} ${direction} ${reverse_direction}};
+            gps.check_link;
+        };  
+    };
+    gps.check_room {
+        gps_check_room_done;
+    };
+};
 #class gps close;
