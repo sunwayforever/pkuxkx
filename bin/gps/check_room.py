@@ -4,6 +4,10 @@ import os
 import sys
 
 def detect_room (conn, zone, room, desc, exits):
+    sql = "select roomno from mud_room where roomname = '%s' and description = '%s' and exits = '%s'" % (room, desc, exits)
+    rows = conn.execute(sql).fetchall();
+    if len(rows) == 1:
+        return rows[0][0]
     sql = "select roomno from mud_room where zone = '%s' and roomname = '%s' and description = '%s' and exits = '%s'" % (zone, room, desc, exits)
     row = conn.execute(sql).fetchone()
     if not row:

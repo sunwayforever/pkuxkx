@@ -4,4 +4,5 @@
 #highlight {支持遍历} {green};
 #highlight {不支持遍历} {green};
 #highlight {收工} {red};
+#highlight {GPS:%*} {bold red};
 #class highlight close

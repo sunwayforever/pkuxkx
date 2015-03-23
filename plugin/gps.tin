@@ -5,7 +5,7 @@ load gps_actions;
     #alias {gps_check_room_done} {
         #if {${gps.roomno} == -1} {
             #delay {1} {
-                #echo {当前房间未记录, 无法行走};
+                #show {GPS: 当前房间未记录, 无法行走};
             };
         };
         #else {
@@ -55,7 +55,7 @@ load gps_actions;
     #alias {get_pos_done} {
         #script {roomno} {bin/gps/check_room.py "${pos.area}" "${pos.room}" "${pos.desc}" "${pos.exits}"};
         #var gps.roomno ${roomno}[1];
-        #echo {${pos.room}: ${gps.roomno}};
+        #show {GPS: ${pos.room}: ${gps.roomno}};
         tmp_check_room;  
     };
     get_area {
@@ -73,7 +73,7 @@ load gps_actions;
         };
         #else {
             #delay {1} {
-                #echo {房间已记录, 无法再次记录};
+                #show {GPS: 房间已记录, 无法再次记录};
             };
         };  
     };
@@ -86,7 +86,7 @@ load gps_actions;
     #alias {gps_check_room_done} {
         #if {${gps.roomno} == -1} {
             #delay {1} {
-                #echo {房间未记录, 无法检查连接};
+                #show {GPS: 房间未记录, 无法检查连接};
             };
         };
         #else {
@@ -107,7 +107,7 @@ load gps_actions;
     #alias {gps_check_room_done} {
         #if {${gps.roomno} == -1} {
             #delay {1} {
-                #echo {房间未记录, 无法插入连接};
+                #show {GPS: 房间未记录, 无法插入连接};
             };
         };
         #else {
