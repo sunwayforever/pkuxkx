@@ -1147,6 +1147,10 @@
         #var current_room %%1;
     } {1};
 
+    #action {你可以看看(look):} {
+        #cr;
+    } {6};
+    
     #action {    「%*」: %*} {
         #cr;
     } {6};
