@@ -4,7 +4,9 @@ load gps_actions;
 #alias {gps.gt} {
     #alias {gps_check_room_done} {
         #if {${gps.roomno} == -1} {
-            #echo {当前房间未记录, 取消};
+            #delay {1} {
+                #echo {当前房间未记录, 无法行走};
+            };
         };
         #else {
             gps.get_path ${gps.roomno} %1;
@@ -62,7 +64,9 @@ load gps_actions;
             gps.check_room;
         };
         #else {
-            #echo {房间已记录, 取消};
+            #delay {1} {
+                #echo {房间已记录, 无法再次记录};
+            };
         };  
     };
     gps.check_room {
@@ -73,7 +77,9 @@ load gps_actions;
 #alias {gps.check_link} {
     #alias {gps_check_room_done} {
         #if {${gps.roomno} == -1} {
-            #echo {房间未记录, 取消};
+            #delay {1} {
+                #echo {房间未记录, 无法检查连接};
+            };
         };
         #else {
             #system {bin/gps/check_link.py ${gps.roomno}};
@@ -92,7 +98,9 @@ load gps_actions;
     #var reverse_direction %3;
     #alias {gps_check_room_done} {
         #if {${gps.roomno} == -1} {
-            #echo {房间未记录, 取消};
+            #delay {1} {
+                #echo {房间未记录, 无法插入连接};
+            };
         };
         #else {
             #system {bin/gps/insert_link.py ${gps.roomno} ${target_room_no} ${direction} ${reverse_direction}};

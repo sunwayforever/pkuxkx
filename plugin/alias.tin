@@ -1139,20 +1139,17 @@
     #alias tmp_get_pos #cr;
     #alias tmp_get_pos %1;
     #var record_state 0;
+    #var current_room {};
+    #var description {};
     #class record.inner open;
     #action {^%S - $} {
         #var record_state 1;
         #var current_room %%1;
     } {1};
 
-    #action {^    %*} {
-        #if {$record_state == 1} {
-            #var description %%1;
-            #replace {description} { } {};
-            #var record_state 2;
-        };
-    } {9};
-
+    #action {    「%*」: %*} {
+        #cr;
+    } {6};
     #action {这里没有任何明显的出路。} {
         #var exits_list  {};
         get_exits_done;        
@@ -1202,7 +1199,7 @@
     };
 
     #action {^%S%*} {
-        #if {$record_state == 2} {
+        #if {$record_state == 1} {
             #var description ${description}%%1%%2;
             #replace {description} { } {};
         };

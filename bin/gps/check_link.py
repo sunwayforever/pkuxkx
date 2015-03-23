@@ -12,7 +12,7 @@ if __name__ == "__main__":
     cursor = conn.execute(sql)
     row = cursor.fetchone()
     zone = row[1]
-    tmpfile.write("#echo {%s @ %s:}\n" % (row[0], row[1]))
+    tmpfile.write("#echo {(%d) %s @ %s:}\n" % (int(sys.argv[1]),row[0], row[1]))
     tmpfile.write ("#echo {[1;31m---------------------------------------[2;37;0m}\n")
     sql = "select dst_room_zone, dst_room_name, dst_room_no, direction from room_and_entrance where src_room_no = %d" %(int(sys.argv[1]))
     cursor = conn.execute(sql)
