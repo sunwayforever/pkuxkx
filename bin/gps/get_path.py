@@ -12,13 +12,24 @@ def shortest_path(conn, src, dst):
     dst_set = set([dst])
 
     while True:
-        sql = "select linkroomno from mud_entrance where roomno in (%s)" % (",".join([str(i) for i in src_set]))
+        sql = "update mud_entrance_weight set weight = weight - 1 where weight != 0 and roomno in (%s)" % (",".join([str(i) for i in src_set]))
+        conn.execute(sql)
+        
+        sql = "select linkroomno, roomno from mud_entrance as A where A.roomno in (%s) and \
+        ifnull((select weight from mud_entrance_weight as w where w.roomno = A.roomno and w.linkroomno = A.linkroomno),0) = 0"  % (",".join([str(i) for i in src_set]))
+        # sql = "select linkroomno from mud_entrance where roomno in (%s)" % (",".join([str(i) for i in src_set]))
         rows = conn.execute(sql).fetchall()
+
         if rows:
             src_set = src_set.union(set([r[0] for r in rows]))
         else:
             return []
-        sql = "select roomno from mud_entrance where linkroomno in (%s)" % (",".join([str(i) for i in dst_set]))
+
+        sql = "update mud_entrance_weight set weight = weight - 1 where weight != 0 and linkroomno in (%s)" % (",".join([str(i) for i in dst_set]))
+        conn.execute(sql)
+        sql = "select roomno, linkroomno from mud_entrance as A where A.linkroomno in (%s) and \
+        ifnull((select weight from mud_entrance_weight as w where w.roomno = A.roomno and w.linkroomno = A.linkroomno),0) = 0"  % (",".join([str(i) for i in dst_set]))
+        # sql = "select roomno from mud_entrance where linkroomno in (%s)" % (",".join([str(i) for i in dst_set]))
         cursor = conn.execute(sql)
         rows = cursor.fetchall()
         if rows:
