@@ -9,7 +9,6 @@
 #alias {gps.delay} {
     #var gps_delay 1.5;
     #var gps_delay %1;
-    #echo {gps_delay: ${gps_delay}};
     #delay {${gps_delay}} {
         gps.run;
     };
@@ -76,5 +75,10 @@
         xia;
         gps.run;
     };
+};
+
+#alias {gps.enter_home} {
+    enter ${char_id};
+    gps.run;
 };
 #class gps_actions close;
