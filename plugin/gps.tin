@@ -37,6 +37,11 @@ load gps_actions;
             #break;
         };
     };
+    #if {${gps_path_index} > ${gps_path_size}} {
+        #delay {1} {
+            #showme {GPS: 抵达目的地};        
+        };
+    };
 };
 
 #alias {gps.get_path} {
