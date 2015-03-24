@@ -24,6 +24,6 @@ if __name__ == "__main__":
         if row[0] == zone:
             tt.write ("#echo {(%d): %s: {%s}};\n" % (row[2], row[1], row[3]))
         else:
-            tt.write ("#echo {(%d): %s @ %s : {%s}}\n" % (row[2], row[0], row[1], row[3]))
+            tt.write ("#echo {(%d): %s @ %s : {%s}};\n" % (row[2], row[0], row[1], row[3]))
     tt.write ("#echo {[1;31m---------------------------------------[2;37;0m};\n")
     tt.write ("};");
