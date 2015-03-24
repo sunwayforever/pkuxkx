@@ -919,8 +919,7 @@
 };
 
 #function {py} {
-    #script {ret} {bin/pinyin.py %0};
-    #var result $ret[1]
+    INVOKE pinyin %0;
 };
 
 #var min_naijiu 10000;
@@ -1235,4 +1234,13 @@
     #class record.inner close;
     localmaps;
     q;
+};
+
+#alias {INVOKE} {
+    #script {file_name} {python3 -m bin.%0};
+    #var file_name ${file_name}[1];
+    #if {"${file_name}" != ""} {
+        #read ${file_name};
+        #system {rm ${file_name}};        
+    };
 };

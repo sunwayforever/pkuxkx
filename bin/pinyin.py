@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import sqlite3
 import sys
+from .tintin import Tintin
 
 def get_pinyin(conn, name):
     ret = ""
@@ -39,4 +40,6 @@ if __name__ == '__main__':
     else:
         surname_py = get_xing(conn, name[0:1])
         name_py = get_pinyin(conn, name[1:len(name)])
-    print (surname_py+" "+name_py)
+
+    tt = Tintin()
+    tt.write("#var result %s" % (surname_py+" "+name_py))

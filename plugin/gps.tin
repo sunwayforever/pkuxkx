@@ -40,8 +40,7 @@ load gps_actions;
 };
 
 #alias {gps.get_path} {
-    #system {bin/gps/get_path.py %1 %2};
-    #read /tmp/gps.tin;
+    INVOKE gps.get_path %1 %2;
 };
 
 #macro {\e[24~} {
@@ -53,10 +52,9 @@ load gps_actions;
     #alias tmp_check_room #cr;
     #alias tmp_check_room %1;
     #alias {get_pos_done} {
-        #script {roomno} {bin/gps/check_room.py "${pos.area}" "${pos.room}" "${pos.desc}" "${pos.exits}"};
-        #var gps.roomno ${roomno}[1];
+        INVOKE gps.check_room "${pos.area}" "${pos.room}" "${pos.desc}" "${pos.exits}";
         #show {GPS: ${pos.room}: ${gps.roomno}};
-        tmp_check_room;  
+        tmp_check_room;
     };
     get_area {
         get_pos {
@@ -68,7 +66,7 @@ load gps_actions;
 #alias {gps.insert_room} {
     #alias {gps_check_room_done} {
         #if {${gps.roomno} == -1} {
-            #system {bin/gps/insert_room.py "${pos.area}" "${pos.room}" "${pos.desc}" "${pos.exits}"};
+            INVOKE gps.insert_room "${pos.area}" "${pos.room}" "${pos.desc}" "${pos.exits}";
             gps.check_room;
         };
         #else {
@@ -90,10 +88,7 @@ load gps_actions;
             };
         };
         #else {
-            #system {bin/gps/check_link.py ${gps.roomno}};
-            #delay {1} {
-                #read /tmp/gps.tin;
-            };
+            INVOKE gps.check_link ${gps.roomno};
         };  
     };
     gps.check_room {
@@ -111,7 +106,7 @@ load gps_actions;
             };
         };
         #else {
-            #system {bin/gps/insert_link.py ${gps.roomno} ${target_room_no} ${direction} ${reverse_direction}};
+            INVOKE gps.insert_link ${gps.roomno} ${target_room_no} "${direction}" "${reverse_direction}"
             gps.check_link;
         };  
     };

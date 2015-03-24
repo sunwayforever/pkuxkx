@@ -2,6 +2,7 @@
 import sqlite3
 import os
 import sys
+from ..tintin import Tintin
 
 def shortest_path(conn, src, dst):
     if (src == dst):
@@ -52,6 +53,5 @@ if __name__ == "__main__":
         
     paths = shortest_path(conn,int(sys.argv[1]),dst_room)
     # paths = shortest_path(conn, 260, 283)
-    tmpfile = open("/tmp/gps.tin", "w")
-    tmpfile.write ("#list shortest_path create {%s}\n" % (";".join(paths)))
-    tmpfile.close();
+    tt = Tintin()
+    tt.write ("#list shortest_path create {%s}\n" % (";".join(paths)))
