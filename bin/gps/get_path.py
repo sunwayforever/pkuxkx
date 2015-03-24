@@ -8,14 +8,9 @@ def shortest_path(conn, src, dst):
     if (src == dst):
         return []
 
-    sql = "select direction from mud_entrance where roomno = %d and linkroomno = %d" %(src, dst)
-    row = conn.execute(sql).fetchone()
-    if row:
-        return [row[0]]
-
     src_set = set([src])
     dst_set = set([dst])
-    
+
     while True:
         sql = "select linkroomno from mud_entrance where roomno in (%s)" % (",".join([str(i) for i in src_set]))
         rows = conn.execute(sql).fetchall()
@@ -30,13 +25,17 @@ def shortest_path(conn, src, dst):
             dst_set = dst_set.union(set([r[0] for r in rows]))
         else:
             return []
-            
-        middle = src_set.intersection(dst_set)
-        if (middle):
-            middle = middle.pop()
-            ret = shortest_path(conn, src, middle)
-            ret.extend(shortest_path(conn, middle, dst))
-            return ret
+        intersection = src_set.intersection(dst_set)
+        if (intersection):
+            if src in intersection:
+                sql = "select direction from mud_entrance where roomno = %d and linkroomno = %d" %(src, dst)
+                row = conn.execute(sql).fetchone()
+                return [row[0]]
+            else:
+                middle = intersection.pop()
+                ret = shortest_path(conn, src, middle)
+                ret.extend(shortest_path(conn, middle, dst))
+                return ret
         
 if __name__ == "__main__":
     conn = sqlite3.connect("db/rooms.db")
@@ -50,7 +49,10 @@ if __name__ == "__main__":
             dst_room = -1
     else:
         dst_room = int(sys.argv[2])
-        
+
+    conn.execute ("create temp table mud_entrance_weight (roomno int, linkroomno int, weight int)")
+    conn.execute("insert into mud_entrance_weight select roomno, linkroomno, weight from mud_entrance where weight is not null")
+    
     paths = shortest_path(conn,int(sys.argv[1]),dst_room)
     # paths = shortest_path(conn, 260, 283)
     tt = Tintin()
