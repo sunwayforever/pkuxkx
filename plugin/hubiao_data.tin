@@ -405,7 +405,6 @@
             };
         };
         #elseif {"${tmp}" == "南昌"} {
-            #nop fixme;
             #list hb_path create {
                 #nop 到城中心;
                 gs;gs;gsw;gs;gs;gs;gs;gs;gs;gs;gs;
@@ -572,7 +571,6 @@
             };
         };
         #elseif {"${tmp}" == "泉州"} {
-            #nop fixme;
             #list hb_path create  {
                 gn;gsw;gs;gs;gs;gs;gs;gsu;gse;gs;gs;gs;gs;gs;gs;gs;gse;gs;gse;gs;gs;ge;
                 gn;gs;gne;gne;gne;gn;gs;gsw;gsw;gsw;gs;gn;ged;gn;gs;gs;gn;gwu;gw;gn;gs;gs;gs;ge;gw;gn;gn;gw;gn;gs;gs;gn;gnw;gw;ge;gse;ge;ge;

@@ -40,7 +40,7 @@ def shortest_path(conn, src, dst):
         
         intersection = src_set.intersection(dst_set)
         if (intersection):
-            if src in intersection:
+            if src in intersection and dst in intersection:
                 sql = "select direction from mud_entrance where roomno = %d and linkroomno = %d" %(src, dst)
                 row = conn.execute(sql).fetchone()
                 return [row[0]]
@@ -50,7 +50,6 @@ def shortest_path(conn, src, dst):
                 ret.extend(shortest_path(conn, middle, dst))
                 return ret
 
-# fixme: 白驼马车行到明教大殿 crash ...
 if __name__ == "__main__":
     conn = open_database()
     if not sys.argv[2].isdigit():
