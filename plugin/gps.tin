@@ -12,7 +12,14 @@ load gps_actions;
             gps.get_path ${gps.roomno} %1;
             #var gps_path_index 1;
             #list shortest_path size gps_path_size;
-            gps.run;
+            #if {${gps_path_size} == 0} {
+                #delay {1} {
+                    #show {GPS: 目标房间未记录, 无法行走};
+                };
+            };
+            #else {
+                gps.run;
+            };
         };  
     };
     gps.check_room {
@@ -45,7 +52,9 @@ load gps_actions;
 };
 
 #alias {gps.get_path} {
-    INVOKE gps.get_path %1 %2;
+    #nop 1. gps.clear 2. gps.guohe 3. gps.delay 4. gps.zuoche;
+    #var weights @getenv{gps.weight.clear},@getenv{gps.weight.guohe},@getenv{gps.weight.delay},@getenv{gps.weight.zuoche};
+    INVOKE gps.get_path %1 %2 ${weights};
 };
 
 #macro {\e[24~} {

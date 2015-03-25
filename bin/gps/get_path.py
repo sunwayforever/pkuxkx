@@ -17,9 +17,8 @@ def shortest_path(conn, src, dst):
         
         sql = "select linkroomno, roomno from mud_entrance as A where A.roomno in (%s) and \
         ifnull((select weight from mud_entrance_weight as w where w.roomno = A.roomno and w.linkroomno = A.linkroomno),0) = 0"  % (",".join([str(i) for i in src_set]))
-        # sql = "select linkroomno from mud_entrance where roomno in (%s)" % (",".join([str(i) for i in src_set]))
-        rows = conn.execute(sql).fetchall()
 
+        rows = conn.execute(sql).fetchall()
         if rows:
             src_set = src_set.union(set([r[0] for r in rows]))
         else:
@@ -27,15 +26,16 @@ def shortest_path(conn, src, dst):
 
         sql = "update mud_entrance_weight set weight = weight - 1 where weight != 0 and linkroomno in (%s)" % (",".join([str(i) for i in dst_set]))
         conn.execute(sql)
+
         sql = "select roomno, linkroomno from mud_entrance as A where A.linkroomno in (%s) and \
         ifnull((select weight from mud_entrance_weight as w where w.roomno = A.roomno and w.linkroomno = A.linkroomno),0) = 0"  % (",".join([str(i) for i in dst_set]))
-        # sql = "select roomno from mud_entrance where linkroomno in (%s)" % (",".join([str(i) for i in dst_set]))
-        cursor = conn.execute(sql)
-        rows = cursor.fetchall()
+
+        rows = conn.execute(sql).fetchall()
         if rows:
             dst_set = dst_set.union(set([r[0] for r in rows]))
         else:
             return []
+        
         intersection = src_set.intersection(dst_set)
         if (intersection):
             if src in intersection:
@@ -62,9 +62,16 @@ if __name__ == "__main__":
         dst_room = int(sys.argv[2])
 
     conn.execute ("create temp table mud_entrance_weight (roomno int, linkroomno int, weight int)")
-    conn.execute("insert into mud_entrance_weight select roomno, linkroomno, weight from mud_entrance where weight is not null")
-    
-    paths = shortest_path(conn,int(sys.argv[1]),dst_room)
-    # paths = shortest_path(conn, 260, 283)
+
+    # about the path type:
+    # 1. gps.clear 2. gps.guohe 3. gps.delay 4. gps.zuoche
+    weights = [int(x) for x in sys.argv[3].split(",")]
+    for i,w in enumerate(weights, start=1):
+        conn.execute("insert into mud_entrance_weight select roomno, linkroomno, %d from mud_entrance where type = %d" % (w, i))
+
     tt = Tintin()
-    tt.write ("#list shortest_path create {%s}\n" % (";".join(paths)))
+    if (int(sys.argv[1]) == dst_room):
+        tt.write ("#list shortest_path create {#cr};\n")
+    else:
+        paths = shortest_path(conn,int(sys.argv[1]),dst_room)
+        tt.write ("#list shortest_path create {%s};\n" % (";".join(paths)))

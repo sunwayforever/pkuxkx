@@ -672,6 +672,11 @@
     set skip_combat 2;
     set wimpy 20;
     set hansz_new_mode 1;
+    #nop set gps config;
+    set gps.weight.clear 10;
+    set gps.weight.guohe 50;
+    set gps.weight.delay 5;
+    set gps.weight.zuoche 20;
 };
 
 #var get_san_count 50;
