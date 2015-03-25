@@ -3,9 +3,10 @@ import sqlite3
 import os
 import sys
 
+from .common import open_database
+
 if __name__ == "__main__":
-    os.chdir("/home/sunway/.tt")
-    conn = sqlite3.connect("db/rooms.db")
+    conn = open_database()
     conn.execute("delete from mud_room_2")
     sql = "select * from mud_room"
     cursor = conn.execute(sql)

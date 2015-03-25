@@ -2,6 +2,8 @@
 import sqlite3
 import os
 import sys
+
+from .common import open_database
 from ..tintin import Tintin
 
 def shortest_path(conn, src, dst):
@@ -49,7 +51,7 @@ def shortest_path(conn, src, dst):
                 return ret
         
 if __name__ == "__main__":
-    conn = sqlite3.connect("db/rooms.db")
+    conn = open_database()
     if not sys.argv[2].isdigit():
         sql = "select roomno from mud_room where abbr = '%s' or roomname = '%s'" % (sys.argv[2], sys.argv[2])
         cursor = conn.execute(sql)

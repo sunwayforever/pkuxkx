@@ -1,0 +1,3 @@
+[submodule "db/gps"]
+	path = db/gps
+	url = https://sunwayforever@bitbucket.org/sunwayforever/pkuxkx_rooms.git

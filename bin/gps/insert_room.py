@@ -2,6 +2,7 @@
 import sqlite3
 import os
 import sys
+from .common import open_database
 
 def insert_room (conn, zone, room, desc, exits):
     sql = "insert into mud_room values (NULL, NULL, '%s', '%s', '%s', NULL, '%s', NULL, NULL)" % (room, desc, exits, zone)
@@ -9,7 +10,7 @@ def insert_room (conn, zone, room, desc, exits):
     conn.commit()
 
 if __name__ == "__main__":
-    conn = sqlite3.connect("db/rooms.db")
+    conn = open_database()
     insert_room (conn, sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4])
     conn.close()
 

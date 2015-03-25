@@ -2,6 +2,8 @@
 import sqlite3
 import os
 import sys
+
+from .common import open_database
 from ..tintin import Tintin
 
 def detect_room (conn, zone, room, desc, exits):
@@ -16,7 +18,7 @@ def detect_room (conn, zone, room, desc, exits):
     return row[0];
 
 if __name__ == "__main__":
-    conn = sqlite3.connect("db/rooms.db")
+    conn = open_database()
     roomno = detect_room (conn, sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4])
     tt = Tintin()
     tt.write ("#var gps.roomno %d;" % (roomno))
