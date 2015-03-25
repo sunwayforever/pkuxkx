@@ -27,6 +27,7 @@ load gps_actions;
     };
 };
 
+#nop fixme: 若 path 以 gps.xxx 结尾, 则 #showme 显示两次;
 #alias {gps.run} {
     #var gps_run_accu 0;
     #while {${gps_path_index} <= ${gps_path_size}} {

@@ -49,7 +49,8 @@ def shortest_path(conn, src, dst):
                 ret = shortest_path(conn, src, middle)
                 ret.extend(shortest_path(conn, middle, dst))
                 return ret
-        
+
+# fixme: 白驼马车行到明教大殿 crash ...
 if __name__ == "__main__":
     conn = open_database()
     if not sys.argv[2].isdigit():
