@@ -1249,3 +1249,10 @@
         #system {rm ${file_name}};        
     };
 };
+
+#alias {pause_screen} {
+    #buffer lock;
+    #delay {1} {
+        #buffer end;
+    };
+}
