@@ -176,10 +176,19 @@ load gps_actions;
 };
 
 #alias {gps.traverse} {
-    #var gps_traverse_target NULL;
-    #var gps_traverse_target %1;
+    #unvar gps_traverse_target;
+    #unvar gps_traverse_location;
+    #var tmp %1;
+    #replace tmp {@} {;};
+    #list tmp_list create ${tmp};
+    #list tmp_list size tmp_size;
+    #var gps_traverse_target $tmp_list[1];
+    #if {${tmp_size} == 2} {
+        #var gps_traverse_location $tmp_list[2];
+    };
 
     #action {${gps_traverse_target}} {
+        #unaction {${gps_traverse_target}};
         #var gps_path_index @eval{${gps_path_size}+1};
     };
 
@@ -190,7 +199,7 @@ load gps_actions;
             };
         };
         #else {
-            INVOKE gps.traverse ${gps.roomno};
+            INVOKE gps.traverse ${gps.roomno} ${gps_traverse_location};
             #var gps_path_index 1;
             #list gps_path size gps_path_size;
             #var gps.run.mode TRAVERSE;
