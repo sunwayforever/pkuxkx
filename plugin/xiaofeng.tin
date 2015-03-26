@@ -78,15 +78,7 @@
     #action {传闻西夏一品堂派出了若干蒙面杀手，最近出现在%*附近的%*} {
         #if {${xf.requested} == 1} {
             #var xf.target %%1:%%2;
-            #var target_area @area{%%1};
-            #if {"${target_area}" != "NULL"} {
-                gt ${target_area};
-                on_there {
-                    #if {@blsupport{${target_area}} == 1} {
-                        xf.bl;
-                    };
-                };
-            };
+            gps.gt %%2@%%1;
         };
     };
 
@@ -305,14 +297,14 @@
     #class xf.bl.inner open;
     #action {蒙面杀手说道：「就你也配跟我讨教功夫？！」} {
         #delay {xf.bl} {
-            bl.continue {杀手};
+            gps.traverse.continue;
         } {1};
     };
     #action {找到目标} {
         xf.check;
     };
     #class xf.bl.inner close;
-    bl.start 蒙面杀手;
+    gps.traverse 蒙面杀手;
 };
 
 #alias {xf.b} {

@@ -54,6 +54,10 @@ load gps_actions;
     #var gps_run_accu 0;
     #var is_break 0;
     #while {${gps_path_index} <= ${gps_path_size}} {
+        #if {"${gps.run.mode}" == "TRAVERSE" && ${gps_traverse_done} == 1} {
+            #var is_break 1;
+            #break;
+        };
         #if {"${gps.run.mode}" == "NORMAL"} {
             #math gps_run_accu ${gps_run_accu}+1;
             #if {${gps_run_accu} > 15} {
@@ -80,7 +84,7 @@ load gps_actions;
     #if {${gps_path_index} > ${gps_path_size} && ${is_break} == 0} {
         #var gps.run.mode NORMAL;
         #delay {1} {
-            #showme {GPS: 抵达目的地};        
+            #showme {GPS: 抵达目的地};     
         };
     };
 };
@@ -175,6 +179,19 @@ load gps_actions;
     };
 };
 
+#var gps_traverse_done 0;
+#alias {gps.traverse.continue} {
+    #action {${gps_traverse_target}} {
+        #unaction {${gps_traverse_target}};
+        #showme 找到目标: ${gps_traverse_target};
+        #var gps_traverse_done 1;
+    };
+
+    #var gps_traverse_done 0;
+    #var gps.run.mode TRAVERSE;
+    gps.run;
+};
+
 #alias {gps.traverse} {
     #unvar gps_traverse_target;
     #unvar gps_traverse_location;
@@ -189,7 +206,8 @@ load gps_actions;
 
     #action {${gps_traverse_target}} {
         #unaction {${gps_traverse_target}};
-        #var gps_path_index @eval{${gps_path_size}+1};
+        #showme 找到目标: ${gps_traverse_target};
+        #var gps_traverse_done 1;
     };
 
     #alias {gps_check_room_done} {
@@ -207,6 +225,10 @@ load gps_actions;
         };  
     };
 
+    on_there {
+        #unaction {${gps_traverse_target}};
+    };
+    
     gps.check_room {
         gps_check_room_done;
     };
