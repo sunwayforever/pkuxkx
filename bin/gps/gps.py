@@ -7,6 +7,43 @@ import traceback
 from .common import open_database
 from ..tintin import Tintin
 
+
+def shortest_path_no_weight(conn, src, dst):
+    if (src == dst):
+        return []
+
+    src_set = set([src])
+    dst_set = set([dst])
+
+    while True:
+        sql = "select linkroomno, roomno from mud_entrance as A where A.roomno in (%s)"  % (",".join([str(i) for i in src_set]))
+
+        rows = conn.execute(sql).fetchall()
+        if rows:
+            src_set = src_set.union(set([r[0] for r in rows]))
+        else:
+            return []
+
+        sql = "select roomno, linkroomno from mud_entrance as A where A.linkroomno in (%s)"  % (",".join([str(i) for i in dst_set]))
+
+        rows = conn.execute(sql).fetchall()
+        if rows:
+            dst_set = dst_set.union(set([r[0] for r in rows]))
+        else:
+            return []
+
+        intersection = src_set.intersection(dst_set)
+        if (intersection):
+            if src in intersection and dst in intersection:
+                sql = "select direction from mud_entrance where roomno = %d and linkroomno = %d" %(src, dst)
+                row = conn.execute(sql).fetchone()
+                return [row[0]]
+            else:
+                middle = intersection.pop()
+                ret = shortest_path_no_weight(conn, src, middle)
+                ret.extend(shortest_path_no_weight(conn, middle, dst))
+                return ret
+
 def shortest_path(conn, src, dst):
     if (src == dst):
         return []
@@ -77,10 +114,10 @@ def get_path(conn, from_room, to_room, weight):
 
     tt = Tintin()
     if (int(from_room) == dst_room):
-        tt.write ("#list shortest_path create {#cr};\n")
+        tt.write ("#list gps_path create {#cr};\n")
     else:
         paths = shortest_path(conn,int(from_room),dst_room)
-        tt.write ("#list shortest_path create {%s};\n" % (";".join(paths)))
+        tt.write ("#list gps_path create {%s};\n" % (";".join(paths)))
 
 if __name__ == "__main__":
     conn = open_database()

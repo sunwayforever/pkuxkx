@@ -1118,7 +1118,7 @@
 #alias {l} {
     #ungag {^$};
     #send {l %0};
-    on_echo {
+    #delay {1} {
         #gag {^$};        
     };
 };
@@ -1215,10 +1215,10 @@
     } {9};
 
     #ticker {ticker_get_position_look} {
-        #send {l};
+        l;
     } {1.5};
     #class record.inner close;
-    #send {l};
+    l;
 };
 
 #alias {get_area} {

@@ -1,6 +1,8 @@
 #class gps open;
 load gps_actions;
 
+#var gps.run.mode NORMAL;
+
 #gag gps: get_path_done;
 #alias {gps.start} {
     #run {gps} {python3 -m bin.gps.gps};
@@ -33,7 +35,7 @@ load gps_actions;
         #show {GPS: 完成寻路, 耗时: @eval{$epoch_to-$epoch_from} 秒};
         pause_screen;
         #var gps_path_index 1;
-        #list shortest_path size gps_path_size;
+        #list gps_path size gps_path_size;
         #if {${gps_path_size} == 0} {
             #delay {1} {
                 #show {GPS: 目标房间未记录, 无法行走};
@@ -52,23 +54,31 @@ load gps_actions;
     #var gps_run_accu 0;
     #var is_break 0;
     #while {${gps_path_index} <= ${gps_path_size}} {
-        #math gps_run_accu ${gps_run_accu}+1;
-        #if {${gps_run_accu} > 15} {
-            #delay {0.5} {
-                gps.run;
-            };
-            #var is_break 1;
-            #break;
+        #if {"${gps.run.mode}" == "NORMAL"} {
+            #math gps_run_accu ${gps_run_accu}+1;
+            #if {${gps_run_accu} > 15} {
+                #delay {0.5} {
+                    gps.run;
+                };
+                #var is_break 1;
+                #break;
+            };            
         };
-        #list shortest_path get ${gps_path_index} gps_next_step;
+        #list gps_path get ${gps_path_index} gps_next_step;
         #math gps_path_index ${gps_path_index}+1;
         ${gps_next_step};
         #if {@startwith{${gps_next_step};gps} == 1} {
             #var is_break 1;
             #break;
         };
+        #elseif {"${gps.run.mode}" == "TRAVERSE"} {
+            gps.delay 0.5;
+            #var is_break 1;
+            #break;
+        };
     };
     #if {${gps_path_index} > ${gps_path_size} && ${is_break} == 0} {
+        #var gps.run.mode NORMAL;
         #delay {1} {
             #showme {GPS: 抵达目的地};        
         };
@@ -140,6 +150,7 @@ load gps_actions;
         gps_check_room_done;
     };
 };
+
 #alias {gps.insert_link} {
     #var target_room_no %1;
     #var direction %2;
@@ -155,6 +166,34 @@ load gps_actions;
             gps.check_link;
         };  
     };
+    gps.check_room {
+        gps_check_room_done;
+    };
+};
+
+#alias {gps.traverse} {
+    #var gps_traverse_target NULL;
+    #var gps_traverse_target %1;
+
+    #action {${gps_traverse_target}} {
+        #var gps_path_index @eval{${gps_path_size}+1};
+    };
+
+    #alias {gps_check_room_done} {
+        #if {${gps.roomno} == -1} {
+            #delay {1} {
+                #show {GPS: 当前房间未记录, 无法遍历};
+            };
+        };
+        #else {
+            INVOKE gps.traverse ${gps.roomno};
+            #var gps_path_index 1;
+            #list gps_path size gps_path_size;
+            #var gps.run.mode TRAVERSE;
+            gps.run;
+        };  
+    };
+
     gps.check_room {
         gps_check_room_done;
     };
