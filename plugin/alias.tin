@@ -672,9 +672,9 @@
     @setenv{wimpy;20};
     @setenv{hansz_new_mode;1};
     @setenv{gps.weight.clear;5};
-    @setenv{gps.weight.guohe;10};
+    @setenv{gps.weight.guohe;15};
     @setenv{gps.weight.delay;3};
-    @setenv{gps.weight.zuoche;30};
+    @setenv{gps.weight.zuoche;10};
 };
 
 #var get_san_count 50;
