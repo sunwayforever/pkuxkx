@@ -102,6 +102,7 @@
         #send {time};
         init_set;
         update_env;
+        gps.start;
         xmpp.start;
         show.init;
         check_baowei;
