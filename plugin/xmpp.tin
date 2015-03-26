@@ -16,9 +16,9 @@
         #run {xmpp} {./bin/xmpp.py ${char_id}};
         #unticker {%*};
         #action {xmpp message: %*:%*} {
-            #sunxm %%2;
+            #pkuxkx %%2;
         };
-        #sunxm;
+        #pkuxkx;
     };
 };
 

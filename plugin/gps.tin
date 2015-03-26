@@ -6,11 +6,11 @@ load gps_actions;
     #run {gps} {python3 -m bin.gps.gps};
     #unticker {%*};
     #action {/tmp/%*} {
-        #sunxm #read %%0;
+        #pkuxkx #read %%0;
         #system {rm %%0};
-        #sunxm #showme gps: get_path_done;
+        #pkuxkx #showme gps: get_path_done;
     };
-    #sunxm;
+    #pkuxkx;
 };
 
 #alias {gps.gt} {
