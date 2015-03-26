@@ -52,30 +52,43 @@ def shortest_path(conn, src, dst):
     dst_set = set([dst])
 
     while True:
-        sql = "update mud_entrance_weight set weight = weight - 1 where weight != 0 and roomno in (%s)" % (",".join([str(i) for i in src_set]))
-        conn.execute(sql)
-
+        updated = False
+        sql = "update mud_entrance_weight set weight = weight - 1 where weight > 0 and roomno in (%s)" % (",".join([str(i) for i in src_set]))
+        cursor = conn.execute(sql)
+        if cursor.rowcount > 0:
+            updated = True
+            
         sql = "select linkroomno, roomno from mud_entrance as A where A.roomno in (%s) and \
         ifnull((select weight from mud_entrance_weight as w where w.roomno = A.roomno and w.linkroomno = A.linkroomno),0) = 0"  % (",".join([str(i) for i in src_set]))
 
         rows = conn.execute(sql).fetchall()
+        orig_src_set = src_set
         if rows:
             src_set = src_set.union(set([r[0] for r in rows]))
-        else:
-            return []
 
-        sql = "update mud_entrance_weight set weight = weight - 1 where weight != 0 and linkroomno in (%s)" % (",".join([str(i) for i in dst_set]))
-        conn.execute(sql)
+        if (not updated and len(src_set.difference(orig_src_set)) != 0):
+            updated = True
+
+        sql = "update mud_entrance_weight set weight = weight - 1 where weight > 0 and linkroomno in (%s)" % (",".join([str(i) for i in dst_set]))
+        cursor = conn.execute(sql)
+        if not updated and cursor.rowcount > 0:
+            updated = True
 
         sql = "select roomno, linkroomno from mud_entrance as A where A.linkroomno in (%s) and \
         ifnull((select weight from mud_entrance_weight as w where w.roomno = A.roomno and w.linkroomno = A.linkroomno),0) = 0"  % (",".join([str(i) for i in dst_set]))
 
         rows = conn.execute(sql).fetchall()
+        orig_dst_set = dst_set
         if rows:
             dst_set = dst_set.union(set([r[0] for r in rows]))
-        else:
-            return []
 
+        if (not updated and len(dst_set.difference(orig_dst_set)) != 0):
+            updated = True
+
+        if not updated:
+            # not connected
+            return []
+        
         intersection = src_set.intersection(dst_set)
         if (intersection):
             if src in intersection and dst in intersection:
@@ -90,7 +103,11 @@ def shortest_path(conn, src, dst):
 
 def get_path(conn, from_room, to_room, weight):
     if not to_room.isdigit():
-        sql = "select roomno from mud_room where abbr = '%s' or roomname = '%s'" % (to_room, to_room)
+        tmp = to_room.split("@")
+        if (len(tmp) == 2):
+            sql = "select roomno from mud_room where roomname = '%s' and zone like '%%%s%%'" % (tmp[0], tmp[1])
+        else:
+            sql = "select roomno from mud_room where abbr = '%s' or roomname = '%s'" % (to_room, to_room)
         cursor = conn.execute(sql)
         row = cursor.fetchone()
         if row:
@@ -113,7 +130,9 @@ def get_path(conn, from_room, to_room, weight):
         conn.execute("insert into mud_entrance_weight select roomno, linkroomno, %d from mud_entrance where type = %d" % (w, i))
 
     tt = Tintin()
-    if (int(from_room) == dst_room):
+    if (dst_room == -1):
+        tt.write ("#list gps_path create {};\n")
+    elif (int(from_room) == dst_room):
         tt.write ("#list gps_path create {#cr};\n")
     else:
         paths = shortest_path(conn,int(from_room),dst_room)

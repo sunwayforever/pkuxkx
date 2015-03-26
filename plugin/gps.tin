@@ -38,7 +38,7 @@ load gps_actions;
         #list gps_path size gps_path_size;
         #if {${gps_path_size} == 0} {
             #delay {1} {
-                #show {GPS: 目标房间未记录, 无法行走};
+                #show {GPS: 目标房间不可达, 无法行走};
             };
         };
         #else {
@@ -87,6 +87,10 @@ load gps_actions;
 
 #alias {gps.get_path} {
     #nop 1. gps.clear 2. gps.guohe 3. gps.delay 4. gps.zuoche;
+    #nop weight > 0: there is a weight;
+    #nop weight = 0: there is no weight;
+    #nop weight < 0: the path is disabled;
+    
     #var weights @getenv{gps.weight.clear},@getenv{gps.weight.guohe},@getenv{gps.weight.delay},@getenv{gps.weight.zuoche};
     #gps %1:%2:${weights};
 };
