@@ -1,20 +1,6 @@
 #class gps open;
 load gps_actions;
 
-#var gps.run.mode NORMAL;
-
-#gag gps: get_path_done;
-#alias {gps.start} {
-    #run {gps} {python3 -m bin.gps.gps};
-    #unticker {%*};
-    #action {/tmp/%*} {
-        #pkuxkx #read %%0;
-        #system {rm %%0};
-        #pkuxkx #showme gps: get_path_done;
-    };
-    #pkuxkx;
-};
-
 #alias {gps.gt} {
     #alias {gps_check_room_done} {
         #if {${gps.roomno} == -1} {
@@ -26,24 +12,21 @@ load gps_actions;
             #format {epoch_from} {%T};
             #show {GPS: 正在寻路...};
             gps.get_path ${gps.roomno} %1;
-        };  
-    };
-    
-    #action {gps: get_path_done} {
-        #unaction {gps: get_path_done};
-        #format {epoch_to} {%T};
-        #show {GPS: 完成寻路, 耗时: @eval{$epoch_to-$epoch_from} 秒};
-        pause_screen;
-        #var gps_path_index 1;
-        #list gps_path size gps_path_size;
-        #if {${gps_path_size} == 0} {
-            #delay {1} {
-                #show {GPS: 目标房间不可达, 无法行走};
+            #format {epoch_to} {%T};
+            #show {GPS: 完成寻路, 耗时: @eval{$epoch_to-$epoch_from} 秒};
+            pause_screen;
+            #var gps_path_index 1;
+            #list gps_path size gps_path_size;
+            #if {${gps_path_size} == 0} {
+                #delay {1} {
+                    #show {GPS: 目标房间不可达, 无法行走};
+                };
             };
-        };
-        #else {
-            gps.run;
-        };        
+            #else {
+                #var gps.run.mode NORMAL;
+                gps.run;
+            };
+        };  
     };
     gps.check_room {
         gps_check_room_done;
@@ -82,7 +65,6 @@ load gps_actions;
         };
     };
     #if {${gps_path_index} > ${gps_path_size} && ${is_break} == 0} {
-        #var gps.run.mode NORMAL;
         #delay {1} {
             #showme {GPS: 抵达目的地};     
         };
@@ -96,7 +78,7 @@ load gps_actions;
     #nop weight < 0: the path is disabled;
     
     #var weights @getenv{gps.weight.clear},@getenv{gps.weight.guohe},@getenv{gps.weight.delay},@getenv{gps.weight.zuoche};
-    #gps %1:%2:${weights};
+    INVOKE gps.get_path %1 %2 ${weights};
 };
 
 #macro {\e[24~} {

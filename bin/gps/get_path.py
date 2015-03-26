@@ -144,11 +144,4 @@ def get_path(conn, from_room, to_room, weight):
 
 if __name__ == "__main__":
     conn = open_database()
-    while True:
-        try:
-            line = sys.stdin.readline()
-            args = line.split(":")
-            if len(args) == 3:
-                get_path(conn, args[0], args[1], args[2])
-        except Exception:
-            traceback.print_exc(file=open("/tmp/gpslog","w"))
+    get_path(conn, sys.argv[1], sys.argv[2], sys.argv[3])

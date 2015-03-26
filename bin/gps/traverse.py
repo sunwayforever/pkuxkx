@@ -6,7 +6,7 @@ import sys
 import traceback
 
 from .common import open_database
-from .gps import shortest_path_no_weight
+from .get_path import shortest_path_no_weight
 from ..tintin import Tintin
 
 def traverse(conn, roomno, location = None):
