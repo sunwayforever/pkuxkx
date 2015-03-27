@@ -72,12 +72,12 @@ load gps_actions;
 };
 
 #alias {gps.get_path} {
-    #nop 1. gps.clear 2. gps.guohe 3. gps.delay 4. gps.zuoche;
+    #nop 1. gps.clear 2. gps.guohe 3. gps.delay 4. gps.zuoche 5. gps.goto_bt
     #nop weight > 0: there is a weight;
     #nop weight = 0: there is no weight;
     #nop weight < 0: the path is disabled;
     
-    #var weights @getenv{gps.weight.clear},@getenv{gps.weight.guohe},@getenv{gps.weight.delay},@getenv{gps.weight.zuoche};
+    #var weights @getenv{gps.weight.clear},@getenv{gps.weight.guohe},@getenv{gps.weight.delay},@getenv{gps.weight.zuoche},@getenv{gps.weight.bt};
     INVOKE gps.get_path %1 %2 ${weights};
 };
 

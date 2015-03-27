@@ -79,6 +79,27 @@
     };
 };
 
+#alias {gps.goto_bt} {
+    ask qian about 白驼山;
+    give qian 1 gold;
+    
+    #class gps.goto_bt.inner open;
+    #ticker {tt} {
+        give qian 1 gold;
+    } {2};
+    
+    #action {你身上没有 gold 这样东西。} {
+        qu 1 gold;
+    };
+    
+    #action {你拿出一两黄金(Gold)给钱眼开。} {
+        #class gps.goto_bt.inner kill;
+        #delay {1} {
+            gps.run;
+        };
+    };
+    #class gps.goto_bt.inner close;
+};
 #alias {gps.enter_home} {
     enter ${char_id};
     gps.run;
