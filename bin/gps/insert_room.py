@@ -4,8 +4,8 @@ import os
 import sys
 from .common import open_database
 
-def insert_room (conn, zone, room, desc, exits):
-    sql = "insert into mud_room values (NULL, NULL, '%s', '%s', '%s', NULL, '%s', NULL, NULL)" % (room, desc, exits, zone)
+def insert_room (conn, room, desc, exits, zone):
+    sql = "insert into mud_room values (NULL, '%s', '%s', '%s', '%s', NULL, NULL)" % (room, desc, exits, zone)
     conn.execute(sql)
     conn.commit()
 

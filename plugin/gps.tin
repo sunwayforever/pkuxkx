@@ -71,96 +71,6 @@ load gps_actions;
     };
 };
 
-#alias {gps.get_path} {
-    #nop 1. gps.clear 2. gps.guohe 3. gps.delay 4. gps.zuoche 5. gps.goto_bt
-    #nop weight > 0: there is a weight;
-    #nop weight = 0: there is no weight;
-    #nop weight < 0: the path is disabled;
-    
-    #var weights @getenv{gps.weight.clear},@getenv{gps.weight.guohe},@getenv{gps.weight.delay},@getenv{gps.weight.zuoche},@getenv{gps.weight.bt};
-    INVOKE gps.get_path %1 %2 ${weights};
-};
-
-#macro {\e[24~} {
-    gps.check_link;
-};
-
-#nop operate db;
-#alias {gps.check_room} {
-    #alias tmp_check_room #cr;
-    #alias tmp_check_room %1;
-    #alias {get_pos_done} {
-        #if {@endwith{${pos.room};的甜蜜小屋} == 1} {
-            #var gps.roomno 3655;
-        };
-        #else {
-            INVOKE gps.check_room "${pos.area}" "${pos.room}" "${pos.desc}" "${pos.exits}";
-        };
-        tmp_check_room;
-    };
-    get_area {
-        get_pos {
-            get_pos_done;
-        };
-    };
-};
-
-#alias {gps.insert_room} {
-    #alias {gps_check_room_done} {
-        #if {${gps.roomno} == -1} {
-            INVOKE gps.insert_room "${pos.area}" "${pos.room}" "${pos.desc}" "${pos.exits}";
-            gps.check_room;
-        };
-        #else {
-            #delay {1} {
-                #show {GPS: 房间已记录, 无法再次记录};
-            };
-        };  
-    };
-    gps.check_room {
-        gps_check_room_done;
-    };
-};
-
-#alias {gps.check_link} {
-    #alias {gps_check_room_done} {
-        #delay {1} {
-            #show {GPS: ${pos.room}: ${gps.roomno}};
-        };
-        #if {${gps.roomno} == -1} {
-            #delay {1} {
-                #show {GPS: 房间未记录, 无法检查连接};
-            };
-        };
-        #else {
-            INVOKE gps.check_link ${gps.roomno};
-        };  
-    };
-    gps.check_room {
-        gps_check_room_done;
-    };
-};
-
-#alias {gps.insert_link} {
-    #var target_room_no %1;
-    #var direction %2;
-    #var reverse_direction %3;
-    #alias {gps_check_room_done} {
-        #if {${gps.roomno} == -1} {
-            #delay {1} {
-                #show {GPS: 房间未记录, 无法插入连接};
-            };
-        };
-        #else {
-            INVOKE gps.insert_link ${gps.roomno} ${target_room_no} "${direction}" "${reverse_direction}"
-            gps.check_link;
-        };  
-    };
-    gps.check_room {
-        gps_check_room_done;
-    };
-};
-
 #var gps_traverse_done 0;
 #alias {gps.traverse.continue} {
     #action {${gps_traverse_target}} {
@@ -211,6 +121,109 @@ load gps_actions;
         #unaction {${gps_traverse_target}};
     };
     
+    gps.check_room {
+        gps_check_room_done;
+    };
+};
+
+#alias {gps.get_path} {
+    #nop 1. gps.clear 2. gps.guohe 3. gps.delay 4. gps.zuoche 5. gps.goto_bt
+    #nop weight > 0: there is a weight;
+    #nop weight = 0: there is no weight;
+    #nop weight < 0: the path is disabled;
+    
+    #var weights @getenv{gps.weight.clear},@getenv{gps.weight.guohe},@getenv{gps.weight.delay},@getenv{gps.weight.zuoche},@getenv{gps.weight.bt};
+    INVOKE gps.get_path %1 %2 ${weights};
+};
+
+#nop operate db;
+
+#macro {\e[24~} {
+    gps.check_link;
+};
+
+#alias {gps.check_room} {
+    #alias tmp_check_room #cr;
+    #alias tmp_check_room %1;
+    #alias {get_pos_done} {
+        #if {@endwith{${pos.room};的甜蜜小屋} == 1} {
+            #var gps.roomno 3655;
+        };
+        #else {
+            INVOKE gps.check_room "${pos.area}" "${pos.room}" "${pos.desc}" "${pos.exits}";
+        };
+        tmp_check_room;
+    };
+    get_area {
+        get_pos {
+            get_pos_done;
+        };
+    };
+};
+
+#alias {gps.insert_room} {
+    #alias {gps_check_room_done} {
+        #if {${gps.roomno} == -1} {
+            INVOKE gps.insert_room "${pos.room}" "${pos.desc}" "${pos.exits}" "${pos.area}";
+            gps.check_room;
+        };
+        #else {
+            #delay {1} {
+                #show {GPS: 房间已记录, 无法再次记录};
+            };
+        };  
+    };
+    gps.check_room {
+        gps_check_room_done;
+    };
+};
+
+#alias {gps.update_room} {
+    #var roomno 0;
+    #var roomno %1;
+    #alias {gps_check_room_done} {
+        INVOKE gps.update_room ${roomno} "${pos.area}" "${pos.room}" "${pos.desc}" "${pos.exits}";
+        gps.check_link;
+    };
+    gps.check_room {
+        gps_check_room_done;
+    };
+};
+
+#alias {gps.check_link} {
+    #alias {gps_check_room_done} {
+        #delay {1} {
+            #show {GPS: ${pos.room}: ${gps.roomno}};
+        };
+        #if {${gps.roomno} == -1} {
+            #delay {1} {
+                #show {GPS: 房间未记录, 无法检查连接};
+            };
+        };
+        #else {
+            INVOKE gps.check_link ${gps.roomno};
+        };  
+    };
+    gps.check_room {
+        gps_check_room_done;
+    };
+};
+
+#alias {gps.insert_link} {
+    #var target_room_no %1;
+    #var direction %2;
+    #var reverse_direction %3;
+    #alias {gps_check_room_done} {
+        #if {${gps.roomno} == -1} {
+            #delay {1} {
+                #show {GPS: 房间未记录, 无法插入连接};
+            };
+        };
+        #else {
+            INVOKE gps.insert_link ${gps.roomno} ${target_room_no} "${direction}" "${reverse_direction}"
+            gps.check_link;
+        };  
+    };
     gps.check_room {
         gps_check_room_done;
     };
