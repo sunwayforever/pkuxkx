@@ -6,7 +6,7 @@ import traceback
 
 from .common import open_database
 from ..tintin import Tintin
-
+from ..util import logger
 
 def shortest_path_no_weight(conn, src, dst):
     if (src == dst):
@@ -106,6 +106,7 @@ def shortest_path(conn, src, dst):
                 return ret
 
 def get_path(conn, from_room, to_room, weight):
+    logger.debug("get_path: %s -> %s, weight: %s" % (from_room, to_room, weight))
     if not to_room.isdigit():
         tmp = to_room.split("@")
         if (len(tmp) == 2):
