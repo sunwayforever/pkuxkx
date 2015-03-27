@@ -147,9 +147,11 @@ load gps_actions;
         @getenv{gps.weight.long_delay};
     };
 
+    #var weights tmp;
     #foreach {${weights_list}[%*]} {i} {
         #var weights ${weights},${i}
     };
+    #replace weights {tmp,} {};
     INVOKE gps.get_path %1 %2 ${weights};
 };
 
