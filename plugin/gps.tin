@@ -84,9 +84,15 @@ load gps_actions;
     gps.run;
 };
 
+#alias {gps.traverse.stop} {
+    #unaction {${gps_traverse_target}};
+    #var gps_traverse_done 1;
+};
+
 #alias {gps.traverse} {
     #unvar gps_traverse_target;
     #unvar gps_traverse_location;
+    #var gps_traverse_done 0;
     #var tmp %1;
     #replace tmp {@} {;};
     #list tmp_list create ${tmp};
@@ -127,12 +133,23 @@ load gps_actions;
 };
 
 #alias {gps.get_path} {
-    #nop 1. gps.clear 2. gps.guohe 3. gps.delay 4. gps.zuoche 5. gps.goto_bt
+    #nop 1. gps.clear 2. gps.guohe 3. gps.delay 4. gps.zuoche 5. gps.goto_bt 6. gps.long_delay
     #nop weight > 0: there is a weight;
     #nop weight = 0: there is no weight;
     #nop weight < 0: the path is disabled;
-    
-    #var weights @getenv{gps.weight.clear},@getenv{gps.weight.guohe},@getenv{gps.weight.delay},@getenv{gps.weight.zuoche},@getenv{gps.weight.bt};
+
+    #list weights_list create {
+        @getenv{gps.weight.clear};
+        @getenv{gps.weight.guohe};
+        @getenv{gps.weight.delay};
+        @getenv{gps.weight.zuoche};
+        @getenv{gps.weight.bt};
+        @getenv{gps.weight.long_delay};
+    };
+
+    #foreach {${weights_list}[%*]} {i} {
+        #var weights ${weights},${i}
+    };
     INVOKE gps.get_path %1 %2 ${weights};
 };
 

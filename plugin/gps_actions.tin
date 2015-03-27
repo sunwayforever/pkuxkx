@@ -67,6 +67,10 @@
         #unaction {你沿着踏板走了上去};
         gps.run;
     };
+    #action {你朝船夫挥了挥手便跨上岸去} {
+        #unaction {你朝船夫挥了挥手便跨上岸去};
+        gps.run;
+    };
 };
 
 #alias {gps.zuoche} {

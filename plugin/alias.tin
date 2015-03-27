@@ -676,6 +676,7 @@
     set gps.weight.delay 5;
     set gps.weight.zuoche 50;
     set gps.weight.bt 100;
+    set gps.weight.long_delay 30;
 };
 
 #var get_san_count 50;
