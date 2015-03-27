@@ -65,9 +65,9 @@ load gps_actions;
         };
     };
     #if {${gps_path_index} > ${gps_path_size} && ${is_break} == 0} {
-        #delay {1} {
+        #delay {gps_delay} {
             #showme {GPS: 抵达目的地};     
-        };
+        } {1}
     };
 };
 

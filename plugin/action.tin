@@ -322,6 +322,7 @@
                     bl.walk;
                 };
                 #alias {gps.clear} {
+                    #nop %%%%1;
                     gps.run;
                 };
             };
