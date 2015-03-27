@@ -321,6 +321,9 @@
                     #nop %%%%1;
                     bl.walk;
                 };
+                #alias {gps.clear} {
+                    gps.run;
+                };
             };
         };
         on_echo {

@@ -1,5 +1,7 @@
 #class gps_actions open;
-#alias {gps.clear} {
+
+#alias gps.clear gps.force_clear;
+#alias {gps.force_clear} {
     clear %0;
     on_cleared {
         gps.run;
