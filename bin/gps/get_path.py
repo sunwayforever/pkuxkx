@@ -57,9 +57,9 @@ def shortest_path(conn, src, dst):
         cursor = conn.execute(sql)
         if cursor.rowcount > 0:
             updated = True
-            
-        sql = "select linkroomno, roomno from mud_entrance as A where A.roomno in (%s) and \
-        ifnull((select weight from mud_entrance_weight as w where w.roomno = A.roomno and w.linkroomno = A.linkroomno),0) = 0"  % (",".join([str(i) for i in src_set]))
+
+        sql = "select A.linkroomno, A.roomno from mud_entrance as A left join mud_entrance_weight as B on A.roomno = B.roomno and A.linkroomno = B.linkroomno \
+        where A.roomno in (%s) and ifnull(B.weight,0) = 0" % (",".join([str(i) for i in src_set]))
 
         rows = conn.execute(sql).fetchall()
         orig_src_set = src_set
@@ -76,8 +76,8 @@ def shortest_path(conn, src, dst):
         if not updated and cursor.rowcount > 0:
             updated = True
 
-        sql = "select roomno, linkroomno from mud_entrance as A where A.linkroomno in (%s) and \
-        ifnull((select weight from mud_entrance_weight as w where w.roomno = A.roomno and w.linkroomno = A.linkroomno),0) = 0"  % (",".join([str(i) for i in dst_set]))
+        sql = "select A.roomno, A.linkroomno from mud_entrance as A left join mud_entrance_weight as B on A.roomno = B.roomno and A.linkroomno = B.linkroomno \
+        where A.linkroomno in (%s) and ifnull(B.weight,0) = 0" % (",".join([str(i) for i in dst_set]))
 
         rows = conn.execute(sql).fetchall()
         orig_dst_set = dst_set
