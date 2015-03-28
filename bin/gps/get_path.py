@@ -45,6 +45,7 @@ def shortest_path_no_weight(conn, src, dst):
                 return ret
 
 def shortest_path(conn, src, dst):
+    logger.info ("%s -> %s" %(src,dst))
     if (src == dst):
         return []
 
@@ -65,8 +66,6 @@ def shortest_path(conn, src, dst):
         orig_src_set = src_set
         if rows:
             src_set = src_set.union(set([r[0] for r in rows]))
-        else:
-            return []
         
         if (not updated and len(src_set.difference(orig_src_set)) != 0):
             updated = True
@@ -83,8 +82,6 @@ def shortest_path(conn, src, dst):
         orig_dst_set = dst_set
         if rows:
             dst_set = dst_set.union(set([r[0] for r in rows]))
-        else:
-            return []
         
         if (not updated and len(dst_set.difference(orig_dst_set)) != 0):
             updated = True
