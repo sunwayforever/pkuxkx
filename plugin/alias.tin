@@ -1152,7 +1152,9 @@
     } {1};
 
     #action {你可以看看(look):} {
-        #cr;
+        #delay {look_delay} {
+            get_exits_done;
+        } {1};
     } {6};
     
     #action {    「%*」: %*} {
@@ -1205,6 +1207,7 @@
         #var pos.desc ${description};
         #var pos.exits ${exits_list};
         #class record.inner kill;
+        #undelay {look_delay};
         tmp_get_pos;
     };
 
@@ -1216,7 +1219,7 @@
 
     #ticker {ticker_get_position_look} {
         l;
-    } {1.5};
+    } {2};
     #class record.inner close;
     l;
 };

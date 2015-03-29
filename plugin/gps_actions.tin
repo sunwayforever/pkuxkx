@@ -108,4 +108,38 @@
     enter ${char_id};
     gps.run;
 };
+
+#alias {gps.guo_qiao} {
+    #action {你终于一步步的终于挨到了桥头.} {
+        #unaction {你终于一步步的终于挨到了桥头.};
+        gps.run;
+    };
+    guo qiao;
+};
+
+#alias {gps.wuliang} {
+    climb cliff;
+    #action {^崖间古松} {
+        #unaction {^崖间古松};
+        climb yafeng;
+        gps.run;
+    };
+};
+
+#alias {gps.tiesuo} {
+    zou tiesuo;
+    #action {你终于来到了对面，心里的石头终于落地。} {
+        #unaction {你终于来到了对面，心里的石头终于落地。};
+        gps.run;
+    };
+};
+
+#alias {gps.row} {
+    row %1;
+    #action {不知过了多久，船终于靠岸了，你累得满头大汗。} {
+        #unaction {不知过了多久，船终于靠岸了，你累得满头大汗。};
+        gps.run;
+    };
+};
+
 #class gps_actions close;
