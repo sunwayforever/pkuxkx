@@ -142,4 +142,20 @@
     };
 };
 
+#alias {gps.tdf} {
+    #class gps.tdf.inner open;
+    #action {这里的花丛（huacong）比别的地方} {
+        #class gps.tdf.inner kill;
+        on_unbusy {
+            e;
+            gps.run;            
+        };
+    } {8};
+
+    #action {心里有种不祥的预感} {
+
+    } {9};
+    #class gps.tdf.inner close;    
+    le;
+};
 #class gps_actions close;
