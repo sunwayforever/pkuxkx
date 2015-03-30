@@ -142,20 +142,76 @@
     };
 };
 
-#alias {gps.tdf} {
-    #class gps.tdf.inner open;
-    #action {这里的花丛（huacong）比别的地方} {
-        #class gps.tdf.inner kill;
-        on_unbusy {
-            e;
-            gps.run;            
-        };
-    } {8};
+#alias {gps.busy} {
+    on_unbusy {
+        gps.run;
+    };
+};
 
-    #action {心里有种不祥的预感} {
+#alias {gps.maze.tdf} {
+    #var current_direction west;
+    #alias {do_look} {
+        #class gps.tdf.inner open;
+        #var look_count 0;
+        #action {这里的花丛（huacong）比别的地方} {
+            #class gps.tdf.inner kill;
+            on_unbusy {
+                ${current_direction};
+                gps.run;            
+            };
+        } {8};
+        
+        #action {这里看起来似乎和其他地方不太一样} {
+            #var look_count ${look_count}+1;
+            #var current_direction @opposite{${current_direction}};
+            look ${current_direction};
+        } {8};
+        
+        #action {心里有种不祥的预感} {
+            #var look_count ${look_count}+1;
+            #if {${look_count} >= 2} {
+                #class gps.tdf.inner kill;
+                ${current_direction};
+                #delay {1} {
+                    do_look;
+                };
+            };
+            #else {
+                #var current_direction @opposite{${current_direction}};
+                look ${current_direction};
+            };
+        } {9};
+        #class gps.tdf.inner close;
+        
+        look ${current_direction};
+    };
+    
+    do_look;
+};
 
-    } {9};
-    #class gps.tdf.inner close;    
-    le;
+#alias {gps.maze.yunhai} {
+    #class gps.maze.yunhai.inner open;
+    #action {^云海出口} {
+        #class gps.maze.yunhai.inner kill;
+        gps.run;
+    };
+    #ticker {yunhai.ticker} {
+        n;w;e;s;e;e;n;
+    } {1.5};
+    #class gps.maze.yunhai.inner close;
+    n;w;e;s;e;e;n;
+};
+
+#alias {gps.maze.yunhaib} {
+    #class gps.maze.yunhai.inner open;
+    #action {^云海入口} {
+        #class gps.maze.yunhai.inner kill;
+        gps.run;
+    };
+    #ticker {yunhai.ticker} {
+        e;s;
+    } {0.5};
+    #class gps.maze.yunhai.inner close;
+    s;e;s;
 };
 #class gps_actions close;

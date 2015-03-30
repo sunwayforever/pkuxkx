@@ -107,18 +107,13 @@
     };
     #action {你从江来福那里买下了%*酥油茶} {
         #class get.fan.inner kill;
-        e;s;
-        gt ${orig_here};
-        on_there {
-            #if {"%1" != ""} {
-                %1;
-            };
+        #if {"%1" != ""} {
+            %1;
         };
     };
     #class get.fan.inner close;
-    gt zp;
+    gps.gt 来福杂货;
     on_there {
-        n;w;
         buy tea 30;
     };
 };
@@ -671,9 +666,9 @@
     set skip_combat 2;
     set wimpy 20;
     set hansz_new_mode 1;
-    set gps.weight.clear 10;
+    set gps.weight.clear 50;
     set gps.weight.guohe 100;
-    set gps.weight.delay 5;
+    set gps.weight.delay 10;
     set gps.weight.zuoche 50;
     set gps.weight.bt 100;
     set gps.weight.long_delay 30;
@@ -1200,6 +1195,12 @@
         get_exits_done;
     } {7};
 
+    #nop max 7 exits;
+    #action {这里明显的出口是 %w、%w、%w、%w、%w、%w、%w} {
+        #var exits_list {%%1;%%2;%%3;%%4;%%5;%%6;%%7;};
+        get_exits_done;
+    } {7};
+
     #alias {get_exits_done} {
         #var pos.room ${current_room};
         #replace {description} { } {};
@@ -1234,9 +1235,14 @@
         #var pos.area {};
         tmp_get_area;  
     };
-    #action {【%*地图%*】} {
+    #action {【%*地图】} {
         #class record.inner kill;
         #var pos.area %%1;
+        tmp_get_area;
+    };
+    #action {【%*地图－%*】} {
+        #class record.inner kill;
+        #var pos.area %%1%%2;
         tmp_get_area;
     };
     #class record.inner close;
