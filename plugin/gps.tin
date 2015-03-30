@@ -12,7 +12,7 @@ load gps_actions;
         };
         #else {
             #format {epoch_from} {%T};
-            #show {GPS: 正在寻路...};
+            #show {GPS: 正在寻路: %1};
             gps.get_path ${gps.roomno} %1;
             #format {epoch_to} {%T};
             #show {GPS: 完成寻路, 耗时: @eval{$epoch_to-$epoch_from} 秒};
