@@ -117,4 +117,19 @@
         #math tmp ${tmp}+1;
     };
 };
+
+#function {numitems} {#list %1 size result};
+#function {ismember} {#list %2 find %1 result};
+#function {item} {#list %1 get %2 result};
+#function {eval} {#math result {%1}};
+#function {lower} {#format result {%l} {%1}};
+#function {capital} {#format result {%n} {%1}};
+#function {len} {#format result {%L} {%1}};
+#function {trim} {#format result {%p} {%1}};
+#function {screenw} {#format result {%C}};
+#function {screenh} {#format result {%R}};
+#function {replace} {#var result %1;#replace result {%2} {%3}};
+#function {ctd} {
+    #math result {@replace{@replace{{0+@replace{@replace{@replace{@replace{@replace{@replace{@replace{@replace{@replace{@replace{@replace{@replace{@replace{@replace{%1;{零};{*0+}};{十};{*10+}};{百};{*100+}};{千};{*1000+}};{万};{*10000+}};{六};{6}};{一};{1}};{二};{2}};{三};{3}};{四};{4}};{五};{5}};{七};{7}};{八};{8}};{九};{9}}+0};{++};{+}};{+*};{+}}}
+};
 #class util close

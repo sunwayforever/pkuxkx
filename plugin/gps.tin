@@ -1,6 +1,8 @@
 #class gps open;
 load gps_actions;
 
+#alias gt gps.gt;
+
 #alias {gps.gt} {
     #alias {gps_check_room_done} {
         #if {${gps.roomno} == -1} {

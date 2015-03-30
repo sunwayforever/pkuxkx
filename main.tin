@@ -4,7 +4,7 @@
 #debug variable off
 
 #read pathdir.tin
-#read xiaoyao.tin
+#nop #read xiaoyao.tin;
 
 #read plugin/util.tin
 #read plugin/action.tin
