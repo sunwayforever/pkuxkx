@@ -71,17 +71,8 @@ load hubiao_score;
     #else {
         #if {${hb_path_index} > ${hb_path_size}} {
             #delay {hb_move} {
-                #if {"@getenv{hb_state}" == "STARTED"} {
-                    @setenv{hb_state;TRAVERSE}
-                    hb.traverse;
-                };
-                #else {
-                    hb.pause;
-                    show_to_info 到达;
-                    notify.alert escort arrived;
-                    xmpp.notify 到达, 没找到收货人;
-                    pp;
-                };
+                @setenv{hb_state;TRAVERSE};
+                hb.resume;
             } {3};
         };
         #else {
@@ -592,14 +583,14 @@ load hubiao_score;
 #alias {hb.resume} {
     #var hb_state @getenv{hb_state};
     #if {"${hb_state}" == "STARTED"} {
-        hb.get_path_and_run;
+        hb.goto_dest_area;
     };
     #elseif {"${hb_state}" == "TRAVERSE"} {
         hb.traverse;
     };
 };
 
-#alias {hb.get_path_and_run} {
+#alias {hb.goto_dest_area} {
     #var hb_paused 0;
     #alias {gps_check_room_done} {
         #if {${gps.roomno} == -1} {
