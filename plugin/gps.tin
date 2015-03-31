@@ -36,22 +36,11 @@ load gps_actions;
 };
 
 #alias {gps.run} {
-    #var gps_run_accu 0;
     #var is_break 0;
     #while {${gps_path_index} <= ${gps_path_size}} {
         #if {"${gps.run.mode}" == "TRAVERSE" && ${gps_traverse_done} == 1} {
             #var is_break 1;
             #break;
-        };
-        #if {"${gps.run.mode}" == "NORMAL"} {
-            #math gps_run_accu ${gps_run_accu}+1;
-            #if {${gps_run_accu} > 15} {
-                #delay {0.5} {
-                    gps.run;
-                };
-                #var is_break 1;
-                #break;
-            };            
         };
         #list gps_path get ${gps_path_index} gps_next_step;
         #math gps_path_index ${gps_path_index}+1;

@@ -10,6 +10,7 @@
 @mapset{robber_score;huashan;2};
 
 #function {getesc_get_score} {
+    #var hb_owner @getenv{hb_owner};
     #if {"${hb_owner}" == "zhang"} {
         #if {"%1" == "全真天尊讲经堂"} {
             #if {"${xy_info}" == "on"} {
@@ -78,6 +79,9 @@
             #return -1;
         };
         #elseif {"%1" == "泉州当铺"} {
+            #return 1;
+        };
+        #elseif {"%1" == "牙山小荒地"} {
             #return 1;
         };
         #elseif {"%1" == "苏州聚宝斋"} {
@@ -231,7 +235,7 @@
         };
     };
     #else {
-        show_to_info unknown hb_owenr;
+        show_to_info unknown hb_owner;
         #return -1;
     };
 };

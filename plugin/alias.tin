@@ -350,8 +350,8 @@
 
 
 #alias {autopp} {
-    #var tmp_auto_pp #cr;
-    #var tmp_auto_pp %1;
+    #alias tmp_auto_pp #cr;
+    #alias tmp_auto_pp %1;
     #if {"${pp_target}" != ""} {
         helpme ...;
         helpme find ${pp_target};
@@ -361,11 +361,11 @@
         } {15};
 
         #class pp.inner open;
-        #action {告诉你：【%*】目前在【%*】,快去摁死它吧!} {
+        #action {告诉你：【%*(%*)】目前在【%*】,快去摁死它吧!} {
             #class pp.inner kill;
             #unticker {pp};
-            show_to_pp %%1 @ %%2;
-            tmp_auto_pp %%1@%%2;
+            show_to_pp %%1(%%2) @ %%3;
+            tmp_auto_pp %%3;
         } {1};
         #action {告诉你：【%*】并不存在} {
             #class pp.inner kill;

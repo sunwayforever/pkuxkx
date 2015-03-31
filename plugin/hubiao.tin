@@ -1,12 +1,13 @@
 #class hubiao open
-load hubiao_data;
+load hubiao_score;
 
 #var hb_auto 0;
-#var hb_rotate 1;
+#var hb_rotate 0;
 #var hb_dest nil;
 
 #var getesc_current_score 0;
 #var getesc_current_id 0;
+
 #var hb_first_kill 0;
 #var hb_paused 0;
 #var hb_info nil;
@@ -22,7 +23,7 @@ load hubiao_data;
     #unticker {hb_ticker};
 };
 
-#alais {hb.traverse} {
+#alias {hb.traverse} {
     #alias {auto_pp_done} {
         #var gps_traverse_location %1;
         #alias {gps_check_room_done} {
@@ -32,6 +33,7 @@ load hubiao_data;
                 };
             };
             #else {
+                show_to_info hb.traverse ${gps_traverse_location};
                 INVOKE gps.traverse ${gps.roomno} ${gps_traverse_location};
                 #var hb_path ${gps_path};
                 #var hb_path_index 1;
@@ -42,12 +44,8 @@ load hubiao_data;
         gps.check_room {
             gps_check_room_done;
         };
-        INVOKE gps.traverse ${gps.roomno} ${gps_traverse_location};
-        #var gps_path_index 1;
-        #list gps_path size gps_path_size;
     };
 
-    
     autopp {
         auto_pp_done;
     };
@@ -74,7 +72,7 @@ load hubiao_data;
         #if {${hb_path_index} > ${hb_path_size}} {
             #delay {hb_move} {
                 #if {"@getenv{hb_state}" == "STARTED"} {
-                    @setenv{hb_state;TRAVERSED}
+                    @setenv{hb_state;TRAVERSE}
                     hb.traverse;
                 };
                 #else {
@@ -82,7 +80,7 @@ load hubiao_data;
                     show_to_info 到达;
                     notify.alert escort arrived;
                     xmpp.notify 到达, 没找到收货人;
-                    pp;                    
+                    pp;
                 };
             } {3};
         };
@@ -108,36 +106,44 @@ load hubiao_data;
     #class hb_setup_inner open;
 
     #alias {hb.guohe} {
-        #action {^%*接过你递给的船资} {
-            #class guohe.inner open;
-            #ticker {sw/yell_boat} {
-                yell boat;
-            } {5};
-            #action {正等着你呢，上来吧。} {
-                genter;
-            };
-            #action {艄公将一块踏脚板搭上堤岸，} {
-                genter;
-            };
-            #alias {shangchuan} {
-                #unticker {sw/yell_boat};
-                #action {所有人被赶下了渡船} {
-                    #unaction {所有人被赶下了渡船};
-                    #class guohe.inner kill;
-                    #math hb_path_index ${hb_path_index}+1;
-                    hb.run;
-                };
-            };
-            #action {^黄河渡船$} {
-                shangchuan;
-            };
-            #action {^长江渡船$} {
-                shangchuan;
-            };
-            #class guohe.inner close;
+        #class guohe.inner open;
+        #ticker {sw/yell_boat} {
+            yell boat;
+        } {5};
+        #action {正等着你呢，上来吧。} {
+            gan che to enter;
         };
-        #var hb_paused 1;
-        ask shao gong about %1;
+        #action {艄公将一块踏脚板搭上堤岸，} {
+            gan che to enter;
+        };
+        #alias {shangchuan} {
+            #unticker {sw/yell_boat};
+            #action {所有人被赶下了渡船} {
+                #unaction {所有人被赶下了渡船};
+                #class guohe.inner kill;
+                #math hb_path_index ${hb_path_index}+1;
+                #var hb_paused 0;
+                hb.run;
+            };
+        };
+        #action {^黄河渡船$} {
+            shangchuan;
+        };
+        #action {^长江渡船$} {
+            shangchuan;
+        };
+        #class guohe.inner close;
+
+        hb.pause;
+        ask shao gong about huanghe;
+        ask shao gong about jiang;
+    };
+    #alias {hb.delay} {
+        #var gps_delay 1.5;
+        #var gps_delay %1;
+        #delay {${gps_delay}} {
+            hb.run;
+        };
     };
     #alias {hb.clear} {
         #var tmp_blocker %1;
@@ -154,7 +160,25 @@ load hubiao_data;
         hb.pause;
         killall ${tmp_blocker};
     };
-    
+
+    #action {看来该找机会逃跑了} {
+        hb.pause;
+        show_to_tuiche 丢镖;
+        xmpp.notify 丢镖;
+    };
+
+    #action {^慢慢地你终于又有了知觉....} {
+        show_to_tuiche 挂了;
+        notify.alert 挂了;
+        xmpp.notify 挂了;
+        hb.teardown;
+        hb.b;
+    };
+
+    #action {^你的眼前一黑，接著什么也不知道了} {
+        hb.pause;
+    };
+
     #action {你想杀谁？} {
         hb.retry;
     };
@@ -175,6 +199,7 @@ load hubiao_data;
     #action {镖车呼啦一声散了架} {
         hb.pause;
         show_to_tuiche 镖车呼啦一声散了架;
+        hb.b;
     };
 
     #action {busy_for_move} {
@@ -198,8 +223,7 @@ load hubiao_data;
     #action {^这个方向} {
         #if {${hb_paused} == 0} {
             hb.pause;
-            show_to_info 路径出错;
-            xmpp.notify 路径出错;
+            hb.resume;
         };
     };
 
@@ -207,7 +231,7 @@ load hubiao_data;
         hb.pause;
         @setenv{mixin_lunci;6};
         #delay {hb_delay} {
-            hb.get_path_and_run;
+            hb.resume;
         } {3};
     };
 
@@ -266,8 +290,8 @@ load hubiao_data;
 
 #alias {hb.get_owner} {
     #alias {get_pos_done} {
-        #if {"${pos.room}" = "昌隆镖局"} {
-            #var hb_owner zuo;
+        #if {"${pos.room}" == "昌隆镖局"} {
+            @setenv{hb_owner;zuo;}
         }
     };
     get_pos {
@@ -276,9 +300,8 @@ load hubiao_data;
 };
 
 #alias {hb.d} {
-    hb.get_owner;
     #if {"@getenv{hb_state}" == "GOT_CAIWU"} {
-        give cai wu to ${hb_owner};
+        give cai wu to @getenv{hb_owner};
     };
     #else {
         #if {@getenv{hb_lunci} == @getenv{mixin_lunci}} {
@@ -288,13 +311,12 @@ load hubiao_data;
             play alert.wav;
         };
         #else {
-            ask ${hb_owner} about finish;
+            ask @getenv{hb_owner} about finish;
         };
     };
 };
 
 #alias {hb.q} {
-    hb.get_owner;
     #if {"%1" != ""} {
         getesc %1;
     };
@@ -310,11 +332,11 @@ load hubiao_data;
     @setenv{hb_state;NIL};
     @setenv{mixin_lunci;6};
     hb.teardown;
-    hb.get_owner;
-    ask ${hb_owner} about fail;
+    ask @getenv{hb_owner} about fail;
 };
 
 #alias {hb.b} {
+    #var hb_owner @getenv{hb_owner};
     #if {"${hb_owner}" == "zuo"} {
         gt zuo;
     };
@@ -327,7 +349,7 @@ load hubiao_data;
     #elseif {"${hb_owner}" == "wang"} {
         gt tf;
     };
-   #elseif {"${hb_owner}" == "chu"} {
+    #elseif {"${hb_owner}" == "chu"} {
         gt fh;
     };
 
@@ -389,28 +411,6 @@ load hubiao_data;
         got_gem;
     };
 
-    #action {看来该找机会逃跑了} {
-        hb.pause;
-        show_to_tuiche 丢镖;
-        xmpp.notify 丢镖;
-    };
-
-    #action {^慢慢地你终于又有了知觉....} {
-        show_to_tuiche 挂了;
-        notify.alert 挂了;
-        xmpp.notify 挂了;
-        hb.teardown;
-        hb.b;
-    };
-
-    #action {^你的眼前一黑，接著什么也不知道了} {
-        hb.pause;
-    };
-
-    #action {使用命令【getesc 任务序号】来认领押镖任务。} {
-        #buffer lock;
-    };
-
     #action {%d%s%S%s%S%s待认领} {
         #var getesc_id %%1;
         #var getesc_address %%3;
@@ -467,14 +467,14 @@ load hubiao_data;
     #action {${char_name}把这批红货送到%*他已经派了个伙计名叫%*到%*附近接你} {
         @setenv{hb_state;STARTED};
         @setenv{hb_lunci;@eval{@getenv{hb_lunci}+1}};
-        #var hb_dest %%1;
-        #var hb_info ${tmp}|%%2|%%3;
+        INVOKE gps.get_area %%1;
+        #var hb_dest ${gps.area}%%3;
+        #var hb_info %%2|${hb_dest};
         show_to_tuiche ${hb_info};
         pp %%2;
-        notify escort start;
 
         hb.setup;
-        hb.get_path_and_run;
+        hb.resume;
     } {1};
 
     #action {递给你一封密信} {
@@ -489,6 +489,8 @@ load hubiao_data;
 
     @declarenv{hb_state;NIL};
     @declarenv{mixin_lunci;6};
+
+    hb.get_owner;
 
     #if {"@getenv{hb_state}" == "GOT_CAIWU"} {
         show_to_info 交财物先;
@@ -519,8 +521,7 @@ load hubiao_data;
 };
 
 #alias {mx.re} {
-    hb.get_owner;
-    give mixin to ${hb_owner};
+    give mixin to @getenv{hb_owner};
     mx.o;
 };
 
@@ -553,8 +554,7 @@ load hubiao_data;
 };
 
 #alias {mx.d} {
-    hb.get_owner;
-    give cai wu to ${hb_owner};
+    give cai wu to @getenv{hb_owner};
     #class mx.inner kill;
 };
 
@@ -589,7 +589,18 @@ load hubiao_data;
     };
 };
 
+#alias {hb.resume} {
+    #var hb_state @getenv{hb_state};
+    #if {"${hb_state}" == "STARTED"} {
+        hb.get_path_and_run;
+    };
+    #elseif {"${hb_state}" == "TRAVERSE"} {
+        hb.traverse;
+    };
+};
+
 #alias {hb.get_path_and_run} {
+    #var hb_paused 0;
     #alias {gps_check_room_done} {
         #if {${gps.roomno} == -1} {
             #delay {1} {
@@ -597,7 +608,9 @@ load hubiao_data;
             };
         };
         #else {
-            INVOKE gps.get_path ${gps.roomno} ${hb_dest} "1,1,1,-1,-1,1";
+            #var gps.from_roomno ${gps.roomno};
+            INVOKE gps.check_room ${hb_dest};
+            INVOKE gps.get_path ${gps.from_roomno} ${gps.roomno} "1,1,1,-1,-1,1";
             #var hb_path ${gps_path};
             #var hb_path_index 1;
             #list hb_path size hb_path_size;
@@ -614,7 +627,7 @@ load hubiao_data;
     gps.check_room {
         gps_check_room_done;
     };
-}
+};
 
 #alias {hb.detect_enemy} {
     #class detect_enemy.inner open;
