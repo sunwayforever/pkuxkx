@@ -33,11 +33,11 @@ load hubiao_score;
                 };
             };
             #else {
-                show_to_info hb.traverse ${gps_traverse_location};
                 INVOKE gps.traverse ${gps.roomno} ${gps_traverse_location};
                 #var hb_path ${gps_path};
                 #var hb_path_index 1;
                 #list hb_path size hb_path_size;
+                #var hb_paused 0;
                 hb.run;
             };  
         };
@@ -253,7 +253,12 @@ load hubiao_score;
         notify escort done;
         hb.teardown;
         on_truce {
-            hb.b;
+            #if {@getenv{hb_lunci} == @getenv{mixin_lunci}} {
+                chain on_sell get.qian get.san repair special_repair gem.combine hb.b;
+            };
+            #else {
+                hb.b;
+            };
         };
     } {1};
 
