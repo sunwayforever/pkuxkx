@@ -25,7 +25,7 @@ load hubiao_score;
 
 #alias {hb.traverse} {
     #alias {auto_pp_done} {
-        #var gps_traverse_location %1;
+        #var gps_traverse_location %%1;
         #alias {gps_check_room_done} {
             #if {${gps.roomno} == -1} {
                 #delay {1} {
