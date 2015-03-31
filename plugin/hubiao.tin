@@ -1,9 +1,9 @@
 #class hubiao open
 load hubiao_data;
-load chaos;
 
 #var hb_auto 0;
 #var hb_rotate 1;
+#var hb_dest nil;
 
 #var getesc_current_score 0;
 #var getesc_current_id 0;
@@ -19,76 +19,71 @@ load chaos;
     #var hb_robber_count 0;
     #class hb_setup_inner kill;
     #class clear_npc.inner kill;
-    #unticker {kill_npc};
-    #alias ge {\east};
-    #alias genter {\enter};
-    #alias geu {\eastup};
-    #alias gn {\north};
-    #alias gne {\northeast};
-    #alias gnu {\northup};
-    #alias gnw {\northwest};
-    #alias gout {\out};
-    #alias gs {\south};
-    #alias gse {\southeast};
-    #alias gsu {\southup};
-    #alias gsw {\southwest};
-    #alias gw {\west};
-    #alias gwu {\westup};
-    #alias ged {\eastdown};
-    #alias gnd {\northdown};
-    #alias gwd {\westdown};
-    #alias gsd {\southdown};
-    #alias gd {\down};
-    #alias gu {\up};
     #unticker {hb_ticker};
 };
 
-#alias {hb.move2} {
-    #if {@iscomment{${hb_next_step}} == 1} {
-        #math hb_path_index ${hb_path_index}+1;
-        #list hb_path get ${hb_path_index} hb_next_step;
-        hb.move2;
-    };
-    #elseif {${hb_path_index} > ${hb_path_size}} {
-        #unaction {^    这里%*出口};
-        hb.pause;
-        #delay {5} {
-            #if {@getenv{hb_lunci} == @getenv{mixin_lunci}} {
-                chain on_sell get.qian get.san repair special_repair gem.combine hb.b;
+#alais {hb.traverse} {
+    #alias {auto_pp_done} {
+        #var gps_traverse_location %1;
+        #alias {gps_check_room_done} {
+            #if {${gps.roomno} == -1} {
+                #delay {1} {
+                    #show {GPS: 当前房间未记录, 无法遍历};
+                };
             };
             #else {
-                hb.b;
-            };
+                INVOKE gps.traverse ${gps.roomno} ${gps_traverse_location};
+                #var hb_path ${gps_path};
+                #var hb_path_index 1;
+                #list hb_path size hb_path_size;
+                hb.run;
+            };  
         };
+        gps.check_room {
+            gps_check_room_done;
+        };
+        INVOKE gps.traverse ${gps.roomno} ${gps_traverse_location};
+        #var gps_path_index 1;
+        #list gps_path size gps_path_size;
     };
-    #else {
-        ${hb_next_step};
+
+    
+    autopp {
+        auto_pp_done;
     };
 };
 
-#alias {hb.move} {
-    #if {@iscomment{${hb_next_step}} == 1} {
-        #math hb_path_index ${hb_path_index}+1;
-        #list hb_path get ${hb_path_index} hb_next_step;
-        hb.move;
+#alias {hb.run} {
+    #list hb_path get ${hb_path_index} hb_next_step;
+    #if {@startwith{${hb_next_step};gps}} {
+        #replace {hb_next_step} {gps} {hb};
     };
-    #elseif {${qx_percent} < 50 || ${js_percent} < 50 || ${nl_percent} < 20} {
+    #else {
+        #var hb_next_step gan che to ${hb_next_step};
+    };
+    #if {${qx_percent} < 50 || ${js_percent} < 50 || ${nl_percent} < 20} {
         #delay {hb_move} {
             show_to_info 气血或精神过低,推车暂停;
             notify escort paused;
             on_truce {
-                on_health {hb.move};
+                on_health {hb.run};
             };
         } {3};
     };
     #else {
         #if {${hb_path_index} > ${hb_path_size}} {
             #delay {hb_move} {
-                hb.pause;
-                show_to_info 到达;
-                notify.alert escort arrived;
-                xmpp.notify 到达, 没找到收货人;
-                pp;
+                #if {"@getenv{hb_state}" == "STARTED"} {
+                    @setenv{hb_state;TRAVERSED}
+                    hb.traverse;
+                };
+                #else {
+                    hb.pause;
+                    show_to_info 到达;
+                    notify.alert escort arrived;
+                    xmpp.notify 到达, 没找到收货人;
+                    pp;                    
+                };
             } {3};
         };
         #else {
@@ -110,8 +105,56 @@ load chaos;
 #var hb_retry_count 0;
 #alias {hb.setup} {
     #var quest hb;
-    #unaction {^    这里%*出口};
     #class hb_setup_inner open;
+
+    #alias {hb.guohe} {
+        #action {^%*接过你递给的船资} {
+            #class guohe.inner open;
+            #ticker {sw/yell_boat} {
+                yell boat;
+            } {5};
+            #action {正等着你呢，上来吧。} {
+                genter;
+            };
+            #action {艄公将一块踏脚板搭上堤岸，} {
+                genter;
+            };
+            #alias {shangchuan} {
+                #unticker {sw/yell_boat};
+                #action {所有人被赶下了渡船} {
+                    #unaction {所有人被赶下了渡船};
+                    #class guohe.inner kill;
+                    #math hb_path_index ${hb_path_index}+1;
+                    hb.run;
+                };
+            };
+            #action {^黄河渡船$} {
+                shangchuan;
+            };
+            #action {^长江渡船$} {
+                shangchuan;
+            };
+            #class guohe.inner close;
+        };
+        #var hb_paused 1;
+        ask shao gong about %1;
+    };
+    #alias {hb.clear} {
+        #var tmp_blocker %1;
+        #class clear_blocker.inner open;
+        #action {你想杀谁} {
+            #class clear_blocker.inner kill;
+            #math hb_path_index ${hb_path_index}+1;
+            hb.run;
+        };
+        #ticker {tmp_blocker_ticker_kill} {
+            killall ${tmp_blocker};
+        } {5};
+        #class clear_blocker.inner close;
+        hb.pause;
+        killall ${tmp_blocker};
+    };
+    
     #action {你想杀谁？} {
         hb.retry;
     };
@@ -122,7 +165,7 @@ load chaos;
     
     #action {你还是先把对手解决了再说吧} {
         #math hb_retry_count ${hb_retry_count}+1;
-        #if {${hb_retry_count} > 6} {
+        #if {${hb_retry_count} > 3} {
             #var hb_retry_count 0;
             killall;
         };
@@ -134,10 +177,6 @@ load chaos;
         show_to_tuiche 镖车呼啦一声散了架;
     };
 
-    #action {chaos.remember: done} {
-        hb.move;
-    };
-
     #action {busy_for_move} {
         hb.retry;
     };
@@ -146,13 +185,7 @@ load chaos;
         #var hb_retry_count 0;
         #if {${hb_paused} == 0} {
             #math hb_path_index ${hb_path_index}+1;
-            #list hb_path get ${hb_path_index} hb_next_step;
-            #if {@getenv{mixin_lunci} == 5} {
-                hb.move;
-            };
-            #else {
-                chaos.remember;
-            };
+            hb.run;
         };
     };
 
@@ -167,9 +200,6 @@ load chaos;
             hb.pause;
             show_to_info 路径出错;
             xmpp.notify 路径出错;
-            #alias {hb.recover} {
-                #cr;
-            };
         };
     };
 
@@ -177,7 +207,7 @@ load chaos;
         hb.pause;
         @setenv{mixin_lunci;6};
         #delay {hb_delay} {
-            hb.recover;
+            hb.get_path_and_run;
         } {3};
     };
 
@@ -202,36 +232,17 @@ load chaos;
 
     #action {围上来几个伙计将镖车拉了进去} {
         @setenv{hb_state;ENDED};
-        hb.end;
+        hb.pause;
         raw;
         show_to_tuiche 任务完成;
         notify escort done;
         hb.teardown;
-        hb.back;
+        on_truce {
+            hb.b;
+        };
     } {1};
 
     #class hb_setup_inner close;
-
-    #alias ge {gan che to east};
-    #alias genter {gan che to enter};
-    #alias geu {gan che to eastup};
-    #alias gn {gan che to north};
-    #alias gne {gan che to northeast};
-    #alias gnu {gan che to northup};
-    #alias gnw {gan che to northwest};
-    #alias gout {gan che to out};
-    #alias gs {gan che to south};
-    #alias gse {gan che to southeast};
-    #alias gsu {gan che to southup};
-    #alias gsw {gan che to southwest};
-    #alias gw {gan che to west};
-    #alias gwu {gan che to westup};
-    #alias ged {gan che to eastdown};
-    #alias gnd {gan che to northdown};
-    #alias gwd {gan che to westdown};
-    #alias gsd {gan che to southdown};
-    #alias gd {gan che to down};
-    #alias gu {gan che to up};
 
     #var hb_elapsed_time 0;
     #ticker {hb_ticker} {
@@ -243,132 +254,24 @@ load chaos;
 #alias {hb.retry} {
     #if {${hb_paused} == 0} {
         #delay {hb_move} {
-            hb.move;
+            hb.run;
         } {1.5};
     };
 };
 
 #alias {hb.pause} {
-    hb.end;
-    #alias {hb.back} {
-        #cr;
-    };
-};
-
-#alias {hb.end} {
     #var hb_paused 1;
     #undelay {hb_move};
 };
 
-#alias {hb.escape} {
-    #if {${hb_path_index} > ${hb_path_size}} {
-        on_truce {
-            hb.resume;
-        };
-    };
-    #else {
-        #class hb.escape.inner open;
-        #action {不能移动} {
-            #showme 你逃跑失败;
-        } {1};
-
-        #action {^你逃跑失败} {
-            #class hb.escape.inner kill;
-            on_truce {
-                #delay {hb_delay} {
-                    hb.resume;
-                } {3};
-            };
-        } {1};
-
-        #action {^    这里%*出口} {
-            #class hb.escape.inner kill;
-            #math hb_path_index ${hb_path_index}+1;
-            #delay {hb_delay} {
-                hb.resume;
-            } {3}
-        } {1};
-
-        #delay {hb_delay} {
-            #showme 你逃跑失败;
-        } {5};
-        #class hb.escape.inner close;
-
-        #list hb_path get ${hb_path_index} escape_exit;
-        #3 halt;
-        #delay {1} {
-            ${escape_exit};
-        };
-    };
-};
-
-#alias {hb.resume} {
-    #var hb_paused 0;
-
-    #alias {hb.back} {
-        hb.merge_path;
-        hb.escape;
-    };
-
-    #alias {hb.recover} {
-        #class hb.recover.inner open;
-        #action {chaos ok: %*} {
-            #if {"%%%1" != "fake"} {
-                #math hb_path_index ${hb_path_index}-1;
-                #list hb_path set ${hb_path_index} {gan che to %%%1};
-            };
-            #nop chaos.remember;
-            #delay {hb_delay} {
-                hb.resume;
-            } {10};
-            #class hb.recover.inner kill;
-        };
-
-        #action {chaos error} {
-            show_to_info 乱入:${hb_next_step};
-            notify.alert escort chaos;
-            xmpp.notify 乱入;
-            #alias {hb.recover} {
-                #cr;
-            };
-            #class hb.recover.inner kill;
-        };
-        #class hb.recover.inner close;
-        chaos.find;
-    };
-
-    #list hb_path get ${hb_path_index} hb_next_step;
-    #if {"@getenv{hb_state}" == "STARTED"} {
-        hb.move;
-    };
-    #else {
-        #action {^    这里%*出口} {
-            #math hb_path_index ${hb_path_index}+1;
-            #list hb_path get ${hb_path_index} hb_next_step;
-            hb.move2;
-        } {1};
-        hb.move2;
-    };
-};
-
 #alias {hb.get_owner} {
-    #if {"${CurrentPosition}" == "zuo"} {
-        #var hb_owner zuo;
-        #var hb_rotate_location fm;
+    #alias {get_pos_done} {
+        #if {"${pos.room}" = "昌隆镖局"} {
+            #var hb_owner zuo;
+        }
     };
-    #elseif {"${CurrentPosition}" == "zz"} {
-        #var hb_owner zhang;
-    };
-    #elseif {"${CurrentPosition}" == "fm"} {
-        #var hb_owner ma;
-        #var hb_rotate_location tf;
-    };
-    #elseif {"${CurrentPosition}" == "fh"} {
-        #var hb_owner chu;
-    };
-    #elseif {"${CurrentPosition}" == "tf"} {
-        #var hb_owner wang;
-        #var hb_rotate_location zuo;
+    get_pos {
+        get_pos_done;
     };
 };
 
@@ -431,19 +334,6 @@ load chaos;
     on_there {
         hb.d;
     };
-};
-
-#alias {hb.bxs} {
-    #class hb.auto.inner open;
-    #action {${char_name}把这批红货送到%*他已经派了个伙计名叫%*到%*附近接你} {
-        hb.get_path %%1;
-        show_to_quest 推车: ${tmp}|%%2|%%3;
-        hb.setup;
-        hb.resume;
-    } {1};
-    #class hb.auto.inner close;
-    hb.get_owner;
-    ask ${hb_owner} about 押镖;
 };
 
 #alias {hb.start} {
@@ -510,11 +400,11 @@ load chaos;
         notify.alert 挂了;
         xmpp.notify 挂了;
         hb.teardown;
-        hb.back;
+        hb.b;
     };
 
     #action {^你的眼前一黑，接著什么也不知道了} {
-        hb.end;
+        hb.pause;
     };
 
     #action {使用命令【getesc 任务序号】来认领押镖任务。} {
@@ -575,18 +465,16 @@ load chaos;
     };
 
     #action {${char_name}把这批红货送到%*他已经派了个伙计名叫%*到%*附近接你} {
-        hb.get_path %%1;
-
         @setenv{hb_state;STARTED};
         @setenv{hb_lunci;@eval{@getenv{hb_lunci}+1}};
-
+        #var hb_dest %%1;
         #var hb_info ${tmp}|%%2|%%3;
         show_to_tuiche ${hb_info};
         pp %%2;
         notify escort start;
 
         hb.setup;
-        hb.resume;
+        hb.get_path_and_run;
     } {1};
 
     #action {递给你一封密信} {
@@ -594,10 +482,6 @@ load chaos;
         @setenv{hb_lunci_total;@eval{@getenv{hb_lunci_total}+1}};
         @setenv{hb_lunci;0};
         show_to_tuiche 密信;
-        notify.alert 密信;
-        xmpp.notify 密信;
-        play alert.wav;
-        chifan;
         mx.o;
     };
 
@@ -628,77 +512,6 @@ load chaos;
     #class hb.auto.inner kill;
     #undelay {hb_auto_delay};
     dz.cancel;
-};
-
-#alias {hb.merge_path} {
-    @stackcreate{tmp};
-    @stackpush{tmp;#cr};
-
-    #while {${hb_path_index} <= ${hb_path_size}} {
-        #list hb_path get ${hb_path_index} v;
-        #if {@iscomment{${v}} == 0} {
-            #if {"@opposite{${v}}" == "@stacktop{tmp}"} {
-                #var nil @stackpop{tmp};
-            };
-            #elseif {"@opposite{${v}}" != "NULL"} {
-                @stackpush{tmp;${v}};
-            };
-        };
-        #math hb_path_index ${hb_path_index}+1;
-    }
-    #var hb_path @stacktolist{tmp};
-    #var hb_path_index 2;
-    #list hb_path size hb_path_size;
-};
-
-
-#alias {hb.guohe} {
-    #action {^%*接过你递给的船资} {
-        #class guohe.inner open;
-        #ticker {sw/yell_boat} {
-            yell boat;
-        } {5};
-        #action {正等着你呢，上来吧。} {
-            genter;
-        };
-        #action {艄公将一块踏脚板搭上堤岸，} {
-            genter;
-        };
-        #alias {shangchuan} {
-            #unticker {sw/yell_boat};
-            #action {所有人被赶下了渡船} {
-                #unaction {所有人被赶下了渡船};
-                #class guohe.inner kill;
-                #math hb_path_index ${hb_path_index}+1;
-                hb.resume;
-            };
-        };
-        #action {^黄河渡船$} {
-            shangchuan;
-        };
-        #action {^长江渡船$} {
-            shangchuan;
-        };
-        #class guohe.inner close;
-    };
-    #var hb_paused 1;
-    ask shao gong about %1;
-};
-
-#alias {clear_blocker} {
-    #var tmp_blocker %1;
-    #class clear_blocker.inner open;
-    #action {你想杀谁} {
-        #class clear_blocker.inner kill;
-        #math hb_path_index ${hb_path_index}+1;
-        hb.resume;
-    };
-    #ticker {tmp_blocker_ticker_kill} {
-        killall ${tmp_blocker};
-    } {5};
-    #class clear_blocker.inner close;
-    hb.pause;
-    killall ${tmp_blocker};
 };
 
 #alias {mx.o} {
@@ -775,6 +588,33 @@ load chaos;
         #var enemy ${char_id}'s robber ${tmp_robber_count};
     };
 };
+
+#alias {hb.get_path_and_run} {
+    #alias {gps_check_room_done} {
+        #if {${gps.roomno} == -1} {
+            #delay {1} {
+                #show {GPS: 当前房间未记录, 无法行走};
+            };
+        };
+        #else {
+            INVOKE gps.get_path ${gps.roomno} ${hb_dest} "1,1,1,-1,-1,1";
+            #var hb_path ${gps_path};
+            #var hb_path_index 1;
+            #list hb_path size hb_path_size;
+            #if {${hb_path_size} == 0} {
+                #delay {1} {
+                    #show {GPS: 目标房间不可达, 无法行走};
+                };
+            };
+            #else {
+                hb.run;
+            };
+        };  
+    };
+    gps.check_room {
+        gps_check_room_done;
+    };
+}
 
 #alias {hb.detect_enemy} {
     #class detect_enemy.inner open;

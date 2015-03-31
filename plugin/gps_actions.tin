@@ -214,4 +214,25 @@
     #class gps.maze.yunhai.inner close;
     s;e;s;
 };
+
+#alias {gps.muchang} {
+    #var next_action %1;
+    #class gps.muchang open;
+    #action {青海湖畔美不胜收，你不由停下脚步，欣赏起了风景。} {
+        #delay {again} {
+            ${next_action};            
+        } {1};
+        #delay {muchang_delay} {
+            #class gps.muchang kill;
+            gps.run;
+        } {2};
+    } {1};
+    #delay {muchang_delay} {
+        #class gps.muchang kill;
+        gps.run;
+    } {1};
+    #class gps.muchang close;
+    
+    ${next_action};
+};
 #class gps_actions close;
