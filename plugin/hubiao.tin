@@ -71,8 +71,16 @@ load hubiao_score;
     #else {
         #if {${hb_path_index} > ${hb_path_size}} {
             #delay {hb_move} {
-                @setenv{hb_state;TRAVERSE};
-                hb.resume;
+                #if {"@getenv{hb_state}" == "STARTED"} {
+                    @setenv{hb_state;TRAVERSE};
+                    hb.resume;
+                };
+                #else {
+                    pp;
+                    hb.pause;
+                    show_to_tuiche 没找到伙计;
+                    xmpp.notify 没找到伙计;
+                };
             } {3};
         };
         #else {
