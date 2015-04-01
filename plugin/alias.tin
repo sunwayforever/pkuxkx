@@ -360,6 +360,7 @@
 };
 
 #alias {autopp.set} {
+    show_to_pp {};
     #if {@isalphabet{%1} == 1} {
         #var pp_target @lower{%0};
     };
