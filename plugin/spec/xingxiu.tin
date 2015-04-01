@@ -9,7 +9,6 @@
 #alias {attack} {
     #if {"${quest}" == "hb"} {
         pfm huose;
-        pfm huoqiu;
         #class attack.inner open;
         #ticker {huose} {
             pfm huose;

@@ -582,7 +582,7 @@ load hubiao_score;
     show_to_quest ÍÆ³µ: @getenv{hb_lunci_total}+@getenv{hb_lunci}: %0;
 };
 
-#alias {got_robber} {
+#alias {hb.check_robber} {
     #delay {detect_enemy_delay} {
         #var hb_robber_count ${tmp_robber_count};
         #class detect_enemy.inner kill;
@@ -652,38 +652,36 @@ load hubiao_score;
 
 #alias {hb.detect_enemy} {
     #class detect_enemy.inner open;
-    #action {~[1;31m½Ù·Ë[2;37;0m(@capital{${char_id}}'s robber)} {
-        got_robber quanzhen;
+    #action {~ÄãÏëÒªÊÕ[1;31m½Ù·Ë[2;37;0mÎªµÜ×Ó} {
+        hb.check_robber quanzhen;
     };
-    #action {~[1;32m½Ù·Ë[2;37;0m(@capital{${char_id}}'s robber)} {
-        got_robber shaolin;
+    #action {~ÄãÏëÒªÊÕ[1;32m½Ù·Ë[2;37;0mÎªµÜ×Ó} {
+        hb.check_robber shaolin;
     };
-    #action {~[1;33m½Ù·Ë[2;37;0m(@capital{${char_id}}'s robber)} {
-        got_robber gaibang;
+    #action {~ÄãÏëÒªÊÕ[1;33m½Ù·Ë[2;37;0mÎªµÜ×Ó} {
+        hb.check_robber gaibang;
     };
-    #action {~[1;34m½Ù·Ë[2;37;0m(@capital{${char_id}}'s robber)} {
-        got_robber xingxiu;
+    #action {~ÄãÏëÒªÊÕ[1;34m½Ù·Ë[2;37;0mÎªµÜ×Ó} {
+        hb.check_robber xingxiu;
     };
-    #action {~[1;35m½Ù·Ë[2;37;0m(@capital{${char_id}}'s robber)} {
-        got_robber huashan;
+    #action {~ÄãÏëÒªÊÕ[1;35m½Ù·Ë[2;37;0mÎªµÜ×Ó} {
+        hb.check_robber huashan;
     };
-    #action {~[1;36m½Ù·Ë[2;37;0m(@capital{${char_id}}'s robber)} {
-        got_robber taohua;
+    #action {~ÄãÏëÒªÊÕ[1;36m½Ù·Ë[2;37;0mÎªµÜ×Ó} {
+        hb.check_robber taohua;
     };
-    #action {~[1;37m½Ù·Ë[2;37;0m(@capital{${char_id}}'s robber)} {
-        got_robber wudang;
-    };
-    #action {·ç¾°ÒªÂıÂıµÄ¿´} {
-        #delay {0.5} {
-            l;
-        };
+    #action {~ÄãÏëÒªÊÕ[1;37m½Ù·Ë[2;37;0mÎªµÜ×Ó} {
+        hb.check_robber wudang;
     };
     #class detect_enemy.inner close;
-    #undelay {detect_enemy_delay};
+
     #var enemy NULL;
     #var tmp_robber_count 0;
     #var hb_robber_count 0;
     #var robber_score 0;
-    l;
+    shou ${char_id}'s robber 1;
+    shou ${char_id}'s robber 2;
+    shou ${char_id}'s robber 3;
+    shou ${char_id}'s robber 4;
 };
 #class hubiao close
