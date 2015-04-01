@@ -630,12 +630,12 @@ load hubiao_score;
                     #nop Ä¥²ä;
                     #math additional_path_size ${hb_max_path_size} - ${hb_path_size};
                     #if {${additional_path_size} > 0} {
-                        #list hb_path get 1 first_step;
+                        #list hb_path get 2 first_step;
                         #var second_step @opposite{${first_step}};
                         #var cnt 0;
                         #while {${cnt} < ${additional_path_size}} {
-                            #list hb_path insert 1 ${second_step};
-                            #list hb_path insert 1 ${first_step};
+                            #list hb_path insert 2 ${second_step};
+                            #list hb_path insert 2 ${first_step};
                             #math cnt $cnt+2;
                         };
                         #list hb_path size hb_path_size;                        
