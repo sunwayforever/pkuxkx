@@ -76,7 +76,7 @@ load hubiao_score;
                     hb.resume;
                 };
                 #else {
-                    pp;
+                    autopp;
                     hb.pause;
                     show_to_tuiche 没找到伙计;
                     xmpp.notify 没找到伙计;
@@ -475,7 +475,7 @@ load hubiao_score;
         #var hb_dest ${gps.area}%%3;
         #var hb_info %%2|${hb_dest};
         show_to_tuiche ${hb_info};
-        pp %%2;
+        autopp.set %%2;
 
         hb.setup;
         hb.resume;

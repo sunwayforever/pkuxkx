@@ -329,25 +329,8 @@
 };
 
 #alias {pp} {
-    show_to_pp ...;
-    #if {"%0" == ""} {
-        #if {"${pp_target}" != ""} {
-            autopp;
-        };
-        #else {
-            show_to_info no target;
-        };
-    };
-    #else {
-        #if {@isalphabet{%1} == 1} {
-            autopp.set_en %0;
-        };
-        #else {
-            autopp.set_zh %0;
-        };
-    };
+    helpme find %0;
 };
-
 
 #alias {autopp} {
     #alias tmp_auto_pp #cr;
@@ -376,14 +359,13 @@
     };
 };
 
-#alias {autopp.set_en} {
-    #var pp_target @lower{%0};
-    autopp;
-};
-
-#alias {autopp.set_zh} {
-    #var pp_target @py{%1};
-    autopp;
+#alias {autopp.set} {
+    #if {@isalphabet{%1} == 1} {
+        #var pp_target @lower{%0};
+    };
+    #else {
+        #var pp_target @py{%1};
+    };
 };
 
 #alias {jq} {
