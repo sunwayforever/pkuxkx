@@ -1,5 +1,5 @@
 #class xmpp open;
-#var xmpp_chat 0;
+#var xmpp_chat 1;
 
 #alias {xmpp.start} {
     #alias xmpp.chat.on {
@@ -19,6 +19,8 @@
 };
 
 #alias {xmpp.notify} {
-    #xmpp %0;
+    #if {${xmpp_chat} == 1} {
+        #xmpp %0;
+    };
 };
 #class xmpp close;

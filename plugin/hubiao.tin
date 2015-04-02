@@ -390,8 +390,10 @@ load hubiao_score;
         #class tmp.inner close;
     };
 
+    #gag mx done;
     #action {${char_name}帮%*追回财物，额外获得%*点经验} {
         show_to_info 额外获得 @ctd{%%2} 点经验;
+        #show mx done;
     };
 
     #alias {got_gem} {
@@ -411,6 +413,7 @@ load hubiao_score;
 
     #action {哇，你太厉害了，这么快就把这些财物追回，我有重谢！} {
         got_gem;
+        #show mx done;
     };
 
     #action {掉了出来一颗} {
@@ -522,6 +525,16 @@ load hubiao_score;
     dz.cancel;
 };
 
+#alias {mx} {
+    gt %1;
+    on_there {
+        mx.q;
+    };
+    #action {mx done} {
+        #unaction {mx done};
+        xmpp.notify 密信完成;
+    };
+};
 #alias {mx.o} {
     xian mixin;
 };
@@ -545,7 +558,7 @@ load hubiao_score;
             play get_item.wav;
             #class mx.yao.inner kill;
             #class mx.inner kill;
-            back;
+            hb.b;
         };
         #action {这里没有这个人} {
             #class mx.yao.inner kill;
