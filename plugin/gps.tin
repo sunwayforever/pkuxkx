@@ -53,7 +53,11 @@ load gps_actions;
 
 #alias {gps.run} {
     #var is_break 0;
+    #var accu 0;
     #while {${gps_path_index} <= ${gps_path_size}} {
+        #if {"${gps.run.mode}" == "NORMAL"} {
+            #math accu ${accu}+1;
+        };
         #if {"${gps.run.mode}" == "TRAVERSE" && ${gps_traverse_done} == 1} {
             #var is_break 1;
             #break;
@@ -66,6 +70,11 @@ load gps_actions;
             #break;
         };
         #elseif {"${gps.run.mode}" == "TRAVERSE"} {
+            gps.delay 0.5;
+            #var is_break 1;
+            #break;
+        };
+        #elseif {"${gps.run.mode}" == "NORMAL" && ${accu} > 10} {
             gps.delay 0.5;
             #var is_break 1;
             #break;
