@@ -118,7 +118,7 @@ def get_path(conn, from_room, to_room, weight):
         conn.execute("insert into mud_entrance_weight select roomno, linkroomno, %d from mud_entrance where type = %d" % (w, i))
 
     tt = Tintin()
-    if (dst_room == -1):
+    if (to_room == -1):
         tt.write ("#list gps_path create {};\n")
     elif (int(from_room) == int(to_room)):
         tt.write ("#list gps_path create {#cr};\n")

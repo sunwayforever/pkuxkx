@@ -2,12 +2,21 @@
 import sqlite3
 import os
 import sys
+import re
 
 from .common import open_database
 from ..tintin import Tintin
 from ..util import logger
 
 def get_room(conn, desc):
+    # gt yz
+    # gt 醉仙楼
+    sql = "select roomno from mud_room where abbr = '%s' or roomname = '%s'" % (desc, desc)
+    rows = conn.execute(sql).fetchall();
+    if len(rows) == 1:
+        return rows[0][0]
+
+    # gt 扬州醉仙楼
     sql = "select distinct(zone) from mud_room";
     rows = conn.execute(sql).fetchall()
     zone=""
