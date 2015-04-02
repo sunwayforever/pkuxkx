@@ -6,7 +6,7 @@ import sys
 import traceback
 
 from .common import open_database
-from .get_path import get_path
+from .get_path import shortest_path_no_weight
 from ..tintin import Tintin
 from ..util import logger
 
@@ -27,22 +27,24 @@ def traverse(conn, roomno, location = None):
 
         if location is None or dst_room_name == location:
             if last_room_no != dst_room_no:
-                traverse_path.extend(get_path(conn, last_room_no, dst_room_no, "1,-1,1,-1,-1,1"))
+                traverse_path.extend(shortest_path_no_weight(conn, last_room_no, dst_room_no))
 
             last_room_no = dst_room_no
         
         visited.add(dst_room_no)
 
         if location is not None:
-            sql = "select dst_room_no, dst_room_name from room_and_entrance where src_room_no = %d and dst_room_zone in (%s)" % (dst_room_no, zones)
+            sql = "select dst_room_no, dst_room_name from room_and_entrance where src_room_no = %d and dst_room_zone in (%s) \
+            and direction not glob '*[^A-z]*'" % (dst_room_no, zones)
         else:
-            sql = "select dst_room_no, dst_room_name from room_and_entrance where src_room_no = %d and src_room_zone = dst_room_zone" % (dst_room_no)
+            sql = "select dst_room_no, dst_room_name from room_and_entrance where src_room_no = %d and src_room_zone = dst_room_zone \
+            and direction not glob '*[^A-z]*'" % (dst_room_no)
 
         for row in conn.execute(sql).fetchall():
             if row[0] not in visited:
                 stack.append((row[0],row[1]))
 
-    traverse_path.extend(get_path(conn, last_room_no, roomno, "1,-1,1,-1,-1,1"))
+    traverse_path.extend(shortest_path_no_weight(conn, last_room_no, roomno))
     return traverse_path
     
 if __name__ == "__main__":
