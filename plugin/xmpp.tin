@@ -12,6 +12,7 @@
 
     #run {xmpp} {./bin/xmpp.py ${char_id}};
     #unticker {%*};
+    #unaction {%*};
     #action {xmpp message: %*:%*} {
         #pkuxkx %%2;
     };
