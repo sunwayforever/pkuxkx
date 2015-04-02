@@ -45,7 +45,6 @@ def shortest_path_no_weight(conn, src, dst):
                 return ret
 
 def shortest_path(conn, src, dst):
-    logger.info ("%s -> %s" %(src,dst))
     if (src == dst):
         return []
 
@@ -103,8 +102,6 @@ def shortest_path(conn, src, dst):
                 return ret
 
 def get_path(conn, from_room, to_room, weight):
-    logger.debug("get_path: %s -> %s, weight: %s" % (from_room, to_room, weight))
-
     try:
         conn.execute ("drop table mud_entrance_weight")
     except:
@@ -117,15 +114,11 @@ def get_path(conn, from_room, to_room, weight):
     for i,w in enumerate(weights, start=1):
         conn.execute("insert into mud_entrance_weight select roomno, linkroomno, %d from mud_entrance where type = %d" % (w, i))
 
-    tt = Tintin()
-    if (to_room == -1):
-        tt.write ("#list gps_path create {};\n")
-    elif (int(from_room) == int(to_room)):
-        tt.write ("#list gps_path create {#cr};\n")
-    else:
-        paths = shortest_path(conn,int(from_room),int(to_room))
-        tt.write ("#list gps_path create {%s};\n" % (";".join(paths)))
+    return shortest_path(conn,int(from_room),int(to_room))
 
 if __name__ == "__main__":
     conn = open_database()
-    get_path(conn, sys.argv[1], sys.argv[2], sys.argv[3])
+    paths = get_path(conn,int(sys.argv[1]),int(sys.argv[2]), sys.argv[3])
+    tt = Tintin()
+    tt.write ("#list gps_path create {%s};\n" % (";".join(paths)))
+

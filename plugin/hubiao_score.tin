@@ -76,10 +76,10 @@
     };
     #elseif {"${hb_owner}" == "zuo"} {
         #if {"%1" == "岳王墓墓前广场"} {
-            #return -1;
+            #return 1;
         };
         #elseif {"%1" == "泉州当铺"} {
-            #return 1;
+            #return -1;
         };
         #elseif {"%1" == "牙山小荒地"} {
             #return 1;
