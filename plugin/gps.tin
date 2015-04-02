@@ -19,22 +19,30 @@ load gps_actions;
                 INVOKE gps.get_room %1;
                 #var dst_roomno ${gps.roomno};
             };
-            #format {epoch_from} {%T};
-            #show {GPS: 正在寻路: ${src_roomno} -> ${dst_roomno}};
-            gps.get_path ${src_roomno} ${dst_roomno};
-            #format {epoch_to} {%T};
-            #show {GPS: 完成寻路, 耗时: @eval{$epoch_to-$epoch_from} 秒};
-            pause_screen;
-            #var gps_path_index 1;
-            #list gps_path size gps_path_size;
-            #if {${gps_path_size} == 0} {
+            
+            #if {${dst_roomno} == ${src_roomno}} {
                 #delay {1} {
-                    #show {GPS: 目标房间不可达, 无法行走};
+                    #showme {GPS: 抵达目的地};
                 };
             };
             #else {
-                #var gps.run.mode NORMAL;
-                gps.run;
+                #format {epoch_from} {%T};
+                #show {GPS: 正在寻路: ${src_roomno} -> ${dst_roomno}};
+                gps.get_path ${src_roomno} ${dst_roomno};
+                #format {epoch_to} {%T};
+                #show {GPS: 完成寻路, 耗时: @eval{$epoch_to-$epoch_from} 秒};
+                pause_screen;
+                #var gps_path_index 1;
+                #list gps_path size gps_path_size;
+                #if {${gps_path_size} == 0} {
+                    #delay {1} {
+                        #show {GPS: 目标房间不可达, 无法行走};
+                    };
+                };
+                #else {
+                    #var gps.run.mode NORMAL;
+                    gps.run;
+                };                
             };
         };  
     };

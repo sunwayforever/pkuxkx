@@ -103,6 +103,10 @@
     #regexp {%1} {^%w$} {#var result 1} {#var result 0};
 };
 
+#function {isdigit} {
+    #regexp {%1} {^%d$} {#var result 1} {#var result 0};
+};
+
 #function {iscomment} {
     #regexp {%1} {^#nop} {#var result 1} {#var result 0};
 };
