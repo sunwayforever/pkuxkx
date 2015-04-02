@@ -188,19 +188,14 @@ load gps_actions;
 };
 
 #alias {gps.insert_room} {
-    #alias {gps_check_room_done} {
-        #if {${gps.roomno} == -1} {
-            INVOKE gps.insert_room "${pos.room}" "${pos.desc}" "${pos.exits}" "${pos.area}";
-            gps.check_room;
-        };
-        #else {
-            #delay {1} {
-                #show {GPS: 房间已记录, 无法再次记录};
-            };
-        };  
+    #alias {get_pos_done} {
+        INVOKE gps.insert_room "${pos.room}" "${pos.desc}" "${pos.exits}" "${pos.area}";
+        gps.check_link;
     };
-    gps.check_room {
-        gps_check_room_done;
+    get_area {
+        get_pos {
+            get_pos_done;
+        };
     };
 };
 
