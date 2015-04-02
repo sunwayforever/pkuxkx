@@ -79,6 +79,9 @@
         #if {${xf.requested} == 1} {
             #var xf.target %%1:%%2;
             gt %%1%%2;
+            on_there {
+                xf.bl;
+            };
         };
     };
 
@@ -197,16 +200,19 @@
     #action {你捡起一颗%*的首级} {
         #showme 收工;
         show_to_quest 萧峰: 已杀死;
+        xf.b;
     };
 
     #action {硬生生的将%*的头颅从尸体上扯了下来，提在手中！} {
         #showme 收工;
         show_to_quest 萧峰: 已杀死;
+        xf.b;
     };
     
     #action {将血淋淋的首级提在手中} {
         #showme 收工;
         show_to_quest 萧峰: 已杀死;
+        xf.b;
     };
 
     #action {血淋淋的首级咕噜噜的滚落在地} {
@@ -237,10 +243,12 @@
         #if {${xf.type} == 3} {
             #showme 收工;
             show_to_quest 萧峰: 已经劝服;
+            xf.b;
         };
         #elseif {${xf.type} == 4} {
             #showme 收工;
             show_to_quest 萧峰: 已经战胜;
+            xf.b;
         };
     };
 
@@ -308,7 +316,9 @@
 };
 
 #alias {xf.b} {
-    gt xf;
+    on_unbusy {
+        gt xf;
+    };
     on_there {
         xf.d;
     };

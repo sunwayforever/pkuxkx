@@ -1113,6 +1113,7 @@
     show.clear;
 };
 
+#var reset 0;
 #alias {reset} {
     #unaction {%*};
     #undelay {%*};
@@ -1122,6 +1123,7 @@
     #ungag {%*};
     #read main.tin;
     show.clear;
+    #var reset 1;
     login;
 };
 

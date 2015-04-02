@@ -102,7 +102,9 @@
         #send {time};
         init_set;
         update_env;
-        xmpp.start;
+        #if {${reset} == 0} {
+            xmpp.start;
+        };
         show.init;
         check_baowei;
         jifa_all;
