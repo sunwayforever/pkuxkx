@@ -18,7 +18,7 @@ def traverse(conn, roomno, location = None):
 
     if location is not None:
         sql = "select distinct(dst_room_zone) from room_and_entrance where src_room_zone = \
-        (select zone from mud_room where roomno = %d) and direction not glob '*[^A-z]*'" % (roomno)
+        (select zone from mud_room where roomno = %d) and type not in (2,4)" % (roomno)
 
         zones = ",".join(["'%s'" % (row[0]) for row in conn.execute(sql).fetchall()])
     
@@ -35,10 +35,10 @@ def traverse(conn, roomno, location = None):
 
         if location is not None:
             sql = "select dst_room_no, dst_room_name from room_and_entrance where src_room_no = %d and dst_room_zone in (%s) \
-            and direction not glob '*[^A-z]*'" % (dst_room_no, zones)
+            and type not in (2,4)" % (dst_room_no, zones)
         else:
             sql = "select dst_room_no, dst_room_name from room_and_entrance where src_room_no = %d and src_room_zone = dst_room_zone \
-            and direction not glob '*[^A-z]*'" % (dst_room_no)
+            and type not in (2,4)" % (dst_room_no)
 
         for row in conn.execute(sql).fetchall():
             if row[0] not in visited:
