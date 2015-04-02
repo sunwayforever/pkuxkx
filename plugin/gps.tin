@@ -5,15 +5,23 @@ load gps_actions;
 
 #alias {gps.gt} {
     #alias {gps_check_room_done} {
+        #var src_roomno ${gps.roomno};
         #if {${gps.roomno} == -1} {
             #delay {1} {
                 #show {GPS: 当前房间未记录, 无法行走};
             };
         };
         #else {
+            #if {@isdigit{%1}} {
+                #var dst_roomno %1;
+            };
+            #else {
+                INVOKE gps.get_room %1;
+                #var dst_roomno ${gps.roomno};
+            };
             #format {epoch_from} {%T};
             #show {GPS: 正在寻路: %1};
-            gps.get_path ${gps.roomno} %1;
+            gps.get_path ${src_roomno} ${dst_roomno};
             #format {epoch_to} {%T};
             #show {GPS: 完成寻路, 耗时: @eval{$epoch_to-$epoch_from} 秒};
             pause_screen;

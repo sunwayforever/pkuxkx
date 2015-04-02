@@ -104,20 +104,6 @@ def shortest_path(conn, src, dst):
 
 def get_path(conn, from_room, to_room, weight):
     logger.debug("get_path: %s -> %s, weight: %s" % (from_room, to_room, weight))
-    if not to_room.isdigit():
-        tmp = to_room.split("@")
-        if (len(tmp) == 2):
-            sql = "select roomno from mud_room where roomname = '%s' and zone like '%%%s%%'" % (tmp[0], tmp[1])
-        else:
-            sql = "select roomno from mud_room where abbr = '%s' or roomname = '%s'" % (to_room, to_room)
-        cursor = conn.execute(sql)
-        row = cursor.fetchone()
-        if row:
-            dst_room = row[0]
-        else:
-            dst_room = -1
-    else:
-        dst_room = int(to_room)
 
     try:
         conn.execute ("drop table mud_entrance_weight")
@@ -134,10 +120,10 @@ def get_path(conn, from_room, to_room, weight):
     tt = Tintin()
     if (dst_room == -1):
         tt.write ("#list gps_path create {};\n")
-    elif (int(from_room) == dst_room):
+    elif (int(from_room) == int(to_room)):
         tt.write ("#list gps_path create {#cr};\n")
     else:
-        paths = shortest_path(conn,int(from_room),dst_room)
+        paths = shortest_path(conn,int(from_room),int(to_room))
         tt.write ("#list gps_path create {%s};\n" % (";".join(paths)))
 
 if __name__ == "__main__":

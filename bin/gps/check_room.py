@@ -30,31 +30,9 @@ def check_room (conn, zone, room, desc, exits):
 
     return -1;
 
-def check_room_2(conn, desc):
-    sql = "select distinct(zone) from mud_room";
-    rows = conn.execute(sql).fetchall()
-    zone=""
-    actual_zone=""
-    for row in rows:
-        current_zone=os.path.commonprefix([row[0],desc])
-        if len(current_zone) > len(zone):
-            zone = current_zone
-            actual_zone=row[0]
-    actual_room = desc[len(zone):]
-    
-    sql = "select roomno from mud_room where roomname like '%%%s%%' and zone = '%s'" % (actual_room, actual_zone)
-    row = conn.execute(sql).fetchone();
-    if row:
-        return row[0]
-    else:
-        return -1
-
 if __name__ == "__main__":
     conn = open_database()
-    if (len(sys.argv) == 2):
-        roomno = check_room_2(conn, sys.argv[1])
-    else:
-        roomno = check_room (conn, sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4])
+    roomno = check_room (conn, sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4])
 
     tt = Tintin()
     tt.write ("#var gps.roomno %d;" % (roomno))
