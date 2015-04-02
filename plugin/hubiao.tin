@@ -491,7 +491,7 @@ load hubiao_score;
         @setenv{hb_lunci_total;@eval{@getenv{hb_lunci_total}+1}};
         @setenv{hb_lunci;0};
         show_to_tuiche 密信;
-        mx.o;
+        xian mixin;
     };
 
     #class hb.auto.inner close;
@@ -535,13 +535,10 @@ load hubiao_score;
         xmpp.notify 密信完成;
     };
 };
-#alias {mx.o} {
-    xian mixin;
-};
 
 #alias {mx.re} {
     give mixin to @getenv{hb_owner};
-    mx.o;
+    xian mixin;
 };
 
 #alias {mx.q} {
@@ -570,11 +567,6 @@ load hubiao_score;
     } {1};
     #class mx.inner close;
     zhaoxun;
-};
-
-#alias {mx.d} {
-    give cai wu to @getenv{hb_owner};
-    #class mx.inner kill;
 };
 
 #alias {hb.p} {
