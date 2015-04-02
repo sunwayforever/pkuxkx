@@ -309,7 +309,7 @@ load hubiao_score;
     #if {"@getenv{hb_state}" == "GOT_CAIWU"} {
         give cai wu to @getenv{hb_owner};
     };
-    #else {
+    #elseif {"@getenv{hb_state}" == "ENDED"} {
         #if {@getenv{hb_lunci} == @getenv{mixin_lunci}} {
             @setenv{hb_lunci;0};
             notify.alert next mixin;
@@ -319,6 +319,9 @@ load hubiao_score;
         #else {
             ask @getenv{hb_owner} about finish;
         };
+    };
+    #else {
+        hb.f;
     };
 };
 
