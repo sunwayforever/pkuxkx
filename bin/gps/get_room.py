@@ -27,6 +27,8 @@ def get_room(conn, desc):
             zone = current_zone
             actual_zone=row[0]
     actual_room = desc[len(zone):]
+    if actual_zone == "长江" or actual_zone == "黄河":
+        actual_zone = actual_zone+"南岸"
     
     sql = "select roomno from mud_room where roomname like '%%%s%%' and zone = '%s'" % (actual_room, actual_zone)
     row = conn.execute(sql).fetchone();

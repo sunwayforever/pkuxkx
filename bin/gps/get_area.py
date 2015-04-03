@@ -17,6 +17,8 @@ def get_area(conn, desc):
         if len(current_zone) > len(zone):
             zone = current_zone
             actual_zone=row[0]
+    if actual_zone == "长江" or actual_zone == "黄河":
+        actual_zone = actual_zone+"南岸"
     return actual_zone;
 
 if __name__ == "__main__":

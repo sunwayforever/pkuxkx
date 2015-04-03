@@ -1,7 +1,7 @@
 #class hubiao open
 load hubiao_score;
 
-#var hb_max_path_size 60;
+#var hb_max_path_size 45;
 
 #var hb_auto 0;
 #var hb_rotate 0;
