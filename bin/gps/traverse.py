@@ -6,7 +6,7 @@ import sys
 import traceback
 
 from .common import open_database
-from .get_path import shortest_path_no_weight
+from .get_path import get_path
 from ..tintin import Tintin
 from ..util import logger
 
@@ -27,7 +27,7 @@ def traverse(conn, roomno, location = None):
 
         if location is None or dst_room_name == location:
             if last_room_no != dst_room_no:
-                traverse_path.extend(shortest_path_no_weight(conn, last_room_no, dst_room_no))
+                traverse_path.extend(get_path(conn, last_room_no, dst_room_no,"1,-1,1,-1,-1,1"))
 
             last_room_no = dst_room_no
         
@@ -44,7 +44,7 @@ def traverse(conn, roomno, location = None):
             if row[0] not in visited:
                 stack.append((row[0],row[1]))
 
-    traverse_path.extend(shortest_path_no_weight(conn, last_room_no, roomno))
+    traverse_path.extend(get_path(conn, last_room_no, roomno,"1,-1,1,-1,-1,1"))
     return traverse_path
     
 if __name__ == "__main__":
