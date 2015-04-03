@@ -31,17 +31,17 @@
     };
     #alias {shangchuan} {
         #unticker {sw/yell_boat};
+        #class gps.action.inner open;
         #action {所有人被赶下了渡船} {
-            #unaction {所有人被赶下了渡船};
             #class gps.action.inner kill;
             gps.run;
         };
         #action {艄公说“到啦，上岸吧”，随即把一块踏脚板搭上堤岸。} {
-            #unaction {艄公说“到啦，上岸吧”，随即把一块踏脚板搭上堤岸。};
             #class gps.action.inner kill;
             out;
             gps.run;
         };
+        #class gps.action.inner close;
     };
     #action {^江心驶去} {
         shangchuan;
