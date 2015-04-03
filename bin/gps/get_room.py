@@ -29,21 +29,31 @@ def get_room(conn, desc):
     actual_room = desc[len(zone):]
     if actual_zone == "长江" or actual_zone == "黄河":
         actual_zone = actual_zone+"南岸"
+
+    sql = "select roomno from mud_room where roomname = '%s' and zone = '%s'" % (actual_room, actual_zone)
+    row = conn.execute(sql).fetchone();
+    if row:
+        return row[0]
     
     sql = "select roomno from mud_room where roomname like '%%%s%%' and zone = '%s'" % (actual_room, actual_zone)
     row = conn.execute(sql).fetchone();
     if row:
         return row[0]
-    else:
-        sql = "select distinct(dst_room_zone) from room_and_entrance where src_room_zone = '%s' and direction not glob '*[^A-z]*'" % (actual_zone)
-        zones = ",".join(["'%s'" % (row[0]) for row in conn.execute(sql).fetchall()])
+    
+    sql = "select distinct(dst_room_zone) from room_and_entrance where src_room_zone = '%s' and type not in (2,4,5)" % (actual_zone)
+    zones = ",".join(["'%s'" % (row[0]) for row in conn.execute(sql).fetchall()])
 
-        sql = "select roomno from mud_room where roomname like '%%%s%%' and zone in (%s)" % (actual_room, zones)
-        row = conn.execute(sql).fetchone();
-        if row:
-            return row[0]
-        else:
-            return -1
+    sql = "select roomno from mud_room where roomname = '%s' and zone in (%s)" % (actual_room, zones)
+    row = conn.execute(sql).fetchone();
+    if row:
+        return row[0]
+
+    sql = "select roomno from mud_room where roomname like '%%%s%%' and zone in (%s)" % (actual_room, zones)
+    row = conn.execute(sql).fetchone();
+    if row:
+        return row[0]
+    
+    return -1
 
 if __name__ == "__main__":
     conn = open_database()
