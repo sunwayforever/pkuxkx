@@ -166,6 +166,8 @@ load hubiao_score;
         hb.pause;
         show_to_tuiche 丢镖;
         xmpp.notify 丢镖;
+        hb.teardown;
+        hb.b;
     };
 
     #action {^慢慢地你终于又有了知觉....} {

@@ -102,6 +102,11 @@ def shortest_path(conn, src, dst):
                 return ret
 
 def get_path(conn, from_room, to_room, weight):
+    sql = "select roomno from mud_room where roomno = %d or roomno = %d" % (from_room, to_room)
+    rows = conn.execute(sql).fetchall()
+    if len(rows) != 2:
+        return []
+    
     try:
         conn.execute ("drop table mud_entrance_weight")
     except:
@@ -114,7 +119,7 @@ def get_path(conn, from_room, to_room, weight):
     for i,w in enumerate(weights, start=1):
         conn.execute("insert into mud_entrance_weight select roomno, linkroomno, %d from mud_entrance where type = %d" % (w, i))
 
-    return shortest_path(conn,int(from_room),int(to_room))
+    return shortest_path(conn,from_room,to_room)
 
 if __name__ == "__main__":
     conn = open_database()
