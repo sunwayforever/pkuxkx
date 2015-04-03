@@ -258,4 +258,6 @@ load gps_actions;
         gps_check_room_done;
     };
 };
+
+#nop 镇江土路;
 #class gps close;
