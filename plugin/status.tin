@@ -13,19 +13,19 @@
     };
 } {60};
 
-#action {北大侠客行已经执行了%1分%2秒} {
+#action {侠客行已经执行了%1分%2秒} {
     zhengdian %1;
 } {4};
 
-#action {北大侠客行已经执行了%1小时%2分%3秒} {
+#action {侠客行已经执行了%1小时%2分%3秒} {
     zhengdian %2;
 } {3};
 
-#action {北大侠客行已经执行了%1天%2分%3秒} {
+#action {侠客行已经执行了%1天%2分%3秒} {
     zhengdian %2;
 } {2};
 
-#action {北大侠客行已经执行了%1天%2小时%3分%4秒} {
+#action {侠客行已经执行了%1天%2小时%3分%4秒} {
     zhengdian %3;
 } {1};
 
@@ -166,7 +166,7 @@
 } {30};
 
 #var prev_daytime nil;
-#action {北大侠客行现在大约是%1时分} {
+#action {侠客行现在大约是%1时分} {
     #var curr_daytime %1;
     #if {"${curr_daytime}" != "${prev_daytime}"} {
         #showme ${curr_daytime}到了;

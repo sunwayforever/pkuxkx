@@ -49,7 +49,7 @@
         load spec/${char_menpai};
         #var weapons_to_wield ${my_weapons_to_wield};
     };
-    #action {≡━━━━━━━━━━━━━━━━━━━━━━◎北大侠客行◎━━≡} {
+    #action {≡━━━━━━━━━━━━━━━━━━━━━━◎%*侠客行◎━━≡} {
         #class get_char_info.inner kill;
 
         #class get_name.inner open;
@@ -75,7 +75,7 @@
                 #send {status_me};
             };
         };
-        #action {≡━━━━━━━━━━━━━━━━━━━━━━━◎北大侠客行◎━━≡} {
+        #action {≡━━━━━━━━━━━━━━━━━━━━━━━◎%*侠客行◎━━≡} {
             #class get_st.inner kill;
         };
         #class get_st.inner close;
