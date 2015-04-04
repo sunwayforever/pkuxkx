@@ -93,8 +93,11 @@
         #elseif {"%1" == "南昌飞虎镖局"} {
             #return 1;
         };
-        #elseif {"%1" == "杭州江南钱庄"} {
-            #return -1;
+        #elseif {"%1" == "江州天福镖局"} {
+            #return 1;
+        };
+        #elseif {"%1" == "临安府江南钱庄"} {
+            #return 1;
         };
         #elseif {"%1" == "岳阳车马行"} {
             #return 4;
@@ -109,7 +112,7 @@
             #return 3;
         };
         #elseif {"%1" == "嘉兴钱庄"} {
-            #return 1;
+            #return -1;
         };
         #elseif {"%1" == "扬州醉仙楼"} {
             #if {"${char_menpai}" == "gaibang"} {
