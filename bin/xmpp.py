@@ -19,7 +19,7 @@ class Bot(ClientXMPP):
 
 if __name__ == '__main__':
     xmpp = Bot(sys.argv[1]+'@localhost/xkx', '123456')
-    xmpp.connect(("104.224.175.45",5222))
+    xmpp.connect(("bandwagon",5222))
     xmpp.process(block=False)
     while (True):
         line = sys.stdin.readline()
