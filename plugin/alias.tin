@@ -348,6 +348,7 @@
             #class pp.inner kill;
             #unticker {pp};
             show_to_pp %%1 @ ²»´æÔÚ;
+            tmp_auto_pp NULL;
         } {1};
         #class pp.inner close;
     };

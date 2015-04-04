@@ -31,7 +31,7 @@ load hubiao_score;
         #alias {gps_check_room_done} {
             #if {${gps.roomno} == -1} {
                 #delay {1} {
-                    #show {GPS: 当前房间未记录, 无法遍历};
+                    show_to_info 当前房间未记录, 无法遍历伙计;
                 };
             };
             #else {
@@ -40,11 +40,22 @@ load hubiao_score;
                 #var hb_path_index 1;
                 #list hb_path size hb_path_size;
                 #var hb_paused 0;
-                hb.run;
+                #if {${hb_path_size} == 0} {
+                    show_to_info 无法遍历伙计;
+                };
+                #else {
+                    hb.run;
+                };
             };  
         };
-        gps.check_room {
-            gps_check_room_done;
+        #if {"${gps_traverse_location}" == "NULL"} {
+            show_to_info 伙计不存在;
+            hb.b;
+        };
+        #else {
+            gps.check_room {
+                gps_check_room_done;
+            };
         };
     };
 
@@ -75,14 +86,8 @@ load hubiao_score;
             #delay {hb_move} {
                 #if {"@getenv{hb_state}" == "STARTED"} {
                     @setenv{hb_state;TRAVERSE};
-                    hb.resume;
                 };
-                #else {
-                    autopp;
-                    hb.pause;
-                    show_to_tuiche 没找到伙计;
-                    xmpp.notify 没找到伙计;
-                };
+                hb.resume;
             } {3};
         };
         #else {
@@ -322,6 +327,10 @@ load hubiao_score;
             ask @getenv{hb_owner} about finish;
         };
     };
+    #elseif {"@getenv{hb_state}" == "GOT_MIXIN"} {
+        give mixin to @getenv{hb_owner};
+        xian mixin;
+    };
     #else {
         hb.f;
     };
@@ -539,11 +548,6 @@ load hubiao_score;
         #unaction {mx done};
         xmpp.notify 密信完成;
     };
-};
-
-#alias {mx.re} {
-    give mixin to @getenv{hb_owner};
-    xian mixin;
 };
 
 #alias {mx.q} {
