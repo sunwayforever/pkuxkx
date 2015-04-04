@@ -54,15 +54,13 @@
     #action {你拿出%*张一千两银票，存进了银号。} {
         #class money.inner kill;
         #send {sc};
-        e;s;
         tmp_get_qian;
     };
     #class money.inner close;
     on_there {
-        n;w;
         qu 1 cash;
     };
-    gt yz;
+    gt 扬州钱庄;
 };
 
 #alias {chifan} {
@@ -269,20 +267,16 @@
     #if {${special_min_naijiu} < 100} {
         #action {抵达目的地} {
             #unaction {抵达目的地};
-            d;out;
             #delay {2} {
                 #foreach {${my_special_weapons}[%*]} {weapon} {
                     fix ${weapon};
                 };
                 #delay {3} {
-                    enter; up;
-                    #delay {3} {
-                        tmp_special_repair;
-                    };
+                    tmp_special_repair;
                 };
             };
         };
-        gt yz;
+        gt 发呆室;
     };
     #else {
         tmp_special_repair;
@@ -689,12 +683,9 @@
     #action {你捡起一些清心散} {
         #unaction {你捡起一些清心散};
         show_to_info 清心散;
-        #delay {2} {
-            gt yz;
-            #if {"%1" != ""} {
-                on_there {
-                    %1;
-                };
+        #if {"%1" != ""} {
+            #delay {2} {
+                %1;
             };
         };
     };
