@@ -3,11 +3,12 @@ import sqlite3
 import os
 import sys
 
-from .common import open_database
+from .common import *
 from ..tintin import Tintin
 from ..util import logger
 
 def get_area(conn, desc):
+    desc = fixup_area(desc)
     sql = "select distinct(zone) from mud_room";
     rows = conn.execute(sql).fetchall()
     zone=""
@@ -17,8 +18,6 @@ def get_area(conn, desc):
         if len(current_zone) > len(zone):
             zone = current_zone
             actual_zone=row[0]
-    if actual_zone == "长江" or actual_zone == "黄河":
-        actual_zone = actual_zone+"南岸"
     return actual_zone;
 
 if __name__ == "__main__":

@@ -4,11 +4,12 @@ import os
 import sys
 import re
 
-from .common import open_database
+from .common import *
 from ..tintin import Tintin
 from ..util import logger
 
 def get_room(conn, desc):
+    desc = fixup_area(desc)
     # gt yz
     # gt 醉仙楼
     sql = "select roomno from mud_room where abbr = '%s' or roomname = '%s'" % (desc, desc)
@@ -27,8 +28,6 @@ def get_room(conn, desc):
             zone = current_zone
             actual_zone=row[0]
     actual_room = desc[len(zone):]
-    if actual_zone == "长江" or actual_zone == "黄河":
-        actual_zone = actual_zone+"南岸"
 
     sql = "select roomno from mud_room where roomname = '%s' and zone = '%s'" % (actual_room, actual_zone)
     row = conn.execute(sql).fetchone();
