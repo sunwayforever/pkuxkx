@@ -83,6 +83,7 @@ load hubiao_score;
     };
     #else {
         #if {${hb_path_index} > ${hb_path_size}} {
+            hb.pause;
             #delay {hb_move} {
                 #if {"@getenv{hb_state}" == "STARTED"} {
                     @setenv{hb_state;TRAVERSE};
