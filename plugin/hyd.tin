@@ -21,7 +21,7 @@
 };
 
 #alias {hu.bl} {
-    bl.start µÁ;
+    gps.traverse µÁ;
 };
 
 #alias {hu.q} {

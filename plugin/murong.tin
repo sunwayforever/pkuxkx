@@ -102,7 +102,7 @@
 };
 
 #alias {mr.bl} {
-    bl.start ${char_name}%*еям╫;
+    gps.traverse ${char_name}%*еям╫;
 };
 
 #alias {mr.b} {
