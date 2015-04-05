@@ -13,5 +13,7 @@ def fixup_area(desc):
         desc =  desc[:2]+"南岸"+desc[2:]
     elif re.match("^建康府.城",desc):
         desc = desc[:4]+desc[5:]
+    elif re.match("^白驼山",desc):
+        desc = desc[:2]+desc[3:]
     return desc
     

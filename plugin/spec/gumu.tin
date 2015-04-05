@@ -188,7 +188,7 @@ stat.register 缠 hit 结果他被你攻了个措手不及！
 stat.register 汹涌 hit 只觉得犹如身陷洪涛巨浪，跌跌撞撞;
 stat.register 汹涌 miss 你的凌厉攻势;
 
-#var char_menpai_position xt;
+#var char_menpai_position 小厅;
 #var shifu yang;
 
 #alias {reborn} {
