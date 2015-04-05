@@ -303,10 +303,12 @@ load hubiao_score;
 };
 
 #alias {hb.get_owner} {
+    #action {%S %S总镖头 %S(%*)} {
+        #unaction {%S %S总镖头 %S(%*)};
+        @setenv{hb_owner;@lower{%%4}};
+    };
     #alias {get_pos_done} {
-        #if {"${pos.room}" == "昌隆镖局"} {
-            @setenv{hb_owner;zuo;}
-        }
+        @setenv{hb_owner_loc;${pos.room}};
     };
     get_pos {
         get_pos_done;
@@ -357,23 +359,7 @@ load hubiao_score;
 };
 
 #alias {hb.b} {
-    #var hb_owner @getenv{hb_owner};
-    #if {"${hb_owner}" == "zuo"} {
-        gt zuo;
-    };
-    #elseif {"${hb_owner}" == "zhang"} {
-        gt zz;
-    };
-    #elseif {"${hb_owner}" == "ma"} {
-        gt fm;
-    };
-    #elseif {"${hb_owner}" == "wang"} {
-        gt tf;
-    };
-    #elseif {"${hb_owner}" == "chu"} {
-        gt fh;
-    };
-
+    gt @getenv{hb_owner_loc};
     on_there {
         hb.d;
     };
