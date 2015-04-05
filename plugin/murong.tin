@@ -73,13 +73,7 @@
         #action {你从姑苏慕容叛徒的尸体身上搜出一块玉玺} {
             #unaction {你从姑苏慕容叛徒的尸体身上搜出一块玉玺};
             show_to_quest 慕容任务: 收工;
-            #delay {1} {
-                bl.back;
-            };
-            #action {遍历结束} {
-                #unaction {遍历结束};
-                mr.b;
-            };
+            mr.b;
         };
     };
     #class mr.inner close;
