@@ -51,12 +51,12 @@
         burden.check {
             burden_check_done;
         };
-    } {1};
+    } {5};
 
     #alias {ticker.gua.start} {
         #ticker {gua} {
             get qingxin san;
-        } {0.05}
+        } {1}
     };
 
     #alias {ticker.gua.end} {
@@ -65,7 +65,10 @@
 
     #class guasan.inner close;
 
-    guaji.start qingxin san;
+    gt –«Àﬁ¥¢≤ÿ “;
+    on_there {
+        guaji.start qingxin san;
+    };
 };
 
 #alias {guasan.stop} {
