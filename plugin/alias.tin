@@ -124,21 +124,6 @@
     #grep %1;
 };
 
-#alias {query_room} {
-    #system {bin/query_room.rb %0};
-};
-
-#action {(%1)¸æËßÄã£ºquery %2} {
-    query_npc %2;
-    #list query_npc_output size tmp_size;
-    #var tmp_index 0;
-    #while {$tmp_index < ${tmp_size}} {
-        #math tmp_index ${tmp_index}+1;
-        #list query_npc_output get $tmp_index tmp_value;
-        tell %1 $tmp_value;
-    };
-} {1};
-
 #alias wuliang {
     set brief 1;#9 {s};
     #delay {1} {sw;w;w;nw;#4 {sw}};
@@ -279,11 +264,6 @@
             #buffer lock;
         };
     };
-};
-
-#alias {rec} {
-    #path end;
-    #path new;
 };
 
 #alias {pp} {
