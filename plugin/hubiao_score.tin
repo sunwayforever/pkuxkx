@@ -10,8 +10,8 @@
 @mapset{robber_score;huashan;2};
 
 #function {getesc_get_score} {
-    #var hb_owner @getenv{hb_owner};
-    #if {"${hb_owner}" == "zhang"} {
+    #var hb_owner_loc @getenv{hb_owner_loc};
+    #if {"${hb_owner_loc}" == "荆西镖局"} {
         #if {"%1" == "全真天尊讲经堂"} {
             #if {"${xy_info}" == "on"} {
                 #return -1;
@@ -74,7 +74,7 @@
             #return -1;
         };
     };
-    #elseif {"${hb_owner}" == "zuo"} {
+    #elseif {"${hb_owner_loc}" == "昌隆镖局"} {
         #if {"%1" == "岳王墓墓前广场"} {
             #return 1;
         };
@@ -126,7 +126,7 @@
             #return -1;
         };
     };
-    #elseif {"${hb_owner}" == "ma"} {
+    #elseif {"${hb_owner_loc}" == "飞马镖局"} {
         #if {"%1" == "华山村铁匠铺"} {
             #return 6;
         };
@@ -179,7 +179,7 @@
             #return -1;
         };
     };
-    #elseif {"${hb_owner}" == "chu"} {
+    #elseif {"${hb_owner_loc}" == "飞虎镖局"} {
         #if {"%1" == "华山村铁匠铺"} {
             #return 4;
         };
@@ -201,7 +201,7 @@
             #return -1;
         };
     };
-    #elseif {"${hb_owner}" == "wang"} {
+    #elseif {"${hb_owner_loc}" == "天福镖局"} {
         #if {"%1" == "嘉兴钱庄"} {
             #return -1;
         };
