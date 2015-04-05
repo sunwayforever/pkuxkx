@@ -260,4 +260,5 @@ load gps_actions;
 };
 
 #nop 镇江土路;
+#nop tt->zuo;
 #class gps close;
