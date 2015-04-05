@@ -336,6 +336,9 @@ load hubiao_score;
     };
     #else {
         hb.f;
+        #if {${hb_auto} == 1} {
+            hb.start;
+        };
     };
 };
 
