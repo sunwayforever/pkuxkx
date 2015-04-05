@@ -566,7 +566,9 @@ load hubiao_score;
             play get_item.wav;
             #class mx.yao.inner kill;
             #class mx.inner kill;
-            hb.b;
+            on_truce {
+                hb.b;
+            };
         };
         #action {这里没有这个人} {
             #class mx.yao.inner kill;
