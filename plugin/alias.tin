@@ -1126,7 +1126,7 @@
     #var current_room {};
     #var description {};
     #class record.inner open;
-    #action {^%S - $} {
+    #action {^%* - $} {
         #var record_state 1;
         #var current_room %%1;
     } {1};
