@@ -149,6 +149,13 @@ load hubiao_score;
         #var gps_delay 1.5;
         #var gps_delay %1;
         #delay {${gps_delay}} {
+            #math hb_path_index ${hb_path_index}+1;
+            hb.run;
+        };
+    };
+    #alias {hb.busy} {
+        on_unbusy {
+            #math hb_path_index ${hb_path_index}+1;
             hb.run;
         };
     };

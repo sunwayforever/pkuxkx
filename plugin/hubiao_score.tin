@@ -17,14 +17,8 @@
                 #return -1;
             };
             #else {
-                #return -1;
+                #return 1;
             };
-        };
-        #elseif {"%1" == "洛阳四海钱庄"} {
-            #return -1;
-        };
-        #elseif {"%1" == "长安飞马镖局"} {
-            #return -1;
         };
         #elseif {"%1" == "曲阜孔府"} {
             #if {"${xy_info}" == "on"} {
@@ -36,12 +30,6 @@
         };
         #elseif {"%1" == "武当三清殿"} {
             #return -1;
-        };
-        #elseif {"%1" == "华山别院"} {
-            #return 5;
-        };
-        #elseif {"%1" == "华山村铁匠铺"} {
-            #return 3;
         };
         #elseif {"%1" == "少林佛心井"} {
             #if {"${xy_info}" == "on"} {
@@ -67,11 +55,11 @@
                 #return -1;
             };
             #else {
-                #return -1;
+                #return 1;
             };
         };
         #else {
-            #return -1;
+            #return 1;
         };
     };
     #elseif {"${hb_owner_loc}" == "昌隆镖局"} {
