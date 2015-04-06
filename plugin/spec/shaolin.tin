@@ -1,4 +1,6 @@
 #class template open
+#var hb_max_path_size 60;
+
 #action {如何使用「八仙醉打」呀} {
     drink fenjiu;
 };

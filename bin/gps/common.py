@@ -17,5 +17,6 @@ def fixup_area(desc):
         desc = desc[:2]+desc[3:]
     elif re.match("^小山村",desc):
         desc = "华山村"+desc[3:]
+    elif re.match("^姑苏慕容",desc):
+        desc = desc[2:]
     return desc
-    
