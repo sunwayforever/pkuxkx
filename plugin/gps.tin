@@ -149,7 +149,7 @@ load gps_actions;
 };
 
 #alias {gps.get_path} {
-    #nop about type: 1. gps.clear 2. gps.guohe 3. gps.delay 4. gps.zuoche 5. gps.goto_bt 6. gps.long_delay
+    #nop about type: 1. gps.clear 2. gps.guohe 3. gps.delay 4. gps.zuoche 5. gps.goto_bt 6. gps.long_delay 7. shudong
     #nop weight > 0: there is a weight;
     #nop weight = 0: there is no weight;
     #nop weight < 0: the path is disabled;
@@ -161,6 +161,7 @@ load gps_actions;
         @getenv{gps.weight.zuoche};
         @getenv{gps.weight.bt};
         @getenv{gps.weight.long_delay};
+        @getenv{gps.weight.shudong};
     };
 
     #var weights tmp;

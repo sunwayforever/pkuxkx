@@ -630,7 +630,7 @@ load hubiao_score;
         #else {
             #var gps.from_roomno ${gps.roomno};
             INVOKE gps.get_room ${hb_dest};
-            INVOKE gps.get_path ${gps.from_roomno} ${gps.roomno} "1,1,1,-1,-1,1";
+            INVOKE gps.get_path ${gps.from_roomno} ${gps.roomno} "1,1,1,-1,-1,1,-1";
             #var hb_path ${gps_path};
             #var hb_path_index 1;
             #list hb_path size hb_path_size;

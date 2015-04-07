@@ -602,6 +602,7 @@
     set gps.weight.zuoche 50;
     set gps.weight.bt 100;
     set gps.weight.long_delay 30;
+    set gps.weight.shudong 0;
 };
 
 #var get_san_count 50;
