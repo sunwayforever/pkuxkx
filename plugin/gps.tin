@@ -3,6 +3,23 @@ load gps_actions;
 
 #alias gt gps.gt;
 
+#alias {gps.gt.check} {
+    #alias {gps_check_room_done} {
+        #var src_roomno ${gps.roomno};
+        #if {${src_roomno} == ${dst_roomno}} {
+            #delay {1} {
+                #showme {GPS: 抵达目的地};
+            };
+        };
+        #else {
+            gps.gt ${dst_roomno};
+        };
+    };
+    gps.check_room {
+        gps_check_room_done;
+    };    
+};
+
 #alias {gps.gt} {
     #alias {gps_check_room_done} {
         #var src_roomno ${gps.roomno};
@@ -40,7 +57,6 @@ load gps_actions;
                     };
                 };
                 #else {
-                    #var gps.run.mode NORMAL;
                     gps.run;
                 };                
             };
@@ -55,13 +71,7 @@ load gps_actions;
     #var is_break 0;
     #var accu 0;
     #while {${gps_path_index} <= ${gps_path_size}} {
-        #if {"${gps.run.mode}" == "NORMAL"} {
-            #math accu ${accu}+1;
-        };
-        #if {"${gps.run.mode}" == "TRAVERSE" && ${gps_traverse_done} == 1} {
-            #var is_break 1;
-            #break;
-        };
+        #math accu ${accu}+1;
         #list gps_path get ${gps_path_index} gps_next_step;
         #math gps_path_index ${gps_path_index}+1;
         ${gps_next_step};
@@ -69,12 +79,7 @@ load gps_actions;
             #var is_break 1;
             #break;
         };
-        #elseif {"${gps.run.mode}" == "TRAVERSE"} {
-            gps.delay 0.5;
-            #var is_break 1;
-            #break;
-        };
-        #elseif {"${gps.run.mode}" == "NORMAL" && ${accu} > 10} {
+        #elseif {${accu} > 10} {
             gps.delay 0.5;
             #var is_break 1;
             #break;
@@ -82,7 +87,7 @@ load gps_actions;
     };
     #if {${gps_path_index} > ${gps_path_size} && ${is_break} == 0} {
         #delay {gps_delay} {
-            #showme {GPS: 抵达目的地};     
+            gps.gt.check;
         } {1}
     };
 };
@@ -96,8 +101,7 @@ load gps_actions;
     };
 
     #var gps_traverse_done 0;
-    #var gps.run.mode TRAVERSE;
-    gps.run;
+    gps.traverse.run;
 };
 
 #alias {gps.traverse.stop} {
@@ -134,19 +138,43 @@ load gps_actions;
             INVOKE gps.traverse ${gps.roomno} ${gps_traverse_location};
             #var gps_path_index 1;
             #list gps_path size gps_path_size;
-            #var gps.run.mode TRAVERSE;
-            gps.run;
+            gps.traverse.run;
         };  
     };
-
-    on_there {
-        #unaction {${gps_traverse_target}};
-    };
-    
     gps.check_room {
         gps_check_room_done;
     };
 };
+
+
+#alias {gps.traverse.run} {
+    #var is_break 0;
+    #var accu 0;
+    #while {${gps_path_index} <= ${gps_path_size}} {
+        #if {${gps_traverse_done} == 1} {
+            #var is_break 1;
+            #break;
+        };
+        #list gps_path get ${gps_path_index} gps_next_step;
+        #math gps_path_index ${gps_path_index}+1;
+        ${gps_next_step};
+        #if {@startwith{${gps_next_step};gps} == 1} {
+            #var is_break 1;
+            #break;
+        };
+        #else {
+            gps.delay 0.5;
+            #var is_break 1;
+            #break;
+        };
+    };
+    #if {${gps_path_index} > ${gps_path_size} && ${is_break} == 0} {
+        #delay {gps_delay} {
+            #showme {GPS: 遍历完成};
+            #unaction {${gps_traverse_target}};
+        } {1}
+    };
+}
 
 #alias {gps.get_path} {
     #nop about type: 1. gps.clear 2. gps.guohe 3. gps.delay 4. gps.zuoche 5. gps.goto_bt 6. gps.long_delay 7. shudong
