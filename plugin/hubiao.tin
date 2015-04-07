@@ -310,9 +310,9 @@ load hubiao_score;
 };
 
 #alias {hb.get_owner} {
-    #action {%S %S总镖头 %S(%*)} {
-        #unaction {%S %S总镖头 %S(%*)};
-        @setenv{hb_owner;@lower{%%4}};
+    #action {%S %S总镖头 %S(%S %S)} {
+        #unaction {%S %S总镖头 %S(%S %S)};
+        @setenv{hb_owner;@lower{%%4 %%5}};
     };
     #alias {get_pos_done} {
         @setenv{hb_owner_loc;${pos.room}};
