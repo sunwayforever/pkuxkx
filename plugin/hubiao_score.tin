@@ -20,6 +20,9 @@
                 #return 1;
             };
         };
+        #elseif {"%1" == "ÂåÑôËÄº£Ç®×¯"} {
+            #return -1;
+        };
         #elseif {"%1" == "Çú¸·¿×¸®"} {
             #if {"${xy_info}" == "on"} {
                 #return -1;
