@@ -11,9 +11,9 @@
 #alias {gps.delay} {
     #var gps_delay 1.5;
     #var gps_delay %1;
-    #delay {${gps_delay}} {
+    #delay {gps_delay} {
         gps.run;
-    };
+    } {${gps_delay}};
 };
 
 #alias {gps.guohe} {

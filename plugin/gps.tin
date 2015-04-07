@@ -262,4 +262,5 @@ load gps_actions;
 
 #nop 镇江土路;
 #nop tt->zuo;
+#nop 汝州大官道;
 #class gps close;
