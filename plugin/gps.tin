@@ -287,5 +287,5 @@ load gps_actions;
         gps_check_room_done;
     };
 };
-
+#nop ³¤½­±±°¶;
 #class gps close;
