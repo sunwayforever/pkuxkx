@@ -134,17 +134,17 @@
             #return -1;
         };
         #elseif {"%1" == "洛阳四海钱庄"} {
-            #return -1;
+            #return 1;
         };
         #elseif {"%1" == "长安当铺"} {
-            #return -1;
+            #return 1;
         };
         #elseif {"%1" == "襄阳当铺"} {
             #if {"${xy_info}" == "on"} {
                 #return -1;
             };
             #else {
-                #return -1;
+                #return 1;
             };
         };
         #elseif {"%1" == "武当荆西镖局"} {
@@ -152,18 +152,18 @@
                 #return -1;
             };
             #else {
-                #return -1;
+                #return 1;
             };
         };
         #elseif {"%1" == "全真天尊讲经堂"} {
-            #return -1;
+            #return 1;
         };
         #elseif {"%1" == "灵州酒馆"} {
             #if {"${char_menpai}" == "gaibang"} {
                 #return -1;
             };
             #else {
-                #return -1;
+                #return 1;
             };
         };
         #else {
@@ -221,7 +221,7 @@
                 #return -1;
             };
             #else {
-                #return -1;
+                #return 1;
             };
         };
         #else {
