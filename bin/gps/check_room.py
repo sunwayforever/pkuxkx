@@ -3,11 +3,12 @@ import sqlite3
 import os
 import sys
 
-from .common import open_database
+from .common import *
 from ..tintin import Tintin
 from ..util import logger
 
 def check_room (conn, zone, room, desc, exits):
+    room = fixup_room(room)
     sql = "select roomno from mud_room where roomname = '%s'" % (room)
     rows = conn.execute(sql).fetchall();
     if len(rows) == 1:

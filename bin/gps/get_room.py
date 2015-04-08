@@ -9,14 +9,15 @@ from ..tintin import Tintin
 from ..util import logger
 
 def get_room(conn, desc):
-    desc = fixup_area(desc)
+    room = fixup_room(desc)
     # gt yz
     # gt 醉仙楼
-    sql = "select roomno from mud_room where abbr = '%s' or roomname = '%s'" % (desc, desc)
+    sql = "select roomno from mud_room where abbr = '%s' or roomname = '%s'" % (room, room)
     row = conn.execute(sql).fetchone()
     if row:
         return row[0]
 
+    desc = fixup_area(desc)
     # gt 扬州醉仙楼
     sql = "select distinct(zone) from mud_room"
     rows = conn.execute(sql).fetchall()
@@ -28,6 +29,7 @@ def get_room(conn, desc):
             zone = current_zone
             actual_zone=row[0]
     actual_room = desc[len(zone):]
+    actual_room = fixup_room(actual_room)
 
     sql = "select roomno from mud_room where roomname = '%s' and zone = '%s'" % (actual_room, actual_zone)
     row = conn.execute(sql).fetchone();

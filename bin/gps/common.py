@@ -22,3 +22,8 @@ def fixup_area(desc):
     elif re.match("^福州",desc):
         desc = "闽南"+desc[2:]
     return desc
+
+def fixup_room(room):
+    if re.match(".*泥人.*",room):
+        room = "泥人铺"
+    return room
