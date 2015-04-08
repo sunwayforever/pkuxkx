@@ -288,8 +288,4 @@ load gps_actions;
     };
 };
 
-#nop 镇江土路;
-#nop tt->zuo;
-#nop 汝州大官道;
-#nop 朱雀大街;
 #class gps close;
