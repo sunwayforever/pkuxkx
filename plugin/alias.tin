@@ -1027,7 +1027,7 @@
 };
 
 #macro {\eL} {
-    show.clear;
+    show.reset;
 };
 
 #var reset 0;
@@ -1039,7 +1039,7 @@
     #unticker {%*};
     #ungag {%*};
     #read main.tin;
-    show.clear;
+    show.reset;
     #var reset 1;
     login;
 };
