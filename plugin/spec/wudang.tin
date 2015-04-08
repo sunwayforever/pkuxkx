@@ -202,8 +202,7 @@
     map.go {Ð¡ÎÝ};
 };
 
-#list my_weapons_to_wield create {blade; blade 2;};
-#nop #list my_weapons_to_wield_1 create {blade};
+#list my_weapons_to_wield create {sword; sword 2;};
 
 #var shifu zhang;
 
