@@ -99,8 +99,14 @@ load gps_actions;
     };
     #if {${gps_path_index} > ${gps_path_size} && ${is_break} == 0} {
         #delay {gps_delay} {
-            gps.gt.check;
-        } {1}
+            #if {"${gps.run.mode}" == "NORMAL"} {
+                gps.gt.check;
+            };
+            #elseif {"${gps.run.mode}" == "TRAVERSE"} {
+                #showme {GPS: ±È¿˙ÕÍ≥…};
+                #unaction {${gps_traverse_target}};
+            };
+        } {1};
     };
 };
 
@@ -158,10 +164,6 @@ load gps_actions;
             #var gps.run.mode TRAVERSE;
             gps.run;
         };
-    };
-
-    on_there {
-        #unaction {${gps_traverse_target}};
     };
 
     gps.check_room {
