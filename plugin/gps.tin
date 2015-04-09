@@ -203,12 +203,7 @@ load gps_actions;
     #alias tmp_check_room #cr;
     #alias tmp_check_room %1;
     #alias {get_pos_done} {
-        #if {@endwith{${pos.room};µÄÌðÃÛÐ¡ÎÝ} == 1} {
-            #var gps.roomno 3655;
-        };
-        #else {
-            INVOKE gps.check_room "${pos.area}" "${pos.room}" "${pos.desc}" "${pos.exits}";
-        };
+        INVOKE gps.check_room "${pos.area}" "${pos.room}" "${pos.desc}" "${pos.exits}";
         tmp_check_room;
     };
     get_area {
