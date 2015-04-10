@@ -27,16 +27,8 @@
 
     #action {韩世忠说道：「我听说有一群异族奸细在%*的%*附近出没} {
         #if {${hsz.requested} == 1} {
-            #var target_area @area{%%1};
             show_to_quest 韩世忠: %%1: %%2;
-            #if {"${target_area}" != "NULL"} {
-                gt ${target_area};
-                on_there {
-                    #if {@blsupport{${target_area} == 1}} {
-                        bl.start ^%%2;
-                    };
-                };
-            };
+            gt %%1%%2;
         };
     };
 };

@@ -38,13 +38,11 @@
             mr.f;
         };
         #else {
-            #var dest @area{%%1};
-            #if {"${dest}" != "NULL"} {
-                gt $dest;
-                on_there {
-                    #if {@blsupport{${dest}} == 1} {
-                        mr.bl;
-                    };
+            #var dest %%1;
+            gt $dest;
+            on_there {
+                #if {@blsupport{${dest}} == 1} {
+                    mr.bl;
                 };
             };
         };
@@ -96,7 +94,7 @@
 };
 
 #alias {mr.bl} {
-    gps.traverse ${char_name}%*еям╫;
+    bl.start ${char_name}%*еям╫;
 };
 
 #alias {mr.b} {
