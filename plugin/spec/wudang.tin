@@ -23,7 +23,7 @@
         #class attack.inner open;
         #ticker {perf_zhen} {
             zhen;
-        } {1};
+        } {3};
         #class attack.inner close;
         #if {${xf.type} == -1 || ${xf.type} == 1} {
             #var jiali_count max;
@@ -63,9 +63,8 @@
     #else {
         #if {${xf.type} == -1 || ${xf.type} == 1} {
             #var jiali_count max;
-            wuying;
-            gangrou;
             lzj;
+            wuying;
             #class attack.inner open;
             #ticker {wuying} {
                 wuying;
