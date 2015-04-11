@@ -24,7 +24,6 @@
 #read plugin/qiu.tin
 #read plugin/wudao.tin
 #read plugin/canchan.tin
-#read plugin/task.tin
 #read plugin/chanhui.tin
 #read plugin/bianli.tin
 #read plugin/piaoliu.tin
@@ -44,7 +43,6 @@
 #read plugin/xue.tin;
 #read plugin/zhuxi.tin;
 #read plugin/dushu.tin;
-#read plugin/read.tin;
 #read plugin/gag.tin;
 #read plugin/bxs.tin;
 #read plugin/hubo.tin;
