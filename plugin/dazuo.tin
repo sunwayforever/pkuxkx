@@ -76,13 +76,16 @@
     #class dz.inner kill;
 };
 
-#var dz_dwim 0;
+#var dz_dwim 100;
 #alias {dz.dwim} {
     #if {${nl_percent} < 50} {
-        #math dz_dwim ${dz_dwim} + ${hpbrief_max_nl}/100;
+        #math dz_dwim ${dz_dwim} + ${hpbrief_max_nl}/200;
     };
     #else {
-        #math dz_dwim ${dz_dwim} - ${hpbrief_max_nl}/200;;
+        #math dz_dwim ${dz_dwim} - ${hpbrief_max_nl}/500;;
+    };
+    #if {${dz_dwim} < 10} {
+        #var dz_dwim 100;
     };
     dazuo ${dz_dwim};
 };
