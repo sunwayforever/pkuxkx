@@ -1,6 +1,6 @@
 #class xkd open
-#var xkd_dz_count 100;
-#var xkd_watch_count 50;
+#var xkd_dz_count 600;
+#var xkd_watch_count 10;
 #alias {xkd.start} {
 
     #class xkd.inner open;
@@ -8,7 +8,7 @@
     #alias {quit} {#cr};
 
     #alias {start_watch} {
-        yun recover;watch 石壁 ${xkd_watch_count};yun regenerate;dazuo ${xkd_dz_count};
+        yun recover;#10 {watch 石壁 ${xkd_watch_count}};yun regenerate;dazuo ${xkd_dz_count};
     };
 
     #action {收功站了起来} {
