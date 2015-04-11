@@ -7,7 +7,7 @@
 };
 
 #alias {xiao.bl} {
-    gps.traverse 形迹可疑的;
+    bl.start 形迹可疑的;
 };
 
 #alias {xiao.d} {

@@ -26,6 +26,7 @@
         } {1};
         #class attack.inner close;
         #if {${xf.type} == -1 || ${xf.type} == 1} {
+            #var jiali_count max;
             wuying;
             gangrou;
             #class attack.inner open;
@@ -38,26 +39,30 @@
             #class attack.inner close;
         };
         #elseif {${xf.type} == 2} {
+            #var jiali_count max;
             gangrou;
             #class attack.inner open;
             #ticker {wuying} {
                 wuying;
-            } {4.8};
+            } {5.8};
             #class attack.inner close;
         };
-        #elseif {${xf.type} == 3} {
+        #elseif {${xf.type} == 3 || ${xf.type} == 4} {
             gangrou;
             #class attack.inner open;
+            #ticker {wuying} {
+                wuying;
+            } {5.8};
             #class attack.inner close;
         };
         #else {
-            gangrou;
             #class attack.inner open;
             #class attack.inner close;
         };
     };
     #else {
         #if {${xf.type} == -1 || ${xf.type} == 1} {
+            #var jiali_count max;
             wuying;
             gangrou;
             lzj;
@@ -70,12 +75,21 @@
             } {6.8};
             #class attack.inner close;
         };
-        #elseif {${xf.type} == 2 || ${xf.type} == 3} {
+        #elseif {${xf.type} == 2} {
+            #var jiali_count max;
             gangrou;
             #class attack.inner open;
             #ticker {wuying} {
                 wuying;
-            } {4.8};
+            } {5.8};
+            #class attack.inner close;
+        };
+        #elseif {${xf.type} == 3 || ${xf.type} == 4} {
+            gangrou;
+            #class attack.inner open;
+            #ticker {wuying} {
+                wuying;
+            } {5.8};
             #class attack.inner close;
         };
         #else {
@@ -219,4 +233,7 @@ stat.register 缠 hit 只能见招拆招，疲于应对，不觉已深陷太极剑意之中，无法出招。;
 #var menzhong zhang;
 #var menzhong_didian ht;
 
+#alias {attack.end} {
+    #var jiali_count 100;    
+};
 #class wudang_spec close

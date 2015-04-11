@@ -156,6 +156,7 @@
     #action {你将%*扶了起来背在背上} {
         #showme 收工;
         show_to_quest 萧峰: 已擒获 ${xf.real_name};
+        xf.b;
         #action {${xf.real_name}略一凝神，精神看起来好多了} {
             #unaction {${xf.real_name}略一凝神，精神看起来好多了};
             dian ${xf.real_first_name};
@@ -300,14 +301,14 @@
     #class xf.bl.inner open;
     #action {蒙面杀手说道：「就你也配跟我讨教功夫？！」} {
         #delay {xf.bl} {
-            gps.traverse.continue;
+            bl.next;
         } {1};
     };
     #action {找到目标} {
         xf.check;
     };
     #class xf.bl.inner close;
-    gps.traverse 蒙面杀手;
+    bl.start 蒙面杀手;
 };
 
 #alias {xf.b} {
