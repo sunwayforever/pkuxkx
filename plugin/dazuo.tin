@@ -78,11 +78,11 @@
 
 #var dz_dwim 100;
 #alias {dz.dwim} {
-    #if {${nl_percent} < 50} {
+    #if {${nl_percent} < 20} {
         #math dz_dwim ${dz_dwim} + ${hpbrief_max_nl}/200;
     };
     #else {
-        #math dz_dwim ${dz_dwim} - ${hpbrief_max_nl}/500;;
+        #math dz_dwim ${dz_dwim} - ${hpbrief_max_nl}/500;
     };
     #if {${dz_dwim} < 10} {
         #var dz_dwim 100;
