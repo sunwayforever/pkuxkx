@@ -23,7 +23,6 @@
         walk_to ${xf_last_direction};
     };
     #action {跳出战圈不打了} {
-        jifa_all;
         #if {${xf.type} == 3} {
             #delay {xf_delay} {
                 quan;
@@ -130,15 +129,12 @@
 
     #action {蒙面杀手说道：「我还没恢复好，你想乘人之危么？」} {
         raw;
-        unwi;
     };
 
     #alias {xf.slow_down_2} {
         #if {${xf.type} == 3 || ${xf.type} == 4} {
             #showme 快死了, 停手~;
             raw;
-            unwi;
-            jifa_none;
             on_halt;
         };
     };
@@ -238,7 +234,6 @@
         #unaction {『蒙面杀手(%*气血:%*\%/%*\%)』};
         #undelay {xf_delay};
         raw;
-        jifa_all;
         on_halt;
         #if {${xf.type} == 3} {
             #showme 收工;

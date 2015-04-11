@@ -43,7 +43,6 @@
     #3 halt;
     load war;
     wi;
-    jifa_all;
 };
 
 #alias {zq.check} {
@@ -57,7 +56,6 @@
     perform zui-quan.zsms;
     perform zui-quan.zwsc;
     perform zui-quan.zxhc;
-    jifa_all;
     wi;
 };
 #class zuiquan close

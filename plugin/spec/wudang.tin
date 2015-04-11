@@ -1,20 +1,20 @@
 #class wudang_spec open
-#var jiali_count max;
+#var jiali_count 100;
 
 #alias {attack.prepare} {
     yun powerup;
     #class attack.inner open;
     #delay {7.8} {
-        pfm zong;
+        zong;
     };
     #ticker {perf_chan} {
-        pfm chan;
-    } {0.8};
+        chan;
+    } {1.5};
     #class attack.inner close;
 };
 
 #alias {attack} {
-    pfm chan;
+    chan;
     #if {"${quest}" == "hb"} {
         #class attack.inner open;
         #class attack.inner close;
@@ -22,65 +22,60 @@
     #elseif {${mj_started}  == 1} {
         #class attack.inner open;
         #ticker {perf_zhen} {
-            pfm zhen;
+            zhen;
         } {1};
         #class attack.inner close;
         #if {${xf.type} == -1 || ${xf.type} == 1} {
-            pfm wuying;
-            pfm gangrou;
+            wuying;
+            gangrou;
             #class attack.inner open;
             #ticker {wuying} {
-                pfm wuying;
+                wuying;
             } {5.8};
             #ticker {gangrou} {
-                pfm gangrou;
+                gangrou;
             } {6.8};
             #class attack.inner close;
         };
         #elseif {${xf.type} == 2} {
-            pfm gangrou;
+            gangrou;
             #class attack.inner open;
             #ticker {wuying} {
-                pfm wuying;
+                wuying;
             } {4.8};
             #class attack.inner close;
         };
         #elseif {${xf.type} == 3} {
-            pfm gangrou;
+            gangrou;
             #class attack.inner open;
             #class attack.inner close;
         };
         #else {
-            pfm gangrou;
+            gangrou;
             #class attack.inner open;
             #class attack.inner close;
         };
     };
     #else {
         #if {${xf.type} == -1 || ${xf.type} == 1} {
-            pfm wuying;
-            pfm gangrou;
-            pfm lzj;
+            wuying;
+            gangrou;
+            lzj;
             #class attack.inner open;
             #ticker {wuying} {
-                pfm wuying;
+                wuying;
             } {5.8};
-            #ticker {gangrou} {
-                pfm gangrou;
+            #ticker {lzj} {
+                lzj;
             } {6.8};
             #class attack.inner close;
         };
-        #elseif {${xf.type} == 2} {
-            jifa_none;
-            pfm gangrou;
+        #elseif {${xf.type} == 2 || ${xf.type} == 3} {
+            gangrou;
             #class attack.inner open;
             #ticker {wuying} {
-                pfm wuying;
+                wuying;
             } {4.8};
-            #class attack.inner close;
-        };
-        #elseif {${xf.type} == 3} {
-            #class attack.inner open;
             #class attack.inner close;
         };
         #else {
@@ -224,15 +219,4 @@ stat.register 缠 hit 只能见招拆招，疲于应对，不觉已深陷太极剑意之中，无法出招。;
 #var menzhong zhang;
 #var menzhong_didian ht;
 
-#alias {jifa_none} {
-    jifa sword none;
-    jifa blade none;
-    jifa spear none;
-};
-
-#alias {jifa_all} {
-    jifa sword taiji-jian;
-    jifa blade xuanxu-dao;
-    jifa spear yuejia-qiangfa;
-};
 #class wudang_spec close

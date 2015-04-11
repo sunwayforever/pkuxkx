@@ -104,7 +104,6 @@
     #if {${mj_started} == 0} {
         #var mj_started 1;
         #nop show_to_info >>明教;
-        jifa_none;
         war;
     };
 };
@@ -115,7 +114,6 @@
         #var mj_started 0;
         #var mj_id {};
         #nop show_to_info <<明教;
-        jifa_all;
         war;
     };
 };
@@ -134,24 +132,6 @@
     #showme truce;
 };
 
-#var pfming 0;
-#alias {pfm_next} {
-    #if {${pfming} == 0} {
-        #var pfm_action @stackpoll{pfm};
-        #if {"${pfm_action}" != "NULL"} {
-            #var pfming 1;
-            on_unbusy {
-                ${pfm_action};
-                #var pfming 0;
-                pfm_next;
-            };
-        };
-        #else {
-            #var pfming 0;
-        };
-    };
-};
-
 #gag {wait_for_fight};
 #alias {war} {
     #class war.inner open;
@@ -167,13 +147,10 @@
     } {10};
     #action {{只能对战斗中的对手使用|只能在战斗中使用}} {
         #delay {attack.delay} {
-            @stackcreate{pfm};
             attack;
         } {0.3};
     };
     #class war.inner close;
-    @stackcreate{pfm};
-    #var pfming 0;
     yun qi;
     yun jing;
     #if {${youxiao_neigong} > 750} {
@@ -259,12 +236,6 @@
     disarm.stop;
 };
 
-@stackcreate{pfm};
-#alias {pfm} {
-    @stackpush{pfm;%1};
-    pfm_next;
-};
-
 #gag clear: done;
 #alias {clear} {
     kill %0;
@@ -291,11 +262,4 @@
     };
 };
 
-#alias {jifa_all} {
-    #cr;
-};
-
-#alias {jifa_none} {
-    #cr;
-};
 #class war close;

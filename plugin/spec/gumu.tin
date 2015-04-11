@@ -6,7 +6,7 @@
     yun xinjing;
     #class attack.inner open;
     #ticker {perf_chan} {
-        pfm chan;
+        chan;
     } {0.8};
     #ticker {xinjing} {
         yun xinjing;
@@ -15,61 +15,61 @@
 };
 
 #alias {attack} {
-    pfm chan;
+    chan;
     #if {"${quest}" == "hb"} {
-        pfm shexin;
-        pfm suxin;
+        shexin;
+        suxin;
         #class attack.inner open;
         #ticker {suxin} {
-            pfm suxin;
+            suxin;
         } {3.8};
         #ticker {shexin} {
-            pfm shexin;
+            shexin;
         } {5.8};
         #class attack.inner close;
     };
     #elseif {${mj_started}  == 1} {
         #class attack.inner open;
         #ticker {qixing} {
-            pfm qixing;
+            qixing;
         } {1.8};
         #class attack.inner close;
     };
     #else {
         #if {${xf.type} == -1 || ${xf.type} == 1} {
-            pfm shexin;
-            pfm suxin;
-            pfm zhua;
+            shexin;
+            suxin;
+            zhua;
             #class attack.inner open;
             #ticker {zhua} {
-                pfm zhua;
+                zhua;
             } {3.8};
             #ticker {suxin} {
-                pfm suxin;
+                suxin;
             } {8.8};
             #ticker {shexin} {
-                pfm shexin;
+                shexin;
             } {5.8};
             #class attack.inner close;
         };
         #elseif {${xf.type} == 2} {
-            pfm zhua;
-            pfm suxin;
+            zhua;
+            suxin;
             #class attack.inner open;
             #ticker {zhua} {
-                pfm zhua;
+                zhua;
             } {3.8};
             #class attack.inner close;
         };
         #elseif {${xf.type} == 3} {
-            pfm zhua;
-            pfm suxin;
+            zhua;
+            suxin;
             #class attack.inner open;
             #class attack.inner close;
         };
         #else {
-            pfm zhua;
-            pfm suxin;
+            zhua;
+            suxin;
             #class attack.inner open;
             #class attack.inner close;
         };
@@ -202,14 +202,5 @@ stat.register ÐÚÓ¿ miss ÄãµÄÁèÀ÷¹¥ÊÆ;
     bei cuff;
 };
 
-#alias {jifa_none} {
-    jifa sword none;
-    jifa spear none;
-};
-
-#alias {jifa_all} {
-    jifa sword xuantie-jian;
-    jifa spear yuejia-qiangfa;
-};
 #class gumu_spec close
 

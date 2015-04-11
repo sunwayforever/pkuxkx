@@ -5,7 +5,7 @@
     #class attack.inner open;
     #if {"${quest}" != "hsz"} {
         #ticker {perf_chan} {
-            pfm chan;
+            chan;
         } {1};
     };
     #class attack.inner close;
@@ -14,22 +14,22 @@
 
 #alias {attack} {
     #if {"${quest}" != "hsz"} {
-        pfm chan;
+        chan;
     };
-    pfm tiao;
+    tiao;
     #if {"${quest}" == "hb"} {
     };
     #elseif {${mj_started}  == 1} {
         #class attack.inner open;
         #ticker {chuo} {
-            pfm chuo;
+            chuo;
         } {1.8};
         #class attack.inner close;
         #if {${xf.type} == -1 || ${xf.type} == 1} {
-            pfm sanhui;
+            sanhui;
         };
         #elseif {${xf.type} == 2} {
-            pfm sanhui;
+            sanhui;
         };
         #elseif {${xf.type} == 3} {
         };
@@ -38,21 +38,21 @@
     };
     #else {
         #if {${xf.type} == -1 || ${xf.type} == 1} {
-            pfm zhuan;
-            pfm sanhui;
+            zhuan;
+            sanhui;
             #class attack.inner open;
             #ticker {zhuan} {
-                pfm zhuan;
+                zhuan;
             } {6.8};
             #ticker {sanhui} {
-                pfm sanhui;
+                sanhui;
             } {4.8};
             #class attack.inner close;
         };
         #elseif {${xf.type} == 2} {
             #class attack.inner open;
             #ticker {chuo} {
-                pfm chuo;
+                chuo;
             } {6.8};
             #class attack.inner close;
         };
@@ -182,20 +182,6 @@ stat.register 缠 hit 你得理不饶人;
     #send {jifa blade liuhe-dao};
     bei none;
     bei xianglong-zhang shexing-shou;
-};
-
-#alias {jifa_none} {
-    jifa staff none;
-    jifa spear none;
-    jifa strike none;
-    jifa blade none;
-};
-
-#alias {jifa_all} {
-    jifa staff dagou-bang;
-    jifa spear yuejia-qiangfa;
-    jifa strike xianglong-zhang;
-    jifa blade liuhe-dao;
 };
 #class gaibang_spec close
 

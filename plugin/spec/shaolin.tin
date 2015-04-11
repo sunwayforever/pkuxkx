@@ -23,12 +23,12 @@
         wi;
     };
     #else {
-        pfm jingmo;
+        jingmo;
     };
-    pfm fmq;
+    fmq;
     #class attack.inner open;
     #ticker {fumoquan} {
-        pfm fmq;
+        fmq;
     } {30};
     #ticker {jingmo} {
         #if {"${quest}" == "hb"} {
@@ -41,7 +41,7 @@
             wi;
         };
         #else {
-            pfm jingmo;
+            jingmo;
         };
     } {1.5};
     #class attack.inner close;
@@ -53,10 +53,10 @@
         #class attack.inner close;
     };
     #elseif {${mj_started}  == 1} {
-        pfm luohan;
+        luohan;
         #class attack.inner open;
         #ticker {luohan} {
-            pfm luohan;
+            luohan;
         } {2.8};
         #class attack.inner close;
     };
@@ -195,18 +195,5 @@ stat.register 惊魔 miss 看破了你的企图，侧身避过指力;
 #var shifu laozu;
 #var menzhong dizi;
 #var menzhong_didian txg;
-
-#alias {jifa_none} {
-    bei none;
-    jifa spear none;
-    jifa cuff none;
-};
-
-#alias {jifa_all} {
-    bei none;
-    jifa spear yuejia-qiangfa;
-    jifa cuff luohan-quan;
-    bei luohan-quan;
-};
 
 #class template close

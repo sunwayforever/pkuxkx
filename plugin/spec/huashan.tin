@@ -6,59 +6,59 @@
 };
 
 #alias {attack} {
-    pfm chan;
+    chan;
     #if {"${quest}" == "hb"} {
     };
     #elseif {${mj_started}  == 1} {
-        pfm poqi;
+        poqi;
         #class attack.inner open;
         #ticker {zongjue} {
-            pfm zongjue;
+            zongjue;
         } {5.8};
         #ticker {poqi} {
-            pfm poqi;
+            poqi;
         } {3.8};
         #class attack.inner close;
     };
     #else {
         #if {${xf.type} == -1 || ${xf.type} == 1} {
-            pfm poqi;
+            poqi;
             #class attack.inner open;
             #ticker {poqi} {
-                pfm poqi;
+                poqi;
             } {3.8};
             #ticker {zongjue} {
-                pfm zongjue;
+                zongjue;
             } {5.8};
             #class attack.inner close;
         };
         #elseif {${xf.type} == 2} {
-            pfm poqi;
-            pfm zongjue;
+            poqi;
+            zongjue;
             #class attack.inner open;
             #ticker {poqi} {
-                pfm poqi;
+                poqi;
             } {3.8};
             #class attack.inner close;
         };
         #elseif {${xf.type} == 3} {
-            pfm poqi;
-            pfm zongjue;
+            poqi;
+            zongjue;
             #class attack.inner open;
             #ticker {poqi} {
-                pfm poqi;
+                poqi;
             } {3.8};
             #ticker {zongjue} {
-                pfm zongjue;
+                zongjue;
             } {5.8};
             #class attack.inner close;
         };
         #else {
-            pfm poqi;
-            pfm kuangfeng;
+            poqi;
+            kuangfeng;
             #class attack.inner open;
             #ticker {poqi} {
-                pfm poqi;
+                poqi;
             } {3.8};
             #class attack.inner close;
         };
@@ -236,11 +236,4 @@
     bei cuff;
 };
 
-#alias {jifa_none} {
-    jifa sword none;
-};
-
-#alias {jifa_all} {
-    jifa sword yunushijiu-jian;
-};
 #class wudang_spec close

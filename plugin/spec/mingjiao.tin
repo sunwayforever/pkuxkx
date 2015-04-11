@@ -3,17 +3,17 @@
 	yun powerup;
 	#class attack.inner open;
 	#ticker {tisha} {
-		pfm tisha;
+		tisha;
 	} {1.8};
     #ticker {duo} {
-		pfm duo;
+		duo;
 	} {4.8};
 	#class attack.inner close;
 };
 
 #alias {attack} {
-	pfm tisha;
-    pfm duo;
+	tisha;
+    duo;
 	#class attack.inner open;
 	#class attack.inner close;
 };
