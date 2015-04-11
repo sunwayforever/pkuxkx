@@ -76,4 +76,14 @@
     #class dz.inner kill;
 };
 
+#var dz_dwim 200;
+#alias {dz.dwim} {
+    #if {${nl_percent} < 50} {
+        #math dz_dwim ${dz_dwim} + 20;
+    };
+    #else {
+        #math dz_dwim ${dz_dwim} - 20;
+    };
+    dazuo ${dz_dwim};
+};
 #class dazuo close
