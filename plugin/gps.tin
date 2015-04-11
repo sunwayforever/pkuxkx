@@ -278,4 +278,5 @@ load gps_actions;
     };
 };
 #nop 提督府花园;
+#nop 归云遍历;
 #class gps close;
