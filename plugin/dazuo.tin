@@ -76,7 +76,7 @@
     #class dz.inner kill;
 };
 
-#var dz_dwim ${hpbrief_max_nl}/100;
+#var dz_dwim 0;
 #alias {dz.dwim} {
     #if {${nl_percent} < 50} {
         #math dz_dwim ${dz_dwim} + ${hpbrief_max_nl}/100;
