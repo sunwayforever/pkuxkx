@@ -1,5 +1,5 @@
 #class wudang_spec open
-#var jiali_count 100;
+#var jiali_count 50;
 
 #alias {attack.prepare} {
     yun powerup;
