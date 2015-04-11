@@ -7,7 +7,7 @@
 
 #alias {wi} {
     unwi;
-    #if {"${quest}" != "xf"} {
+    #if {"${quest}" == "hb"} {
         #foreach {${weapons_to_wield}[%*]} {weapon} {
             do_wield ${weapon};
         };
