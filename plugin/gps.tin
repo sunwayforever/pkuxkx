@@ -279,4 +279,7 @@ load gps_actions;
 };
 #nop 提督府花园;
 #nop 归云遍历;
+#nop 洛阳小巷;
+#nop 晋阳城墙;
+#nop 白驼草丛;
 #class gps close;
