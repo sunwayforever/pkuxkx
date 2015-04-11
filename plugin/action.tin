@@ -362,4 +362,9 @@
 #action {^%s%S点经验；$} {
     show_to_info @ctd{%2} 点经验;
 };
+
+#action {张 三双手抱拳，对着%*${char_name}作了个揖道} {
+    show_to_info 张三;
+    xmpp.notify 张三;
+};
 #class action close;
