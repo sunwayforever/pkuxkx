@@ -1059,7 +1059,9 @@
     } {6};
     
     #action {    「%*」: %*} {
-        #cr;
+        #delay {look_delay} {
+            get_exits_done;
+        } {1};
     } {6};
     #action {这里没有任何明显的出路。} {
         #var exits_list  {};
