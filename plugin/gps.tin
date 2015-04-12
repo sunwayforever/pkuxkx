@@ -291,4 +291,6 @@ load gps_actions;
 #nop 北京永安门;
 #nop test all gps.clear;
 #nop 梅庄;
+#nop 红花会竹林;
+#nop 长江黄河遍历;
 #class gps close;
