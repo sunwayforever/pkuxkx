@@ -1,44 +1,51 @@
 #class gaibang_spec open
 
+#var with_weapon 1;
 #alias {attack.prepare} {
     yun powerup;
     #class attack.inner open;
     #if {"${quest}" != "hsz"} {
         #ticker {perf_chan} {
             chan;
-        } {1};
+        } {1.8};
     };
+    #ticker {perf_tiao} {
+        tiao;
+    } {3.8};
     #class attack.inner close;
 };
 
+#alias {attack.end} {
+    #var with_weapon 1;
+};
 
 #alias {attack} {
     #if {"${quest}" != "hsz"} {
         chan;
     };
-    tiao;
+    #delay {1} {
+        tiao;
+    };
     #if {"${quest}" == "hb"} {
     };
     #elseif {${mj_started}  == 1} {
         #class attack.inner open;
         #ticker {chuo} {
             chuo;
-        } {1.8};
+        } {2.5};
         #class attack.inner close;
         #if {${xf.type} == -1 || ${xf.type} == 1} {
             sanhui;
         };
         #elseif {${xf.type} == 2} {
-            sanhui;
         };
-        #elseif {${xf.type} == 3} {
+        #elseif {${xf.type} == 3 || ${xf.type} == 4} {
         };
         #else {
         };
     };
     #else {
         #if {${xf.type} == -1 || ${xf.type} == 1} {
-            zhuan;
             sanhui;
             #class attack.inner open;
             #ticker {zhuan} {
@@ -46,17 +53,14 @@
             } {6.8};
             #ticker {sanhui} {
                 sanhui;
-            } {4.8};
+            } {5.8};
             #class attack.inner close;
         };
         #elseif {${xf.type} == 2} {
             #class attack.inner open;
-            #ticker {chuo} {
-                chuo;
-            } {6.8};
             #class attack.inner close;
         };
-        #elseif {${xf.type} == 3} {
+        #elseif {${xf.type} == 3 || ${xf.type} == 4} {
         };
         #else {
         };
@@ -123,10 +127,16 @@
 };
 
 #alias {tiao} {
-    unwi;
-    do_wield staff;
-    perform dagou-bang.tiao;
-    wi;
+    #if {${with_weapon} == 1} {
+        unwi;
+        do_wield staff;
+        perform dagou-bang.tiao;
+        wi;
+    };
+};
+
+#action {对方没有使用任何兵器，你无法使用「打狗棒·挑」。} {
+    #var with_weapon 0;
 };
 
 #alias {chuo} {

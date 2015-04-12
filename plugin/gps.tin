@@ -58,6 +58,7 @@ load gps_actions;
                 };
                 #else {
                     #var gps.run.mode NORMAL;
+                    set brief 1;
                     gps.run;
                 };
             };
@@ -98,6 +99,7 @@ load gps_actions;
         };
     };
     #if {${gps_path_index} > ${gps_path_size} && ${is_break} == 0} {
+        set brief 2;
         #delay {gps_delay} {
             #if {"${gps.run.mode}" == "NORMAL"} {
                 gps.gt.check;
@@ -124,6 +126,7 @@ load gps_actions;
 
     #var gps_traverse_done 0;
     #var gps.run.mode TRAVERSE;
+    set brief 1;
     gps.run;
 };
 
@@ -162,6 +165,7 @@ load gps_actions;
             #var gps_path_index 1;
             #list gps_path size gps_path_size;
             #var gps.run.mode TRAVERSE;
+            set brief 1;
             gps.run;
         };
     };
@@ -286,5 +290,5 @@ load gps_actions;
 #nop 福州密室房梁;
 #nop 北京永安门;
 #nop test all gps.clear;
-#nop gps traverse bfs range;
+#nop 梅庄;
 #class gps close;

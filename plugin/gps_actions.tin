@@ -193,12 +193,14 @@
     #class gps.maze.yunhai.inner open;
     #action {^云海出口} {
         #class gps.maze.yunhai.inner kill;
+        set brief 1;
         gps.run;
     };
     #ticker {yunhai.ticker} {
         n;w;e;s;e;e;n;
     } {1.5};
     #class gps.maze.yunhai.inner close;
+    set brief 2;
     n;w;e;s;e;e;n;
 };
 
@@ -206,12 +208,14 @@
     #class gps.maze.yunhai.inner open;
     #action {^云海入口} {
         #class gps.maze.yunhai.inner kill;
+        set brief 1;
         gps.run;
     };
     #ticker {yunhai.ticker} {
         e;s;
     } {0.5};
     #class gps.maze.yunhai.inner close;
+    set brief 2;
     s;e;s;
 };
 
