@@ -15,7 +15,7 @@ def traverse_bfs(conn, roomno):
     stack = [(roomno,"NULL")]
     visited = set()
     last_room_no = roomno
-    bfs_max_count = 50
+    bfs_max_count = 8
     while len(stack) != 0:
         bfs_max_count = bfs_max_count-1
         if bfs_max_count<0:
@@ -102,6 +102,7 @@ if __name__ == "__main__":
         traverse_path = traverse_location(conn, int(sys.argv[1]), sys.argv[2])
     else:
         traverse_path = traverse_bfs(conn, int(sys.argv[1]))
+        traverse_path.extend(traverse_dfs(conn,int(sys.argv[1])))
         
     tt = Tintin()
     tt.write("#list {gps_path} create {%s}" % (";".join(traverse_path)))
