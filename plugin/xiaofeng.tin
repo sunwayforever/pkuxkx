@@ -79,7 +79,9 @@
             #var xf.target %%1:%%2;
             gt %%1%%2;
             on_there {
-                xf.bl;
+                #delay {delay_xf_bl} {
+                    xf.bl;
+                } {3};
             };
         };
     };
@@ -190,6 +192,7 @@
     #action {Òª´ò±ã´ò} {
         #class xf.bl.inner kill;
         #if {${xf.type} != -1} {
+            #undelay {delay_xf_bl};
             follow shashou;
             #delay {1} {
                 xf.n;

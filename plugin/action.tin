@@ -126,6 +126,7 @@
             pfm_special;
             #send {hp};
             #send {jifa};
+            reborn;
         };
     };
 };

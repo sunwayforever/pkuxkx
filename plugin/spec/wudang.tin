@@ -222,6 +222,7 @@
     #send {jifa blade xuanxu-dao};
     #send {jifa claw taiji-zhao};
     #send {jifa force taiji-shengong};
+    #send {jifa spear yuejia-qiangfa};
     bei cuff claw;
 };
 #var char_menpai_position wd;
