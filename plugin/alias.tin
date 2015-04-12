@@ -597,7 +597,7 @@
     set gps.weight.delay 10;
     set gps.weight.zuoche 50;
     set gps.weight.bt 100;
-    set gps.weight.long_delay 30;
+    set gps.weight.long_delay 80;
     set gps.weight.shudong 0;
 };
 

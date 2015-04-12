@@ -15,7 +15,7 @@ def traverse_bfs(conn, roomno):
     stack = [(roomno,"NULL")]
     visited = set()
     last_room_no = roomno
-    bfs_max_count = 20
+    bfs_max_count = 50
     while len(stack) != 0:
         bfs_max_count = bfs_max_count-1
         if bfs_max_count<0:
