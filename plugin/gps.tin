@@ -283,4 +283,5 @@ load gps_actions;
 #nop 晋阳城墙;
 #nop 白驼草丛;
 #nop 昆明客店内室;
+#nop 建康北山路遍历;
 #class gps close;
