@@ -286,4 +286,5 @@ load gps_actions;
 #nop 福州密室房梁;
 #nop 北京永安门;
 #nop test all gps.clear;
+#nop gps traverse bfs range;
 #class gps close;

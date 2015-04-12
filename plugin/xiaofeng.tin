@@ -79,9 +79,7 @@
             #var xf.target %%1:%%2;
             gt %%1%%2;
             on_there {
-                #delay {delay_xf_bl} {
-                    xf.bl;
-                } {3};
+                xf.bl;
             };
         };
     };
@@ -182,23 +180,6 @@
             show_to_quest 萧峰: 战胜: ${xf.real_name};
         };
     } {2};
-
-    #action {^    西夏一品堂 蒙面杀手(Mengmian shashou)} {
-        #if {${xf.type} != -1} {
-            xf.check;
-        };
-    } {1};
-    
-    #action {要打便打} {
-        #class xf.bl.inner kill;
-        #if {${xf.type} != -1} {
-            #undelay {delay_xf_bl};
-            follow shashou;
-            #delay {1} {
-                xf.n;
-            };
-        };
-    };
 
     #action {你捡起一颗%*的首级} {
         #showme 收工;
@@ -303,6 +284,24 @@
 };
 
 #alias {xf.bl} {
+    #class xiaofeng.inner open;
+    #action {要打便打} {
+        #class xf.bl.inner kill;
+        #if {${xf.type} != -1} {
+            follow shashou;
+            #delay {1} {
+                xf.n;
+            };
+        };
+    };
+
+    #action {^    西夏一品堂 蒙面杀手(Mengmian shashou)} {
+        #if {${xf.type} != -1} {
+            xf.check;
+        };
+    } {1};
+    #class xiaofeng.inner close;
+    
     #class xf.bl.inner open;
     #action {蒙面杀手说道：「就你也配跟我讨教功夫？！」} {
         #delay {xf.bl} {
