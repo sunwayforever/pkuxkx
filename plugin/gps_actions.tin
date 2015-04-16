@@ -239,4 +239,36 @@
     
     ${next_action};
 };
+
+#alias {gps.qu_sibao} {
+    #class gps.sibao.inner open;
+    #action {^%d%s《{广陵散|率意帖|溪山行旅图|呕血谱}》$} {
+        #list sibao add {%%1};
+    };
+    #act {^柜子里目前存放的物品有：$} {
+        #var sibao {};
+        #delay {1} {
+            #class gps.sibao.inner kill;
+            #if {@numitems{sibao}==4} {
+                #loop 4 1 i {getout @item{sibao;$i}};
+                #delay 1 {
+                    gps.run;
+                };
+            };
+            #else {
+                #show 你的柜子里四宝不齐或有多余，无法自动前往梅庄。;
+            };
+        };
+    };
+    #class gps.sibao.inner close;
+    find;
+};
+
+#alias {gps.huan_sibao} {
+    store ouxue pu;
+    store xishan tu;
+    store shuaiyi tie;
+    store guangling san;
+    gps.run;
+};
 #class gps_actions close;

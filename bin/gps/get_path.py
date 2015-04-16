@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
+# -*- coding:utf-8 -*-
 import sqlite3
 import os
 import sys
 import traceback
 
-from .common import open_database
+from .common import *
 from ..tintin import Tintin
 from ..util import logger
 
@@ -121,9 +122,33 @@ def get_path(conn, from_room, to_room, weight):
 
     return shortest_path(conn,from_room,to_room)
 
+def handle_special_path(conn, from_room, to_room, weight):
+    from_zone = get_zone(conn,from_room)
+    to_zone = get_zone(conn,to_room)
+
+    if to_zone == "西湖梅庄" and from_zone != to_zone:
+        paths = get_path(conn, from_room, 3655, weight)
+        paths.append("gps.qu_sibao")
+        paths.extend(get_path(conn, 3655,to_room, weight))
+    elif from_zone == "西湖梅庄" and from_zone != to_zone:
+        paths = get_path(conn, from_room, 3655, weight)
+        paths.append("gps.huan_sibao")
+        paths.extend(get_path(conn, 3655,to_room, weight))
+    else:
+        paths=[]
+    return paths
+
 if __name__ == "__main__":
     conn = open_database()
-    paths = get_path(conn,int(sys.argv[1]),int(sys.argv[2]), sys.argv[3])
+
+    from_room = int(sys.argv[1])
+    to_room = int(sys.argv[2])
+    weight = sys.argv[3]
+
+    paths = handle_special_path(conn, from_room, to_room, weight)
+    if not paths:
+        paths = get_path(conn,from_room, to_room, weight)
+        
     tt = Tintin()
     tt.write ("#list gps_path create {%s};\n" % (";".join(paths)))
 

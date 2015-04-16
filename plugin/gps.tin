@@ -3,6 +3,9 @@ load gps_actions;
 
 #alias gt gps.gt;
 
+#var gps_path_index 0;
+#var gps_path_size 0;
+
 #alias {gps.gt.check} {
     #alias {gps_check_room_done} {
         #var src_roomno ${gps.roomno};

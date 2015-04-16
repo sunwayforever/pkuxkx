@@ -31,3 +31,11 @@ def fixup_room(room):
     elif re.match(".*甜蜜小屋.*",room):
         room = "甜蜜小屋"
     return room
+
+def get_zone(conn, room):
+    sql = "select zone from mud_room where roomno = %d" % (room)
+    row = conn.execute(sql).fetchone()
+    if row:
+        return row[0]
+    else:
+        return "nil"
