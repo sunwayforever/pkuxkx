@@ -114,11 +114,11 @@ def get_path(conn, from_room, to_room, weight):
         pass
     conn.execute ("create temp table mud_entrance_weight (roomno int, linkroomno int, weight int)")
 
-    # about the path type:
+    # about the path weight_type:
     # 1. gps.clear 2. gps.guohe 3. gps.delay 4. gps.zuoche
     weights = [int(x) for x in weight.split(",")]
     for i,w in enumerate(weights, start=1):
-        conn.execute("insert into mud_entrance_weight select roomno, linkroomno, %d from mud_entrance where type = %d" % (w, i))
+        conn.execute("insert into mud_entrance_weight select roomno, linkroomno, %d from mud_entrance where weight_type = %d" % (w, i))
 
     return shortest_path(conn,from_room,to_room)
 

@@ -29,7 +29,7 @@ def traverse_bfs(conn, roomno):
             
         visited.add(dst_room_no)
 
-        sql = "select dst_room_no, dst_room_name from room_and_entrance where src_room_no = %d and type not in (2,4,5)" % (dst_room_no)
+        sql = "select dst_room_no, dst_room_name from room_and_entrance where src_room_no = %d and is_boundary = 0" % (dst_room_no)
 
         for row in conn.execute(sql).fetchall():
             if row[0] not in visited:
@@ -54,7 +54,7 @@ def traverse_dfs(conn, roomno):
         visited.add(dst_room_no)
 
         sql = "select dst_room_no, dst_room_name from room_and_entrance where src_room_no = %d and src_room_zone = dst_room_zone \
-        and type not in (2,4,5)" % (dst_room_no)
+        and is_boundary = 0" % (dst_room_no)
 
         for row in conn.execute(sql).fetchall():
             if row[0] not in visited:
@@ -71,7 +71,7 @@ def traverse_location(conn, roomno, location):
     last_room_no = roomno
 
     sql = "select distinct(dst_room_zone) from room_and_entrance where src_room_zone = \
-    (select zone from mud_room where roomno = %d) and type not in (2,4,5)" % (roomno)
+    (select zone from mud_room where roomno = %d) and is_boundary = 0" % (roomno)
 
     zones = ",".join(["'%s'" % (row[0]) for row in conn.execute(sql).fetchall()])
         
@@ -86,7 +86,7 @@ def traverse_location(conn, roomno, location):
         visited.add(dst_room_no)
 
         sql = "select dst_room_no, dst_room_name from room_and_entrance where src_room_no = %d and dst_room_zone in (%s) \
-        and type not in (2,4,5)" % (dst_room_no, zones)
+        and is_boundary = 0" % (dst_room_no, zones)
 
         for row in conn.execute(sql).fetchall():
             if row[0] not in visited:

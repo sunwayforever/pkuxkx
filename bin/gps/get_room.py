@@ -41,7 +41,7 @@ def get_room(conn, desc):
     if row:
         return row[0]
     
-    sql = "select distinct(dst_room_zone) from room_and_entrance where src_room_zone = '%s' and type not in (2,4,5)" % (actual_zone)
+    sql = "select distinct(dst_room_zone) from room_and_entrance where src_room_zone = '%s' and is_boundary = 0" % (actual_zone)
     zones = ",".join(["'%s'" % (row[0]) for row in conn.execute(sql).fetchall()])
 
     sql = "select roomno from mud_room where roomname = '%s' and zone in (%s)" % (actual_room, zones)
