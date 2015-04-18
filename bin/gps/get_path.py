@@ -102,7 +102,7 @@ def shortest_path(conn, src, dst):
                 ret.extend(shortest_path(conn, middle, dst))
                 return ret
 
-def get_path(conn, from_room, to_room, weight):
+def get_path_unchecked(conn, from_room, to_room, weight):
     sql = "select roomno from mud_room where roomno = %d or roomno = %d" % (from_room, to_room)
     rows = conn.execute(sql).fetchall()
     if len(rows) != 2:
@@ -122,21 +122,30 @@ def get_path(conn, from_room, to_room, weight):
 
     return shortest_path(conn,from_room,to_room)
 
-def handle_special_path(conn, from_room, to_room, weight):
-    from_zone = get_zone(conn,from_room)
-    to_zone = get_zone(conn,to_room)
+def get_path(conn, from_room, to_room, weight, check_points=["梅庄"]):
+    if not check_points:
+        return get_path_unchecked(conn, from_room, to_room, weight)
+    
+    check_point = check_points.pop()
+    if not check_point:
+        return get_path_unchecked(conn, from_room, to_room, weight)
 
-    if to_zone == "西湖梅庄" and from_zone != to_zone:
-        paths = get_path(conn, from_room, 3655, weight)
-        paths.append("gps.qu_sibao")
-        paths.extend(get_path(conn, 3655,to_room, weight))
-    elif from_zone == "西湖梅庄" and from_zone != to_zone:
-        paths = get_path(conn, from_room, 3655, weight)
-        paths.append("gps.huan_sibao")
-        paths.extend(get_path(conn, 3655,to_room, weight))
-    else:
-        paths=[]
-    return paths
+    if check_point == "梅庄":
+        from_zone = get_zone(conn,from_room)
+        to_zone = get_zone(conn,to_room)
+
+        if to_zone == "西湖梅庄" and from_zone != to_zone:
+            paths = get_path(conn, from_room, 3655, weight, check_points)
+            paths.append("gps.qu_sibao")
+            paths.extend(get_path(conn, 3655,to_room, weight, check_points))
+            return paths;
+        elif from_zone == "西湖梅庄" and from_zone != to_zone:
+            paths = get_path(conn, from_room, 3655, weight, check_points)
+            paths.append("gps.huan_sibao")
+            paths.extend(get_path(conn, 3655,to_room, weight, check_points))
+            return paths;
+        
+    return get_path(conn,from_room, to_room, weight, check_points)
 
 if __name__ == "__main__":
     conn = open_database()
@@ -145,9 +154,7 @@ if __name__ == "__main__":
     to_room = int(sys.argv[2])
     weight = sys.argv[3]
 
-    paths = handle_special_path(conn, from_room, to_room, weight)
-    if not paths:
-        paths = get_path(conn,from_room, to_room, weight)
+    paths = get_path(conn, from_room, to_room, weight);
         
     tt = Tintin()
     tt.write ("#list gps_path create {%s};\n" % (";".join(paths)))
