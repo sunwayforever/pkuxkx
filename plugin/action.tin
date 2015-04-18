@@ -95,6 +95,10 @@
     #action {get_char_info} {
         #unaction {get_char_info};
         #act {^${char_name}的甜蜜小屋$} {#var CurrentPosition bs};#act {^${char_name}的甜蜜小屋 - $} {#var CurrentPosition bs};
+        #action {张 三双手抱拳，对着%*${char_name}作了个揖道} {
+            show_to_info 张三;
+            xmpp.notify 张三;
+        };
         show_to_quest   ;
         #send {i};
         #send {hpbrief};
@@ -355,10 +359,5 @@
 
 #action {^%s%S点经验；$} {
     show_to_info @ctd{%2} 点经验;
-};
-
-#action {张 三双手抱拳，对着%*${char_name}作了个揖道} {
-    show_to_info 张三;
-    xmpp.notify 张三;
 };
 #class action close;
