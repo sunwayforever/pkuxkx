@@ -275,4 +275,47 @@
     store guangling san;
     gps.run;
 };
+
+#alias {gps.maze.guolin} {
+    #class gps.maze.guolin.inner open;
+    #action {^果林$} {
+        on_unbusy {
+            s;
+        };
+    };
+    #action {^后山$} {
+        #class gps.maze.guolin.inner kill;
+        gps.run;
+    };
+    #class gps.maze.guolin.inner close;
+    s;
+};
+
+#alias {gps.maze.guolinb} {
+    #class gps.maze.guolin.inner open;
+    #action {^果林$} {
+        #if {"${next_direction}" == "s"} {
+            #var next_direction e;
+        };
+        #else {
+            #var next_direction s;
+        }
+        on_unbusy {
+            ${next_direction};
+        };
+    };
+    #action {^后山$} {
+        on_unbusy {
+            s;
+        };
+    };
+    #action {^大道$} {
+        #class gps.maze.guolin.inner kill;
+        gps.run;
+    };
+    #class gps.maze.guolin.inner close;
+    #var next_direction s;
+    ${next_direction};
+};
+
 #class gps_actions close;

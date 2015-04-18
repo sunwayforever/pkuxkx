@@ -284,6 +284,7 @@ load gps_actions;
         gps_check_room_done;
     };
 };
+#nop 杀手帮果林;
 #nop 归云遍历;
 #nop 晋阳城墙;
 #nop 白驼草丛;
