@@ -150,8 +150,24 @@
 
 #alias {gps.maze.tdf} {
     #var current_direction west;
+    #list directions create {east;west;north;south};
+    #alias {do_look_next} {
+        #math look_count ${look_count}+1;
+        #if {${look_count} > 4} {
+            on_unbusy {
+                ${next_direction};
+                do_look;
+            };    
+        };
+        #else {
+            #list directions get ${look_count} current_direction;
+            look ${current_direction};
+        };
+    };
+    
     #alias {do_look} {
         #class gps.tdf.inner open;
+        #var next_direction  west;
         #var look_count 0;
         #action {这里的花丛（huacong）比别的地方} {
             #class gps.tdf.inner kill;
@@ -162,28 +178,16 @@
         } {8};
         
         #action {这里看起来似乎和其他地方不太一样} {
-            #var look_count ${look_count}+1;
-            #var current_direction @opposite{${current_direction}};
-            look ${current_direction};
+            do_look_next;
         } {8};
         
         #action {心里有种不祥的预感} {
-            #var look_count ${look_count}+1;
-            #if {${look_count} >= 2} {
-                #class gps.tdf.inner kill;
-                ${current_direction};
-                #delay {1} {
-                    do_look;
-                };
-            };
-            #else {
-                #var current_direction @opposite{${current_direction}};
-                look ${current_direction};
-            };
+            #var next_direction ${current_direction};
+            do_look_next;
         } {9};
         #class gps.tdf.inner close;
         
-        look ${current_direction};
+        do_look_next;
     };
     
     do_look;
