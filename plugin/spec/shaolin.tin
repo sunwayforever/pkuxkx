@@ -75,7 +75,8 @@
             #class attack.inner close;
         };
         #elseif {${xf.type} == 3} {
-            quan;
+            #class attack.inner open;
+            #class attack.inner close;
         };
         #elseif {${xf.type} == 4} {
             #class attack.inner open;
@@ -105,7 +106,8 @@
             #class attack.inner close;
         };
         #elseif {${xf.type} == 3} {
-            quan;
+            #class attack.inner open;
+            #class attack.inner close;
         };
         #elseif {${xf.type} == 4} {
             #class attack.inner open;
