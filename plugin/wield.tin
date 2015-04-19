@@ -41,9 +41,9 @@
         #if {@startwith{${weapon_name};my} == 1} {
             #var need_reload 0;
         };
-        #list ${weapon_type}_list size tmp_size;
-        #math tmp_size ${tmp_size}+1;
-        #if {${tmp_size} == 1} {
+        #list ${weapon_type}_list size tmp_weapons_size;
+        #math tmp_weapons_size ${tmp_weapons_size}+1;
+        #if {${tmp_weapons_size} == 1} {
             #list ${weapon_type}_list add ${weapon_name};
             #if {@ismember{${weapon_type};weapon_types} != 0} {
                 #if {@startwith{${weapon_name};my} == 1} {
@@ -52,10 +52,10 @@
             };
         };
         #else {
-            #list ${weapon_type}_list add {${weapon_name} ${tmp_size}};
+            #list ${weapon_type}_list add {${weapon_name} ${tmp_weapons_size}};
             #if {@ismember{${weapon_type};weapon_types} != 0} {
                 #if {@startwith{${weapon_name};my} == 1} {
-                    #list my_weapons add {${weapon_name} ${tmp_size}};
+                    #list my_weapons add {${weapon_name} ${tmp_weapons_size}};
                 };
             };
         };
@@ -63,20 +63,20 @@
     #action {%* = {[^,]+},} {
         #var weapon_type %%2;
         #var weapon_name %%2;
-        #list ${weapon_type}_list size tmp_size;
-        #math tmp_size ${tmp_size}+1;
-        #if {${tmp_size} == 1} {
+        #list ${weapon_type}_list size tmp_weapons_size;
+        #math tmp_weapons_size ${tmp_weapons_size}+1;
+        #if {${tmp_weapons_size} == 1} {
             #list ${weapon_type}_list add ${weapon_name};
         };
         #else {
-            #list ${weapon_type}_list add {${weapon_name} ${tmp_size}};
+            #list ${weapon_type}_list add {${weapon_name} ${tmp_weapons_size}};
         };
     } {3};
     #delay {3} {
         #class weapons.inner kill;
         #foreach {${weapon_types}[%*]} {weapon_type} {
-            #list special_${weapon_type} size tmp_size;
-            #if {${tmp_size} != 0} {
+            #list special_${weapon_type} size tmp_weapons_size;
+            #if {${tmp_weapons_size} != 0} {
                 #foreach {${special_${weapon_type}}[%*]} {sw} {
                     #list ${weapon_type}_list add ${sw};
                     #list my_special_weapons add ${sw};

@@ -114,11 +114,11 @@
 #function {power} {
     #var a %1;
     #var b %2;
-    #var tmp 0;
+    #var tmp_power 0;
     #var result 1;
-    #while {${tmp} < ${b}} {
+    #while {${tmp_power} < ${b}} {
         #math result ${result}*${a};
-        #math tmp ${tmp}+1;
+        #math tmp_power ${tmp_power}+1;
     };
 };
 

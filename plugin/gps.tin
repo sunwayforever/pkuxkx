@@ -142,13 +142,13 @@ load gps_actions;
     #unvar gps_traverse_target;
     #unvar gps_traverse_location;
     #var gps_traverse_done 0;
-    #var tmp %1;
-    #replace tmp {@} {;};
-    #list tmp_list create ${tmp};
-    #list tmp_list size tmp_size;
-    #var gps_traverse_target $tmp_list[1];
-    #if {${tmp_size} == 2} {
-        #var gps_traverse_location $tmp_list[2];
+    #var traverse_tmp %1;
+    #replace traverse_tmp {@} {;};
+    #list traverse_tmp_list create ${traverse_tmp};
+    #list traverse_tmp_list size traverse_tmp_size;
+    #var gps_traverse_target $traverse_tmp_list[1];
+    #if {${traverse_tmp_size} == 2} {
+        #var gps_traverse_location $traverse_tmp_list[2];
     };
 
     #action {${gps_traverse_target}} {
