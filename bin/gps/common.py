@@ -22,7 +22,9 @@ def fixup_area(desc):
     elif re.match("^福州",desc):
         desc = "闽南"+desc[2:]
     elif re.match("^杭州",desc):
-        desc = "临安"+desc[2:]        
+        desc = "临安"+desc[2:]
+    elif re.match("^大理城中",desc):
+        desc = "大理城"+desc[4:]                
     return desc
 
 def fixup_room(room):
@@ -38,4 +40,5 @@ def get_zone(conn, room):
     if row:
         return row[0]
     else:
+
         return "nil"
