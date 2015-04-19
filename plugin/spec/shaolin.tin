@@ -78,7 +78,6 @@
             quan;
         };
         #elseif {${xf.type} == 4} {
-            luohan;
             #class attack.inner open;
             #class attack.inner close;
         };
@@ -109,7 +108,6 @@
             quan;
         };
         #elseif {${xf.type} == 4} {
-            luohan;
             #class attack.inner open;
             #class attack.inner close;
         };
