@@ -1,4 +1,5 @@
 #class template open
+#var jiali_count 100;
 #var hb_max_path_size 60;
 
 #action {如何使用「八仙醉打」呀} {
@@ -48,21 +49,74 @@
 };
 
 #alias {attack} {
+    jingmo;
     #if {"${quest}" == "hb"} {
         #class attack.inner open;
         #class attack.inner close;
     };
     #elseif {${mj_started}  == 1} {
-        luohan;
         #class attack.inner open;
-        #ticker {luohan} {
-            luohan;
-        } {2.8};
         #class attack.inner close;
+        #if {${xf.type} == -1 || ${xf.type} == 1} {
+            #var jiali_count max;
+            luohan;
+            #class attack.inner open;
+            #ticker {luohan} {
+                luohan;
+            } {5.8};
+            #class attack.inner close;
+        };
+        #elseif {${xf.type} == 2} {
+            luohan;
+            #class attack.inner open;
+            #ticker {luohan} {
+                luohan;
+            } {5.8};
+            #class attack.inner close;
+        };
+        #elseif {${xf.type} == 3} {
+            quan;
+        };
+        #elseif {${xf.type} == 4} {
+            luohan;
+            #class attack.inner open;
+            #class attack.inner close;
+        };
+        #else {
+            #class attack.inner open;
+            #class attack.inner close;
+        };
     };
     #else {
-        #class attack.inner open;
-        #class attack.inner close;
+        #if {${xf.type} == -1 || ${xf.type} == 1} {
+            #var jiali_count max;
+            luohan;
+            #class attack.inner open;
+            #ticker {luohan} {
+                luohan;
+            } {5.8};
+            #class attack.inner close;
+        };
+        #elseif {${xf.type} == 2} {
+            luohan;
+            #class attack.inner open;
+            #ticker {luohan} {
+                luohan;
+            } {5.8};
+            #class attack.inner close;
+        };
+        #elseif {${xf.type} == 3} {
+            quan;
+        };
+        #elseif {${xf.type} == 4} {
+            luohan;
+            #class attack.inner open;
+            #class attack.inner close;
+        };
+        #else {
+            #class attack.inner open;
+            #class attack.inner close;
+        };
     };
 };
 
@@ -131,7 +185,7 @@
 
 #alias {luohan} {
     unwi;
-    jiali max;
+    jiali ${jiali_count};
     perform luohan-quan.luohan;
     jiali none;
     wi;
@@ -196,4 +250,7 @@ stat.register 惊魔 miss 看破了你的企图，侧身避过指力;
 #var menzhong dizi;
 #var menzhong_didian txg;
 
+#alias {attack.end} {
+    #var jiali_count 100;    
+};
 #class template close
