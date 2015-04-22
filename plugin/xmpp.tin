@@ -1,17 +1,10 @@
 #class xmpp open;
 #alias {xmpp.start} {
-    #alias xmpp.chat.on {
-        #var xmpp_chat 1;
-    };
-    
-    #alias xmpp.chat.off {
-        #var xmpp_chat 0;
-    };
-
     #run {xmpp} {./bin/xmpp.py ${char_id}};
     #unticker {%*};
     #unaction {%*};
     #action {xmpp message: %*:%*} {
+        xmpp.echo.on;
         #pkuxkx %%2;
     };
     #pkuxkx;
@@ -19,6 +12,14 @@
 
 #alias {xmpp.notify} {
     #xmpp %0;
+};
+
+#alias xmpp.chat.on {
+    #var xmpp_chat 1;
+};
+    
+#alias xmpp.chat.off {
+    #var xmpp_chat 0;
 };
 
 #alias {xmpp.echo.on} {
@@ -35,4 +36,5 @@
 };
 
 xmpp.echo.off;
+xmpp.chat.off;
 #class xmpp close;
