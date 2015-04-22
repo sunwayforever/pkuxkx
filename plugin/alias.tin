@@ -124,45 +124,6 @@
     #grep %1;
 };
 
-#alias wuliang {
-    set brief 1;#9 {s};
-    #delay {1} {sw;w;w;nw;#4 {sw}};
-    #delay {2} {nw;#3 {nu};set brief 2}
-};
-
-#alias mg.chlb {w;n;w;s;s;e;e;w;w;};
-#alias mg.chl {e;s;n;w;n;n;e;s;e;};
-#alias mg.yubi {set brief 1;e;se;#4 {sw};s;e;n;w;n;set brief 2}
-#alias shiban {say 上报四重恩，下济三途苦;#4 {pull stone up};#3 {push stone down}};
-#alias mg.zsf {set brief 1;n;n;n;n;w;w;w;sw;s;se;e;ne;n;nw;sw;s;e;set brief 2;open door;n};
-#alias mg.zsfb {set brief 1;s;w;n;ne;se;w;e;e;s;s;s;s;set brief 2};
-#alias {mg.mhz} {
-    e;n;w;s;w;e;e;e;n;break men;s
-};
-#alias mg.dmd {
-    open door;n;sw;se;n;s;w;e;
-    #delay {1} {
-        w;e;e;s;w;n;nw;n
-    };
-};
-#alias mg.chahua {w;n;w;s;s;e;e;w;w};
-#alias mg.chahuab {e;s;n;w;n;n;e;s;e};
-#alias mg.gumu {
-    swim river;n;n;e;n;n;w;w;n;n;e;ban stone;w;w;
-};
-#alias mg.wxd {n;w;n;e;s;u;out};
-#alias mg.fmq {set brief 1;w;e;s;e;n;n;e;w;s;set brief 0}
-#alias mg.fmqb {set brief 1;n;e;w;s;s;w;n;w;e}
-#alias mg.tdh {ed;s;s;s;w;e;n;n;n;n};
-#alias mg.tdhb {#4 s;w;n;n;e;n;s;wu};
-#alias mg.hz {s;e;n;w;s;s;w};
-
-#alias mg.hhh {say 红花老祖本姓朱,为救苍生下凡来; enter};
-#alias {shudong} {enter shudong;say 天堂有路你不走呀;d;%1};
-
-#alias {mg.sqs} {eu;n;nu;nu;nu;eu;e};
-#alias {mg.sqsb} {w;wd;sd;sd;sd;s;wd};
-
 #alias {le} {l east};
 #alias {lw} {l west};
 #alias {ls} {l south};
@@ -1172,4 +1133,10 @@
     #delay {1} {
         #buffer end;
     };
-}
+};
+
+#alias {fm} {
+    on_unbusy {
+        fullme %0;
+    };
+};

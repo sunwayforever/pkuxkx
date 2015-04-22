@@ -62,7 +62,6 @@
 #read plugin/burden.tin;
 #read plugin/area.tin;
 #read plugin/wield.tin;
-#read plugin/fullme.tin;
 #read plugin/hsz.tin;
 #read plugin/vein.tin;
 #read plugin/xmpp.tin;
