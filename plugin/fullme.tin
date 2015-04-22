@@ -1,18 +1,19 @@
 #class fullme open
-
-#var fm_last_image {};
-
 #action {^Ì«ÒÅº¶ÁË} {
     do_show fullme Ê§°Ü;
 };
 
 #alias {fm} {
     #if {"%0" != ""} {
-        fullme %0;
+        on_unbusy {
+            fullme %0;
+        };
     };
     #else {
-        fullme;
-    }
+        on_unbusy {
+            fullme;
+        };
+    };
 };
 
 #action {^http://pkuxkx.net/antirobot/robot.php?filename=%1} {
