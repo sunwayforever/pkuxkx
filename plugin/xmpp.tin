@@ -1,5 +1,4 @@
 #class xmpp open;
-#var xmpp_chat 0;
 
 #alias {xmpp.start} {
     #alias xmpp.chat.on {
@@ -36,4 +35,7 @@
         #show %%0;
     };
 };
+
+xmpp.echo.off;
+
 #class xmpp close;
