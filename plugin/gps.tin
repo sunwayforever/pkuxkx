@@ -249,11 +249,11 @@ load gps_actions;
 #alias {gps.check_link} {
     #alias {gps_check_room_done} {
         #delay {1} {
-            do_show {GPS: ${pos.room}: ${gps.roomno}};
+            #show {GPS: ${pos.room}: ${gps.roomno}};
         };
         #if {${gps.roomno} == -1} {
             #delay {1} {
-                do_show {GPS: 房间未记录, 无法检查连接};
+                #show {GPS: 房间未记录, 无法检查连接};
             };
         };
         #else {
@@ -272,7 +272,7 @@ load gps_actions;
     #alias {gps_check_room_done} {
         #if {${gps.roomno} == -1} {
             #delay {1} {
-                do_show {GPS: 房间未记录, 无法插入连接};
+                #show {GPS: 房间未记录, 无法插入连接};
             };
         };
         #else {

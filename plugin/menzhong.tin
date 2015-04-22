@@ -22,7 +22,7 @@
     } {1};
 
     #action {ËµµÀ£º%*} {
-        do_show menzhong:%%1;
+        #showme menzhong:%%1;
     };
 
     #class mz.inner close;

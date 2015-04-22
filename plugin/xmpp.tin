@@ -1,4 +1,5 @@
 #class xmpp open;
+xmpp.echo.off;
 
 #alias {xmpp.start} {
     #alias xmpp.chat.on {
@@ -13,7 +14,6 @@
     #unticker {%*};
     #unaction {%*};
     #action {xmpp message: %*:%*} {
-        #pkuxkx xmpp.echo.on;
         #pkuxkx %%2;
     };
     #pkuxkx;
@@ -35,7 +35,4 @@
         #show %%0;
     };
 };
-
-xmpp.echo.off;
-
 #class xmpp close;

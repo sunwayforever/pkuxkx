@@ -118,15 +118,15 @@
     };
 
     #action {你使用的武器不对} {
-        do_show {火候太浅};
+        #showme {火候太浅};
     };
 
     #action {乾坤大挪移心法只能用学习} {
-        do_show {火候太浅};
+        #showme {火候太浅};
     };
 
     #action {道德小于零才能练这种阴毒功夫} {
-        do_show {火候太浅};
+        #showme {火候太浅};
     };
 
     #action {你的基本功夫比你的高级功夫还高} {
@@ -146,7 +146,7 @@
             lw.restart;
         };
         #else {
-            do_show lingwu done;
+            #showme lingwu done;
             lw.stop;
         };
     };
@@ -156,27 +156,27 @@
     };
 
     #action {你不能练} {
-        do_show {火候太浅};
+        #showme {火候太浅};
     };
 
     #action {特殊内功无法练习} {
-        do_show {火候太浅};
+        #showme {火候太浅};
     };
 
     #action {你现在只能在岳王墓中观看墙壁才能继续提高岳家枪法} {
-        do_show {火候太浅};
+        #showme {火候太浅};
     };
 
     #action {你要装备 %* 类武器才能练习} {
-        do_show {火候太浅};
+        #showme {火候太浅};
     };
 
     #action {你必须先找一杆枪才能练此枪法} {
-        do_show {火候太浅};
+        #showme {火候太浅};
     };
 
     #action {你还没学过这项技能吧} {
-        do_show {火候太浅};
+        #showme {火候太浅};
     };
 
     #class lingwu.inner close;
@@ -209,12 +209,12 @@
         get_level_a $skill;
         get_level_b $skill;
         #if {${skill_level_a == 0} || ${skill_level_b} == 0} {
-            do_show {火候太浅};
+            #showme {火候太浅};
             #return;
         };
         show_to_quest 领悟 $skill: $skill_level_a / $skill_level_b;
         #if {$skill_level_a >= $max_level && $skill_level_b >= $max_level} {
-            do_show {火候太浅};
+            #showme {火候太浅};
             #return;
         };
 

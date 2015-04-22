@@ -12,12 +12,12 @@
 
     #action {切磋} {
         zhuxi.stop;
-        do_show zhuxin done;
+        #showme zhuxin done;
     };
 
     #action {你的潜能已经发挥到极限了} {
         zhuxi.stop;
-        do_show zhuxin done;
+        #showme zhuxin done;
     };
 
     #action {你今天太累了} {

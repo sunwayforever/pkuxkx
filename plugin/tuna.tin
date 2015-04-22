@@ -17,7 +17,7 @@
             #unticker {tn};
             #delay {tn_delay} {
                 tmp_tn;
-                do_show tn.full;
+                #showme tn.full;
             } {3};
         };
     } {1};
@@ -40,7 +40,7 @@
         #math max_jingli ${youxiao_neigong} * 10 -1;
         #if {${max_jingli} < ${hpbrief_max_jl}} {
             tn.stop;
-            do_show tn done;
+            #showme tn done;
             show_to_quest 精力到达瓶颈: ${hpbrief_max_jl} => ${max_jingli};
             xmpp.notify 吐纳完毕;
         };

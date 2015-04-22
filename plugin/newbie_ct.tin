@@ -83,7 +83,7 @@
     };
 
     #action {对面已经有一辆囚车了} {
-        do_show busy_for_move;
+        #showme busy_for_move;
     };
 
     #action {想跑？没那么容易} {
@@ -287,7 +287,7 @@
         #class xunluo.inner close;
     };
     #else {
-        do_show 现在是晚上, 无法巡逻;
+        #showme 现在是晚上, 无法巡逻;
     };
 };
 

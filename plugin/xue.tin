@@ -23,12 +23,12 @@
 
     #action {切磋} {
         xue.stop;
-        do_show xue done;
+        #showme xue done;
     };
 
     #action {也许是缺乏实战经验} {
         xue.stop;
-        do_show xue done;
+        #showme xue done;
     };
 
 

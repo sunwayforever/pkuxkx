@@ -57,12 +57,12 @@
 
 #gag npc refreshed;
 #alias {zhengdian} {
-    do_show guaji.update %1;
+    #showme guaji.update %1;
     #var tmp_minute @ctd{%1};
     #var uptime_info ${tmp_minute}分;
     update_status;
     #if {${tmp_minute} == 0 || ${tmp_minute} == 30 || ${tmp_minute} == 15 || ${tmp_minute} == 45} {
-        do_show npc refreshed;
+        #showme npc refreshed;
     };
 };
 
@@ -169,7 +169,7 @@
 #action {侠客行现在大约是%1时分} {
     #var curr_daytime %1;
     #if {"${curr_daytime}" != "${prev_daytime}"} {
-        do_show ${curr_daytime}到了;
+        #showme ${curr_daytime}到了;
         #var daytime_info ${curr_daytime};
         update_status;
         #var prev_daytime ${curr_daytime};
