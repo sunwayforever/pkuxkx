@@ -376,6 +376,7 @@ load hubiao_score;
 };
 
 #alias {hb.start} {
+    xmpp.echo.off;
     set brief 2;
     #var hb_auto 1;
 
