@@ -4,7 +4,7 @@
     #unticker {%*};
     #unaction {%*};
     #action {xmpp message: %*:%*} {
-        xmpp.echo.on;
+        #pkuxkx xmpp.echo.on;
         #pkuxkx %%2;
     };
     #pkuxkx;
