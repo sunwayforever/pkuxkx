@@ -133,7 +133,7 @@
 
     #alias {xf.slow_down_2} {
         #if {${xf.type} == 3 || ${xf.type} == 4} {
-            #showme 快死了, 停手~;
+            do_show 快死了, 停手~;
             raw;
             on_halt;
         };
@@ -154,7 +154,7 @@
     };
 
     #action {你将%*扶了起来背在背上} {
-        #showme 收工;
+        do_show 收工;
         show_to_quest 萧峰: 已擒获 ${xf.real_name};
         xf.b;
         #action {${xf.real_name}略一凝神，精神看起来好多了} {
@@ -165,19 +165,19 @@
     };
 
     #action {你捡起一颗%*的首级} {
-        #showme 收工;
+        do_show 收工;
         show_to_quest 萧峰: 已杀死;
         xf.b;
     };
 
     #action {硬生生的将%*的头颅从尸体上扯了下来，提在手中！} {
-        #showme 收工;
+        do_show 收工;
         show_to_quest 萧峰: 已杀死;
         xf.b;
     };
     
     #action {将血淋淋的首级提在手中} {
-        #showme 收工;
+        do_show 收工;
         show_to_quest 萧峰: 已杀死;
         xf.b;
     };
@@ -206,12 +206,12 @@
         raw;
         on_halt;
         #if {${xf.type} == 3} {
-            #showme 收工;
+            do_show 收工;
             show_to_quest 萧峰: 已经劝服;
             xf.b;
         };
         #elseif {${xf.type} == 4} {
-            #showme 收工;
+            do_show 收工;
             show_to_quest 萧峰: 已经战胜;
             xf.b;
         };

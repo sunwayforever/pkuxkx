@@ -129,7 +129,7 @@
     attack.end;
     jiali none;
     mj.stop;
-    #showme truce;
+    do_show truce;
 };
 
 #gag {wait_for_fight};
@@ -176,7 +176,7 @@
 
 #action {^%*运起九阳神功} {
     mj.start;
-    #showme mingjiao enemy:%1;
+    do_show mingjiao enemy:%1;
 };
 
 #alias {tao} {
@@ -244,7 +244,7 @@
         #unaction {^这里没有这个人};
         #class clear.inner kill;
         raw;
-        #showme clear: done;
+        do_show clear: done;
     } {1};
     #ticker {kill} {
         kill %0;

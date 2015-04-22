@@ -25,7 +25,7 @@
                 #class dz.full.inner kill;
                 #delay {dz_delay} {
                     tmp_dz;
-                    #showme dz.full;
+                    do_show dz.full;
                 } {3};
             };
         } {1};
@@ -62,7 +62,7 @@
     #math max_neili ${youxiao_neigong} * 10 -1;
     #if {${max_neili} < ${hpbrief_max_nl}} {
         dz.stop;
-        #showme dz done;
+        do_show dz done;
         show_to_quest 内力到达瓶颈: ${hpbrief_max_nl} => ${max_neili};
     };
     #else {

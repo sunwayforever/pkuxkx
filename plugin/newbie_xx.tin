@@ -39,7 +39,7 @@
     };
 
     #action {身上搜出一滴毒液} {
-        #showme bug.done;
+        do_show bug.done;
         #class bug.inner kill;
     };
     #action {你在地上找了半天，却什么也没发现。|你当真以为星宿海遍地毒虫} {

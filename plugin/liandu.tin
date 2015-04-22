@@ -167,7 +167,7 @@
     #action {你点燃了火折，发现%*石壁%*一道裂缝} {
         #delay {1} {
             #send {zuan};
-            #showme zuan ok;
+            do_show zuan ok;
         };
         #class zuan.inner kill;
     };

@@ -83,7 +83,7 @@
     #alias {combine_gems_done} {
         #class gem.combine.inner kill;
         gem.teardown;
-        #show 合成完毕;
+        do_show 合成完毕;
         #delay {3} {
             tmp_combine;
         };

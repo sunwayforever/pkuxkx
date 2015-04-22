@@ -404,7 +404,7 @@ load hubiao_score;
     #gag mx done;
     #action {${char_name}帮%*追回财物，额外获得%*点经验} {
         show_to_info 额外获得 @ctd{%%2} 点经验;
-        #show mx done;
+        do_show mx done;
     };
 
     #alias {got_gem} {
@@ -424,7 +424,7 @@ load hubiao_score;
 
     #action {哇，你太厉害了，这么快就把这些财物追回，我有重谢！} {
         got_gem;
-        #show mx done;
+        do_show mx done;
     };
 
     #action {掉了出来一颗} {
@@ -624,7 +624,7 @@ load hubiao_score;
     #alias {gps_check_room_done} {
         #if {${gps.roomno} == -1} {
             #delay {1} {
-                #show {GPS: 当前房间未记录, 无法行走};
+                do_show {GPS: 当前房间未记录, 无法行走};
             };
         };
         #else {
@@ -636,7 +636,7 @@ load hubiao_score;
             #list hb_path size hb_path_size;
             #if {${hb_path_size} == 0} {
                 #delay {1} {
-                    #show {GPS: 目标房间不可达, 无法行走};
+                    do_show {GPS: 目标房间不可达, 无法行走};
                 };
             };
             #else {

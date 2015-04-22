@@ -40,7 +40,7 @@
         #var cun_count @ctd{%%1};
         #math cun_count ${cun_count}-1;
         #if {${cun_count} <= 0} {
-            #showme 你拿出零张一千两银票，存进了银号。;
+            do_show 你拿出零张一千两银票，存进了银号。;
         };
         #else {
             #alias delay_action {
@@ -78,7 +78,7 @@
         };
     };
     #action {掌柜的说：客官您这包袱里面还有东西呢。} {
-        #showme 你向当铺买下一个包袱;
+        do_show 你向当铺买下一个包袱;
     };
     #action {你向当铺买下一个包袱} {
         #class get.bao.inner kill;
@@ -507,7 +507,7 @@
 #alias {map.go.resume} {
     #var map_go_wait 0;
     #if {${map_go_ended} == 1} {
-        #showme map arrived;
+        do_show map arrived;
     };
 };
 
@@ -530,7 +530,7 @@
         #class map.go.inner kill;
         #var critical_running 0;
         #if {${map_go_wait} == 0} {
-            #showme map arrived;
+            do_show map arrived;
         };
         #else {
             #var map_go_ended 1;
@@ -943,7 +943,7 @@
     #gag 什么？;
     #foreach {${kaimen_actions}[%*]} {kaimen_action} {
         #foreach {${kaimen_names}[%*]} {kaimen_name} {
-            #show ${kaimen_action} ${kaimen_name};
+            do_show ${kaimen_action} ${kaimen_name};
             ${kaimen_action} ${kaimen_name};
         };
     };

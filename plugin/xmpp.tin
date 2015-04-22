@@ -14,6 +14,7 @@
     #unticker {%*};
     #unaction {%*};
     #action {xmpp message: %*:%*} {
+        #pkuxkx xmpp.echo.on;
         #pkuxkx %%2;
     };
     #pkuxkx;
@@ -21,5 +22,18 @@
 
 #alias {xmpp.notify} {
     #xmpp %0;
+};
+
+#alias {xmpp.echo.on} {
+    #alias {do_show} {
+        #show %%0;
+        #xmpp %%0;
+    };
+};
+
+#alias {xmpp.echo.off} {
+    #alias {do_show} {
+        #show %%0;
+    };
 };
 #class xmpp close;

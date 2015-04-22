@@ -57,7 +57,7 @@
             #var char_name %%%1;
             #class get_name.inner kill;
             update_status;
-            #showme get_char_info;
+            do_show get_char_info;
         };
         #class get_name.inner close;
 
@@ -65,7 +65,7 @@
         #action {姓名:%*%sID:%S} {
             #var char_name %%%1;
             update_status;
-            #showme get_char_info;
+            do_show get_char_info;
         };
         #action {内力恢复：+%*  } {
             #var char_nl_recovery %%%1;
@@ -119,10 +119,10 @@
         };
         #delay {9} {
             #if {${need_reload} == 1} {
-                #showme need reload;
+                do_show need reload;
             };
             #else {
-                #showme reloaded;
+                do_show reloaded;
                 wi;
                 we;
                 check_naijiu;
@@ -177,8 +177,8 @@
 };
 
 #action {你现在正忙着哩} {
-    #showme busy_for_move;
-    #showme busy_for_action;
+    do_show busy_for_move;
+    do_show busy_for_action;
 };
 
 #list busy_for_move create {
@@ -195,7 +195,7 @@
 
 #foreach {${busy_for_move}[%*]} {name} {
     #action {${name}} {
-        #showme busy_for_move;
+        do_show busy_for_move;
     };
 };
 
@@ -291,7 +291,7 @@
 
 #action {你喜欢原地逛逛么} {
     #delay {1.5} {
-        #showme 抵达目的地;
+        do_show 抵达目的地;
     };
 };
 

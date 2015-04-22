@@ -35,7 +35,7 @@
         };
         #else {
             xiamao;
-            #showme 你决定再接再厉;
+            do_show 你决定再接再厉;
         };
     };
 
