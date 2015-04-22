@@ -27,7 +27,7 @@ load hubiao_score;
 
 #alias {hb.traverse} {
     #alias {auto_pp_done} {
-        #var gps_traverse_location %%1;
+        #var gps_traverse_location %%0;
         #alias {gps_check_room_done} {
             #if {${gps.roomno} == -1} {
                 #delay {1} {
@@ -35,7 +35,7 @@ load hubiao_score;
                 };
             };
             #else {
-                INVOKE gps.traverse ${gps.roomno} ${gps_traverse_location};
+                INVOKE gps.traverse ${gps.roomno} "${gps_traverse_location}";
                 #var hb_path ${gps_path};
                 #var hb_path_index 1;
                 #list hb_path size hb_path_size;
