@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import sqlite3
 import sys
-from .tintin import Tintin
+from .common import Tintin
 
 def get_pinyin(conn, name):
     ret = ""

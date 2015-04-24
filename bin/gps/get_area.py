@@ -4,8 +4,8 @@ import os
 import sys
 
 from .common import *
-from ..tintin import Tintin
-from ..util import logger
+from ..common import Tintin
+from ..common import logger
 
 def get_area(conn, desc):
     desc = fixup_area(desc)

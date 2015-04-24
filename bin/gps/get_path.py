@@ -6,8 +6,8 @@ import sys
 import traceback
 
 from .common import *
-from ..tintin import Tintin
-from ..util import logger
+from ..common import Tintin
+from ..common import logger
 
 def shortest_path_no_weight(conn, src, dst):
     if (src == dst):

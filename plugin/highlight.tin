@@ -5,4 +5,5 @@
 #highlight {不支持遍历} {green};
 #highlight {收工} {red};
 #highlight {GPS:%*} {bold red};
+#highlight {TASK:%*} {bold red};
 #class highlight close

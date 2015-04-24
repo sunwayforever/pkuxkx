@@ -3,7 +3,7 @@
 
 import re
 import sys
-from .tintin import Tintin
+from .common import Tintin
 
 if __name__ == '__main__':
     tt = Tintin()

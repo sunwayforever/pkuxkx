@@ -5,8 +5,8 @@ import sys
 import re
 
 from .common import *
-from ..tintin import Tintin
-from ..util import logger
+from ..common import Tintin
+from ..common import logger
 
 def get_room(conn, desc):
     room = fixup_room(desc)

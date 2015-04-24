@@ -4,9 +4,10 @@
 import re
 import os
 import sqlite3
+from ..common import open_gps_database
 
 def open_database():
-    return sqlite3.connect("db/rooms.db")
+    return open_gps_database()
     
 def fixup_area(desc):
     if re.match("^(长江|黄河)[^南北]",desc):

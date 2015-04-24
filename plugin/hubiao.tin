@@ -546,6 +546,7 @@ load hubiao_score;
 
 #alias {mx.q} {
     #class mx.inner open;
+    #nop 你扯开嗓子，开始大喊：小王八蛋，你给我滚出来。;
     #action {一个伙计挖着鼻屎走了出来，道：你找我啥事} {
         do_show 找到密信伙计;
         l;

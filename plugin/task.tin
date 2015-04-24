@@ -1,0 +1,51 @@
+#class task open;
+#alias {task.setup} {
+
+};
+
+#alias {task.locate} {
+    #unvar task.roomno;
+    #unvar task.roomname;
+    #unvar task.zone;
+    #var locate_item %1;
+    #var locate_count 0;
+    #var task_desc {};
+    
+    #class task.locate.inner open;
+    #action {在一个有着%*的出口的地方。} {
+        #var task_exits %%1;
+    };
+    #action {这个地方的描述中含有这样的字眼：%*} {
+        #if {"${task_desc}" != ""} {
+            #var task_desc ${task_desc}:%%1;
+        };
+        #else {
+            #var task_desc %%1;
+        };
+        #math locate_count ${locate_count}+1;
+        
+        #if {${locate_count} > 3} {
+            #class task.locate.inner kill;
+            INVOKE task.locate "${task_desc}" "${task_exits}";
+            #showme TASK: locate 完成: ${task.roomno}: ${task.roomname} @ ${task.zone};
+        };
+        #else {
+            #delay {1} {
+                locate ${locate_item};            
+            };
+        };
+    };
+    #class task.locate.inner close;
+    locate ${locate_item};
+};
+
+#alias {task.teardown} {
+    
+};
+
+#alias {task.start} {
+    
+};
+
+
+#class task close;

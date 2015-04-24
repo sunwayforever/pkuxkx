@@ -4,7 +4,7 @@ import os
 import sys
 
 from .common import open_database
-from ..tintin import Tintin
+from ..common import Tintin
 
 if __name__ == "__main__":
     tt = Tintin()

@@ -7,8 +7,8 @@ import traceback
 
 from .common import open_database
 from .get_path import get_path_unchecked
-from ..tintin import Tintin
-from ..util import logger
+from ..common import Tintin
+from ..common import logger
 
 def traverse_bfs(conn, roomno):
     traverse_path = []
