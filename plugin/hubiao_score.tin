@@ -66,43 +66,16 @@
         };
     };
     #elseif {"${hb_owner_loc}" == "昌隆镖局"} {
-        #if {"%1" == "岳王墓墓前广场"} {
-            #return 1;
-        };
-        #elseif {"%1" == "泉州当铺"} {
+        #if {"%1" == "泉州当铺"} {
             #return -1;
-        };
-        #elseif {"%1" == "牙山小荒地"} {
-            #return 1;
-        };
-        #elseif {"%1" == "苏州聚宝斋"} {
-            #return -1;
-        };
-        #elseif {"%1" == "福州福威镖局"} {
-            #return 5;
-        };
-        #elseif {"%1" == "南昌飞虎镖局"} {
-            #return 1;
-        };
-        #elseif {"%1" == "江州天福镖局"} {
-            #return 1;
-        };
-        #elseif {"%1" == "临安府江南钱庄"} {
-            #return 1;
-        };
-        #elseif {"%1" == "岳阳车马行"} {
-            #return 4;
         };
         #elseif {"%1" == "归云庄太湖街"} {
             #return -1;
         };
-        #elseif {"%1" == "牙山小荒地"} {
-            #return 4;
-        };
-        #elseif {"%1" == "镇江飞龙镖局"} {
-            #return 3;
-        };
         #elseif {"%1" == "嘉兴钱庄"} {
+            #return -1;
+        };
+        #elseif {"%1" == "峨嵋毗卢殿"} {
             #return -1;
         };
         #elseif {"%1" == "扬州醉仙楼"} {
@@ -110,11 +83,11 @@
                 #return -1;
             };
             #else {
-                #return 5;
+                #return 1;
             };
         };
         #else {
-            #return -1;
+            #return 1;
         };
     };
     #elseif {"${hb_owner_loc}" == "飞马镖局"} {
