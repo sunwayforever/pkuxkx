@@ -442,7 +442,7 @@
     #action {%d%s%S%s%S%s´ıÈÏÁì} {
         #var getesc_id %%1;
         #var getesc_address %%3;
-        #if {${getesc_current_id} != 0 @should_accept_quest{${getesc_address}} == 1} {
+        #if {${getesc_current_id} != 0 && @should_accept_quest{${getesc_address}} == 1} {
             #var getesc_current_id ${getesc_id};
         };
     };
