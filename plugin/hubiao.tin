@@ -1,5 +1,4 @@
 #class hubiao open
-load hubiao_score;
 
 #var hb_max_path_size 45;
 
@@ -7,15 +6,23 @@ load hubiao_score;
 #var hb_rotate 0;
 #var hb_dest nil;
 
-#var getesc_current_score 0;
-#var getesc_current_id 0;
-
 #var hb_first_kill 0;
 #var hb_paused 0;
 #var hb_info nil;
 #var hb_rotate_location NIL;
 #var hb_rotate_location_count 0;
 #var hb_robber_count 0;
+
+#function {should_accept_quest} {
+    #var hb_owner_loc @getenv{hb_owner_loc};
+    #if {@ismember{%1;hb_blacklist:${hb_owner_loc}} != 0} {
+        #return 0;
+    };
+    #if {"${xy_info}" == "on" && {@ismember{%1;hb_blacklist_baowei:${hb_owner_loc}} != 0}} {
+        #return 0;
+    };
+    #return 1;
+};
 
 #alias {hb.teardown} {
     #var quest NIL;
@@ -350,6 +357,7 @@ load hubiao_score;
 };
 
 #alias {hb.q} {
+    #var getesc_current_id 0;
     #if {"%1" != ""} {
         getesc %1;
     };
@@ -434,9 +442,7 @@ load hubiao_score;
     #action {%d%s%S%s%S%s待认领} {
         #var getesc_id %%1;
         #var getesc_address %%3;
-        #var score @getesc_get_score{${getesc_address}};
-        #if {${score} > ${getesc_current_score}} {
-            #var getesc_current_score $score;
+        #if {${getesc_current_id} != 0 @should_accept_quest{${getesc_address}} == 1} {
             #var getesc_current_id ${getesc_id};
         };
     };
@@ -466,8 +472,6 @@ load hubiao_score;
 
     #action {请选择其他任务} {
         #delay {hb_auto_delay} {
-            #var getesc_current_score 0;
-            #var getesc_current_id 0;
             hb.q;
         } {2};
     };
@@ -697,4 +701,37 @@ load hubiao_score;
     shou ${char_id}'s robber 3;
     shou ${char_id}'s robber 4;
 };
+
+#list hb_blacklist_baowei:荆西镖局 create {
+    武当三清殿;少林佛心井;扬州醉仙楼;襄阳当铺;
+};
+
+#list hb_blacklist:飞马镖局 create {
+    晋阳萧府;成都当铺;赞普来福杂货;
+};
+
+#list hb_blacklist_baowei:飞马镖局 create {
+    襄阳当铺;武当荆西镖局;
+};
+
+#list hb_blacklist:飞虎镖局 create {
+    晋阳萧府;
+};
+
+#list hb_blacklist_baowei:飞虎镖局 create {
+    武当荆西镖局;
+};
+
+#list hb_blacklist:天福镖局 create {
+    嘉兴钱庄;泉州当铺;
+};
+
+#list hb_blacklist_baowei:天福镖局 create {
+    武当荆西镖局;襄阳当铺;
+};
+
+#list hb_blacklist:昌隆镖局 create {
+    泉州当铺;镇江飞龙镖局;归云庄太湖街;嘉兴钱庄;峨嵋毗卢殿;
+};
+
 #class hubiao close
