@@ -374,6 +374,7 @@
     #format {last_fm_time} {%T};
     @setenv{last_fm_time;${last_fm_time}};
     do_show fullme Íê³É;
+    check_fm;
     #send {hp};
     update_status;
 };
