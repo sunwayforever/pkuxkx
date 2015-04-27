@@ -293,5 +293,4 @@ load gps_actions;
 #nop 北京永安门;
 #nop test all gps.clear;
 #nop 长江黄河遍历;
-#nop 都统制府;
 #class gps close;
