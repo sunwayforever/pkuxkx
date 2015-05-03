@@ -1140,3 +1140,57 @@
         fullme %0;
     };
 };
+
+#alias {get.sibao} {
+    #class get.sibao.inner open;
+    #action {你从冼老板那里买下了一个花雕酒袋} {
+        gt  2913;
+        on_there {
+            give qu jiudai;
+        };
+    };
+    #action {你移动了一捆柴火，突然从柴火下面滚出一个人来。} {
+        gt 醉仙楼二楼;
+        on_there {
+            buy jiudai;
+        };
+    };
+    #action {曲洋死了。} {
+        gt 805;
+        on_there {
+          ask ren about 令狐冲;  
+        };
+    };
+    #action {任盈盈交给你一封信。} {
+        gt 思过崖;
+        on_there {
+            give letter to linghu;
+        };
+    };
+    #action {你给令狐冲一封给令狐冲的信} {
+        gt xc;
+        on_there {
+            gt ny;
+            on_there {
+                gt 805;
+            };
+        };
+    };
+    #action {任盈盈一下子投入了令狐冲的怀抱} {
+        ask ren about 曲长老;
+    };
+    #action {任盈盈说道：「怎么？你也知道曲长老的事吗？」} {
+        #class get.sibao.inner kill;
+        give xiao ao jiang hu to ren;
+        show_to_info 广陵散!
+    };
+    #action {你翻了翻这些枯枝，结果什么也没发现。} {
+        #class get.sibao.inner kill;
+        show_to_info 来晚了;
+    };
+    #class get.sibao.inner close;
+    gt 2913;
+    on_there {
+        move wood;
+    };
+};
