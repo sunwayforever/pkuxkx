@@ -13,6 +13,15 @@
 #var hb_rotate_location_count 0;
 #var hb_robber_count 0;
 
+@mapcreate{robber_score};
+@mapset{robber_score;gaibang;9};
+@mapset{robber_score;taohua;8};
+@mapset{robber_score;wudang;7};
+@mapset{robber_score;xingxiu;6};
+@mapset{robber_score;quanzhen;4};
+@mapset{robber_score;shaolin;3};
+@mapset{robber_score;huashan;2};
+
 #function {should_accept_quest} {
     #var hb_owner_loc @getenv{hb_owner_loc};
     #if {@ismember{%1;hb_blacklist:${hb_owner_loc}} != 0} {
@@ -608,7 +617,10 @@
     #var tmp_score @mapget{robber_score;%1};
     #if {${tmp_score} > ${robber_score}} {
         #var robber_score ${tmp_score};
+        #class attack.inner open;
+        #var enemy_menpai %1;
         #var enemy ${char_id}'s robber ${tmp_robber_count};
+        #class attack.inner close;
     };
 };
 

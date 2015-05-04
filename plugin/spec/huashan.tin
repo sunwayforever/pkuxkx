@@ -7,9 +7,11 @@
 };
 
 #alias {attack} {
-    poqi;
-    kuangfeng;
     #if {"${quest}" == "hb"} {
+        #if {"${enemy_menpai}" == "gaibang" || "${enemy_menpai}" == "wudang" } {
+            kuangfeng;
+        };
+        poqi;
         #class attack.inner open;
         #class attack.inner close;
     };
@@ -237,6 +239,7 @@
     #send {jifa strike hunyuan-zhang};
     #send {jifa sword yunushijiu-jian};
     #send {jifa spear yuejia-qiangfa};
+    bei none;
     bei cuff;
 };
 
