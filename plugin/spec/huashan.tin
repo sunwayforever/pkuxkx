@@ -1,4 +1,5 @@
 #class wudang_spec open
+#var dz_max 190;
 #alias {attack.prepare} {
     yun powerup;
     #class attack.inner open;
@@ -6,8 +7,11 @@
 };
 
 #alias {attack} {
-    chan;
+    poqi;
+    kuangfeng;
     #if {"${quest}" == "hb"} {
+        #class attack.inner open;
+        #class attack.inner close;
     };
     #elseif {${mj_started}  == 1} {
         poqi;
@@ -177,7 +181,7 @@
     wi;
 };
 
-#var shortcut F1:破气 F2:飞剑 F3:三青风 F5:养吾 F6: 十九剑 F7:狂风 F8: 破 F9: 破兵 F10: 破掌;
+#var shortcut F1:破气 F5:养吾 F7:狂风 F8: 总决 F9: 破兵 F10: 破掌;
 #macro {\eOP} {
     poqi;
 };
@@ -219,14 +223,14 @@
 };
 
 #var shifu gao;
-#list my_weapons_to_wield create {sword};
+#list my_weapons_to_wield create {spear};
 
 #var menzhong ning;
 #var menzhong_didian hs;
 #var char_menpai_position hs;
 
 #alias {reborn} {
-    #send {jifa force huashan-neigong};
+    #send {jifa force zixia-shengong};
     #send {jifa dodge huashan-shenfa};
     #send {jifa parry dugu-jiujian};
     #send {jifa cuff poyu-quan};
