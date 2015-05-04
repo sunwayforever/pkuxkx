@@ -127,6 +127,8 @@
     #class attack.inner kill;
     #undelay {attack.delay};
     attack.end;
+    #var enemy nil;
+    #var enemy_menpai nil;
     jiali none;
     mj.stop;
     #showme truce;
@@ -195,9 +197,9 @@
     wi;
 };
 
-#var enemy NULL;
+#var enemy nil;
 #alias {perform} {
-    #if {"${enemy}" == "NULL"} {
+    #if {"${enemy}" == "nil"} {
         #send {perform %0};
     };
     #else {

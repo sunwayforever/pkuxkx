@@ -1,11 +1,8 @@
 #class hubiao open
-
 #var hb_max_path_size 45;
-
 #var hb_auto 0;
 #var hb_rotate 0;
 #var hb_dest nil;
-
 #var hb_first_kill 0;
 #var hb_paused 0;
 #var hb_info nil;
@@ -617,10 +614,8 @@
     #var tmp_score @mapget{robber_score;%1};
     #if {${tmp_score} > ${robber_score}} {
         #var robber_score ${tmp_score};
-        #class attack.inner open;
         #var enemy_menpai %1;
         #var enemy ${char_id}'s robber ${tmp_robber_count};
-        #class attack.inner close;
     };
 };
 

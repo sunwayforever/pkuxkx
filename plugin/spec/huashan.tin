@@ -1,5 +1,5 @@
 #class wudang_spec open
-#var dz_max 190;
+#var hb_max_path_size 30;
 #alias {attack.prepare} {
     yun powerup;
     #class attack.inner open;
@@ -8,7 +8,7 @@
 
 #alias {attack} {
     #if {"${quest}" == "hb"} {
-        #if {"${enemy_menpai}" == "gaibang" || "${enemy_menpai}" == "wudang" } {
+        #if {"${enemy_menpai}" == "gaibang" || "${enemy_menpai}" == "wudang"  || "${enemy_menpai}" == "taohua"} {
             kuangfeng;
         };
         poqi;
@@ -134,8 +134,10 @@
 
 #alias {poqi} {
     unwi;
+    jiali max;
     do_wield sword;
     perform dugu-jiujian.poqi;
+    jiali none;
     wi;
 };
 
