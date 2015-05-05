@@ -16,7 +16,7 @@
 };
 
 #alias {wat.d} {
-    #var quest NIL;
+    #var quest nil;
     qiao luo;
 };
 

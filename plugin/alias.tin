@@ -253,7 +253,7 @@
             #class pp.inner kill;
             #unticker {pp};
             show_to_pp %%1 @ ²»´æÔÚ;
-            tmp_auto_pp NULL;
+            tmp_auto_pp nil;
         } {1};
         #class pp.inner close;
     };
@@ -670,7 +670,7 @@
 #function {opposite} {
     #list {directions} {find} {%1} {opposite_index};
     #if {${opposite_index} == 0} {
-        #return NULL;
+        #return nil;
     };
     #else {
         #list opposite_directions get ${opposite_index} result;
@@ -679,7 +679,7 @@
 #function {cdirection} {
     #list {chinese_directions} {find} {%1} {chinese_index};
     #if {${chinese_index} == 0} {
-        #return NULL;
+        #return nil;
     };
     #else {
         #list directions get ${chinese_index} result;

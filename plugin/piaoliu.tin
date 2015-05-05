@@ -145,7 +145,7 @@
 };
 
 #alias {pl.d} {
-    #var quest NIL;
+    #var quest nil;
     hua back;
     give ren xiang;
     #action {µöÓãÈË¸øÄãÒ»Ã¶%*¡£} {
@@ -162,7 +162,7 @@
 };
 
 #alias {pl.f} {
-    #var quest NIL;
+    #var quest nil;
     ask ren about fail;
     #class piaoliu.inner kill;
 };

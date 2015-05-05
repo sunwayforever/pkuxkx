@@ -6,7 +6,7 @@
 #var hb_first_kill 0;
 #var hb_paused 0;
 #var hb_info nil;
-#var hb_rotate_location NIL;
+#var hb_rotate_location nil;
 #var hb_rotate_location_count 0;
 #var hb_robber_count 0;
 
@@ -31,11 +31,12 @@
 };
 
 #alias {hb.teardown} {
-    #var quest NIL;
+    #var quest nil;
     #var hb_robber_count 0;
     #class hb_setup_inner kill;
     #class clear_npc.inner kill;
     #unticker {hb_ticker};
+    set brief 2;
 };
 
 #alias {hb.traverse} {
@@ -61,7 +62,7 @@
                 };
             };  
         };
-        #if {"${gps_traverse_location}" == "NULL"} {
+        #if {"${gps_traverse_location}" == "nil"} {
             show_to_info 伙计不存在;
             hb.b;
         };
@@ -122,6 +123,7 @@
 
 #var hb_retry_count 0;
 #alias {hb.setup} {
+    set brief 1;
     #var quest hb;
     #class hb_setup_inner open;
 
@@ -376,7 +378,7 @@
 #alias {hb.f} {
     @setenv{hb_lunci;0};
     @setenv{hb_lunci_total;0};
-    @setenv{hb_state;NIL};
+    @setenv{hb_state;nil};
     @setenv{mixin_lunci;6};
     hb.teardown;
     ask @getenv{hb_owner} about fail;
@@ -460,7 +462,7 @@
         };
         #else {
             #math hb_rotate_location_count ${hb_rotate_location_count} + 1;
-            #if {${hb_rotate} == 1 && ${hb_rotate_location_count} > 3 && "${hb_rotate_location}" != "NIL"} {
+            #if {${hb_rotate} == 1 && ${hb_rotate_location_count} > 3 && "${hb_rotate_location}" != "nil"} {
                 #var hb_rotate_location_count 0;
                 hb.stop;
                 gt ${hb_rotate_location};
@@ -517,7 +519,7 @@
 
     #class hb.auto.inner close;
 
-    @declarenv{hb_state;NIL};
+    @declarenv{hb_state;nil};
     @declarenv{mixin_lunci;6};
 
     hb.get_owner;
@@ -592,7 +594,7 @@
 };
 
 #action {你给%*一些失踪的财物} {
-    @setenv{hb_state;NIL};
+    @setenv{hb_state;nil};
     @setenv{mixin_lunci;5};
     #delay {hb_auto_delay} {
         #if {${hb_auto} == 1} {
@@ -699,7 +701,7 @@
     };
     #class detect_enemy.inner close;
 
-    #var enemy NULL;
+    #var enemy nil;
     #var tmp_robber_count 0;
     #var hb_robber_count 0;
     #var robber_score 0;

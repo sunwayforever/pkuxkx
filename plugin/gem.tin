@@ -167,7 +167,7 @@
             };
             #var rev_key ${gem_type}${rev_gem_yinyang}${gem_name};
             #var rev_gem_id @mapget{gem_mark;${rev_key}};
-            #if {"${rev_gem_id}" != "NULL"} {
+            #if {"${rev_gem_id}" != "nil"} {
                 #if {${gem_id} > ${rev_gem_id}} {
                     #var gem_id_1 ${gem_id};
                     #var gem_id_2 ${rev_gem_id};

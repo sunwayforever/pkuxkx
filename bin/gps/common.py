@@ -41,5 +41,4 @@ def get_zone(conn, room):
     if row:
         return row[0]
     else:
-
         return "nil"

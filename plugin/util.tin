@@ -26,7 +26,7 @@
     #var map_key %2;
     #list ${map_name}_keys find ${map_key} map_index;
     #if {${map_index} == 0} {
-        #var result NULL;
+        #var result nil;
     };
     #else {
         #list ${map_name}_values get ${map_index} result;
@@ -55,7 +55,7 @@
     #var stack_name stack_%1;
     #list ${stack_name} size tmp_size;
     #if {${tmp_size} == 0} {
-        #var result NULL;
+        #var result nil;
     };
     #else {
         #list ${stack_name} get ${tmp_size} result;
@@ -71,7 +71,7 @@
     #var stack_name stack_%1;
     #list ${stack_name} size tmp_size;
     #if {${tmp_size} == 0} {
-        #var result NULL;
+        #var result nil;
     };
     #else {
         #list ${stack_name} get ${tmp_size} result;
@@ -83,7 +83,7 @@
     #var stack_name stack_%1;
     #list ${stack_name} size tmp_size;
     #if {${tmp_size} == 0} {
-        #var result NULL;
+        #var result nil;
     };
     #else {
         #list ${stack_name} get 1 result;

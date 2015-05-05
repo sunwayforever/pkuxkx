@@ -97,7 +97,7 @@
 
 #alias {jd.next} {
     #var item @stackpop{tmp};
-    #if {"${item}" != "NULL"} {
+    #if {"${item}" != "nil"} {
         @jd_get_method{${item}} ${item};
         #send {i};
     };

@@ -35,7 +35,7 @@
 #alias {hsz.teardown} {
     #class hsz.inner kill;
     #var hsz.requested 0;
-    #var quest  NIL;
+    #var quest  nil;
 };
 #alias {hsz.q} {
     hsz.setup;

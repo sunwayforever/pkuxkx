@@ -1,7 +1,7 @@
 #class xiaofeng open
 #var xf.type -1;
 #alias {xf.teardown} {
-    #var quest NIL;
+    #var quest nil;
     #var xf.type -1;
     #var xf.requested 0;
     #class xiaofeng.inner kill;
