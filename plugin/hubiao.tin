@@ -292,6 +292,7 @@
         show_to_tuiche 任务完成;
         notify escort done;
         hb.teardown;
+        taopao;
         on_truce {
             #if {@getenv{hb_lunci} == @getenv{mixin_lunci}} {
                 chain on_sell get.qian get.san repair special_repair gem.combine hb.b;

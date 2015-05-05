@@ -1,7 +1,7 @@
 #alias {load} {
     #var v %1;
     #if {"${v}" == "spec"} {
-        #read plugin/spec/${char_menpai}.tin;        
+        #read plugin/spec/${char_menpai}.tin;
     };
     #else {
         #read plugin/%1.tin;
@@ -335,7 +335,7 @@
 };
 
 #alias {on_halt} {
-    #alias tmp_halt #cr;  
+    #alias tmp_halt #cr;
     #alias tmp_halt %0;
 
     #class halt.inner open;
@@ -354,7 +354,7 @@
 };
 
 #alias {on_hit} {
-    #alias tmp_hit #cr;  
+    #alias tmp_hit #cr;
     #alias tmp_hit %0;
     #action {你战胜了} {
         #unaction {你战胜了};
@@ -366,7 +366,7 @@
 };
 
 #alias {on_dead} {
-    #alias tmp_dead #cr;  
+    #alias tmp_dead #cr;
     #alias tmp_dead %0;
     #action {死了} {
         #unaction {死了};
@@ -732,8 +732,8 @@
 #alias {walk_to} {
     #var  direction %1;
     #var  action #cr;
-    #action {get_exits: done} {
-        #unaction {get_exits: done};
+    #alias {get_pos_done} {
+        #list exits_list create ${exits_list};
         #if {@ismember{${direction};exits_list}} {
             @abbrev{${direction}};
         };
@@ -744,7 +744,9 @@
             @abbrev{${action}};
         };
     };
-    get_exits;
+    get_pos {
+        get_pos_done;
+    };
 };
 
 #macro {\e[1;3A} {
@@ -765,7 +767,7 @@
 };
 
 #alias {on_sell} {
-    #alias tmp_sell #cr;    
+    #alias tmp_sell #cr;
     #alias tmp_sell %1;
     on_there {
         sell all;
@@ -861,7 +863,7 @@
 #alias {path.show} {
     #path save forward forward_path;
     #path save backward backward_path;
-    
+
     #replace {forward_path} {north} {n};
     #replace {forward_path} {south} {s};
     #replace {forward_path} {east} {e};
@@ -909,7 +911,7 @@
         };
     };
     #delay {1} {
-        #ungag 什么？;        
+        #ungag 什么？;
     };
 };
 
@@ -919,7 +921,7 @@
         e;e;n;n;w;s;ask ren about 手印;
         #delay {1} {
             n;e;s;s;w;w;sd;sd;out;w;w;w;s;e;give shouyin to %1
-        };        
+        };
     };
 };
 
@@ -961,7 +963,7 @@
     #alias {xtj_back} {
         swim river;
         sd;sd;su;w;
-        #class xuetie.inner kill;  
+        #class xuetie.inner kill;
     };
     #class xuetie.inner close;
 };
@@ -979,7 +981,7 @@
     #ungag {^$};
     #send {l %0};
     #delay {1} {
-        #gag {^$};        
+        #gag {^$};
     };
 };
 
@@ -1018,7 +1020,7 @@
             get_exits_done;
         } {1};
     } {6};
-    
+
     #action {    「%*」: %*} {
         #delay {look_delay} {
             get_exits_done;
@@ -1026,9 +1028,9 @@
     } {6};
     #action {这里没有任何明显的出路。} {
         #var exits_list  {};
-        get_exits_done;        
+        get_exits_done;
     } {7};
-    
+
     #action {这里唯一的出口是 %w。} {
         #var exits_list  {%%1;};
         get_exits_done;
@@ -1102,7 +1104,7 @@
     #action {这里暂时没有地图。} {
         #class record.inner kill;
         #var pos.area {};
-        tmp_get_area;  
+        tmp_get_area;
     };
     #action {【%*地图】} {
         #class record.inner kill;
@@ -1124,7 +1126,7 @@
     #var file_name ${file_name}[1];
     #if {"${file_name}" != ""} {
         #read ${file_name};
-        #system {rm ${file_name}};        
+        #system {rm ${file_name}};
     };
 };
 
@@ -1158,7 +1160,7 @@
     #action {曲洋死了。} {
         gt 805;
         on_there {
-          ask ren about 令狐冲;  
+          ask ren about 令狐冲;
         };
     };
     #action {任盈盈交给你一封信。} {
