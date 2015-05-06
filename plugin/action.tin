@@ -301,9 +301,8 @@
 };
 
 #action {有人从别处%*连线取代你所控制的人物。} {
-    #end;
+    end;
 };
-
 
 #alias {pfm_special} {
     #class pfm_special.inner open;
@@ -378,4 +377,5 @@
     #send {hp};
     update_status;
 };
+
 #class action close;

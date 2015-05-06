@@ -1196,3 +1196,46 @@
         move wood;
     };
 };
+
+#var heart_beat_interval 60;
+#format {last_heart_beat_time} {%T};
+#var pid 0;
+#alias {check_heart_beat} {
+    #showme heart_beat for ${pid};
+    #if {${pid} != 0} {
+        #format {current_heart_beat_time} {%T};
+        #math heart_beat_delta ${current_heart_beat_time}-${last_heart_beat_time};
+        #if {${heart_beat_delta} >= ${heart_beat_interval}} {
+            #system {kill -30 ${pid}};
+            #end;
+        };
+    };
+};
+
+#var session_activated 0;
+#event {SESSION DEACTIVATED} {
+    #if {"%0" == "pkuxkx"} {
+        #if {${pid} != 0} {
+            #system {kill -30 ${pid}};
+            #end;
+        };
+    };
+};
+
+#action {Ê²Ã´£¿} {
+    #format {last_heart_beat_time} {%T};    
+};
+
+#alias {end} {
+    #unevent {SESSION DEACTIVATED};
+    #end;
+};
+
+#alias {quit} {
+    #unevent {SESSION DEACTIVATED};
+    #quit;
+};
+
+#ticker {heart_beat} {
+    check_heart_beat;
+} {${heart_beat_interval}};
