@@ -9,6 +9,7 @@
 #read plugin/util.tin
 #read plugin/action.tin
 #read plugin/alias.tin
+#read plugin/get_item.tin
 
 #read plugin/highlight.tin
 #read plugin/status.tin

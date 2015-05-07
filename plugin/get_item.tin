@@ -1,0 +1,232 @@
+#class get_item open;
+#alias {get.xuan_tie_jian} {
+    gt jx;
+    on_there {
+        e;nd;ask diao about 独孤求败;nu;
+        ask yu about 过河;
+        ask yu about 对岸;
+        ask yu about 疯子;
+        se; catch fish;
+    };
+    #class xuetie.inner open;
+    #action {你将小鱼捉了起来} {
+        nw;
+        give fish to yu;
+    };
+
+    #action {渔夫说道：给你个水靠，可以游到对岸。} {
+        #delay {1} {
+            swim river;
+            pick sword;
+        };
+    };
+
+    #action {你运起内力将玄铁剑拿了起来} {
+        show_to_info 玄铁剑!;
+        xtj_back;
+    };
+
+    #action {剑已被拿走了。} {
+        show_to_info 剑已被拿走了;
+        xtj_back;
+    };
+    #alias {xtj_back} {
+        swim river;
+        sd;sd;su;w;
+        #class xuetie.inner kill;
+    };
+    #class xuetie.inner close;
+};
+
+#alias {get.qian} {
+    #alias tmp_get_qian #cr;
+    #alias tmp_get_qian %1;
+    #class money.inner open;
+    #alias delay_action {
+        #delay {1} {
+            qu 1 cash;
+        };
+    };
+    #action {钱眼开说道：「哟，抱歉啊，我这儿正忙着呢……您请稍候。」} {
+        delay_action;
+    };
+    #action {你从银号里取出%*张一千两银票} {
+        l cash;
+    };
+
+    #action {^%*张一千两银票(Thousand-cash)} {
+        #var cun_count @ctd{%%1};
+        #math cun_count ${cun_count}-1;
+        #if {${cun_count} <= 0} {
+            #showme 你拿出零张一千两银票，存进了银号。;
+        };
+        #else {
+            #alias delay_action {
+                #delay {1} {
+                    cun ${cun_count} cash;
+                };
+            };
+            cun ${cun_count} cash;
+        };
+    };
+    #action {你拿出%*张一千两银票，存进了银号。} {
+        #class money.inner kill;
+        #send {sc};
+        tmp_get_qian;
+    };
+    #class money.inner close;
+    on_there {
+        qu 1 cash;
+    };
+    gt 扬州钱庄;
+};
+
+#alias {get.bao} {
+    #class get.bao.inner open;
+    #action {你身上没有bao} {
+        buy bao;
+    };
+    #action {你把身上的一个包袱卖掉} {
+        #delay {1} {
+            buy bao;
+        };
+    };
+    #action {掌柜的说：客官您这包袱里面还有东西呢。} {
+        #showme 你向当铺买下一个包袱;
+    };
+    #action {你向当铺买下一个包袱} {
+        #class get.bao.inner kill;
+        #delay {3} {
+            s;
+            #if {"%%1" != ""} {
+                %%1;
+            };
+        };
+    };
+    #class get.bao.inner close;
+    gt rbz;
+    on_there {
+        n;
+        sell bao;
+    };
+};
+
+#alias {get.fan} {
+    #var orig_here ${CurrentPosition};
+    #class get.fan.inner open;
+    #action {哟，抱歉啊，我这儿正忙着呢……您请稍候。} {
+        buy tea 30;
+    };
+    #action {你从江来福那里买下了%*酥油茶} {
+        #class get.fan.inner kill;
+        #if {"%1" != ""} {
+            %1;
+        };
+    };
+    #class get.fan.inner close;
+    gps.gt 来福杂货;
+    on_there {
+        buy tea 30;
+    };
+};
+
+#var get_san_count 50;
+#alias {get.san} {
+    #action {%S          清心散} {
+        #unaction {%S          清心散};
+        getout %%1;
+        #delay {1} {
+            out;
+            drop ${get_san_count} san;
+            enter ${char_id};
+            store san;
+            out;
+            get san;
+            enter ${char_id};
+        };
+    };
+
+    #action {你没有那么多的清心散} {
+        #unaction {你没有那么多的清心散};
+        get.san;
+    };
+
+    #action {你捡起一些清心散} {
+        #unaction {你捡起一些清心散};
+        show_to_info 清心散;
+        #if {"%1" != ""} {
+            #delay {2} {
+                %1;
+            };
+        };
+    };
+    gt bs;
+    on_there {
+        find;
+    };
+};
+
+#alias {get.guang_ling_san} {
+    #class get.sibao.inner open;
+    #action {你从冼老板那里买下了一个花雕酒袋} {
+        gt  2913;
+        on_there {
+            give qu jiudai;
+        };
+    };
+    #action {你移动了一捆柴火，突然从柴火下面滚出一个人来。} {
+        gt 醉仙楼二楼;
+        on_there {
+            buy jiudai;
+        };
+    };
+    #action {曲洋死了。} {
+        gt 805;
+        on_there {
+            ask ren about 令狐冲;
+        };
+    };
+    #action {任盈盈交给你一封信。} {
+        gt 思过崖;
+        on_there {
+            give letter to linghu;
+        };
+    };
+    #action {你给令狐冲一封给令狐冲的信} {
+        gt xc;
+        on_there {
+            gt ny;
+            on_there {
+                gt 805;
+            };
+        };
+    };
+    #action {任盈盈一下子投入了令狐冲的怀抱} {
+        ask ren about 曲长老;
+    };
+    #action {任盈盈说道：「怎么？你也知道曲长老的事吗？」} {
+        #class get.sibao.inner kill;
+        give xiao ao jiang hu to ren;
+        show_to_info 广陵散!
+    };
+    #action {你翻了翻这些枯枝，结果什么也没发现。} {
+        #class get.sibao.inner kill;
+        show_to_info 来晚了;
+    };
+    #class get.sibao.inner close;
+    gt 2913;
+    on_there {
+        move wood;
+    };
+};
+
+#alias {get.shou_yin} {
+    gt guiyun;
+    on_there {
+        e;e;n;n;w;s;ask ren about 手印;
+        #delay {1} {
+            n;e;s;s;w;w;sd;sd;out;w;w;w;s;e;give shouyin to %1
+        };
+    };
+};
+#class get_item close;

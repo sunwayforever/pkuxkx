@@ -157,7 +157,7 @@
         #nop #var exp_info 气: ${qx_percent} 神: ${js_percent} 内: ${nl_percent} 精: ${jl_percent} 经验: ${hpbrief_exp};
         #var exp_info ${hpbrief_exp};
         update_status;
-        #format {last_heart_beat_time} {%T};
+        check_heart_beat;
         #if {${auto_heal} == 1} {
             #if {${qx_percent} < 30} {
                 yun recover;
