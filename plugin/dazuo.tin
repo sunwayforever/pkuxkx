@@ -33,6 +33,7 @@
 };
 
 #alias {dz.start} {
+    set_last_quest dz;
     autoheal.off;
     #class dz.inner open;
     #action {你现在的气太少了} {
@@ -71,6 +72,7 @@
 };
 
 #alias {dz.stop} {
+    unset_last_quest;
     autoheal.on;
     show_to_quest 打坐完毕;
     #class dz.inner kill;

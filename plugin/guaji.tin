@@ -40,6 +40,7 @@
 };
 
 #alias {guasan.start} {
+    set_last_quest guasan;
     #var san_count 0;
     #class guasan.inner open;
     #action {(%*)¸æËßÄã£ºsan} {
@@ -72,6 +73,7 @@
 };
 
 #alias {guasan.stop} {
+    unset_last_quest;
     #class guasan.inner kill;
     guaji.stop;
 };

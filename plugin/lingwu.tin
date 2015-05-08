@@ -2,6 +2,7 @@
 
 #alias {lw_action} {#cr;};
 #alias {lw.start} {
+    set_last_quest lw;
     #class lingwu.inner open;
     #var lw_paused 0;
     #list skills create  {force;cuff;strike;whip;staff;sword;parry;claw;blade;spear;dodge;hand;finger;dagger;throwing};
@@ -192,6 +193,7 @@
 };
 
 #alias {lw.stop} {
+    unset_last_quest;
     #class lingwu.inner kill;
     show_to_quest ÁìÎò½áÊø;
     map_goto_start;

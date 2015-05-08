@@ -1,5 +1,6 @@
 #class canchan open
 #alias {cc.start} {
+    set_last_quest cc;
     #class canchan.inner open;
     #ticker {canchan} {
         canchan;
@@ -16,14 +17,13 @@
     on_there {
         canchan;
         show_to_quest ²Îìø;
-        set_last_quest cc;
     };
 };
 
 #alias {cc.stop} {
+    unset_last_quest;
     #class canchan.inner kill;
     show_to_quest ²Îìø½áÊø;
-    unset_last_quest;
 };
 
 #class canchan close

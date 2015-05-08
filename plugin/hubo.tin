@@ -1,11 +1,13 @@
 #class hubo open
 
 #alias {hubo.stop} {
+    unset_last_quest;
     show_to_quest 解互搏结束;
     #class hubo.inner kill;
 };
 
 #alias {hubo.start} {
+    set_last_quest hubo;
     show_to_quest 解互搏中;
     #var hubo_count 0;
 

@@ -1,5 +1,6 @@
 #class baiji open
 #alias {bj.start} {
+    set_last_quest bj;
     #class bj.inner open;
     #action {ÄãµÄ¾«²»¹»} {
         yun regenerate;
@@ -25,6 +26,7 @@
 };
 
 #alias {bj.stop} {
+    unset_last_quest;
     #class bj.inner kill;
     #unticker {bj};
 };

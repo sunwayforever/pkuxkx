@@ -24,6 +24,7 @@
 };
 
 #alias {tn.start} {
+    set_last_quest tn;
     #send {jifa};
     #delay {3} {
         do_tuna;
@@ -98,6 +99,7 @@
 };
 
 #alias {tn.stop} {
+    unset_last_quest;
     show_to_quest ÍÂÄÉÍê±Ï;
     #class tn.inner kill;
 };

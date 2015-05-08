@@ -1,5 +1,6 @@
 #class wudao open
 #alias {wd.start} {
+    set_last_quest wd;
     show_to_quest ÎòµÀ;
     #class wudao.inner open;
     #ticker {wudao} {
@@ -21,6 +22,7 @@
 };
 
 #alias {wd.stop} {
+    unset_last_quest;
     #class wudao.inner kill;
     show_to_quest ÎòµÀ½áÊø;
 };
