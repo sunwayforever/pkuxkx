@@ -928,11 +928,29 @@
 
 #alias {end} {
     #unevent {SESSION DEACTIVATED};
+    unset_last_quest;
     #end;
 };
 
 #alias {quit} {
     #unevent {SESSION DEACTIVATED};
+    unset_last_quest;
     #send {quit};
     #end;
+};
+
+#alias {set_last_quest} {
+    #var last_quest %1;
+    @setenv{last_quest;${last_quest}};
+};
+
+#alias {unset_last_quest} {
+    @setenv{last_quest;nil};
+};
+
+#alias {restart_last_quest} {
+    #var last_quest @getenv{last_quest};
+    #if {"${last_quest}" != "nil"} {
+        ${last_quest}.start;
+    };
 };

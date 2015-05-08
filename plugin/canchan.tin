@@ -1,6 +1,6 @@
 #class canchan open
 #alias {cc.start} {
-    #class wudao.inner open;
+    #class canchan.inner open;
     #ticker {canchan} {
         canchan;
     } {180};
@@ -11,21 +11,19 @@
             canchan;
         } {0.1};
     };
-    #class wudao.inner close;
+    #class canchan.inner close;
+    gt 禅院;
     on_there {
-        load_map;
-        map.go 禅院;
-        on_arrived {
-            canchan;
-            show_to_quest 参禅;
-        };
+        canchan;
+        show_to_quest 参禅;
+        set_last_quest cc;
     };
-    gt fzl;
 };
 
 #alias {cc.stop} {
-    #class wudao.inner kill;
+    #class canchan.inner kill;
     show_to_quest 参禅结束;
+    unset_last_quest;
 };
 
 #class canchan close

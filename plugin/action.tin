@@ -132,6 +132,7 @@
             #send {hp};
             #send {jifa};
             reborn;
+            restart_last_quest;
         };
     };
 };

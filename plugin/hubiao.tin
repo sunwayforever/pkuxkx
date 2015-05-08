@@ -522,6 +522,8 @@
 
     @declarenv{hb_state;nil};
     @declarenv{mixin_lunci;6};
+    @declarenv{hb_lunci;0};
+    @declarenv{hb_lunci_total;0};
 
     hb.get_owner;
 
