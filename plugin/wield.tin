@@ -1,8 +1,16 @@
 #class wield open
 #list weapon_types create {blade;sword;staff;whip;spear;hammer;dagger;axe;};
-
+#var wi_freezed 0;
+#alias {wi.freeze} {
+    #var wi_freezed 1;
+};
+#alias {wi.unfreeze} {
+    #var wi_freezed 0;    
+};
 #alias {unwi} {
-    unwield all;
+    #if {${wi_freezed} == 0} {
+        unwield all;
+    };
 };
 
 #alias {wi} {
@@ -20,7 +28,9 @@
     #if {"%2" != ""} {
         #var wield_count %2;        
     };
-    wield ${${wield_type}_list}[${wield_count}];
+    #if {${wi_freezed} == 0} {
+        wield ${${wield_type}_list}[${wield_count}];
+    };
 };
 
 #alias ss weapons.check;

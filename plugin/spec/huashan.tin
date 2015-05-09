@@ -1,5 +1,6 @@
 #class wudang_spec open
-#var hb_max_path_size 30;
+#var jiali_count 50;
+#var hb_max_path_size 45;
 #alias {attack.prepare} {
     yun powerup;
     #class attack.inner open;
@@ -137,7 +138,7 @@
 
 #alias {poqi} {
     unwi;
-    jiali max;
+    jiali ${jiali_count};
     do_wield sword;
     perform dugu-jiujian.poqi;
     jiali none;
@@ -155,7 +156,11 @@
     unwi;
     do_wield sword;
     perform huashan-jianfa.feijian;
-    wi;
+    wi.freeze;
+    #delay {3} {
+        wi.unfreeze;
+        wi;
+    };
 };
 
 #alias {jianzhang} {
