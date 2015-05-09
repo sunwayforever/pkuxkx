@@ -13,6 +13,9 @@
         };
         poqi;
         #class attack.inner open;
+        #ticker {poqi} {
+            poqi;
+        } {4.8}
         #class attack.inner close;
     };
     #elseif {${mj_started}  == 1} {
@@ -185,7 +188,7 @@
     wi;
 };
 
-#var shortcut F1:破气 F2:汹涌 F5:养吾 F7:狂风 F8:总决 F9: 破兵;
+#var shortcut F1:破气 F2:汹涌 F3:飞剑 F4:剑掌 F5:养吾 F6:三青峰 F7:狂风 F8:总决 F9: 破兵;
 #macro {\eOP} {
     poqi;
 };
@@ -195,11 +198,11 @@
 };
 
 #macro {\eOR} {
-    sqf;
+    feijian;
 };
 
 #macro {\eOS} {
-
+    jianzhang;
 };
 
 #macro {\e[15~} {
@@ -207,7 +210,7 @@
 };
 
 #macro {\e[17~} {
-    feilong;
+    sqf;
 };
 
 #macro {\e[18~} {
@@ -244,5 +247,13 @@
     bei none;
     bei cuff;
 };
+
+stat.register 破气 hit 特殊攻击也无法施展;
+stat.register 破气 hit 只觉一丝斗志也无;
+stat.register 破气 miss 过于雄厚，徒劳无益。只得回剑守势;
+stat.register 狂风 miss 使你的「狂风卷地」没有起到任何作用;
+stat.register 狂风 hit 顿时觉得压力骤增，手腕一麻;
+stat.register 汹涌 hit 只觉得犹如身陷洪涛巨浪，跌跌撞撞;
+stat.register 汹涌 miss 你的凌厉攻势;
 
 #class wudang_spec close
