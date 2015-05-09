@@ -302,4 +302,5 @@ load gps_actions;
 #nop 北京永安门;
 #nop test all gps.clear;
 #nop 长江黄河遍历;
+#nop 桃花岛桃林;
 #class gps close;
