@@ -1,6 +1,6 @@
 #class wudang_spec open
 #var jiali_count 50;
-#var hb_max_path_size 45;
+#var hb_max_path_size 40;
 #alias {attack.prepare} {
     yun powerup;
     #class attack.inner open;
@@ -10,7 +10,7 @@
 #alias {attack} {
     #if {"${quest}" == "hb"} {
         #if {"${enemy_menpai}" == "gaibang" || "${enemy_menpai}" == "wudang"  || "${enemy_menpai}" == "taohua" || "${enemy_menpai}" == "huashan"} {
-            kuangfeng;
+            feijian;
         };
         poqi;
         #class attack.inner open;
