@@ -267,4 +267,13 @@
     };
 };
 
+#alias {xiongyong} {
+    unwield all;
+    do_wield sword;
+    #send {jifa parry xuantie-jian};
+    perform xuantie-jian.xiongyong;
+    #send {jifa parry meinu-quan};
+    unwield all;
+    wi;
+};
 #class war close;

@@ -88,8 +88,6 @@
     };
     #if {${qx_percent} < 50 || ${js_percent} < 50 || ${nl_percent} < 20} {
         #delay {hb_move} {
-            show_to_info 气血或精神过低,推车暂停;
-            notify escort paused;
             on_truce {
                 on_health {hb.run};
             };

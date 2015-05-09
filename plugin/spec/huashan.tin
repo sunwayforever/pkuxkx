@@ -8,7 +8,7 @@
 
 #alias {attack} {
     #if {"${quest}" == "hb"} {
-        #if {"${enemy_menpai}" == "gaibang" || "${enemy_menpai}" == "wudang"  || "${enemy_menpai}" == "taohua"} {
+        #if {"${enemy_menpai}" == "gaibang" || "${enemy_menpai}" == "wudang"  || "${enemy_menpai}" == "taohua" || "${enemy_menpai}" == "huashan"} {
             kuangfeng;
         };
         poqi;
@@ -185,13 +185,13 @@
     wi;
 };
 
-#var shortcut F1:破气 F5:养吾 F7:狂风 F8: 总决 F9: 破兵 F10: 破掌;
+#var shortcut F1:破气 F2:汹涌 F5:养吾 F7:狂风 F8:总决 F9: 破兵;
 #macro {\eOP} {
     poqi;
 };
 
 #macro {\eOQ} {
-    feijian;
+    xiongyong;
 };
 
 #macro {\eOR} {
