@@ -124,6 +124,8 @@
 #alias {hb.setup} {
     set brief 1;
     #var quest hb;
+    #var hb_remaining_path_size ${hb_max_path_size};
+    #var hb_path_index 1;
     #class hb_setup_inner open;
 
     #alias {hb.guohe} {
@@ -642,6 +644,7 @@
             };
         };
         #else {
+            #math hb_remaining_path_size ${hb_remaining_path_size}-${hb_path_index};
             #var gps.from_roomno ${gps.roomno};
             INVOKE gps.get_room ${hb_dest};
             INVOKE gps.get_path ${gps.from_roomno} ${gps.roomno} "1,1,1,-1,-1,1,-1";
@@ -656,7 +659,7 @@
             #else {
                 #if {@getenv{mixin_lunci} == 5} {
                     #nop Ä¥²ä;
-                    #math additional_path_size ${hb_max_path_size} - ${hb_path_size};
+                    #math additional_path_size ${hb_remaining_path_size} - ${hb_path_size};
                     #if {${additional_path_size} > 0} {
                         #list hb_path get 2 first_step;
                         #var second_step @opposite{${first_step}};

@@ -11,6 +11,9 @@
     #if {"${quest}" == "hb"} {
         #if {"${enemy_menpai}" == "gaibang" || "${enemy_menpai}" == "wudang"  || "${enemy_menpai}" == "taohua" || "${enemy_menpai}" == "huashan"} {
             kuangfeng;
+            #delay {1} {
+                feijian;
+            };
         };
         poqi;
         #class attack.inner open;
@@ -157,10 +160,10 @@
     do_wield sword;
     perform huashan-jianfa.feijian;
     wi.freeze;
-    #delay {3} {
+    #delay {delay_feijian} {
         wi.unfreeze;
         wi;
-    };
+    } {3};
 };
 
 #alias {jianzhang} {
