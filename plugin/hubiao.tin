@@ -87,9 +87,10 @@
         #var hb_next_step gan che to ${hb_next_step};
     };
     #if {${qx_percent} < 50 || ${js_percent} < 50 || ${nl_percent} < 20} {
+        hb.pause;
         #delay {hb_move} {
             on_truce {
-                on_health {hb.run};
+                on_health {hb.resume};
             };
         } {3};
     };
