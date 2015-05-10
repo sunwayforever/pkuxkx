@@ -1,6 +1,7 @@
 #class pingdiao open;
 
 #alias {pd.start} {
+    set_last_quest pd;
     #class pd.inner open;
     #ticker {pingdiao} {
         pingdiao;
@@ -23,6 +24,7 @@
 };
 
 #alias {pd.stop} {
+    unset_last_quest;
     #class pd.inner kill;
     on_unbusy {
         s;

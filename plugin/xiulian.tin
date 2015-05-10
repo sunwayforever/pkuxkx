@@ -1,5 +1,6 @@
 #class xiulian open
 #alias {xl.start} {
+    set_last_quest xl;
     #class xl.inner open;
     #action {顿觉内功修为增进不小} {xiulian ${xl_kungfu}};
     #action {由于缺乏实战经验} {
@@ -15,6 +16,7 @@
 };
 
 #alias {xl.stop} {
+    unset_last_quest;
     #class xl.inner kill;
     show_to_quest 修炼结束;
 };

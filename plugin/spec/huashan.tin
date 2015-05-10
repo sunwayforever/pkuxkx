@@ -238,7 +238,7 @@
 };
 
 #var shifu gao;
-#list my_weapons_to_wield create {spear;spear 2};
+#list my_weapons_to_wield create {spear 2;spear};
 
 #var menzhong ning;
 #var menzhong_didian hs;
