@@ -394,6 +394,7 @@
 };
 
 #alias {hb.start} {
+    set_last_quest hb;
     xmpp.echo.off;
     set brief 2;
     #var hb_auto 1;
@@ -557,6 +558,7 @@
 
 
 #alias {hb.stop} {
+    unset_last_quest;
     #var hb_auto 0;
     #class hb.auto.inner kill;
     #undelay {hb_auto_delay};
