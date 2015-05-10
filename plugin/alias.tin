@@ -737,7 +737,7 @@
     };
 };
 
-#alias {l} {
+#alias {ll} {
     #ungag {^$};
     #send {l %0};
     #delay {1} {

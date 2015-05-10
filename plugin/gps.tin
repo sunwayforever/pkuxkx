@@ -203,6 +203,16 @@ load gps_actions;
         @getenv{gps.weight.shudong};
     };
 
+    #while {1} {
+        #list weights_list find nil tmp_get_path_index;
+        #if {${tmp_get_path_index} != 0} {
+            #list weights_list set ${tmp_get_path_index} 0;
+        };
+        #else {
+            #break;
+        };
+    };
+
     #var weights tmp;
     #foreach {${weights_list}[%*]} {i} {
         #var weights ${weights},${i}

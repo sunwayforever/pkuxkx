@@ -540,12 +540,15 @@
     #elseif {"${hb_state}" == "STARTED" || "${hb_state}" == "TRAVERSE" } {
         #var hb_huoji @getenv{hb_huoji};
         #var hb_dest @getenv{hb_dest};
-        #if {${hb_huoji} == 0 || ${hb_dest} == 0} {
+        #if {"${hb_huoji}" == "nil" || "${hb_dest}" == "nil"} {
+            show_to_info 推车失败;
             hb.f;
         };
         #else {
+            show_to_info 继续推车;
             hb.setup;
             autopp.set ${hb_huoji};
+            #var hb_remaining_path_size 0;
             hb.resume;            
         };
     };
@@ -758,7 +761,7 @@
 };
 
 #list hb_blacklist:昌隆镖局 create {
-    泉州当铺;镇江飞龙镖局;归云庄太湖街;嘉兴钱庄;峨嵋毗卢殿;岳阳车马行;
+    镇江飞龙镖局;归云庄太湖街;嘉兴钱庄;峨嵋毗卢殿;岳阳车马行;
 };
 
 #class hubiao close
