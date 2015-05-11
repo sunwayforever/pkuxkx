@@ -10,9 +10,12 @@
 #alias {attack} {
     #if {"${quest}" == "hb"} {
         #if {"${enemy_menpai}" == "gaibang" || "${enemy_menpai}" == "wudang"  || "${enemy_menpai}" == "taohua"} {
-            zongjue;
+            po;
         };
-        poqi;
+        #else {
+            poqi;
+        };
+        zongjue;
         #class attack.inner open;
         #ticker {poqi} {
             poqi;
