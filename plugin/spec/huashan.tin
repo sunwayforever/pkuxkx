@@ -250,7 +250,7 @@
     #send {jifa parry dugu-jiujian};
     #send {jifa cuff poyu-quan};
     #send {jifa strike hunyuan-zhang};
-    #send {jifa sword yunushijiu-jian};
+    #send {jifa sword huashan-jianfa};
     #send {jifa spear yuejia-qiangfa};
     bei none;
     bei cuff;
