@@ -9,11 +9,8 @@
 
 #alias {attack} {
     #if {"${quest}" == "hb"} {
-        #if {"${enemy_menpai}" == "gaibang" || "${enemy_menpai}" == "wudang"  || "${enemy_menpai}" == "taohua" || "${enemy_menpai}" == "huashan"} {
-            kuangfeng;
-            #delay {1} {
-                feijian;
-            };
+        #if {"${enemy_menpai}" == "gaibang" || "${enemy_menpai}" == "wudang"  || "${enemy_menpai}" == "taohua"} {
+            zongjue;
         };
         poqi;
         #class attack.inner open;
@@ -141,10 +138,8 @@
 
 #alias {poqi} {
     unwi;
-    jiali ${jiali_count};
     do_wield sword;
     perform dugu-jiujian.poqi;
-    jiali none;
     wi;
 };
 
