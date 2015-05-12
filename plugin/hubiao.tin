@@ -101,7 +101,9 @@
                 #if {"@getenv{hb_state}" == "STARTED"} {
                     @setenv{hb_state;TRAVERSE};
                 };
-                hb.resume;
+                #if {"@getenv{hb_state}" == "STARTED" || "@getenv{hb_state}" == "TRAVERSE"} {
+                    hb.resume;
+                };
             } {3};
         };
         #else {
