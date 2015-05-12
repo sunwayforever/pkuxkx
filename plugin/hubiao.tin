@@ -345,6 +345,7 @@
         give cai wu to @getenv{hb_owner};
     };
     #elseif {"@getenv{hb_state}" == "ENDED"} {
+        @setenv{hb_state;nil};
         ask @getenv{hb_owner} about finish;
     };
     #elseif {"@getenv{hb_state}" == "NEXT_MIXIN"} {
