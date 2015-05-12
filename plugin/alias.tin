@@ -910,7 +910,7 @@
             #system {kill -30 ${pid}};
             #end;
         };
-    } {60};
+    } {300};
 };
 
 #event {SESSION DEACTIVATED} {

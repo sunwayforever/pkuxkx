@@ -105,12 +105,12 @@
         #send {uptime};
         #send {time};
         init_set;
-        update_env;
         #if {${reset} == 0} {
             xmpp.start;
         };
         show.init;
         check_baowei;
+        update_env;
         #delay {4} {
             check_fm;
             weapons.check;
