@@ -555,7 +555,7 @@
         show_to_quest 推车: @getenv{hb_lunci_total}+${next_lunci}: 准备;
         on_health {hb.q};
     };
-    #else {
+    #elseif {"${hb_state}" != "GOT_MIXIN"} {
         hb.d;
     };
 };
