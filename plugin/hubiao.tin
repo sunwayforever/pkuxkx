@@ -294,14 +294,17 @@
         notify escort done;
         hb.teardown;
         taopao;
-        on_truce {
+        #alias {on_truce_done} {
             #if {@getenv{hb_lunci} == @getenv{mixin_lunci}} {
                 @setenv{hb_state;NEXT_MIXIN};
                 chain on_sell get.qian get.san repair special_repair gem.combine hb.b;
             };
             #else {
                 hb.b;
-            };
+            };  
+        };
+        on_truce {
+          on_truce_done;
         };
     } {1};
 
