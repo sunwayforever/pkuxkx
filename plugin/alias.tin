@@ -1,3 +1,7 @@
+#alias c chat;
+#alias * chat*;
+#alias r reply;
+
 #alias {load} {
     #var v %1;
     #if {"${v}" == "spec"} {

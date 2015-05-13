@@ -108,15 +108,11 @@
 
 #action {%1{»Ø´ð|¸æËß}Äã£º%2} {
     show_to_chat ¡¾Ë½ÁÄ¡¿%0;
-    #if {${xmpp_chat} == 1} {
-        #xmpp ¡¾Ë½ÁÄ¡¿From %1£º%2;
-    };
+    #xmpp ¡¾Ë½ÁÄ¡¿From %1£º%2;
 };
 
 #action {Äã{»Ø´ð|¸æËß}%1£º%2} {
     show_to_chat ¡¾Ë½ÁÄ¡¿%0;
-    #if {${xmpp_chat} == 1} {
-        #xmpp ¡¾Ë½ÁÄ¡¿To %1£º%2;
-    };
+    #xmpp ¡¾Ë½ÁÄ¡¿To %1£º%2;
 };
 #class show close;
