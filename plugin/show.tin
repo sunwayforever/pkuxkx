@@ -90,21 +90,21 @@
     };
 };
 
-#action {我找不到,请看其他的回复} {
-    #cr;
-} {1};
+#list chat_ignore_list create {
+    我找不到,请看其他的回复;
+    连续的重复查询是不起作用的;
+    快去摁死它吧;
+    并不存在;
+    青山不改，绿水常流，咱们后会有期;
+    这封信用特殊药水写就;
+    钱眼开记完帐;
+};
 
-#action {连续的重复查询是不起作用的} {
-    #cr;
-} {1};
-
-#action {快去摁死它吧!} {
-    #cr;
-} {2};
-
-#action {告诉你%*并不存在} {
-    #cr;
-} {2};
+#foreach {${chat_ignore_list}[%*]} {chat_ignore} {
+    #action {${chat_ignore}} {
+        #cr;
+    } {2};
+};
 
 #action {%1{回答|告诉}你：%2} {
     show_to_chat 【私聊】%0;
