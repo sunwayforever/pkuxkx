@@ -104,7 +104,7 @@
                 #if {"@getenv{hb_state}" == "STARTED" || "@getenv{hb_state}" == "TRAVERSE"} {
                     hb.resume;
                 };
-            } {3};
+            } {5};
         };
         #else {
             #if {${eff_qx_percent} < 95} {
@@ -558,7 +558,7 @@
         };
     };
     #elseif {"${hb_state}" == "GOT_MIXIN" || "${hb_state}" == "NEXT_MIXIN"} {
-        show_to_info 有密信, 须手动处理;
+        show_to_info 密信;
     };
     #elseif {"${hb_state}" == "nil"} {
         #math next_lunci @getenv{hb_lunci}+1;
