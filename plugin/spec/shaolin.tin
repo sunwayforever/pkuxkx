@@ -44,7 +44,7 @@
         #else {
             jingmo;
         };
-    } {1.5};
+    } {2.5};
     #class attack.inner close;
 };
 
