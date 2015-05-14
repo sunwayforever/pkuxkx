@@ -354,7 +354,6 @@
     };
     #elseif {"@getenv{hb_state}" == "NEXT_MIXIN"} {
         #if {@getenv{hb_lunci} == 0} {
-            @setenv{hb_state;nil};
             ask @getenv{hb_owner} about finish;
         };
         #else {
