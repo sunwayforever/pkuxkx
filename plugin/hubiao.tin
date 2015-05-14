@@ -350,7 +350,6 @@
         give cai wu to @getenv{hb_owner};
     };
     #elseif {"@getenv{hb_state}" == "ENDED"} {
-        @setenv{hb_state;nil};
         ask @getenv{hb_owner} about finish;
     };
     #elseif {"@getenv{hb_state}" == "NEXT_MIXIN"} {
@@ -419,6 +418,7 @@
     };
 
     #action {你一共被奖励了：} {
+        @setenv{hb_state;nil};
         #class tmp.inner open;
         #action {%*点经验；} {
             #class tmp.inner kill;
@@ -622,6 +622,10 @@
 
 #alias {hb.p} {
     chain get.san get.qian get.fan get.bao repair;
+};
+
+#action {转头对你道：「辛苦了，有几两银子略表心意，已经吩咐人存入你的钱庄账户。」} {
+    @setenv{hb_state;nil};
 };
 
 #action {你给%*一些失踪的财物} {
