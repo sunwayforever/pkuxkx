@@ -409,6 +409,35 @@
     set brief 2;
     #var hb_auto 1;
 
+    #action {转头对你道：「辛苦了，有几两银子略表心意，已经吩咐人存入你的钱庄账户。」} {
+        #if {"@getenv{hb_state}" == "ENDED"} {
+            @setenv{hb_state;nil};
+            #delay {hb_auto_delay} {
+                #if {${hb_auto} == 1} {
+                    hb.start;
+                };
+            } {3};
+        };
+    };
+
+    #action {递给你一封密信} {
+        @setenv{hb_state;GOT_MIXIN};            
+        @setenv{hb_lunci_total;@eval{@getenv{hb_lunci_total}+1}};
+        @setenv{hb_lunci;0};
+        show_to_tuiche 密信;
+        xian mixin;
+    };
+
+    #action {你给%*一些失踪的财物} {
+        @setenv{hb_state;nil};
+        @setenv{mixin_lunci;5};
+        #delay {hb_auto_delay} {
+            #if {${hb_auto} == 1} {
+                hb.start;
+            };
+        } {3};
+    };
+
     #class hb.auto.inner open;
     #action {^你不是才要了任务吗} {
         hb.f;
@@ -418,18 +447,12 @@
     };
 
     #action {你一共被奖励了：} {
-        @setenv{hb_state;nil};
         #class tmp.inner open;
         #action {%*点经验；} {
             #class tmp.inner kill;
             show_to_info @ctd{%%%1} 点经验;
         };
-        #delay {hb_auto_delay} {
-            #if {${hb_auto} == 1} {
-                hb.start;
-            };
-        } {3};
-        #class tmp.inner close;
+     #class tmp.inner close;
     };
 
     #action {${char_name}帮%*追回财物，额外获得%*点经验} {
@@ -525,14 +548,6 @@
         hb.resume;
     } {1};
 
-    #action {递给你一封密信} {
-        @setenv{hb_state;GOT_MIXIN};
-        @setenv{hb_lunci_total;@eval{@getenv{hb_lunci_total}+1}};
-        @setenv{hb_lunci;0};
-        show_to_tuiche 密信;
-        xian mixin;
-    };
-
     #class hb.auto.inner close;
 
     @declarenv{hb_state;nil};
@@ -622,20 +637,6 @@
 
 #alias {hb.p} {
     chain get.san get.qian get.fan get.bao repair;
-};
-
-#action {转头对你道：「辛苦了，有几两银子略表心意，已经吩咐人存入你的钱庄账户。」} {
-    @setenv{hb_state;nil};
-};
-
-#action {你给%*一些失踪的财物} {
-    @setenv{hb_state;nil};
-    @setenv{mixin_lunci;5};
-    #delay {hb_auto_delay} {
-        #if {${hb_auto} == 1} {
-            hb.start;
-        };
-    } {3};
 };
 
 #alias {show_to_tuiche} {
