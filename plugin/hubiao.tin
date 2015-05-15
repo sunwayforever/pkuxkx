@@ -377,12 +377,14 @@
 
 #alias {hb.q} {
     #var getesc_current_id 0;
-    #if {"%1" != ""} {
-        getesc %1;
+    #if {"@getenv{hb_state}" == "nil"} {
+        #if {"%1" != ""} {
+            getesc %1;
+        };
+        #else {
+            listesc;
+        };
     };
-    #else {
-        listesc;
-    }
 };
 
 
@@ -776,7 +778,7 @@
 };
 
 #list hb_blacklist:昌隆镖局 create {
-    镇江飞龙镖局;归云庄太湖街;嘉兴钱庄;峨嵋毗卢殿;岳阳车马行;
+    镇江飞龙镖局;归云庄太湖街;嘉兴钱庄;峨嵋毗卢殿;岳阳车马行;南昌飞虎镖局;泉州当铺;
 };
 
 #class hubiao close
