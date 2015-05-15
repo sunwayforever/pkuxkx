@@ -198,12 +198,6 @@
     } {5};
 };
 
-#alias {running} {
-    #delay {idler} {
-        idle;
-    } {300};
-};
-
 #alias {on_there} {
     #alias tmp_there #cr;
     #alias tmp_there %0;
@@ -914,7 +908,7 @@
             #system {kill -30 ${pid}};
             #end;
         };
-    } {300};
+    } {60};
 };
 
 #event {SESSION DEACTIVATED} {
