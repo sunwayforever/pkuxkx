@@ -441,7 +441,7 @@
 
     #class hb.auto.inner open;
     #action {^你不是才要了任务吗} {
-        hb.f;
+        hb.d;
         on_unbusy {
             hb.start;
         };
