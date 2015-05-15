@@ -318,4 +318,9 @@
     ${next_direction};
 };
 
+#alias {gps.truce} {
+    on_truce {
+        gps.run;
+    };
+};
 #class gps_actions close;
