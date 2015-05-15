@@ -100,7 +100,7 @@ load gps_actions;
             #break;
         };
         #elseif {"${gps.run.mode}" == "TRAVERSE"} {
-            gps.delay 0.5;
+            gps.delay 0.8;
             #var is_break 1;
             #break;
         };

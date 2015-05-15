@@ -735,12 +735,16 @@
     };
 };
 
-#alias {ll} {
+#alias {l} {
     #ungag {^$};
     #send {l %0};
-    #delay {1} {
+    #delay {gag_delay} {
         #gag {^$};
-    };
+    } {1.5};
+    #action {^>} {
+        #unaction {^>};
+        #gag {^$};
+    }
 };
 
 #macro {\eL} {
