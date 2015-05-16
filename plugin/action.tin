@@ -370,6 +370,10 @@
     xmpp.notify http://pkuxkx.net/antirobot/robot.php?filename=%1;
 };
 
+#action {你刚刚用过这个命令不久，还要%*才能再用。} {
+    do_show 无需 fullme;
+};
+
 #action {也许是上天垂青于你的勤奋和努力吧，一个小时之内你不用担心被判为机器人。} {
     #format {last_fm_time} {%T};
     @setenv{last_fm_time;${last_fm_time}};

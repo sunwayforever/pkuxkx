@@ -232,9 +232,9 @@
     } {0.5};
     #action {�㲻æ} {
         #class unbusy.inner kill;
-        #delay {0.5} {
+        #delay {tmp_busy_delay} {
             tmp_unbusy;
-        };
+        } {0.5};
     } {1};
     #class unbusy.inner close;
     checkbusy;

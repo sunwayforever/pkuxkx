@@ -31,7 +31,9 @@
     };
     #action {叫老子认输？嘿嘿，你别做梦了！} {
         #if {${xf.type} == 2} {
-            hit shashou;
+            #delay {xf_delay} {
+                hit shashou;
+            } {3};
         };
     };
     #action {^萧峰(xiao feng)告诉你：你先去在江湖中历练一番吧。} {
@@ -189,13 +191,14 @@
     };
 
     #action {显是蒙面杀手姓名} {
+        #undelay {xf_delay};
         raw;
         on_unbusy {
             #if {${xf.type} == 1} {
                 zhan corpse;  
             };
             #else {
-                l;                
+                #send {l};
             };
         };
     } {1};
