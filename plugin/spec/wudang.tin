@@ -84,7 +84,7 @@
             #class attack.inner close;
         };
         #elseif {${xf.type} == 3 || ${xf.type} == 4} {
-            gangrou;
+            wuying;
             #class attack.inner open;
             #ticker {wuying} {
                 wuying;

@@ -39,6 +39,9 @@ load gps_actions;
             #delay {1} {
                 do_show {GPS: 当前房间未记录, 无法行走};
             };
+            on_there {
+                #cr;
+            };
         };
         #else {
             #if {@isdigit{%1}} {
@@ -66,6 +69,9 @@ load gps_actions;
                 #if {${gps_path_size} == 0} {
                     #delay {1} {
                         do_show {GPS: 目标房间不可达, 无法行走};
+                    };
+                    on_there {
+                        #cr;
                     };
                 };
                 #else {
@@ -134,7 +140,7 @@ load gps_actions;
         #unaction {${gps_traverse_target}};
         do_show 找到目标: ${gps_traverse_target};
         gps.stop;
-    };
+    } {1};
 
     #var gps_stop 0;
     #var gps.run.mode TRAVERSE;
@@ -164,7 +170,7 @@ load gps_actions;
         #unaction {${gps_traverse_target}};
         do_show 找到目标: ${gps_traverse_target};
         gps.stop;
-    };
+    } {1};
 
     #alias {gps_check_room_done} {
         #if {${gps.roomno} == -1} {

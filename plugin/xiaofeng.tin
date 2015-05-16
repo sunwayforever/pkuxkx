@@ -292,13 +292,13 @@
         #if {${xf.type} == 4} {
             show_to_quest 萧峰: 战胜: ${xf.real_name};
         };
-    } {2};
+    } {3};
     
     #action {^    西夏一品堂 蒙面杀手(Mengmian shashou)} {
         #if {${xf.type} != -1} {
             xf.check;
         };
-    } {1};
+    } {2};
     #class xiaofeng.inner close;
     
     #class xf.bl.inner open;
