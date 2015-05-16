@@ -323,4 +323,21 @@
         gps.run;
     };
 };
+
+#alias {gps.climb} {
+    #class gps.climb.inner open;
+    #action {这里没有任何明显的出路} {
+        #class gps.climb.inner kill;
+        set brief 1;
+        gps.run;
+    };
+    #action {这里明显的出口} {
+        #class gps.climb.inner kill;
+        set brief 1;
+        gps.run;
+    };
+    #class gps.climb.inner close;
+    set brief 2;
+    climb %1;
+}
 #class gps_actions close;
