@@ -1,5 +1,5 @@
 #class wudang_spec open
-#var jiali_count 100;
+#var jiali_count 10;
 
 #alias {attack.prepare} {
     yun powerup;
@@ -48,7 +48,7 @@
             #class attack.inner close;
         };
         #elseif {${xf.type} == 3 || ${xf.type} == 4} {
-            gangrou;
+            wuying;
             #class attack.inner open;
             #ticker {wuying} {
                 wuying;
