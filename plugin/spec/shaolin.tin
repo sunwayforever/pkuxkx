@@ -146,20 +146,16 @@
 
 };
 
-#alias {map_goto_lingwu} {
-    map.go 达摩院二楼;
+#alias {goto_lingwu} {
+    gt 达摩院二楼;
 };
 
-#alias {map_goto_rest} {
-    map.go 和尚院五部;
-};
-
-#alias {map_goto_start} {
-    map.go 方丈楼;
+#alias {goto_rest} {
+    gt 和尚院五部;
 };
 
 #var need_ask_for_damo 1;
-#alias {map_goto_shifu} {
+#alias {goto_shifu} {
     #if {${need_ask_for_damo} == 1} {
         #var need_ask_for_damo 0;
         map.go 方丈室;
@@ -255,7 +251,6 @@
 stat.register 惊魔 hit 胸前大穴被你指力点中，全身动弹不得;
 stat.register 惊魔 miss 看破了你的企图，侧身避过指力;
 
-#var char_menpai_position fzl;
 #var shifu laozu;
 #var menzhong dizi;
 #var menzhong_didian txg;

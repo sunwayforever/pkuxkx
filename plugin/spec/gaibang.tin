@@ -91,23 +91,13 @@
     sanhui;
 };
 
-#alias {load_map} {
-    #cr;
+#alias {goto_lingwu} {
 };
 
-#alias {map_goto_lingwu} {
-    #showme map arrived;
+#alias {goto_rest} {
 };
 
-#alias {map_goto_rest} {
-    #showme map arrived;
-};
-
-#alias {map_goto_start} {
-    #showme map arrived;
-};
-
-#alias {map_goto_shifu} {
+#alias {goto_shifu} {
     enter;e;
     #showme map arrived;
 };
@@ -180,7 +170,6 @@ stat.register 缠 hit 你得理不饶人;
 
 #var shortcut F1:缠 F2:转 F3:挑 F4:戳 F5:雷霆降龙 F6:亢龙三悔;
 #var shifu hong;
-#var char_menpai_position gb;
 
 #alias {reborn} {
     #send {jifa force huntian-qigong};

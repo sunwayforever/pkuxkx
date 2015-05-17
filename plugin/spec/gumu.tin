@@ -145,20 +145,16 @@
     chan;
 };
 
-#alias {map_goto_lingwu} {
-    map.go {演武洞};
+#alias {goto_lingwu} {
+    gt 演武洞;
 };
 
-#alias {map_goto_rest} {
-    map.go {休息室};
+#alias {goto_rest} {
+    gt 古墓休息室;
 };
 
-#alias {map_goto_start} {
-    map.go {小厅};
-};
-
-#alias {map_goto_shifu} {
-    map.go {大厅};
+#alias {goto_shifu} {
+    gt  古墓大厅;
 };
 
 #alias {chan} {
@@ -178,7 +174,6 @@ stat.register 缠 hit 结果他被你攻了个措手不及！
 stat.register 汹涌 hit 只觉得犹如身陷洪涛巨浪，跌跌撞撞;
 stat.register 汹涌 miss 你的凌厉攻势;
 
-#var char_menpai_position 小厅;
 #var shifu yang;
 
 #alias {reborn} {

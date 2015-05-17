@@ -96,16 +96,16 @@
         #if {${lw_paused} == 0} {
             #if {${nl_percent} < 10} {
                 #var lw_paused 1;
-                on_arrived {
+                on_there {
                     sleep;
                 };
-                map_goto_rest;
+                goto_rest;
                 on_wakeup {
                     chifan;
-                    on_arrived {
+                    on_there {
                         #var lw_paused 0;
                     };
-                    map_goto_lingwu;
+                    goto_lingwu;
                 };
             };
             #else {
@@ -181,22 +181,17 @@
     };
 
     #class lingwu.inner close;
-    gt ${char_menpai_position};
+    show_to_quest 领悟;
     on_there {
-        show_to_quest 领悟;
-        load_map;
-        on_arrived {
-            lw.restart;
-        };
-        map_goto_lingwu;
+        lw.restart;
     };
+    goto_lingwu;
 };
 
 #alias {lw.stop} {
     unset_last_quest;
     #class lingwu.inner kill;
     show_to_quest 领悟结束;
-    map_goto_start;
 };
 
 #alias {lw.restart} {

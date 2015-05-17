@@ -194,20 +194,16 @@
     perform spear.lianhuan;
 };
 
-#alias {map_goto_lingwu} {
-    map.go {静修阁};
+#alias {goto_lingwu} {
+    gt {静修阁};
 };
 
-#alias {map_goto_rest} {
-    map.go {客房};
+#alias {goto_rest} {
+    gt {武当客房};
 };
 
-#alias {map_goto_start} {
-    map.go {武当广场};
-};
-
-#alias {map_goto_shifu} {
-    map.go {小屋};
+#alias {goto_shifu} {
+    gt {武当小屋};
 };
 
 #list my_weapons_to_wield create {sword; sword 2;};
@@ -225,7 +221,6 @@
     #send {jifa spear yuejia-qiangfa};
     bei cuff claw;
 };
-#var char_menpai_position wd;
 
 stat.register 缠 miss 只听得「铮」一声清响，剧烈碰撞之下你剑诀为敌所破，无以为继，被迫撤剑收招。;
 stat.register 缠 hit 只能见招拆招，疲于应对，不觉已深陷太极剑意之中，无法出招。;

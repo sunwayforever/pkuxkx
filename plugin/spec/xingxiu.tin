@@ -68,20 +68,16 @@
 
 };
 
-#alias {map_goto_lingwu} {
-    map.go 石壁;
+#alias {goto_lingwu} {
+    gt 石壁;
 };
 
-#alias {map_goto_rest} {
-    map.go 左内殿;
+#alias {goto_rest} {
+    gt 左内殿;
 };
 
-#alias {map_goto_start} {
-    map.go 巨岩;
-};
-
-#alias {map_goto_shifu} {
-    map.go 山谷口;
+#alias {goto_shifu} {
+    gt 山谷口;
 };
 
 #list my_weapons_to_wield create {spear; spear 2};
@@ -178,7 +174,6 @@
 #var shifu li;
 #var menzhong dizi;
 #var menzhong_didian txg;
-#var char_menpai_position xx;
 
 #nop stat.register 木灵盾 hit 你盔甲上镶嵌的钻石发挥了作用;
 #nop stat.register 木灵盾 hit 攻击落在你身上显得软弱无力;

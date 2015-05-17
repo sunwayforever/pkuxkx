@@ -101,21 +101,16 @@
     };
 };
 
-#alias {map_goto_lingwu} {
-    map.go {练功房};
+#alias {goto_lingwu} {
+    gt 华山练功房;
 };
 
-#alias {map_goto_rest} {
-    map.go {华山休息室};
+#alias {goto_rest} {
+    gt 华山休息室;
 };
 
-#alias {map_goto_start} {
-    map.go {书房};
-};
-
-#alias {map_goto_shifu} {
-    #nop map.go {书房};
-    map.go {小院};
+#alias {goto_shifu} {
+    gt 华山小院;
 };
 
 #alias {pozhang} {
@@ -240,7 +235,6 @@
 
 #var menzhong ning;
 #var menzhong_didian hs;
-#var char_menpai_position hs;
 
 #alias {reborn} {
     #send {jifa force zixia-shengong};
