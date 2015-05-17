@@ -158,20 +158,14 @@
 #alias {goto_shifu} {
     #if {${need_ask_for_damo} == 1} {
         #var need_ask_for_damo 0;
-        map.go 方丈室;
-        on_arrived {
+        on_there {
             ask dashi about 达摩老祖;
-            map.go 达摩洞;
-            on_arrived {
-                map.go 达摩禅房;
-            };
+            gt 达摩禅房;
         };
+        gt 方丈室;
     };
     #else {
-        map.go 达摩洞;
-        on_arrived {
-            map.go 达摩禅房;
-        };
+        gt 达摩禅房;
     };
 };
 

@@ -144,7 +144,6 @@ def get_path(conn, from_room, to_room, weight, check_points=["梅庄"]):
             paths.append("gps.huan_sibao")
             paths.extend(get_path(conn, 3655,to_room, weight, check_points))
             return paths;
-        
     return get_path(conn,from_room, to_room, weight, check_points)
 
 if __name__ == "__main__":
