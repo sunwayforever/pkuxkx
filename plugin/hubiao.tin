@@ -55,7 +55,7 @@
                 #list hb_path size hb_path_size;
                 #var hb_paused 0;
                 #if {${hb_path_size} == 0} {
-                    show_to_info 无法遍历伙计;
+                    show_to_info 无法遍历伙计 @ ${gps_traverse_location};
                 };
                 #else {
                     hb.run;

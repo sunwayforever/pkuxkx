@@ -82,14 +82,6 @@
     update_status_line;
 };
 
-#gag {【闲聊】%*};
-#action {【闲聊】%*} {
-    show_to_chat %0;
-    #if {${xmpp_chat} == 1} {
-        #xmpp %0;
-    };
-};
-
 #list chat_ignore_list create {
     我找不到,请看其他的回复;
     连续的重复查询是不起作用的;
@@ -108,13 +100,21 @@
     } {2};
 };
 
+#gag {【闲聊】%*};
+#action {^【闲聊】%*} {
+    show_to_chat %0;
+    #if {${xmpp_chat} == 1} {
+        #xmpp %0;
+    };
+} {2};
+
 #action {%1{回答|告诉}你：%2} {
     show_to_chat 【私聊】%0;
     #xmpp 【私聊】From %1：%2;
-};
+} {3};
 
 #action {你{回答|告诉}%1：%2} {
     show_to_chat 【私聊】%0;
     #xmpp 【私聊】To %1：%2;
-};
+} {3};
 #class show close;
