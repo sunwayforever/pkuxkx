@@ -239,10 +239,10 @@
 #alias {reborn} {
     #send {jifa force zixia-shengong};
     #send {jifa dodge huashan-shenfa};
-    #send {jifa parry dugu-jiujian};
+    #send {jifa parry poyu-quan};
     #send {jifa cuff poyu-quan};
     #send {jifa strike hunyuan-zhang};
-    #send {jifa sword huashan-jianfa};
+    #send {jifa sword dugu-jiujian};
     #send {jifa spear yuejia-qiangfa};
     bei none;
     bei cuff;
