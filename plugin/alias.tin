@@ -574,7 +574,7 @@
 };
 
 #alias {chain} {
-    %1 {%2 {%3 {%4 {%5 {%6 {%7 {%8 {%9 {%10 {};};};};};};};};};};
+    on_unbusy {%1 {on_unbusy {%2 {on_unbusy {%3 {on_unbusy {%4 {on_unbusy {%5 {on_unbusy {%6 {on_unbusy {%7 {on_unbusy {%8 {on_unbusy {%9 {on_unbusy {%10 {};};};};};};};};};};};};};};};};};};};};
 };
 
 #alias {on_sell} {

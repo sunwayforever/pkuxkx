@@ -382,7 +382,9 @@
             getesc %1;
         };
         #else {
-            listesc;
+            #ticker {hb_q_ticker} {
+                listesc;
+            } {5};
         };
     };
 };
@@ -508,33 +510,11 @@
                     hb.start;
                 };
             };
-            #else {
-                #delay {hb_auto_delay} {
-                    hb.start;
-                } {10};
-            };
         };
     };
 
-    #action {请选择其他任务} {
-        #delay {hb_auto_delay} {
-            hb.q;
-        } {2};
-    };
-
-    #action {你上次运镖太辛苦了} {
-        #delay {hb_auto_delay} {
-            hb.q;
-        } {10};
-    };
-
-    #action {你所领的任务在任务列表中并不存在} {
-        #delay {hb_auto_delay} {
-            hb.q;
-        } {2};
-    };
-
     #action {${char_name}把这批红货送到%*他已经派了个伙计名叫%*到%*附近接你} {
+        #unticker {hb_q_ticker};
         @setenv{hb_state;STARTED};
         @setenv{hb_lunci;@eval{@getenv{hb_lunci}+1}};
         @setenv{hb_huoji;%%2};
@@ -592,6 +572,7 @@
     #var hb_auto 0;
     #class hb.auto.inner kill;
     #undelay {hb_auto_delay};
+    #unticker {hb_q_ticker};
     #unticker {hb_ticker};
     dz.cancel;
 };
@@ -696,11 +677,13 @@
                     #if {${additional_path_size} > 0} {
                         #list hb_path get 3 first_step;
                         #var second_step @opposite{${first_step}};
-                        #var cnt 0;
-                        #while {${cnt} < ${additional_path_size}} {
-                            #list hb_path insert 3 ${second_step};
-                            #list hb_path insert 3 ${first_step};
-                            #math cnt $cnt+2;
+                        #if {"${second_step}" != "nil"} {
+                            #var cnt 0;
+                            #while {${cnt} < ${additional_path_size}} {
+                                #list hb_path insert 3 ${second_step};
+                                #list hb_path insert 3 ${first_step};
+                                #math cnt $cnt+2;
+                            };                            
                         };
                         #list hb_path size hb_path_size;
                     };
