@@ -254,10 +254,14 @@
 #alias {gps.qu_sibao} {
     #class gps.sibao.inner open;
     #action {^%d%s《{广陵散|率意帖|溪山行旅图|呕血谱}》$} {
-        #list sibao add {%%1};
+        #if {@ismember{%%3;sibao_zh} == 0} {
+            #list sibao_zh add {%%3};
+            #list sibao add {%%1};
+        };
     };
     #act {^柜子里目前存放的物品有：$} {
         #var sibao {};
+        #var sibao_zh {};
         #delay {1} {
             #class gps.sibao.inner kill;
             #if {@numitems{sibao}==4} {

@@ -105,17 +105,14 @@
     #delay {5} {
         wi;
         we;
+        check_naijiu;
     };
 };
 
 #alias {reload} {
-    gt wm;
+    gt ÃûÈËÌÃ;
     on_there {
-        u;
         #send {reload};
-        #delay {2} {
-            d;
-        };  
     };
 };
 
