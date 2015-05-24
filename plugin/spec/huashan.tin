@@ -12,17 +12,11 @@
         #if {"${enemy_menpai}" == "gaibang" || "${enemy_menpai}" == "wudang"} {
             chan;
         };
-        #else {
-            po;
-            poqi;
-        };
+        poqi;
         #class attack.inner open;
         #ticker {poqi} {
             poqi;
         } {3.8}
-        #ticker {po} {
-            po;
-        } {5.8}
         #class attack.inner close;
     };
     #elseif {${mj_started}  == 1} {
