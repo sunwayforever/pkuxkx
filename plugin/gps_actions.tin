@@ -121,7 +121,14 @@
     climb cliff;
     #action {^ÑÂ¼ä¹ÅËÉ} {
         #unaction {^ÑÂ¼ä¹ÅËÉ};
-        climb yafeng;
+        gps.run;
+    };
+};
+
+#alias {gps.yadong} {
+    climb;
+    #action {^ÑÂ¶´} {
+        #unaction {^ÑÂ¶´};
         gps.run;
     };
 };
