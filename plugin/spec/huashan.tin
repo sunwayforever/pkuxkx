@@ -9,17 +9,20 @@
 
 #alias {attack} {
     #if {"${quest}" == "hb"} {
-        #if {"${enemy_menpai}" == "gaibang" || "${enemy_menpai}" == "wudang"  || "${enemy_menpai}" == "taohua"} {
-            po;
+        #if {"${enemy_menpai}" == "gaibang" || "${enemy_menpai}" == "wudang"} {
+            chan;
         };
         #else {
+            po;
             poqi;
         };
-        zongjue;
         #class attack.inner open;
         #ticker {poqi} {
             poqi;
-        } {4.8}
+        } {3.8}
+        #ticker {po} {
+            po;
+        } {5.8}
         #class attack.inner close;
     };
     #elseif {${mj_started}  == 1} {
