@@ -1,5 +1,5 @@
 #class wudang_spec open
-#var jiali_count 10;
+#var jiali_count 5;
 
 #alias {attack.prepare} {
     yun powerup;
@@ -9,7 +9,7 @@
     };
     #ticker {perf_chan} {
         chan;
-    } {1.5};
+    } {1};
     #class attack.inner close;
 };
 
@@ -28,19 +28,15 @@
         #if {${xf.type} == -1 || ${xf.type} == 1} {
             #var jiali_count max;
             wuying;
-            gangrou;
             #class attack.inner open;
             #ticker {wuying} {
                 wuying;
             } {5.8};
-            #ticker {gangrou} {
-                gangrou;
-            } {6.8};
             #class attack.inner close;
         };
         #elseif {${xf.type} == 2} {
             #var jiali_count max;
-            gangrou;
+            wuying;
             #class attack.inner open;
             #ticker {wuying} {
                 wuying;
@@ -76,7 +72,7 @@
         };
         #elseif {${xf.type} == 2} {
             #var jiali_count max;
-            gangrou;
+            wuying;
             #class attack.inner open;
             #ticker {wuying} {
                 wuying;

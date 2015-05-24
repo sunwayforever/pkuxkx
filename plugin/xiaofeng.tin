@@ -167,8 +167,10 @@
     };
 
     #alias {xf.slow_down_2} {
-        #if {${xf.type} == 3 || ${xf.type} == 4} {
-            #showme øÏÀ¿¡À, Õ£ ÷~;
+        #if {${xf.type} == 2 } {
+            raw;
+        };
+        #elseif {${xf.type} == 3 || ${xf.type} == 4} {
             raw;
             on_halt;
         };
