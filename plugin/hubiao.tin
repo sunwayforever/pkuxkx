@@ -522,9 +522,9 @@
         #var hb_dest ${gps.area}%%3;
         @setenv{hb_dest;${hb_dest}};
         #var hb_info %%2|${hb_dest};
+        @setenv{hb_info;${hb_info}};
         show_to_tuiche ${hb_info};
         autopp.set %%2;
-
         hb.setup;
         hb.resume;
     } {1};
@@ -540,16 +540,20 @@
     #if {"${hb_state}" == "STARTED" || "${hb_state}" == "TRAVERSE" } {
         #var hb_huoji @getenv{hb_huoji};
         #var hb_dest @getenv{hb_dest};
+        #var hb_info @getenv{hb_info};
         #if {"${hb_huoji}" == "nil" || "${hb_dest}" == "nil"} {
             show_to_info 推车失败;
             hb.f;
         };
         #else {
             show_to_info 继续推车;
-            hb.setup;
+            show_to_tuiche ${hb_info};
             autopp.set ${hb_huoji};
             #var hb_remaining_path_size 0;
-            hb.resume;
+            hb.setup;
+            #delay {hb_delay} {
+                hb.resume;
+            } {5};
         };
     };
     #elseif {"${hb_state}" == "GOT_MIXIN" || "${hb_state}" == "NEXT_MIXIN"} {
