@@ -206,19 +206,6 @@
     };
 };
 
-#alias {on_truce} {
-    #alias tmp_truce %0;
-    #class truce.inner open;
-    #action {truce} {
-        #class truce.inner kill;
-        #delay {tmp_delay_on_truce} {
-            tmp_truce;
-        } {1.8};
-    };
-    #class truce.inner close;
-    war;
-};
-
 #gag {�㲻æ};
 #alias {on_unbusy} {
     #alias tmp_unbusy #cr;

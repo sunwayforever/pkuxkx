@@ -134,6 +134,31 @@
     #showme truce;
 };
 
+#alias {on_truce} {
+    #alias tmp_truce %0;
+    #class truce.inner open;
+    #action {truce} {
+        #class truce.inner kill;
+        #delay {tmp_delay_on_truce} {
+            tmp_truce;
+        } {1};
+    };
+    #class truce.inner close;
+    
+    #alias {gps_check_room_done} {
+        #if {${gps.roomno} == 285} {
+            #class truce.inner kill;
+            tmp_truce;
+        };
+        #else {
+            war;
+        }
+    };
+    gps.check_room {
+        gps_check_room_done;
+    };
+};
+
 #gag {wait_for_fight};
 #alias {war} {
     #class war.inner open;
@@ -142,7 +167,7 @@
     };
     #ticker {fighting} {
         yun heal;
-    } {3};
+    } {2};
     #ticker {yun} {
         yun qi;
         yun jing;
