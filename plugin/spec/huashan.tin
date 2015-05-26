@@ -1,6 +1,6 @@
 #class wudang_spec open
 #var jiali_count 50;
-#var hb_max_path_size 40;
+#var hb_max_path_size 30;
 #alias {attack.prepare} {
     yun powerup;
     #class attack.inner open;

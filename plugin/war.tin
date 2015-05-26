@@ -207,18 +207,31 @@
 };
 
 #alias {taopao} {
+    #alias tmp_on_taopao #cr;
+    #alias tmp_on_taopao %1;
+    #class taopao.inner open;
+    #action {你的动作还没有完成，不能移动。} {
+        raw;
+        #5 halt;
+        ${exit} ;
+    };
+    #class taopao.inner close;
+    
     #alias {get_pos_done} {
         #list exits_list create ${exits_list};
         #list exits_list get 1 exit;
+        raw;
         #5 halt;
-        on_unbusy {
-            ${exit};
+        ${exit};
+        #action {这里%*出口} {
+            #unaction {这里%*出口};
+            #class taopao.inner kill;    
+            tmp_on_taopao;
         };
     };
     get_pos {
         get_pos_done;
     };
-    #5 halt;
 };
 
 #action {${char_name}%*不由自主的放开了兵器} {

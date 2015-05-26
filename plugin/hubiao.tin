@@ -295,8 +295,8 @@
         show_to_tuiche 任务完成;
         notify escort done;
         hb.teardown;
-        taopao;
-        #alias {on_truce_done} {
+
+        #alias {on_taopao_done} {
             #if {@getenv{hb_lunci} == @getenv{mixin_lunci}} {
                 @setenv{hb_state;NEXT_MIXIN};
                 chain on_sell get.qian get.san repair special_repair gem.combine hb.b;
@@ -305,8 +305,9 @@
                 hb.b;
             };  
         };
-        on_truce {
-          on_truce_done;
+
+        taopao {
+            on_taopao_done;
         };
     } {1};
 

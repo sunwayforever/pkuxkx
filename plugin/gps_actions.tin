@@ -83,9 +83,9 @@
 
 #alias {gps.zuoche} {
     gu;
-    qu %1;
     #action {你登上了一辆马车} {
         GPS.GT.UNCHECK;
+        qu %1;
     };
     #action {大车停稳了下来} {
         #unaction {大车停稳了下来};
