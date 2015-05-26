@@ -319,4 +319,6 @@ load gps_actions;
 #nop test all gps.clear;
 #nop 长江黄河遍历;
 #nop 桃花岛桃林;
+#nop 在青石官道遍历嘉兴南门;
+#nop 嘉兴山洞;
 #class gps close;
