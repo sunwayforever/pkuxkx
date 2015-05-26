@@ -6,6 +6,17 @@ load gps_actions;
 #var gps_path_index 0;
 #var gps_path_size 0;
 
+#alias {GPS.GT.CHECK} {
+    #delay {gps_delay_check} {
+        gt.stop;
+        gps.gt.check;
+    } {10};
+};
+
+#alias {GPS.GT.UNCHECK} {
+    #undelay {gps_delay_check};
+};
+
 #alias {gps.gt.check} {
     #alias {gps_check_room_done} {
         #var src_roomno ${gps.roomno};
@@ -15,7 +26,7 @@ load gps_actions;
             };
         };
         #else {
-            #if {${gps_stop} ==0 } {
+            #if {${gps_stop} == 0} {
                 gps.gt ${dst_roomno};
             };
         };
@@ -88,6 +99,9 @@ load gps_actions;
 };
 
 #alias {gps.run} {
+    #if {"${gps.run.mode}" == "NORMAL"} {
+        GPS.GT.UNCHECK;
+    };
     #var is_break 0;
     #var accu 0;
     #while {${gps_path_index} <= ${gps_path_size}} {
@@ -102,6 +116,9 @@ load gps_actions;
         #math gps_path_index ${gps_path_index}+1;
         ${gps_next_step};
         #if {@startwith{${gps_next_step};gps} == 1} {
+            #if {"${gps.run.mode}" == "NORMAL"} {
+                GPS.GT.CHECK;
+            };
             #var is_break 1;
             #break;
         };
@@ -319,6 +336,5 @@ load gps_actions;
 #nop test all gps.clear;
 #nop 长江黄河遍历;
 #nop 桃花岛桃林;
-#nop 在青石官道遍历嘉兴南门;
 #nop 嘉兴山洞;
 #class gps close;

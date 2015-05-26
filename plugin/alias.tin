@@ -20,10 +20,6 @@
     #6 {drink cha};
 };
 
-#alias {load_map} {
-    map.load ${char_menpai};
-};
-
 #alias {chifan} {
     eat_food;
 };
@@ -120,6 +116,7 @@
     #send {i necklace};
     #send {i spear};
     #send {i staff};
+    #send {i blade};
     #send {i shield};
     #send {i sword};
     #send {i whip};
