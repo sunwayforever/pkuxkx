@@ -497,18 +497,21 @@
     };
 
     #action {来认领押镖任务} {
-        #if {${getesc_current_id} != 0} {
-            #var hb_rotate_location_count 0;
-            hb.q ${getesc_current_id};
-        };
-        #else {
-            #math hb_rotate_location_count ${hb_rotate_location_count} + 1;
-            #if {${hb_rotate} == 1 && ${hb_rotate_location_count} > 3 && "${hb_rotate_location}" != "nil"} {
+        #var hb_state @getenv{hb_state};
+        #if {"${hb_state}" == "nil"} {
+            #if {${getesc_current_id} != 0} {
                 #var hb_rotate_location_count 0;
-                hb.stop;
-                gt ${hb_rotate_location};
-                on_there {
-                    hb.start;
+                hb.q ${getesc_current_id};
+            };
+            #else {
+                #math hb_rotate_location_count ${hb_rotate_location_count} + 1;
+                #if {${hb_rotate} == 1 && ${hb_rotate_location_count} > 3 && "${hb_rotate_location}" != "nil"} {
+                    #var hb_rotate_location_count 0;
+                    hb.stop;
+                    gt ${hb_rotate_location};
+                    on_there {
+                        hb.start;
+                    };
                 };
             };
         };

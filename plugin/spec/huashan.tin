@@ -16,7 +16,10 @@
         #class attack.inner open;
         #ticker {poqi} {
             poqi;
-        } {3.8}
+        } {3.8};
+        #ticker {chan} {
+            chan;
+        } {5.8};
         #class attack.inner close;
     };
     #elseif {${mj_started}  == 1} {
