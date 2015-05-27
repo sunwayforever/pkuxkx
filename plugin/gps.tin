@@ -333,5 +333,4 @@ load gps_actions;
 #nop 长江黄河遍历;
 #nop 桃花岛桃林;
 #nop 嘉兴山洞;
-#nop 神策门遍历金川门;
 #class gps close;
