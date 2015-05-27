@@ -116,9 +116,6 @@ load gps_actions;
         #math gps_path_index ${gps_path_index}+1;
         ${gps_next_step};
         #if {@startwith{${gps_next_step};gps} == 1} {
-            #if {"${gps.run.mode}" == "NORMAL"} {
-                GPS.GT.CHECK;
-            };
             #var is_break 1;
             #break;
         };

@@ -2,7 +2,6 @@
 
 #alias gps.clear gps.force_clear;
 #alias {gps.force_clear} {
-    GPS.GT.UNCHECK;
     clear %0;
     on_cleared {
         gps.run;
@@ -10,7 +9,6 @@
 };
 
 #alias {gps.delay} {
-    GPS.GT.UNCHECK;
     #var gps_delay 1.5;
     #var gps_delay %1;
     #delay {gps_delay} {
@@ -53,12 +51,14 @@
     };
     #class gps.action.inner close;
 
+    GPS.GT.CHECK;
     ask shao gong about huanghe;
     ask shao gong about jiang;
     yell boat;
 };
 
 #alias {gps.enter_boat} {
+    GPS.GT.CHECK;
     enter boat;
     #action {你跃上小舟} {
         GPS.GT.UNCHECK;
@@ -82,6 +82,7 @@
 };
 
 #alias {gps.zuoche} {
+    GPS.GT.CHECK;
     gu;
     #action {你登上了一辆马车} {
         GPS.GT.UNCHECK;
@@ -115,12 +116,14 @@
     };
     #class gps.goto_bt.inner close;
 };
+
 #alias {gps.enter_home} {
     enter ${char_id};
     gps.run;
 };
 
 #alias {gps.guo_qiao} {
+    GPS.GT.CHECK;
     #action {你扶着铁索，踏上桥板。} {
       GPS.GT.UNCHECK;  
     };
@@ -132,6 +135,7 @@
 };
 
 #alias {gps.wuliang} {
+    GPS.GT.CHECK;
     climb cliff;
     #action {你一咬牙，扳住崖上的岩石，手脚并用向上爬去。} {
         GPS.GT.UNCHECK;  
@@ -151,6 +155,7 @@
 };
 
 #alias {gps.tiesuo} {
+    GPS.GT.CHECK;
     zou tiesuo;
     #action {你踩上铁索，向山涧的对面飘然而去} {
         GPS.GT.UNCHECK;
@@ -162,6 +167,7 @@
 };
 
 #alias {gps.row} {
+    GPS.GT.CHECK;
     row %1;
     #action {你拿起船桨用力划了起来} {
       GPS.GT.UNCHECK;  
@@ -173,13 +179,13 @@
 };
 
 #alias {gps.busy} {
-    GPS.GT.UNCHECK;
     on_unbusy {
         gps.run;
     };
 };
 
 #alias {gps.maze.tdf} {
+    GPS.GT.CHECK;
     #var current_direction west;
     #list directions create {east;west;north;south};
     #alias {do_look_next} {
@@ -226,6 +232,7 @@
 };
 
 #alias {gps.maze.yunhai} {
+    GPS.GT.CHECK;
     #class gps.maze.yunhai.inner open;
     #action {^云海$} {
         GPS.GT.UNCHECK;
@@ -244,6 +251,7 @@
 };
 
 #alias {gps.maze.yunhaib} {
+    GPS.GT.CHECK;
     #class gps.maze.yunhai.inner open;
     #action {^云海$} {
         GPS.GT.UNCHECK;
@@ -262,6 +270,7 @@
 };
 
 #alias {gps.muchang} {
+    GPS.GT.CHECK;
     #var next_action %1;
     #class gps.muchang open;
     #action {青海湖畔美不胜收，你不由停下脚步，欣赏起了风景。} {
@@ -319,6 +328,7 @@
 };
 
 #alias {gps.maze.guolin} {
+    GPS.GT.CHECK;
     #class gps.maze.guolin.inner open;
     #action {^果林$} {
         GPS.GT.UNCHECK;
@@ -335,6 +345,7 @@
 };
 
 #alias {gps.maze.guolinb} {
+    GPS.GT.CHECK;
     #class gps.maze.guolin.inner open;
     #action {^果林$} {
         GPS.GT.UNCHECK;
