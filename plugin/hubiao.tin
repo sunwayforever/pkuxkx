@@ -347,13 +347,14 @@
 };
 
 #alias {hb.d} {
-    #if {"@getenv{hb_state}" == "GOT_CAIWU"} {
+    #var hb_state @getenv{hb_state};
+    #if {"${hb_state}" == "GOT_CAIWU"} {
         give cai wu to @getenv{hb_owner};
     };
-    #elseif {"@getenv{hb_state}" == "ENDED"} {
+    #elseif {"${hb_state}" == "ENDED"} {
         ask @getenv{hb_owner} about finish;
     };
-    #elseif {"@getenv{hb_state}" == "NEXT_MIXIN"} {
+    #elseif {"${hb_state}" == "NEXT_MIXIN"} {
         #if {@getenv{hb_lunci} == 0} {
             ask @getenv{hb_owner} about finish;
         };
@@ -364,9 +365,12 @@
             play alert.wav;
         };
     };
-    #elseif {"@getenv{hb_state}" == "GOT_MIXIN"} {
+    #elseif {"${hb_state}" == "GOT_MIXIN"} {
         give mixin to @getenv{hb_owner};
         xian mixin;
+    };
+    #elseif {"${hb_state}" == "nil"} {
+        show_to_info 没有护镖任务;
     };
     #else {
         hb.f;
@@ -573,7 +577,6 @@
         hb.b;
     };
 };
-
 
 #alias {hb.stop} {
     unset_last_quest;
