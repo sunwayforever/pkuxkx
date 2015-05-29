@@ -570,7 +570,7 @@
         on_health {hb.q};
     };
     #else {
-        hb.d;
+        hb.b;
     };
 };
 
