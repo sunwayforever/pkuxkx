@@ -19,4 +19,8 @@
 		#system {echo %0|iconv -f gbk -t utf-8|xargs -I. notify-send -t 5000 -u normal "${char_id}:" .};	
 	} {6}
 };
+
+#alias {browse} {
+    #system {google-chrome %0};
+};
 #class linux close

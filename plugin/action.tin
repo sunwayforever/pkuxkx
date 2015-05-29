@@ -369,6 +369,7 @@
 };
 
 #action {^http://pkuxkx.net/antirobot/robot.php?filename=%1} {
+    browse http://pkuxkx.net/antirobot/robot.php?filename=%1;
     xmpp.notify http://pkuxkx.net/antirobot/robot.php?filename=%1;
 };
 
