@@ -6,16 +6,20 @@ load gps_actions;
 #var gps_path_index 0;
 #var gps_path_size 0;
 
-#alias {GPS.GT.CHECK} {
-    #delay {gps_delay_check} {
-        gt.stop;
-        #var gps_stop 0;
-        gps.gt.check;
-    } {5};
+#alias {GPS.CHECK} {
+    #if {"${gps.run.mode}" == "NORMAL"} {
+        #delay {gps_delay_check} {
+            gt.stop;
+            #var gps_stop 0;
+            gps.gt.check;
+        } {5};
+    };
 };
 
-#alias {GPS.GT.UNCHECK} {
-    #undelay {gps_delay_check};
+#alias {GPS.UNCHECK} {
+    #if {"${gps.run.mode}" == "NORMAL"} {
+        #undelay {gps_delay_check};
+    };
 };
 
 #alias {gps.gt.check} {
