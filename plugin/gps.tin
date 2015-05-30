@@ -38,8 +38,10 @@ load gps_actions;
 
 #alias gt.stop gps.stop;
 #alias {gps.stop} {
-    #undelay {gps_delay};
     #var gps_stop 1;
+    #class gps.action.inner kill;
+    GPS.GT.UNCHECK;
+    #undelay {gps_delay};
 };
 
 #alias {gps.gt} {

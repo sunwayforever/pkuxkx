@@ -60,6 +60,7 @@
 #alias {gps.enter_boat} {
     GPS.GT.CHECK;
     enter boat;
+    #class gps.action.inner open;
     #action {你跃上} {
         GPS.GT.UNCHECK;
     };
@@ -79,11 +80,13 @@
         #unaction {你朝船夫挥了挥手便跨上岸去};
         gps.run;
     };
+    #class gps.action.inner close;
 };
 
 #alias {gps.zuoche} {
     GPS.GT.CHECK;
     gu;
+    #class gps.action.inner open;
     #action {你登上了一辆马车} {
         GPS.GT.UNCHECK;
         qu %1;
@@ -93,13 +96,14 @@
         xia;
         gps.run;
     };
+    #class gps.action.inner close;
 };
 
 #alias {gps.goto_bt} {
     ask qian about 白驼山;
     give qian 1 gold;
     
-    #class gps.goto_bt.inner open;
+    #class gps.action.inner open;
     #ticker {tt} {
         give qian 1 gold;
     } {2};
@@ -109,12 +113,12 @@
     };
     
     #action {你拿出一两黄金(Gold)给钱眼开。} {
-        #class gps.goto_bt.inner kill;
+        #class gps.action.inner kill;
         #delay {1} {
             gps.run;
         };
     };
-    #class gps.goto_bt.inner close;
+    #class gps.action.inner close;
 };
 
 #alias {gps.enter_home} {
@@ -124,6 +128,7 @@
 
 #alias {gps.guo_qiao} {
     GPS.GT.CHECK;
+    #class gps.action.inner open;
     #action {你扶着铁索，踏上桥板。} {
       GPS.GT.UNCHECK;  
     };
@@ -131,12 +136,14 @@
         #unaction {你终于一步步的终于挨到了桥头.};
         gps.run;
     };
+    #class gps.action.inner close;
     guo qiao;
 };
 
 #alias {gps.wuliang} {
     GPS.GT.CHECK;
     climb cliff;
+    #class gps.action.inner open;
     #action {你一咬牙，扳住崖上的岩石，手脚并用向上爬去。} {
         GPS.GT.UNCHECK;  
     };
@@ -144,19 +151,23 @@
         #unaction {^崖间古松};
         gps.run;
     };
+    #class gps.action.inner close;
 };
 
 #alias {gps.yadong} {
     climb;
+    #class gps.action.inner open;
     #action {^崖洞} {
         #unaction {^崖洞};
         gps.run;
     };
+    #class gps.action.inner close;
 };
 
 #alias {gps.tiesuo} {
     GPS.GT.CHECK;
     zou tiesuo;
+    #class gps.action.inner open;
     #action {你踩上铁索，向山涧的对面飘然而去} {
         GPS.GT.UNCHECK;
     };
@@ -164,11 +175,13 @@
         #unaction {你终于来到了对面，心里的石头终于落地。};
         gps.run;
     };
+    #class gps.action.inner close;
 };
 
 #alias {gps.row} {
     GPS.GT.CHECK;
     row %1;
+    #class gps.action.inner open;
     #action {你拿起船桨用力划了起来} {
       GPS.GT.UNCHECK;  
     };
@@ -176,6 +189,7 @@
         #unaction {不知过了多久，船终于靠岸了，你累得满头大汗。};
         gps.run;
     };
+    #class gps.action.inner close;
 };
 
 #alias {gps.busy} {
@@ -203,11 +217,11 @@
     };
     
     #alias {do_look} {
-        #class gps.tdf.inner open;
+        #class gps.action.inner open;
         #var next_direction  west;
         #var look_count 0;
         #action {这里的花丛（huacong）比别的地方} {
-            #class gps.tdf.inner kill;
+            #class gps.action.inner kill;
             on_unbusy {
                 ${current_direction};
                 gps.run;            
@@ -223,7 +237,7 @@
             #var next_direction ${current_direction};
             do_look_next;
         } {9};
-        #class gps.tdf.inner close;
+        #class gps.action.inner close;
         
         do_look_next;
     };
@@ -233,38 +247,38 @@
 
 #alias {gps.maze.yunhai} {
     GPS.GT.CHECK;
-    #class gps.maze.yunhai.inner open;
+    #class gps.action.inner open;
     #action {^云海$} {
         GPS.GT.UNCHECK;
     };
     #action {^云海出口} {
-        #class gps.maze.yunhai.inner kill;
+        #class gps.action.inner kill;
         set brief 1;
         gps.run;
     };
     #ticker {yunhai.ticker} {
         n;w;e;s;e;e;n;
     } {1.5};
-    #class gps.maze.yunhai.inner close;
+    #class gps.action.inner close;
     set brief 2;
     n;w;e;s;e;e;n;
 };
 
 #alias {gps.maze.yunhaib} {
     GPS.GT.CHECK;
-    #class gps.maze.yunhai.inner open;
+    #class gps.action.inner open;
     #action {^云海$} {
         GPS.GT.UNCHECK;
     };
     #action {^云海入口} {
-        #class gps.maze.yunhai.inner kill;
+        #class gps.action.inner kill;
         set brief 1;
         gps.run;
     };
     #ticker {yunhai.ticker} {
         e;s;
     } {0.5};
-    #class gps.maze.yunhai.inner close;
+    #class gps.action.inner close;
     set brief 2;
     s;e;s;
 };
@@ -272,27 +286,27 @@
 #alias {gps.muchang} {
     GPS.GT.CHECK;
     #var next_action %1;
-    #class gps.muchang open;
+    #class gps.action.inner open;
     #action {青海湖畔美不胜收，你不由停下脚步，欣赏起了风景。} {
         #delay {again} {
             ${next_action};            
         } {1};
-        #delay {muchang_delay} {
-            #class gps.muchang kill;
+        #delay {gps_delay} {
+            #class gps.action.inner kill;
             gps.run;
         } {2};
     } {1};
-    #delay {muchang_delay} {
-        #class gps.muchang kill;
+    #delay {gps_delay} {
+        #class gps.action.inner kill;
         gps.run;
     } {1};
-    #class gps.muchang close;
-    
+    #class gps.action.inner close;
+        
     ${next_action};
 };
 
 #alias {gps.qu_sibao} {
-    #class gps.sibao.inner open;
+    #class gps.action.inner open;
     #action {^%d%s《{广陵散|率意帖|溪山行旅图|呕血谱}》$} {
         #if {@ismember{%%3;sibao_zh} == 0} {
             #list sibao_zh add {%%3};
@@ -303,7 +317,7 @@
         #var sibao {};
         #var sibao_zh {};
         #delay {1} {
-            #class gps.sibao.inner kill;
+            #class gps.action.inner kill;
             #if {@numitems{sibao}==4} {
                 #loop 4 1 i {getout @item{sibao;$i}};
                 #delay 1 {
@@ -315,7 +329,7 @@
             };
         };
     };
-    #class gps.sibao.inner close;
+    #class gps.action.inner close;
     find;
 };
 
@@ -329,7 +343,7 @@
 
 #alias {gps.maze.guolin} {
     GPS.GT.CHECK;
-    #class gps.maze.guolin.inner open;
+    #class gps.action.inner open;
     #action {^果林$} {
         GPS.GT.UNCHECK;
         on_unbusy {
@@ -337,16 +351,16 @@
         };
     };
     #action {^后山$} {
-        #class gps.maze.guolin.inner kill;
+        #class gps.action.inner kill;
         gps.run;
     };
-    #class gps.maze.guolin.inner close;
+    #class gps.action.inner close;
     s;
 };
 
 #alias {gps.maze.guolinb} {
     GPS.GT.CHECK;
-    #class gps.maze.guolin.inner open;
+    #class gps.action.inner open;
     #action {^果林$} {
         GPS.GT.UNCHECK;
         #if {"${next_direction}" == "s"} {
@@ -365,10 +379,11 @@
         };
     };
     #action {^大道$} {
-        #class gps.maze.guolin.inner kill;
+        #class gps.action.inner kill;
         gps.run;
     };
-    #class gps.maze.guolin.inner close;
+    #class gps.action.inner close;
+    
     #var next_direction s;
     ${next_direction};
 };
@@ -380,18 +395,21 @@
 };
 
 #alias {gps.climb} {
-    #class gps.climb.inner open;
+    #class gps.action.inner open;
+    #action {你抬头看了一下悬崖} {
+      GPS.GT.UNCHECK;  
+    };
     #action {这里没有任何明显的出路} {
-        #class gps.climb.inner kill;
+        #class gps.action.inner kill;
         set brief 1;
         gps.run;
     };
     #action {这里明显的出口} {
-        #class gps.climb.inner kill;
+        #class gps.action.inner kill;
         set brief 1;
         gps.run;
     };
-    #class gps.climb.inner close;
+    #class gps.action.inner close;
     set brief 2;
     climb %1;
 }
