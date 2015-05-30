@@ -412,5 +412,17 @@
     #class gps.action.inner close;
     set brief 2;
     climb %1;
-}
+};
+
+#nop 775 ->3788 [3456]  3786 87 89 90  3455<- 3452;
+#alias {gps.maze.tdh} {
+    south;south;south;west;east;north;north;north;north;
+    gps.run;
+};
+
+#alias {gps.maze.tdhb} {
+    south;south;south;south;west;north;north;east;north;south;westup;
+    gps.run;
+};
 #class gps_actions close;
+
