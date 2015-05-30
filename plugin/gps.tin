@@ -9,8 +9,9 @@ load gps_actions;
 #alias {GPS.GT.CHECK} {
     #delay {gps_delay_check} {
         gt.stop;
+        #var gps_stop 0;
         gps.gt.check;
-    } {10};
+    } {5};
 };
 
 #alias {GPS.GT.UNCHECK} {
@@ -335,4 +336,5 @@ load gps_actions;
 #nop 长江黄河遍历;
 #nop 桃花岛桃林;
 #nop 嘉兴山洞;
+#nop 翊坤宫-----通道-----隆福门;
 #class gps close;
