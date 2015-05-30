@@ -60,7 +60,7 @@
 #alias {gps.enter_boat} {
     GPS.GT.CHECK;
     enter boat;
-    #action {你跃上小舟} {
+    #action {你跃上} {
         GPS.GT.UNCHECK;
     };
     #action {小舟终于划到近岸，你从船上走了出来。} {
