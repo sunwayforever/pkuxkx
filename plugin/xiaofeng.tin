@@ -379,6 +379,11 @@
             bl.next;
         } {1};
     };
+    #action {GPS: 遍历完成} {
+        #delay {xf_delay} {
+            xf.b;
+        };
+    };
     #action {找到目标} {
         xf.check;
         #action {这里没有这个人。} {
