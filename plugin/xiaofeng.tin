@@ -20,6 +20,10 @@
         };
     };
 
+    #action {你一眨眼间，蒙面杀手已经不知去向。} {
+        
+    };
+    
     #action {^    西夏一品堂 %*(%* %*)} {
         #var xf.real_name %%1;
         autopp.set ${xf.real_name};
@@ -68,34 +72,9 @@
             } {3};
         };
     };
-    #action {^萧峰(xiao feng)告诉你：你先去在江湖中历练一番吧。} {
-        #delay {xf_delay} {
-            xf.q;
-        } {20};
-    } {1};
-    #action {^萧峰(xiao feng)告诉你：你先下去休息休息吧。} {
-        #delay {xf_delay} {
-            xf.q;
-        } {10};
-    } {1};
-    #action {^萧峰说道：%*刚刚已经有人前去了} {
-        #delay {xf_delay} {
-            xf.q;
-        } {3};
-    };
     #action {^从%*身上掉了出来一颗%*} {
         pack gem;
         show_to_info 掉宝: %%2;
-    };
-
-    #action {^由于放弃任务} {
-        show_to_quest 萧峰: 失败;
-        xf.teardown;
-    };
-
-    #action {^你已经完成了} {
-        show_to_quest 萧峰: 完成;
-        xf.teardown;
     };
 
     #action {%*向萧峰打听有关『job』的消息} {
@@ -111,6 +90,7 @@
     #action {传闻西夏一品堂派出了若干蒙面杀手，最近出现在%*附近的%*。} {
         #if {${xf.requested} == 1} {
             #var xf.target %%1:%%2;
+            @setenv{xf_state;STARTED};
             gt %%1%%2;
             on_there {
                 xf.bl;
@@ -191,9 +171,12 @@
     };
 
     #action {你将%*扶了起来背在背上} {
+        @setenv{xf_state;ENDED};
         #showme 收工;
         show_to_quest 萧峰: 已擒获 ${xf.real_name};
-        xf.b;
+        on_truce {
+            xf.b;
+        };
         #action {${xf.real_name}略一凝神，精神看起来好多了} {
             #unaction {${xf.real_name}略一凝神，精神看起来好多了};
             dian ${xf.real_first_name};
@@ -202,21 +185,30 @@
     };
 
     #action {你捡起一颗%*的首级} {
+        @setenv{xf_state;ENDED};
         #showme 收工;
         show_to_quest 萧峰: 已杀死;
-        xf.b;
+        #delay {3} {
+            xf.b;
+        };
     };
 
     #action {硬生生的将%*的头颅从尸体上扯了下来，提在手中！} {
+        @setenv{xf_state;ENDED};
         #showme 收工;
         show_to_quest 萧峰: 已杀死;
-        xf.b;
+        #delay {3} {
+            xf.b;
+        };
     };
     
     #action {将血淋淋的首级提在手中} {
+        @setenv{xf_state;ENDED};
         #showme 收工;
         show_to_quest 萧峰: 已杀死;
-        xf.b;
+        #delay {3} {
+            xf.b;
+        };
     };
 
     #action {血淋淋的首级咕噜噜的滚落在地} {
@@ -244,14 +236,20 @@
         raw;
         on_halt;
         #if {${xf.type} == 3} {
+            @setenv{xf_state;ENDED};
             #showme 收工;
             show_to_quest 萧峰: 已经劝服;
-            xf.b;
+            #delay {3} {
+                xf.b;
+            };
         };
         #elseif {${xf.type} == 4} {
+            @setenv{xf_state;ENDED};
             #showme 收工;
             show_to_quest 萧峰: 已经战胜;
-            xf.b;
+            #delay {3} {
+                xf.b;
+            };
         };
     };
 
@@ -278,6 +276,53 @@
     #class xiaofeng.inner close;
 };
 
+#alias {xf.start} {
+    #class xf.auto.inner open;
+    #alias {xf.restart} {
+        xf.teardown;
+        @setenv{xf_state;nil};
+        #delay {xf_auto_delay} {
+            on_health {
+                xf.start;
+            };
+        } {10};
+    };
+    #action {^萧峰(xiao feng)告诉你：你先去在江湖中历练一番吧。} {
+        #delay {xf_auto_delay} {
+            xf.q;
+        } {20};
+    } {1};
+    #action {^萧峰(xiao feng)告诉你：你先下去休息休息吧。} {
+        #delay {xf_auto_delay} {
+            xf.q;
+        } {10};
+    } {1};
+    #action {^萧峰说道：%*刚刚已经有人前去了} {
+        #delay {xf_auto_delay} {
+            xf.q;
+        } {3};
+    };
+    #action {^由于放弃任务} {
+        show_to_quest 萧峰: 失败;
+        xf.restart;
+    };
+    #action {^你已经完成了} {
+        show_to_quest 萧峰: 完成;
+        xf.restart;
+    };
+    #class xf.auto.inner close;
+    gt xf;
+    on_there {
+        on_health {
+            xf.q;
+        };
+    }
+};
+
+#alias {xf.stop} {
+    #class xf.auto.inner kill;
+};
+
 #alias {xf.q} {
     #var xf.requested 0;
     xf.setup;
@@ -286,17 +331,22 @@
 
 #alias {xf.d} {
     #class xf.bl.inner kill;
-    #if {${xf.type} == 1} {
-        give shouji to xiao;
+    #if {"@getenv{xf_state}" == "STARTED"} {
+        xf.f;
     };
-    #if {${xf.type} == 2} {
-        give ${xf.real_first_name} to xiao;
-    };
-    #if {${xf.type} == 3} {
-        ask xiao feng about 完成;
-    };
-    #if {${xf.type} == 4} {
-        ask xiao feng about 完成;
+    #elseif {"@getenv{xf_state}" == "ENDED"} {
+        #if {${xf.type} == 1} {
+            give shouji to xiao;
+        };
+        #if {${xf.type} == 2} {
+            give ${xf.real_first_name} to xiao;
+        };
+        #if {${xf.type} == 3} {
+            ask xiao feng about 完成;
+        };
+        #if {${xf.type} == 4} {
+            ask xiao feng about 完成;
+        };        
     };
 };
 
