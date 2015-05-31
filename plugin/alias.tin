@@ -894,7 +894,7 @@
     #delay {check_heart_beat_delay} {
         #if {${pid} != 0} {
             #system {kill -30 ${pid}};
-            #end;
+            end_and_restart;
         };
     } {60};
 };
@@ -903,7 +903,7 @@
     #if {"%0" == "pkuxkx"} {
         #if {${pid} != 0} {
             #system {kill -30 ${pid}};
-            #end;
+            end_and_restart;
         };
     };
 };
@@ -912,17 +912,30 @@
     check_heart_beat;
 };
 
+#alias {end_and_restart} {
+    #end;
+};
+
 #alias {end} {
     #unevent {SESSION DEACTIVATED};
     unset_last_quest;
     #end;
 };
 
+#alias {quit_and_restart} {
+    #send {quit};
+    #delay {3} {
+        #end;
+    }
+};
+
 #alias {quit} {
     #unevent {SESSION DEACTIVATED};
     unset_last_quest;
     #send {quit};
-    #end;
+    #delay {3} {
+        #end;
+    }
 };
 
 #alias {set_last_quest} {

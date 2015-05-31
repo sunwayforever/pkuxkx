@@ -313,6 +313,7 @@
     #class xf.auto.inner close;
     gt xf;
     on_there {
+        xf.d;
         on_health {
             xf.q;
         };
@@ -320,6 +321,7 @@
 };
 
 #alias {xf.stop} {
+    #undelay {xf_auto_delay};
     #class xf.auto.inner kill;
 };
 
