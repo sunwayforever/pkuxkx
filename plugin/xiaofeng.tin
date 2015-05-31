@@ -28,6 +28,17 @@
         };
     };
 
+    #action {蒙面杀手%*落荒而逃了。} {
+        #delay {xf_delay} {
+            #if {${xf.type} == 4} {
+                xf.b;
+            };
+            #else {
+                xf.bl;
+            };
+        } {3};
+    };
+    
     #action {你一眨眼间，蒙面杀手已经不知去向。} {
         #delay {xf_delay} {
             #if {${xf.type} == 4} {

@@ -9,7 +9,7 @@
     };
     #ticker {perf_chan} {
         chan;
-    } {1};
+    } {0.5};
     #class attack.inner close;
 };
 
