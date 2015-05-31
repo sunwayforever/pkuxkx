@@ -9,7 +9,15 @@
 
 #alias {xf.setup} {
     #class xiaofeng.inner open;
+    #action {眼见不活了。} {
+        #if {${xf.type} != 1} {
+            #delay {xf_delay} {
+                xf.b;
+            } {3};
+        };
+    };
     #action {要打便打} {
+        #unaction {这里没有这个人。};
         gt.stop;
         #class xf.bl.inner kill;
         #if {${xf.type} != -1} {
@@ -21,7 +29,14 @@
     };
 
     #action {你一眨眼间，蒙面杀手已经不知去向。} {
-        
+        #delay {xf_delay} {
+            #if {${xf.type} == 4} {
+                xf.b;
+            };
+            #else {
+                xf.bl;
+            };
+        } {3};
     };
     
     #action {^    西夏一品堂 %*(%* %*)} {
@@ -359,12 +374,19 @@
 #alias {xf.bl} {
 #class xf.bl.inner open;
     #action {蒙面杀手说道：「就你也配跟我讨教功夫？！」} {
+        #unaction {这里没有这个人。};
         #delay {xf.bl} {
             bl.next;
         } {1};
     };
     #action {找到目标} {
         xf.check;
+        #action {这里没有这个人。} {
+            #unaction {这里没有这个人。};
+            #delay {xf_delay} {
+                xf.bl;
+            };
+        };
     };
     #class xf.bl.inner close;
     bl.start 西夏一品堂;

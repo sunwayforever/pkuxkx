@@ -35,7 +35,6 @@
             #class attack.inner close;
         };
         #elseif {${xf.type} == 2} {
-            #var jiali_count max;
             wuying;
             #class attack.inner open;
             #ticker {wuying} {
@@ -71,7 +70,6 @@
             #class attack.inner close;
         };
         #elseif {${xf.type} == 2} {
-            #var jiali_count max;
             wuying;
             #class attack.inner open;
             #ticker {wuying} {
