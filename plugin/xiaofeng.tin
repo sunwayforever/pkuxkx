@@ -17,7 +17,6 @@
         };
     };
     #action {要打便打} {
-        #unaction {这里没有这个人。};
         gt.stop;
         #class xf.bl.inner kill;
         #if {${xf.type} != -1} {
@@ -371,9 +370,8 @@
 };
 
 #alias {xf.bl} {
-#class xf.bl.inner open;
+    #class xf.bl.inner open;
     #action {蒙面杀手说道：「就你也配跟我讨教功夫？！」} {
-        #unaction {这里没有这个人。};
         #delay {xf.bl} {
             bl.next;
         } {1};
@@ -381,17 +379,22 @@
     #action {GPS: 遍历完成} {
         #delay {xf_delay} {
             xf.b;
-        };
+        } {3};
     };
     #action {找到目标} {
         xf.check;
-        #action {这里没有这个人。} {
-            #unaction {这里没有这个人。};
-            #delay {xf_delay} {
-                xf.bl;
-            };
-        };
     };
+    #action {这里没有 shashou。} {
+        #delay {xf_delay} {
+            xf.bl;
+        } {1};
+    };
+    #action {这里没有这个人。} {
+        #delay {xf_delay} {
+            xf.bl;
+        } {1};
+    };
+
     #class xf.bl.inner close;
     bl.start 西夏一品堂;
 };
