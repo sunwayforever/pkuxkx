@@ -45,7 +45,7 @@ load gps_actions;
 #alias {gps.stop} {
     #var gps_stop 1;
     #class gps.action.inner kill;
-    GPS.GT.UNCHECK;
+    GPS.UNCHECK;
     #undelay {gps_delay};
 };
 
@@ -107,7 +107,7 @@ load gps_actions;
 
 #alias {gps.run} {
     #if {"${gps.run.mode}" == "NORMAL"} {
-        GPS.GT.UNCHECK;
+        GPS.UNCHECK;
     };
     #var is_break 0;
     #var accu 0;

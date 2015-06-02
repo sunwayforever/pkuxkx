@@ -154,6 +154,48 @@
     #class gps.action.inner close;
 };
 
+#alias {gps.tzf_1} {
+    GPS.CHECK;
+    climb;
+    #class gps.action.inner open;
+    #action {你一咬牙，扳住崖上的岩石} {
+        GPS.UNCHECK;  
+    };
+    #action {^巨岩} {
+        #unaction {^巨岩};
+        gps.run;
+    };
+    #class gps.action.inner close;
+};
+
+#alias {gps.tzf_2} {
+    GPS.CHECK;
+    climb;
+    #class gps.action.inner open;
+    #action {你一咬牙，扳住崖上的岩石} {
+        GPS.UNCHECK;  
+    };
+    #action {^天柱峰顶} {
+        #unaction {^天柱峰顶};
+        gps.run;
+    };
+    #class gps.action.inner close;
+};
+
+#alias {gps.tzf_3} {
+    GPS.CHECK;
+    climb;
+    #class gps.action.inner open;
+    #action {你一咬牙，扳住崖上的岩石} {
+        GPS.UNCHECK;  
+    };
+    #action {^天柱峰下} {
+        #unaction {^天柱峰下};
+        gps.run;
+    };
+    #class gps.action.inner close;
+};
+
 #alias {gps.yadong} {
     climb;
     #class gps.action.inner open;
@@ -362,7 +404,7 @@
     GPS.CHECK;
     #class gps.action.inner open;
     #action {^果林$} {
-        GPS.GT.UNCHECK;
+        GPS.UNCHECK;
         #if {"${next_direction}" == "s"} {
             #var next_direction e;
         };
@@ -397,7 +439,7 @@
 #alias {gps.climb} {
     #class gps.action.inner open;
     #action {你抬头看了一下悬崖} {
-      GPS.GT.UNCHECK;  
+      GPS.UNCHECK;  
     };
     #action {这里没有任何明显的出路} {
         #class gps.action.inner kill;

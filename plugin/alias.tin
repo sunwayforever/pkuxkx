@@ -769,6 +769,7 @@
 
     #action {    ¡¸%*¡¹: %*} {
         #delay {look_delay} {
+            #var exits_list  {};
             get_exits_done;
         } {1};
     } {6};
