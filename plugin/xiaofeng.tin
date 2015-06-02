@@ -27,6 +27,14 @@
         };
     };
 
+    #action {蒙面杀手说道：「我不服，等我休息一下，咱们再打过！」} {
+        #delay {xf_delay} {
+            #if {${xf.type} == 4} {
+                xf.b;
+            };
+        } {3};
+    };
+    
     #action {蒙面杀手%*落荒而逃了。} {
         #delay {xf_delay} {
             #if {${xf.type} == 4} {
