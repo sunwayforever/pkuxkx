@@ -157,16 +157,6 @@
         };
     };
 
-    #action {蒙面杀手说道：「我不服，等我休息一下，咱们再打过！」} {
-        raw;
-        on_halt;
-    };
-
-    #action {蒙面杀手说道：「我还没恢复好，你想乘人之危么？」} {
-        xf.heal;
-        raw;
-    };
-
     #alias {xf.slow_down_2} {
         #if {${xf.type} == 3 || ${xf.type} == 4} {
             raw;
