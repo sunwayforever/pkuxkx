@@ -334,9 +334,14 @@
 };
 
 #alias {xf.q} {
-    #var xf.requested 0;
-    xf.setup;
-    ask xiao feng about job;
+    #if {"${fm_remaining_time}" == 0} {
+        do_show ธฃรื;
+    };
+    #else {
+        #var xf.requested 0;
+        xf.setup;
+        ask xiao feng about job;
+    };
 };
 
 #alias {xf.d} {
