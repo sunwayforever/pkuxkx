@@ -195,17 +195,6 @@
     } {5};
 };
 
-#alias {on_there} {
-    #alias tmp_there #cr;
-    #alias tmp_there %0;
-    #action {抵达目的地} {
-        #unaction {抵达目的地};
-        #delay {there_delay} {
-            tmp_there;
-        } {1.8};
-    };
-};
-
 #gag {你不忙};
 #alias {on_unbusy} {
     #alias tmp_unbusy #cr;

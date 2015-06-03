@@ -6,6 +6,28 @@ load gps_actions;
 #var gps_path_index 0;
 #var gps_path_size 0;
 
+#alias {on_there} {
+    #alias tmp_there #cr;
+    #alias tmp_there %0;
+    #action {GPS: 抵达目的地} {
+        #unaction {GPS: 抵达目的地};
+        #delay {there_delay} {
+            tmp_there;
+        } {1.8};
+    };
+};
+
+#alias {on_not_there} {
+    #alias tmp_not_there #cr;
+    #alias tmp_not_there %0;
+    #action {GPS: 目标房间不可达, 无法行走} {
+        #unaction {GPS: 目标房间不可达, 无法行走};
+        #delay {there_delay} {
+            tmp_not_there;
+        } {1.8};
+    };
+};
+
 #alias {GPS.CHECK} {
     #if {"${gps.run.mode}" == "NORMAL"} {
         #delay {gps_delay_check} {

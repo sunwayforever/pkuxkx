@@ -126,9 +126,13 @@
         #if {${xf.requested} == 1} {
             #var xf.target %%1:%%2;
             @setenv{xf_state;STARTED};
-            gt %%1%%2;
+            #var xf.position %%1%%2;
+            gt ${xf.position};
             on_there {
                 xf.bl;
+            };
+            on_not_there {
+                notify 房间不可达: ${xf.position};
             };
         };
     };
