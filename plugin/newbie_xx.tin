@@ -295,7 +295,6 @@
 
     #action {皇帝还不差饿兵呢} {
         map.go 天秀宫;
-        notify fullme please;
     };
 
     #action {我踏月色而来说道：「你去帮我弄根木杖过来吧。」} {

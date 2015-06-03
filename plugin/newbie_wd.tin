@@ -111,7 +111,6 @@
     }
 
     #alias {check_jing} {
-        #system {notify-send -t 8000 "mud: song jing"};
         #var sj_start_page 0;
         #IF {"$sj_book" == "庄子·外篇「上卷」"} {
             #IF {"$sj_article" == "庄子·外篇·骈拇"} {#math sj_start_page $sj_page+0};

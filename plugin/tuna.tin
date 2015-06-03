@@ -43,7 +43,7 @@
             tn.stop;
             #showme tn done;
             show_to_quest ¾«Á¦µ½´ïÆ¿¾±: ${hpbrief_max_jl} => ${max_jingli};
-            xmpp.notify ÍÂÄÉÍê±Ï;
+            notify ÍÂÄÉÍê±Ï;
         };
         #else {
             show_to_quest ÍÂÄÉ: ${hpbrief_max_jl} => ${max_jingli};

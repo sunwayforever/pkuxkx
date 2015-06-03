@@ -196,15 +196,14 @@
     #action {看来该找机会逃跑了} {
         hb.pause;
         show_to_tuiche 丢镖;
-        xmpp.notify 丢镖;
+        notify 丢镖;
         hb.teardown;
         hb.b;
     };
 
     #action {^慢慢地你终于又有了知觉....} {
         show_to_tuiche 挂了;
-        notify.alert 挂了;
-        xmpp.notify 挂了;
+        notify 挂了;
         hb.teardown;
         hb.b;
     };
@@ -293,7 +292,6 @@
         hb.pause;
         raw;
         show_to_tuiche 任务完成;
-        notify escort done;
         hb.teardown;
 
         #alias {on_taopao_done} {
@@ -360,8 +358,7 @@
         };
         #else {
             @setenv{hb_lunci;0};
-            notify.alert next mixin;
-            xmpp.notify next mixin;
+            notify 下一轮密信;
             play alert.wav;
         };
     };
@@ -470,12 +467,10 @@
 
     #alias {got_gem} {
         #action {你将手中%*{◎|☆|★}%*放进了宝石袋} {
-            show_to_info 掉宝: %%%1%%%2%%%3;
-            notify.info %%%1%%%2%%%3;
+            notify %%%1%%%2%%%3;
             gem.record %%%1%%%2%%%3;
             #var gem_level @gemlevel{%%%1};
             play gem2.wav;
-            xmpp.notify 掉宝: %%%1%%%2%%%3;
         };
         pack gem;
         #delay {pack_gem} {

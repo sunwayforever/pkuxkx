@@ -27,6 +27,14 @@
         };
     };
 
+    #action {我不服，等我休息一下，咱们再打过！} {
+        #delay {xf_delay} {
+            #if {${xf.type} == 4} {
+                xf.b;
+            };
+        } {3};
+    };
+    
     #action {蒙面杀手说道：「我不服，等我休息一下，咱们再打过！」} {
         #delay {xf_delay} {
             #if {${xf.type} == 4} {
@@ -340,8 +348,8 @@
 };
 
 #alias {xf.q} {
-    #if {"${fm_remaining_time}" == 0} {
-        do_show 福米;
+    #if {"${fm_remaining_time}" == "0"} {
+        notify 福米;
     };
     #else {
         #var xf.requested 0;

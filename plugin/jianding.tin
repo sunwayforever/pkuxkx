@@ -130,9 +130,7 @@
     
     #action {你将一%*之%*放进包袱} {
         #unaction {你将一%*之%*放进包袱};
-        show_to_info 掉装备: ${kong} 孔 ${type};
-        notify.alert 掉装备: ${kong} 孔 ${type};
-        xmpp.notify 掉装备: ${kong} 孔 ${type};
+        notify 掉装备: ${kong} 孔 ${type};
     };
 };
 

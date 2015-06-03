@@ -96,8 +96,7 @@
         #unaction {get_char_info};
         #act {^${char_name}的甜蜜小屋$} {#var CurrentPosition bs};#act {^${char_name}的甜蜜小屋 - $} {#var CurrentPosition bs};
         #action {张 三双手抱拳，对着%*${char_name}作了个揖道} {
-            show_to_info 张三;
-            xmpp.notify 张三;
+            notify 张三;
         };
         show_to_quest   ;
         #send {i};
@@ -352,8 +351,7 @@
 };
 
 #action {游方和尚(youfang heshang)告诉你：你还没找到之前失散的亲戚吧？} {
-    show_to_info 认亲;
-    xmpp.notify 认亲;
+    notify 认亲;
 };
 
 #action {没有经过通传，任何人等不得擅闯都统治府。} {
@@ -370,7 +368,7 @@
 
 #action {^http://pkuxkx.net/antirobot/robot.php?filename=%1} {
     browse http://pkuxkx.net/antirobot/robot.php?filename=%1;
-    xmpp.notify http://pkuxkx.net/antirobot/robot.php?filename=%1;
+    notify http://pkuxkx.net/antirobot/robot.php?filename=%1;
 };
 
 #action {你刚刚用过这个命令不久，还要%*才能再用。} {

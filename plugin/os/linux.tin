@@ -1,23 +1,8 @@
 #class linux open
-#alias {notify} {
+#alias {desktop.notify} {
 	#system {echo %0|iconv -f gbk -t utf-8|xargs -I. notify-send -t 5000 -u normal "${char_id}:" .};
 	#nop #system {echo %0|iconv -f gbk -t utf-8|xargs -I. zenity --low --text . &};
 	#nop #system {echo '%0'|iconv -f gbk -t utf-8|xargs -I. gnome-osd-client -f "<message id='myplugin' osd_fake_translucent_bg='off' osd_vposition='center' animations='off' hide_timeout='3000' osd_halignment='center'> <span size='medium' background='green' foreground='white'> "." </span></message>"};
-};
-
-#alias {notify.info} {
-	#system {echo %0|iconv -f gbk -t utf-8|xargs -I. notify-send -t 5000 -u low "${char_id}:" .};
-};
-
-#alias {notify.alert} {
-	#system {echo %0|iconv -f gbk -t utf-8|xargs -I. notify-send -t 5000 -u normal "${char_id}:" .};
-};
-
-#alias {notify_loop} {
-	#system {echo %0|iconv -f gbk -t utf-8|xargs -I. notify-send -t 5000 -u normal "${char_id}:" .};	
-	#ticker {notify_loop}{
-		#system {echo %0|iconv -f gbk -t utf-8|xargs -I. notify-send -t 5000 -u normal "${char_id}:" .};	
-	} {6}
 };
 
 #alias {browse} {

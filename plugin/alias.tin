@@ -954,3 +954,9 @@
         ${last_quest}.start;
     };
 };
+
+#alias {notify} {
+    show_to_info %0;
+    desktop.notify %0;
+    xmpp.notify %0;
+};

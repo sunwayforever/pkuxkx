@@ -68,12 +68,12 @@
 
     #action {你的潜能已经发挥到极限了} {
         xue.stop;
-        xmpp.notify 学习完成;
+        notify 学习完成;
     };
 
     #action {没有办法学习这种技能} {
         xue.stop;
-        xmpp.notify 学习完成;
+        notify 学习完成;
     };
 
     #class xue.inner close;

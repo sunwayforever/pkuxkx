@@ -21,7 +21,7 @@
         #if {${max_neili} < ${hpbrief_max_nl}} {
             sb.stop;
             show_to_quest ÄÚÁ¦µ½´ïÆ¿¾±: ${hpbrief_max_nl} => ${max_neili};
-            xmpp.notify Ë¯´²Íê±Ï;
+            notify Ë¯´²Íê±Ï;
         };
         #else {
             show_to_quest Ë¯´²: ${hpbrief_max_nl} => ${max_neili};
