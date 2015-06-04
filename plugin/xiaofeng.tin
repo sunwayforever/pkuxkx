@@ -1,14 +1,22 @@
 #class xiaofeng open
 #var xf.type -1;
+#var xf.requested 0;
+
 #alias {xf.teardown} {
     #var quest nil;
-    #var xf.type -1;
     #var xf.requested 0;
     #class xiaofeng.inner kill;
+    #class xf.bl.inner kill;
 };
 
 #alias {xf.setup} {
     #class xiaofeng.inner open;
+    #action {这里没有 shashou。} {
+        #delay {xf_delay} {
+            xf.bl;
+        } {1};
+    };
+    
     #action {眼见不活了。} {
         #if {${xf.type} != 1} {
             #delay {xf_delay} {
@@ -409,14 +417,12 @@
         };
     };
     #else {
-        #var xf.requested 0;
         xf.setup;
         ask xiao feng about job;
     };
 };
 
 #alias {xf.d} {
-    #class xf.bl.inner kill;
     #if {"@getenv{xf_state}" == "STARTED"} {
         xf.f;
     };
@@ -456,11 +462,6 @@
     #action {找到目标} {
         xf.check;
     };
-    #action {这里没有 shashou。} {
-        #delay {xf_delay} {
-            xf.bl;
-        } {1};
-    };
     #action {这里没有这个人。} {
         #delay {xf_delay} {
             xf.bl;
@@ -472,6 +473,7 @@
 };
 
 #alias {xf.b} {
+    xf.teardown;
     on_unbusy {
         gt xf;
     };

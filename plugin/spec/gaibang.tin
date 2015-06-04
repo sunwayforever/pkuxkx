@@ -3,16 +3,6 @@
 #var with_weapon 1;
 #alias {attack.prepare} {
     yun powerup;
-    #class attack.inner open;
-    #if {"${quest}" != "hsz"} {
-        #ticker {perf_chan} {
-            chan;
-        } {1.8};
-    };
-    #ticker {perf_tiao} {
-        tiao;
-    } {3.8};
-    #class attack.inner close;
 };
 
 #alias {attack.end} {
@@ -26,6 +16,18 @@
     #delay {1} {
         tiao;
     };
+    
+    #class attack.inner open;
+    #if {"${quest}" != "hsz"} {
+        #ticker {perf_chan} {
+            chan;
+        } {0.8};
+    };
+    #ticker {perf_tiao} {
+        tiao;
+    } {3.8};
+    #class attack.inner close;
+    
     #if {"${quest}" == "hb"} {
     };
     #elseif {${mj_started}  == 1} {
@@ -38,6 +40,7 @@
             sanhui;
         };
         #elseif {${xf.type} == 2} {
+            leiting;
         };
         #elseif {${xf.type} == 3 || ${xf.type} == 4} {
         };
@@ -57,6 +60,7 @@
             #class attack.inner close;
         };
         #elseif {${xf.type} == 2} {
+            leiting;
             #class attack.inner open;
             #class attack.inner close;
         };
