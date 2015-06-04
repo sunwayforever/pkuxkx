@@ -23,14 +23,25 @@ if __name__ == "__main__":
     zone = row[1]
     tt.write("#echo {(%d) %s @ %s:};\n" % (int(sys.argv[1]),row[0], row[1]))
     tt.write ("#echo {[1;31m---------------------------------------[2;37;0m};\n")
-    sql = "select dst_room_zone, dst_room_name, dst_room_no, direction from room_and_entrance where src_room_no = %d" %(int(sys.argv[1]))
+    sql = "select dst_room_zone, dst_room_name, dst_room_no, direction, is_boundary from room_and_entrance where src_room_no = %d" %(int(sys.argv[1]))
     cursor = conn.execute(sql)
     rows = cursor.fetchall()
 
     for row in rows:
-        if row[0] == zone:
-            tt.write ("#echo {(%d): %s: {%s}};\n" % (row[2], row[1], row[3]))
+        if row[4] == 1:
+            boundary = "X "
         else:
-            tt.write ("#echo {(%d): %s @ %s : {%s}};\n" % (row[2], row[1], row[0], row[3]))
+            boundary = ""
+
+        if row[0] == zone:
+            zone = " @ "+row[0]
+        else:
+            zone = ""
+
+        tt.write ("#echo {(%d): %s%s%s: {%s}};\n" % (row[2], boundary, row[1], zone, row[3]))
+        # if row[0] == zone:
+        #     tt.write ("#echo {(%d): %s: {%s}};\n" % (row[2], row[1], row[3]))
+        # else:
+        #     tt.write ("#echo {(%d): %s @ %s : {%s}};\n" % (row[2], row[1], row[0], row[3]))
     tt.write ("#echo {[1;31m---------------------------------------[2;37;0m};\n")
     tt.write ("};");

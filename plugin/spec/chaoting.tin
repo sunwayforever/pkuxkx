@@ -4,43 +4,6 @@
 	yun powerup;
 };
 
-#alias {attack.normal} {
-	beng;
-	#class attack.inner open;
-	#ticker {perf_chan} {
-		chan;
-	} {1};
-	#ticker {beng} {
-		beng;
-	} {6};	
-	#ticker {zuoshou} {
-		zuoshou;
-	} {5};
-	#class attack.inner close;
-};
-
-#alias {attack.xiaofeng} {
-	#class attack.inner open;
-	#ticker {perf_chan} {
-		chan;
-	} {1};
-	#class attack.inner close;
-};
-
-#alias {attack.mingjiao} {
-	#class attack.inner open;
-	#ticker {perf_chan} {
-		chan;
-	} {1};
-	#ticker {qixing} {
-		qixing;
-	} {1.5};
-	#ticker {zuoshou} {
-		zuoshou
-	} {1};		
-	#class attack.inner close;
-};
-
 #macro {\eOP} {
 	chan;
 };

@@ -133,6 +133,7 @@
             };
             on_not_there {
                 notify 房间不可达: ${xf.position};
+                xf.f;
             };
         };
     };

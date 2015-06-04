@@ -34,7 +34,6 @@
     unwi;
     bei none;
     jifa cuff none;
-    #alias attack.normal {#cr};
     #alias attack.prepare {#cr};
 };
 

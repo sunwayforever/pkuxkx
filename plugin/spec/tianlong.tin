@@ -3,24 +3,6 @@
 	#cr;
 };
 
-#alias {attack.normal} {
-	#class attack.inner open;
-
-	#class attack.inner close;
-};
-
-#alias {attack.xiaofeng} {
-	#class attack.inner open;
-	#cr;
-	#class attack.inner close;
-};
-
-#alias {attack.mingjiao} {
-	#class attack.inner open;
-	#cr;
-	#class attack.inner close;
-};
-
 #macro {\eOP} {
 
 };

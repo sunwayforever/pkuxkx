@@ -4,6 +4,11 @@
 
 #alias {attack.prepare} {
     yun xinjing;
+};
+
+#alias {attack} {
+    chan;
+
     #class attack.inner open;
     #ticker {perf_chan} {
         chan;
@@ -12,10 +17,7 @@
         yun xinjing;
     } {30};
     #class attack.inner close;
-};
-
-#alias {attack} {
-    chan;
+    
     #if {"${quest}" == "hb"} {
         shexin;
         suxin;

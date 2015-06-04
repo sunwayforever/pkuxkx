@@ -8,6 +8,10 @@
 
 #alias {attack.prepare} {
     yun powerup;
+    fmq;
+};
+
+#alias {attack} {
     #if {"${quest}" == "hb"} {
         unwi;
         #send {perform yizhi-chan.jingmo ${char_id}'s robber 1};
@@ -26,7 +30,7 @@
     #else {
         jingmo;
     };
-    fmq;
+
     #class attack.inner open;
     #ticker {fumoquan} {
         fmq;
@@ -46,10 +50,7 @@
         };
     } {2.5};
     #class attack.inner close;
-};
-
-#alias {attack} {
-    jingmo;
+    
     #if {"${quest}" == "hb"} {
         #class attack.inner open;
         #class attack.inner close;

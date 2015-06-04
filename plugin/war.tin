@@ -15,6 +15,14 @@
     };
 };
 
+#action {你对%*说道：%*领教%*高招！} {
+    war;
+};
+
+#action {你对%*大喝一声：看招！} {
+    war;
+};
+
 #action {看起来%1想杀死你} {
     war;
 };
@@ -59,26 +67,6 @@
     } {1};
 };
 
-#alias {kill} {
-    war;
-    #send kill %0;
-};
-
-#alias {killall} {
-    war;
-    #send killall %0;
-};
-
-#alias {hit} {
-    war;
-    #send hit %0;
-};
-
-#alias {fight} {
-    war;
-    #send fight %0;
-};
-
 #action {你似乎十分疲惫，看来需要好好休息了} {
     re;
 };
@@ -104,6 +92,7 @@
     #if {${mj_started} == 0} {
         #var mj_started 1;
         #nop show_to_info >>明教;
+        raw;
         war;
     };
 };
@@ -114,6 +103,7 @@
         #var mj_started 0;
         #var mj_id {};
         #nop show_to_info <<明教;
+        raw;
         war;
     };
 };
@@ -168,34 +158,11 @@
     #ticker {fighting} {
         yun heal;
     } {2};
-    #ticker {yun} {
-        yun qi;
-        yun jing;
-    } {10};
-    #action {{只能对战斗中的对手使用|只能在战斗中使用}} {
-        #delay {attack.delay} {
-            attack;
-        } {0.3};
-    };
     #class war.inner close;
-    yun qi;
-    yun jing;
-    #if {${youxiao_neigong} > 750} {
-        yun shield;
-    };
-    #class attack.inner kill;
-    attack.prepare;
     attack;
 };
 
 #alias {attack.end} {#cr};
-#alias {attack}  {
-    attack.normal;
-};
-
-#alias {attack.hubiao} {
-    attack.normal;
-};
 
 #action {乾坤大挪移自然激发而出，将你的攻势反击了回去。} {
     mj.start;
@@ -255,7 +222,6 @@
 };
 
 #alias {disarm.stop} {
-    #alias {attack} {attach.normal};
     reborn;
     wi;
 };
@@ -313,5 +279,34 @@
     #send {jifa parry meinu-quan};
     unwield all;
     wi;
+};
+
+#alias {war.prepare} {
+    yun qi;
+    yun jing;
+    #if {${youxiao_neigong} > 750} {
+        yun shield;
+    };
+    attack.prepare;    
+};
+
+#alias {kill} {
+    war.prepare;
+    #send kill %0;
+};
+
+#alias {killall} {
+    war.prepare;
+    #send killall %0;
+};
+
+#alias {hit} {
+    war.prepare;
+    #send hit %0;
+};
+
+#alias {fight} {
+    war.prepare;
+    #send fight %0;
 };
 #class war close;

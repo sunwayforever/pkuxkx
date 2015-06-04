@@ -3,6 +3,12 @@
 
 #alias {attack.prepare} {
     yun powerup;
+};
+
+#alias {attack} {
+    zong;
+    chan;
+
     #class attack.inner open;
     #delay {7.8} {
         zong;
@@ -11,10 +17,7 @@
         chan;
     } {0.5};
     #class attack.inner close;
-};
-
-#alias {attack} {
-    chan;
+    
     #if {"${quest}" == "hb"} {
         #class attack.inner open;
         #class attack.inner close;
