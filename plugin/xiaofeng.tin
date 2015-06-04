@@ -16,6 +16,7 @@
             } {3};
         };
     };
+    
     #action {要打便打} {
         gt.stop;
         #class xf.bl.inner kill;
@@ -27,6 +28,25 @@
         };
     };
 
+    #action {慢慢地你终于又有了知觉....} {
+        #delay {xf_delay} {
+            #if {${xf.type} == 4} {
+                xf.b;
+            };
+            #else {
+                xf.bl;
+            };
+        } {3};
+    };
+
+    #action {你走上前去，试图劝服蒙面杀手，但蒙面杀手不耐烦的转了个身，不愿听你说下去。} {
+        #delay {xf_delay} {
+            #if {${xf.type} == 3} {
+                xf.bl;
+            };
+        } {3};
+    };
+    
     #action {我不服，等我休息一下，咱们再打过！} {
         #delay {xf_delay} {
             #if {${xf.type} == 4} {
@@ -97,6 +117,7 @@
         #if {${xf.type} == 3} {
             #delay {xf_delay} {
                 quan;
+                yun inspire;
             } {0.3};
         };
     };
@@ -166,6 +187,7 @@
         on_unbusy {
             on_halt {
                 quan;
+                yun inspire;
             };
         };
     };
@@ -289,6 +311,7 @@
             hit shashou;
         };
         #elseif {${xf.type} == 3} {
+            yun inspire;
             hit shashou;
         };
         #elseif {${xf.type} == 4} {
@@ -348,6 +371,7 @@
 };
 
 #alias {xf.stop} {
+    #unaction {福米完成};
     #undelay {xf_auto_delay};
     #class xf.auto.inner kill;
 };
@@ -355,6 +379,9 @@
 #alias {xf.q} {
     #if {"${fm_remaining_time}" == "0"} {
         notify 福米;
+        on_fullme {
+            xf.q;
+        };
     };
     #else {
         #var xf.requested 0;
@@ -396,6 +423,7 @@
         } {1};
     };
     #action {GPS: 遍历完成} {
+        #class xf.bl.inner kill;
         #delay {xf_delay} {
             xf.b;
         } {3};

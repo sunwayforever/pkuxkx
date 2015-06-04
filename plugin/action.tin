@@ -363,7 +363,7 @@
 };
 
 #action {^太遗憾了} {
-    do_show fullme 失败;
+    do_show 福米失败;
 };
 
 #action {^http://pkuxkx.net/antirobot/robot.php?filename=%1} {
@@ -372,16 +372,33 @@
 };
 
 #action {你刚刚用过这个命令不久，还要%*才能再用。} {
-    do_show 无需 fullme;
+    do_show 福米没到时间呢;
 };
 
 #action {也许是上天垂青于你的勤奋和努力吧，一个小时之内你不用担心被判为机器人。} {
     #format {last_fm_time} {%T};
     @setenv{last_fm_time;${last_fm_time}};
-    do_show fullme 完成;
     check_fm;
     #send {hp};
     update_status;
+    do_show 福米完成;
+};
+
+#alias {on_fullme} {
+    #alias tmp_on_fullme #cr;
+    #alias tmp_on_fullme %0;
+    #class fullme_inner open;
+    #action {福米完成} {
+        #class fullme_inner kill;
+        tmp_on_fullme;
+    };
+    #action {福米没到时间呢} {
+        #class fullme_inner kill;
+    };
+    #action {福米失败} {
+        #class fullme_inner kill;
+    };
+    #class fullme_inner close;
 };
 
 #class action close;
