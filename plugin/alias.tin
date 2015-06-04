@@ -256,6 +256,13 @@
     } {1};
 };
 
+#alias {health.cancel} {
+    #class health.inner kill;
+    #alias tmp_health #cr;
+    dz.cancel;
+    tn.cancel;
+};
+
 #alias {on_health} {
     #alias tmp_health #cr;
     #alias tmp_health %0;
@@ -916,7 +923,7 @@
     #send {quit};
     #delay {3} {
         #end;
-    }
+    };
 };
 
 #alias {quit} {

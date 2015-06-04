@@ -28,15 +28,26 @@
         };
     };
 
+    #var is_dead 0;
+    #action {${char_name}被蒙面杀手杀死了。} {
+        #var is_dead 1;
+    };
+    
     #action {慢慢地你终于又有了知觉....} {
-        #delay {xf_delay} {
-            #if {${xf.type} == 4} {
-                xf.b;
-            };
-            #else {
-                xf.bl;
-            };
-        } {3};
+        #if {${is_dead} == 1} {
+            notify 挂了;
+            quit_and_restart;
+        };
+        else {
+            #delay {xf_delay} {
+                #if {${xf.type} == 4} {
+                    xf.b;
+                };
+                #else {
+                    xf.bl;
+                };
+            } {3};            
+        };
     };
 
     #action {你走上前去，试图劝服蒙面杀手，但蒙面杀手不耐烦的转了个身，不愿听你说下去。} {
@@ -327,6 +338,7 @@
 };
 
 #alias {xf.start} {
+    set_last_quest xf;
     #class xf.auto.inner open;
     #alias {xf.restart} {
         xf.teardown;
@@ -361,16 +373,29 @@
         xf.restart;
     };
     #class xf.auto.inner close;
+
+    #if {${need_reload} == 1} {
+        reload;
+        on_reload {get.san {get.qian {xf.request;};};};
+    };
+    #else {
+        xf.request;
+    };
+};
+
+#alias {xf.request} {
     gt xf;
     on_there {
         xf.d;
         on_health {
             xf.q;
         };
-    }
+    };    
 };
 
 #alias {xf.stop} {
+    unset_last_quest;
+    health.cancel;
     #unaction {福米完成};
     #undelay {xf_auto_delay};
     #class xf.auto.inner kill;
@@ -458,5 +483,14 @@
 #alias {xf.heal} {
     yun lifeheal shashou;
     l shashou;
+};
+
+#alias {xf.p} {
+    
+    #else {
+        get.san {
+            get.qian;
+        };
+    };
 };
 #class xiaofeng close

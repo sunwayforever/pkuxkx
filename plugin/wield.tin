@@ -106,6 +106,16 @@
         wi;
         we;
         check_naijiu;
+        #showme reloaded;
+    };
+};
+
+#alias {on_reload} {
+    #alias tmp_reload #cr;
+    #alias tmp_reload %0;
+    #action {reloaded} {
+        #unaction {reloaded};
+        tmp_reload;
     };
 };
 
