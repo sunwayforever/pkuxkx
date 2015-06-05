@@ -91,7 +91,6 @@
 #alias {mj.start} {
     #if {${mj_started} == 0} {
         #var mj_started 1;
-        #nop show_to_info >>明教;
         raw;
         war;
     };
@@ -102,9 +101,6 @@
     #if {${mj_started} == 1} {
         #var mj_started 0;
         #var mj_id {};
-        #nop show_to_info <<明教;
-        raw;
-        war;
     };
 };
 
@@ -120,7 +116,6 @@
     #var enemy nil;
     #var enemy_menpai nil;
     jiali none;
-    mj.stop;
     #showme truce;
 };
 
@@ -153,6 +148,7 @@
 #alias {war} {
     #class war.inner open;
     #action {你全身放松，坐下来开始运功疗伤。} {
+        mj.stop;
         raw;
     };
     #ticker {fighting} {

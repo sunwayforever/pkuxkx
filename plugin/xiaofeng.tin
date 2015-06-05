@@ -417,6 +417,7 @@
     gt xf;
     on_there {
         xf.d;
+        show_to_quest 萧峰: 准备;
         on_health {
             xf.q;
         };
@@ -429,6 +430,7 @@
     #unaction {福米完成};
     #undelay {xf_auto_delay};
     #class xf.auto.inner kill;
+    show_to_quest 萧峰: 结束;
 };
 
 #alias {xf.q} {
