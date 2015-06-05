@@ -46,7 +46,7 @@
             } {5.8};
             #class attack.inner close;
         };
-        #elseif {${xf.type} == 3 || ${xf.type} == 4} {
+        #elseif {${xf.type} == 3} {
             wuying;
             #class attack.inner open;
             #ticker {wuying} {
@@ -54,9 +54,9 @@
             } {5.8};
             #class attack.inner close;
         };
-        #else {
-            #class attack.inner open;
-            #class attack.inner close;
+        #elseif {${xf.type} == 4} {
+            #var jiali_count max;
+            wuying;
         };
     };
     #else {
@@ -82,7 +82,7 @@
             } {5.8};
             #class attack.inner close;
         };
-        #elseif {${xf.type} == 3 || ${xf.type} == 4} {
+        #elseif {${xf.type} == 3} {
             wuying;
             #class attack.inner open;
             #ticker {wuying} {
@@ -90,9 +90,9 @@
             } {5.8};
             #class attack.inner close;
         };
-        #else {
-            #class attack.inner open;
-            #class attack.inner close;
+        #elseif {${xf.type} == 4} {
+            #var jiali_count max;
+            wuying;
         };
     };
 };

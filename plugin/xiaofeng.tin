@@ -220,11 +220,8 @@
     };
 
     #action {『蒙面杀手(%*气血:%*\%/%*\%)』} {
-        #if {%%2 < 50 || %%3 < 50} {
-            xf.slow_down_1;
-        };
         #if {%%2 < 45 || %%3 < 45} {
-            xf.slow_down_2;
+            xf.slow_down;
         };
     } {1};
 
@@ -238,14 +235,8 @@
         };
     };
 
-    #alias {xf.slow_down_1} {
-        #if {${xf.type} == 4} {
-            ask shashou about 认输;
-        };
-    };
-
-    #alias {xf.slow_down_2} {
-        #if {${xf.type} == 3 || ${xf.type} == 4} {
+    #alias {xf.slow_down} {
+        #if {${xf.type} == 3 } {
             raw;
             on_halt;
         };
