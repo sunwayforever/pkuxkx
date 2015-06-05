@@ -228,6 +228,6 @@ stat.register 缠 hit 只能见招拆招，疲于应对，不觉已深陷太极剑意之中，无法出招。;
 #var menzhong_didian ht;
 
 #alias {attack.end} {
-    #var jiali_count 100;    
+    #var jiali_count 5;
 };
 #class wudang_spec close

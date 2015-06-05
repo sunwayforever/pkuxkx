@@ -362,5 +362,11 @@ load gps_actions;
 #nop 长江黄河遍历;
 #nop 桃花岛桃林;
 #nop 嘉兴山洞;
-#nop 大轮御圣殿;
+
+#nop 建康府北城清凉寺;
+#nop 小山村小棚子;
+#nop 灵州将军府大院;
+#nop 海中;
+#nop 归云迷魂阵;
+#nop 凌霄城女弟子休息室;
 #class gps close;

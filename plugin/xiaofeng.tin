@@ -11,6 +11,20 @@
 
 #alias {xf.setup} {
     #class xiaofeng.inner open;
+    #action {看来该找机会逃跑了...} {
+        #if {${xf.type} == 4} {
+            #var xf_fail_reason 打不过, 跑;
+            xf.b;
+        };
+        #else {
+            xf.teardown;
+            on_health {
+                xf.setup;
+                xf.bl;
+            };
+        }
+    };
+    
     #action {这里没有 shashou。} {
         #delay {xf_delay} {
             xf.bl;
@@ -20,6 +34,7 @@
     #action {眼见不活了。} {
         #if {${xf.type} != 1} {
             #delay {xf_delay} {
+                #var xf_fail_reason 失手打死: ${xf.type};
                 xf.b;
             } {3};
         };
@@ -49,6 +64,7 @@
         else {
             #delay {xf_delay} {
                 #if {${xf.type} == 4} {
+                    #var xf_fail_reason 晕了;
                     xf.b;
                 };
                 #else {
@@ -69,6 +85,7 @@
     #action {我不服，等我休息一下，咱们再打过！} {
         #delay {xf_delay} {
             #if {${xf.type} == 4} {
+                #var xf_fail_reason 没有一次战胜;
                 xf.b;
             };
         } {3};
@@ -77,6 +94,7 @@
     #action {蒙面杀手说道：「我不服，等我休息一下，咱们再打过！」} {
         #delay {xf_delay} {
             #if {${xf.type} == 4} {
+                #var xf_fail_reason 没有一次战胜;
                 xf.b;
             };
         } {3};
@@ -91,6 +109,7 @@
     #action {蒙面杀手%*落荒而逃了。} {
         #delay {xf_delay} {
             #if {${xf.type} == 4} {
+                #var xf_fail_reason 没有一次战胜, 杀手跑了;
                 xf.b;
             };
             #else {
@@ -102,6 +121,7 @@
     #action {你一眨眼间，蒙面杀手已经不知去向。} {
         #delay {xf_delay} {
             #if {${xf.type} == 4} {
+                #var xf_fail_reason 没有一次战胜, 杀手跑了;
                 xf.b;
             };
             #else {
@@ -138,6 +158,13 @@
                 quan;
                 yun inspire;
             } {0.3};
+        };
+        #elseif {${xf.type} == 2} {
+            xf.teardown;
+            on_health {
+                xf.setup;
+                xf.bl;
+            };
         };
     };
     #action {叫老子认输？嘿嘿，你别做梦了！} {
@@ -330,7 +357,6 @@
             hit shashou;
         };
         #elseif {${xf.type} == 3} {
-            yun inspire;
             hit shashou;
         };
         #elseif {${xf.type} == 4} {
@@ -357,6 +383,11 @@
             };
         } {10};
     };
+
+    #action {萧峰冷冷的盯着你道：「你以为如此弄虚作假能瞒得过我么？」} {
+        xf.f;
+    };
+    
     #action {^萧峰(xiao feng)告诉你：你先去在江湖中历练一番吧。} {
         #delay {xf_auto_delay} {
             xf.q;
@@ -373,6 +404,7 @@
         } {3};
     };
     #action {^由于放弃任务} {
+        notify 失败: ${xf_fail_reason};
         show_to_quest 萧峰: 失败;
         xf.restart;
     };
@@ -383,8 +415,7 @@
     #class xf.auto.inner close;
 
     #if {${need_reload} == 1} {
-        reload;
-        on_reload {get.san {get.qian {xf.request;};};};
+        chain reload get.san get.qian xf.request;
     };
     #else {
         xf.request;
@@ -456,6 +487,7 @@
     #action {GPS: 遍历完成} {
         #class xf.bl.inner kill;
         #delay {xf_delay} {
+            #var xf_fail_reason 没有找到杀手 @ ${xf.position};
             xf.b;
         } {3};
     };
@@ -488,11 +520,11 @@
 };
 
 #alias {xf.p} {
-    
+    #if {${need_reload} == 1} {
+        chain reload get.san get.qian repair;
+    };
     #else {
-        get.san {
-            get.qian;
-        };
+        chain get.san get.qian repair;
     };
 };
 #class xiaofeng close

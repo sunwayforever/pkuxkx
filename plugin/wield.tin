@@ -97,29 +97,34 @@
     #class weapons.inner close;
 };
 
-#action {好了，你走吧} {
-    remove all;
-    #delay {3} {
-        weapons.check;
-    };
-    #delay {5} {
-        wi;
-        we;
-        check_naijiu;
-        #showme reloaded;
-    };
-};
-
 #alias {on_reload} {
-    #alias tmp_reload #cr;
-    #alias tmp_reload %0;
+    #alias tmp_on_reload #cr;
+    #alias tmp_on_reload %0;
     #action {reloaded} {
         #unaction {reloaded};
-        tmp_reload;
+        tmp_on_reload;
     };
 };
 
 #alias {reload} {
+    #alias tmp_reload #cr;
+    #alias tmp_reload %0;
+    
+    #action {好了，你走吧} {
+        #unaction {好了，你走吧};
+        remove all;
+        #delay {3} {
+            weapons.check;
+        };
+        #delay {5} {
+            wi;
+            we;
+            check_naijiu;
+            #showme reloaded;
+            tmp_reload;
+        };
+    };
+    
     gt 名人堂;
     on_there {
         #send {reload};

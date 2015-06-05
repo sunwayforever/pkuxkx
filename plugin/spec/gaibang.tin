@@ -1,11 +1,13 @@
 #class gaibang_spec open
 
+#var jiali_count 5;
 #var with_weapon 1;
 #alias {attack.prepare} {
     yun powerup;
 };
 
 #alias {attack.end} {
+    #var jiali_count 5;
     #var with_weapon 1;
 };
 
@@ -37,18 +39,24 @@
         } {2.5};
         #class attack.inner close;
         #if {${xf.type} == -1 || ${xf.type} == 1} {
+            #var jiali_count max;
             sanhui;
         };
         #elseif {${xf.type} == 2} {
-            leiting;
+            sanhui;
         };
-        #elseif {${xf.type} == 3 || ${xf.type} == 4} {
+        #elseif {${xf.type} == 3} {
+        };
+        #elseif {${xf.type} == 4} {
+            #var jiali_count max;
+            sanhui;
         };
         #else {
         };
     };
     #else {
         #if {${xf.type} == -1 || ${xf.type} == 1} {
+            #var jiali_count max;
             sanhui;
             #class attack.inner open;
             #ticker {zhuan} {
@@ -60,11 +68,15 @@
             #class attack.inner close;
         };
         #elseif {${xf.type} == 2} {
-            leiting;
+            sanhui;
             #class attack.inner open;
             #class attack.inner close;
         };
-        #elseif {${xf.type} == 3 || ${xf.type} == 4} {
+        #elseif {${xf.type} == 3} {
+        };
+        #elseif {${xf.type} == 4} {
+            #var jiali_count max;
+            sanhui;
         };
         #else {
         };
@@ -154,7 +166,7 @@
 
 #alias {sanhui} {
     unwi;
-    jiali max;
+    jiali ${jiali_count};
     perform strike.sanhui;
     jiali none;
     wi;

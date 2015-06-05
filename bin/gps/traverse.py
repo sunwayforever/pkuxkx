@@ -85,8 +85,13 @@ if __name__ == "__main__":
     else:
         location = None
 
-    traverse_path = traverse_bfs(conn, roomno, location)
-    traverse_path.extend(traverse_dfs(conn,roomno, location))
+    sql = "select zone from mud_room where roomno = %d" % (roomno)
+    row = conn.execute(sql).fetchone()
+    if row and (row[0].startswith("长江") or row[0].startswith("黄河")):
+        traverse_path = traverse_dfs(conn, roomno, location)
+    else:
+        traverse_path = traverse_bfs(conn, roomno, location)
+        traverse_path.extend(traverse_dfs(conn,roomno, location))
         
     tt = Tintin()
     tt.write("#list {gps_path} create {%s}" % (";".join(traverse_path)))
