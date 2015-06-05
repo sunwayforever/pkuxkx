@@ -755,6 +755,9 @@
     #action {^%* - $} {
         #var record_state 1;
         #var current_room %%1;
+        #if {"${current_room}" == "海中"} {
+            get_exits_done;
+        };
     } {1};
 
     #action {你可以看看(look):} {
