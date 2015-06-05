@@ -221,7 +221,15 @@
 
     #action {『蒙面杀手(%*气血:%*\%/%*\%)』} {
         #if {%%2 < 45 || %%3 < 45} {
-            xf.slow_down;
+            #if {${xf.type} == 3} {
+                raw;
+                on_halt;
+            };
+        };
+        #elseif {%%2 < 30 || %%3 < 30} {
+            #if {${xf.type} == 4} {
+                ask shashou about 认输;
+            };
         };
     } {1};
 
@@ -232,13 +240,6 @@
                 quan;
                 yun inspire;
             };
-        };
-    };
-
-    #alias {xf.slow_down} {
-        #if {${xf.type} == 3 } {
-            raw;
-            on_halt;
         };
     };
 

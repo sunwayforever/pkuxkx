@@ -6,7 +6,9 @@
 };
 
 #alias {attack} {
-    zong;
+    #delay {3} {
+        zong;
+    };
     chan;
 
     #class attack.inner open;
@@ -62,8 +64,8 @@
     #else {
         #if {${xf.type} == -1 || ${xf.type} == 1} {
             #var jiali_count max;
-            lzj;
             wuying;
+            lzj;
             #class attack.inner open;
             #ticker {wuying} {
                 wuying;
