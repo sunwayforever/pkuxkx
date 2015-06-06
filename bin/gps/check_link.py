@@ -33,12 +33,12 @@ if __name__ == "__main__":
         else:
             boundary = ""
 
-        if row[0] == zone:
-            zone = " @ "+row[0]
+        if row[0] != zone:
+            zone_info = " @ "+row[0]
         else:
-            zone = ""
+            zone_info = ""
 
-        tt.write ("#echo {(%d): %s%s%s: {%s}};\n" % (row[2], boundary, row[1], zone, row[3]))
+        tt.write ("#echo {(%d): %s%s%s: {%s}};\n" % (row[2], boundary, row[1], zone_info, row[3]))
         # if row[0] == zone:
         #     tt.write ("#echo {(%d): %s: {%s}};\n" % (row[2], row[1], row[3]))
         # else:

@@ -46,7 +46,7 @@
         #if {${xf.type} != -1} {
             follow shashou;
             #delay {1} {
-                xf.n;
+                xf.fight;
             };
         };
     };
@@ -220,14 +220,14 @@
     };
 
     #action {『蒙面杀手(%*气血:%*\%/%*\%)』} {
-        #if {%%2 < 45 || %%3 < 45} {
-            #if {${xf.type} == 3} {
+        #if {${xf.type} == 3} {
+            #if {%%2 < 45 || %%3 < 45} {
                 raw;
                 on_halt;
             };
         };
-        #elseif {%%2 < 30 || %%3 < 30} {
-            #if {${xf.type} == 4} {
+        #elseif {${xf.type} == 4} {
+            #if {%%2 < 30 || %%3 < 30} {
                 ask shashou about 认输;
             };
         };
@@ -340,7 +340,7 @@
         };
     };
 
-    #alias {xf.n} {
+    #alias {xf.fight} {
         detect_mingjiao shashou;
         #if {${xf.type} == 1} {
             kill shashou;
@@ -376,6 +376,14 @@
         } {10};
     };
 
+    #action {你的%*进步了！} {
+        notify 奖励技能: %%1;
+    };
+    
+    #action {^%s%S点经验；} {
+        show_to_info 萧峰任务(${xf.type}) 完成, @ctd{%%2} 点经验;
+    } {1};
+
     #action {萧峰冷冷的盯着你道：「你以为如此弄虚作假能瞒得过我么？」} {
         xf.f;
     };
@@ -396,7 +404,7 @@
         } {3};
     };
     #action {^由于放弃任务} {
-        notify 失败: ${xf_fail_reason};
+        show_to_info 萧峰任务(${xf.type})失败: ${xf_fail_reason};
         show_to_quest 萧峰: 失败;
         xf.restart;
     };
@@ -487,13 +495,13 @@
     };
     #action {找到目标} {
         xf.check;
+        #action {这里没有这个人。} {
+            #unaction {这里没有这个人。};
+            #delay {xf_delay} {
+                xf.bl;
+            } {1};
+        };
     };
-    #action {这里没有这个人。} {
-        #delay {xf_delay} {
-            xf.bl;
-        } {1};
-    };
-
     #class xf.bl.inner close;
     bl.start 西夏一品堂;
 };

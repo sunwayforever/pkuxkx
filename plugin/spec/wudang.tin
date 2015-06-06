@@ -45,7 +45,7 @@
             #class attack.inner open;
             #ticker {wuying} {
                 wuying;
-            } {5.8};
+            } {2.8};
             #class attack.inner close;
         };
         #elseif {${xf.type} == 3} {
@@ -53,7 +53,7 @@
             #class attack.inner open;
             #ticker {wuying} {
                 wuying;
-            } {5.8};
+            } {2.8};
             #class attack.inner close;
         };
         #elseif {${xf.type} == 4} {
@@ -69,10 +69,10 @@
             #class attack.inner open;
             #ticker {wuying} {
                 wuying;
-            } {5.8};
+            } {2.8};
             #ticker {lzj} {
                 lzj;
-            } {6.8};
+            } {3.8};
             #class attack.inner close;
         };
         #elseif {${xf.type} == 2} {
@@ -81,7 +81,7 @@
             #class attack.inner open;
             #ticker {wuying} {
                 wuying;
-            } {5.8};
+            } {2.8};
             #class attack.inner close;
         };
         #elseif {${xf.type} == 3} {
@@ -89,7 +89,7 @@
             #class attack.inner open;
             #ticker {wuying} {
                 wuying;
-            } {5.8};
+            } {2.8};
             #class attack.inner close;
         };
         #elseif {${xf.type} == 4} {
