@@ -73,14 +73,15 @@ load gps_actions;
 
 #alias {gps.gt} {
     #var gps_stop 0;
+    #var gps_last_dest %1;
     #alias {gps_check_room_done} {
         #var src_roomno ${gps.roomno};
         #if {${gps.roomno} == -1} {
             #delay {1} {
                 do_show {GPS: 当前房间未记录, 无法行走};
-            };
-            on_there {
-                #cr;
+                taopao {
+                    gps.gt ${gps_last_dest};
+                };
             };
         };
         #else {
@@ -219,6 +220,9 @@ load gps_actions;
         #if {${gps.roomno} == -1} {
             #delay {1} {
                 do_show {GPS: 当前房间未记录, 无法遍历};
+                taopao {
+                    gps.traverse ${traverse_tmp};
+                };
             };
         };
         #else {
@@ -363,4 +367,5 @@ load gps_actions;
 #nop 桃花岛桃林;
 #nop 嘉兴山洞;
 #nop 古墓棺材;
+#nop 少林寺厨房后院;
 #class gps close;

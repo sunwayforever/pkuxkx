@@ -182,7 +182,9 @@
     
     #alias {get_pos_done} {
         #list exits_list create ${exits_list};
-        #list exits_list get 1 exit;
+        #list exits_list size tmp_exit_list_size;
+        #var tmp_exit_index @random{${tmp_exit_list_size}};
+        #list exits_list get  ${tmp_exit_index} exit;
         raw;
         #5 halt;
         ${exit};

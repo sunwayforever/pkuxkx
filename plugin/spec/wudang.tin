@@ -57,8 +57,13 @@
             #class attack.inner close;
         };
         #elseif {${xf.type} == 4} {
-            #var jiali_count max;
+            #var jiali_count 100;
             wuying;
+            #class attack.inner open;
+            #ticker {wuying} {
+                wuying;
+            } {2.8};
+            #class attack.inner close;
         };
     };
     #else {
@@ -93,8 +98,13 @@
             #class attack.inner close;
         };
         #elseif {${xf.type} == 4} {
-            #var jiali_count max;
+            #var jiali_count 100;
             wuying;
+            #class attack.inner open;
+            #ticker {wuying} {
+                wuying;
+            } {2.8};
+            #class attack.inner close;
         };
     };
 };

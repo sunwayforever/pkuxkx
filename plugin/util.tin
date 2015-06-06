@@ -175,4 +175,14 @@
     #list {directions} {find} {%1} {abbrev_index};
     #list abbrev_directions get ${abbrev_index} result;
 };
+#function {random} {
+    #var max_random %1;
+    #if {${max_random} <= 0} {
+        #return 0;
+    };
+    #else {
+        #format {epoch} {%T};
+        #math result ${epoch}%${max_random}+1;        
+    };
+};
 #class util close
