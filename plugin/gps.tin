@@ -367,5 +367,5 @@ load gps_actions;
 #nop 桃花岛桃林;
 #nop 嘉兴山洞;
 #nop 古墓棺材;
-#nop 少林寺厨房后院;
+#nop 古墓山洞;
 #class gps close;
