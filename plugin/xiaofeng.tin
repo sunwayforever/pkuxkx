@@ -42,7 +42,6 @@
     
     #action {Òª´ò±ã´ò} {
         gt.stop;
-        #class xf.bl.inner kill;
         #if {${xf.type} != -1} {
             follow shashou;
             #delay {1} {
