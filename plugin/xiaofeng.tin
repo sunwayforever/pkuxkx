@@ -200,6 +200,7 @@
             };
             on_not_there {
                 notify 房间不可达: ${xf.position};
+                #var xf_fail_reason 房间不可达: ${xf.position};
                 xf.f;
             };
         };
@@ -495,12 +496,14 @@
     };
     #action {找到目标} {
         xf.check;
+        #class xf.bl.inner open;        
         #action {这里没有这个人。} {
             #unaction {这里没有这个人。};
             #delay {xf_delay} {
                 xf.bl;
             } {1};
         };
+        #class xf.bl.inner close;
     };
     #class xf.bl.inner close;
     bl.start 西夏一品堂;
