@@ -21,11 +21,9 @@
     #action {接过你递给的船资} {
         GPS.UNCHECK;
     };
-    #action {^只听得江面上隐隐传来：“别急嘛，这儿正忙着呐……”} {
-        #delay {3} {
-            yell boat;
-        };
-    };
+    #ticker {yell_boat} {
+        yell boat;
+    } {3};
     #action {正等着你呢，上来吧。} {
         enter;
     };
@@ -33,7 +31,7 @@
         enter;
     };
     #alias {shangchuan} {
-        #unticker {sw/yell_boat};
+        #unticker {yell_boat};
         #class gps.action.inner open;
         #action {所有人被赶下了渡船} {
             #class gps.action.inner kill;
@@ -102,16 +100,16 @@
 #alias {gps.goto_bt} {
     ask qian about 白驼山;
     give qian 1 gold;
-    
+
     #class gps.action.inner open;
     #ticker {tt} {
         give qian 1 gold;
     } {2};
-    
+
     #action {你身上没有 gold 这样东西。} {
         qu 1 gold;
     };
-    
+
     #action {你拿出一两黄金(Gold)给钱眼开。} {
         #class gps.action.inner kill;
         #delay {1} {
@@ -130,7 +128,7 @@
     GPS.CHECK;
     #class gps.action.inner open;
     #action {你扶着铁索，踏上桥板。} {
-      GPS.UNCHECK;  
+      GPS.UNCHECK;
     };
     #action {你终于一步步的终于挨到了桥头.} {
         #unaction {你终于一步步的终于挨到了桥头.};
@@ -145,7 +143,7 @@
     climb cliff;
     #class gps.action.inner open;
     #action {你一咬牙，扳住崖上的岩石，手脚并用向上爬去。} {
-        GPS.UNCHECK;  
+        GPS.UNCHECK;
     };
     #action {^崖间古松} {
         #unaction {^崖间古松};
@@ -159,7 +157,7 @@
     climb;
     #class gps.action.inner open;
     #action {你一咬牙，扳住崖上的岩石} {
-        GPS.UNCHECK;  
+        GPS.UNCHECK;
     };
     #action {^巨岩} {
         #unaction {^巨岩};
@@ -173,7 +171,7 @@
     climb;
     #class gps.action.inner open;
     #action {你一咬牙，扳住崖上的岩石} {
-        GPS.UNCHECK;  
+        GPS.UNCHECK;
     };
     #action {^天柱峰顶} {
         #unaction {^天柱峰顶};
@@ -187,7 +185,7 @@
     climb;
     #class gps.action.inner open;
     #action {你一咬牙，扳住崖上的岩石} {
-        GPS.UNCHECK;  
+        GPS.UNCHECK;
     };
     #action {^天柱峰下} {
         #unaction {^天柱峰下};
@@ -225,7 +223,7 @@
     row %1;
     #class gps.action.inner open;
     #action {你拿起船桨用力划了起来} {
-      GPS.UNCHECK;  
+      GPS.UNCHECK;
     };
     #action {不知过了多久，船终于靠岸了，你累得满头大汗。} {
         #unaction {不知过了多久，船终于靠岸了，你累得满头大汗。};
@@ -250,14 +248,14 @@
             on_unbusy {
                 ${next_direction};
                 do_look;
-            };    
+            };
         };
         #else {
             #list directions get ${look_count} current_direction;
             look ${current_direction};
         };
     };
-    
+
     #alias {do_look} {
         #class gps.action.inner open;
         #var next_direction  west;
@@ -266,24 +264,24 @@
             #class gps.action.inner kill;
             on_unbusy {
                 ${current_direction};
-                gps.run;            
+                gps.run;
             };
         } {8};
-        
+
         #action {这里看起来似乎和其他地方不太一样} {
             do_look_next;
         } {8};
-        
+
         #action {心里有种不祥的预感} {
             GPS.UNCHECK;
             #var next_direction ${current_direction};
             do_look_next;
         } {9};
         #class gps.action.inner close;
-        
+
         do_look_next;
     };
-    
+
     do_look;
 };
 
@@ -331,7 +329,7 @@
     #class gps.action.inner open;
     #action {青海湖畔美不胜收，你不由停下脚步，欣赏起了风景。} {
         #delay {again} {
-            ${next_action};            
+            ${next_action};
         } {1};
         #delay {gps_delay} {
             #class gps.action.inner kill;
@@ -343,7 +341,7 @@
         gps.run;
     } {1};
     #class gps.action.inner close;
-        
+
     ${next_action};
 };
 
@@ -425,7 +423,7 @@
         gps.run;
     };
     #class gps.action.inner close;
-    
+
     #var next_direction s;
     ${next_direction};
 };
@@ -439,7 +437,7 @@
 #alias {gps.climb} {
     #class gps.action.inner open;
     #action {你抬头看了一下悬崖} {
-      GPS.UNCHECK;  
+      GPS.UNCHECK;
     };
     #action {这里没有任何明显的出路} {
         #class gps.action.inner kill;
@@ -456,4 +454,3 @@
     climb %1;
 };
 #class gps_actions close;
-
