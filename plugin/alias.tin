@@ -959,3 +959,22 @@
     desktop.notify %0;
     xmpp.notify %0;
 };
+
+#alias {cure} {
+    #alias tmp_cure #cr;
+    #alias tmp_cure %1;
+    gt 扬州药铺;
+    on_there {
+        ask ping about cure;
+    };
+    #class cure.inner open;
+    #action {%*：%*两黄金。} {
+        give ping @ctd{%%2} gold;
+        #class cure.inner kill;
+    };
+    #action {平一指说道：「差不多了，再发作一次就会好了。」} {
+        #class cure.inner kill;
+        tmp_cure;
+    };
+    #class cure.inner close;
+};

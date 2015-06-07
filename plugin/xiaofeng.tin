@@ -24,13 +24,13 @@
             };
         }
     };
-    
+
     #action {这里没有 shashou。} {
         #delay {xf_delay} {
             xf.bl;
         } {1};
     };
-    
+
     #action {眼见不活了。} {
         #if {${xf.type} != 1} {
             #delay {xf_delay} {
@@ -39,7 +39,7 @@
             } {3};
         };
     };
-    
+
     #action {要打便打} {
         gt.stop;
         #if {${xf.type} != -1} {
@@ -54,7 +54,7 @@
     #action {${char_name}被蒙面杀手杀死了。} {
         #var is_dead 1;
     };
-    
+
     #action {慢慢地你终于又有了知觉....} {
         #if {${is_dead} == 1} {
             notify 挂了;
@@ -69,7 +69,7 @@
                 #else {
                     xf.bl;
                 };
-            } {3};            
+            } {3};
         };
     };
 
@@ -80,7 +80,7 @@
             };
         } {3};
     };
-    
+
     #action {我不服，等我休息一下，咱们再打过！} {
         #delay {xf_delay} {
             #if {${xf.type} == 4} {
@@ -89,7 +89,7 @@
             };
         } {3};
     };
-    
+
     #action {蒙面杀手说道：「我不服，等我休息一下，咱们再打过！」} {
         #delay {xf_delay} {
             #if {${xf.type} == 4} {
@@ -104,7 +104,7 @@
             xf.bl;
         } {3};
     };
-    
+
     #action {蒙面杀手%*落荒而逃了。} {
         #delay {xf_delay} {
             #if {${xf.type} == 4} {
@@ -116,7 +116,7 @@
             };
         } {3};
     };
-    
+
     #action {你一眨眼间，蒙面杀手已经不知去向。} {
         #delay {xf_delay} {
             #if {${xf.type} == 4} {
@@ -128,7 +128,7 @@
             };
         } {3};
     };
-    
+
     #action {^    西夏一品堂 %*(%* %*)} {
         #var xf.real_name %%1;
         autopp.set ${xf.real_name};
@@ -144,7 +144,7 @@
             show_to_quest 萧峰: 战胜: ${xf.real_name};
         };
     } {3};
-    
+
     #action {^    西夏一品堂 蒙面杀手(Mengmian shashou)} {
         #if {${xf.type} != -1} {
             xf.check;
@@ -288,7 +288,7 @@
             xf.b;
         };
     };
-    
+
     #action {将血淋淋的首级提在手中} {
         @setenv{xf_state;ENDED};
         #showme 收工;
@@ -309,7 +309,7 @@
         raw;
         on_unbusy {
             #if {${xf.type} == 1} {
-                zhan corpse;  
+                zhan corpse;
             };
             #else {
                 #send {l};
@@ -379,7 +379,7 @@
     #action {你的%*进步了！} {
         notify 奖励技能: %%1;
     };
-    
+
     #action {^%s%S点经验；} {
         show_to_info 萧峰任务(${xf.type}) 完成, @ctd{%%2} 点经验;
     } {1};
@@ -387,7 +387,7 @@
     #action {萧峰冷冷的盯着你道：「你以为如此弄虚作假能瞒得过我么？」} {
         xf.f;
     };
-    
+
     #action {^萧峰(xiao feng)告诉你：你先去在江湖中历练一番吧。} {
         #delay {xf_auto_delay} {
             xf.q;
@@ -430,7 +430,7 @@
         on_health {
             xf.q;
         };
-    };    
+    };
 };
 
 #alias {xf.stop} {
@@ -471,7 +471,7 @@
         };
         #if {${xf.type} == 4} {
             ask xiao feng about 完成;
-        };        
+        };
     };
 };
 
@@ -495,7 +495,7 @@
     };
     #action {找到目标} {
         xf.check;
-        #class xf.bl.inner open;        
+        #class xf.bl.inner open;
         #action {这里没有这个人。} {
             #unaction {这里没有这个人。};
             #delay {xf_delay} {
@@ -509,12 +509,20 @@
 };
 
 #alias {xf.b} {
-    xf.teardown;
-    on_unbusy {
-        gt xf;
+    #if {${huo_yan_dao} == 1} {
+        #if {${xf.type} == 1 || {xf.type} == 2} {
+            @setenv{xf_state;STARTED};
+        };
+        quit_and_restart;
     };
-    on_there {
-        xf.d;
+    #else {
+        xf.teardown;
+        on_unbusy {
+            gt xf;
+        };
+        on_there {
+            xf.d;
+        };
     };
 };
 
