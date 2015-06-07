@@ -83,16 +83,21 @@
 
 #alias {gps.zuoche} {
     GPS.CHECK;
-    gu;
+    #ticker {gps_ticker} {
+        gu;
+        qu %1;
+    } {2};
     #class gps.action.inner open;
     #action {你登上了一辆马车} {
         GPS.UNCHECK;
-        qu %1;
+        #unticker {gps_ticker};
     };
     #action {大车停稳了下来} {
         #unaction {大车停稳了下来};
-        xia;
-        gps.run;
+        on_unbusy {
+            xia;
+            gps.run;
+        };
     };
     #class gps.action.inner close;
 };
