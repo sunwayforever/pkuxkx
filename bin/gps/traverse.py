@@ -10,6 +10,7 @@ from .get_path import get_path_unchecked
 from ..common import Tintin
 from ..common import logger
 
+TRAVERSE_WEIGHT = "1,-1,1,-1,-1,1,1,1"
 def traverse_bfs(conn, roomno, location=None):
     traverse_path = []
     stack = [(roomno,"NULL")]
@@ -29,7 +30,7 @@ def traverse_bfs(conn, roomno, location=None):
 
         if location == None or dst_room_name == location:
             if last_room_no != dst_room_no:
-                traverse_path.extend(get_path_unchecked(conn, last_room_no, dst_room_no,"1,-1,1,-1,-1,1,1"))
+                traverse_path.extend(get_path_unchecked(conn, last_room_no, dst_room_no,TRAVERSE_WEIGHT))
                 last_room_no = dst_room_no
             
         visited.add(dst_room_no)
@@ -40,7 +41,7 @@ def traverse_bfs(conn, roomno, location=None):
             if row[0] not in visited:
                 stack.append((row[0],row[1]))
 
-    traverse_path.extend(get_path_unchecked(conn, last_room_no, roomno,"1,-1,1,-1,-1,1,1"))
+    traverse_path.extend(get_path_unchecked(conn, last_room_no, roomno,TRAVERSE_WEIGHT))
     return traverse_path
 
 def traverse_dfs(conn, roomno, location=None):
@@ -59,7 +60,7 @@ def traverse_dfs(conn, roomno, location=None):
 
         if location == None or dst_room_name == location:
             if last_room_no != dst_room_no:
-                traverse_path.extend(get_path_unchecked(conn, last_room_no, dst_room_no,"1,-1,1,-1,-1,1,1"))
+                traverse_path.extend(get_path_unchecked(conn, last_room_no, dst_room_no,TRAVERSE_WEIGHT))
                 last_room_no = dst_room_no
             
         visited.add(dst_room_no)
@@ -74,7 +75,7 @@ def traverse_dfs(conn, roomno, location=None):
             if row[0] not in visited:
                 stack.append((row[0],row[1]))
 
-    traverse_path.extend(get_path_unchecked(conn, last_room_no, roomno,"1,-1,1,-1,-1,1,1"))
+    traverse_path.extend(get_path_unchecked(conn, last_room_no, roomno,TRAVERSE_WEIGHT))
     return traverse_path
     
 if __name__ == "__main__":

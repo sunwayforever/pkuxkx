@@ -446,6 +446,7 @@
     set gps.weight.bt 100;
     set gps.weight.long_delay 80;
     set gps.weight.shudong 0;
+    set gps.weight.jianghe -1;
 };
 
 #var xy_info off;
@@ -540,16 +541,16 @@
     };
 };
 
-#macro {\e[1;3A} {
+#macro {\e[1;3A} {#nop ];
     walk_to north;
 };
-#macro {\e[1;3B} {
+#macro {\e[1;3B} {#nop ];
     walk_to south;
 };
-#macro {\e[1;3D} {
+#macro {\e[1;3D} {#nop ];
     walk_to west;
 };
-#macro {\e[1;3C} {
+#macro {\e[1;3C} {#nop ];
     walk_to east;
 };
 
