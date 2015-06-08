@@ -336,6 +336,22 @@
     };
 
     #alias {xf.fight} {
+        detect_mingjiao shashou;
+        #if {${xf.type} == 1} {
+            kill shashou;
+        };
+        #elseif {${xf.type} == 2} {
+            hit shashou;
+        };
+        #elseif {${xf.type} == 3} {
+            hit shashou;
+        };
+        #elseif {${xf.type} == 4} {
+            fight shashou;
+        };
+    };
+
+    #alias {xf.check} {
         #class xf.bl.inner kill;
 
         #class xf.fight.inner open;
@@ -353,22 +369,6 @@
         };
         #class xf.fight.inner close;
         
-        detect_mingjiao shashou;
-        #if {${xf.type} == 1} {
-            kill shashou;
-        };
-        #elseif {${xf.type} == 2} {
-            hit shashou;
-        };
-        #elseif {${xf.type} == 3} {
-            hit shashou;
-        };
-        #elseif {${xf.type} == 4} {
-            fight shashou;
-        };
-    };
-
-    #alias {xf.check} {
         ask shashou about fight;
     };
 
