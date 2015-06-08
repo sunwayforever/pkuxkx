@@ -44,7 +44,7 @@
     #class money.inner open;
     #alias delay_action {
         #delay {1} {
-            qu 20 gold;
+            qu 1 cash;
         };
     };
     #action {钱眼开说道：「哟，抱歉啊，我这儿正忙着呢……您请稍候。」} {
@@ -76,7 +76,7 @@
     };
     #class money.inner close;
     on_there {
-        qu 20 gold;
+        qu 1 cash;
     };
     gt 扬州钱庄;
 };

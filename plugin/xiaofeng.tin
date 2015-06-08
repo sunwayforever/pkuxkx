@@ -55,7 +55,7 @@
             notify นามห;
             quit_and_restart;
         };
-        else {
+        #else {
             #delay {xf_delay} {
                 #if {${xf.type} == 4} {
                     #var xf_fail_reason ิฮมห;
@@ -368,7 +368,7 @@
             } {1};
         };
         #class xf.fight.inner close;
-        
+
         ask shashou about fight;
     };
 
