@@ -59,19 +59,15 @@
 };
 
 #alias {map_goto_lingwu} {
-	map.go {学堂};
+	gt 临安府学堂;
 };
 
 #alias {map_goto_rest} {
-	map.go {厢房};
-};
-
-#alias {map_goto_start} {
-	map.go {大理寺};
+	gt 临安府厢房;
 };
 
 #alias {map_goto_shifu} {
-	map.go {都亭驿};
+	gt 都亭驿;
 };
 
 #alias {chan} {

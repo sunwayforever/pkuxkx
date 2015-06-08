@@ -27,10 +27,6 @@
 	map.go 客房;
 };
 
-#alias {map_goto_start} {
-	map.go 瑞鹤门;
-};
-
 #alias {map_goto_shifu} {
 	map.go 三元宫;
 };

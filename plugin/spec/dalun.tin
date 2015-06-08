@@ -47,19 +47,15 @@
 };
 
 #alias {map_goto_lingwu} {
-	map.go {苦修扎仓};
+	gt 苦修扎仓;
 };
 
 #alias {map_goto_rest} {
-	map.go {清心舍};
-};
-
-#alias {map_goto_start} {
-	map.go {谢客亭};
+	gt 清心舍;
 };
 
 #alias {map_goto_shifu} {
-	map.go {法堂二楼};
+	gt 法堂二楼;
 };
 
 #list my_weapons_to_wield create {staff;staff 2};
