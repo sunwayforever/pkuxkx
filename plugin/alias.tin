@@ -394,21 +394,14 @@
     };
 };
 
-#alias {log.clear} {
+#alias {log.start} {
     #log overwrite debug.${char_id}.log;
     #debug all log;
     #var debug_info on;
     update_status;
 };
 
-#alias {log.on} {
-    #var critical_running 1;
-    #log append debug.${char_id}.log;
-    #debug all log;
-};
-
-#alias {log.off} {
-    #var critical_running 0;
+#alias {log.stop} {
     #log off;
     #debug all off;
 };

@@ -6,6 +6,7 @@
     #var quest nil;
     #var xf.requested 0;
     #class xiaofeng.inner kill;
+    #class xf.fight.inner kill;
     #class xf.bl.inner kill;
 };
 
@@ -23,12 +24,6 @@
                 xf.bl;
             };
         }
-    };
-
-    #action {这里没有 shashou。} {
-        #delay {xf_delay} {
-            xf.bl;
-        } {1};
     };
 
     #action {眼见不活了。} {
@@ -341,6 +336,23 @@
     };
 
     #alias {xf.fight} {
+        #class xf.bl.inner kill;
+
+        #class xf.fight.inner open;
+        #action {这里没有 shashou。} {
+            #class xf.fight.inner kill;
+            #delay {xf_delay} {
+                xf.bl;
+            } {1};
+        };
+        #action {这里没有这个人。} {
+            #class xf.fight.inner kill;
+            #delay {xf_delay} {
+                xf.bl;
+            } {1};
+        };
+        #class xf.fight.inner close;
+        
         detect_mingjiao shashou;
         #if {${xf.type} == 1} {
             kill shashou;
@@ -364,6 +376,7 @@
 };
 
 #alias {xf.start} {
+    log.start;
     set_last_quest xf;
     #class xf.auto.inner open;
     #alias {xf.restart} {
@@ -434,6 +447,7 @@
 };
 
 #alias {xf.stop} {
+    log.stop;
     unset_last_quest;
     health.cancel;
     #unaction {福米完成};
@@ -495,14 +509,6 @@
     };
     #action {找到目标} {
         xf.check;
-        #class xf.bl.inner open;
-        #action {这里没有这个人。} {
-            #unaction {这里没有这个人。};
-            #delay {xf_delay} {
-                xf.bl;
-            } {1};
-        };
-        #class xf.bl.inner close;
     };
     #class xf.bl.inner close;
     bl.start 西夏一品堂;
