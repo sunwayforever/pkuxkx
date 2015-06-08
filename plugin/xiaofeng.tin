@@ -336,6 +336,8 @@
     };
 
     #alias {xf.fight} {
+        #class xf.bl.inner kill;
+
         detect_mingjiao shashou;
         #if {${xf.type} == 1} {
             kill shashou;
@@ -352,8 +354,6 @@
     };
 
     #alias {xf.check} {
-        #class xf.bl.inner kill;
-
         #class xf.fight.inner open;
         #action {这里没有 shashou。} {
             #class xf.fight.inner kill;
