@@ -34,7 +34,7 @@ load gps_actions;
             gt.stop;
             #var gps_stop 0;
             gps.gt.check;
-        } {5};
+        } {8};
     };
 };
 

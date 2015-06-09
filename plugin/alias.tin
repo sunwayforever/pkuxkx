@@ -664,6 +664,9 @@
         #if {"${current_room}" == "海中"} {
             get_exits_done;
         };
+        #elseif {"${current_room}" == "马车"} {
+            xia;
+        };
     } {1};
 
     #action {你可以看看(look):} {
