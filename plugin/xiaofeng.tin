@@ -150,7 +150,6 @@
         #if {${xf.type} == 3} {
             #delay {xf_delay} {
                 quan;
-                yun inspire;
             } {0.3};
         };
         #elseif {${xf.type} == 2} {
@@ -233,7 +232,6 @@
         on_unbusy {
             on_halt {
                 quan;
-                yun inspire;
             };
         };
     };
@@ -511,6 +509,9 @@
         xf.check;
     };
     #class xf.bl.inner close;
+    #if {${xf.type} == 3} {
+        yun inspire;
+    };
     bl.start Î÷ÏÄÒ»Æ·ÌÃ;
 };
 
