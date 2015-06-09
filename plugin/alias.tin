@@ -665,6 +665,7 @@
             get_exits_done;
         };
         #elseif {"${current_room}" == "Âí³µ"} {
+            get_exits_done;
             xia;
         };
     } {1};
@@ -745,10 +746,10 @@
     } {9};
 
     #ticker {ticker_get_position_look} {
-        l;
-    } {2};
+        #send {l};
+    } {3};
     #class record.inner close;
-    l;
+    #send {l};
 };
 
 #alias {get_area} {
