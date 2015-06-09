@@ -512,7 +512,9 @@
     #if {${xf.type} == 3} {
         yun inspire;
     };
-    bl.start 西夏一品堂;
+    on_unbusy {
+        bl.start 西夏一品堂;
+    };
 };
 
 #alias {xf.b} {

@@ -129,7 +129,7 @@
         } {1};
     };
     #class truce.inner close;
-    
+
     #alias {gps_check_room_done} {
         #if {${gps.roomno} == 285} {
             #class truce.inner kill;
@@ -179,7 +179,7 @@
         ${exit} ;
     };
     #class taopao.inner close;
-    
+
     #alias {get_pos_done} {
         #list exits_list create ${exits_list};
         #list exits_list size tmp_exit_list_size;
@@ -187,12 +187,12 @@
         #list exits_list get  ${tmp_exit_index} exit;
         raw;
         #5 halt;
-        ${exit};
         #action {这里%*出口} {
             #unaction {这里%*出口};
-            #class taopao.inner kill;    
+            #class taopao.inner kill;
             tmp_on_taopao;
         };
+        ${exit};
     };
     get_pos {
         get_pos_done;
@@ -285,7 +285,7 @@
     #if {${youxiao_neigong} > 750} {
         yun shield;
     };
-    attack.prepare;    
+    attack.prepare;
 };
 
 #alias {kill} {
