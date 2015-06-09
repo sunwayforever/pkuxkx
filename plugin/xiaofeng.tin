@@ -298,6 +298,7 @@
     };
 
     #action {显是蒙面杀手姓名} {
+        #class xf.fight.inner kill;
         #undelay {xf_delay};
         raw;
         on_unbusy {
