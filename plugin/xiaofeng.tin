@@ -458,9 +458,10 @@
 
 #alias {xf.q} {
     #if {"${fm_remaining_time}" == "0"} {
+        xf.stop;
         notify ธฃรื;
         on_fullme {
-            xf.q;
+            xf.start;
         };
     };
     #else {

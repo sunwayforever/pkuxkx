@@ -19,7 +19,7 @@
         chan;
     } {0.5};
     #class attack.inner close;
-    
+
     #if {"${quest}" == "hb"} {
         #class attack.inner open;
         #class attack.inner close;
@@ -57,7 +57,7 @@
             #class attack.inner close;
         };
         #elseif {${xf.type} == 4} {
-            #var jiali_count 100;
+            #var jiali_count max;
             wuying;
             #class attack.inner open;
             #ticker {wuying} {
@@ -98,7 +98,7 @@
             #class attack.inner close;
         };
         #elseif {${xf.type} == 4} {
-            #var jiali_count 100;
+            #var jiali_count max;
             wuying;
             #class attack.inner open;
             #ticker {wuying} {
