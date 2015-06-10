@@ -375,6 +375,7 @@
 };
 
 #alias {xf.start} {
+    xmpp.echo.off;
     log.start;
     set_last_quest xf;
     #class xf.auto.inner open;
