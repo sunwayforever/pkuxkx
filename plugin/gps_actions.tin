@@ -458,4 +458,18 @@
     set brief 2;
     climb %1;
 };
+
+#alias {gps.zhulou} {
+    #class gps.action.inner open;
+    #action {^竹篓内} {
+        GPS.UNCHECK;
+    };
+    #action {^你定了定神，走了出来。} {
+        #class gps.action.inner kill;
+        gps.run;
+    };
+    #class gps.action.inner close;
+    GPS.CHECK;
+    enter lou;
+};
 #class gps_actions close;

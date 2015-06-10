@@ -206,27 +206,27 @@
     jianzhang;
 };
 
-#macro {\e[15~} {
+#macro {\e[15~} {#nop ];
     chan;
 };
 
-#macro {\e[17~} {
+#macro {\e[17~} {#nop ];
     sqf;
 };
 
-#macro {\e[18~} {
+#macro {\e[18~} {#nop ];
     kuangfeng;
 };
 
-#macro {\e[19~} {
+#macro {\e[19~} {#nop ];
     zongjue;
 };
 
-#macro {\e[20~} {
+#macro {\e[20~} {#nop ];
     pobing;
 };
 
-#macro {\e[21~} {
+#macro {\e[21~} {#nop ];
     pozhang;
 };
 

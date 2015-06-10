@@ -80,6 +80,7 @@ load gps_actions;
         #if {${gps.roomno} == -1} {
             #delay {1} {
                 do_show {GPS: 当前房间未记录, 无法行走};
+                set brief 2;
                 taopao {
                     gps.gt ${gps_last_dest};
                 };
@@ -221,6 +222,7 @@ load gps_actions;
         #if {${gps.roomno} == -1} {
             #delay {1} {
                 do_show {GPS: 当前房间未记录, 无法遍历};
+                set brief 2;
                 taopao {
                     gps.traverse ${traverse_tmp};
                 };

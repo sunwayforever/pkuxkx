@@ -109,6 +109,7 @@
 };
 
 #alias {raw} {
+    #var fighting 0;
     #class war.inner kill;
     #class attack.inner kill;
     #undelay {attack.delay};
@@ -144,8 +145,16 @@
     };
 };
 
+#action {${char_name}(damage:%*气血:%*)} {
+    #if {${fighting} == 0} {
+        war;
+    };
+};
+
 #gag {wait_for_fight};
+#var fighting 0;
 #alias {war} {
+    #var fighting 1;
     #class war.inner open;
     #action {你全身放松，坐下来开始运功疗伤。} {
         mj.stop;
