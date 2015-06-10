@@ -372,4 +372,5 @@ load gps_actions;
 #nop 嘉兴山洞;
 #nop 古墓棺材;
 #nop 古墓山洞;
+#nop 武当遍历;
 #class gps close;

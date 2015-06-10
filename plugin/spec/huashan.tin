@@ -23,56 +23,51 @@
         #class attack.inner close;
     };
     #elseif {${mj_started}  == 1} {
+        chan;
         poqi;
+        kuangfeng;
         #class attack.inner open;
-        #ticker {zongjue} {
-            zongjue;
-        } {5.8};
         #ticker {poqi} {
             poqi;
         } {3.8};
+        #ticker {chan} {
+            chan;
+        } {2.8};
+        #ticker {zongjue} {
+            zongjue;
+        } {5.8};
         #class attack.inner close;
     };
     #else {
-        #if {${xf.type} == -1 || ${xf.type} == 1} {
+        chan;
+        poqi;
+        kuangfeng;
+        sqf;
+        #class attack.inner open;
+        #ticker {poqi} {
             poqi;
+        } {3.8};
+        #ticker {chan} {
+            chan;
+        } {2.8};
+        #class attack.inner close;
+        #if {${xf.type} == -1 || ${xf.type} == 1} {
             #class attack.inner open;
-            #ticker {poqi} {
-                poqi;
-            } {3.8};
-            #ticker {zongjue} {
-                zongjue;
+            #ticker {sqf} {
+                sqf;
             } {5.8};
             #class attack.inner close;
         };
         #elseif {${xf.type} == 2} {
-            poqi;
-            zongjue;
             #class attack.inner open;
-            #ticker {poqi} {
-                poqi;
-            } {3.8};
             #class attack.inner close;
         };
         #elseif {${xf.type} == 3} {
-            poqi;
-            zongjue;
             #class attack.inner open;
-            #ticker {poqi} {
-                poqi;
-            } {3.8};
-            #ticker {zongjue} {
-                zongjue;
-            } {5.8};
             #class attack.inner close;
         };
-        #else {
-            kuangfeng;
-            poqi;
+        #elseif {${xf.type} == 4} {
             #class attack.inner open;
-            #ticker {poqi} {
-                poqi;
-            } {3.8};
             #class attack.inner close;
         };
     };
