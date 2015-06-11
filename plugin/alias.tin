@@ -5,7 +5,7 @@
 #alias {load} {
     #var v %1;
     #if {"${v}" == "spec"} {
-        #read plugin/spec/${char_menpai}.tin;
+        #read plugin/spec/${char_menpai}\.tin;
     };
     #else {
         #read plugin/%1.tin;
@@ -395,7 +395,7 @@
 };
 
 #alias {log.start} {
-    #log overwrite debug.${char_id}.log;
+    #log overwrite debug\.${char_id}\.log;
     #debug all log;
     #var debug_info on;
     update_status;
@@ -860,7 +860,7 @@
 #alias {restart_last_quest} {
     #var last_quest @getenv{last_quest};
     #if {"${last_quest}" != "nil"} {
-        ${last_quest}.start;
+        ${last_quest}\.start;
     };
 };
 
