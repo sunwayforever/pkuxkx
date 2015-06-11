@@ -2,7 +2,23 @@
 #var xf.type -1;
 #var xf.requested 0;
 
+#alias {XF.FIGHT.UNCHECK} {
+    #undelay {xf_fight_check_delay};
+};
+
+#alias {XF.FIGHT.CHECK} {
+    #delay {xf_fight_check_delay} {
+        #if {${xf.type} == 4} {
+            xf.b;
+        };
+        #else {
+            xf.bl;
+        };
+    } {20};
+};
+
 #alias {xf.teardown} {
+    XF.FIGHT.UNCHECK;
     #var quest nil;
     #var xf.requested 0;
     #class xiaofeng.inner kill;
@@ -39,9 +55,7 @@
         gt.stop;
         #if {${xf.type} != -1} {
             follow shashou;
-            #delay {1} {
-                xf.fight;
-            };
+            xf.fight;
         };
     };
 
@@ -214,6 +228,7 @@
     };
 
     #action {『蒙面杀手(%*气血:%*\%/%*\%)』} {
+        XF.FIGHT.CHECK;
         #if {${xf.type} == 3} {
             #if {%%2 < 45 || %%3 < 45} {
                 raw;
@@ -336,7 +351,7 @@
 
     #alias {xf.fight} {
         #class xf.bl.inner kill;
-
+        XF.FIGHT.CHECK;
         detect_mingjiao shashou;
         #if {${xf.type} == 1} {
             kill shashou;
@@ -495,6 +510,7 @@
 };
 
 #alias {xf.bl} {
+    XF.FIGHT.UNCHECK;
     #class xf.bl.inner open;
     #action {蒙面杀手说道：「就你也配跟我讨教功夫？！」} {
         #delay {xf.bl} {
