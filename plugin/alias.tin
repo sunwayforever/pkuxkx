@@ -773,6 +773,10 @@
         #var pos.area %%1%%2;
         tmp_get_area;
     };
+    #ticker {lm_ticker} {
+        localmaps;
+        q;
+    } {3};
     #class record.inner close;
     localmaps;
     q;
