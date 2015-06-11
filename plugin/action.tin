@@ -316,7 +316,7 @@
                 jiali 0;
             };
             #else {
-                special %%%2;                
+                special %%%2;
             };
             #if {"%%%2" == "chainless"} {
                 load chainless;
@@ -337,7 +337,7 @@
         };
         on_echo {
             #unaction {%S(%S)};
-            #class pfm_special.inner kill;  
+            #class pfm_special.inner kill;
         };
     };
     #class pfm_special.inner close;
@@ -399,6 +399,10 @@
         #class fullme_inner kill;
     };
     #class fullme_inner close;
+};
+
+#action {炼丹人说道:你怎么能把灵丹拿出去呢?} {
+    eat shi;
 };
 
 #class action close;
