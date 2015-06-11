@@ -168,13 +168,13 @@ load gps_actions;
         };
     };
     #if {${gps_path_index} > ${gps_path_size} && ${is_break} == 0} {
-        #var gps.run.mode nil;
         set brief 2;
         #delay {gps_delay} {
             #if {"${gps.run.mode}" == "NORMAL"} {
                 gps.gt.check;
             };
             #elseif {"${gps.run.mode}" == "TRAVERSE"} {
+                #var gps.run.mode nil;
                 do_show {GPS: ±È¿˙ÕÍ≥…};
                 #unaction {${gps_traverse_target}};
             };
