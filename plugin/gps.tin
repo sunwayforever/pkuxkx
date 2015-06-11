@@ -28,6 +28,10 @@ load gps_actions;
     };
 };
 
+#action {^你的动作还没有完成，不能移动。} {
+    GPS.CHECK;
+};
+
 #alias {GPS.CHECK} {
     #if {"${gps.run.mode}" == "NORMAL"} {
         #delay {gps_delay_check} {
