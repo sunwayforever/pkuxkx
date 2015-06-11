@@ -49,6 +49,7 @@ load gps_actions;
 };
 
 #alias {gps.gt.check} {
+    #var gps.run.mode nil;
     #alias {gps_check_room_done} {
         #var src_roomno ${gps.roomno};
         #if {${src_roomno} == ${dst_roomno}} {
@@ -167,6 +168,7 @@ load gps_actions;
         };
     };
     #if {${gps_path_index} > ${gps_path_size} && ${is_break} == 0} {
+        #var gps.run.mode nil;
         set brief 2;
         #delay {gps_delay} {
             #if {"${gps.run.mode}" == "NORMAL"} {
