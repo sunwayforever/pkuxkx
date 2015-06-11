@@ -375,6 +375,11 @@
         };
     };
     #class gps.action.inner close;
+    store ouxue pu;
+    store xishan tu;
+    store shuaiyi tie;
+    store guangling san;
+
     find;
 };
 

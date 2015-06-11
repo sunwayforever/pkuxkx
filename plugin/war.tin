@@ -129,20 +129,13 @@
             tmp_truce;
         } {1};
     };
+    #delay {truce_delay} {
+        #class truce.inner kill;
+        tmp_truce;
+    } {30};
     #class truce.inner close;
 
-    #alias {gps_check_room_done} {
-        #if {${gps.roomno} == 285} {
-            #class truce.inner kill;
-            tmp_truce;
-        };
-        #else {
-            war;
-        }
-    };
-    gps.check_room {
-        gps_check_room_done;
-    };
+    war;
 };
 
 #action {${char_name}(damage:%*ÆøÑª:%*)} {
