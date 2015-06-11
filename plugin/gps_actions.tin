@@ -477,4 +477,12 @@
     GPS.CHECK;
     enter lou;
 };
+
+#action {炼丹人说道:你怎么能把灵丹拿出去呢?} {
+    eat shi;
+};
+
+#action {山贼拦住了你的去路。} {
+    kill zei;
+};
 #class gps_actions close;

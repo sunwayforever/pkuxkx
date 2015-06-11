@@ -400,9 +400,4 @@
     };
     #class fullme_inner close;
 };
-
-#action {炼丹人说道:你怎么能把灵丹拿出去呢?} {
-    eat shi;
-};
-
 #class action close;
