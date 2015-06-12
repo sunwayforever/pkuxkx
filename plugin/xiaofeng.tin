@@ -28,6 +28,21 @@
 
 #alias {xf.setup} {
     #class xiaofeng.inner open;
+    #action {却阻挡不住内力飞泄而出！} {
+        xf.teardown;
+        taopao {
+            #if {${xf.type} == 4} {
+                #var xf_fail_reason 打不过, 跑;
+                xf.b;
+            };
+            #else {
+                on_health {
+                    xf.setup;
+                    xf.bl;
+                };
+            };
+        };
+    };
     #action {看来该找机会逃跑了...} {
         #if {${xf.type} == 4} {
             #var xf_fail_reason 打不过, 跑;
@@ -39,7 +54,7 @@
                 xf.setup;
                 xf.bl;
             };
-        }
+        };
     };
 
     #action {眼见不活了。} {
