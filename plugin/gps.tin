@@ -48,18 +48,27 @@ load gps_actions;
     };
 };
 
+#var gps_gt_check_count 0;
 #alias {gps.gt.check} {
     #var gps.run.mode nil;
     #alias {gps_check_room_done} {
         #var src_roomno ${gps.roomno};
         #if {${src_roomno} == ${dst_roomno}} {
             #delay {1} {
+                #var gps_gt_check_count 0;
                 do_show {GPS: 抵达目的地};
             };
         };
         #else {
-            #if {${gps_stop} == 0} {
-                gps.gt ${dst_roomno};
+            #math gps_gt_check_count ${gps_gt_check_count}+1;
+            #if {${gps_gt_check_count} >= 8} {
+                #var gps_gt_check_count 0;
+                do_show {GPS: 抵达目的地};
+            };
+            #else {
+                #if {${gps_stop} == 0} {
+                    gps.gt ${dst_roomno};
+                };
             };
         };
     };
@@ -379,4 +388,5 @@ load gps_actions;
 #nop 古墓山洞;
 #nop 武当遍历;
 #nop 大轮月亮门;
+#nop 襄阳蒙古金帐;
 #class gps close;
