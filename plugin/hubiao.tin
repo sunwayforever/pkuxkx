@@ -301,7 +301,7 @@
             };
             #else {
                 hb.b;
-            };  
+            };
         };
 
         taopao {
@@ -426,7 +426,7 @@
     };
 
     #action {递给你一封密信} {
-        @setenv{hb_state;GOT_MIXIN};            
+        @setenv{hb_state;GOT_MIXIN};
         @setenv{hb_lunci_total;@eval{@getenv{hb_lunci_total}+1}};
         @setenv{hb_lunci;0};
         show_to_tuiche 密信;
@@ -586,7 +586,9 @@
 #alias {mx} {
     gt %1;
     on_there {
-        mx.q;
+        on_truce {
+            mx.q;
+        };
     };
 };
 
@@ -689,7 +691,7 @@
                                 #list hb_path insert 3 ${second_step};
                                 #list hb_path insert 3 ${first_step};
                                 #math cnt $cnt+2;
-                            };                            
+                            };
                         };
                         #list hb_path size hb_path_size;
                     };
@@ -736,6 +738,7 @@
     shou ${char_id}'s robber 2;
     shou ${char_id}'s robber 3;
     shou ${char_id}'s robber 4;
+    #nop ]]]]]]]]]]]]]];
 };
 
 #list hb_blacklist_baowei:荆西镖局 create {
