@@ -73,6 +73,7 @@ load gps_actions;
     #var gps_stop 1;
     #class gps.action.inner kill;
     GPS.UNCHECK;
+    #undelay {there_delay};
     #undelay {gps_delay};
     #unticker {gps_ticker};
 };
@@ -85,7 +86,6 @@ load gps_actions;
         #if {${gps.roomno} == -1} {
             #delay {1} {
                 do_show {GPS: 当前房间未记录, 无法行走};
-                set brief 2;
                 taopao {
                     gps.gt ${gps_last_dest};
                 };
@@ -228,7 +228,6 @@ load gps_actions;
         #if {${gps.roomno} == -1} {
             #delay {1} {
                 do_show {GPS: 当前房间未记录, 无法遍历};
-                set brief 2;
                 taopao {
                     gps.traverse ${traverse_tmp};
                 };
@@ -379,4 +378,5 @@ load gps_actions;
 #nop 古墓棺材;
 #nop 古墓山洞;
 #nop 武当遍历;
+#nop 大轮月亮门;
 #class gps close;

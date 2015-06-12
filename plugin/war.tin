@@ -172,6 +172,7 @@
 };
 
 #alias {taopao} {
+    set brief 2;
     #alias tmp_on_taopao #cr;
     #alias tmp_on_taopao %1;
     #class taopao.inner open;

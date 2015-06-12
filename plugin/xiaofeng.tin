@@ -90,6 +90,15 @@
         } {3};
     };
 
+    #action {看起来蒙面杀手并不想跟你较量。} {
+        #delay {xf_delay} {
+            #if {${xf.type} == 4} {
+                #var xf_fail_reason 没有一次战胜;
+                xf.b;
+            };
+        } {3};
+    };
+
     #action {我不服，等我休息一下，咱们再打过！} {
         #delay {xf_delay} {
             #if {${xf.type} == 4} {
