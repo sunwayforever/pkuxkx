@@ -52,7 +52,6 @@
     };
 
     #action {要打便打} {
-        gt.stop;
         #if {${xf.type} != -1} {
             follow shashou;
             xf.fight;
@@ -162,12 +161,6 @@
             show_to_quest 萧峰: 战胜: ${xf.real_name};
         };
     } {3};
-
-    #action {^    西夏一品堂 蒙面杀手(Mengmian shashou)} {
-        #if {${xf.type} != -1} {
-            xf.check;
-        };
-    } {2};
 
     #action {跳出战圈不打了} {
         #if {${xf.type} == 3} {
@@ -526,6 +519,7 @@
             bl.next;
         } {1};
     };
+
     #action {GPS: 遍历完成} {
         #class xf.bl.inner kill;
         #delay {xf_delay} {
@@ -533,9 +527,17 @@
             xf.b;
         } {3};
     };
+
     #action {找到目标} {
         xf.check;
     };
+
+    #action {^    西夏一品堂 蒙面杀手(Mengmian shashou)} {
+        #if {${xf.type} != -1} {
+            xf.check;
+        };
+    } {2};
+
     #class xf.bl.inner close;
     #if {${xf.type} == 3} {
         yun inspire;
