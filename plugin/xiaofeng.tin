@@ -30,6 +30,7 @@
     #class xiaofeng.inner open;
     #action {却阻挡不住内力飞泄而出！} {
         xf.teardown;
+        follow none;
         taopao {
             #if {${xf.type} == 4} {
                 #var xf_fail_reason 打不过, 跑;

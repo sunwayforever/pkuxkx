@@ -180,7 +180,7 @@
         raw;
         #5 halt;
         ${exit} ;
-    };
+    } {1};
     #class taopao.inner close;
 
     #alias {get_pos_done} {
