@@ -176,7 +176,8 @@
     #alias tmp_on_taopao #cr;
     #alias tmp_on_taopao %1;
     #class taopao.inner open;
-    #action {你的动作还没有完成，不能移动。} {
+    #action {busy_for_move} {
+        #unaction {busy_for_move};
         raw;
         #5 halt;
         ${exit} ;
