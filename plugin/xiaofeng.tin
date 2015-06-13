@@ -162,6 +162,10 @@
         } {3};
     };
 
+    #action {^    西夏一品堂 蒙面杀手(Mengmian shashou)} {
+        #cr;
+    } {2};
+
     #action {^    西夏一品堂 %*(%* %*)} {
         #var xf.real_name %%1;
         autopp.set ${xf.real_name};
