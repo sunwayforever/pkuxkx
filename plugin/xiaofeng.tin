@@ -28,20 +28,23 @@
 
 #alias {xf.setup} {
     #class xiaofeng.inner open;
+    #alias {xf_on_taopao} {
+        #if {${xf.type} == 4} {
+            #var xf_fail_reason 打不过, 跑;
+            xf.b;
+        };
+        #else {
+            on_health {
+                xf.setup;
+                xf.bl;
+            };
+        };
+    };
     #action {却阻挡不住内力飞泄而出！} {
         xf.teardown;
         follow none;
         taopao {
-            #if {${xf.type} == 4} {
-                #var xf_fail_reason 打不过, 跑;
-                xf.b;
-            };
-            #else {
-                on_health {
-                    xf.setup;
-                    xf.bl;
-                };
-            };
+            xf_on_taopao;
         };
     };
     #action {看来该找机会逃跑了...} {

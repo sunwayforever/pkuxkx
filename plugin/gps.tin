@@ -61,7 +61,7 @@ load gps_actions;
         };
         #else {
             #math gps_gt_check_count ${gps_gt_check_count}+1;
-            #if {${gps_gt_check_count} >= 8} {
+            #if {${gps_gt_check_count} >= 5} {
                 #var gps_gt_check_count 0;
                 do_show {GPS: 抵达目的地};
             };

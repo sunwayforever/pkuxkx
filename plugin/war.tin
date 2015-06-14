@@ -175,28 +175,28 @@
     set brief 2;
     #alias tmp_on_taopao #cr;
     #alias tmp_on_taopao %1;
-    #class taopao.inner open;
-    #action {busy_for_move} {
-        #unaction {busy_for_move};
-        raw;
-        #5 halt;
-        ${exit} ;
-    } {1};
-    #class taopao.inner close;
 
-    #alias {get_pos_done} {
+    #alias {taopao_random_walk} {
         #list exits_list create ${exits_list};
         #list exits_list size tmp_exit_list_size;
         #var tmp_exit_index @random{${tmp_exit_list_size}};
         #list exits_list get  ${tmp_exit_index} exit;
         raw;
         #5 halt;
+        ${exit};
+    };
+
+    #alias {get_pos_done} {
+        #class taopao.inner open;
+        #ticker {taopao_ticker} {
+            taopao_random_walk;
+        } {1};
         #action {这里%*出口} {
-            #unaction {这里%*出口};
             #class taopao.inner kill;
             tmp_on_taopao;
         };
-        ${exit};
+        #class taopao.inner close;
+        taopao_random_walk;
     };
     get_pos {
         get_pos_done;

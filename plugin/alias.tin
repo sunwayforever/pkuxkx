@@ -838,19 +838,22 @@
 };
 
 #alias {quit_and_restart} {
-    #send {quit};
-    #delay {3} {
+    #class quit.inner.open;
+    #action {Äã¶ªÏÂ} {
+        #class quit.inner kill;
         #end;
     };
+    #ticker {quit} {
+        #send {quit};
+    } {3};
+    #class quit.inner.close;
+    #send {quit};
 };
 
 #alias {quit} {
     #unevent {SESSION DEACTIVATED};
     unset_last_quest;
-    #send {quit};
-    #delay {3} {
-        #end;
-    }
+    quit_and_restart;
 };
 
 #alias {set_last_quest} {
