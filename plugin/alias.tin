@@ -202,12 +202,10 @@
     #class unbusy.inner open;
     #ticker {checkbusy} {
         checkbusy;
-    } {0.5};
+    } {1};
     #action {�㲻æ} {
         #class unbusy.inner kill;
-        #delay {tmp_busy_delay} {
-            tmp_unbusy;
-        } {0.5};
+        tmp_unbusy;
     } {1};
     #class unbusy.inner close;
     checkbusy;
