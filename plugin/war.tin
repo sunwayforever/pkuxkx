@@ -125,16 +125,9 @@
     #class truce.inner open;
     #action {truce} {
         #class truce.inner kill;
-        #delay {tmp_delay_on_truce} {
-            tmp_truce;
-        } {1};
-    };
-    #delay {truce_delay} {
-        #class truce.inner kill;
         tmp_truce;
-    } {30};
+    };
     #class truce.inner close;
-
     war;
 };
 
