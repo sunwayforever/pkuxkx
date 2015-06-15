@@ -35,6 +35,11 @@ def get_room(conn, desc):
     row = conn.execute(sql).fetchone();
     if row:
         return row[0]
+
+    sql = "select roomno from mud_room where roomname = '%s'" % (actual_room)
+    rows = conn.execute(sql).fetchall();
+    if len(rows) == 1:
+        return rows[0][0]
     
     sql = "select roomno from mud_room where roomname like '%%%s%%' and zone = '%s'" % (actual_room, actual_zone)
     row = conn.execute(sql).fetchone();
