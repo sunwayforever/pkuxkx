@@ -388,4 +388,5 @@ load gps_actions;
 #nop 嘉兴山洞;
 #nop 古墓棺材;
 #nop 古墓山洞;
+#nop 西湖正厅;
 #class gps close;
