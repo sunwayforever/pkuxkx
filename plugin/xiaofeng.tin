@@ -40,6 +40,9 @@
             };
         };
     };
+    #action {对你而言太重了。} {
+        notify 身上物品太多, 无法 get;
+    };
     #action {却阻挡不住内力飞泄而出！} {
         xf.teardown;
         follow none;
@@ -500,9 +503,7 @@
     #if {"${fm_remaining_time}" == "0"} {
         xf.stop;
         notify 福米;
-        on_fullme {
-            xf.start;
-        };
+        chain sell.all get.qian fullme xf.start;
     };
     #else {
         xf.setup;

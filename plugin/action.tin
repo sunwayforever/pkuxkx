@@ -383,21 +383,4 @@
     update_status;
     do_show 福米完成;
 };
-
-#alias {on_fullme} {
-    #alias tmp_on_fullme #cr;
-    #alias tmp_on_fullme %0;
-    #class fullme_inner open;
-    #action {福米完成} {
-        #class fullme_inner kill;
-        tmp_on_fullme;
-    };
-    #action {福米没到时间呢} {
-        #class fullme_inner kill;
-    };
-    #action {福米失败} {
-        #class fullme_inner kill;
-    };
-    #class fullme_inner close;
-};
 #class action close;

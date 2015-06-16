@@ -462,7 +462,7 @@
     on_unbusy {%1 {on_unbusy {%2 {on_unbusy {%3 {on_unbusy {%4 {on_unbusy {%5 {on_unbusy {%6 {on_unbusy {%7 {on_unbusy {%8 {on_unbusy {%9 {on_unbusy {%10 {};};};};};};};};};};};};};};};};};};};};
 };
 
-#alias {sell_all} {
+#alias {sell.all} {
     #alias tmp_sell #cr;
     #alias tmp_sell %1;
     on_there {
@@ -796,9 +796,26 @@
     };
 };
 
+#alias {fullme} {
+    #alias tmp_on_fullme #cr;
+    #alias tmp_on_fullme %0;
+    #class fullme_inner open;
+    #action {福米完成} {
+        #class fullme_inner kill;
+        tmp_on_fullme;
+    };
+    #action {福米没到时间呢} {
+        #class fullme_inner kill;
+    };
+    #action {福米失败} {
+        #class fullme_inner kill;
+    };
+    #class fullme_inner close;
+};
+
 #alias {fm} {
     on_unbusy {
-        fullme %0;
+        #send {fullme %0};
     };
 };
 
