@@ -125,7 +125,9 @@
     #class truce.inner open;
     #action {truce} {
         #class truce.inner kill;
-        tmp_truce;
+        on_unbusy {
+            tmp_truce;
+        };
     };
     #class truce.inner close;
     war;
