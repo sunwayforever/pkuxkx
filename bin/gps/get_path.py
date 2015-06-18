@@ -134,12 +134,12 @@ def get_path(conn, from_room, to_room, weight, check_points=["梅庄"]):
         from_zone = get_zone(conn,from_room)
         to_zone = get_zone(conn,to_room)
 
-        if to_zone == "西湖梅庄" and from_zone != to_zone:
+        if to_zone == "梅庄" and from_zone != to_zone:
             paths = get_path(conn, from_room, 3655, weight, check_points)
             paths.append("gps.qu_sibao")
             paths.extend(get_path(conn, 3655,to_room, weight, check_points))
             return paths;
-        elif from_zone == "西湖梅庄" and from_zone != to_zone:
+        elif from_zone == "梅庄" and from_zone != to_zone:
             paths = get_path(conn, from_room, 3655, weight, check_points)
             paths.append("gps.huan_sibao")
             paths.extend(get_path(conn, 3655,to_room, weight, check_points))
