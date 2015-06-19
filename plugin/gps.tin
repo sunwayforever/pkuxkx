@@ -389,4 +389,5 @@ load gps_actions;
 #nop 古墓棺材;
 #nop 古墓山洞;
 #nop 扬州长生楼;
+#nop 凌宵城头到萧峰;
 #class gps close;
