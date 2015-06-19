@@ -61,7 +61,7 @@ load gps_actions;
         };
         #else {
             #math gps_gt_check_count ${gps_gt_check_count}+1;
-            #if {${gps_gt_check_count} >= 5} {
+            #if {${gps_gt_check_count} >= 10} {
                 #var gps_gt_check_count 0;
                 do_show {GPS: 抵达目的地};
             };
@@ -388,6 +388,4 @@ load gps_actions;
 #nop 嘉兴山洞;
 #nop 古墓棺材;
 #nop 古墓山洞;
-#nop 扬州长生楼;
-#nop 凌宵城头到萧峰;
 #class gps close;
