@@ -499,7 +499,7 @@
     #if {"${fm_remaining_time}" == "0"} {
         xf.stop;
         notify ธฃรื;
-        chain sell.all get.qian fullme xf.start;
+        chain sell.all get.qian gem.combine fullme xf.start;
     };
     #else {
         xf.setup;
