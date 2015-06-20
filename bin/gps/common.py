@@ -30,8 +30,6 @@ def fixup_area(desc):
         desc = "大理城"+desc[4:]
     elif re.match("^西湖梅庄",desc):
             desc = "梅庄"+desc[4:]        
-    elif re.match("^西湖",desc):
-        desc = "临安府西湖"+desc[2:]        
     elif re.match("^峨嵋",desc):
         if not re.match("^峨嵋后山",desc):
             desc = "峨嵋派"+desc[2:]
