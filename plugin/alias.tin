@@ -356,7 +356,7 @@
     set gps.weight.bt 100;
     set gps.weight.long_delay 80;
     set gps.weight.shudong 0;
-    set gps.weight.jianghe -1;
+    set gps.weight.jianghe 100;
 };
 
 #var xy_info off;
