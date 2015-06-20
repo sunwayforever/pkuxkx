@@ -445,14 +445,10 @@
     };
 
     #action {^萧峰(xiao feng)告诉你：你先去在江湖中历练一番吧。} {
-        #delay {xf_auto_delay} {
-            xf.q;
-        } {20};
+        dz.idle {xf.q};
     } {1};
     #action {^萧峰(xiao feng)告诉你：你先下去休息休息吧。} {
-        #delay {xf_auto_delay} {
-            xf.q;
-        } {10};
+        dz.idle {xf.q};
     } {1};
     #action {^萧峰说道：%*刚刚已经有人前去了} {
         #delay {xf_auto_delay} {
