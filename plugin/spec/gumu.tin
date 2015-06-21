@@ -1,21 +1,21 @@
 #class gumu_spec open
-#var jiali_zhua 150;
-#var jiali_shexin 10;
+#var jiali_count 50;
 
 #alias {attack.prepare} {
     yun xinjing;
+    #class attack.inner open;
+    #ticker {xinjing} {
+        yun xinjing;
+    } {30};
+    #class attack.inner close;
 };
 
 #alias {attack} {
     chan;
-
     #class attack.inner open;
     #ticker {perf_chan} {
         chan;
-    } {0.8};
-    #ticker {xinjing} {
-        yun xinjing;
-    } {30};
+    } {1};
     #class attack.inner close;
     
     #if {"${quest}" == "hb"} {
@@ -39,8 +39,7 @@
     };
     #else {
         #if {${xf.type} == -1 || ${xf.type} == 1} {
-            shexin;
-            suxin;
+            #var jiali_count max;
             zhua;
             #class attack.inner open;
             #ticker {zhua} {
@@ -56,7 +55,6 @@
         };
         #elseif {${xf.type} == 2} {
             zhua;
-            suxin;
             #class attack.inner open;
             #ticker {zhua} {
                 zhua;
@@ -65,13 +63,11 @@
         };
         #elseif {${xf.type} == 3} {
             zhua;
-            suxin;
             #class attack.inner open;
             #class attack.inner close;
         };
         #else {
             zhua;
-            suxin;
             #class attack.inner open;
             #class attack.inner close;
         };
@@ -120,7 +116,7 @@
 
 #alias {zhua} {
     unwi;
-    jiali ${jiali_zhua};
+    jiali ${jiali_count};
     perform jiuyin-baiguzhao.zhua;
     jiali none;
     wi;
@@ -128,7 +124,7 @@
 
 #alias {shexin} {
     unwi;
-    jiali ${jiali_shexin};
+    jiali ${jiali_count};
     perform meinu-quan.shexin;
     jiali none;
     wi;
@@ -187,7 +183,11 @@ stat.register ÐÚÓ¿ miss ÄãµÄÁèÀ÷¹¥ÊÆ;
     #send {jifa throwing qianmie-shou};
     #send {jifa claw jiuyin-baiguzhao};
     bei none;
-    bei cuff;
+    bei claw;
+};
+
+#alias {attack.end} {
+    #var jiali_count 50;
 };
 
 #class gumu_spec close

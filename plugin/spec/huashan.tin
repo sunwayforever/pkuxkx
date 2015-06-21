@@ -15,15 +15,9 @@
     #ticker {poqi} {
         poqi;
     } {3.8};
-    #ticker {chan} {
-        chan;
-    } {6.8};
     #ticker {zongjue} {
         zongjue;
     } {4.8};
-    #ticker {po} {
-        po;
-    } {5.8};
     #class attack.inner close;
 
     #if {"${quest}" == "hb"} {
@@ -94,8 +88,10 @@
 
 #alias {zongjue} {
     unwi;
+    jiali max;
     do_wield sword;
     perform dugu-jiujian.po;
+    jiali none;
     wi;
 };
 
@@ -108,8 +104,10 @@
 
 #alias {poqi} {
     unwi;
+    jiali max;
     do_wield sword;
     perform dugu-jiujian.poqi;
+    jiali none;
     wi;
 };
 
