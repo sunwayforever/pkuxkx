@@ -91,6 +91,11 @@
     };
 };
 
+#function {stackismember} {
+    #var stack_name stack_%1;
+    #list ${stack_name} find %2 result;
+};
+
 #function {startwith} {
     #regexp {%1} {^%2} {#var result 1} {#var result 0};
 };

@@ -8,15 +8,15 @@
 };
 
 #alias {attack} {
-    chan;
-    poqi;
-    zongjue;
+    pfm chan;
+    pfm poqi;
+    pfm zongjue;
     #class attack.inner open;
     #ticker {poqi} {
-        poqi;
+        pfm poqi;
     } {3.8};
     #ticker {zongjue} {
-        zongjue;
+        pfm zongjue;
     } {4.8};
     #class attack.inner close;
 
@@ -30,10 +30,10 @@
     };
     #else {
         #if {${xf.type} == -1 || ${xf.type} == 1} {
-            feijian;
+            #cr;
         };
         #elseif {${xf.type} == 2} {
-            feijian;
+            #cr;
         };
         #elseif {${xf.type} == 3} {
             #cr;

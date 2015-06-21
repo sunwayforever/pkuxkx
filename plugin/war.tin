@@ -311,4 +311,30 @@
 #action {^你身上的%*被火焰刀所焚，象片片破布般飘落。} {
     #var huo_yan_dao 1;
 };
+
+#var pfming 0;
+#alias {pfm.inner} {
+    #if {${pfming} == 0} {
+        #var pfm_action @stackpoll{pfm};
+        #if {"${pfm_action}" != "nil"} {
+            #var pfming 1;
+            on_unbusy {
+                ${pfm_action};
+                #var pfming 0;
+                pfm.inner;
+            };
+        };
+        #else {
+            #var pfming 0;
+        };
+    };
+};
+
+@stackcreate{pfm};
+#alias {pfm} {
+    #if {@stackismember{pfm;%1} == 0} {
+        @stackpush{pfm;%1};
+        pfm.inner;        
+    };
+};
 #class war close;

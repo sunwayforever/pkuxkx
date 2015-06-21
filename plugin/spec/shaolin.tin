@@ -28,7 +28,7 @@
         wi;
     };
     #else {
-        jingmo;
+        pfm jingmo;
     };
 
     #class attack.inner open;
@@ -46,7 +46,7 @@
             wi;
         };
         #else {
-            jingmo;
+            pfm jingmo;
         };
     } {2.5};
     #class attack.inner close;
@@ -60,31 +60,34 @@
         #class attack.inner close;
         #if {${xf.type} == -1 || ${xf.type} == 1} {
             #var jiali_count max;
-            luohan;
+            pfm luohan;
             #class attack.inner open;
             #ticker {luohan} {
-                luohan;
+                pfm luohan;
             } {5.8};
             #class attack.inner close;
         };
         #elseif {${xf.type} == 2} {
-            luohan;
+            pfm luohan;
             #class attack.inner open;
             #ticker {luohan} {
-                luohan;
+                pfm luohan;
             } {5.8};
             #class attack.inner close;
         };
         #elseif {${xf.type} == 3} {
-            #delay {3} {
-                quan;
-            };
-        };
-        #elseif {${xf.type} == 4} {
-            luohan;
+            pfm luohan;
             #class attack.inner open;
             #ticker {luohan} {
-                luohan;
+                pfm luohan;
+            } {5.8};
+            #class attack.inner close;
+        };
+        #elseif {${xf.type} == 4} {
+            pfm luohan;
+            #class attack.inner open;
+            #ticker {luohan} {
+                pfm luohan;
             } {5.8};
             #class attack.inner close;
         };
@@ -96,31 +99,34 @@
     #else {
         #if {${xf.type} == -1 || ${xf.type} == 1} {
             #var jiali_count max;
-            luohan;
+            pfm luohan;
             #class attack.inner open;
             #ticker {luohan} {
-                luohan;
+                pfm luohan;
             } {5.8};
             #class attack.inner close;
         };
         #elseif {${xf.type} == 2} {
-            luohan;
+            pfm luohan;
             #class attack.inner open;
             #ticker {luohan} {
-                luohan;
+                pfm luohan;
             } {5.8};
             #class attack.inner close;
         };
         #elseif {${xf.type} == 3} {
-            #delay {3} {
-                quan;
-            };
-        };
-        #elseif {${xf.type} == 4} {
-            luohan;
+            pfm luohan;
             #class attack.inner open;
             #ticker {luohan} {
-                luohan;
+                pfm luohan;
+            } {5.8};
+            #class attack.inner close;
+        };
+        #elseif {${xf.type} == 4} {
+            pfm luohan;
+            #class attack.inner open;
+            #ticker {luohan} {
+                pfm luohan;
             } {5.8};
             #class attack.inner close;
         };

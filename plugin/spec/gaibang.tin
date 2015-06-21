@@ -13,20 +13,20 @@
 
 #alias {attack} {
     #if {"${quest}" != "hsz"} {
-        chan;
+        pfm chan;
     };
     #delay {1} {
-        tiao;
+        pfm tiao;
     };
     
     #class attack.inner open;
     #if {"${quest}" != "hsz"} {
         #ticker {perf_chan} {
-            chan;
+            pfm chan;
         } {0.8};
     };
     #ticker {perf_tiao} {
-        tiao;
+        pfm tiao;
     } {3.8};
     #class attack.inner close;
     
@@ -35,21 +35,21 @@
     #elseif {${mj_started}  == 1} {
         #class attack.inner open;
         #ticker {chuo} {
-            chuo;
+            pfm chuo;
         } {2.5};
         #class attack.inner close;
         #if {${xf.type} == -1 || ${xf.type} == 1} {
             #var jiali_count max;
-            sanhui;
+            pfm sanhui;
         };
         #elseif {${xf.type} == 2} {
-            sanhui;
+            pfm sanhui;
         };
         #elseif {${xf.type} == 3} {
         };
         #elseif {${xf.type} == 4} {
             #var jiali_count max;
-            sanhui;
+            pfm sanhui;
         };
         #else {
         };
@@ -57,18 +57,18 @@
     #else {
         #if {${xf.type} == -1 || ${xf.type} == 1} {
             #var jiali_count max;
-            sanhui;
+            pfm sanhui;
             #class attack.inner open;
             #ticker {zhuan} {
-                zhuan;
+                pfm zhuan;
             } {6.8};
             #ticker {sanhui} {
-                sanhui;
+                pfm sanhui;
             } {5.8};
             #class attack.inner close;
         };
         #elseif {${xf.type} == 2} {
-            sanhui;
+            pfm sanhui;
             #class attack.inner open;
             #class attack.inner close;
         };
@@ -76,7 +76,7 @@
         };
         #elseif {${xf.type} == 4} {
             #var jiali_count max;
-            sanhui;
+            pfm sanhui;
         };
         #else {
         };
