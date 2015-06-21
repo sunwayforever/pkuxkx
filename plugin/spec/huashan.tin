@@ -8,67 +8,44 @@
 };
 
 #alias {attack} {
+    chan;
+    poqi;
+    zongjue;
+    #class attack.inner open;
+    #ticker {poqi} {
+        poqi;
+    } {3.8};
+    #ticker {chan} {
+        chan;
+    } {6.8};
+    #ticker {zongjue} {
+        zongjue;
+    } {4.8};
+    #ticker {po} {
+        po;
+    } {5.8};
+    #class attack.inner close;
+
     #if {"${quest}" == "hb"} {
         #if {"${enemy_menpai}" == "gaibang" || "${enemy_menpai}" == "wudang"} {
-            chan;
+            #cr;
         };
-        poqi;
-        #class attack.inner open;
-        #ticker {poqi} {
-            poqi;
-        } {3.8};
-        #ticker {chan} {
-            chan;
-        } {5.8};
-        #class attack.inner close;
     };
     #elseif {${mj_started}  == 1} {
-        chan;
-        poqi;
-        kuangfeng;
-        #class attack.inner open;
-        #ticker {poqi} {
-            poqi;
-        } {3.8};
-        #ticker {chan} {
-            chan;
-        } {2.8};
-        #ticker {zongjue} {
-            zongjue;
-        } {5.8};
-        #class attack.inner close;
+        #cr;
     };
     #else {
-        chan;
-        poqi;
-        kuangfeng;
-        sqf;
-        #class attack.inner open;
-        #ticker {poqi} {
-            poqi;
-        } {3.8};
-        #ticker {chan} {
-            chan;
-        } {2.8};
-        #class attack.inner close;
         #if {${xf.type} == -1 || ${xf.type} == 1} {
-            #class attack.inner open;
-            #ticker {sqf} {
-                sqf;
-            } {5.8};
-            #class attack.inner close;
+            feijian;
         };
         #elseif {${xf.type} == 2} {
-            #class attack.inner open;
-            #class attack.inner close;
+            feijian;
         };
         #elseif {${xf.type} == 3} {
-            #class attack.inner open;
-            #class attack.inner close;
+            #cr;
         };
         #elseif {${xf.type} == 4} {
-            #class attack.inner open;
-            #class attack.inner close;
+            #cr;
         };
     };
 };
