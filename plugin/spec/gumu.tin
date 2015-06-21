@@ -17,7 +17,7 @@
         chan;
     } {1};
     #class attack.inner close;
-    
+
     #if {"${quest}" == "hb"} {
         shexin;
         suxin;
@@ -54,20 +54,20 @@
             #class attack.inner close;
         };
         #elseif {${xf.type} == 2} {
-            zhua;
+            shexin;
             #class attack.inner open;
             #ticker {zhua} {
-                zhua;
-            } {3.8};
+                shexin;
+            } {5.8};
             #class attack.inner close;
         };
         #elseif {${xf.type} == 3} {
-            zhua;
+            shexin;
             #class attack.inner open;
             #class attack.inner close;
         };
         #else {
-            zhua;
+            shexin;
             #class attack.inner open;
             #class attack.inner close;
         };
@@ -91,15 +91,15 @@
     zhua;
 };
 
-#macro {\e[15~} {
+#macro {\e[15~} { #nop ];
     xiongyong;
 };
 
-#macro {\e[17~} {
+#macro {\e[17~} { #nop ];
     qixing;
 };
 
-#macro {\e[18~} {
+#macro {\e[18~} {#nop ];
     shuai;
 };
 
@@ -160,7 +160,7 @@
     do_wield whip;
     perform whip.chan;
     unwield all;
-    wi; 
+    wi;
 };
 
 
@@ -191,4 +191,3 @@ stat.register ÐÚÓ¿ miss ÄãµÄÁèÀ÷¹¥ÊÆ;
 };
 
 #class gumu_spec close
-
