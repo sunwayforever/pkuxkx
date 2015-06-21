@@ -38,6 +38,7 @@
         #class attack.inner close;
     };
     #else {
+        pfm shexin;
         #if {${xf.type} == -1 || ${xf.type} == 1} {
             #var jiali_count max;
             pfm zhua;
@@ -54,7 +55,6 @@
             #class attack.inner close;
         };
         #elseif {${xf.type} == 2} {
-            pfm shexin;
             #class attack.inner open;
             #ticker {shexin} {
                 pfm shexin;
@@ -62,12 +62,10 @@
             #class attack.inner close;
         };
         #elseif {${xf.type} == 3} {
-            pfm shexin;
             #class attack.inner open;
             #class attack.inner close;
         };
         #else {
-            pfm shexin;
             #class attack.inner open;
             #class attack.inner close;
         };
