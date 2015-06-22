@@ -11,9 +11,7 @@ load gps_actions;
     #alias tmp_there %0;
     #action {GPS: 抵达目的地} {
         #unaction {GPS: 抵达目的地};
-        #delay {there_delay} {
-            tmp_there;
-        } {1.8};
+        tmp_there;
     };
 };
 
@@ -54,10 +52,8 @@ load gps_actions;
     #alias {gps_check_room_done} {
         #var src_roomno ${gps.roomno};
         #if {${src_roomno} == ${dst_roomno}} {
-            #delay {1} {
-                #var gps_gt_check_count 0;
-                do_show {GPS: 抵达目的地};
-            };
+            #var gps_gt_check_count 0;
+            do_show {GPS: 抵达目的地};
         };
         #else {
             #math gps_gt_check_count ${gps_gt_check_count}+1;
@@ -112,9 +108,7 @@ load gps_actions;
             };
 
             #if {${dst_roomno} == ${src_roomno}} {
-                #delay {1} {
-                    do_show {GPS: 抵达目的地};
-                };
+                do_show {GPS: 抵达目的地};
             };
             #else {
                 #format {epoch_from} {%T};
@@ -148,7 +142,7 @@ load gps_actions;
 
 #alias {gps.run} {
     #if {"${gps.run.mode}" == "NORMAL"} {
-        GPS.UNCHECK;
+        GPS.CHECK;
     };
     #var is_break 0;
     #var accu 0;
@@ -179,6 +173,7 @@ load gps_actions;
         };
     };
     #if {${gps_path_index} > ${gps_path_size} && ${is_break} == 0} {
+        GPS.UNCHECK;
         set brief 2;
         #delay {gps_delay} {
             #if {"${gps.run.mode}" == "NORMAL"} {

@@ -49,14 +49,12 @@
     };
     #class gps.action.inner close;
 
-    GPS.CHECK;
     ask shao gong about huanghe;
     ask shao gong about jiang;
     yell boat;
 };
 
 #alias {gps.enter_boat} {
-    GPS.CHECK;
     enter boat;
     #class gps.action.inner open;
     #action {你跃上} {
@@ -82,7 +80,6 @@
 };
 
 #alias {gps.zuoche} {
-    GPS.CHECK;
     #ticker {gps_ticker} {
         gu;
         qu %1;
@@ -130,7 +127,6 @@
 };
 
 #alias {gps.guo_qiao} {
-    GPS.CHECK;
     #class gps.action.inner open;
     #action {你扶着铁索，踏上桥板。} {
       GPS.UNCHECK;
@@ -144,7 +140,6 @@
 };
 
 #alias {gps.wuliang} {
-    GPS.CHECK;
     climb cliff;
     #class gps.action.inner open;
     #action {你一咬牙，扳住崖上的岩石，手脚并用向上爬去。} {
@@ -158,7 +153,6 @@
 };
 
 #alias {gps.tzf_1} {
-    GPS.CHECK;
     climb;
     #class gps.action.inner open;
     #action {你一咬牙，扳住崖上的岩石} {
@@ -172,7 +166,6 @@
 };
 
 #alias {gps.tzf_2} {
-    GPS.CHECK;
     climb;
     #class gps.action.inner open;
     #action {你一咬牙，扳住崖上的岩石} {
@@ -186,7 +179,6 @@
 };
 
 #alias {gps.tzf_3} {
-    GPS.CHECK;
     climb;
     #class gps.action.inner open;
     #action {你一咬牙，扳住崖上的岩石} {
@@ -210,7 +202,6 @@
 };
 
 #alias {gps.tiesuo} {
-    GPS.CHECK;
     zou tiesuo;
     #class gps.action.inner open;
     #action {你踩上铁索，向山涧的对面飘然而去} {
@@ -224,7 +215,6 @@
 };
 
 #alias {gps.row} {
-    GPS.CHECK;
     row %1;
     #class gps.action.inner open;
     #action {你拿起船桨用力划了起来} {
@@ -244,7 +234,6 @@
 };
 
 #alias {gps.maze.tdf} {
-    GPS.CHECK;
     #var current_direction west;
     #list directions create {east;west;north;south};
     #alias {do_look_next} {
@@ -291,7 +280,6 @@
 };
 
 #alias {gps.maze.yunhai} {
-    GPS.CHECK;
     #class gps.action.inner open;
     #action {^云海$} {
         GPS.UNCHECK;
@@ -310,7 +298,6 @@
 };
 
 #alias {gps.maze.yunhaib} {
-    GPS.CHECK;
     #class gps.action.inner open;
     #action {^云海$} {
         GPS.UNCHECK;
@@ -329,7 +316,6 @@
 };
 
 #alias {gps.muchang} {
-    GPS.CHECK;
     #var next_action %1;
     #class gps.action.inner open;
     #action {青海湖畔美不胜收，你不由停下脚步，欣赏起了风景。} {
@@ -392,7 +378,6 @@
 };
 
 #alias {gps.maze.guolin} {
-    GPS.CHECK;
     #class gps.action.inner open;
     #action {^果林$} {
         GPS.UNCHECK;
@@ -409,7 +394,6 @@
 };
 
 #alias {gps.maze.guolinb} {
-    GPS.CHECK;
     #class gps.action.inner open;
     #action {^果林$} {
         GPS.UNCHECK;
@@ -474,7 +458,6 @@
         gps.run;
     };
     #class gps.action.inner close;
-    GPS.CHECK;
     enter lou;
 };
 
