@@ -21,14 +21,13 @@ def get_room(conn, desc):
     # gt 扬州醉仙楼
     sql = "select distinct(zone) from mud_room"
     rows = conn.execute(sql).fetchall()
-    zone=""
     actual_zone=""
     for row in rows:
-        current_zone=os.path.commonprefix([row[0],desc])
-        if len(current_zone) > len(zone):
-            zone = current_zone
-            actual_zone=row[0]
-    actual_room = desc[len(zone):]
+        if desc.startswith (row[0]):
+            current_zone=row[0]
+            if len(current_zone) > len(actual_zone):
+                actual_zone = current_zone
+    actual_room = desc[len(actual_zone):]
     actual_room = fixup_room(actual_room)
 
     sql = "select roomno from mud_room where roomname = '%s' and zone = '%s'" % (actual_room, actual_zone)
