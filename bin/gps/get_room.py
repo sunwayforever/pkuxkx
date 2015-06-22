@@ -8,7 +8,7 @@ from .common import *
 from ..common import Tintin
 from ..common import logger
 
-room_alias = {"襄阳官道":498}
+room_alias = {"襄阳官道":498, "古墓墓道":1036}
 def get_room(conn, desc):
     if desc in room_alias:
         return room_alias[desc]
