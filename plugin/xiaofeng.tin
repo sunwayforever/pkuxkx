@@ -516,7 +516,6 @@
 #alias {xf.q} {
     #if {"${fm_remaining_time}" == "0"} {
         xf.stop;
-        notify ธฃรื;
         chain sell.all get.qian gem.combine fullme xf.start;
     };
     #else {

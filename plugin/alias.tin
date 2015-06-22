@@ -811,6 +811,7 @@
         #class fullme_inner kill;
     };
     #class fullme_inner close;
+    notify ธฃรื;
 };
 
 #alias {fm} {
