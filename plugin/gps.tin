@@ -69,9 +69,7 @@ load gps_actions;
             };
             #else {
                 #if {${gps_stop} == 0} {
-                    taopao {
-                        gps.gt ${dst_roomno};
-                    };
+                    gps.gt ${dst_roomno};
                 };
             };
         };

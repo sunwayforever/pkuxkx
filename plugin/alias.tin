@@ -200,12 +200,17 @@
     #alias tmp_unbusy #cr;
     #alias tmp_unbusy %0;
     #class unbusy.inner open;
-    #ticker {checkbusy} {
-        checkbusy;
-    } {1};
     #action {�㲻æ} {
         #class unbusy.inner kill;
+        #undelay {delay_unbusy};
         tmp_unbusy;
+    } {1};
+    #delay {delay_unbusy} {
+        #class unbusy.inner kill;
+        tmp_unbusy;
+    } {6};
+    #ticker {checkbusy} {
+        checkbusy;
     } {1};
     #class unbusy.inner close;
     checkbusy;
