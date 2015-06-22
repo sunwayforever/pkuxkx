@@ -14,7 +14,7 @@
         #else {
             xf.bl;
         };
-    } {20};
+    } {60};
 };
 
 #alias {xf.teardown} {
@@ -178,6 +178,7 @@
         #var xf.real_first_name @lower{%%2};
 
         #if {${xf.type} == 2} {
+            XF.FIGHT.UNCHECK;
             show_to_quest 萧峰: 擒回: ${xf.real_name};
             on_unbusy {
                 get ${xf.real_first_name};
@@ -445,17 +446,17 @@
     };
 
     #action {过%*再来问吧。} {
-        dz.idle {xf.q};  
+        dz.idle {xf.q};
     };
-    
+
     #action {^萧峰(xiao feng)告诉你：你先去在江湖中历练一番吧。} {
         dz.idle {xf.q};
     } {1};
-    
+
     #action {^萧峰(xiao feng)告诉你：你先下去休息休息吧。} {
         dz.idle {xf.q};
     } {1};
-    
+
     #action {^萧峰说道：%*刚刚已经有人前去了} {
         #delay {xf_auto_delay} {
             xf.q;
