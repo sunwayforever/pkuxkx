@@ -345,11 +345,14 @@
         #class xf.fight.inner kill;
         #undelay {xf_delay};
         raw;
-        on_unbusy {
-            #if {${xf.type} == 1} {
+
+        #if {${xf.type} == 1} {
+            on_unbusy {
                 zhan corpse;
             };
-            #else {
+        };
+        #else {
+            on_unbusy {
                 #send {l};
             };
         };
@@ -364,7 +367,7 @@
             @setenv{xf_state;ENDED};
             #showme 收工;
             show_to_quest 萧峰: 已经劝服;
-            #delay {3} {
+            on_unbusy {
                 xf.b;
             };
         };
@@ -372,7 +375,7 @@
             @setenv{xf_state;ENDED};
             #showme 收工;
             show_to_quest 萧峰: 已经战胜;
-            #delay {3} {
+            on_unbusy {
                 xf.b;
             };
         };
@@ -578,7 +581,7 @@
         yun inspire;
     };
     on_unbusy {
-        bl.start 西夏一品堂;
+        bl.start Mengmian;
     };
 };
 

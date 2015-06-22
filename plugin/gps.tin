@@ -240,12 +240,12 @@ load gps_actions;
 
     #alias {gps_check_room_done} {
         #if {${gps.roomno} == -1} {
-            #delay {1} {
+            #delay {gps_check_delay} {
                 do_show {GPS: 当前房间未记录, 无法遍历};
                 taopao {
                     gps.traverse ${traverse_tmp};
                 };
-            };
+            } {1};
         };
         #else {
             INVOKE gps.traverse ${gps.roomno} ${gps_traverse_location};

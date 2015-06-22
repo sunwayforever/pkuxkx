@@ -746,7 +746,7 @@
 
     #ticker {ticker_get_position_look} {
         #send {l};
-    } {3};
+    } {5};
     #class record.inner close;
     #send {l};
 };
