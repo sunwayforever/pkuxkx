@@ -826,7 +826,7 @@
             #system {kill -30 ${pid}};
             end_and_restart;
         };
-    } {60};
+    } {120};
 };
 
 #event {SESSION DEACTIVATED} {
@@ -836,10 +836,6 @@
             end_and_restart;
         };
     };
-};
-
-#action {Ê²Ã´£¿} {
-    check_heart_beat;
 };
 
 #alias {end_and_restart} {

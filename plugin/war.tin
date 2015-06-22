@@ -187,11 +187,15 @@
         #class taopao.inner open;
         #ticker {taopao_ticker} {
             taopao_random_walk;
-        } {1};
+        } {3};
         #action {这里%*出口} {
             #class taopao.inner kill;
             tmp_on_taopao;
         };
+        #delay {taopao_delay} {
+            #class taopao.inner kill;
+            tmp_on_taopao;
+        } {10};
         #class taopao.inner close;
         taopao_random_walk;
     };
@@ -335,7 +339,7 @@
     #if {@stackismember{pfm;%1} == 0} {
         @stackpush{pfm;%1};
         #if {${pfming} == 0} {
-            pfm.inner;        
+            pfm.inner;
         };
     };
 };
