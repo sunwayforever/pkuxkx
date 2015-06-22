@@ -23,7 +23,7 @@ def fixup_area(desc):
     elif re.match("^福州",desc):
         desc = "闽南"+desc[2:]
     elif re.match("^杭州",desc):
-        desc = "临安"+desc[2:]
+        desc = "临安府"+desc[2:]
     elif re.match("^大理城中",desc):
         desc = "大理城"+desc[4:]
     elif re.match("^西湖梅庄",desc):
@@ -31,7 +31,13 @@ def fixup_area(desc):
     elif re.match("^桃源",desc):
         desc = "桃源县"+desc[2:]
     elif re.match("^全真",desc):
-        desc = "全真教"+desc[2:]        
+        desc = "全真教"+desc[2:]
+    elif re.match("^苏州",desc):
+        desc = "苏州城"+desc[2:]
+    elif re.match("^扬州",desc):
+        desc = "扬州城"+desc[2:]        
+    elif re.match("^晋阳",desc):
+        desc = "晋阳城"+desc[2:]        
     elif re.match("^镇江",desc):
         desc = "镇江府"+desc[2:]
     elif re.match("^峨嵋",desc):
