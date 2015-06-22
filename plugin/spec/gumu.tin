@@ -11,53 +11,53 @@
 };
 
 #alias {attack} {
-    pfm chan;
+    chan;
     #class attack.inner open;
     #ticker {perf_chan} {
-        pfm chan;
+        chan;
     } {1};
     #class attack.inner close;
 
     #if {"${quest}" == "hb"} {
-        pfm shexin;
-        pfm suxin;
+        shexin;
+        suxin;
         #class attack.inner open;
         #ticker {suxin} {
-            pfm suxin;
+            suxin;
         } {3.8};
         #ticker {shexin} {
-            pfm shexin;
+            shexin;
         } {5.8};
         #class attack.inner close;
     };
     #elseif {${mj_started}  == 1} {
         #class attack.inner open;
         #ticker {qixing} {
-            pfm qixing;
+            qixing;
         } {1.8};
         #class attack.inner close;
     };
     #else {
-        pfm shexin;
+        shexin;
         #if {${xf.type} == -1 || ${xf.type} == 1} {
             #var jiali_count max;
-            pfm zhua;
+            zhua;
             #class attack.inner open;
             #ticker {zhua} {
-                pfm zhua;
+                zhua;
             } {3.8};
             #ticker {suxin} {
-                pfm suxin;
+                suxin;
             } {8.8};
             #ticker {shexin} {
-                pfm shexin;
+                shexin;
             } {5.8};
             #class attack.inner close;
         };
         #elseif {${xf.type} == 2} {
             #class attack.inner open;
             #ticker {shexin} {
-                pfm shexin;
+                shexin;
             } {5.8};
             #class attack.inner close;
         };

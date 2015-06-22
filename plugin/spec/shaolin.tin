@@ -28,7 +28,7 @@
         wi;
     };
     #else {
-        pfm jingmo;
+        jingmo;
     };
 
     #class attack.inner open;
@@ -46,11 +46,11 @@
             wi;
         };
         #else {
-            pfm jingmo;
+            jingmo;
         };
     } {2.5};
     #class attack.inner close;
-    
+
     #if {"${quest}" == "hb"} {
         #class attack.inner open;
         #class attack.inner close;
@@ -60,34 +60,34 @@
         #class attack.inner close;
         #if {${xf.type} == -1 || ${xf.type} == 1} {
             #var jiali_count max;
-            pfm luohan;
+            luohan;
             #class attack.inner open;
             #ticker {luohan} {
-                pfm luohan;
+                luohan;
             } {5.8};
             #class attack.inner close;
         };
         #elseif {${xf.type} == 2} {
-            pfm luohan;
+            luohan;
             #class attack.inner open;
             #ticker {luohan} {
-                pfm luohan;
+                luohan;
             } {5.8};
             #class attack.inner close;
         };
         #elseif {${xf.type} == 3} {
-            pfm luohan;
+            luohan;
             #class attack.inner open;
             #ticker {luohan} {
-                pfm luohan;
+                luohan;
             } {5.8};
             #class attack.inner close;
         };
         #elseif {${xf.type} == 4} {
-            pfm luohan;
+            luohan;
             #class attack.inner open;
             #ticker {luohan} {
-                pfm luohan;
+                luohan;
             } {5.8};
             #class attack.inner close;
         };
@@ -99,34 +99,34 @@
     #else {
         #if {${xf.type} == -1 || ${xf.type} == 1} {
             #var jiali_count max;
-            pfm luohan;
+            luohan;
             #class attack.inner open;
             #ticker {luohan} {
-                pfm luohan;
+                luohan;
             } {5.8};
             #class attack.inner close;
         };
         #elseif {${xf.type} == 2} {
-            pfm luohan;
+            luohan;
             #class attack.inner open;
             #ticker {luohan} {
-                pfm luohan;
+                luohan;
             } {5.8};
             #class attack.inner close;
         };
         #elseif {${xf.type} == 3} {
-            pfm luohan;
+            luohan;
             #class attack.inner open;
             #ticker {luohan} {
-                pfm luohan;
+                luohan;
             } {5.8};
             #class attack.inner close;
         };
         #elseif {${xf.type} == 4} {
-            pfm luohan;
+            luohan;
             #class attack.inner open;
             #ticker {luohan} {
-                pfm luohan;
+                luohan;
             } {5.8};
             #class attack.inner close;
         };
@@ -225,13 +225,13 @@
 
 };
 
-#macro {\e[15~} {
+#macro {\e[15~} {#nop ]
 };
 
-#macro {\e[17~} {
+#macro {\e[17~} {#nop ]
 };
 
-#macro {\e[18~} {
+#macro {\e[18~} {#nop ]
 };
 
 #alias {qudu} {

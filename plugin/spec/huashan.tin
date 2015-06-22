@@ -8,15 +8,15 @@
 };
 
 #alias {attack} {
-    pfm chan;
-    pfm poqi;
-    pfm zongjue;
+    chan;
+    poqi;
+    zongjue;
     #class attack.inner open;
     #ticker {poqi} {
-        pfm poqi;
+        poqi;
     } {3.8};
     #ticker {zongjue} {
-        pfm zongjue;
+        zongjue;
     } {4.8};
     #class attack.inner close;
 

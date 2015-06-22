@@ -8,43 +8,43 @@
 
 #alias {attack} {
     #if {"${quest}" == "hb"} {
-        pfm huose;
+        huose;
         #class attack.inner open;
         #ticker {huose} {
-            pfm huose;
+            huose;
         } {3};
         #class attack.inner close;
     };
     #else {
         #if {${xf.type} == -1 || ${xf.type} == 1} {
-            pfm huose;
-            pfm chousui;
+            huose;
+            chousui;
             #class attack.inner open;
             #ticker {huose} {
-                pfm huose;
+                huose;
             } {3};
             #ticker {huoqiu} {
-                pfm huoqiu;
+                huoqiu;
             } {4.8};
             #class attack.inner close;
         };
         #elseif {${xf.type} == 2} {
-            pfm huose;
-            pfm chousui;
+            huose;
+            chousui;
             #class attack.inner open;
             #ticker {huose} {
-                pfm huose;
+                huose;
             } {3.8};
             #class attack.inner close;
         };
         #elseif {${xf.type} == 3} {
-            pfm huose;
-            pfm chousui;
+            huose;
+            chousui;
             #class attack.inner open;
             #class attack.inner close;
         };
         #else {
-            pfm huose;
+            huose;
             #class attack.inner open;
             #class attack.inner close;
         };
@@ -138,19 +138,19 @@
     huoqiang;
 };
 
-#macro {\e[15~} {
+#macro {\e[15~} {#nop ]
     chuanxin;
 };
 
-#macro {\e[17~} {
+#macro {\e[17~} {#nop ]
     sandu;
 };
 
-#macro {\e[18~} {
+#macro {\e[18~} {#nop ]
 
 };
 
-#macro {\e[19~} {
+#macro {\e[19~} {#nop ]
 
 };
 
