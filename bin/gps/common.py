@@ -8,41 +8,21 @@ from ..common import open_gps_database
 
 def open_database():
     return open_gps_database()
-    
+
+area_alias = {
+    "白驼山":"白驼","小山村":"华山村","福州":"闽南","杭州":"临安府","大理城中":"大理城",
+    "西湖梅庄":"梅庄","桃源":"桃源县","全真":"全真教","苏州":"苏州城","扬州":"扬州城",
+    "晋阳":"晋阳城","镇江":"镇江府","北京":"北京城","姑苏慕容":"慕容","建康府南城":"建康府南",
+    "建康府北城":"建康府北","长江南岸":"长江南岸","长江北岸":"长江北岸","长江":"长江南岸",
+    "黄河南岸":"黄河南岸","黄河北岸":"黄河北岸","黄河":"黄河南岸","峨嵋后山":"峨嵋后山",
+    "峨嵋":"峨嵋派",
+}
+
 def fixup_area(desc):
-    if re.match("^(长江|黄河)[^南北]",desc):
-        desc =  desc[:2]+"南岸"+desc[2:]
-    elif re.match("^建康府.城",desc):
-        desc = desc[:4]+desc[5:]
-    elif re.match("^白驼山",desc):
-        desc = desc[:2]+desc[3:]
-    elif re.match("^小山村",desc):
-        desc = "华山村"+desc[3:]
-    elif re.match("^姑苏慕容",desc):
-        desc = desc[2:]
-    elif re.match("^福州",desc):
-        desc = "闽南"+desc[2:]
-    elif re.match("^杭州",desc):
-        desc = "临安府"+desc[2:]
-    elif re.match("^大理城中",desc):
-        desc = "大理城"+desc[4:]
-    elif re.match("^西湖梅庄",desc):
-            desc = "梅庄"+desc[4:]
-    elif re.match("^桃源",desc):
-        desc = "桃源县"+desc[2:]
-    elif re.match("^全真",desc):
-        desc = "全真教"+desc[2:]
-    elif re.match("^苏州",desc):
-        desc = "苏州城"+desc[2:]
-    elif re.match("^扬州",desc):
-        desc = "扬州城"+desc[2:]        
-    elif re.match("^晋阳",desc):
-        desc = "晋阳城"+desc[2:]        
-    elif re.match("^镇江",desc):
-        desc = "镇江府"+desc[2:]
-    elif re.match("^峨嵋",desc):
-        if not re.match("^峨嵋后山",desc):
-            desc = "峨嵋派"+desc[2:]
+    for (k,v) in area_alias.items():
+        if re.match("^%s"%(k),desc):
+            desc = "%s%s"%(v,desc[len(k)])
+            break
     return desc
 
 def fixup_room(room):
