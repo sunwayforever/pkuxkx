@@ -11,7 +11,9 @@ load gps_actions;
     #alias tmp_there %0;
     #action {GPS: 抵达目的地} {
         #unaction {GPS: 抵达目的地};
-        tmp_there;
+        on_unbusy {
+            tmp_there;
+        };
     };
 };
 
@@ -20,9 +22,9 @@ load gps_actions;
     #alias tmp_not_there %0;
     #action {GPS: 目标房间不可达, 无法行走} {
         #unaction {GPS: 目标房间不可达, 无法行走};
-        #delay {there_delay} {
+        on_unbusy {
             tmp_not_there;
-        } {1.8};
+        };
     };
 };
 
@@ -53,13 +55,17 @@ load gps_actions;
         #var src_roomno ${gps.roomno};
         #if {${src_roomno} == ${dst_roomno}} {
             #var gps_gt_check_count 0;
-            do_show {GPS: 抵达目的地};
+            #delay {1} {
+                do_show {GPS: 抵达目的地};
+            };
         };
         #else {
             #math gps_gt_check_count ${gps_gt_check_count}+1;
             #if {${gps_gt_check_count} >= 50} {
                 #var gps_gt_check_count 0;
-                do_show {GPS: 抵达目的地};
+                #delay {1} {
+                    do_show {GPS: 抵达目的地};
+                };
             };
             #else {
                 #if {${gps_stop} == 0} {
@@ -108,7 +114,9 @@ load gps_actions;
             };
 
             #if {${dst_roomno} == ${src_roomno}} {
-                do_show {GPS: 抵达目的地};
+                #delay {1} {
+                    do_show {GPS: 抵达目的地};
+                };
             };
             #else {
                 #format {epoch_from} {%T};
