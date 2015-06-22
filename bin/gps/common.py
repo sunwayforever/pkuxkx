@@ -29,7 +29,9 @@ def fixup_area(desc):
     elif re.match("^西湖梅庄",desc):
             desc = "梅庄"+desc[4:]
     elif re.match("^桃源",desc):
-        desc = "桃源县"+desc[2:]                    
+        desc = "桃源县"+desc[2:]
+    elif re.match("^镇江",desc):
+        desc = "镇江府"+desc[2:]
     elif re.match("^峨嵋",desc):
         if not re.match("^峨嵋后山",desc):
             desc = "峨嵋派"+desc[2:]
