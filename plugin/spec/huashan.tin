@@ -229,8 +229,10 @@ stat.register ĞÚÓ¿ miss ÄãµÄÁèÀ÷¹¥ÊÆ;
 #alias {xiongyong} {
     unwield all;
     do_wield sword;
+    #send {jifa sword xuantie-jian};
     #send {jifa parry xuantie-jian};
     perform xuantie-jian.xiongyong;
+    #send {jifa sword dugu-jiujian};
     #send {jifa parry poyu-quan};
     unwield all;
     wi;
