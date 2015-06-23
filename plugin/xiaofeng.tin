@@ -13,6 +13,7 @@
                 xf.b;
             };
             #else {
+                xf.setup;
                 xf.bl;
             };
         };
@@ -23,7 +24,6 @@
 };
 
 #alias {xf.teardown} {
-    XF.UNCHECK;
     #var quest nil;
     #var xf.requested 0;
     #class xiaofeng.inner kill;
@@ -50,6 +50,7 @@
         notify 身上物品太多, 无法 get;
     };
     #action {却阻挡不住内力飞泄而出！} {
+        XF.CHECK;
         xf.teardown;
         follow none;
         taopao {
@@ -57,6 +58,7 @@
         };
     };
     #action {看来该找机会逃跑了...} {
+        XF.CHECK;
         #if {${xf.type} == 4} {
             #var xf_fail_reason 打不过, 跑;
             xf.b;
@@ -71,6 +73,7 @@
     };
 
     #action {眼见不活了。} {
+        XF.CHECK;
         #if {${xf.type} != 1} {
             #delay {xf_delay} {
                 #var xf_fail_reason 失手打死: ${xf.type};
@@ -80,6 +83,7 @@
     };
 
     #action {要打便打} {
+        XF.CHECK;
         #if {${xf.type} != -1} {
             follow shashou;
             xf.fight;
@@ -88,6 +92,7 @@
 
     #var is_dead 0;
     #action {${char_name}被蒙面杀手杀死了。} {
+        XF.UNCHECK;
         #var is_dead 1;
     };
 
@@ -103,6 +108,7 @@
                     xf.b;
                 };
                 #else {
+                    xf.setup;
                     xf.bl;
                 };
             } {3};
@@ -110,14 +116,17 @@
     };
 
     #action {你走上前去，试图劝服蒙面杀手，但蒙面杀手不耐烦的转了个身，不愿听你说下去。} {
+        XF.CHECK;
         #delay {xf_delay} {
             #if {${xf.type} == 3} {
+                xf.setup;
                 xf.bl;
             };
         } {3};
     };
 
     #action {看起来蒙面杀手并不想跟你较量。} {
+        XF.CHECK;
         #delay {xf_delay} {
             #if {${xf.type} == 4} {
                 #var xf_fail_reason 没有一次战胜;
@@ -127,15 +136,7 @@
     };
 
     #action {我不服，等我休息一下，咱们再打过！} {
-        #delay {xf_delay} {
-            #if {${xf.type} == 4} {
-                #var xf_fail_reason 没有一次战胜;
-                xf.b;
-            };
-        } {3};
-    };
-
-    #action {蒙面杀手说道：「我不服，等我休息一下，咱们再打过！」} {
+        XF.CHECK;
         #delay {xf_delay} {
             #if {${xf.type} == 4} {
                 #var xf_fail_reason 没有一次战胜;
@@ -145,30 +146,36 @@
     };
 
     #action {蒙面杀手说道：「此处比武多有不便，你且随我来！」} {
+        XF.CHECK;
         #delay {xf_delay} {
+            xf.setup;
             xf.bl;
         } {3};
     };
 
     #action {蒙面杀手%*落荒而逃了。} {
+        XF.CHECK;
         #delay {xf_delay} {
             #if {${xf.type} == 4} {
                 #var xf_fail_reason 没有一次战胜, 杀手跑了;
                 xf.b;
             };
             #else {
+                xf.setup;
                 xf.bl;
             };
         } {3};
     };
 
     #action {你一眨眼间，蒙面杀手已经不知去向。} {
+        XF.CHECK;
         #delay {xf_delay} {
             #if {${xf.type} == 4} {
                 #var xf_fail_reason 没有一次战胜, 杀手跑了;
                 xf.b;
             };
             #else {
+                xf.setup;
                 xf.bl;
             };
         } {3};
@@ -237,6 +244,7 @@
             #var xf.position %%1%%2;
             gt ${xf.position};
             on_there {
+                XF.CHECK;
                 xf.bl;
             };
             on_not_there {
