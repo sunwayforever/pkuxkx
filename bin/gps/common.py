@@ -5,6 +5,7 @@ import re
 import os
 import sqlite3
 from ..common import open_gps_database
+from ..common import logger
 
 def open_database():
     return open_gps_database()
@@ -21,7 +22,7 @@ area_alias = {
 def fixup_area(desc):
     for (k,v) in area_alias.items():
         if re.match("^%s"%(k),desc):
-            desc = "%s%s"%(v,desc[len(k)])
+            desc = "%s%s"%(v,desc[len(k):])
             break
     return desc
 
