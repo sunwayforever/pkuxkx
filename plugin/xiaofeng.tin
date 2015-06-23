@@ -2,23 +2,28 @@
 #var xf.type -1;
 #var xf.requested 0;
 
-#alias {XF.FIGHT.UNCHECK} {
-    #undelay {xf_fight_check_delay};
+#alias {XF.UNCHECK} {
+    #undelay {xf_check_delay};
 };
 
-#alias {XF.FIGHT.CHECK} {
-    #delay {xf_fight_check_delay} {
-        #if {${xf.type} == 4} {
-            xf.b;
+#alias {XF.CHECK} {
+    #delay {xf_check_delay} {
+        #if {"@getenv{xf_state}" == "STARTED"} {
+            #if {${xf.type} == 4} {
+                xf.b;
+            };
+            #else {
+                xf.bl;
+            };
         };
         #else {
-            xf.bl;
+            xf.b;
         };
-    } {60};
+    } {120};
 };
 
 #alias {xf.teardown} {
-    XF.FIGHT.UNCHECK;
+    XF.UNCHECK;
     #var quest nil;
     #var xf.requested 0;
     #class xiaofeng.inner kill;
@@ -179,7 +184,6 @@
         #var xf.real_first_name @lower{%%2};
 
         #if {${xf.type} == 2} {
-            XF.FIGHT.UNCHECK;
             show_to_quest 萧峰: 擒回: ${xf.real_name};
             on_unbusy {
                 get ${xf.real_first_name};
@@ -258,7 +262,7 @@
     };
 
     #action {『蒙面杀手(%*气血:%*\%/%*\%)』} {
-        XF.FIGHT.CHECK;
+        XF.CHECK;
         #if {${xf.type} == 3} {
             #if {%%2 < 45 || %%3 < 45} {
                 raw;
@@ -343,10 +347,10 @@
     };
 
     #action {显是蒙面杀手姓名} {
+        @setenv{xf_state;BEATED};
         #class xf.fight.inner kill;
         #undelay {xf_delay};
         raw;
-
         #if {${xf.type} == 1} {
             on_unbusy {
                 zhan corpse;
@@ -384,7 +388,6 @@
 
     #alias {xf.fight} {
         #class xf.bl.inner kill;
-        XF.FIGHT.CHECK;
         detect_mingjiao shashou;
         #if {${xf.type} == 1} {
             kill shashou;
@@ -428,6 +431,7 @@
     set_last_quest xf;
     #class xf.auto.inner open;
     #alias {xf.restart} {
+        XF.UNCHECK;
         xf.teardown;
         @setenv{xf_state;nil};
         #delay {xf_auto_delay} {
@@ -526,7 +530,7 @@
 };
 
 #alias {xf.d} {
-    #if {"@getenv{xf_state}" == "STARTED"} {
+    #if {"@getenv{xf_state}" == "STARTED" || "@getenv{xf_state}" == "BEATED"} {
         xf.f;
     };
     #elseif {"@getenv{xf_state}" == "ENDED"} {
@@ -550,7 +554,6 @@
 };
 
 #alias {xf.bl} {
-    XF.FIGHT.UNCHECK;
     #class xf.bl.inner open;
     #action {蒙面杀手说道：「就你也配跟我讨教功夫？！」} {
         #delay {xf.bl} {
@@ -577,11 +580,16 @@
     } {2};
 
     #class xf.bl.inner close;
-    #if {${xf.type} == 3} {
-        yun inspire;
+    #if {"@getenv{xf_state}" == "STARTED"} {
+        #if {${xf.type} == 3} {
+            yun inspire;
+        };
+        on_unbusy {
+            bl.start Mengmian;
+        };
     };
-    on_unbusy {
-        bl.start Mengmian;
+    #else {
+        #class xf.bl.inner kill;
     };
 };
 
