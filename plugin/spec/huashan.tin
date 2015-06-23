@@ -226,4 +226,13 @@ stat.register 狂风 hit 顿时觉得压力骤增，手腕一麻;
 stat.register 汹涌 hit 只觉得犹如身陷洪涛巨浪，跌跌撞撞;
 stat.register 汹涌 miss 你的凌厉攻势;
 
+#alias {xiongyong} {
+    unwield all;
+    do_wield sword;
+    #send {jifa parry xuantie-jian};
+    perform xuantie-jian.xiongyong;
+    #send {jifa parry poyu-quan};
+    unwield all;
+    wi;
+};
 #class wudang_spec close
