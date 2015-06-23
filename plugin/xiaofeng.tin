@@ -27,7 +27,6 @@
 };
 
 #alias {xf.setup} {
-    #class xiaofeng.inner open;
     #alias {xf_on_taopao} {
         #if {${xf.type} == 4} {
             #var xf_fail_reason 打不过, 跑;
@@ -40,6 +39,8 @@
             };
         };
     };
+
+    #class xiaofeng.inner open;
     #action {对你而言太重了。} {
         notify 身上物品太多, 无法 get;
     };
