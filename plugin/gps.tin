@@ -389,4 +389,5 @@ load gps_actions;
 #nop 嘉兴山洞;
 #nop 古墓棺材;
 #nop 古墓山洞;
+#nop 北京城墙;
 #class gps close;
