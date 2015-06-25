@@ -8,6 +8,7 @@
 
 #alias {XF.CHECK} {
     #delay {xf_check_delay} {
+        XF.CHECK;
         #if {"@getenv{xf_state}" == "STARTED"} {
             #if {${xf.type} == 4} {
                 xf.b;
@@ -20,7 +21,7 @@
         #else {
             xf.b;
         };
-    } {120};
+    } {80};
 };
 
 #alias {xf.teardown} {
