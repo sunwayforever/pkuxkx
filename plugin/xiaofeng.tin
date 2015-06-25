@@ -242,9 +242,9 @@
             #var xf.target %%1:%%2;
             @setenv{xf_state;STARTED};
             #var xf.position %%1%%2;
+            XF.CHECK;
             gt ${xf.position};
             on_there {
-                XF.CHECK;
                 xf.bl;
             };
             on_not_there {
