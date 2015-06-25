@@ -17,8 +17,8 @@
     };
     #else {
         #if {${xf.type} == -1 || ${xf.type} == 1} {
-            huose;
             chousui;
+            huose;
             #class attack.inner open;
             #ticker {huose} {
                 huose;
@@ -29,7 +29,6 @@
             #class attack.inner close;
         };
         #elseif {${xf.type} == 2} {
-            huose;
             chousui;
             #class attack.inner open;
             #ticker {huose} {
@@ -38,13 +37,12 @@
             #class attack.inner close;
         };
         #elseif {${xf.type} == 3} {
-            huose;
             chousui;
             #class attack.inner open;
             #class attack.inner close;
         };
         #else {
-            huose;
+            chousui;
             #class attack.inner open;
             #class attack.inner close;
         };

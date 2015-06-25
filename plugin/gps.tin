@@ -51,6 +51,9 @@ load gps_actions;
 #var gps_gt_check_count 0;
 #alias {gps.gt.check} {
     #var gps.run.mode nil;
+    #alias {gps_gt} {
+        gps.gt ${dst_roomno};
+    };
     #alias {gps_check_room_done} {
         #var src_roomno ${gps.roomno};
         #if {${src_roomno} == ${dst_roomno}} {
@@ -61,7 +64,7 @@ load gps_actions;
         };
         #else {
             #math gps_gt_check_count ${gps_gt_check_count}+1;
-            #if {${gps_gt_check_count} >= 50} {
+            #if {${gps_gt_check_count} >= 20} {
                 #var gps_gt_check_count 0;
                 #delay {1} {
                     do_show {GPS: 抵达目的地};
@@ -69,7 +72,9 @@ load gps_actions;
             };
             #else {
                 #if {${gps_stop} == 0} {
-                    gps.gt ${dst_roomno};
+                    taopao {
+                        gps_gt;
+                    };
                 };
             };
         };
@@ -92,13 +97,16 @@ load gps_actions;
 #alias {gps.gt} {
     #var gps_stop 0;
     #var gps_last_dest %1;
+    #alias {gps_gt} {
+        gps.gt ${gps_last_dest};
+    };
     #alias {gps_check_room_done} {
         #var src_roomno ${gps.roomno};
         #if {${gps.roomno} == -1} {
             #delay {1} {
                 do_show {GPS: 当前房间未记录, 无法行走};
                 taopao {
-                    gps.gt ${gps_last_dest};
+                    gps_gt;
                 };
             };
         };
