@@ -9,19 +9,8 @@
 #alias {XF.CHECK} {
     #delay {xf_check_delay} {
         XF.CHECK;
-        #if {"@getenv{xf_state}" == "STARTED"} {
-            #if {${xf.type} == 4} {
-                xf.b;
-            };
-            #else {
-                xf.setup;
-                xf.bl;
-            };
-        };
-        #else {
-            xf.b;
-        };
-    } {80};
+        xf.b;
+    } {120};
 };
 
 #alias {xf.teardown} {
@@ -593,6 +582,7 @@
 
     #class xf.bl.inner close;
     #if {"@getenv{xf_state}" == "STARTED"} {
+        XF.CHECK;
         #if {${xf.type} == 3} {
             yun inspire;
         };
