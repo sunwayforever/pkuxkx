@@ -49,14 +49,18 @@
     #action {对你而言太重了。} {
         notify 身上物品太多, 无法 get;
     };
-    #action {却阻挡不住内力飞泄而出！} {
+    #action {蒙面杀手感到次招用意不在伤人，忙凝聚全身功力，却阻挡不住内力飞泄而出！} {
+        #cr;
+    } {8};
+    #action {%*却阻挡不住内力飞泄而出！} {
+        show_to_info %0;
         XF.CHECK;
         xf.teardown;
         follow none;
         taopao {
             xf_on_taopao;
         };
-    };
+    } {9};
     #action {看来该找机会逃跑了...} {
         XF.CHECK;
         #if {${xf.type} == 4} {
