@@ -38,7 +38,6 @@
         #class attack.inner close;
     };
     #else {
-        shexin;
         #if {${xf.type} == -1 || ${xf.type} == 1} {
             #var jiali_count max;
             zhua;
@@ -55,23 +54,23 @@
             #class attack.inner close;
         };
         #elseif {${xf.type} == 2} {
+            zhua;
             #class attack.inner open;
-            #ticker {shexin} {
-                shexin;
-            } {5.8};
             #ticker {zhua} {
                 zhua;
             } {2.8};
             #class attack.inner close;
         };
         #elseif {${xf.type} == 3} {
+            zhua;
             #class attack.inner open;
-            #ticker {zhua} {
-                zhua;
+            #ticker {qixing} {
+                qixing;
             } {2.8};
             #class attack.inner close;
         };
         #else {
+            zhua;
             #class attack.inner open;
             #ticker {zhua} {
                 zhua;
