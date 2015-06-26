@@ -77,6 +77,7 @@
         };
         #elseif {${xf.type} == 3} {
             luohan;
+            quan;
             #class attack.inner open;
             #ticker {luohan} {
                 luohan;
@@ -116,6 +117,7 @@
         };
         #elseif {${xf.type} == 3} {
             luohan;
+            quan;
             #class attack.inner open;
             #ticker {luohan} {
                 luohan;
