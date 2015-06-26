@@ -442,6 +442,12 @@
         } {10};
     };
 
+    #alias {on_severe_wound} {
+        keyao {
+            xf.b;
+        };
+    };
+
     #action {你的%*进步了！} {
         notify 奖励技能: %%1;
     };
@@ -626,4 +632,5 @@
         chain get.san get.qian repair;
     };
 };
+
 #class xiaofeng close

@@ -310,9 +310,17 @@
             };
         };
     };
+    #action {你已经受伤过重，只怕一运真气便有生命危险！} {
+        #class health.inner kill;
+        on_severe_wound;
+    };
     #class health.inner close;
 
     check_health;
+};
+
+#alias {on_severe_wound } {
+    #cr;
 };
 
 #alias {b2} {
@@ -451,16 +459,16 @@
 };
 
 #macro {\e[1;3A} {#nop ];
-    walk_to north;
+walk_to north;
 };
 #macro {\e[1;3B} {#nop ];
-    walk_to south;
+walk_to south;
 };
 #macro {\e[1;3D} {#nop ];
-    walk_to west;
+walk_to west;
 };
 #macro {\e[1;3C} {#nop ];
-    walk_to east;
+walk_to east;
 };
 
 #alias {chain} {
@@ -912,4 +920,38 @@
         tmp_cure;
     };
     #class cure.inner close;
+};
+
+#alias {keyao} {
+    #alias tmp_keyao #cr;
+    #alias tmp_keyao %1;
+
+    #class on_severe_wound.inner open;
+    #alias {start_keyao} {
+        #ticker {eat_yao} {
+            #if {${qx_percent} < 30} {
+                buy yao;
+                eat yao;
+            };
+            #else {
+                #unticker {eat_yao};
+                #ticker {eat_dan} {
+                    #if {${js_percent} < 30} {
+                        buy dan;
+                        eat dan;
+                    };
+                    #else {
+                        #unticker {eat_dan};
+                        tmp_keyao;
+                    };
+                } {3};
+            };
+        } {3};
+    };
+
+    #class on_severe_wound.inner close;
+    gt 扬州药铺;
+    on_there {
+        start_keyao;
+    };
 };
