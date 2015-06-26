@@ -39,6 +39,7 @@
     #action {对你而言太重了。} {
         notify 身上物品太多, 无法 get;
     };
+
     #action {%*却阻挡不住内力飞泄而出！} {
         show_to_info %0;
         #if {"${char_menpai}" != "xingxiu"} {
@@ -101,8 +102,10 @@
                     xf.b;
                 };
                 #else {
-                    xf.setup;
-                    xf.bl;
+                    on_health {
+                        xf.setup;
+                        xf.bl;
+                    };
                 };
             } {3};
         };
@@ -195,6 +198,9 @@
     } {3};
 
     #action {跳出战圈不打了} {
+        #if {"@getenv{xf_state}" != "STARTED"} {
+            #return;
+        };
         #if {${xf.type} == 3} {
             #delay {xf_delay} {
                 quan;
@@ -306,11 +312,6 @@
         show_to_quest 萧峰: 已擒获 ${xf.real_name};
         on_truce {
             xf.b;
-        };
-        #action {${xf.real_name}略一凝神，精神看起来好多了} {
-            #unaction {${xf.real_name}略一凝神，精神看起来好多了};
-            dian ${xf.real_first_name};
-            get ${xf.real_first_name};
         };
     };
 
