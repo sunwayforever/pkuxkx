@@ -40,6 +40,12 @@
         notify 身上物品太多, 无法 get;
     };
 
+    #action {粱长老看到你闯进来，大喝一声：你不是丐帮弟子，给我滚出去！} {
+        on_unbusy {
+            xf.b;
+        };
+    };
+
     #action {%*却阻挡不住内力飞泄而出！} {
         show_to_info %0;
         #if {"${char_menpai}" != "xingxiu"} {
