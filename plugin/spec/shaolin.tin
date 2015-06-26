@@ -241,7 +241,17 @@
 };
 
 #alias {reborn} {
-
+    #send {jifa cuff luohan-quan};
+    #send {jifa dodge shaolin-shenfa};
+    #send {jifa parry luohan-quan};
+    #send {jifa claw taiji-zhao};
+    #send {jifa force yijin-jing};
+    #send {jifa spear yuejia-qiangfa};
+    #send {jifa whip riyue-bian};
+    #send {jifa iron-cloth jingang-buhuai};
+    #send {jifa staff zui-gun};
+    #send {jifa finger yizhi-chan};
+    bei cuff;
 };
 
 #alias {fmq} {
