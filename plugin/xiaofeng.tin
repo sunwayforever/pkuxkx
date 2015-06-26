@@ -90,33 +90,6 @@
         };
     };
 
-    #var is_dead 0;
-    #action {${char_name}被蒙面杀手杀死了。} {
-        XF.UNCHECK;
-        #var is_dead 1;
-    };
-
-    #action {慢慢地你终于又有了知觉....} {
-        #if {${is_dead} == 1} {
-            notify 挂了;
-            quit_and_restart;
-        };
-        #else {
-            #delay {xf_delay} {
-                #if {${xf.type} == 4} {
-                    #var xf_fail_reason 晕了;
-                    xf.b;
-                };
-                #else {
-                    on_health {
-                        xf.setup;
-                        xf.bl;
-                    };
-                };
-            } {3};
-        };
-    };
-
     #action {你走上前去，试图劝服蒙面杀手，但蒙面杀手不耐烦的转了个身，不愿听你说下去。} {
         XF.CHECK;
         #delay {xf_delay} {
@@ -452,6 +425,33 @@
     #alias {on_severe_wound} {
         keyao {
             xf.b;
+        };
+    };
+
+    #var is_dead 0;
+    #action {${char_name}被蒙面杀手杀死了。} {
+        XF.UNCHECK;
+        #var is_dead 1;
+    };
+
+    #action {慢慢地你终于又有了知觉....} {
+        #if {${is_dead} == 1} {
+            notify 挂了;
+            quit_and_restart;
+        };
+        #else {
+            #delay {xf_delay} {
+                #if {${xf.type} == 4} {
+                    #var xf_fail_reason 晕了;
+                    xf.b;
+                };
+                #else {
+                    on_health {
+                        xf.setup;
+                        xf.bl;
+                    };
+                };
+            } {3};
         };
     };
 
