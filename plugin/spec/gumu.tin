@@ -1,5 +1,5 @@
 #class gumu_spec open
-#var jiali_count 50;
+#var jiali_count 10;
 
 #alias {attack.prepare} {
     yun xinjing;
@@ -45,7 +45,7 @@
             #class attack.inner open;
             #ticker {zhua} {
                 zhua;
-            } {3.8};
+            } {2.8};
             #ticker {suxin} {
                 suxin;
             } {8.8};
@@ -59,14 +59,23 @@
             #ticker {shexin} {
                 shexin;
             } {5.8};
+            #ticker {zhua} {
+                zhua;
+            } {2.8};
             #class attack.inner close;
         };
         #elseif {${xf.type} == 3} {
             #class attack.inner open;
+            #ticker {zhua} {
+                zhua;
+            } {2.8};
             #class attack.inner close;
         };
         #else {
             #class attack.inner open;
+            #ticker {zhua} {
+                zhua;
+            } {2.8};
             #class attack.inner close;
         };
     };
@@ -185,7 +194,7 @@ stat.register ÐÚÓ¿ miss ÄãµÄÁèÀ÷¹¥ÊÆ;
 };
 
 #alias {attack.end} {
-    #var jiali_count 50;
+    #var jiali_count 10;
 };
 
 #alias {xiongyong} {
