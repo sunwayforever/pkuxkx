@@ -1,5 +1,5 @@
 #class template open
-#var jiali_count 50;
+#var jiali_count 10;
 #var hb_max_path_size 60;
 
 #action {如何使用「八仙醉打」呀} {
@@ -257,6 +257,6 @@ stat.register 惊魔 miss 看破了你的企图，侧身避过指力;
 #var menzhong_didian txg;
 
 #alias {attack.end} {
-    #var jiali_count 50;
+    #var jiali_count 10;
 };
 #class template close
