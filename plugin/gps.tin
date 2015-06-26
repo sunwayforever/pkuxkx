@@ -92,6 +92,7 @@ load gps_actions;
     #undelay {there_delay};
     #undelay {gps_delay};
     #unticker {gps_ticker};
+    set brief 2;
 };
 
 #alias {gps.gt} {
