@@ -158,6 +158,7 @@
     attack;
 };
 
+#var in_special_state 0;
 #alias {check_health} {
     #class check_health.inner open;
     #ticker {check_health} {
@@ -167,8 +168,30 @@
         #class check_health.inner kill;
         #var health_info %%1;
         update_status;
+        #if {{@issubstrubg{health_info},¡¢} == 1} {
+            #var in_special_state 1;
+            #delay {check_health_delay} {
+                check_health;
+            } {15};
+            notify ÌØÊâ×´Ì¬, Î£ÏÕ!;
+            we;
+            on_special_state;
+            #alias {on_special_state} {
+                #cr;
+            };
+        };
+        #else {
+            #var in_special_state 0;
+            #alais {on_special_state} {
+                gt bwc;
+            };
+        };
     };
     #class check_health.inner close;
+};
+
+#alais {on_special_state} {
+    gt bwc;
 };
 
 #alias {uncheck_health} {

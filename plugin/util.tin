@@ -104,6 +104,10 @@
     #regexp {%1} {%*%2$} {#var result 1} {#var result 0};
 };
 
+#function {issubstring} {
+    #regexp {%1} {%*%2%*} {#var result 1} {#var result 0};
+};
+
 #function {isalphabet} {
     #regexp {%1} {^%w$} {#var result 1} {#var result 0};
 };
@@ -187,7 +191,7 @@
     };
     #else {
         #format {epoch} {%T};
-        #math result ${epoch}%${max_random}+1;        
+        #math result ${epoch}%${max_random}+1;
     };
 };
 #class util close
