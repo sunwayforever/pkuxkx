@@ -182,7 +182,7 @@
         };
         #else {
             #var in_special_state 0;
-            #alais {on_special_state} {
+            #alias {on_special_state} {
                 gt bwc;
             };
         };
@@ -190,7 +190,7 @@
     #class check_health.inner close;
 };
 
-#alais {on_special_state} {
+#alias {on_special_state} {
     gt bwc;
 };
 
