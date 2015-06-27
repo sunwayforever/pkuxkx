@@ -303,7 +303,7 @@
         };
     };
 
-    #alias {check_qx} {
+    #alias {check_all} {
         dz.full {
             tn.full {
                 check_qx;
@@ -316,7 +316,7 @@
     };
     #class health.inner close;
 
-    check_qx;
+    check_all;
 };
 
 #alias {on_severe_wound } {
