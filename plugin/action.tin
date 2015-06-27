@@ -94,7 +94,6 @@
     get_char_info;
     #action {get_char_info} {
         #unaction {get_char_info};
-        #act {^${char_name}的甜蜜小屋$} {#var CurrentPosition bs};#act {^${char_name}的甜蜜小屋 - $} {#var CurrentPosition bs};
         #action {张 三双手抱拳，对着%*${char_name}作了个揖道} {
             notify 张三;
         };
@@ -110,6 +109,7 @@
         show.init;
         check_baowei;
         update_env;
+        check_health;
         #delay {4} {
             check_fm;
             weapons.check;

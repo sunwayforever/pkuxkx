@@ -1,5 +1,6 @@
 #class status open
 
+#var health_info nil;
 #var exp_info  nil;
 #var xy_info off;
 #var auto_heal 1;
@@ -17,7 +18,7 @@
     #if {${fm_remaining_time} <= 0} {
         #var fm_remaining_time 0;
     };
-    update_status;  
+    update_status;
 };
 
 #ticker {uptime} {
@@ -86,7 +87,7 @@
     #else {
         #var naijiu_info ${min_naijiu}/${special_min_naijiu};
     };
-    #var status_content ${char_name}: ${shaqi_info} | ${exp_info} | ${naijiu_info} ÄÍ¾Ã | ${money_info} | ${daytime_info} | ${uptime_info} | ${week_info} | ${fm_remaining_time};
+    #var status_content ${char_name}: ${shaqi_info} | ${health_info} | ${exp_info} | ${naijiu_info} ÄÍ¾Ã | ${money_info} | ${daytime_info} | ${uptime_info} | ${week_info} | ${fm_remaining_time};
     #if {"${xy_info}" == "on"} {
         #var status_content ${status_content} | ±£ÎÀ;
     };

@@ -147,6 +147,7 @@
     #var fighting 1;
     #class war.inner open;
     #action {你全身放松，坐下来开始运功疗伤。} {
+        check_health;
         mj.stop;
         raw;
     };
@@ -155,6 +156,24 @@
     } {2};
     #class war.inner close;
     attack;
+};
+
+#alias {check_health} {
+    #class check_health.inner open;
+    #ticker {check_health} {
+        #send {hp};
+    } {3};
+    #action {^【 状态 】 %*} {
+        #class check_health.inner kill;
+        #var health_info %%1;
+        update_status;
+    };
+    #class check_health.inner close;
+};
+
+#alias {uncheck_health} {
+    #unticker {check_health};
+    #unaction {^【 状态 】 %*};
 };
 
 #alias {attack.end} {#cr};
@@ -340,4 +359,7 @@
 #action {试图夺走你的兵器} {
     unwi;
 };
+
+#nop 你略一动情，心如刀绞。;
+
 #class war close;
