@@ -83,6 +83,7 @@
     };
 
     #action {要打便打} {
+        #undelay {xf_delay};
         XF.CHECK;
         #if {${xf.type} != -1} {
             follow shashou;
@@ -386,6 +387,9 @@
 
     #alias {xf.check} {
         #class xf.fight.inner open;
+        #delay {xf_delay} {
+            xf.bl;
+        } {5};
         #action {这里没有 shashou。} {
             #class xf.fight.inner kill;
             #delay {xf_delay} {
@@ -593,6 +597,7 @@
 #alias {xf.bl} {
     #class xf.bl.inner open;
     #action {蒙面杀手说道：「就你也配跟我讨教功夫？！」} {
+        #undelay {xf_delay};
         #delay {xf.bl} {
             bl.next;
         } {1};

@@ -168,7 +168,7 @@
         #class check_health.inner kill;
         #var health_info %%1;
         update_status;
-        #if {{@issubstrubg{health_info},¡¢} == 1} {
+        #if {@issubstrubg{${health_info};¡¢} == 1} {
             #var in_special_state 1;
             #delay {check_health_delay} {
                 check_health;
