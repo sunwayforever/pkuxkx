@@ -438,14 +438,19 @@
                 };
             };
             #else {
-                weapons.check;
-                #delay {3} {
-                    xf.b;
-                };
+                xf.b;
             };
         };
-        keyao {
-            xf_check_for_special_state;
+
+        weapons.check;
+        #delay {3} {
+            #if {${need_reload} == 1} {
+                get cloth from bao;
+                we;
+            };
+            keyao {
+                xf_check_for_special_state;
+            };
         };
     };
 
@@ -531,7 +536,7 @@
     #class xf.auto.inner close;
 
     #if {${need_reload} == 1} {
-        chain reload get.san get.qian xf.request;
+        chain reload get.san get.qian get.cloth xf.request;
     };
     #else {
         xf.request;
@@ -653,10 +658,10 @@
 
 #alias {xf.p} {
     #if {${need_reload} == 1} {
-        chain reload get.san get.qian repair;
+        chain reload get.san get.qian repair get.cloth;
     };
     #else {
-        chain get.san get.qian repair;
+        chain get.san get.qian repair get.cloth;
     };
 };
 

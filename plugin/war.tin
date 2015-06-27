@@ -183,6 +183,8 @@
         #else {
             #var in_special_state 0;
             #alias {on_special_state} {
+                get cloth from bao;
+                we;
                 gt bwc;
             };
         };
@@ -191,6 +193,8 @@
 };
 
 #alias {on_special_state} {
+    get cloth from bao;
+    we;
     gt bwc;
 };
 

@@ -82,6 +82,8 @@
 };
 
 #alias {get.bao} {
+    #alias tmp_get_bao #cr;
+    #alias tmp_get_bao %1;
     #class get.bao.inner open;
     #action {你身上没有bao} {
         buy bao;
@@ -96,11 +98,8 @@
     };
     #action {你向当铺买下一个包袱} {
         #class get.bao.inner kill;
-        #delay {3} {
-            s;
-            #if {"%%1" != ""} {
-                %%1;
-            };
+        on_unbusy {
+            tmp_get_bao;
         };
     };
     #class get.bao.inner close;
@@ -245,6 +244,22 @@
         #delay {1} {
             n;e;s;s;w;w;sd;sd;out;w;w;w;s;e;give shouyin to %1
         };
+    };
+};
+
+#alias {get.cloth} {
+    #alias tmp_get_cloth #cr;
+    #alias tmp_get_cloth %1;
+    #alias {buy_cloth} {
+        gt 扬州当铺;
+        on_there {
+            buy cloth;
+            put cloth in bao;
+            tmp_get_cloth;
+        };
+    };
+    get.bao {
+        buy_cloth;
     };
 };
 #class get_item close;
