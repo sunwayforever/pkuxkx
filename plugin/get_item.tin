@@ -44,7 +44,7 @@
     #class money.inner open;
     #alias delay_action {
         #delay {1} {
-            qu 1 cash;
+            qu 2 cash;
         };
     };
     #action {钱眼开说道：「哟，抱歉啊，我这儿正忙着呢……您请稍候。」} {
@@ -56,7 +56,7 @@
 
     #action {^%*张一千两银票(Thousand-cash)} {
         #var cun_count @ctd{%%1};
-        #math cun_count ${cun_count}-1;
+        #math cun_count ${cun_count}-2;
         #if {${cun_count} <= 0} {
             #showme 你拿出零张一千两银票，存进了银号。;
         };
@@ -76,7 +76,7 @@
     };
     #class money.inner close;
     on_there {
-        qu 1 cash;
+        qu 2 cash;
     };
     gt 扬州钱庄;
 };
