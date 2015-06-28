@@ -551,7 +551,7 @@
         #return;
     };
     #if {${need_reload} == 1} {
-        chain reload get.san get.qian get.cloth xf.request;
+        chain reload get.san get.qian xf.request;
     };
     #else {
         xf.request;
@@ -673,10 +673,10 @@
 
 #alias {xf.p} {
     #if {${need_reload} == 1} {
-        chain reload get.san get.qian repair get.cloth;
+        chain reload get.san get.qian repair;
     };
     #else {
-        chain get.san get.qian repair get.cloth;
+        chain get.san get.qian repair;
     };
 };
 

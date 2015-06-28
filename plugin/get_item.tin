@@ -246,20 +246,4 @@
         };
     };
 };
-
-#alias {get.cloth} {
-    #alias tmp_get_cloth #cr;
-    #alias tmp_get_cloth %1;
-    #alias {buy_cloth} {
-        gt —Ô÷›µ±∆Ã;
-        on_there {
-            buy cloth;
-            put cloth in bao;
-            tmp_get_cloth;
-        };
-    };
-    get.bao {
-        buy_cloth;
-    };
-};
 #class get_item close;
