@@ -433,6 +433,16 @@
         } {10};
     };
 
+    #alias {on_huoyandao} {
+        xf.teardown;
+        quit_and_restart;
+    };
+
+    #alias {on_huoqiu} {
+        xf.teardown;
+        quit_and_restart;
+    };
+
     #alias {on_special_state} {
         xf.teardown;
         #if {${xf.type} == 1 || {xf.type} == 2} {
@@ -449,15 +459,8 @@
             };
         };
 
-        weapons.check;
-        #delay {3} {
-            #if {${need_reload} == 1} {
-                get cloth from bao;
-                we;
-            };
-            keyao {
-                xf_check_for_special_state;
-            };
+        keyao {
+            xf_check_for_special_state;
         };
     };
 
@@ -543,6 +546,10 @@
     };
     #class xf.auto.inner close;
 
+    #if {${in_special_state} == 1} {
+        on_special_state;
+        #return;
+    };
     #if {${need_reload} == 1} {
         chain reload get.san get.qian get.cloth xf.request;
     };

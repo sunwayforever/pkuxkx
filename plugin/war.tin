@@ -180,7 +180,6 @@
                 check_health;
             } {15};
             notify 特殊状态, 危险!;
-            we;
             on_special_state;
             #alias {on_special_state} {
                 #cr;
@@ -189,8 +188,6 @@
         #else {
             #var in_special_state 0;
             #alias {on_special_state} {
-                get cloth from bao;
-                we;
                 gt bwc;
             };
         };
@@ -200,11 +197,26 @@
 };
 
 #alias {on_special_state} {
-    get cloth from bao;
-    we;
     gt bwc;
 };
 
+#action {^你身上的%*被火焰刀所焚，象片片破布般飘落。} {
+    notify 火焰刀!;
+    on_huoyandao;
+};
+
+#action {猛烈间火球温度飙升，火花迸射，炸开了你的护具！} {
+    notify 火球!;
+    on_huoqiu;
+};
+
+#alias {on_huoyandao} {
+    #cr;
+};
+
+#alias {on_huoqiu} {
+    #cr;
+};
 #alias {uncheck_health} {
     #unticker {check_health};
     #unaction {^【 状态 】 %*};
