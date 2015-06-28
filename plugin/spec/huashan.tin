@@ -12,6 +12,9 @@
     poqi;
     zongjue;
     #class attack.inner open;
+    #ticker {kuangfeng} {
+        kuangfeng;
+    } {2.8};
     #ticker {poqi} {
         poqi;
     } {3.8};
