@@ -184,7 +184,7 @@
         };
     } {3};
 
-    #action {跳出战圈不打了} {
+    #action {{你|蒙面杀手}身行向后一跃，跳出战圈不打了。} {
         #if {"@getenv{xf_state}" != "STARTED"} {
             #return;
         };
