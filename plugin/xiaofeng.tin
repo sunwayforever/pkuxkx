@@ -444,6 +444,7 @@
     };
 
     #alias {on_special_state} {
+        notify Ãÿ ‚◊¥Ã¨, Œ£œ’!;
         xf.teardown;
         #if {${xf.type} == 1 || {xf.type} == 2} {
             @setenv{xf_state;STARTED};

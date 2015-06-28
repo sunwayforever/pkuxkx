@@ -29,6 +29,7 @@
     };
     #else {
         jingmo;
+        chan;
     };
 
     #class attack.inner open;
@@ -47,8 +48,9 @@
         };
         #else {
             jingmo;
+            chan;
         };
-    } {2.5};
+    } {1};
     #class attack.inner close;
 
     #if {"${quest}" == "hb"} {

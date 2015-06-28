@@ -179,7 +179,6 @@
             #delay {check_health_delay} {
                 check_health;
             } {15};
-            notify ÌØÊâ×´Ì¬, Î£ÏÕ!;
             on_special_state;
             #alias {on_special_state} {
                 #cr;
