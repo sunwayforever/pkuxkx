@@ -167,7 +167,7 @@
 #var in_special_state 0;
 #alias {check_health} {
     #class check_health.inner open;
-    #ticker {check_health} {
+    #ticker {check_hp} {
         #send {hp};
     } {3};
     #action {^¡¾ ×´Ì¬ ¡¿ %*} {
@@ -196,6 +196,7 @@
         };
     };
     #class check_health.inner close;
+    #send {hp};
 };
 
 #alias {on_special_state} {
