@@ -168,6 +168,13 @@
 
         #if {${xf.type} == 2} {
             show_to_quest 萧峰: 擒回: ${xf.real_name};
+
+            #class xf.auto.inner open;
+            #action {你身上没有 ${xf.real_first_name} 这样东西。} {
+                xf.f;
+            } {1};
+            #class xf.auto.inner close;
+
             on_unbusy {
                 get ${xf.real_first_name};
             };
@@ -498,6 +505,7 @@
     #action {萧峰冷冷的盯着你道：「你以为如此弄虚作假能瞒得过我么？」} {
         xf.f;
     };
+
 
     #action {过%*再来问吧。} {
         #if {${xf.requested} == 1} {
