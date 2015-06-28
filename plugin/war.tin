@@ -174,7 +174,7 @@
         #class check_health.inner kill;
         #var health_info %%1;
         update_status;
-        #if {@issubstrubg{${health_info};、} == 1} {
+        #if {@issubstring{${health_info};、} == 1} {
             #var in_special_state 1;
             #delay {check_health_delay} {
                 check_health;
@@ -369,11 +369,6 @@
 #alias {fight} {
     war.prepare;
     #send fight %0;
-};
-
-#var huo_yan_dao 0;
-#action {^你身上的%*被火焰刀所焚，象片片破布般飘落。} {
-    #var huo_yan_dao 1;
 };
 
 #var pfming 0;
