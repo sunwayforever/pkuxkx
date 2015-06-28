@@ -158,6 +158,12 @@
     attack;
 };
 
+#ticker {check_health} {
+    #if {${critical_running} == 0} {
+        check_health;
+    };
+} {170};
+
 #var in_special_state 0;
 #alias {check_health} {
     #class check_health.inner open;

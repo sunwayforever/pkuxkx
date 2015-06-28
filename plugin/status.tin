@@ -63,12 +63,6 @@
     #var money_info @ctd{%1} G;
 };
 
-#ticker {check_hp} {
-    #if {${critical_running} == 0} {
-        #send {hp};
-    };
-} {170};
-
 #gag npc refreshed;
 #alias {zhengdian} {
     #showme guaji.update %1;
