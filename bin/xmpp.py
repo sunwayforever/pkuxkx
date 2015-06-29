@@ -23,5 +23,5 @@ if __name__ == '__main__':
     xmpp.process(block=False)
     while (True):
         line = sys.stdin.readline()
-        xmpp.send_message(mto="messenger@localhost/xkx", mbody=line, mtype='chat')
+        xmpp.send_message(mto="messenger@v587.info/xkx", mbody=line, mtype='chat')
 
