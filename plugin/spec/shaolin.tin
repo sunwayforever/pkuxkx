@@ -78,13 +78,13 @@
             #class attack.inner close;
         };
         #elseif {${xf.type} == 3} {
-            luohan;
-            quan;
             #class attack.inner open;
+            #ticker {quan} {
+                quan;
+            } {3};
             #class attack.inner close;
         };
         #elseif {${xf.type} == 4} {
-            luohan;
             #class attack.inner open;
             #class attack.inner close;
         };
@@ -108,13 +108,13 @@
             #class attack.inner close;
         };
         #elseif {${xf.type} == 3} {
-            luohan;
-            quan;
             #class attack.inner open;
+            #ticker {quan} {
+                quan;
+            } {3};
             #class attack.inner close;
         };
         #elseif {${xf.type} == 4} {
-            luohan;
             #class attack.inner open;
             #class attack.inner close;
         };
