@@ -929,14 +929,14 @@ walk_to east;
     #class on_severe_wound.inner open;
     #alias {start_keyao} {
         #ticker {eat_yao} {
-            #if {${qx_percent} < 30} {
+            #if {${qx_percent} < 50} {
                 buy yao;
                 eat yao;
             };
             #else {
                 #unticker {eat_yao};
                 #ticker {eat_dan} {
-                    #if {${js_percent} < 30} {
+                    #if {${js_percent} < 50} {
                         buy dan;
                         eat dan;
                     };
