@@ -609,6 +609,9 @@
             ask xiao feng about Íê³É;
         };
     };
+    #elseif {"@getenv{xf_state}" == "nil"} {
+        xf.restart;
+    };
 };
 
 #alias {xf.f} {
