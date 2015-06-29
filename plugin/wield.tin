@@ -5,7 +5,7 @@
     #var wi_freezed 1;
 };
 #alias {wi.unfreeze} {
-    #var wi_freezed 0;    
+    #var wi_freezed 0;
 };
 #alias {unwi} {
     #if {${wi_freezed} == 0} {
@@ -26,7 +26,7 @@
     #var wield_type %1;
     #var wield_count 1;
     #if {"%2" != ""} {
-        #var wield_count %2;        
+        #var wield_count %2;
     };
     #if {${wi_freezed} == 0} {
         wield ${${wield_type}_list}[${wield_count}];
@@ -42,7 +42,7 @@
     };
     #list my_weapons clear;
     #list my_special_weapons clear;
-    
+
     #send {id};
     #class weapons.inner open;
     #action {%* = {[^,]+}, {[^,]+},} {
@@ -90,9 +90,9 @@
                 #foreach {${special_${weapon_type}}[%*]} {sw} {
                     #list ${weapon_type}_list add ${sw};
                     #list my_special_weapons add ${sw};
-                };                
+                };
             };
-        };  
+        };
     };
     #class weapons.inner close;
 };
@@ -109,7 +109,7 @@
 #alias {reload} {
     #alias tmp_reload #cr;
     #alias tmp_reload %0;
-    
+
     #action {好了，你走吧} {
         #unaction {好了，你走吧};
         remove all;
@@ -124,9 +124,10 @@
             tmp_reload;
         };
     };
-    
+
     gt 名人堂;
     on_there {
+        save;
         #send {reload};
     };
 };

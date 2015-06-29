@@ -1,5 +1,5 @@
 #class action open;
-#ticker {auto_save} {save} {610}
+#nop #ticker {auto_save} {save} {610}
 
 #macro {\en} {#buffer down};
 #macro {\ep} {#buffer up};
