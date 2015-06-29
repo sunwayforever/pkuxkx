@@ -18,8 +18,8 @@ class Bot(ClientXMPP):
             print ("xmpp message: %s:%s\n" % (msg['from'],msg['body']))
 
 if __name__ == '__main__':
-    xmpp = Bot(sys.argv[1]+'@localhost/xkx', '123456')
-    xmpp.connect(("localhost",5222))
+    xmpp = Bot(sys.argv[1]+'@v587.info/xkx', '123456')
+    xmpp.connect(("v587.info",5222))
     xmpp.process(block=False)
     while (True):
         line = sys.stdin.readline()
