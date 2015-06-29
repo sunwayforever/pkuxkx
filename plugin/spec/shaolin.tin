@@ -1,5 +1,5 @@
 #class template open
-#var jiali_count 10;
+#var jiali_count 5;
 #var hb_max_path_size 60;
 
 #action {如何使用「八仙醉打」呀} {
@@ -81,20 +81,10 @@
             luohan;
             quan;
             #class attack.inner open;
-            #ticker {luohan} {
-                luohan;
-            } {5.8};
             #class attack.inner close;
         };
         #elseif {${xf.type} == 4} {
             luohan;
-            #class attack.inner open;
-            #ticker {luohan} {
-                luohan;
-            } {5.8};
-            #class attack.inner close;
-        };
-        #else {
             #class attack.inner open;
             #class attack.inner close;
         };
@@ -121,20 +111,10 @@
             luohan;
             quan;
             #class attack.inner open;
-            #ticker {luohan} {
-                luohan;
-            } {5.8};
             #class attack.inner close;
         };
         #elseif {${xf.type} == 4} {
             luohan;
-            #class attack.inner open;
-            #ticker {luohan} {
-                luohan;
-            } {5.8};
-            #class attack.inner close;
-        };
-        #else {
             #class attack.inner open;
             #class attack.inner close;
         };
