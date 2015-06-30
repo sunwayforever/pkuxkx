@@ -392,7 +392,6 @@ load gps_actions;
 #nop 建康北山路遍历;
 #nop 福州密室房梁;
 #nop 北京永安门;
-#nop test all gps.clear;
 #nop 长江黄河遍历;
 #nop 桃花岛桃林;
 #nop 嘉兴山洞;
