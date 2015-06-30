@@ -207,11 +207,11 @@
 };
 
 #alias {goto_rest} {
-    gt {武当客房};
+    gt {武当山客房};
 };
 
 #alias {goto_shifu} {
-    gt {武当小屋};
+    gt {武当山小屋};
 };
 
 #list my_weapons_to_wield create {sword; sword 2;};
