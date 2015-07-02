@@ -46,7 +46,7 @@
     #action {(%*)告诉你：san} {
         #alias {burden_check_done} {
             tell %%1 现在有 @getburden{清心散} 包清心散;
-            give %%1 qingxin san;  
+            give %%1 qingxin san;
             show_to_info %%1: @getburden{清心散} 包清心散;
         };
         burden.check {
@@ -66,7 +66,7 @@
 
     #class guasan.inner close;
 
-    gt 星宿储藏室;
+    gt 星宿派储藏室;
     on_there {
         guaji.start qingxin san;
     };
