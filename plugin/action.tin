@@ -128,7 +128,6 @@
                 check_naijiu;
             };
             pfm_special;
-            #send {hp};
             #send {jifa};
             reborn;
             #delay {5} {
