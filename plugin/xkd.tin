@@ -1,7 +1,7 @@
 #class xkd open
 #var xkd_watch_count 10;
 #alias {xkd.start} {
-
+    set_last_quest xkd;
     #class xkd.inner open;
     #alias {fullme} {#cr};
     #alias {quit} {#cr};
@@ -11,9 +11,16 @@
     };
 
     #action {收功站了起来} {
-        start_watch;  
+        start_watch;
     };
-    
+
+    #action {你现在精不够，无法控制内息的流动！} {
+        #delay {xkd_dz_delay} {
+            yun regenerate;
+            dz.dwim;
+        } {10};
+    };
+
     #action {你运功完毕} {
         start_watch;
     };
@@ -28,5 +35,6 @@
 };
 #alias {xkd.stop} {
     #class xkd.inner kill;
+    unset_last_quest;
 };
 #class xkd close
