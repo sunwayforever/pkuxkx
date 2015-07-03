@@ -122,29 +122,28 @@ def get_path_unchecked(conn, from_room, to_room, weight):
 
     return shortest_path(conn,from_room,to_room)
 
-def get_path(conn, from_room, to_room, weight, check_points=["梅庄"]):
-    if not check_points:
-        return get_path_unchecked(conn, from_room, to_room, weight)
+def get_path(conn, from_room, to_room, weight):
+    has_sibao = os.path.isfile("/tmp/pkuxkx_sibao.lock") 
+        
+    from_zone = get_zone(conn,from_room)
+    to_zone = get_zone(conn,to_room)
+
+    if to_zone == "梅庄" and from_zone != to_zone:
+        paths = get_path_unchecked(conn, from_room, 3655, weight)
+        paths.append("gps.qu_sibao")
+        paths.extend(get_path_unchecked(conn, 3655,to_room, weight))
+        return paths;
+
+    if to_zone == "梅庄" and from_zone == to_zone:
+        return get_path_unchecked(conn,from_room, to_room, weight)
+
+    if has_sibao == True:
+        paths = get_path_unchecked(conn, from_room, 3655, weight)
+        paths.append("gps.huan_sibao")
+        paths.extend(get_path_unchecked(conn, 3655,to_room, weight))
+        return paths;
     
-    check_point = check_points.pop()
-    if not check_point:
-        return get_path_unchecked(conn, from_room, to_room, weight)
-
-    if check_point == "梅庄":
-        from_zone = get_zone(conn,from_room)
-        to_zone = get_zone(conn,to_room)
-
-        if to_zone == "梅庄" and from_zone != to_zone:
-            paths = get_path(conn, from_room, 3655, weight, check_points)
-            paths.append("gps.qu_sibao")
-            paths.extend(get_path(conn, 3655,to_room, weight, check_points))
-            return paths;
-        elif from_zone == "梅庄" and from_zone != to_zone:
-            paths = get_path(conn, from_room, 3655, weight, check_points)
-            paths.append("gps.huan_sibao")
-            paths.extend(get_path(conn, 3655,to_room, weight, check_points))
-            return paths;
-    return get_path(conn,from_room, to_room, weight, check_points)
+    return get_path_unchecked(conn,from_room, to_room, weight)
 
 if __name__ == "__main__":
     conn = open_database()

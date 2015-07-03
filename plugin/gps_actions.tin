@@ -351,6 +351,7 @@
             #class gps.action.inner kill;
             #if {@numitems{sibao}==4} {
                 #loop 4 1 i {getout @item{sibao;$i}};
+                #system {touch /tmp/pkuxkx_sibao.lock};
                 #delay 1 {
                     gps.run;
                 };
@@ -370,6 +371,10 @@
 };
 
 #alias {gps.huan_sibao} {
+    #action {^你把身上的《广陵散》拿出来放进柜子里了。} {
+        #unaction {^你把身上的《广陵散》拿出来放进柜子里了。};
+        #system {rm /tmp/pkuxkx_sibao.lock};
+    };
     store ouxue pu;
     store xishan tu;
     store shuaiyi tie;
