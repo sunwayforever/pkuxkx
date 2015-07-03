@@ -8,7 +8,6 @@
     } {300};
     #action {你凭吊完毕,站起身来} {
         #delay {1} {
-            eat_food;
             #delay {2} {
                 pingdiao;
             };
@@ -27,7 +26,6 @@
     unset_last_quest;
     #class pd.inner kill;
     on_unbusy {
-        s;
         show_to_quest 凭吊结束;
     };
 };
