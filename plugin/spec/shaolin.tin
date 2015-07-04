@@ -79,6 +79,10 @@
         };
         #elseif {${xf.type} == 3} {
             #class attack.inner open;
+            #ticker {quan} {
+                halt;
+                quan;
+            } {5};
             #class attack.inner close;
         };
         #elseif {${xf.type} == 4} {
@@ -106,6 +110,10 @@
         };
         #elseif {${xf.type} == 3} {
             #class attack.inner open;
+            #ticker {quan} {
+                halt;
+                quan;
+            } {5};
             #class attack.inner close;
         };
         #elseif {${xf.type} == 4} {
