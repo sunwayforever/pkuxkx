@@ -26,6 +26,7 @@
     };
 
     #ticker {restart} {
+        save;
         start_watch;
     } {300};
 
