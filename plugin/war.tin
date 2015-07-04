@@ -197,8 +197,10 @@
 };
 
 #action {^你身上的%*被火焰刀所焚，象片片破布般飘落。} {
-    notify 火焰刀!;
-    on_huoyandao;
+    #delay {huoyan_dao_delay} {
+        notify 火焰刀!;
+        on_huoyandao;
+    } {3};
 } {1};
 
 #action {猛烈间火球温度飙升，火花迸射，炸开了你的护具！} {
