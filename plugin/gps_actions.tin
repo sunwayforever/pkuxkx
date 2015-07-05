@@ -466,6 +466,10 @@
     enter lou;
 };
 
+#alias {gps.dixiahe} {
+    n;n;e;n;n;w;w;n;n;
+    gps.run;
+};
 #action {炼丹人说道:你怎么能把灵丹拿出去呢?} {
     eat shi;
 };
