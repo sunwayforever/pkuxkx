@@ -457,7 +457,7 @@
                 };
             };
             #else {
-                xf.b;
+                xf.restart;
             };
         };
 
@@ -564,6 +564,7 @@
     gt xf;
     on_there {
         xf.d;
+        xf.f;
         show_to_quest Ïô·å: ×¼±¸;
         on_health {
             xf.q;

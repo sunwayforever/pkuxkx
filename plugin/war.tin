@@ -178,7 +178,7 @@
             #var in_special_state 1;
             #delay {check_health_delay} {
                 check_health;
-            } {15};
+            } {30};
             on_special_state;
             #alias {on_special_state} {
                 #cr;
