@@ -22,6 +22,7 @@
 };
 
 #alias {xf.setup} {
+    #var xf_fail_reason nil;
     bl.stop;
     #alias {xf_on_taopao} {
         #if {${xf.type} == 4} {
