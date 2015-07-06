@@ -195,27 +195,6 @@
     } {5};
 };
 
-#gag {�㲻æ};
-#alias {on_unbusy} {
-    #alias tmp_unbusy #cr;
-    #alias tmp_unbusy %0;
-    #class unbusy.inner open;
-    #action {�㲻æ} {
-        #class unbusy.inner kill;
-        #undelay {delay_unbusy};
-        tmp_unbusy;
-    } {1};
-    #delay {delay_unbusy} {
-        #class unbusy.inner kill;
-        tmp_unbusy;
-    } {6};
-    #ticker {checkbusy} {
-        checkbusy;
-    } {1};
-    #class unbusy.inner close;
-    checkbusy;
-};
-
 #alias {on_halt} {
     #alias tmp_halt #cr;
     #alias tmp_halt %0;
@@ -472,7 +451,16 @@ walk_to east;
 };
 
 #alias {chain} {
-    on_unbusy {%1 {on_unbusy {%2 {on_unbusy {%3 {on_unbusy {%4 {on_unbusy {%5 {on_unbusy {%6 {on_unbusy {%7 {on_unbusy {%8 {on_unbusy {%9 {on_unbusy {%10 {};};};};};};};};};};};};};};};};};};};};
+    on_unbusy %1;
+    on_unbusy %2;
+    on_unbusy %3;
+    on_unbusy %4;
+    on_unbusy %5;
+    on_unbusy %6;
+    on_unbusy %7;
+    on_unbusy %8;
+    on_unbusy %9;
+    on_unbusy %10;
 };
 
 #alias {sell.all} {
@@ -954,4 +942,55 @@ walk_to east;
     on_there {
         start_keyao;
     };
+};
+
+#var busying 0;
+#list unbusy_list create {};
+#alias {do_unbusy} {
+    #list unbusy_list size busy_list_size;
+    #if {${busy_list_size} == 0} {
+        #var busy_action nil;
+    };
+    #else {
+        #list unbusy_list get ${busy_list_size} busy_action;
+        #list unbusy_list delete ${busy_list_size};
+    };
+    #if {"${busy_action}" != "nil"} {
+        #var busying 1;
+        on_unbusy_inner {
+            ${busy_action};
+            do_unbusy;
+        };
+    };
+    #else {
+        #var busying 0;
+    };
+};
+
+#alias {on_unbusy} {
+    #list unbusy_list add {%0};
+    #if {${busying} == 0} {
+        do_unbusy;
+    };
+};
+
+#gag {�㲻æ};
+#alias {on_unbusy_inner} {
+    #alias tmp_unbusy #cr;
+    #alias tmp_unbusy %0;
+    #class unbusy.inner open;
+    #action {�㲻æ} {
+        #class unbusy.inner kill;
+        #undelay {delay_unbusy};
+        tmp_unbusy;
+    } {1};
+    #delay {delay_unbusy} {
+        #class unbusy.inner kill;
+        tmp_unbusy;
+    } {6};
+    #ticker {checkbusy} {
+        checkbusy;
+    } {1};
+    #class unbusy.inner close;
+    checkbusy;
 };
