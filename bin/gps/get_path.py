@@ -9,6 +9,8 @@ from .common import *
 from ..common import Tintin
 from ..common import logger
 
+char_id = ""
+
 def shortest_path_no_weight(conn, src, dst):
     if (src == dst):
         return []
@@ -123,7 +125,11 @@ def get_path_unchecked(conn, from_room, to_room, weight):
     return shortest_path(conn,from_room,to_room)
 
 def get_path(conn, from_room, to_room, weight):
-    has_sibao = os.path.isfile("/tmp/pkuxkx_sibao.lock") 
+    if to_room == -1:
+        return []
+    
+    global char_id
+    has_sibao = os.path.isfile("/tmp/pkuxkx_sibao_%s.lock"%(char_id))
         
     from_zone = get_zone(conn,from_room)
     to_zone = get_zone(conn,to_room)
@@ -146,11 +152,14 @@ def get_path(conn, from_room, to_room, weight):
     return get_path_unchecked(conn,from_room, to_room, weight)
 
 if __name__ == "__main__":
+    global char_id
+    
     conn = open_database()
 
     from_room = int(sys.argv[1])
     to_room = int(sys.argv[2])
     weight = sys.argv[3]
+    char_id = sys.argv[4]
 
     paths = get_path(conn, from_room, to_room, weight);
         

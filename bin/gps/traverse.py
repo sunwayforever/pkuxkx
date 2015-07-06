@@ -81,7 +81,7 @@ def traverse_dfs(conn, roomno, location=None):
 if __name__ == "__main__":
     conn = open_database()
     roomno = int(sys.argv[1])
-    if len(sys.argv) == 3:
+    if len(sys.argv) == 4:
         location = sys.argv[2]
     else:
         location = None
