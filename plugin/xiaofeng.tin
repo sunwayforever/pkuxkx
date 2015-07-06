@@ -15,6 +15,7 @@
 
 #alias {xf.teardown} {
     #var quest nil;
+    #undelay {xf_delay};
     #var xf.requested 0;
     #class xiaofeng.inner kill;
     #class xf.fight.inner kill;
@@ -308,27 +309,27 @@
         @setenv{xf_state;ENDED};
         #showme 收工;
         show_to_quest 萧峰: 已杀死;
-        #delay {3} {
+        #delay {xf_delay} {
             xf.b;
-        };
+        } {3};
     };
 
     #action {硬生生的将%*的头颅从尸体上扯了下来，提在手中！} {
         @setenv{xf_state;ENDED};
         #showme 收工;
         show_to_quest 萧峰: 已杀死;
-        #delay {3} {
+        #delay {xf_delay} {
             xf.b;
-        };
+        } {3};
     };
 
     #action {将血淋淋的首级提在手中} {
         @setenv{xf_state;ENDED};
         #showme 收工;
         show_to_quest 萧峰: 已杀死;
-        #delay {3} {
+        #delay {xf_delay} {
             xf.b;
-        };
+        } {3};
     };
 
     #action {血淋淋的首级咕噜噜的滚落在地} {
