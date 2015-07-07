@@ -794,13 +794,16 @@ walk_to east;
     #class fullme_inner open;
     #action {福米完成} {
         #class fullme_inner kill;
+        #undelay {fullme_delay};
         tmp_on_fullme;
     };
     #action {福米没到时间呢} {
         #class fullme_inner kill;
+        #undelay {fullme_delay};
     };
     #action {福米失败} {
         #class fullme_inner kill;
+        #undelay {fullme_delay};
     };
     #delay {fullme_delay} {
         #class fullme_inner kill;
