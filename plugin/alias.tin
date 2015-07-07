@@ -802,8 +802,16 @@ walk_to east;
     #action {¸£Ã×Ê§°Ü} {
         #class fullme_inner kill;
     };
+    #delay {fullme_delay} {
+        #class fullme_inner kill;
+        on_fullme_timeout;
+    } {1200};
     #class fullme_inner close;
     notify ¸£Ã×;
+};
+
+#alias {on_fullme_timeout} {
+    lw.start;
 };
 
 #alias {fm} {
@@ -984,4 +992,16 @@ walk_to east;
     } {1};
     #class unbusy.inner close;
     checkbusy;
+};
+
+#alias {start} {
+    stop;
+    #var starting_quest %1;
+    set_last_quest ${starting_quest};
+    ${starting_quest}${DOT}start;
+};
+
+#alias {stop} {
+    #var last_quest @getenv{last_quest};
+    ${last_quest}${DOT}stop;
 };

@@ -111,21 +111,32 @@
 };
 
 #alias {get.fan} {
-    #var orig_here ${CurrentPosition};
+    #alias tmp_get_fan #cr;
+    #alias tmp_get_fan %1;
     #class get.fan.inner open;
     #action {哟，抱歉啊，我这儿正忙着呢……您请稍候。} {
         buy tea 30;
     };
     #action {你从江来福那里买下了%*酥油茶} {
         #class get.fan.inner kill;
-        #if {"%1" != ""} {
-            %1;
+        tmp_get_fan;
+    };
+    #alias {burden.check.done} {
+        #var cha_count @getburden{酥油茶};
+        #if {${cha_count} > 50} {
+            #showme 你从江来福那里买下了零碗酥油茶;
+        };
+        #else {
+            gps.gt 来福杂货;
+            on_there {
+                buy tea 30;
+            };
         };
     };
     #class get.fan.inner close;
-    gps.gt 来福杂货;
-    on_there {
-        buy tea 30;
+
+    burden.check {
+        burden.check.done;
     };
 };
 

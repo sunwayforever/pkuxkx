@@ -48,7 +48,7 @@
         #list special_skills_level add ${special_skill_level};
     };
 
-    #action {~\e[1;31m%d%s%d\e[2;37;0m} {
+    #action {~\e[1;31m%d%s%d\e[2;37;0m} { #nop ]];
         #var max_level %%1;
     };
 
@@ -195,6 +195,10 @@
 };
 
 #alias {lw.restart} {
+    chain get.qian get.fan lw.restart.inner;
+};
+
+#alias {lw.restart.inner} {
     #var lw_paused 1;
     #list special_skills clear;
     #list special_skills_level clear;
