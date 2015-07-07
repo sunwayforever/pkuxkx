@@ -9,8 +9,6 @@ from .common import *
 from ..common import Tintin
 from ..common import logger
 
-char_id = ""
-
 def shortest_path_no_weight(conn, src, dst):
     if (src == dst):
         return []

@@ -559,7 +559,10 @@
     };
     #class xf.auto.inner close;
 
-    #var xf.type @getenv{xf_type;-1};
+    #var xf.type @getenv{xf_type};
+    #if {"${xf.type}" == "nil"} {
+        #var xf.type -1;
+    };
     #if {${in_special_state} == 1} {
         on_special_state;
         #return;
