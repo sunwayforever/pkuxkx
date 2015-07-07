@@ -195,10 +195,17 @@
 };
 
 #alias {lw.restart} {
-    chain get.qian get.fan lw.restart.inner;
+    burden.check {
+        lw.restart.inner;
+    };
 };
 
 #alias {lw.restart.inner} {
+    #if {@getburden{ËÖÓÍ²è} < 30} {
+        lw.stop;
+        chain get.qian get.fan lw.start;
+        #return;
+    };
     #var lw_paused 1;
     #list special_skills clear;
     #list special_skills_level clear;

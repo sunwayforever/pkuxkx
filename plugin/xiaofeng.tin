@@ -1,5 +1,6 @@
 #class xiaofeng open
 #var xf.requested 0;
+#var xf.type -1;
 
 #alias {XF.UNCHECK} {
     #undelay {xf_check_delay};
