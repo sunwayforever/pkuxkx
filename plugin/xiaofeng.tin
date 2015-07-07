@@ -1,5 +1,4 @@
 #class xiaofeng open
-#var xf.type -1;
 #var xf.requested 0;
 
 #alias {XF.UNCHECK} {
@@ -247,6 +246,7 @@
     #action {你去将他擒回这里交给我} {
         #if {${xf.requested} == 1} {
             #var xf.type 2;
+            @setenv{xf_type;2};
             show_to_quest 萧峰: 擒回: ${xf.target};
         };
     };
@@ -254,6 +254,7 @@
     #action {你去将他除掉，取其首级回来。} {
         #if {${xf.requested} == 1} {
             #var xf.type 1;
+            @setenv{xf_type;1};
             show_to_quest 萧峰: 杀死: ${xf.target};
         };
     };
@@ -285,6 +286,7 @@
     #action {尚可教化} {
         #if {${xf.requested} == 1} {
             #var xf.type 3;
+            @setenv{xf_type;3};
             show_to_quest 萧峰: 劝: ${xf.target};
         };
     };
@@ -292,6 +294,7 @@
     #action {让他认输就好} {
         #if {${xf.requested} == 1} {
             #var xf.type 4;
+            @setenv{xf_type;4};
             show_to_quest 萧峰: 战胜: ${xf.target};
         };
     };
@@ -556,6 +559,7 @@
     };
     #class xf.auto.inner close;
 
+    #var xf.type @getenv{xf_type;-1};
     #if {${in_special_state} == 1} {
         on_special_state;
         #return;
