@@ -183,6 +183,7 @@
 };
 
 #alias {lw.restart} {
+    stop_ticker;
     burden.check {
         lw.restart.inner;
     };
