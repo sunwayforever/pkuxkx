@@ -348,12 +348,12 @@
         #undelay {xf_delay};
         raw;
         #if {${xf.type} == 1} {
-            on_unbusy {
+            on_truce {
                 zhan corpse;
             };
         };
         #else {
-            on_unbusy {
+            on_truce {
                 #send {l};
             };
         };

@@ -807,6 +807,7 @@ walk_to east;
     };
     #delay {fullme_delay} {
         #class fullme_inner kill;
+        notify ¸£Ã×³¬Ê±;
         on_fullme_timeout;
     } {1200};
     #class fullme_inner close;
