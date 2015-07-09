@@ -386,7 +386,7 @@
 
 #var dot .;
 #alias {log.start} {
-    #log overwrite debug.${char_id}${dot}log;
+    #log overwrite debug${dot}${char_id}${dot}log;
     #debug all log;
     #var debug_info on;
     update_status;
@@ -996,16 +996,4 @@ walk_to east;
     } {1};
     #class unbusy.inner close;
     checkbusy;
-};
-
-#alias {start} {
-    stop;
-    #var starting_quest %1;
-    set_last_quest ${starting_quest};
-    ${starting_quest}${DOT}start;
-};
-
-#alias {stop} {
-    #var last_quest @getenv{last_quest};
-    ${last_quest}${DOT}stop;
 };

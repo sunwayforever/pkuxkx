@@ -351,7 +351,7 @@
             #class gps.action.inner kill;
             #if {@numitems{sibao}==4} {
                 #loop 4 1 i {getout @item{sibao;$i}};
-                #system {touch /tmp/pkuxkx_sibao_${char_id}.lock};
+                #system {touch /tmp/pkuxkx_sibao_${char_id}${dot}lock};
                 #delay 1 {
                     gps.run;
                 };
@@ -374,11 +374,11 @@
     #class gps_huan_sibao.inner open;
     #action {^你把身上的《广陵散》拿出来放进柜子里了。} {
         #class gps_huan_sibao.inner kill;
-        #system {rm /tmp/pkuxkx_sibao_${char_id}.lock};
+        #system {rm /tmp/pkuxkx_sibao_${char_id}${dot}lock};
     };
     #action {^你要把什么放到储藏柜里呢？} {
         #class gps_huan_sibao.inner kill;
-        #system {rm /tmp/pkuxkx_sibao_${char_id}.lock};
+        #system {rm /tmp/pkuxkx_sibao_${char_id}${dot}lock};
     };
     #class gps_huan_sibao.inner close;
     store ouxue pu;
