@@ -58,17 +58,14 @@ load gps_actions;
         #var src_roomno ${gps.roomno};
         #if {${src_roomno} == ${dst_roomno}} {
             #var gps_gt_check_count 0;
-            #delay {1} {
-                do_show {GPS: 抵达目的地};
-            };
+            pause_screen;
+            do_show {GPS: 抵达目的地};
         };
         #else {
             #math gps_gt_check_count ${gps_gt_check_count}+1;
             #if {${gps_gt_check_count} >= 20} {
                 #var gps_gt_check_count 0;
-                #delay {1} {
-                    do_show {GPS: 抵达目的地};
-                };
+                do_show {GPS: 抵达目的地};
             };
             #else {
                 #if {${gps_stop} == 0} {
@@ -121,9 +118,8 @@ load gps_actions;
             };
 
             #if {${dst_roomno} == ${src_roomno}} {
-                #delay {1} {
-                    do_show {GPS: 抵达目的地};
-                };
+                pause_screen;
+                do_show {GPS: 抵达目的地};
             };
             #else {
                 #format {epoch_from} {%T};

@@ -21,7 +21,6 @@ def get_room(conn, desc):
         return row[0]
 
     desc = fixup_area(desc)
-    logger.error("get_room: %s"%(desc))
     # gt 扬州醉仙楼
     sql = "select distinct(zone) from mud_room"
     rows = conn.execute(sql).fetchall()
