@@ -14,11 +14,13 @@
     #if {"%2" == "hit"} {
         #action {%3} {
             #math %1_hit ${%1_hit}+1;
+            on_skill_hit %1;
         };
     };
     #elseif {"%2" == "miss"} {
         #action {%3} {
             #math %1_miss ${%1_miss}+1;
+            on_skill_hit %1;
         };
     };
     #elseif {"%2" == "all"} {

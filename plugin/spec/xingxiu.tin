@@ -8,41 +8,40 @@
 
 #alias {attack} {
     #if {"${quest}" == "hb"} {
-        huose;
+        pfm huose;
         #class attack.inner open;
         #ticker {huose} {
-            huose;
+            pfm huose;
         } {3};
         #class attack.inner close;
     };
     #else {
+        #class attack.inner open;
+        #ticker {huose} {
+            pfm huose;
+        } {3};
+        #class attack.inner kill;
         #if {${xf.type} == -1 || ${xf.type} == 1} {
-            chousui;
-            huose;
+            pfm chousui;
+            pfm huose;
             #class attack.inner open;
-            #ticker {huose} {
-                huose;
-            } {3};
             #ticker {huoqiu} {
-                huoqiu;
+                pfm huoqiu;
             } {4.8};
             #class attack.inner close;
         };
         #elseif {${xf.type} == 2} {
-            chousui;
+            pfm chousui;
             #class attack.inner open;
-            #ticker {huose} {
-                huose;
-            } {3.8};
             #class attack.inner close;
         };
         #elseif {${xf.type} == 3} {
-            chousui;
+            pfm chousui;
             #class attack.inner open;
             #class attack.inner close;
         };
         #else {
-            chousui;
+            pfm chousui;
             #class attack.inner open;
             #class attack.inner close;
         };

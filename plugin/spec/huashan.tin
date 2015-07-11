@@ -33,10 +33,22 @@
     };
     #else {
         #if {${xf.type} == -1 || ${xf.type} == 1} {
-            #cr;
+            #class attack.inner open;
+            #alias {on_skill_hit} {
+                #if {"%%1" == "养吾"} {
+                    pfm jianzhang;
+                };
+            };
+            #class attack.inner close;
         };
         #elseif {${xf.type} == 2} {
-            #cr;
+            #class attack.inner open;
+            #alias {on_skill_hit} {
+                #if {"%%1" == "养吾"} {
+                    pfm jianzhang;
+                };
+            };
+            #class attack.inner close;
         };
         #elseif {${xf.type} == 3} {
             #cr;
@@ -228,6 +240,8 @@ stat.register 狂风 miss 使你的「狂风卷地」没有起到任何作用;
 stat.register 狂风 hit 顿时觉得压力骤增，手腕一麻;
 stat.register 汹涌 hit 只觉得犹如身陷洪涛巨浪，跌跌撞撞;
 stat.register 汹涌 miss 你的凌厉攻势;
+stat.register 养吾 hit 结果他被你攻了个措手不及！;
+stat.register 养吾 miss 你的养吾剑气效果大打折扣。;
 
 #alias {xiongyong} {
     unwield all;

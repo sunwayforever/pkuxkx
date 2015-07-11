@@ -109,6 +109,14 @@
 };
 
 #alias {raw} {
+    #alias {on_skill_hit} {
+        #var not_used %%0;
+        #cr;
+    };
+    #alias {on_skill_miss} {
+        #var not_used %%0;
+        #cr;
+    };
     #var pfming 0;
     @stackcreate{pfm};
     #var fighting 0;
