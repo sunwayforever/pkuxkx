@@ -115,9 +115,12 @@
     #alias tmp_get_fan %1;
     #class get.fan.inner open;
     #action {哟，抱歉啊，我这儿正忙着呢……您请稍候。} {
-        buy tea 30;
+        #delay {get_fan_delay} {
+            buy tea 30;
+        } {5};
     };
     #action {你从江来福那里买下了%*酥油茶} {
+        #undelay {get_fan_delay};
         #class get.fan.inner kill;
         tmp_get_fan;
     };
