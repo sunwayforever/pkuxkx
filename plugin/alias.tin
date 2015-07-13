@@ -457,13 +457,39 @@ walk_to east;
 #alias {sell.all} {
     #alias tmp_sell #cr;
     #alias tmp_sell %1;
-    on_there {
-        sell all;
-        #delay {3} {
-            tmp_sell;
+    #alias {sell_random_weapon} {
+        on_there {
+            sell all;
+            #delay {3} {
+                sell_other;
+            };
         };
+        gt rbz;
     };
-    gt rbz;
+
+    #alias {sell_other} {
+        #class sell_other.inner open;
+        #action {你身上没有puti zi} {
+            #ticker {sell_other} {
+                sell baicao dan;
+            } {1};
+        };
+        #action {你身上没有baicao dan} {
+            #class sell_other.inner kill;
+            #unticker {sell_other};
+            #delay {3} {
+                tmp_sell;
+            };
+        };
+        #class sell_other.inner close;
+        on_there {
+            #ticker {sell_other} {
+                sell puti zi;
+            } {1};
+        };
+        gt 扬州当铺;
+    };
+    sell_random_weapon;
 };
 
 #alias {repair} {

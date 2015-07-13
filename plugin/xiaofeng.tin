@@ -589,6 +589,7 @@
 };
 
 #alias {xf.stop} {
+    XF.UNCHECK;
     log.stop;
     unset_last_quest;
     health.cancel;
