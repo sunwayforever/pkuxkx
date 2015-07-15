@@ -12,7 +12,7 @@ if __name__ == '__main__':
     tt.write("@mapcreate{burden};\n")
 
     for item in re.split("  +", sys.argv[1]):
-        m = re.match("([一二三四五六七八九十百千万]+).(.*?)\(.*?\)", item)
+        m = re.match("([零一二三四五六七八九十百千万]+).(.*?)\(.*?\)", item)
         if m:
             item_name = m.group(2)
             item_count = m.group(1)
