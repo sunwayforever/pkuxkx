@@ -8,18 +8,18 @@
 };
 
 #alias {attack} {
-    chan;
-    poqi;
-    zongjue;
+    pfm chan;
+    pfm poqi;
+    pfm zongjue;
     #class attack.inner open;
     #ticker {kuangfeng} {
-        kuangfeng;
+        pfm kuangfeng;
     } {2.8};
     #ticker {poqi} {
-        poqi;
+        pfm poqi;
     } {3.8};
     #ticker {zongjue} {
-        zongjue;
+        pfm zongjue;
     } {4.8};
     #class attack.inner close;
 
@@ -127,10 +127,12 @@
 };
 
 #alias {kuangfeng} {
-    unwi;
-    do_wield sword;
-    perform dugu-jiujian.kuangfeng;
-    wi;
+    #if {${with_weapon} == 1} {
+        unwi;
+        do_wield sword;
+        perform dugu-jiujian.kuangfeng;
+        wi;
+    };
 };
 
 #alias {feijian} {
