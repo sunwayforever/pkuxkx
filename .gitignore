@@ -1,3 +1,4 @@
 debug*log
 *pyc
 __pycache__
+.sync
