@@ -14,6 +14,7 @@ room_alias = {
     "丐帮暗道":1484,
     "扬州暗道":1484,
     "杀手帮消魂屋":400,
+    "华山寝室":1107,
 }
 def get_room(conn, desc):
     if desc in room_alias:
