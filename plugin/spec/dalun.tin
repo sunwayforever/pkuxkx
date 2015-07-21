@@ -46,15 +46,15 @@
 	#cr
 };
 
-#alias {map_goto_lingwu} {
+#alias {goto_lingwu} {
 	gt 苦修扎仓;
 };
 
-#alias {map_goto_rest} {
+#alias {goto_rest} {
 	gt 清心舍;
 };
 
-#alias {map_goto_shifu} {
+#alias {goto_shifu} {
 	gt 法堂二楼;
 };
 
@@ -66,4 +66,16 @@
 #var shifu zhi;
 
 #var char_menpai_position xkt;
+
+#alias {reborn} {
+    #send {jifa hand dashou-yin};
+    #send {jifa dodge yuxue-dunxing};
+    #send {jifa parry huoyan-dao};
+    #send {jifa strike huoyan-dao};
+    #send {jifa sword xuantie-jian};
+    #send {jifa force longxiang-boruo};
+    bei none;
+    bei strike;
+};
+
 #class dalun_spec close
