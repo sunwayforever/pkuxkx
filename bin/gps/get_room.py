@@ -17,6 +17,7 @@ room_alias = {
     "华山寝室":1107,
     "无量山书房":3478,
     "小山村小棚子":1067,
+    "姑苏慕容小路":2665,
 }
 def get_room(conn, desc):
     if desc in room_alias:
