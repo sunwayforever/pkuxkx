@@ -569,6 +569,8 @@
         on_special_state;
         #return;
     };
+    drop yun tie;
+    drop huo tong;
     #if {${need_reload} == 1} {
         chain reload get.san get.qian xf.request;
     };
