@@ -10,7 +10,7 @@
     #delay {xf_check_delay} {
         XF.CHECK;
         xf.b;
-    } {120};
+    } {180};
 };
 
 #alias {xf.teardown} {
@@ -20,6 +20,7 @@
     #class xiaofeng.inner kill;
     #class xf.fight.inner kill;
     #class xf.bl.inner kill;
+    bl.stop;
 };
 
 #alias {xf.setup} {
