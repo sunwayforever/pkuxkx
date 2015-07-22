@@ -7,7 +7,43 @@
 };
 
 #alias {attack} {
-    #cr;
+    #class attack.inner open;
+    #if {"${quest}" == "hb"} {
+        #class attack.inner open;
+        #class attack.inner close;
+    };
+    #elseif {${mj_started}  == 1} {
+        pfm fen;
+        #class attack.inner open;
+        #ticker {fen} {
+            pfm fen;
+        } {5.8};
+        #class attack.inner close;
+        #if {${xf.type} == -1 || ${xf.type} == 1} {
+        };
+        #elseif {${xf.type} == 2} {
+        };
+        #elseif {${xf.type} == 3} {
+        };
+        #elseif {${xf.type} == 4} {
+        };
+    };
+    #else {
+        pfm fen;
+        #class attack.inner open;
+        #ticker {fen} {
+            pfm fen;
+        } {5.8};
+        #class attack.inner close;
+        #if {${xf.type} == -1 || ${xf.type} == 1} {
+        };
+        #elseif {${xf.type} == 2} {
+        };
+        #elseif {${xf.type} == 3} {
+        };
+        #elseif {${xf.type} == 4} {
+        };
+    };
 };
 
 #alias {fen} {
