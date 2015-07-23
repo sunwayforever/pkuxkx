@@ -387,16 +387,27 @@
         #class xf.bl.inner kill;
         detect_mingjiao shashou;
         #if {${xf.type} == 1} {
-            kill shashou;
+            on_unbusy {
+                kill shashou;
+            };
         };
         #elseif {${xf.type} == 2} {
-            hit shashou;
+            on_unbusy {
+                hit shashou;
+            };
         };
         #elseif {${xf.type} == 3} {
-            hit shashou;
+            on_unbusy {
+                hit shashou;
+            };
         };
         #elseif {${xf.type} == 4} {
-            fight shashou;
+            on_unbusy {
+                fight shashou;
+            };
+        };
+        #else {
+            notify xf.type is wrong: ${xf.type};
         };
     };
 
