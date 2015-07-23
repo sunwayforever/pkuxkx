@@ -1,13 +1,13 @@
 #class gaibang_spec open
 
-#var jiali_count 5;
+#var jiali_count 50;
 #var with_weapon 1;
 #alias {attack.prepare} {
     yun powerup;
 };
 
 #alias {attack.end} {
-    #var jiali_count 5;
+    #var jiali_count 50;
     #var with_weapon 1;
 };
 
@@ -35,67 +35,27 @@
             #var jiali_count max;
             pfm sanhui;
         };
-        #elseif {${xf.type} == 2} {
+        #elseif {${xf.type} == 2 || ${xf.type} == 3 || ${xf.type} == 4} {
             pfm sanhui;
-            #class attack.inner open;
-            #ticker {chuo} {
-                pfm chuo;
-            } {3.8};
-            #class attack.inner close;
-        };
-        #elseif {${xf.type} == 3} {
-            pfm chuo;
-            #class attack.inner open;
-            #ticker {chuo} {
-                pfm chuo;
-            } {3.8};
-            #class attack.inner close;
-        };
-        #elseif {${xf.type} == 4} {
-            pfm chuo;
-            #class attack.inner open;
-            #ticker {chuo} {
-                pfm chuo;
-            } {3.8};
-            #class attack.inner close;
         };
     };
     #else {
+        #class attack.inner open;
+        #ticker {zhuan} {
+            pfm zhuan;
+        } {3.8};
+        #class attack.inner close;
         #if {${xf.type} == -1 || ${xf.type} == 1} {
             #var jiali_count max;
             pfm sanhui;
             #class attack.inner open;
-            #ticker {chuo} {
-                pfm chuo;
-            } {3.8};
             #ticker {sanhui} {
                 pfm sanhui;
             } {5.8};
             #class attack.inner close;
         };
-        #elseif {${xf.type} == 2} {
-            pfm chuo;
-            #class attack.inner open;
-            #ticker {chuo} {
-                pfm chuo;
-            } {3.8};
-            #class attack.inner close;
-        };
-        #elseif {${xf.type} == 3} {
-            pfm chuo;
-            #class attack.inner open;
-            #ticker {chuo} {
-                pfm chuo;
-            } {3.8};
-            #class attack.inner close;
-        };
-        #elseif {${xf.type} == 4} {
-            pfm chuo;
-            #class attack.inner open;
-            #ticker {chuo} {
-                pfm chuo;
-            } {3.8};
-            #class attack.inner close;
+        #elseif {${xf.type} == 2 || ${xf.type} == 3 || ${xf.type} == 4} {
+            pfm zhuan;
         };
     };
 };
@@ -144,6 +104,7 @@
 
 #alias {zhuan} {
     unwi;
+    jiali ${jiali_count};
     do_wield staff;
     perform dagou-bang.zhuan;
     wi;
