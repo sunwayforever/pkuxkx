@@ -290,11 +290,6 @@
         };
     };
 
-    #action {你现在的气太少了，无法产生内息运行全身经脉。} {
-        #class health.inner kill;
-        on_severe_wound;
-    };
-
     #action {你已经受伤过重，只怕一运真气便有生命危险！} {
         #class health.inner kill;
         on_severe_wound;
