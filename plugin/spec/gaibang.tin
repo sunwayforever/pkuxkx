@@ -99,9 +99,11 @@
 };
 
 #alias {goto_lingwu} {
+    gt gb;
 };
 
 #alias {goto_rest} {
+    gt gb;
 };
 
 #alias {goto_shifu} {
