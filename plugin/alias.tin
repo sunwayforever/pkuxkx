@@ -152,12 +152,18 @@
         } {15};
 
         #class pp.inner open;
+        #action {告诉你：【%*(%*)】目前在【%*的%*】,快去摁死它吧!} {
+            #class pp.inner kill;
+            #unticker {pp};
+            show_to_pp %%1(%%2) @ %%4;
+            tmp_auto_pp %%4;
+        } {1};
         #action {告诉你：【%*(%*)】目前在【%*】,快去摁死它吧!} {
             #class pp.inner kill;
             #unticker {pp};
             show_to_pp %%1(%%2) @ %%3;
             tmp_auto_pp %%3;
-        } {1};
+        } {2};
         #action {告诉你：【%*】并不存在} {
             #class pp.inner kill;
             #unticker {pp};

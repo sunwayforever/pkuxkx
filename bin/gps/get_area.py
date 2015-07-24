@@ -13,7 +13,8 @@ def get_area(conn, desc):
     rows = conn.execute(sql).fetchall()
     actual_zone=""
     for row in rows:
-        if desc.startswith (row[0]):
+        prefix=os.path.commonprefix((desc, row[0]))
+        if len(prefix) != 0:
             current_zone=row[0]
             if len(current_zone) > len(actual_zone):
                 actual_zone = current_zone

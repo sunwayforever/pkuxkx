@@ -5,9 +5,6 @@
 	#ticker {tisha} {
 		tisha;
 	} {1.8};
-    #ticker {duo} {
-		duo;
-	} {4.8};
 	#class attack.inner close;
 };
 
@@ -78,13 +75,13 @@
 	jindou;
 };
 
-#macro {\e[15~} {
+#macro {\e[15~} { #nop ]
 };
 
-#macro {\e[17~} {
+#macro {\e[17~} { #nop ]
 };
 
-#macro {\e[18~} {
+#macro {\e[18~} { #nop ]
 };
 
 #alias {qudu} {

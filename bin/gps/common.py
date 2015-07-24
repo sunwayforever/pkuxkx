@@ -45,7 +45,7 @@ area_alias = [
 
 def fixup_area(desc):
     for [k,v] in area_alias:
-        if re.match("^%s"%(k),desc):
+        if re.match("^%s"%(k),desc) and not re.match("^%s"%(v),desc):
             desc = "%s%s"%(v,desc[len(k):])
             break
     return desc
