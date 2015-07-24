@@ -48,6 +48,10 @@
     #action {%* = {[^,]+}, {[^,]+},} {
         #var weapon_type %%2;
         #var weapon_name %%3;
+        #if {@len{${weapon_name}} < @len{${weapon_type}}} {
+            #var weapon_type %%3;
+            #var weapon_name %%2;
+        };
         #if {@startwith{${weapon_name};my} == 1} {
             #var need_reload 0;
         };
@@ -70,7 +74,7 @@
             };
         };
     } {2};
-    #action {%* = {[^,]+},} {
+    #action {%* = {[^,]+}} {
         #var weapon_type %%2;
         #var weapon_name %%2;
         #list ${weapon_type}_list size tmp_weapons_size;

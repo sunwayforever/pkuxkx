@@ -10,6 +10,8 @@
 #var hb_rotate_location_count 0;
 #var hb_robber_count 0;
 
+#var HB_WEIGHT "1,1,1,-1,-1,1,-1,-1";
+
 @mapcreate{robber_score};
 @mapset{robber_score;gaibang;9};
 @mapset{robber_score;taohua;8};
@@ -671,7 +673,7 @@
             #math hb_remaining_path_size ${hb_remaining_path_size}-${hb_path_index};
             #var gps.from_roomno ${gps.roomno};
             INVOKE gps.get_room ${hb_dest};
-            INVOKE gps.get_path ${gps.from_roomno} ${gps.roomno} "1,1,1,-1,-1,1,-1";
+            INVOKE gps.get_path ${gps.from_roomno} ${gps.roomno} ${HB_WEIGHT};
             #var hb_path ${gps_path};
             #var hb_path_index 1;
             #list hb_path size hb_path_size;
