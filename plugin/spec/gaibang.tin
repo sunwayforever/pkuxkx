@@ -40,11 +40,6 @@
         };
     };
     #else {
-        #class attack.inner open;
-        #ticker {zhuan} {
-            pfm zhuan;
-        } {3.8};
-        #class attack.inner close;
         #if {${xf.type} == -1 || ${xf.type} == 1} {
             #var jiali_count max;
             pfm sanhui;
@@ -52,10 +47,29 @@
             #ticker {sanhui} {
                 pfm sanhui;
             } {5.8};
+            #class attack.inner open;
+            #ticker {zhuan} {
+                pfm zhuan;
+            } {3.8};
+            #class attack.inner close;
+
             #class attack.inner close;
         };
-        #elseif {${xf.type} == 2 || ${xf.type} == 3 || ${xf.type} == 4} {
+        #elseif {${xf.type} == 2} {
             pfm zhuan;
+            #class attack.inner open;
+            #ticker {zhuan} {
+                pfm zhuan;
+            } {3.8};
+            #class attack.inner close;
+        };
+        #elseif {${xf.type} == 3 || ${xf.type} == 4} {
+            pfm chuo;
+            #class attack.inner open;
+            #ticker {chuo} {
+                pfm chuo;
+            } {3.8};
+            #class attack.inner close;
         };
     };
 };
