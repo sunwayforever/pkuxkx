@@ -36,7 +36,7 @@
             pfm sanhui;
         };
         #elseif {${xf.type} == 2 || ${xf.type} == 3 || ${xf.type} == 4} {
-            pfm sanhui;
+            pfm chuo;
         };
     };
     #else {
