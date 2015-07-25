@@ -11,6 +11,7 @@ def open_database():
     return open_gps_database()
 
 area_alias = [
+    ["武当","武当山"],
     ["牙山","牙山湾"],
     ["少林寺","少林寺寺内"],
     ["少林","少林寺寺内"],
