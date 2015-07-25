@@ -74,7 +74,7 @@ if __name__ == "__main__":
         location = None
 
     mud = MudRoom(conn, TRAVERSE_WEIGHT)
-    traverse_path = traverse_dfs(mud, roomno, location)
+    traverse_path = traverse_bfs(mud, roomno, location)
     traverse_path.extend(traverse_dfs(mud, roomno, location))
         
     tt = Tintin()
