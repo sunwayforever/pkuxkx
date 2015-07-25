@@ -692,7 +692,7 @@
             #list hb_path size hb_path_size;
             #if {${hb_path_size} == 0} {
                 #delay {1} {
-                    #show {GPS: 目标房间不可达, 无法行走};
+                    #show {GPS: 目标房间不可达, 无法行走: ${hb_dest}:${gps.roomno}};
                 };
             };
             #else {
