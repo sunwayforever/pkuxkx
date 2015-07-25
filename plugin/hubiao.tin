@@ -762,6 +762,10 @@
     武当三清殿;少林佛心井;扬州醉仙楼;襄阳当铺;
 };
 
+#list hb_blacklist:荆西镖局 create {
+    全真天尊讲经堂;
+};
+
 #list hb_blacklist:飞马镖局 create {
     晋阳萧府;成都当铺;赞普来福杂货;
 };
