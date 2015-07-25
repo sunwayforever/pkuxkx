@@ -1,23 +1,24 @@
 #class xue open;
 #var xue_count 10;
-#var xue_tired 0;
 #alias {xue.start} {
-    autoheal.off;
-    #var xue.gongfu %1;
+    #class xue.inner open;
+    #alias {xue.restart} {
+        chifan;
+        goto_shifu;
+        on_there {
+            start_ticker;
+        };
+    };
 
-    goto_shifu;
-    on_there {
+    #alias {start_ticker} {
         #ticker {xue} {
-            #if {$xue_tired == 0} {
-                xue ${shifu} for ${xue.gongfu} ${xue_count};
-            };
+            xue ${shifu} for ${xue.gongfu} ${xue_count};
         }{0.5};
     };
 
-    #var xue_tired 0;
-
-    #class xue.inner open;
-    show_to_quest 学习: ${shifu}/${xue.gongfu};
+    #alias {stop_ticker} {
+        #unticker {xue};
+    };
 
     #action {切磋} {
         xue.stop;
@@ -29,41 +30,21 @@
         #showme xue done;
     };
 
-
     #action {你今天太累了} {
         yun regenerate;
     };
 
-    #action {指令选择你要使用的内功} {
-        #if {${xue_tired} == 0} {
-            #var xue_tired 1;
-            goto_rest;
-            on_arrived {
-                sleep;
-            };
-        };
-    };
-
     #action {你的内力不够} {
-        #if {${xue_tired} == 0} {
-            #var xue_tired 1;
-            goto_rest;
-            on_arrived {
+        stop_ticker;
+        #delay {xue_delay} {
+            on_there {
                 sleep;
             };
-        };
-    };
-
-    #action {多睡对身体有害无益! } {
-        #delay {shui} {
-            sleep;
-        } {10};
-    };
-
-    #action {你一觉醒来} {
-        eat_food;
-        goto_shifu;
-        #var xue_tired 0;
+            on_wakeup {
+                xue.restart;
+            };
+            goto_rest;
+        } {3};
     };
 
     #action {你的潜能已经发挥到极限了} {
@@ -77,6 +58,11 @@
     };
 
     #class xue.inner close;
+    autoheal.off;
+    #var xue.gongfu %1;
+    show_to_quest 学习: ${shifu}/${xue.gongfu};
+
+    xue.restart;
 };
 
 #alias {xue.stop} {
