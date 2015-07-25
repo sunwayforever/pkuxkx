@@ -12,18 +12,16 @@ room_alias = {
     "襄阳官道":498,
     "古墓墓道":1036,
     "丐帮暗道":1484,
-    "扬州暗道":1484,
+    "扬州城暗道":1484,
     "杀手帮消魂屋":400,
     "华山寝室":1107,
     "无量山书房":3478,
-    "小山村小棚子":1067,
-    "姑苏慕容小路":2665,
+    "华山村小棚子":1067,
+    "慕容小路":2665,
     "中原大驿道":718,
     "桃花岛小木屋":2618,
 }
 def get_room(conn, desc):
-    if desc in room_alias:
-        return room_alias[desc]
     room = fixup_room(desc)
     # gt yz
     # gt 醉仙楼
@@ -33,6 +31,9 @@ def get_room(conn, desc):
         return row[0]
 
     desc = fixup_area(desc)
+    if desc in room_alias:
+        return room_alias[desc]
+
     # gt 扬州醉仙楼
     sql = "select distinct(zone) from mud_room"
     rows = conn.execute(sql).fetchall()
