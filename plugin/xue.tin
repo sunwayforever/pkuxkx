@@ -3,8 +3,9 @@
 #var xue_tired 0;
 #alias {xue.start} {
     autoheal.off;
+    #var xue.gongfu %1;
 
-    map_goto_shifu;
+    goto_shifu;
     on_there {
         #ticker {xue} {
             #if {$xue_tired == 0} {
@@ -16,7 +17,6 @@
     #var xue_tired 0;
 
     #class xue.inner open;
-    #var xue.gongfu %1;
     show_to_quest 学习: ${shifu}/${xue.gongfu};
 
     #action {切磋} {
@@ -37,7 +37,7 @@
     #action {指令选择你要使用的内功} {
         #if {${xue_tired} == 0} {
             #var xue_tired 1;
-            map_goto_rest;
+            goto_rest;
             on_arrived {
                 sleep;
             };
@@ -47,7 +47,7 @@
     #action {你的内力不够} {
         #if {${xue_tired} == 0} {
             #var xue_tired 1;
-            map_goto_rest;
+            goto_rest;
             on_arrived {
                 sleep;
             };
@@ -62,7 +62,7 @@
 
     #action {你一觉醒来} {
         eat_food;
-        map_goto_shifu;
+        goto_shifu;
         #var xue_tired 0;
     };
 
@@ -81,6 +81,7 @@
 
 #alias {xue.stop} {
     #class xue.inner kill;
+    #unticker {xue};
     show_to_quest 学习结束;
     autoheal.on;
 };
