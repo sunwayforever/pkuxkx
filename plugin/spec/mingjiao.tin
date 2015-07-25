@@ -15,19 +15,15 @@
 	#class attack.inner close;
 };
 
-#alias {map_goto_lingwu} {
+#alias {goto_lingwu} {
 	gt 明教练功房;
 };
 
-#alias {map_goto_rest} {
+#alias {goto_rest} {
 	gt 明教休息室;
 };
 
-#alias {map_goto_start} {
-	gt 半山门;
-};
-
-#alias {map_goto_shifu} {
+#alias {goto_shifu} {
 	gt 明教大殿;
 };
 
