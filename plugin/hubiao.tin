@@ -89,13 +89,9 @@
         #var hb_next_step gan che to ${hb_next_step};
     };
     #else {
-        #delay {hb_delay} {
-            ${hb_next_step};
-            #math hb_path_index ${hb_path_index}+1;
-            hb.run;
-        } {1};
-        #return;
+        #var hb_next_step hb.command ${hb_next_step};
     };
+
     #if {${qx_percent} < 30 || ${js_percent} < 30 || ${nl_percent} < 10} {
         hb.pause;
         #delay {hb_move} {
@@ -173,6 +169,14 @@
         ask shao gong about huanghe;
         ask shao gong about jiang;
     };
+
+    #alias {hb.command} {
+        #var hb_command %%0;
+        ${hb_command};
+        #math hb_path_index ${hb_path_index}+1;
+        hb.run;
+    };
+
     #alias {hb.delay} {
         #var gps_delay 1.5;
         #var gps_delay %1;
