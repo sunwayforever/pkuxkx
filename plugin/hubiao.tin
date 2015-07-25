@@ -85,8 +85,16 @@
     #if {@startwith{${hb_next_step};gps}} {
         #replace {hb_next_step} {gps} {hb};
     };
-    #else {
+    #elseif {@ismember{${hb_next_step};directions} != 0} {
         #var hb_next_step gan che to ${hb_next_step};
+    };
+    #else {
+        #delay {hb_delay} {
+            ${hb_next_step};
+            #math hb_path_index ${hb_path_index}+1;
+            hb.run;
+        } {1};
+        #return;
     };
     #if {${qx_percent} < 30 || ${js_percent} < 30 || ${nl_percent} < 10} {
         hb.pause;
@@ -179,8 +187,9 @@
             hb.run;
         };
     };
+
     #alias {hb.clear} {
-        #var tmp_blocker %1;
+        #var hb_tmp_blocker %%0;
         #class clear_blocker.inner open;
         #action {你想杀谁} {
             #class clear_blocker.inner kill;
@@ -188,11 +197,11 @@
             hb.run;
         };
         #ticker {tmp_blocker_ticker_kill} {
-            killall ${tmp_blocker};
+            killall ${hb_tmp_blocker};
         } {5};
         #class clear_blocker.inner close;
         hb.pause;
-        killall ${tmp_blocker};
+        killall ${hb_tmp_blocker};
     };
 
     #action {看来该找机会逃跑了} {

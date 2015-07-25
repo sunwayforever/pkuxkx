@@ -771,7 +771,7 @@ walk_to east;
 
     #ticker {ticker_get_position_look} {
         #send {l};
-    } {5};
+    } {3};
     #class record.inner close;
     #send {l};
 };
