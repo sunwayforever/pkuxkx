@@ -1,55 +1,55 @@
 #class mingjiao open
 #alias {attack.prepare} {
-	yun powerup;
-	#class attack.inner open;
-	#ticker {tisha} {
-		tisha;
-	} {1.8};
-	#class attack.inner close;
+    yun powerup;
+    #class attack.inner open;
+    #ticker {tisha} {
+        tisha;
+    } {1.8};
+    #class attack.inner close;
 };
 
 #alias {attack} {
-	tisha;
+    tisha;
     duo;
-	#class attack.inner open;
-	#class attack.inner close;
+    #class attack.inner open;
+    #class attack.inner close;
 };
 
 #alias {goto_lingwu} {
-	gt 明教练功房;
+    gt 明教练功房;
 };
 
 #alias {goto_rest} {
-	gt 明教休息室;
+    gt 明教休息室;
 };
 
 #alias {goto_shifu} {
-	gt 明教大殿;
+    gt 明教大殿;
 };
 
 #alias {tisha} {
-	perform datengnuo-bufa.tisha;
+    perform datengnuo-bufa.tisha;
 };
 
 #alias {yinfeng} {
-	unwi;
-	do_wield dagger;
-	perform dagger.yinfeng;
-	wi;
+    unwi;
+    do_wield dagger;
+    perform dagger.yinfeng;
+    wi;
 };
 
 #alias {duo} {
-	unwi;
-	do_wield dagger;
-	perform dagger.duo;
-	wi;
+    unwi;
+    do_wield dagger;
+    perform dagger.duo;
+    wi;
 };
 
 #alias {jindou} {
-	unwi;
-	do_wield dagger;
-	perform dagger.jindou;
-	wi;
+    unwi;
+    do_wield dagger;
+    perform dagger.jindou;
+    wi;
 };
 
 #list my_weapons_to_wield create {sword; sword 2};
@@ -60,15 +60,15 @@
 };
 
 #macro {\eOQ} {
-	yinfeng;
+    yinfeng;
 };
 
 #macro {\eOR} {
-	duo;
+    duo;
 };
 
 #macro {\eOS} {
-	jindou;
+    jindou;
 };
 
 #macro {\e[15~} { #nop ]
@@ -81,16 +81,17 @@
 };
 
 #alias {qudu} {
-	eat san;
+    eat san;
 };
 
 #alias {reborn} {
-	#send {jifa strike xingxiu-duzhang};
-	#send {jifa dodge zhaixinggong};
-	#send {jifa parry xingxiu-duzhang};
-	#send {jifa staff tianshan-zhang};
-	#send {jifa hand zhaixing-shou};
-	bei strike hand;
+    #send {jifa strike hanbing-zhang};
+    #send {jifa dodge datengnuo-bufa};
+    #send {jifa force guangming-shenghuogong};
+    #send {jifa dagger shenghuo-lingfa};
+    #send {jifa parry shenghuo-lingfa};
+    bei none;
+    bei strike;
 };
 
 #var char_menpai_position mj;
