@@ -201,7 +201,7 @@
 };
 
 #alias {on_special_state} {
-    gt bwc;
+    #cr;
 };
 
 #action {^你身上的%*被火焰刀所焚，象片片破布般飘落。} {
