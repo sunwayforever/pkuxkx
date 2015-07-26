@@ -20,6 +20,7 @@ room_alias = {
     "慕容小路":2665,
     "中原大驿道":718,
     "桃花岛小木屋":2618,
+    "曲阜大驿道":661,
 }
 def get_room(conn, desc):
     room = fixup_room(desc)
