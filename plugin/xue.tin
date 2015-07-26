@@ -13,21 +13,11 @@
     #alias {start_ticker} {
         #ticker {xue} {
             xue ${shifu} for ${xue.gongfu} ${xue_count};
-        }{0.5};
+        } {0.5};
     };
 
     #alias {stop_ticker} {
         #unticker {xue};
-    };
-
-    #action {切磋} {
-        xue.stop;
-        #showme xue done;
-    };
-
-    #action {也许是缺乏实战经验} {
-        xue.stop;
-        #showme xue done;
     };
 
     #action {你今天太累了} {
@@ -47,21 +37,14 @@
         } {3};
     };
 
-    #action {你的潜能已经发挥到极限了} {
+    #action {{你的潜能已经发挥到极限了|没有办法学习这种技能|也许是缺乏实战经验|切磋}} {
         xue.stop;
-        notify 学习完成;
     };
-
-    #action {没有办法学习这种技能} {
-        xue.stop;
-        notify 学习完成;
-    };
-
     #class xue.inner close;
+
     autoheal.off;
     #var xue.gongfu %1;
     show_to_quest 学习: ${shifu}/${xue.gongfu};
-
     xue.restart;
 };
 
