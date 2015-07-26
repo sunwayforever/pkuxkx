@@ -234,6 +234,7 @@
     #send {jifa iron-cloth jingang-buhuai};
     #send {jifa staff zui-gun};
     #send {jifa finger yizhi-chan};
+    bei none;
     bei cuff;
 };
 
