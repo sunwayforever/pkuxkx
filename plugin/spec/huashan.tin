@@ -45,7 +45,7 @@
             #class attack.inner open;
             #alias {on_skill_hit} {
                 #if {"%%1" == "ÑøÎá"} {
-                    pfm jianzhang;
+                    pfm sqf;
                 };
             };
             #class attack.inner close;
@@ -162,7 +162,7 @@
 
 #alias {sqf} {
     unwi;
-    jiali max;
+    jiali ${jiali_count};
     do_wield sword;
     perform yunushijiu-jian.sanqingfeng;
     jiali none;
