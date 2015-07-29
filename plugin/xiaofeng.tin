@@ -14,8 +14,10 @@
 };
 
 #alias {xf.teardown} {
+    #var xf_quan 0;
     #var quest nil;
     #undelay {xf_delay};
+    #undelay {xf_fight_delay};
     #var xf.requested 0;
     #class xiaofeng.inner kill;
     #class xf.fight.inner kill;
@@ -24,6 +26,7 @@
 };
 
 #alias {xf.setup} {
+    #var xf_quan 0;
     #var xf_fail_reason nil;
     bl.stop;
     #alias {xf_on_taopao} {
@@ -96,15 +99,14 @@
     };
 
     #action {你走上前去，试图劝服蒙面杀手，但蒙面杀手不耐烦的转了个身，不愿听你说下去。} {
+        #var xf_quan 0;
         XF.CHECK;
-        #if {${xf_fighting} == 1} {
-            #delay {xf_delay} {
-                #if {${xf.type} == 3} {
-                    xf.setup;
-                    xf.bl;
-                };
-            } {3};
-        };
+        #delay {xf_delay} {
+            #if {${xf.type} == 3} {
+                xf.setup;
+                xf.bl;
+            };
+        } {3};
     };
 
     #action {看起来蒙面杀手并不想跟你较量。} {
@@ -264,8 +266,11 @@
     };
 
     #action {『蒙面杀手(%*气血:%*\%/%*\%)』} {
+        #undelay {xf_fight_delay};
         XF.CHECK;
-        #var xf_fighting 1;
+        #if {%%3 < 45} {
+            #var xf_quan 1;
+        };
         #if {${xf.type} == 3} {
             #if {%%2 < 45 || %%3 < 45} {
                 raw;
@@ -400,12 +405,14 @@
             };
         };
         #elseif {${xf.type} == 3} {
-            #var xf_fighting 0;
-            on_unbusy {
-                quan;
+            #if {${xf_quan} == 1} {
                 on_unbusy {
-                    hit shashou;
+                    quan;
                 };
+            };
+
+            on_unbusy {
+                hit shashou;
             };
         };
         #elseif {${xf.type} == 4} {
@@ -419,10 +426,10 @@
     };
 
     #alias {xf.check} {
-        #class xf.fight.inner open;
-        #delay {xf_delay} {
+        #delay {xf_fight_delay} {
             xf.bl;
-        } {5};
+        } {10};
+        #class xf.fight.inner open;
         #action {这里没有 shashou。} {
             #class xf.fight.inner kill;
             #delay {xf_delay} {
@@ -683,6 +690,10 @@
     } {2};
 
     #class xf.bl.inner close;
+
+    #class xf.fight.inner kill;
+    #undelay {xf_fight_delay};
+
     #if {"@getenv{xf_state}" == "STARTED"} {
         XF.CHECK;
         #if {${xf.type} == 3} {
@@ -720,5 +731,4 @@
         chain get.san get.qian repair;
     };
 };
-
 #class xiaofeng close
