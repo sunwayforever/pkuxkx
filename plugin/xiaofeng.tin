@@ -398,6 +398,7 @@
         };
         #elseif {${xf.type} == 3} {
             on_unbusy {
+                quan;
                 hit shashou;
             };
         };
