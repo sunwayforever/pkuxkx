@@ -97,12 +97,14 @@
 
     #action {你走上前去，试图劝服蒙面杀手，但蒙面杀手不耐烦的转了个身，不愿听你说下去。} {
         XF.CHECK;
-        #delay {xf_delay} {
-            #if {${xf.type} == 3} {
-                xf.setup;
-                xf.bl;
-            };
-        } {3};
+        #if {${xf_fighting} == 1} {
+            #delay {xf_delay} {
+                #if {${xf.type} == 3} {
+                    xf.setup;
+                    xf.bl;
+                };
+            } {3};
+        };
     };
 
     #action {看起来蒙面杀手并不想跟你较量。} {
@@ -263,6 +265,7 @@
 
     #action {『蒙面杀手(%*气血:%*\%/%*\%)』} {
         XF.CHECK;
+        #var xf_fighting 1;
         #if {${xf.type} == 3} {
             #if {%%2 < 45 || %%3 < 45} {
                 raw;
@@ -397,10 +400,12 @@
             };
         };
         #elseif {${xf.type} == 3} {
-            quan;
+            #var xf_fighting 0;
             on_unbusy {
-                #undelay {xf_delay};
-                hit shashou;
+                quan;
+                on_unbusy {
+                    hit shashou;
+                };
             };
         };
         #elseif {${xf.type} == 4} {
