@@ -24,8 +24,8 @@ windows
 
 Requirements
 ----------
-1. tintin++ 2.00.7 (更新版本可能某些触发有问题)
+1. tintin++
 2. sqlite3
 3. python3
-4. 其他: libnotify-bin, notifu (for cygwin), mplayer, sleekxmpp (for xmpp notification)
+4. 可选: libnotify-bin, notifu (for cygwin), mplayer, sleekxmpp (for xmpp notification)
  
