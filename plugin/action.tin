@@ -362,7 +362,8 @@
 };
 
 #action {^太遗憾了} {
-    do_show 福米失败;
+    #showme 福米失败;
+    notify 福米失败;
 };
 
 #action {^http://pkuxkx.net/antirobot/robot.php?filename=%1} {
@@ -371,7 +372,8 @@
 };
 
 #action {你刚刚用过这个命令不久，还要%*才能再用。} {
-    do_show 福米没到时间呢;
+    #showme 福米没到时间呢;
+    notify 福米没到时间呢;
 };
 
 #action {也许是上天垂青于你的勤奋和努力吧，一个小时之内你不用担心被判为机器人。} {
@@ -380,6 +382,7 @@
     check_fm;
     #send {hp};
     update_status;
-    do_show 福米完成;
+    #showme 福米完成;
+    notify 福米完成;
 };
 #class action close;

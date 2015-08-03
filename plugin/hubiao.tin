@@ -426,7 +426,6 @@
 #alias {hb.start} {
     log.start;
     set_last_quest hb;
-    xmpp.echo.off;
     set brief 2;
     #var hb_auto 1;
 
@@ -478,7 +477,7 @@
 
     #action {${char_name}帮%*追回财物，额外获得%*点经验} {
         show_to_info 额外获得 @ctd{%%2} 点经验;
-        do_show 密信完成;
+        notify 密信完成;
     };
 
     #alias {got_gem} {
@@ -496,7 +495,7 @@
 
     #action {哇，你太厉害了，这么快就把这些财物追回，我有重谢！} {
         got_gem;
-        do_show 密信完成;
+        notify 密信完成;
     };
 
     #action {掉了出来一颗} {
@@ -613,7 +612,7 @@
     #class mx.inner open;
     #nop 你扯开嗓子，开始大喊：小王八蛋，你给我滚出来。;
     #action {一个伙计挖着鼻屎走了出来，道：你找我啥事} {
-        do_show 找到密信伙计;
+        notify 找到密信伙计;
         l;
     };
     #action {财物的伙计 %S(%S)} {
@@ -622,7 +621,7 @@
         #action {把一包财物砸向你，一转眼不见了。} {
             @setenv{hb_state;GOT_CAIWU};
             show_to_tuiche 拿到财宝;
-            do_show 拿到财宝;
+            notify 拿到财宝;
             play get_item.wav;
             #class mx.yao.inner kill;
             #class mx.inner kill;

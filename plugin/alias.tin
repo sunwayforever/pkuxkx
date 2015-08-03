@@ -911,6 +911,7 @@ walk_to east;
 };
 
 #alias {unset_last_quest} {
+    #var last_quest nil;
     @setenv{last_quest;nil};
 };
 

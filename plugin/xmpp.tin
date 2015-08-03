@@ -4,7 +4,6 @@
     #unticker {%*};
     #unaction {%*};
     #action {xmpp message: %*:%*} {
-        #pkuxkx xmpp.echo.on;
         #pkuxkx %%2;
     };
     #pkuxkx;
@@ -14,27 +13,26 @@
     #xmpp %0;
 };
 
-#alias xmpp.chat.on {
+#alias {xmpp.chat.on} {
     #var xmpp_chat 1;
 };
-    
-#alias xmpp.chat.off {
+
+#alias {xmpp.chat.off} {
     #var xmpp_chat 0;
 };
 
-#alias {xmpp.echo.on} {
-    #alias {do_show} {
-        #show %%0;
-        #xmpp %%0;
+#alias {xmpp.state} {
+    #alias {get_pos_done} {
+        xmpp.notify 位置: ${pos.room} @ ${pos.area};
+        xmpp.notify 任务: ${last_quest};
+        xmpp.notify 状态: 气: ${qx_percent} 神: ${js_percent} 内: ${nl_percent} 精: ${jl_percent} 经验: ${hpbrief_exp};
+    };
+    get_area {
+        get_pos {
+            get_pos_done;
+        };
     };
 };
 
-#alias {xmpp.echo.off} {
-    #alias {do_show} {
-        #show %%0;
-    };
-};
-
-xmpp.echo.off;
 xmpp.chat.off;
 #class xmpp close;

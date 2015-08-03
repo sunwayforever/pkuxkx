@@ -59,14 +59,14 @@ load gps_actions;
         #if {${src_roomno} == ${dst_roomno}} {
             #var gps_gt_check_count 0;
             #delay {1} {
-                do_show {GPS: 抵达目的地};
+                #showme {GPS: 抵达目的地};
             };
         };
         #else {
             #math gps_gt_check_count ${gps_gt_check_count}+1;
             #if {${gps_gt_check_count} >= 20} {
                 #var gps_gt_check_count 0;
-                do_show {GPS: 抵达目的地};
+                #showme {GPS: 抵达目的地};
             };
             #else {
                 #if {${gps_stop} == 0} {
@@ -108,7 +108,7 @@ load gps_actions;
         #var src_roomno ${gps.roomno};
         #if {${gps.roomno} == -1} {
             #delay {1} {
-                do_show {GPS: 当前房间未记录, 无法行走};
+                #showme {GPS: 当前房间未记录, 无法行走};
                 taopao {
                     gps_gt;
                 };
@@ -125,21 +125,21 @@ load gps_actions;
 
             #if {${dst_roomno} == ${src_roomno}} {
                 #delay {1} {
-                    do_show {GPS: 抵达目的地};
+                    #showme {GPS: 抵达目的地};
                 };
             };
             #else {
                 #format {epoch_from} {%T};
-                do_show {GPS: 正在寻路: ${src_roomno} -> ${dst_roomno}};
+                #showme {GPS: 正在寻路: ${src_roomno} -> ${dst_roomno}};
                 gps.get_path ${src_roomno} ${dst_roomno};
                 #format {epoch_to} {%T};
-                do_show {GPS: 完成寻路, 耗时: @eval{$epoch_to-$epoch_from} 秒};
+                #showme {GPS: 完成寻路, 耗时: @eval{$epoch_to-$epoch_from} 秒};
                 pause_screen;
                 #var gps_path_index 1;
                 #list gps_path size gps_path_size;
                 #if {${gps_path_size} == 0} {
                     #delay {1} {
-                        do_show {GPS: 目标房间不可达, 无法行走};
+                        #showme {GPS: 目标房间不可达, 无法行走};
                     };
                     on_there {
                         #cr;
@@ -199,7 +199,7 @@ load gps_actions;
             };
             #elseif {"${gps.run.mode}" == "TRAVERSE"} {
                 #var gps.run.mode nil;
-                do_show {GPS: 遍历完成};
+                #showme {GPS: 遍历完成};
                 #unaction {${gps_traverse_target}};
             };
         } {1};
@@ -214,7 +214,7 @@ load gps_actions;
 #alias {gps.traverse.continue} {
     #action {${gps_traverse_target}} {
         #unaction {${gps_traverse_target}};
-        do_show 找到目标: ${gps_traverse_target};
+        #showme 找到目标: ${gps_traverse_target};
         gps.traverse.stop;
     } {1};
 
@@ -246,14 +246,14 @@ load gps_actions;
 
     #action {${gps_traverse_target}} {
         #unaction {${gps_traverse_target}};
-        do_show 找到目标: ${gps_traverse_target};
+        #showme 找到目标: ${gps_traverse_target};
         gps.traverse.stop;
     } {1};
 
     #alias {gps_check_room_done} {
         #if {${gps.roomno} == -1} {
             #delay {gps_check_delay} {
-                do_show {GPS: 当前房间未记录, 无法遍历};
+                #showme {GPS: 当前房间未记录, 无法遍历};
                 taopao {
                     gps.traverse ${traverse_tmp};
                 };

@@ -53,17 +53,18 @@
         };
     };
 
+    #action {蒙面杀手感到次招用意不在伤人，忙凝聚全身功力，却阻挡不住内力飞泄而出！} {
+        #cr;
+    } {2};
     #action {%*却阻挡不住内力飞泄而出！} {
-        show_to_info %0;
-        #if {"${char_menpai}" != "xingxiu"} {
-            XF.CHECK;
-            xf.teardown;
-            follow none;
-            taopao {
-                xf_on_taopao;
-            };
+        XF.CHECK;
+        xf.teardown;
+        follow none;
+        taopao {
+            xf_on_taopao;
         };
-    };
+    } {3};
+
     #action {看来该找机会逃跑了...} {
         XF.CHECK;
         #if {${xf.type} == 4} {
@@ -451,7 +452,6 @@
 };
 
 #alias {xf.start} {
-    xmpp.echo.off;
     log.start;
     set_last_quest xf;
     #class xf.auto.inner open;
