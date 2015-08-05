@@ -19,7 +19,7 @@
 #alias {gps.guohe} {
     #class gps.action.inner open;
     #action {接过你递给的船资} {
-        GPS.UNCHECK;
+        gps.watchdog.stop;
     };
     #ticker {yell_boat} {
         yell boat;
@@ -58,7 +58,7 @@
     enter boat;
     #class gps.action.inner open;
     #action {你跃上} {
-        GPS.UNCHECK;
+        gps.watchdog.stop;
     };
     #action {小舟终于划到近岸，你从船上走了出来。} {
         #unaction {小舟终于划到近岸，你从船上走了出来。};
@@ -86,7 +86,7 @@
     } {2};
     #class gps.action.inner open;
     #action {你登上了一辆马车} {
-        GPS.UNCHECK;
+        gps.watchdog.stop;
         #unticker {gps_ticker};
     };
     #action {大车停稳了下来} {
@@ -129,7 +129,7 @@
 #alias {gps.guo_qiao} {
     #class gps.action.inner open;
     #action {你扶着铁索，踏上桥板。} {
-      GPS.UNCHECK;
+      gps.watchdog.stop;
     };
     #action {你终于一步步的终于挨到了桥头.} {
         #unaction {你终于一步步的终于挨到了桥头.};
@@ -143,7 +143,7 @@
     climb cliff;
     #class gps.action.inner open;
     #action {你一咬牙，扳住崖上的岩石，手脚并用向上爬去。} {
-        GPS.UNCHECK;
+        gps.watchdog.stop;
     };
     #action {^崖间古松} {
         #unaction {^崖间古松};
@@ -156,7 +156,7 @@
     climb;
     #class gps.action.inner open;
     #action {你一咬牙，扳住崖上的岩石} {
-        GPS.UNCHECK;
+        gps.watchdog.stop;
     };
     #action {^巨岩} {
         #unaction {^巨岩};
@@ -169,7 +169,7 @@
     climb;
     #class gps.action.inner open;
     #action {你一咬牙，扳住崖上的岩石} {
-        GPS.UNCHECK;
+        gps.watchdog.stop;
     };
     #action {^天柱峰顶} {
         #unaction {^天柱峰顶};
@@ -182,7 +182,7 @@
     climb;
     #class gps.action.inner open;
     #action {你一咬牙，扳住崖上的岩石} {
-        GPS.UNCHECK;
+        gps.watchdog.stop;
     };
     #action {^天柱峰下} {
         #unaction {^天柱峰下};
@@ -205,7 +205,7 @@
     zou tiesuo;
     #class gps.action.inner open;
     #action {你踩上铁索，向山涧的对面飘然而去} {
-        GPS.UNCHECK;
+        gps.watchdog.stop;
     };
     #action {你终于来到了对面，心里的石头终于落地。} {
         #unaction {你终于来到了对面，心里的石头终于落地。};
@@ -218,7 +218,7 @@
     row %1;
     #class gps.action.inner open;
     #action {你拿起船桨用力划了起来} {
-      GPS.UNCHECK;
+      gps.watchdog.stop;
     };
     #action {不知过了多久，船终于靠岸了，你累得满头大汗。} {
         #unaction {不知过了多久，船终于靠岸了，你累得满头大汗。};
@@ -267,7 +267,7 @@
         } {8};
 
         #action {心里有种不祥的预感} {
-            GPS.UNCHECK;
+            gps.watchdog.stop;
             #var next_direction ${current_direction};
             do_look_next;
         } {9};
@@ -282,7 +282,7 @@
 #alias {gps.maze.yunhai} {
     #class gps.action.inner open;
     #action {^云海$} {
-        GPS.UNCHECK;
+        gps.watchdog.stop;
     };
     #action {^云海出口} {
         #class gps.action.inner kill;
@@ -300,7 +300,7 @@
 #alias {gps.maze.yunhaib} {
     #class gps.action.inner open;
     #action {^云海$} {
-        GPS.UNCHECK;
+        gps.watchdog.stop;
     };
     #action {^云海入口} {
         #class gps.action.inner kill;
@@ -391,7 +391,7 @@
 #alias {gps.maze.guolin} {
     #class gps.action.inner open;
     #action {^果林$} {
-        GPS.UNCHECK;
+        gps.watchdog.stop;
         on_unbusy {
             s;
         };
@@ -407,7 +407,7 @@
 #alias {gps.maze.guolinb} {
     #class gps.action.inner open;
     #action {^果林$} {
-        GPS.UNCHECK;
+        gps.watchdog.stop;
         #if {"${next_direction}" == "s"} {
             #var next_direction e;
         };
@@ -442,7 +442,7 @@
 #alias {gps.climb} {
     #class gps.action.inner open;
     #action {你抬头看了一下悬崖} {
-      GPS.UNCHECK;
+      gps.watchdog.stop;
     };
     #action {这里没有任何明显的出路} {
         #class gps.action.inner kill;
@@ -462,7 +462,7 @@
 #alias {gps.zhulou} {
     #class gps.action.inner open;
     #action {^竹篓内} {
-        GPS.UNCHECK;
+        gps.watchdog.stop;
     };
     #action {^你定了定神，走了出来。} {
         #class gps.action.inner kill;

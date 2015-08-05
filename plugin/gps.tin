@@ -29,10 +29,10 @@ load gps_actions;
 };
 
 #action {^你的动作还没有完成，不能移动。} {
-    GPS.CHECK;
+    gps.watchdog.kick;
 };
 
-#alias {GPS.CHECK} {
+#alias {gps.watchdog.kick} {
     #if {"${gps.run.mode}" == "NORMAL"} {
         #delay {gps_delay_check} {
             gt.stop;
@@ -42,7 +42,7 @@ load gps_actions;
     };
 };
 
-#alias {GPS.UNCHECK} {
+#alias {gps.watchdog.stop} {
     #if {"${gps.run.mode}" == "NORMAL"} {
         #undelay {gps_delay_check};
     };
@@ -91,7 +91,7 @@ load gps_actions;
 #alias {gps.stop} {
     #var gps_stop 1;
     #class gps.action.inner kill;
-    GPS.UNCHECK;
+    gps.watchdog.stop;
     #undelay {there_delay};
     #undelay {gps_delay};
     #unticker {gps_ticker};
@@ -139,7 +139,8 @@ load gps_actions;
                 #list gps_path size gps_path_size;
                 #if {${gps_path_size} == 0} {
                     #delay {1} {
-                        #showme {GPS: 目标房间不可达, 无法行走};
+                        #showme GPS: 目标房间不可达, 无法行走;
+                        notify GPS: 目标房间不可达, 无法行走: ${gps_last_dest};
                     };
                     on_there {
                         #cr;
@@ -160,7 +161,7 @@ load gps_actions;
 
 #alias {gps.run} {
     #if {"${gps.run.mode}" == "NORMAL"} {
-        GPS.CHECK;
+        gps.watchdog.kick;
     };
     #var is_break 0;
     #var accu 0;
@@ -191,7 +192,7 @@ load gps_actions;
         };
     };
     #if {${gps_path_index} > ${gps_path_size} && ${is_break} == 0} {
-        GPS.UNCHECK;
+        gps.watchdog.stop;
         set brief 2;
         #delay {gps_delay} {
             #if {"${gps.run.mode}" == "NORMAL"} {

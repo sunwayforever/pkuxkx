@@ -108,7 +108,7 @@
 
 #alias {zongjue} {
     unwi;
-    jiali max;
+    jiali ${jiali_count};
     do_wield sword;
     perform dugu-jiujian.po;
     jiali none;

@@ -692,6 +692,9 @@ walk_to east;
             get_exits_done;
             xia;
         };
+        #elseif {"${current_room}" == "茅厕"} {
+            get_exits_done;
+        };
     } {1};
 
     #action {你可以看看(look):} {
@@ -1030,4 +1033,11 @@ walk_to east;
     } {1};
     #class unbusy.inner close;
     checkbusy;
+};
+
+#alias {drop_garbage} {
+    drop yun tie;
+    drop huo tong;
+    drop xuan bing;
+    drop shi tan;
 };

@@ -428,7 +428,6 @@
     set_last_quest hb;
     set brief 2;
     #var hb_auto 1;
-
     #action {转头对你道：「辛苦了，有几两银子略表心意，已经吩咐人存入你的钱庄账户。」} {
         #if {"@getenv{hb_state}" == "ENDED"} {
             @setenv{hb_state;nil};
@@ -482,10 +481,11 @@
 
     #alias {got_gem} {
         #action {你将手中%*{◎|☆|★}%*放进了宝石袋} {
-            notify %%%1%%%2%%%3;
-            gem.record %%%1%%%2%%%3;
             #var gem_level @gemlevel{%%%1};
-            play gem2.wav;
+            #if {${gem_level} >= 4} {
+                notify %%%1%%%2%%%3;
+                play gem2.wav;
+            };
         };
         pack gem;
         #delay {pack_gem} {
@@ -555,6 +555,7 @@
     @declarenv{hb_lunci_total;0};
 
     #var hb_state @getenv{hb_state};
+    drop_garbage;
     #if {"${hb_state}" == "STARTED" || "${hb_state}" == "TRAVERSE" } {
         #var hb_huoji @getenv{hb_huoji};
         #var hb_dest @getenv{hb_dest};
@@ -790,7 +791,7 @@
 };
 
 #list hb_blacklist:昌隆镖局 create {
-    镇江飞龙镖局;归云庄太湖街;嘉兴钱庄;峨嵋毗卢殿;岳阳车马行;南昌飞虎镖局;泉州当铺;苏州聚宝斋;
+    镇江飞龙镖局;归云庄太湖街;嘉兴钱庄;峨嵋毗卢殿;岳阳车马行;
 };
 
 #class hubiao close

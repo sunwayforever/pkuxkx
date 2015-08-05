@@ -2,13 +2,13 @@
 #var xf.requested 0;
 #var xf.type -1;
 
-#alias {XF.UNCHECK} {
+#alias {xf.watchdog.stop} {
     #undelay {xf_check_delay};
 };
 
-#alias {XF.CHECK} {
+#alias {xf.watchdog.kick} {
     #delay {xf_check_delay} {
-        XF.CHECK;
+        xf.watchdog.kick;
         xf.b;
     } {180};
 };
@@ -57,7 +57,7 @@
         #cr;
     } {2};
     #action {%*却阻挡不住内力飞泄而出！} {
-        XF.CHECK;
+        xf.watchdog.kick;
         xf.teardown;
         follow none;
         taopao {
@@ -66,7 +66,7 @@
     } {3};
 
     #action {看来该找机会逃跑了...} {
-        XF.CHECK;
+        xf.watchdog.kick;
         #if {${xf.type} == 4} {
             #var xf_fail_reason 打不过, 跑;
             xf.b;
@@ -81,7 +81,7 @@
     };
 
     #action {眼见不活了。} {
-        XF.CHECK;
+        xf.watchdog.kick;
         #if {${xf.type} != 1} {
             #delay {xf_delay} {
                 #var xf_fail_reason 失手打死: ${xf.type};
@@ -92,7 +92,7 @@
 
     #action {要打便打} {
         #undelay {xf_delay};
-        XF.CHECK;
+        xf.watchdog.kick;
         #if {${xf.type} != -1} {
             follow shashou;
             xf.fight;
@@ -101,7 +101,7 @@
 
     #action {你走上前去，试图劝服蒙面杀手，但蒙面杀手不耐烦的转了个身，不愿听你说下去。} {
         #var xf_quan 0;
-        XF.CHECK;
+        xf.watchdog.kick;
         #delay {xf_delay} {
             #if {${xf.type} == 3} {
                 xf.setup;
@@ -111,7 +111,7 @@
     };
 
     #action {看起来蒙面杀手并不想跟你较量。} {
-        XF.CHECK;
+        xf.watchdog.kick;
         #delay {xf_delay} {
             #if {${xf.type} == 4} {
                 #var xf_fail_reason 没有一次战胜;
@@ -121,7 +121,7 @@
     };
 
     #action {我不服，等我休息一下，咱们再打过！} {
-        XF.CHECK;
+        xf.watchdog.kick;
         #delay {xf_delay} {
             #if {${xf.type} == 4} {
                 #var xf_fail_reason 没有一次战胜;
@@ -131,7 +131,7 @@
     };
 
     #action {蒙面杀手说道：「此处比武多有不便，你且随我来！」} {
-        XF.CHECK;
+        xf.watchdog.kick;
         #delay {xf_delay} {
             xf.setup;
             xf.bl;
@@ -139,7 +139,7 @@
     };
 
     #action {蒙面杀手%*落荒而逃了。} {
-        XF.CHECK;
+        xf.watchdog.kick;
         #delay {xf_delay} {
             #if {${xf.type} == 4} {
                 #var xf_fail_reason 没有一次战胜, 杀手跑了;
@@ -153,7 +153,7 @@
     };
 
     #action {你一眨眼间，蒙面杀手已经不知去向。} {
-        XF.CHECK;
+        xf.watchdog.kick;
         #delay {xf_delay} {
             #if {${xf.type} == 4} {
                 #var xf_fail_reason 没有一次战胜, 杀手跑了;
@@ -237,13 +237,12 @@
             #var xf.target %%1:%%2;
             @setenv{xf_state;STARTED};
             #var xf.position %%1%%2;
-            XF.CHECK;
+            xf.watchdog.kick;
             gt ${xf.position};
             on_there {
                 xf.bl;
             };
             on_not_there {
-                notify 房间不可达: ${xf.position};
                 #var xf_fail_reason 房间不可达: ${xf.position};
                 xf.f;
             };
@@ -268,7 +267,7 @@
 
     #action {『蒙面杀手(%*气血:%*\%/%*\%)』} {
         #undelay {xf_fight_delay};
-        XF.CHECK;
+        xf.watchdog.kick;
         #if {%%3 < 45} {
             #var xf_quan 1;
         };
@@ -456,7 +455,7 @@
     set_last_quest xf;
     #class xf.auto.inner open;
     #alias {xf.restart} {
-        XF.UNCHECK;
+        xf.watchdog.stop;
         xf.teardown;
         @setenv{xf_state;nil};
         #delay {xf_auto_delay} {
@@ -506,7 +505,7 @@
 
     #var is_dead 0;
     #action {${char_name}被蒙面杀手杀死了。} {
-        XF.UNCHECK;
+        xf.watchdog.stop;
         #var is_dead 1;
     };
 
@@ -594,8 +593,7 @@
         on_special_state;
         #return;
     };
-    drop yun tie;
-    drop huo tong;
+    drop_garbage;
     #if {${need_reload} == 1} {
         chain reload get.san get.qian xf.request;
     };
@@ -617,7 +615,7 @@
 };
 
 #alias {xf.stop} {
-    XF.UNCHECK;
+    xf.watchdog.stop;
     log.stop;
     unset_last_quest;
     health.cancel;
@@ -695,7 +693,7 @@
     #undelay {xf_fight_delay};
 
     #if {"@getenv{xf_state}" == "STARTED"} {
-        XF.CHECK;
+        xf.watchdog.kick;
         #if {${xf.type} == 3} {
             yun inspire;
         };
