@@ -39,43 +39,41 @@
     #var need_reload 1;
     #foreach {${weapon_types}[%*]} {weapon_type} {
         #list ${weapon_type}_list clear;
+        #list my_${weapon_type}_list clear;
     };
     #list my_weapons clear;
     #list my_special_weapons clear;
 
     #send {id};
     #class weapons.inner open;
-    #action {%* = {[^,]+}, {[^,]+},} {
+    #nop sword, my sword;
+    #action {%* = {[^,]+}, {my [^,]+},} {
         #var weapon_type %%2;
         #var weapon_name %%3;
-        #if {@len{${weapon_name}} < @len{${weapon_type}}} {
-            #var weapon_type %%3;
-            #var weapon_name %%2;
-        };
-        #if {@startwith{${weapon_name};my} == 1} {
-            #var need_reload 0;
-        };
-        #list ${weapon_type}_list size tmp_weapons_size;
-        #math tmp_weapons_size ${tmp_weapons_size}+1;
-        #if {${tmp_weapons_size} == 1} {
-            #list ${weapon_type}_list add ${weapon_name};
+
+        #var need_reload 0;
+
+        #list my_${weapon_type}_list size my_tmp_weapons_size;
+        #math my_tmp_weapons_size ${my_tmp_weapons_size}+1;
+
+        #if {${my_tmp_weapons_size} == 1} {
             #if {@ismember{${weapon_type};weapon_types} != 0} {
-                #if {@startwith{${weapon_name};my} == 1} {
-                    #list my_weapons add ${weapon_name};
-                };
+                #list my_weapons add ${weapon_name};
+                #list ${weapon_type}_list insert 1 ${weapon_name};
+                #list my_${weapon_type}_list add ${weapon_name};
             };
         };
         #else {
-            #list ${weapon_type}_list add {${weapon_name} ${tmp_weapons_size}};
             #if {@ismember{${weapon_type};weapon_types} != 0} {
-                #if {@startwith{${weapon_name};my} == 1} {
-                    #list my_weapons add {${weapon_name} ${tmp_weapons_size}};
-                };
+                #list my_weapons add {${weapon_name} ${my_tmp_weapons_size}};
+                #list ${weapon_type}_list insert 1 {${weapon_name} ${my_tmp_weapons_size}};
+                #list my_${weapon_type}_list add {${weapon_name} ${my_tmp_weapons_size}};
             };
         };
     } {2};
-    #action {%* = {[^,]+}} {
-        #var weapon_type %%2;
+    #action {%* = {[^,]+}, {[^,]+},} {
+        #nop xuantie-jian, sword;
+        #var weapon_type %%3;
         #var weapon_name %%2;
         #list ${weapon_type}_list size tmp_weapons_size;
         #math tmp_weapons_size ${tmp_weapons_size}+1;
@@ -86,6 +84,19 @@
             #list ${weapon_type}_list add {${weapon_name} ${tmp_weapons_size}};
         };
     } {3};
+    #action {%* = {[^,]+}} {
+        #nop sword;
+        #var weapon_type %%2;
+        #var weapon_name %%2;
+        #list ${weapon_type}_list size tmp_weapons_size;
+        #math tmp_weapons_size ${tmp_weapons_size}+1;
+        #if {${tmp_weapons_size} == 1} {
+            #list ${weapon_type}_list add ${weapon_name};
+        };
+        #else {
+            #list ${weapon_type}_list add {${weapon_name} ${tmp_weapons_size}};
+        };
+    } {4};
     #delay {3} {
         #class weapons.inner kill;
         #foreach {${weapon_types}[%*]} {weapon_type} {
