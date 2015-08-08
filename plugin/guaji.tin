@@ -101,4 +101,37 @@
     #class guaji.inner kill;
     show_to_quest ¹Ò»ú½áÊø;
 };
+
+#alias {guaxt.start} {
+    set_last_quest guaxt;
+    #class xtj_inner open;
+    #action {ÄÃµ½ĞşÌú½£} {
+        cun_xtj;
+    };
+
+    #alias {cun_xtj} {
+        gt wm;
+        on_there {
+            put xuantie sword in xiang;
+            chat ĞşÌú½£;
+            #delay {1200} {
+                quit_and_restart;
+            };
+        };
+    };
+
+    #action {ĞşÌú½£Ã»ÁË} {
+        #delay {1200} {
+            quit_and_restart;
+        };
+    };
+    #class xtj_inner close;
+    show_to_quest ¿ªÊ¼¹ÒĞşÌú½£;
+    get.xuan_tie_jian;
+};
+
+#alias {guaxt.stop} {
+    unset_last_quest;
+    show_to_quest ¹ÒĞşÌú½£½áÊø;
+};
 #class guaji close

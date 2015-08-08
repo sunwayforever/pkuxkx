@@ -46,13 +46,35 @@
 
     #send {id};
     #class weapons.inner open;
+    #var id_triggerd 0;
+    #alias {id_triggerd} {
+        #if {${id_triggerd} == 0} {
+            #var id_triggerd 1;
+            #class weapons.inner open;
+            #action {^>} {
+                #class weapons.inner kill;
+                #foreach {${weapon_types}[%*]} {weapon_type} {
+                    #if {@numitems{${weapon_type}_list} == 1} {
+                        #list ${weapon_type}_list add {${${weapon_type}_list}[1] 2};
+                    };
+                    #list special_${weapon_type} size tmp_weapons_size;
+                    #if {${tmp_weapons_size} != 0} {
+                        #foreach {${special_${weapon_type}}[%*]} {sw} {
+                            #list ${weapon_type}_list add ${sw};
+                            #list my_special_weapons add ${sw};
+                        };
+                    };
+                };
+            };
+            #class weapons.inner close;
+        };
+    };
     #nop sword, my sword;
     #action {%* = {[^,]+}, {my [^,]+},} {
+        id_triggerd;
         #var weapon_type %%2;
         #var weapon_name %%3;
-
         #var need_reload 0;
-
         #list my_${weapon_type}_list size my_tmp_weapons_size;
         #math my_tmp_weapons_size ${my_tmp_weapons_size}+1;
 
@@ -72,6 +94,7 @@
         };
     } {2};
     #action {%* = {[^,]+}, {[^,]+},} {
+        id_triggerd;
         #nop xuantie-jian, sword;
         #var weapon_type %%3;
         #var weapon_name %%2;
@@ -85,6 +108,7 @@
         };
     } {3};
     #action {%* = {[^,]+}} {
+        id_triggerd;
         #nop sword;
         #var weapon_type %%2;
         #var weapon_name %%2;
@@ -97,18 +121,6 @@
             #list ${weapon_type}_list add {${weapon_name} ${tmp_weapons_size}};
         };
     } {4};
-    #delay {3} {
-        #class weapons.inner kill;
-        #foreach {${weapon_types}[%*]} {weapon_type} {
-            #list special_${weapon_type} size tmp_weapons_size;
-            #if {${tmp_weapons_size} != 0} {
-                #foreach {${special_${weapon_type}}[%*]} {sw} {
-                    #list ${weapon_type}_list add ${sw};
-                    #list my_special_weapons add ${sw};
-                };
-            };
-        };
-    };
     #class weapons.inner close;
 };
 

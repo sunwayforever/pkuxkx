@@ -208,7 +208,7 @@
             #showme {»ðºòÌ«Ç³};
             #return;
         };
-        show_to_quest ÁìÎò $skill: $skill_level_a / $skill_level_b;
+        show_to_quest ÁìÎò $skill: $skill_level_a / $skill_level_b -> ${max_level};
         #if {$skill_level_a >= $max_level && $skill_level_b >= $max_level} {
             #showme {»ðºòÌ«Ç³};
             #return;

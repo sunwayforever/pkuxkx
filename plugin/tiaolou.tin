@@ -1,48 +1,82 @@
 #class jump open
 #alias {tl.start} {
-    #class jump.inner open;
     set brief 1;
-    #alias {do_jump} {
-        enter;u;u;u;u;u;u;out;
+    #class jump.inner open;
+
+    #action {基本轻功%*%d/%*} {
+        #var current_dodge %%2;
     };
-    #action {你已稳稳地站在地上} {
-        #delay {3} {
-            #if {${qx_percent} < 40} {
-                yun recover;
-            };
-            #if {${js_percent} < 40} {
-                yun regenerate;
-            };
-            #if {${nl_percent} < 40} {
-                chifan;
-                on_health {
-                    do_jump;
-                };
+
+    #action {~\e[1;31m%d%s%d\e[2;37;0m} { #nop ]];
+        #var max_level %%1;
+    };
+
+    #alias {tl.watchdog.stop} {
+        #undelay {tl_wd_delay};
+    };
+
+    #alias {tl.watchdog.kick} {
+        #delay {tl_wd_delay} {
+            tl.start;
+        } {30};
+    };
+
+    #alias {check_dodge_level} {
+        #send {sk};
+        #send {exp};
+        #delay {1} {
+            #if {${max_level} < ${current_dodge}} {
+                tl.stop;
             };
             #else {
-                do_jump;
+                show_to_quest 跳楼: ${current_dodge} -> ${max_level};
             };
         };
     };
 
-    #ticker {restart} {
-        do_jump;
+    #ticker {check_dodge_level} {
+        check_dodge_level;
     } {60};
+
+    #action {你已稳稳地站在地上} {
+        tl.watchdog.kick;
+        on_unbusy {
+            tl.jump;
+        };
+    };
 
     #class jump.inner close;
     on_there {
-        s;s;s;sd;s;s;s;e;
-        #delay {1} {
-            do_jump;
-        };
+        show_to_quest 跳楼开始;
+        check_dodge_level;
+        tl.jump;
     };
-    gt fzl;
-
+    gt 少林钟楼小院;
 };
 
 #alias {tl.stop} {
     set brief 2;
+    tl.watchdog.stop;
     #class jump.inner kill;
+    show_to_quest 跳楼结束;
+};
+
+#alias {tl.jump} {
+    #if {${qx_percent} < 40} {
+        yun recover;
+    };
+    #if {${js_percent} < 40} {
+        yun regenerate;
+    };
+    #if {${nl_percent} < 40} {
+        chifan;
+        on_health {
+            enter;u;u;u;u;u;u;out;
+        };
+    };
+    #else {
+        enter;u;u;u;u;u;u;out;
+    };
 };
 
 #class jump close

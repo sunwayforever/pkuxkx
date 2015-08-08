@@ -148,7 +148,7 @@
     #delay {delay_feijian} {
         wi.unfreeze;
         wi;
-    } {3};
+    } {4};
 };
 
 #alias {jianzhang} {

@@ -24,11 +24,13 @@
     #action {你运起内力将玄铁剑拿了起来} {
         show_to_info 玄铁剑!;
         xtj_back;
+        #showme 拿到玄铁剑;
     };
 
     #action {剑已被拿走了。} {
-        show_to_info 剑已被拿走了;
+        show_to_info 玄铁剑没了;
         xtj_back;
+        #showme 玄铁剑没了;
     };
     #alias {xtj_back} {
         swim river;

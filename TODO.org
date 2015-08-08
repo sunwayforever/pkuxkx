@@ -1,0 +1,8 @@
+#+TITLE: Todo
+#+AUTHOR: Wei Sun (孙伟)
+#+EMAIL: wei.sun@spreadtrum.com
+* Todo
+- gt.stop
+- 根据路径自动略过保卫相关的镖
+- gt 北京通过张家口车马行
+- hb 支持 fullme timeout

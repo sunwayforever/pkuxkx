@@ -817,13 +817,6 @@ walk_to east;
     };
 };
 
-#alias {pause_screen} {
-    #buffer lock;
-    #delay {1} {
-        #buffer end;
-    };
-};
-
 #alias {fullme} {
     #alias tmp_on_fullme #cr;
     #alias tmp_on_fullme %0;
@@ -926,6 +919,7 @@ walk_to east;
 };
 
 #alias {notify} {
+    play alert.wav;
     show_to_info %0;
     desktop.notify %0;
     xmpp.notify %0;

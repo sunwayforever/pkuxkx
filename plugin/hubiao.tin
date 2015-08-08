@@ -26,7 +26,7 @@
     #if {@ismember{%1;hb_blacklist:${hb_owner_loc}} != 0} {
         #return 0;
     };
-    #if {"${xy_info}" == "on" && {@ismember{%1;hb_blacklist_baowei:${hb_owner_loc}} != 0}} {
+    #if {"${xy_info}" == "on" && @ismember{%1;hb_blacklist_baowei:${hb_owner_loc}} != 0} {
         #return 0;
     };
     #return 1;
@@ -374,7 +374,6 @@
         #else {
             @setenv{hb_lunci;0};
             notify 下一轮密信;
-            play alert.wav;
         };
     };
     #elseif {"${hb_state}" == "GOT_MIXIN"} {
@@ -448,6 +447,7 @@
     };
 
     #action {你给%*一些失踪的财物} {
+        notify 密信完成;
         @setenv{hb_state;nil};
         @setenv{mixin_lunci;5};
         #delay {hb_auto_delay} {
@@ -476,7 +476,6 @@
 
     #action {${char_name}帮%*追回财物，额外获得%*点经验} {
         show_to_info 额外获得 @ctd{%%2} 点经验;
-        notify 密信完成;
     };
 
     #alias {got_gem} {
@@ -495,7 +494,6 @@
 
     #action {哇，你太厉害了，这么快就把这些财物追回，我有重谢！} {
         got_gem;
-        notify 密信完成;
     };
 
     #action {掉了出来一颗} {

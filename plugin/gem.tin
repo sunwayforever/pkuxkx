@@ -69,6 +69,7 @@
 };
 
 #alias {gem.combine} {
+    #alias tmp_combine #cr;
     #alias tmp_combine %1;
     gem.setup;
     #class gem.combine.inner open;
