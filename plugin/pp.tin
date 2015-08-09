@@ -19,6 +19,7 @@
     #var target @lower{%2};
     #var caller2 @mapget{pp;${target}};
     tell ${caller2} 【%1(%2)】目前在【%3】,快去摁死它吧!;
+    show_to_info  你告诉 ${caller2}：【%1(%2)】目前在【%3】;
     #unticker {pp_${caller2}};
 };
 

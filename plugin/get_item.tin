@@ -262,4 +262,32 @@
         };
     };
 };
+
+#alias {get.fenjiu} {
+    #alias tmp_get_fenjiu #cr;
+    #alias tmp_get_fenjiu %1;
+    #class get.fenjiu.inner open;
+
+    #action {你从沈千盅那里买下了%*坛汾酒} {
+        #class get.fenjiu.inner kill;
+        tmp_get_fenjiu;
+    };
+    #alias {burden.check.done} {
+        #var fenjiu_count @getburden{汾酒};
+        #if {${fenjiu_count} > 5} {
+            #showme 你从沈千盅那里买下了零坛汾酒;
+        };
+        #else {
+            gps.gt 扬州酒店;
+            on_there {
+                buy fenjiu 10;
+            };
+        };
+    };
+    #class get.fenjiu.inner close;
+
+    burden.check {
+        burden.check.done;
+    };
+};
 #class get_item close;

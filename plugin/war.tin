@@ -154,6 +154,11 @@
 #alias {war} {
     #var fighting 1;
     #class war.inner open;
+    #action {你已经受伤过重，只怕一运真气便有生命危险！} {
+        check_health;
+        mj.stop;
+        raw;
+    };
     #action {你全身放松，坐下来开始运功疗伤。} {
         check_health;
         mj.stop;
@@ -181,6 +186,7 @@
     #action {^【 状态 】 %*} {
         #class check_health.inner kill;
         #var health_info %%1;
+        #replace health_info {、醉酒} {};
         update_status;
         #if {@issubstring{${health_info};、} == 1} {
             #var in_special_state 1;
@@ -354,6 +360,7 @@
     #if {${youxiao_neigong} > 750} {
         yun shield;
     };
+    wi;
     attack.prepare;
 };
 

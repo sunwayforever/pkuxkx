@@ -235,7 +235,7 @@
 
 #alias {gps.maze.tdf} {
     #var current_direction west;
-    #list directions create {east;west;north;south};
+    #list tmp_directions create {east;west;north;south};
     #alias {do_look_next} {
         #math look_count ${look_count}+1;
         #if {${look_count} > 4} {
@@ -245,7 +245,7 @@
             };
         };
         #else {
-            #list directions get ${look_count} current_direction;
+            #list tmp_directions get ${look_count} current_direction;
             look ${current_direction};
         };
     };

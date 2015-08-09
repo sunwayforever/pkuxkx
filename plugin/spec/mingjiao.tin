@@ -3,14 +3,13 @@
     yun powerup;
     #class attack.inner open;
     #ticker {tisha} {
-        tisha;
+        pfm tisha;
     } {1.8};
     #class attack.inner close;
 };
 
 #alias {attack} {
-    tisha;
-    duo;
+    pfm tisha;
     #class attack.inner open;
     #class attack.inner close;
 };
@@ -90,6 +89,7 @@
     #send {jifa force guangming-shenghuogong};
     #send {jifa dagger shenghuo-lingfa};
     #send {jifa parry shenghuo-lingfa};
+    #send {jifa sword hero-jianfa};
     bei none;
     bei strike;
 };

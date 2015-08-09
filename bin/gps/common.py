@@ -59,6 +59,9 @@ def fixup_room(room):
         room = "泥人铺"
     elif re.match(".*甜蜜小屋.*",room):
         room = "甜蜜小屋"
+    elif re.match(".*炸弹人游戏",room):
+        room = "炸弹人游戏"
+
     return room
 
 def get_zone(conn, room):

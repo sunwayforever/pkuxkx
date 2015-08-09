@@ -60,6 +60,7 @@ load gps_actions;
             #var gps_gt_check_count 0;
             #delay {1} {
                 #showme {GPS: 抵达目的地};
+                tmp_gps_gt;
             };
         };
         #else {
@@ -67,6 +68,7 @@ load gps_actions;
             #if {${gps_gt_check_count} >= 20} {
                 #var gps_gt_check_count 0;
                 #showme {GPS: 抵达目的地};
+                tmp_gps_gt;
             };
             #else {
                 #if {${gps_stop} == 0} {
@@ -101,6 +103,10 @@ load gps_actions;
 #alias {gps.gt} {
     #var gps_stop 0;
     #var gps_last_dest %1;
+
+    #alias tmp_gps_gt #cr;
+    #alias tmp_gps_gt %2;
+
     #alias {gps_gt} {
         gps.gt ${gps_last_dest};
     };
@@ -126,6 +132,7 @@ load gps_actions;
             #if {${dst_roomno} == ${src_roomno}} {
                 #delay {1} {
                     #showme {GPS: 抵达目的地};
+                    tmp_gps_gt;
                 };
             };
             #else {

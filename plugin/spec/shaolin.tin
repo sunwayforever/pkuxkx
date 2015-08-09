@@ -8,10 +8,20 @@
 
 #alias {attack.prepare} {
     yun powerup;
-    fmq;
+};
+
+#alias {hb.spec} {
+    #alias tmp_hb_spec #cr;
+    #alias tmp_hb_spec %1;
+    get.fenjiu {
+        tmp_hb_spec;
+    };
 };
 
 #alias {attack} {
+    pfm zuida;
+    pfm fmq;
+
     #if {"${quest}" == "hb"} {
         unwi;
         #send {perform yizhi-chan.jingmo ${char_id}'s robber 1};
@@ -28,13 +38,13 @@
         wi;
     };
     #else {
-        jingmo;
-        chan;
+        pfm jingmo;
+        pfm chan;
     };
 
     #class attack.inner open;
-    #ticker {fumoquan} {
-        fmq;
+    #ticker {zuida} {
+        pfm zuida;
     } {30};
     #ticker {jingmo} {
         #if {"${quest}" == "hb"} {
@@ -47,8 +57,8 @@
             wi;
         };
         #else {
-            jingmo;
-            chan;
+            pfm jingmo;
+            pfm chan;
         };
     } {1};
     #class attack.inner close;
@@ -62,18 +72,18 @@
         #class attack.inner close;
         #if {${xf.type} == -1 || ${xf.type} == 1} {
             #var jiali_count max;
-            luohan;
+            pfm luohan;
             #class attack.inner open;
             #ticker {luohan} {
-                luohan;
+                pfm luohan;
             } {5.8};
             #class attack.inner close;
         };
         #elseif {${xf.type} == 2} {
-            luohan;
+            pfm luohan;
             #class attack.inner open;
             #ticker {luohan} {
-                luohan;
+                pfm luohan;
             } {5.8};
             #class attack.inner close;
         };
@@ -93,18 +103,18 @@
     #else {
         #if {${xf.type} == -1 || ${xf.type} == 1} {
             #var jiali_count max;
-            luohan;
+            pfm luohan;
             #class attack.inner open;
             #ticker {luohan} {
-                luohan;
+                pfm luohan;
             } {5.8};
             #class attack.inner close;
         };
         #elseif {${xf.type} == 2} {
-            luohan;
+            pfm luohan;
             #class attack.inner open;
             #ticker {luohan} {
-                luohan;
+                pfm luohan;
             } {5.8};
             #class attack.inner close;
         };

@@ -458,7 +458,7 @@ walk_to east;
 };
 
 #alias {chain} {
-    on_unbusy {%1 {on_unbusy {%2 {on_unbusy {%3 {on_unbusy {%4 {on_unbusy {%5 {on_unbusy {%6 {on_unbusy {%7 {on_unbusy {%8 {on_unbusy {%9 {on_unbusy {%10 {};};};};};};};};};};};};};};};};};};};};
+    on_unbusy {%1 {on_unbusy {%2 {on_unbusy {%3 {on_unbusy {%4 {on_unbusy {%5 {on_unbusy {%6 {on_unbusy {%7 {on_unbusy {%8 {on_unbusy {%9 {on_unbusy {%10 {on_unbusy {%11 {on_unbusy {%12 {};};};};};};};};};};};};};};};};};};};};};};};};
 };
 
 #alias {sell.all} {
@@ -571,36 +571,6 @@ walk_to east;
 #ticker {check_naijiu} {
     check_naijiu;
 } {250};
-
-#alias {path.new} {
-    #path end;
-    #path new;
-};
-
-#alias {path.del} {
-    #path del;
-};
-
-#alias {path.show} {
-    #path save forward forward_path;
-    #path save backward backward_path;
-
-    #replace {forward_path} {north} {n};
-    #replace {forward_path} {south} {s};
-    #replace {forward_path} {east} {e};
-    #replace {forward_path} {west} {w};
-    #replace {forward_path} {up} {u};
-    #replace {forward_path} {down} {d};
-
-    #replace {backward_path} {north} {n};
-    #replace {backward_path} {south} {s};
-    #replace {backward_path} {east} {e};
-    #replace {backward_path} {west} {w};
-    #replace {backward_path} {up} {u};
-    #replace {backward_path} {down} {d};
-
-    #var forward_path;
-};
 
 #alias {n} {north};
 #alias {s} {south};

@@ -93,7 +93,7 @@
             };
         };
     } {2};
-    #action {%* = {[^,]+}, {[^,]+},} {
+    #action {%* = {[^,]+}, {[^,]+}} {
         id_triggerd;
         #nop xuantie-jian, sword;
         #var weapon_type %%3;
@@ -101,10 +101,10 @@
         #list ${weapon_type}_list size tmp_weapons_size;
         #math tmp_weapons_size ${tmp_weapons_size}+1;
         #if {${tmp_weapons_size} == 1} {
-            #list ${weapon_type}_list add ${weapon_name};
+            #list ${weapon_type}_list add ${weapon_type};
         };
         #else {
-            #list ${weapon_type}_list add {${weapon_name} ${tmp_weapons_size}};
+            #list ${weapon_type}_list add {${weapon_type} ${tmp_weapons_size}};
         };
     } {3};
     #action {%* = {[^,]+}} {
@@ -136,9 +136,15 @@
 #alias {reload} {
     #alias tmp_reload #cr;
     #alias tmp_reload %0;
+    #class reload_inner open;
+    #action {你在我这里并没有保存任何装备} {
+        #class reload_inner kill;
+        #showme reloaded;
+        tmp_reload;
+    };
 
     #action {好了，你走吧} {
-        #unaction {好了，你走吧};
+        #class reload_inner kill;
         remove all;
         #delay {3} {
             weapons.check;
@@ -151,7 +157,7 @@
             tmp_reload;
         };
     };
-
+    #class reload_inner close;
     gt 名人堂;
     on_there {
         save;

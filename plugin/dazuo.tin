@@ -62,17 +62,24 @@
     set_last_quest dz;
     autoheal.off;
     #class dz.inner open;
-    #action {你现在的气太少了} {
-        sleep;
-    };
-    #ticker {dz} {
-        #if {${qx_percent} < 10} {
-            sleep;
-        };
-        #else {
+    #alias {start_ticker} {
+        #ticker {dz} {
             dazuo ${dazuo_count};
+        } {1};
+    };
+
+    #alias {stop_ticker} {
+        #unticker {dz};
+    };
+
+    #action {你现在的气太少了} {
+        stop_ticker;
+        sleep;
+        on_wakeup {
+            start_ticker;
         };
-    } {1};
+    };
+
     #action {你的内力增加了} {
         #math dz_total_count ${dz_total_count}+1;
         show_to_info force +${dz_total_count};
@@ -82,10 +89,22 @@
         };
     };
     #class dz.inner close;
-    dz.check;
+    #send {jifa};
+    gt bs;
+    on_there {
+        dz.check;
+    };
 };
 
 #alias {dz.check} {
+    stop_ticker;
+    chifan;
+    burden.check {
+        dz.check.inner;
+    };
+};
+
+#alias {dz.check.inner} {
     #math max_neili ${youxiao_neigong} * 10 -1;
     #if {${max_neili} < ${hpbrief_max_nl}} {
         dz.stop;
@@ -93,6 +112,12 @@
         show_to_quest 内力到达瓶颈: ${hpbrief_max_nl} => ${max_neili};
     };
     #else {
+        #if {@getburden{酥油茶} < 30} {
+            dz.stop;
+            chain get.qian get.fan dz.start;
+            #return;
+        };
+        start_ticker;
         show_to_quest 打坐: ${hpbrief_max_nl} => ${max_neili};
     };
 };
@@ -100,6 +125,7 @@
 #alias {dz.stop} {
     unset_last_quest;
     autoheal.on;
+    stop_ticker;
     show_to_quest 打坐完毕;
     #class dz.inner kill;
 };
