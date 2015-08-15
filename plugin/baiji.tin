@@ -8,7 +8,7 @@
     #action {ÄÚÁ¦²»¹»} {
         #unticker {bj};
         #delay {rest} {
-            eat_food;
+            chifan;
             dz.full {
                 #ticker {bj} {
                     baiji xiang;

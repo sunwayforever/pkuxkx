@@ -42,7 +42,18 @@
 
 #alias {show_to_info} {
     #format {tmp_time} {%t} {%T};
+    #var screen_width @screenw{};
+    #math header_width @len{tmp_time}+2;
     #var temp ${tmp_time} <099> %0;
+
+    #if {@len{${temp}} > ${screen_width}} {
+        #math split_chunk_size ${screen_width}-${header_width}-10;
+        INVOKE split_string "%0" ${split_chunk_size};
+        #foreach {${split_string}[%*]} {item} {
+            show_to_info > ${item};
+        };
+        #return;
+    };
     #list info_window ins -1 $temp;
     #list info_window del 1;
 
@@ -51,34 +62,48 @@
         #math info_pos $info_cnt+${info_window_offset};
         #echo {{<aff>$info_window[$info_cnt]<099>} {-$info_pos}};
     }
-}
+};
 
+#var showing_to_chat 0;
 #alias {show_to_chat} {
-    #delay {chat_delay} {
-        #format {tmp_time} {%t} {%T};
-        #var temp ${tmp_time} <099> %0;
-        #list chat_window ins -1 {$temp};
-        #list chat_window del 1;
+    #if {${showing_to_chat} == 1} {
+        #delay {0.2} {
+            show_to_chat %0;
+        };
+        #return;
+    };
+    #format {tmp_time} {%t} {%T};
+    #var screen_width @screenw{};
+    #math header_width @len{tmp_time}+2;
+    #var temp ${tmp_time} <099> %0;
 
-        #loop {1} {&chat_window[]} {chat_cnt}
-        {
-            #math chat_pos $chat_cnt+${chat_window_offset};
-            #echo {{<aff>$chat_window[$chat_cnt]<099>} {-$chat_pos}};
-        }
-    } {0.2};
+    #if {@len{${temp}} > ${screen_width}} {
+        #math split_chunk_size ${screen_width}-${header_width}-10;
+        INVOKE split_string "%0" ${split_chunk_size};
+        #foreach {${split_string}[%*]} {item} {
+            show_to_chat > ${item};
+        };
+        #return;
+    };
+
+    #var showing_to_chat 1;
+    #list chat_window ins -1 {$temp};
+    #list chat_window del 1;
+
+    #loop {1} {&chat_window[]} {chat_cnt}
+    {
+        #math chat_pos $chat_cnt+${chat_window_offset};
+        #echo {{<aff>$chat_window[$chat_cnt]<099>} {-$chat_pos}};
+    }
+    #var showing_to_chat 0;
 }
 
 #alias {update_status_line} {
-    #echo {{<099>${show_status}<099> | ${show_pp} => <cfa>${show_quest}<099>}{-1}};
+    #echo {{<099>${show_status}<099> => <cfa>${show_quest}<099>}{-1}};
 };
 
 #alias {show_to_quest} {
     #var show_quest %0;
-    update_status_line;
-};
-
-#alias {show_to_pp} {
-    #var show_pp %0;
     update_status_line;
 };
 

@@ -53,7 +53,7 @@
     } {1};
 
     #action {你累得满头大汗, 暂停了画方圆。} {
-        eat_food;
+        chifan;
         dazuo 200;
     };
 

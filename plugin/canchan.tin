@@ -5,10 +5,10 @@
     #ticker {canchan} {
         canchan;
     } {180};
-    
+
     #action {ÄãÐÞÐÐÍê±Ï} {
         #delay {wd.done} {
-            eat_food;
+            chifan;
             canchan;
         } {0.1};
     };

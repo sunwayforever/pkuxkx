@@ -39,7 +39,7 @@
     };
 
     #action {ÄãÒ»¾õĞÑÀ´} {
-        eat_food;
+        chifan;
         w;
         #var tired 0;
     };

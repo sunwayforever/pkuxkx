@@ -16,12 +16,8 @@
     #class %1 kill;
 };
 
-#alias {eat_food} {
-    #6 {drink cha};
-};
-
 #alias {chifan} {
-    eat_food;
+    #6 {drink cha};
 };
 
 #alias {lm} {
@@ -150,24 +146,31 @@
             helpme ...;
             helpme find ${pp_target};
         } {15};
-
+        #delay {pp_delay} {
+            #class pp.inner kill;
+            #unticker {pp};
+            tmp_auto_pp nil;
+        } {150};
         #class pp.inner open;
         #action {告诉你：【%*(%*)】目前在【%*的%*】,快去摁死它吧!} {
             #class pp.inner kill;
+            #undelay {pp_delay};
             #unticker {pp};
-            show_to_pp %%1(%%2) @ %%4;
+            show_to_info %%1(%%2) @ %%4;
             tmp_auto_pp %%4;
         } {1};
         #action {告诉你：【%*(%*)】目前在【%*】,快去摁死它吧!} {
             #class pp.inner kill;
+            #undelay {pp_delay};
             #unticker {pp};
-            show_to_pp %%1(%%2) @ %%3;
+            show_to_info %%1(%%2) @ %%3;
             tmp_auto_pp %%3;
         } {2};
         #action {告诉你：【%*】并不存在} {
             #class pp.inner kill;
+            #undelay {pp_delay};
             #unticker {pp};
-            show_to_pp %%1 @ 不存在;
+            show_to_info %%1 @ 不存在;
             tmp_auto_pp nil;
         } {1};
         #class pp.inner close;
@@ -175,7 +178,6 @@
 };
 
 #alias {autopp.set} {
-    show_to_pp {};
     #if {@isalphabet{%1} == 1} {
         #var pp_target @lower{%0};
     };
@@ -295,6 +297,11 @@
             };
         };
     };
+
+    #action {已经受伤过重，经受不起你的真气震荡} {
+        #class health.inner kill;
+        on_severe_wound;
+     };
 
     #action {你已经受伤过重，只怕一运真气便有生命危险！} {
         #class health.inner kill;
@@ -787,6 +794,7 @@ walk_to east;
     };
 };
 
+#var ignore_fullme 0;
 #alias {fullme} {
     #alias tmp_on_fullme #cr;
     #alias tmp_on_fullme %0;
@@ -810,7 +818,12 @@ walk_to east;
         on_fullme_timeout;
     } {1200};
     #class fullme_inner close;
-    notify 福米;
+    #if {${ignore_fullme} == 0} {
+        notify 福米;
+    };
+    #else {
+        #showme 也许是上天垂青于你的勤奋和努力吧，一个小时之内你不用担心被判为机器人。;
+    };
 };
 
 #alias {on_fullme_timeout} {
@@ -1004,4 +1017,123 @@ walk_to east;
     drop huo tong;
     drop xuan bing;
     drop shi tan;
+};
+
+@mapcreate{menpai};
+@mapset{menpai;华山派;huashan};
+@mapset{menpai;古墓派;gumu};
+@mapset{menpai;武当派;wudang};
+@mapset{menpai;少林派;shaolin};
+@mapset{menpai;星宿派;xingxiu};
+@mapset{menpai;大轮寺;dalun};
+@mapset{menpai;丐帮;gaibang};
+@mapset{menpai;峨眉派;emei};
+@mapset{menpai;全真派;quanzhen};
+@mapset{menpai;日月神教;riyue};
+@mapset{menpai;明教;mingjiao};
+@mapset{menpai;桃花岛;taohua};
+@mapset{menpai;天龙寺;tianlong};
+
+#alias {get_char_info} {
+    #alias get_char_info_action #cr;
+    #alias get_char_info_action %1;
+
+    #class get_char_info.inner open;
+    #action {【%*】%*(%*)} {
+        #var char_id @lower{%%3};
+    };
+    #action {你是%*第} {
+        #var char_menpai_zh %%1;
+        #var char_menpai @mapget{menpai;%%1};
+        load spec/${char_menpai};
+        #var weapons_to_wield ${my_weapons_to_wield};
+    };
+    #action {≡━━━━━━━━━━━━━━━━━━━━━━◎%*侠客行◎━━≡} {
+        #class get_char_info.inner kill;
+
+        #class get_name.inner open;
+        #action {姓    名： %*} {
+            #var char_name %%%1;
+            #class get_name.inner kill;
+            update_status;
+            get_char_info_action;
+        };
+        #class get_name.inner close;
+
+        #class get_st.inner open;
+        #action {姓名:%*%sID:%S} {
+            #var char_name %%%1;
+            update_status;
+            get_char_info_action;
+        };
+        #action {内力恢复：+%*  } {
+            #var char_nl_recovery %%%1;
+        };
+        #action {系统喘气中} {
+            #delay {10} {
+                #send {status_me};
+            };
+        };
+        #action {≡━━━━━━━━━━━━━━━━━━━━━━━◎%*侠客行◎━━≡} {
+            #class get_st.inner kill;
+        };
+        #class get_st.inner close;
+        on_unbusy {
+            #send {finger ${char_id}};
+            #send {status_me};
+        };
+    };
+    #class get_char_info.inner close;
+    on_unbusy {
+        #send {sc};
+    };
+};
+
+#alias {startup} {
+    #action {张 三双手抱拳，对着%*${char_name}作了个揖道} {
+        notify 张三;
+    };
+    show_to_quest   ;
+    #send {i};
+    #send {hpbrief};
+    #send {uptime};
+    #send {time};
+    init_set;
+    #if {${reset} == 0} {
+        xmpp.start;
+    };
+    show.init;
+    check_baowei;
+    update_env;
+    check_health;
+    #delay {4} {
+        check_fm;
+        weapons.check;
+    };
+    #delay {7} {
+        #send {l};
+    };
+    #delay {9} {
+        #if {${need_reload} == 1} {
+            #showme need reload;
+        };
+        #else {
+            #showme reloaded;
+            wi;
+            we;
+            check_naijiu;
+        };
+        pfm_special;
+        #send {jifa};
+        reborn;
+        #delay {5} {
+            restart_last_quest;
+        };
+    };
+};
+
+#alias {login} {
+    get_char_info {
+        startup;
+    };
 };

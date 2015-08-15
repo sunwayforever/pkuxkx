@@ -36,7 +36,12 @@
 #alias ss weapons.check;
 #var need_reload 0;
 #alias {weapons.check} {
-    #var need_reload 1;
+    #if {${level_info} >= 16} {
+        #var need_reload 1;
+    };
+    #else {
+        #var need_reload 0;
+    };
     #foreach {${weapon_types}[%*]} {weapon_type} {
         #list ${weapon_type}_list clear;
         #list my_${weapon_type}_list clear;

@@ -11,6 +11,15 @@
     check_fm;
 } {60};
 
+#function {fullme_needed} {
+    #if {${fm_remaining_time} ==0} {
+        #return 1;
+    };
+    #else {
+        #return 0;
+    };
+};
+
 #alias {check_fm} {
     #var last_fm_time @getenv{last_fm_time};
     #format {current_fm_time} {%T};
@@ -49,7 +58,7 @@
     };
 } {230};
 
-#ticker {check_shaqi} {
+#ticker {check_score} {
     #if {${critical_running} == 0} {
         #send {sc};
     };
@@ -57,6 +66,10 @@
 
 #action {杀    气：  %*} {
     #var shaqi_info %1;
+};
+
+#action { 等    级：%s%d/%d} {
+    #var level_info %2;
 };
 
 #action {银行存款：  %*两黄金} {

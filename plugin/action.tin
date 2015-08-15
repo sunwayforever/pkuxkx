@@ -23,120 +23,6 @@
     #cr;
 } {1};
 
-@mapcreate{menpai};
-@mapset{menpai;华山派;huashan};
-@mapset{menpai;古墓派;gumu};
-@mapset{menpai;武当派;wudang};
-@mapset{menpai;少林派;shaolin};
-@mapset{menpai;星宿派;xingxiu};
-@mapset{menpai;大轮寺;dalun};
-@mapset{menpai;丐帮;gaibang};
-@mapset{menpai;峨眉派;emei};
-@mapset{menpai;全真派;quanzhen};
-@mapset{menpai;日月神教;riyue};
-@mapset{menpai;明教;mingjiao};
-@mapset{menpai;桃花岛;taohua};
-@mapset{menpai;天龙寺;tianlong};
-#gag get_char_info;
-#alias {get_char_info} {
-    #class get_char_info.inner open;
-    #action {【%*】%*(%*)} {
-        #var char_id @lower{%%3};
-    };
-    #action {你是%*第} {
-        #var char_menpai_zh %%1;
-        #var char_menpai @mapget{menpai;%%1};
-        load spec/${char_menpai};
-        #var weapons_to_wield ${my_weapons_to_wield};
-    };
-    #action {≡━━━━━━━━━━━━━━━━━━━━━━◎%*侠客行◎━━≡} {
-        #class get_char_info.inner kill;
-
-        #class get_name.inner open;
-        #action {姓    名： %*} {
-            #var char_name %%%1;
-            #class get_name.inner kill;
-            update_status;
-            #showme get_char_info;
-        };
-        #class get_name.inner close;
-
-        #class get_st.inner open;
-        #action {姓名:%*%sID:%S} {
-            #var char_name %%%1;
-            update_status;
-            #showme get_char_info;
-        };
-        #action {内力恢复：+%*  } {
-            #var char_nl_recovery %%%1;
-        };
-        #action {系统喘气中} {
-            #delay {10} {
-                #send {status_me};
-            };
-        };
-        #action {≡━━━━━━━━━━━━━━━━━━━━━━━◎%*侠客行◎━━≡} {
-            #class get_st.inner kill;
-        };
-        #class get_st.inner close;
-        on_unbusy {
-            #send {finger ${char_id}};
-            #send {status_me};
-        };
-    };
-    #class get_char_info.inner close;
-    on_unbusy {
-        #send {sc};
-    };
-};
-
-#alias {login} {
-    get_char_info;
-    #action {get_char_info} {
-        #unaction {get_char_info};
-        #action {张 三双手抱拳，对着%*${char_name}作了个揖道} {
-            notify 张三;
-        };
-        show_to_quest   ;
-        #send {i};
-        #send {hpbrief};
-        #send {uptime};
-        #send {time};
-        init_set;
-        #if {${reset} == 0} {
-            xmpp.start;
-        };
-        show.init;
-        check_baowei;
-        update_env;
-        check_health;
-        #delay {4} {
-            check_fm;
-            weapons.check;
-        };
-        #delay {7} {
-            #send {l};
-        };
-        #delay {9} {
-            #if {${need_reload} == 1} {
-                #showme need reload;
-            };
-            #else {
-                #showme reloaded;
-                wi;
-                we;
-                check_naijiu;
-            };
-            pfm_special;
-            #send {jifa};
-            reborn;
-            #delay {5} {
-                restart_last_quest;
-            };
-        };
-    };
-};
-
 #action {此ID档案已存在} {
     #delay {3} {
         login;
@@ -162,19 +48,19 @@
 
 #action {原来是你的肚子在叫了} {
     #if {${critical_running} == 0} {
-        eat_food;
+        chifan;
     };
 };
 
 #action {你舔了舔干裂的嘴唇，看来是很久没有喝水了。} {
     #if {${critical_running} == 0} {
-        eat_food;
+        chifan;
     };
 };
 
 #action {你渴得眼冒金星} {
     #if {${critical_running} == 0} {
-        eat_food;
+        chifan;
     };
 };
 

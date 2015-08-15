@@ -6,14 +6,12 @@
 };
 
 #alias {attack} {
-    #delay {3} {
-        zong;
-    };
-    chan;
+    pfm chan;
+    pfm zong;
 
     #class attack.inner open;
     #ticker {perf_chan} {
-        chan;
+        pfm chan;
     } {1};
     #class attack.inner close;
 
@@ -22,43 +20,42 @@
         #class attack.inner close;
     };
     #elseif {${mj_started}  == 1} {
-        #class attack.inner open;
-        #ticker {perf_zhen} {
-            zhen;
-        } {3};
-        #class attack.inner close;
         #if {${xf.type} == -1 || ${xf.type} == 1} {
             #var jiali_count max;
-            wuying;
+            pfm wuying;
+            pfm gangrou;
             #class attack.inner open;
             #ticker {wuying} {
-                wuying;
+                pfm wuying;
             } {5.8};
+            #ticker {gr} {
+                pfm gangrou;
+            } {4.8};
             #class attack.inner close;
         };
         #elseif {${xf.type} == 2} {
             #var jiali_count max;
-            wuying;
+            pfm wuying;
             #class attack.inner open;
             #ticker {wuying} {
-                wuying;
+                pfm wuying;
             } {2.8};
             #class attack.inner close;
         };
         #elseif {${xf.type} == 3} {
-            wuying;
+            pfm wuying;
             #class attack.inner open;
             #ticker {wuying} {
-                wuying;
+                pfm wuying;
             } {2.8};
             #class attack.inner close;
         };
         #elseif {${xf.type} == 4} {
             #var jiali_count max;
-            wuying;
+            pfm wuying;
             #class attack.inner open;
             #ticker {wuying} {
-                wuying;
+                pfm wuying;
             } {2.8};
             #class attack.inner close;
         };
@@ -66,40 +63,44 @@
     #else {
         #if {${xf.type} == -1 || ${xf.type} == 1} {
             #var jiali_count max;
-            wuying;
-            lzj;
+            pfm wuying;
+            pfm gangrou;
+            pfm lzj;
             #class attack.inner open;
             #ticker {wuying} {
-                wuying;
+                pfm wuying;
             } {2.8};
             #ticker {lzj} {
-                lzj;
+                pfm lzj;
             } {3.8};
+            #ticker {gr} {
+                pfm gangrou;
+            } {4.8};
             #class attack.inner close;
         };
         #elseif {${xf.type} == 2} {
             #var jiali_count max;
-            wuying;
+            pfm wuying;
             #class attack.inner open;
             #ticker {wuying} {
-                wuying;
+                pfm wuying;
             } {2.8};
             #class attack.inner close;
         };
         #elseif {${xf.type} == 3} {
-            wuying;
+            pfm wuying;
             #class attack.inner open;
             #ticker {wuying} {
-                wuying;
+                pfm wuying;
             } {2.8};
             #class attack.inner close;
         };
         #elseif {${xf.type} == 4} {
             #var jiali_count max;
-            wuying;
+            pfm wuying;
             #class attack.inner open;
             #ticker {wuying} {
-                wuying;
+                pfm wuying;
             } {2.8};
             #class attack.inner close;
         };

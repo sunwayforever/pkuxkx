@@ -50,12 +50,11 @@
         };
     };
     #alias {do_tuna} {
-        #nop eat_food;
         tuna ${dazuo_count};
     };
 
     #ticker {restart_tn} {
-        eat_food;
+        chifan;
         do_tuna;
     } {600};
 

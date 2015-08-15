@@ -238,13 +238,19 @@
             @setenv{xf_state;STARTED};
             #var xf.position %%1%%2;
             xf.watchdog.kick;
-            gt ${xf.position};
-            on_there {
-                xf.bl;
-            };
-            on_not_there {
-                #var xf_fail_reason 房间不可达: ${xf.position};
+            #if {"${xy_info}" == "on" && "%%1" == "襄阳"} {
+                #var xf_fail_reason 保卫期间: ${xf.target};
                 xf.f;
+            };
+            #else {
+                gt ${xf.position};
+                on_there {
+                    xf.bl;
+                };
+                on_not_there {
+                    #var xf_fail_reason 房间不可达: ${xf.position};
+                    xf.f;
+                };
             };
         };
     };
@@ -457,7 +463,6 @@
     #alias {xf.restart} {
         xf.watchdog.stop;
         xf.teardown;
-        @setenv{xf_state;nil};
         #delay {xf_auto_delay} {
             on_health {
                 xf.start;
@@ -499,7 +504,7 @@
 
     #alias {on_severe_wound} {
         keyao {
-            xf.b;
+            xf.restart;
         };
     };
 
@@ -575,11 +580,13 @@
         };
     };
     #action {^由于放弃任务} {
+        @setenv{xf_state;nil};
         show_to_info 萧峰任务(${xf.type})失败: ${xf_fail_reason};
         show_to_quest 萧峰: 失败;
         xf.restart;
     };
     #action {^你已经完成了} {
+        @setenv{xf_state;nil};
         show_to_quest 萧峰: 完成;
         xf.restart;
     };
@@ -606,7 +613,6 @@
     gt xf;
     on_there {
         xf.d;
-        xf.f;
         show_to_quest 萧峰: 准备;
         on_health {
             xf.q;
@@ -637,10 +643,7 @@
 };
 
 #alias {xf.d} {
-    #if {"@getenv{xf_state}" == "STARTED" || "@getenv{xf_state}" == "BEATED"} {
-        xf.f;
-    };
-    #elseif {"@getenv{xf_state}" == "ENDED"} {
+    #if {"@getenv{xf_state}" == "ENDED"} {
         #if {${xf.type} == 1} {
             give shouji to xiao;
         };
@@ -654,6 +657,7 @@
             ask xiao feng about 完成;
         };
     };
+    xf.f;
 };
 
 #alias {xf.f} {

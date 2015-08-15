@@ -8,7 +8,7 @@
         perceive %3;
         #ticker {pp_${caller}} {
             perceive %3;
-        } {5};
+        } {10};
         #delay {30} {
             #unticker {pp_${caller}};
         };

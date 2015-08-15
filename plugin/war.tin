@@ -27,29 +27,6 @@
     war;
 };
 
-#action{「%1」%2(%3) <战斗中>} {
-    show_to_info %1:%2:%3;
-}
-
-#alias {qi} {
-    yun qi;
-};
-
-#alias {equip} {
-    down;
-    out;
-    remove all;
-    #foreach {${my_weapons}[%*]} {weapon} {draw ${weapon}};
-    draw armor;
-    draw head;
-    draw cloth;
-    draw surcoat;
-    draw boots;
-    wear all;
-    wi;
-    enter; up;
-};
-
 #action {你似乎十分疲惫，看来需要好好休息了} {re} {1};
 #action {你气喘嘘嘘，看起来状况并不太好} {re} {1};
 #action {你看起来已经力不从心了} {re} {1};
@@ -127,6 +104,7 @@
     #var enemy nil;
     #var enemy_menpai nil;
     jiali none;
+    #var war_prepared 0;
     #showme truce;
 };
 
@@ -151,7 +129,7 @@
 
 #gag {wait_for_fight};
 #var fighting 0;
-#alias {war} {
+#alias {war.monitor} {
     #var fighting 1;
     #class war.inner open;
     #action {你已经受伤过重，只怕一运真气便有生命危险！} {
@@ -168,6 +146,10 @@
         yun heal;
     } {2};
     #class war.inner close;
+};
+
+#alias {war} {
+    war.prepare;
     attack;
 };
 
@@ -261,6 +243,10 @@
     };
 
     #alias {get_pos_done} {
+        #if {"${pos.room}" == "武门"} {
+            tmp_on_taopao;
+            #return;
+        };
         #class taopao.inner open;
         #ticker {taopao_ticker} {
             taopao_random_walk;
@@ -354,14 +340,20 @@
     };
 };
 
+#var war_prepared 0;
 #alias {war.prepare} {
-    yun qi;
-    yun jing;
-    #if {${youxiao_neigong} > 750} {
-        yun shield;
+    war.monitor;
+    #if {${war_prepared} == 0} {
+        #var war_prepared 1;
+        yun qi;
+        yun jing;
+        #if {${youxiao_neigong} > 750} {
+            #nop yun shield;
+            #cr;
+        };
+        wi;
+        attack.prepare;
     };
-    wi;
-    attack.prepare;
 };
 
 #alias {kill} {

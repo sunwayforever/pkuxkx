@@ -9,7 +9,7 @@
 
     #action {ÄãÐÞÐÐÍê±Ï} {
         #delay {wd.done} {
-            eat_food;
+            chifan;
             wudao;
         } {0.1};
     };

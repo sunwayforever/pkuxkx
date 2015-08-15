@@ -141,6 +141,10 @@
     #var hb_remaining_path_size ${hb_max_path_size};
     #var hb_path_index 1;
     #class hb_setup_inner open;
+    #action {你已经在新手镖局获得足够经验了，快到大城市去闯荡一番吧。} {
+        show_to_info 已经在新手镖局获得足够经验;
+        hb.stop;
+    };
 
     #alias {hb.guohe} {
         #class guohe.inner open;
@@ -378,7 +382,7 @@
         xian mixin;
     };
     #elseif {"${hb_state}" == "nil"} {
-        show_to_info 没有护镖任务;
+        show_to_info 没有推车任务;
     };
     #else {
         hb.f;
@@ -453,7 +457,7 @@
     };
 
     #action {你给%*一些失踪的财物} {
-        notify 密信完成;
+        show_to_tuiche 密信完成;
         @setenv{hb_state;nil};
         @setenv{mixin_lunci;5};
         #delay {hb_auto_delay} {
@@ -464,6 +468,11 @@
     };
 
     #class hb.auto.inner open;
+    #alias {on_severe_wound} {
+        keyao {
+            hb.b;
+        };
+    };
     #action {^你不是才要了任务吗} {
         hb.d;
         on_unbusy {
@@ -559,6 +568,9 @@
 
     #var hb_state @getenv{hb_state};
     #var hb_location %1;
+    #if {"${hb_location}" == ""} {
+        #var hb_location @getenv{hb_owner_loc};
+    };
     #if {"${hb_state}" == "STARTED" || "${hb_state}" == "TRAVERSE" } {
         #var hb_huoji @getenv{hb_huoji};
         #var hb_dest @getenv{hb_dest};
@@ -582,12 +594,12 @@
         show_to_info 有密信在身;
     };
     #elseif {"${hb_state}" == "nil"} {
-        #if {"${hb_location}" == ""} {
+        #if {"${hb_location}" == "nil"} {
             show_to_info 请指定镖局: zz, zuo, tf, fh, ...;
             hb.stop;
         };
         #else {
-            chain hb.p {gt ${hb_location}} hb.restart;
+            chain hb.p {gt ${hb_location};on_there {hb.restart}};
         };
     };
     #else {
@@ -612,6 +624,7 @@
     #unticker {hb_q_ticker};
     #unticker {hb_ticker};
     dz.cancel;
+    show_to_quest 推车结束;
 };
 
 #alias {mx} {
@@ -625,30 +638,30 @@
 
 #alias {mx.q} {
     #class mx.inner open;
-    #nop 你扯开嗓子，开始大喊：小王八蛋，你给我滚出来。;
+    #action {你扯开嗓子，开始大喊：小王八蛋，你给我滚出来} {
+        #class mx.inner kill;
+        notify 密信地点不对;
+    };
     #action {一个伙计挖着鼻屎走了出来，道：你找我啥事} {
         l;
     };
     #action {财物的伙计 %S(%S)} {
         #format {tmp_huoji} {%l} {%%2};
-        #class mx.yao.inner open;
+        #class mx.inner open;
         #action {把一包财物砸向你，一转眼不见了。} {
             @setenv{hb_state;GOT_CAIWU};
             show_to_tuiche 拿到财宝;
             play get_item.wav;
-            #class mx.yao.inner kill;
             #class mx.inner kill;
-            on_truce {
-                hb.b;
-            };
+            hb.b;
         };
         #action {这里没有这个人} {
-            #class mx.yao.inner kill;
+            #class mx.inner kill;
         };
         #ticker {yao} {
             ask $tmp_huoji about yao;
         }{0.5};
-        #class mx.yao.inner close;
+        #class mx.inner close;
     } {1};
     #class mx.inner close;
     zhaoxun;
@@ -658,10 +671,10 @@
     #alias tmp_hb_p #cr;
     #alias tmp_hb_p %1;
     #if {${need_reload} == 1} {
-        chain reload sell.all get.qian get.san repair special_repair gem.combine hb.spec tmp_hb_p;
+        chain reload sell.all get.qian get.san get.bao repair special_repair gem.combine hb.spec tmp_hb_p;
     };
     #else {
-        chain sell.all get.qian get.san repair special_repair gem.combine hb.spec tmp_hb_p;
+        chain sell.all get.qian get.san get.bao repair special_repair gem.combine hb.spec tmp_hb_p;
     };
 };
 
@@ -809,7 +822,7 @@
 };
 
 #list hb_blacklist:昌隆镖局 create {
-    镇江飞龙镖局;归云庄太湖街;嘉兴钱庄;峨嵋毗卢殿;岳阳车马行;
+    镇江飞龙镖局;归云庄太湖街;嘉兴钱庄;峨嵋毗卢殿;岳阳车马行;泉州当铺;
 };
 
 #class hubiao close
