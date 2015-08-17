@@ -10,7 +10,6 @@
 #alias {attack} {
     pfm chan;
     pfm poqi;
-    pfm zongjue;
     #class attack.inner open;
     #ticker {kuangfeng} {
         pfm kuangfeng;
@@ -18,9 +17,6 @@
     #ticker {poqi} {
         pfm poqi;
     } {3.8};
-    #ticker {zongjue} {
-        pfm zongjue;
-    } {4.8};
     #class attack.inner close;
 
     #if {"${quest}" == "hb"} {
@@ -29,7 +25,15 @@
         };
     };
     #elseif {${mj_started}  == 1} {
-        #cr;
+        pfm zongjue;
+        #class attack.inner open;
+        #ticker {zongjue} {
+            pfm zongjue;
+        } {4.8};
+        #ticker {chan} {
+            pfm chan;
+        } {1};
+        #class attack.inner close;
     };
     #else {
         #class attack.inner open;
@@ -39,6 +43,9 @@
         #class attack.inner close;
         #if {${xf.type} == -1 || ${xf.type} == 1} {
             #class attack.inner open;
+            #ticker {zongjue} {
+                pfm zongjue;
+            } {4.8};
             #alias {on_skill_hit} {
                 #if {"%%1" == "ÑøÎá"} {
                     pfm jianzhang;

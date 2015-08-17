@@ -188,10 +188,6 @@
     #send {hp};
 };
 
-#alias {on_special_state} {
-    #cr;
-};
-
 #action {^你身上的%*被火焰刀所焚，象片片破布般飘落。} {
     #delay {huoyan_dao_delay} {
         notify 火焰刀!;
@@ -204,13 +200,6 @@
     on_huoqiu;
 } {1};
 
-#alias {on_huoyandao} {
-    #cr;
-};
-
-#alias {on_huoqiu} {
-    #cr;
-};
 #alias {uncheck_health} {
     #unticker {check_health};
     #unaction {^【 状态 】 %*};
@@ -244,6 +233,8 @@
 
     #alias {get_pos_done} {
         #if {"${pos.room}" == "武门"} {
+            raw;
+            #5 halt;
             tmp_on_taopao;
             #return;
         };

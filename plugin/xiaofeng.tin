@@ -10,7 +10,7 @@
     #delay {xf_check_delay} {
         xf.watchdog.kick;
         xf.b;
-    } {180};
+    } {300};
 };
 
 #alias {xf.teardown} {
@@ -242,6 +242,10 @@
                 #var xf_fail_reason 保卫期间: ${xf.target};
                 xf.f;
             };
+            #elseif {"%%1" == "岳王墓"} {
+                #var xf_fail_reason 岳王墓;
+                xf.f;
+            };
             #else {
                 gt ${xf.position};
                 on_there {
@@ -471,14 +475,12 @@
     };
 
     #alias {on_huoyandao} {
-        xf.teardown;
         quit_and_restart;
-    };
+    } {1};
 
     #alias {on_huoqiu} {
-        xf.teardown;
         quit_and_restart;
-    };
+    } {1};
 
     #alias {on_special_state} {
         notify 特殊状态, 危险!;
@@ -496,17 +498,12 @@
                 xf.restart;
             };
         };
-
-        keyao {
-            xf_check_for_special_state;
-        };
-    };
+        chain taopao keyao xf_check_for_special_state;
+    } {1};
 
     #alias {on_severe_wound} {
-        keyao {
-            xf.restart;
-        };
-    };
+        chain keyao xf.restart;
+    } {1};
 
     #var is_dead 0;
     #action {${char_name}被蒙面杀手杀死了。} {

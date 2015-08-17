@@ -1,12 +1,9 @@
 #class gumu_spec open
-#var jiali_count 10;
+#var jiali_count 1;
 
 #alias {attack.prepare} {
     yun xinjing;
     #class attack.inner open;
-    #ticker {xinjing} {
-        yun xinjing;
-    } {30};
     #class attack.inner close;
 };
 
@@ -19,14 +16,11 @@
     #class attack.inner close;
 
     #if {"${quest}" == "hb"} {
-        pfm shexin;
+        pfm suxin;
         pfm zhua;
         #class attack.inner open;
-        #ticker {suxin} {
-            pfm suxin;
-        } {3.8};
-        #ticker {shexin} {
-            pfm shexin;
+        #ticker {zhua} {
+            pfm zhua;
         } {5.8};
         #class attack.inner close;
     };

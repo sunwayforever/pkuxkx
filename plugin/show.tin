@@ -96,7 +96,7 @@
         #echo {{<aff>$chat_window[$chat_cnt]<099>} {-$chat_pos}};
     }
     #var showing_to_chat 0;
-}
+};
 
 #alias {update_status_line} {
     #echo {{<099>${show_status}<099> => <cfa>${show_quest}<099>}{-1}};

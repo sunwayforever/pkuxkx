@@ -472,7 +472,8 @@
         keyao {
             hb.b;
         };
-    };
+    } {1};
+
     #action {^你不是才要了任务吗} {
         hb.d;
         on_unbusy {

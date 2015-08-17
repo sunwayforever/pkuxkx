@@ -312,10 +312,6 @@
     check_all;
 };
 
-#alias {on_severe_wound } {
-    #cr;
-};
-
 #alias {b2} {
     set brief 2;
 };
