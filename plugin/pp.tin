@@ -70,7 +70,6 @@
 
 #alias {pp.start} {
     set_last_quest pp;
-    @mapcreate{pp};
 
     gt Ï´Ïó³Ø±ß;
     on_there {
