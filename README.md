@@ -6,6 +6,11 @@ linux / cygwin
 cd DIR; 
 tt++ profile.tin
 
+对于 linux 和 cygwin, 通过 pkuxkx 脚本启动可以提供自动重新登录的功能,
+用法:
+1. 修改 pkuxkx 中的 pass 为登录密码
+2. cd DIR; ./pkuxkx ID
+
 windows
 ----------
 双击 DIR/wintin++/pkuxkx.bat

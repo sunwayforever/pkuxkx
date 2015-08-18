@@ -30,6 +30,8 @@ room_alias = {
     "闽南密室":2157,
     "闽南密室房梁":2157,
     "成都川西土路":1528,
+    "南昌山路":2061,
+    "襄阳民宅":458,
 }
 def get_room(conn, desc):
     room = fixup_room(desc)

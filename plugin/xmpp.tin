@@ -9,6 +9,10 @@
     #pkuxkx;
 };
 
+#alias {xmpp.status} {
+    #xmpp status: %0;
+};
+
 #alias {xmpp.notify} {
     #xmpp %0;
 };
@@ -21,17 +25,13 @@
     #var xmpp_chat 0;
 };
 
-#alias {xmpp.state} {
-    #alias {get_pos_done} {
+#alias {status} {
+    #alias {report_status} {
         xmpp.notify 位置: ${pos.room} @ ${pos.area};
         xmpp.notify 任务: ${last_quest};
         xmpp.notify 状态: 气: ${qx_percent} 神: ${js_percent} 内: ${nl_percent} 精: ${jl_percent} 经验: ${hpbrief_exp};
     };
-    get_area {
-        get_pos {
-            get_pos_done;
-        };
-    };
+    chain get_area get_pos report_status;
 };
 
 xmpp.chat.off;

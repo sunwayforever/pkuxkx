@@ -1,29 +1,90 @@
-#class pp open
-@mapcreate{pp};
-#list pp_customer create {bakerli;erq;sunxm;gamester;beige;milli;uncletuu;bbkin;salonbus};
-#action {【求助】%*(%*): find %*} {
-    #var caller @lower{%2};
-    #if {@ismember{${caller};pp_customer}>0 && ${critical_running} == 0} {
-        @mapset{pp;%3;${caller}};
-        perceive %3;
-        #ticker {pp_${caller}} {
-            perceive %3;
-        } {10};
-        #delay {30} {
-            #unticker {pp_${caller}};
+#class pp open;
+
+#alias {pp.setup} {
+    #class pp.inner open;
+    @stackcreate{pp_target};
+    @stackcreate{pp_caller};
+
+    #var pp_ing 0;
+    #action {【求助】%*(%*): find %*} {
+        #var tmp_caller @lower{%%2};
+        #var tmp_target %%3;
+
+        #if {@stackismember{pp_caller;${tmp_caller}} == 1} {
+            #return;
         };
+
+        @stackpush{pp_target;{{${tmp_target}}}};
+        @stackpush{pp_caller;${tmp_caller}};
+
+        #if {${pp_ing} == 0} {
+            pp.run;
+        };
+    };
+
+    #action {你掐指一算，感觉%*(%*)现在好象在%*一带活动。} {
+        tell ${pp_caller} 【%%1(%%2)】目前在【%%3】,快去摁死它吧!;
+        show_to_info 你告诉 ${pp_caller}: 【%%1(%%2)】目前在【%%3】,快去摁死它吧!;
+        pp.run;
+    };
+
+    #action {现在没这个人。} {
+        tell ${pp_caller} 【${pp_target}】并不存在;
+        pp.run;
+    };
+
+    #class pp.inner close;
+};
+
+#alias {pp.teardown} {
+    #class pp.inner kill;
+};
+
+#alias {pp.run} {
+    #var pp_target @stackpop{pp_target};
+    #var pp_caller @stackpop{pp_caller};
+    #if {"${pp_target}" != "nil"} {
+        #var pp_ing 1;
+        dz.cancel;
+        tn.cancel;
+        halt;
+        #ticker {pp} {
+            perceive ${pp_target};
+        } {5};
+        on_unbusy {
+            perceive ${pp_target};
+        };
+    };
+    #else {
+        #var pp_ing 0;
+        #unticker {pp};
+        pp.rest;
     };
 };
 
-#action {你掐指一算，感觉%*(%*)现在好象在%*一带活动。} {
-    #var target @lower{%2};
-    #var caller2 @mapget{pp;${target}};
-    tell ${caller2} 【%1(%2)】目前在【%3】,快去摁死它吧!;
-    show_to_info  你告诉 ${caller2}：【%1(%2)】目前在【%3】;
-    #unticker {pp_${caller2}};
+#alias {pp.rest} {
+    #5 eat guo;
+    #5 drink cha;
+    dz.rest;
 };
 
-#ticker {reset_pp} {
+#alias {pp.start} {
+    set_last_quest pp;
     @mapcreate{pp};
-} {1800};
-#class pp close
+
+    gt 洗象池边;
+    on_there {
+        pp.setup;
+        show_to_quest finder 开始;
+        pp.run;
+    };
+};
+
+#alias {pp.stop} {
+    unset_last_quest;
+    pp.teardown;
+    #unticker {pp};
+    show_to_quest finder 结束;
+};
+
+#class pp close;

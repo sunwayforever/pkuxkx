@@ -483,4 +483,17 @@
 #action {山贼拦住了你的去路。} {
     kill zei;
 };
+
+#alias {gps.mishi} {
+    #action {小昭说道：「到了，就这里了。」} {
+        #unaction {小昭说道：「到了，就这里了。」};
+        gps.run;
+    };
+    ask zhao about 张无忌;
+    ask zhao about 乾坤大挪移;
+    ask zhao about 密室;
+    on_unbusy {
+        follow zhao;
+    };
+};
 #class gps_actions close;

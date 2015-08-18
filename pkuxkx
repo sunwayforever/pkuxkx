@@ -1,0 +1,25 @@
+#!/bin/bash
+pass=PASSWORD
+
+restart=1
+char=$1
+
+restart() {
+    restart=1
+}
+
+login() {
+    echo "#read main.tin;" > /tmp/pkuxkx_${char}.tin
+    echo "#var pid $$;" >> /tmp/pkuxkx_${char}.tin
+    # echo "#delay {1} {#session pkuxkx pkuxkx.net 8080; ${char}; ${pass};};" >> /tmp/pkuxkx_${char}.tin
+    # 可以设置一个 post_login 的 alias, 以便 login 后执行该命令
+    echo "#alias {post_login} {pp.start}; #delay {1} {#session pkuxkx pkuxkx.net 8080; ${char}; ${pass};};" >> /tmp/pkuxkx_${char}.tin
+    LANG="zh_CN.GBK" tt++ -G /tmp/pkuxkx_${char}.tin
+}
+
+trap "restart" 30
+while [[ ${restart} -eq 1 ]]; do
+    restart=0
+    login
+    sleep 5
+done

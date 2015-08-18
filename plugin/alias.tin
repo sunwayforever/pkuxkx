@@ -395,6 +395,10 @@
 };
 
 #var dot .;
+#alias {log.save} {
+    #system {cp debug${dot}${char_id}${dot}log ${char_id}${dot}log};
+};
+
 #alias {log.start} {
     #log overwrite debug${dot}${char_id}${dot}log;
     #debug all log;
@@ -815,6 +819,7 @@ walk_to east;
     } {1200};
     #class fullme_inner close;
     #if {${ignore_fullme} == 0} {
+        xmpp.status ธฃรื;
         notify ธฃรื;
     };
     #else {
@@ -882,11 +887,13 @@ walk_to east;
 
 #alias {set_last_quest} {
     #var last_quest %1;
+    xmpp.status ${last_quest};
     @setenv{last_quest;${last_quest}};
 };
 
 #alias {unset_last_quest} {
     #var last_quest nil;
+    xmpp.status ${last_quest};
     @setenv{last_quest;nil};
 };
 
@@ -1123,9 +1130,13 @@ walk_to east;
         #send {jifa};
         reborn;
         #delay {5} {
-            restart_last_quest;
+            post_login;
         };
     };
+};
+
+#alias {post_login} {
+    restart_last_quest;
 };
 
 #alias {login} {

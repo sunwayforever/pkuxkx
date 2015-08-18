@@ -132,16 +132,28 @@
 #alias {war.monitor} {
     #var fighting 1;
     #class war.inner open;
+    #alias {war_end} {
+        check_health;
+        mj.stop;
+        raw;
+    };
+
+    #action {对不起，武庙你只能老实呆着。} {
+        war_end;
+    };
+
+    #action {这里无法使用内功} {
+        war_end;
+    };
+
     #action {你已经受伤过重，只怕一运真气便有生命危险！} {
-        check_health;
-        mj.stop;
-        raw;
+            war_end;
     };
+
     #action {你全身放松，坐下来开始运功疗伤。} {
-        check_health;
-        mj.stop;
-        raw;
+        war_end;
     };
+
     #ticker {fighting} {
         yun heal;
     } {2};

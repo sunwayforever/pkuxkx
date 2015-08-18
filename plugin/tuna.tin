@@ -1,6 +1,24 @@
 #class tuna open
 #var tn_total_count 0;
 #var tn_max 95;
+
+#alias {tn.rest} {
+    #alias tmp_tn #cr;
+    #alias tmp_tn %1;
+    #class tn.full.inner open;
+    #action {你的精力增加了} {
+        tn.rest;
+    };
+    #ticker {tn} {
+        yun regenerate; tuna ${dazuo_count};
+    } {1};
+    #class tn.full.inner close;
+    #math max_jingli ${youxiao_neigong} * 10 - 10;
+    #if {${max_jingli} < ${hpbrief_max_jl}} {
+        #class tn.full.inner kill;
+    };
+};
+
 #alias {tn.cancel} {
     #class tn.full.inner kill;
     #unticker {tn};

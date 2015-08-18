@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import sys
+import re
 from sleekxmpp import ClientXMPP
 from sleekxmpp.exceptions import IqError, IqTimeout
 
@@ -23,5 +24,10 @@ if __name__ == '__main__':
     xmpp.process(block=False)
     while (True):
         line = sys.stdin.readline()
-        xmpp.send_message(mto="messenger@v587.info/xkx", mbody=line, mtype='chat')
+        m = re.match("status: (.*)", line)
+        if m:
+            status = m.group(1)
+            xmpp.send_presence(pstatus=status, pshow='xa')
+        else:
+            xmpp.send_message(mto="messenger@v587.info/xkx", mbody=line, mtype='chat')
 

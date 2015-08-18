@@ -310,8 +310,6 @@ load gps_actions;
     INVOKE gps.get_path %1 %2 ${weights};
 };
 
-#nop operate db;
-
 #macro {\e[24~} { #nop ];
     gps.check_link;
 };

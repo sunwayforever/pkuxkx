@@ -6,6 +6,27 @@
     #unticker {dz};
 };
 
+#alias {dz.rest} {
+    #alias tmp_dz #cr;
+    #alias tmp_dz %1;
+    #class dz.full.inner open;
+    #action {你现在精不够} {
+        heal 1;
+    };
+    #action {你的内力增加了} {
+        dz.rest;
+    };
+    #ticker {dz} {
+        yun recover; dazuo ${dazuo_count};
+    } {1};
+    #class dz.full.inner close;
+    #math max_neili ${youxiao_neigong} * 10 - 10;
+    #if {${max_neili} < ${hpbrief_max_nl}} {
+        #class dz.full.inner kill;
+        tn.rest;
+    };
+};
+
 #alias {dz.idle} {
     #alias tmp_dz #cr;
     #alias tmp_dz %1;
