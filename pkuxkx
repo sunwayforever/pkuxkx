@@ -1,8 +1,7 @@
 #!/bin/bash
-pass=PASSWORD
-
 restart=1
 char=$1
+pass=$2
 
 restart() {
     restart=1

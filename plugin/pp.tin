@@ -10,7 +10,7 @@
         #var tmp_caller @lower{%%2};
         #var tmp_target %%3;
 
-        #if {@stackismember{pp_caller;${tmp_caller}} == 1} {
+        #if {@stackismember{pp_caller;${tmp_caller}} == 1 || "${tmp_caller}" == "${pp_caller}"} {
             #return;
         };
 
@@ -23,8 +23,10 @@
     };
 
     #action {你掐指一算，感觉%*(%*)现在好象在%*一带活动。} {
-        tell ${pp_caller} 【%%1(%%2)】目前在【%%3】,快去摁死它吧!;
-        show_to_info 你告诉 ${pp_caller}: 【%%1(%%2)】目前在【%%3】,快去摁死它吧!;
+        #if {"%%3" != "未知区域"} {
+            tell ${pp_caller} 【%%1(%%2)】目前在【%%3】,快去摁死它吧!;
+            show_to_info 你告诉 ${pp_caller}: 【%%1(%%2)】目前在【%%3】,快去摁死它吧!;
+        };
         pp.run;
     };
 

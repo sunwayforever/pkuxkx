@@ -2,8 +2,7 @@
 
 linux / cygwin
 ----------
-1. 修改 pkuxkx 中的 pass 为登录密码
-2. cd DIR; ./pkuxkx ID
+1. cd DIR; ./pkuxkx ID 'PASSWORD'
 
 windows
 ----------
