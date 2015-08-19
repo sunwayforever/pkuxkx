@@ -133,6 +133,7 @@
 };
 
 #alias {pp} {
+    helpme ...;
     helpme find %0;
 };
 
