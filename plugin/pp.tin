@@ -6,6 +6,10 @@
     @stackcreate{pp_caller};
 
     #var pp_ing 0;
+    #alias {pp.not_found} {
+        tell ${pp_caller} 我找不到,请看其他的回复;
+    };
+
     #action {【求助】%*(%*): find %*} {
         #var tmp_caller @lower{%%2};
         #var tmp_target %%3;
@@ -23,12 +27,12 @@
     };
 
     #action {{你费了半天的力气，就是感应不出}|{你费了半天劲，就是无法感应这个人在哪里}} {
-        tell ${pp_caller} 我找不到,请看其他的回复;
+        pp.not_found;
         pp.next;
     };
 
     #action {你的精力不够，无法感应别人的位置。} {
-        tell ${pp_caller} 我找不到,请看其他的回复;
+        pp.not_found;
 
         pp.stop;
         on_health {
@@ -59,7 +63,7 @@
             say 「删除对象【${pp_caller}】【${pp_target}】」;
         };
         #else {
-            tell ${pp_caller} 我找不到,请看其他的回复;
+            pp.not_found;
         };
         pp.next;
     };
