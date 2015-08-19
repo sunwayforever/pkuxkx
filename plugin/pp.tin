@@ -111,7 +111,9 @@
 #alias {pp.rest} {
     #5 eat guo;
     #5 drink cha;
-    dz.rest;
+    dz.rest {
+        tn.rest;
+    };
 };
 
 #alias {pp.start} {

@@ -23,7 +23,7 @@
     #math max_neili ${youxiao_neigong} * 10 - 10;
     #if {${max_neili} < ${hpbrief_max_nl}} {
         #class dz.full.inner kill;
-        tn.rest;
+        tmp_dz;
     };
 };
 
