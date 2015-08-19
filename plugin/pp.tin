@@ -7,7 +7,7 @@
 
     #var pp_ing 0;
     #alias {pp.not_found} {
-        tell ${pp_caller} 我找不到,请看其他的回复;
+        tell ${pp_caller} 【${pp_target}】我找不到,请看其他的回复;
     };
 
     #action {【求助】%*(%*): find %*} {
