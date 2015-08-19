@@ -186,12 +186,6 @@
 };
 #function {random} {
     #var max_random %1;
-    #if {${max_random} <= 0} {
-        #return 0;
-    };
-    #else {
-        #format {epoch} {%T};
-        #math result ${epoch}%${max_random}+1;
-    };
+    #math result 1d${max_random};
 };
 #class util close
