@@ -18,7 +18,33 @@
         @stackpush{pp_caller;${tmp_caller}};
 
         #if {${pp_ing} == 0} {
-            pp.run;
+            pp.next;
+        };
+    };
+
+    #action {{你费了半天的力气，就是感应不出}|{你费了半天劲，就是无法感应这个人在哪里}} {
+        tell ${pp_caller} 我找不到,请看其他的回复;
+        pp.next;
+    };
+
+    #action {你的精力不够，无法感应别人的位置。} {
+        tell ${pp_caller} 我找不到,请看其他的回复;
+
+        pp.stop;
+        on_health {
+            pp.start;
+        };
+    };
+
+    #action {「删除对象【%*】【%*】」} {
+        #var caller %%1;
+        #var target %%2;
+        #list stack_pp_caller size stack_size;
+        #loop {1} {&stack_pp_target[]} {pp_index} {
+            #if {"${stack_pp_target}[${pp_index}]" == "${target}" && "${stack_pp_caller}[${pp_index}]" == "${caller}"} {
+                #list stack_pp_target set ${pp_index} pass;
+                #list stack_pp_caller set ${pp_index} pass;
+            };
         };
     };
 
@@ -26,13 +52,17 @@
         #if {"%%3" != "未知区域"} {
             tell ${pp_caller} 【%%1(%%2)】目前在【%%3】,快去摁死它吧!;
             show_to_info 你告诉 ${pp_caller}: 【%%1(%%2)】目前在【%%3】,快去摁死它吧!;
+            say 「删除对象【${pp_caller}】【${pp_target}】」;
         };
-        pp.run;
+        #else {
+            tell ${pp_caller} 我找不到,请看其他的回复;
+        };
+        pp.next;
     };
 
     #action {现在没这个人。} {
         tell ${pp_caller} 【${pp_target}】并不存在;
-        pp.run;
+        pp.next;
     };
 
     #class pp.inner close;
@@ -42,10 +72,16 @@
     #class pp.inner kill;
 };
 
-#alias {pp.run} {
+#alias {pp.next} {
+    eat guo;
+    drink cha;
     #var pp_target @stackpop{pp_target};
     #var pp_caller @stackpop{pp_caller};
-    #if {"${pp_target}" != "nil"} {
+    #if {"${pp_target}" == "pass"} {
+        pp.next;
+        #return;
+    };
+    #elseif {"${pp_target}" != "nil"} {
         #var pp_ing 1;
         dz.cancel;
         tn.cancel;
@@ -77,7 +113,7 @@
     on_there {
         pp.setup;
         show_to_quest finder 开始;
-        pp.run;
+        pp.next;
     };
 };
 
