@@ -81,8 +81,8 @@
 };
 
 #alias {pp.next} {
-    eat guo;
-    drink cha;
+    #5 eat guo;
+    #5 drink cha;
     #var pp_target @stackpop{pp_target};
     #var pp_caller @stackpop{pp_caller};
     #if {"${pp_target}" == "pass"} {
@@ -111,9 +111,7 @@
 #alias {pp.rest} {
     #5 eat guo;
     #5 drink cha;
-    dz.rest {
-        tn.rest;
-    };
+    chain dz.rest tn.rest dz.full tn.full;
 };
 
 #alias {pp.start} {
