@@ -54,13 +54,17 @@
                 #list stack_pp_caller set ${pp_index} pass;
             };
         };
+        #if {"${pp_target}" == "${target}" && "${pp_caller}" == "${caller}"} {
+            #var pp_target pass;
+            #var pp_caller pass;
+        };
     };
 
     #action {你掐指一算，感觉%*(%*)现在好象在%*一带活动。} {
         #if {"%%3" != "未知区域"} {
             tell ${pp_caller} 【%%1(%%2)】目前在【%%3】,快去摁死它吧!;
             show_to_info 你告诉 ${pp_caller}: 【%%1(%%2)】目前在【%%3】,快去摁死它吧!;
-            say 「删除对象【${pp_caller}】【${pp_target}】」;
+            say 删除对象【${pp_caller}】【${pp_target}】;
         };
         #else {
             pp.not_found;
@@ -80,6 +84,15 @@
     #class pp.inner kill;
 };
 
+#alias {pp.action} {
+    #if {"${pp_target}" == "pass"} {
+        pp.next;
+    };
+    #else {
+        perceive ${pp_target};
+    };
+};
+
 #alias {pp.next} {
     #5 eat guo;
     #5 drink cha;
@@ -94,11 +107,13 @@
         dz.cancel;
         tn.cancel;
         halt;
+
         #ticker {pp} {
             perceive ${pp_target};
         } {5};
+
         on_unbusy {
-            perceive ${pp_target};
+            pp.action;
         };
     };
     #else {
