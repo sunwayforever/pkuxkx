@@ -92,7 +92,7 @@
 };
 
 #alias {pp.action} {
-    #if {"${pp_target}" == "pass"} {
+    #if {"${pp_target}" == "pass" || "${pp_target}" == "nil"} {
         pp.next;
     };
     #else {
@@ -133,7 +133,7 @@
 #alias {pp.rest} {
     #5 eat guo;
     #5 drink cha;
-    chain dz.rest tn.rest dz.full tn.full;
+    chain dz.rest tn.rest dz.full tn.full #cr;
 };
 
 #alias {pp.start} {
