@@ -77,7 +77,10 @@
     };
 
     #action {现在没这个人。} {
-        tell ${pp_caller} 【${pp_target}】并不存在;
+        #if {"${pp_caller}" != "pass"} {
+            tell ${pp_caller} 【${pp_target}】并不存在;
+            say 删除对象【${pp_caller}】【${pp_target}】;
+        };
         pp.next;
     };
 
