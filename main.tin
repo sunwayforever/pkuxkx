@@ -1,5 +1,6 @@
 #config {REPEAT ENTER} {ON}
 #config {PACKET PATCH} {0.5};
+#CONFIG {COMMAND ECHO} {ON};
 #debug action off
 #debug variable off
 

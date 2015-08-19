@@ -63,11 +63,11 @@
     };
 
     #action {你掐指一算，感觉%*(%*)现在好象在%*一带活动。} {
-        #if {"${pp_caller}" != "pass"} {
+        #if {"${pp_caller}" != "pass" && "${pp_caller}" != "nil"} {
             #if {"%%3" != "未知区域"} {
+                say 删除对象【${pp_caller}】【${pp_target}】;
                 tell ${pp_caller} 【%%1(%%2)】目前在【%%3】,快去摁死它吧!;
                 show_to_info 你告诉 ${pp_caller}: 【%%1(%%2)】目前在【%%3】,快去摁死它吧!;
-                say 删除对象【${pp_caller}】【${pp_target}】;
             };
             #else {
                 pp.not_found;
@@ -77,9 +77,9 @@
     };
 
     #action {现在没这个人。} {
-        #if {"${pp_caller}" != "pass"} {
-            tell ${pp_caller} 【${pp_target}】并不存在;
+        #if {"${pp_caller}" != "pass" && "${pp_caller}" != "nil"} {
             say 删除对象【${pp_caller}】【${pp_target}】;
+            tell ${pp_caller} 【${pp_target}】并不存在;
         };
         pp.next;
     };
