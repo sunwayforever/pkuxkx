@@ -1,4 +1,7 @@
 #class baiji open
+#tab bj.start;
+#tab bj.stop;
+
 #alias {bj.start} {
     set_last_quest bj;
     #class bj.inner open;

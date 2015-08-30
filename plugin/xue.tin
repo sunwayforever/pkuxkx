@@ -1,4 +1,7 @@
 #class xue open;
+#tab xue.start;
+#tab xue.stop;
+
 #var xue_count 10;
 #alias {xue.start} {
     #class xue.inner open;

@@ -1,4 +1,7 @@
 #class wudao open
+#tab wd.start;
+#tab wd.stop;
+
 #alias {wd.start} {
     set_last_quest wd;
     show_to_quest ОтµА;

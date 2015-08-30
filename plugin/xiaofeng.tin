@@ -2,6 +2,9 @@
 #var xf.requested 0;
 #var xf.type -1;
 
+#tab xf.start;
+#tab xf.stop;
+
 #alias {xf.watchdog.stop} {
     #undelay {xf_check_delay};
 };
@@ -367,12 +370,12 @@
         #undelay {xf_delay};
         raw;
         #if {${xf.type} == 1} {
-            on_truce {
+            on_unbusy {
                 zhan corpse;
             };
         };
         #else {
-            on_truce {
+            on_unbusy {
                 #send {l};
             };
         };
@@ -460,19 +463,20 @@
     #class xiaofeng.inner close;
 };
 
+#alias {xf.restart} {
+    xf.watchdog.stop;
+    xf.teardown;
+    #delay {xf_auto_delay} {
+        on_health {
+            xf.request;
+        };
+    } {10};
+};
+
 #alias {xf.start} {
     log.start;
     set_last_quest xf;
     #class xf.auto.inner open;
-    #alias {xf.restart} {
-        xf.watchdog.stop;
-        xf.teardown;
-        #delay {xf_auto_delay} {
-            on_health {
-                xf.start;
-            };
-        } {10};
-    };
 
     #alias {on_huoyandao} {
         quit_and_restart;
@@ -485,9 +489,15 @@
     #alias {on_special_state} {
         notify Ãÿ ‚◊¥Ã¨, Œ£œ’!;
         xf.teardown;
+
         #if {${xf.type} == 1 || {xf.type} == 2} {
-            @setenv{xf_state;STARTED};
+            @setenv{xf_state;FAILED};
         };
+
+        #if {"@getenv{xf_state}" != "ENDED"} {
+            @setenv{xf_state;FAILED};
+        };
+
         #alias {xf_check_for_special_state} {
             #if {${in_special_state} == 1} {
                 on_health {
@@ -598,12 +608,7 @@
         #return;
     };
     drop_garbage;
-    #if {${need_reload} == 1} {
-        chain reload get.san get.qian xf.request;
-    };
-    #else {
-        xf.request;
-    };
+    chain xf.p xf.request;
 };
 
 #alias {xf.request} {
@@ -626,12 +631,14 @@
     #undelay {xf_auto_delay};
     #class xf.auto.inner kill;
     show_to_quest œÙ∑Â: Ω· ¯;
+    @clearenv{xf_type};
+    @clearenv{xf_state};
 };
 
 #alias {xf.q} {
     #if {"${fm_remaining_time}" == "0"} {
         xf.stop;
-        chain sell.all get.qian gem.combine fullme xf.start;
+        chain fullme xf.start;
     };
     #else {
         xf.setup;
@@ -723,11 +730,12 @@
 };
 
 #alias {xf.p} {
+    #alias tmp_xf_p #cr;
+    #alias tmp_xf_p %1;
+    #var chain_action get.san get.qian sell.all repair tmp_xf_p;
     #if {${need_reload} == 1} {
-        chain reload get.san get.qian repair;
+        #var chain_action reload ${chain_action};
     };
-    #else {
-        chain get.san get.qian repair;
-    };
+    chain ${chain_action};
 };
 #class xiaofeng close

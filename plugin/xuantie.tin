@@ -1,5 +1,9 @@
 #class xuantie open
+#tab xt.start;
+#tab xt.stop;
+
 #alias {xt.start} {
+    set_last_quest xt;
     show_to_quest 江中练剑;
     #send {jifa sword xuantie-jian};
     #class xuantie.inner open;
@@ -31,15 +35,20 @@
         };
     };
     #class xuantie.inner close;
-
-    start_lian;
+    gt 钱塘江口;
+    on_there {
+        start_lian;
+    };
 };
 
 #alias {xt.stop} {
     #class xuetie.inner kill;
     #unticker {check};
+    unset_last_quest;
     halt;
-    jump out;
+    on_unbusy {
+        jump out;
+    };
     show_to_quest 练剑结束;
 };
 

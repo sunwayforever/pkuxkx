@@ -71,7 +71,7 @@ class MudRoom:
         
         src_set = set([src])
         dst_set = set([dst])
-
+            
         while True:
             updated = False
             tmp_set = set()

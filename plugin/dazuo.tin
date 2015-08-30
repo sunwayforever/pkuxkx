@@ -1,4 +1,7 @@
 #class dazuo open
+#tab dz.start;
+#tab dz.stop;
+
 #var dz_total_count 0;
 #var dz_max 95;
 #alias {dz.cancel} {
@@ -128,7 +131,7 @@
     #math max_neili ${youxiao_neigong} * 10 -1;
     #if {${max_neili} < ${hpbrief_max_nl}} {
         dz.stop;
-        #showme dz done;
+        #showme MISSION_COMPLETE: dz;
         show_to_quest 内力到达瓶颈: ${hpbrief_max_nl} => ${max_neili};
     };
     #else {

@@ -265,4 +265,7 @@ stat.register 惊魔 miss 看破了你的企图，侧身避过指力;
 #alias {attack.end} {
     #var jiali_count 10;
 };
+
+#list fsk create {cc};
+
 #class template close

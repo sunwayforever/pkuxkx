@@ -1,4 +1,6 @@
 #class lingwu open
+#tab lw.start;
+#tab lw.stop;
 
 #alias {lw.start} {
     set_last_quest lw;
@@ -139,8 +141,8 @@
             lw.restart;
         };
         #else {
-            #showme lingwu done;
             lw.stop;
+            #showme MISSION_COMPLETE: lw;
         };
     };
 

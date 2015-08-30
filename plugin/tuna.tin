@@ -1,4 +1,7 @@
 #class tuna open
+#tab tn.start;
+#tab tn.stop;
+
 #var tn_total_count 0;
 #var tn_max 95;
 
@@ -105,7 +108,7 @@
     #math max_jingli ${youxiao_neigong} * 10 -1;
     #if {${max_jingli} < ${hpbrief_max_jl}} {
         tn.stop;
-        #showme tn done;
+        #showme MISSION_COMPLETE: tn;
         show_to_quest 精力到达瓶颈: ${hpbrief_max_jl} => ${max_jingli};
     };
     #else {

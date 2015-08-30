@@ -1,4 +1,6 @@
 #class murong open;
+#tab mr.start;
+#tab mr.stop;
 
 #var mr_auto 0;
 #alias {mr.start} {

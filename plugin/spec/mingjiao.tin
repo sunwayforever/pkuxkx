@@ -2,16 +2,34 @@
 #alias {attack.prepare} {
     yun powerup;
     #class attack.inner open;
-    #ticker {tisha} {
-        pfm tisha;
-    } {1.8};
     #class attack.inner close;
 };
 
 #alias {attack} {
-    pfm tisha;
     #class attack.inner open;
+    #ticker {duo} {
+        pfm duo;
+    } {3.5};
+    #ticker {xiongyong} {
+        pfm xiongyong;
+    } {4.5};
     #class attack.inner close;
+    #if {${xf.type} == 3} {
+        pfm xiongyong;
+        pfm yinfeng;
+        pfm duo;
+        pfm jindou;
+    };
+    #else {
+        pfm yinfeng;
+        pfm duo;
+        pfm jindou;
+        #class attack.inner open;
+        #ticker {yinfeng} {
+            pfm yinfeng;
+        } {1};
+        #class attack.inner close;
+    };
 };
 
 #alias {goto_lingwu} {
@@ -51,11 +69,18 @@
     wi;
 };
 
-#list my_weapons_to_wield create {sword; sword 2};
+#alias {fenxin} {
+    unwi;
+    do_wield dagger;
+    perform shenghuo-lingfa.shenghuo;
+    wi;
+};
 
-#var shortcut F1: ÌßÉ³ F2: Òõ·ç F3: ¶á F4: ½î¶·;
+#list my_weapons_to_wield create {dagger; dagger 2};
+
+#var shortcut F1: ÐÚÓ¿ F2: Òõ·ç F3: ¶á F4: ½î¶· F5: ·ÙÐÄ;
 #macro {\eOP} {
-    tisha;
+    xiongyong;
 };
 
 #macro {\eOQ} {
@@ -70,15 +95,10 @@
     jindou;
 };
 
-#macro {\e[15~} { #nop ]
+#macro {\e[15~} {
+    fenxin;
 };
-
-#macro {\e[17~} { #nop ]
-};
-
-#macro {\e[18~} { #nop ]
-};
-
+#nop ];
 #alias {qudu} {
     eat san;
 };
@@ -89,7 +109,7 @@
     #send {jifa force guangming-shenghuogong};
     #send {jifa dagger shenghuo-lingfa};
     #send {jifa parry shenghuo-lingfa};
-    #send {jifa sword hero-jianfa};
+    #send {jifa sword xuantie-jian};
     bei none;
     bei strike;
 };
@@ -98,4 +118,13 @@
 #var shifu zhang;
 #var menzhong tang;
 #var menzhong_didian hst;
+
+#alias {xiongyong} {
+    unwield all;
+    do_wield sword;
+    #send {jifa parry xuantie-jian};
+    perform xuantie-jian.xiongyong;
+    #send {jifa parry shenghuo-lingfa};
+    wi;
+};
 #class mingjiao close

@@ -1,4 +1,7 @@
 #class canchan open
+#tab cc.start;
+#tab cc.stop;
+
 #alias {cc.start} {
     set_last_quest cc;
     #class canchan.inner open;

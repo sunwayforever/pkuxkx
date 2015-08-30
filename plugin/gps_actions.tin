@@ -480,10 +480,6 @@
     eat shi;
 };
 
-#action {山贼拦住了你的去路。} {
-    kill zei;
-};
-
 #alias {gps.mishi} {
     #action {小昭说道：「到了，就这里了。」} {
         #unaction {小昭说道：「到了，就这里了。」};

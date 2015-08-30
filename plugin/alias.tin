@@ -359,7 +359,7 @@
     set gps.weight.bt 100;
     set gps.weight.long_delay 80;
     set gps.weight.shudong 0;
-    set gps.weight.jianghe 50;
+    set gps.weight.jianghe 150;
 };
 
 #var xy_info off;
@@ -829,7 +829,7 @@ walk_to east;
 };
 
 #alias {on_fullme_timeout} {
-    lw.start;
+    fsk.start;
 };
 
 #alias {fm} {
@@ -1011,7 +1011,7 @@ walk_to east;
     } {6};
     #ticker {checkbusy} {
         checkbusy;
-    } {1};
+    } {0.2};
     #class unbusy.inner close;
     checkbusy;
 };
@@ -1024,6 +1024,7 @@ walk_to east;
 };
 
 @mapcreate{menpai};
+@mapset{menpai;朝廷;chaoting};
 @mapset{menpai;华山派;huashan};
 @mapset{menpai;古墓派;gumu};
 @mapset{menpai;武当派;wudang};
@@ -1045,6 +1046,10 @@ walk_to east;
     #class get_char_info.inner open;
     #action {【%*】%*(%*)} {
         #var char_id @lower{%%3};
+    };
+    #gag 你是朝廷第;
+    #action {你是朝廷%*} {
+        #showme 你是朝廷第;
     };
     #action {你是%*第} {
         #var char_menpai_zh %%1;
@@ -1131,6 +1136,7 @@ walk_to east;
         #send {jifa};
         reborn;
         #delay {5} {
+            #showme INFO: 自动 login 完成;
             post_login;
         };
     };

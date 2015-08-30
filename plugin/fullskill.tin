@@ -1,0 +1,45 @@
+#class fullskill open;
+#tab fsk.start;
+#tab fsk.stop;
+
+#alias {fsk.start} {
+    @stackcreate{fsk};
+    @stackpush{fsk;dz};
+    @stackpush{fsk;tn};
+    @stackpush{fsk;lw};
+    #foreach {${fsk}[%*]} {item} {
+        @stackpush{fsk;${item}};
+    };
+    #class fsk.inner open;
+    #alias {fsk_next} {
+        #var curr_fsk @stackpoll{fsk};
+        #if {"${curr_fsk}" != "nil"} {
+            ${curr_fsk}${dot}start;
+            on_unbusy {
+                set_last_quest fsk;
+            };
+        };
+        #else {
+            fsk.stop;
+        };
+    };
+    #action {MISSION_COMPLETE} {
+        fsk_next;
+    };
+    #class fsk.inner close;
+    set_last_quest fsk;
+    show_to_quest fsk ¿ªÊ¼;
+    fsk_next;
+};
+
+#alias {fsk.stop} {
+    #class fsk.inner kill;
+    #if {"${curr_fsk}" != "nil"} {
+        ${curr_fsk}${dot}stop;
+    };
+    on_unbusy {
+        unset_last_quest;
+        show_to_quest fsk ½áÊø;
+    };
+};
+#class fullskill close;

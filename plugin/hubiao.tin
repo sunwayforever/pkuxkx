@@ -1,4 +1,7 @@
 #class hubiao open
+#tab hb.start;
+#tab hb.stop;
+
 #var hb_max_path_size 45;
 #var hb_auto 0;
 #var hb_rotate 0;
@@ -303,7 +306,7 @@
 
     #action {劫匪趁你不注意，推着镖车就跑，你赶紧追了上去。} {
         hb.pause;
-        @setenv{mixin_lunci;6};
+        @setenv{hb_mixin_lunci;6};
         #delay {hb_delay} {
             hb.resume;
         } {3};
@@ -336,7 +339,7 @@
         hb.teardown;
 
         #alias {on_taopao_done} {
-            #if {@getenv{hb_lunci} == @getenv{mixin_lunci}} {
+            #if {@getenv{hb_lunci} == @getenv{hb_mixin_lunci}} {
                 @setenv{hb_lunci;0};
                 chain hb.p hb.back fullme hb.d;
             };
@@ -428,7 +431,7 @@
     @setenv{hb_lunci;0};
     @setenv{hb_lunci_total;0};
     @setenv{hb_state;nil};
-    @setenv{mixin_lunci;6};
+    @setenv{hb_mixin_lunci;6};
     hb.teardown;
     ask @getenv{hb_owner} about fail;
 };
@@ -476,7 +479,7 @@
     #action {你给%*一些失踪的财物} {
         show_to_tuiche 密信完成;
         @setenv{hb_state;nil};
-        @setenv{mixin_lunci;5};
+        @setenv{hb_mixin_lunci;5};
         #delay {hb_auto_delay} {
             #if {${hb_auto} == 1} {
                 hb.restart;
@@ -580,7 +583,7 @@
     #class hb.auto.inner close;
 
     @declarenv{hb_state;nil};
-    @declarenv{mixin_lunci;6};
+    @declarenv{hb_mixin_lunci;6};
     @declarenv{hb_lunci;0};
     @declarenv{hb_lunci_total;0};
 
@@ -643,6 +646,11 @@
     #unticker {hb_q_ticker};
     #unticker {hb_ticker};
     dz.cancel;
+    @clearenv{hb_dest};
+    @clearenv{hb_huoji};
+    @clearenv{hb_info};
+    @clearenv{hb_owner};
+    @clearenv{hb_state};
     show_to_quest 推车结束;
 };
 
@@ -689,12 +697,11 @@
 #alias {hb.p} {
     #alias tmp_hb_p #cr;
     #alias tmp_hb_p %1;
+    #var chain_action sell.all get.qian get.san get.bao repair special_repair gem.combine hb.spec tmp_hb_p;
     #if {${need_reload} == 1} {
-        chain reload sell.all get.qian get.san get.bao repair special_repair gem.combine hb.spec tmp_hb_p;
+        #var chain_action reload ${chain_action};
     };
-    #else {
-        chain sell.all get.qian get.san get.bao repair special_repair gem.combine hb.spec tmp_hb_p;
-    };
+    chain ${chain_action};
 };
 
 #alias {show_to_tuiche} {
@@ -747,7 +754,7 @@
                 };
             };
             #else {
-                #if {@getenv{mixin_lunci} == 5} {
+                #if {@getenv{hb_mixin_lunci} == 5} {
                     #math additional_path_size ${hb_remaining_path_size} - ${hb_path_size};
                     #if {${additional_path_size} > 0} {
                         #list hb_path get 3 first_step;

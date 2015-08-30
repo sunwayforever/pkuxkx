@@ -35,8 +35,6 @@ load gps_actions;
 #alias {gps.watchdog.kick} {
     #if {"${gps.run.mode}" == "NORMAL"} {
         #delay {gps_delay_check} {
-            gt.stop;
-            #var gps_stop 0;
             gps.gt.check;
         } {10};
     };
@@ -48,9 +46,16 @@ load gps_actions;
     };
 };
 
+#alias {gps.teardown} {
+    #class gps.inner kill;
+};
+
+#alias {gps.setup} {
+    #class gps.inner open;
+    #class gps.inner close;
+};
 #var gps_gt_check_count 0;
 #alias {gps.gt.check} {
-    #var gps.run.mode nil;
     #alias {gps_gt} {
         gps.gt ${dst_roomno};
     };
@@ -58,6 +63,7 @@ load gps_actions;
         #var src_roomno ${gps.roomno};
         #if {${src_roomno} == ${dst_roomno}} {
             #var gps_gt_check_count 0;
+            gt.stop;
             #delay {1} {
                 #showme {GPS: 抵达目的地};
             };
@@ -66,6 +72,7 @@ load gps_actions;
             #math gps_gt_check_count ${gps_gt_check_count}+1;
             #if {${gps_gt_check_count} >= 20} {
                 #var gps_gt_check_count 0;
+                gt.stop;
                 #showme {GPS: 抵达目的地};
             };
             #else {
@@ -85,25 +92,31 @@ load gps_actions;
 #alias gt.stop gps.gt.stop;
 #alias {gps.gt.stop} {
     #if {"${gps.run.mode}" == "NORMAL"} {
+        #var gps.run.mode nil;
         gps.stop;
     };
 };
 #alias {gps.stop} {
+    gps.teardown;
     #var gps_stop 1;
     #class gps.action.inner kill;
     gps.watchdog.stop;
     #undelay {there_delay};
     #undelay {gps_delay};
     #unticker {gps_ticker};
+    #alias gps_gt #cr;
+    #alias tmp_get_pos #cr;
     set brief 2;
 };
 
 #alias {gps.gt} {
     #var gps_stop 0;
-    #var gps_last_dest %1;
-
+    #var gps_gt_dest %1;
+    #replace gps_gt_dest ( \(;
+    #replace gps_gt_dest ) \);
+    gps.setup;
     #alias {gps_gt} {
-        gps.gt ${gps_last_dest};
+        gps.gt ${gps_gt_dest};
     };
     #alias {gps_check_room_done} {
         #var src_roomno ${gps.roomno};
@@ -116,15 +129,16 @@ load gps_actions;
             };
         };
         #else {
-            #if {@isdigit{%1}} {
-                #var dst_roomno %1;
+            #if {@isdigit{${gps_gt_dest}}} {
+                #var dst_roomno ${gps_gt_dest};
             };
             #else {
-                INVOKE gps.get_room %1;
+                INVOKE gps.get_room ${gps_gt_dest};
                 #var dst_roomno ${gps.roomno};
             };
 
             #if {${dst_roomno} == ${src_roomno}} {
+                gt.stop;
                 #delay {1} {
                     #showme {GPS: 抵达目的地};
                 };
@@ -140,7 +154,7 @@ load gps_actions;
                 #if {${gps_path_size} == 0} {
                     #delay {1} {
                         #showme GPS: 目标房间不可达, 无法行走;
-                        notify GPS: 目标房间不可达, 无法行走: ${gps_last_dest};
+                        notify GPS: 目标房间不可达, 无法行走: ${gps_gt_dest};
                     };
                     on_there {
                         #cr;
@@ -199,7 +213,7 @@ load gps_actions;
                 gps.gt.check;
             };
             #elseif {"${gps.run.mode}" == "TRAVERSE"} {
-                #var gps.run.mode nil;
+                bl.stop;
                 #showme {GPS: 遍历完成};
                 #unaction {${gps_traverse_target}};
             };
@@ -216,7 +230,7 @@ load gps_actions;
     #action {${gps_traverse_target}} {
         #unaction {${gps_traverse_target}};
         #showme 找到目标: ${gps_traverse_target};
-        gps.traverse.stop;
+        bl.stop;
     } {1};
 
     #var gps_stop 0;
@@ -228,6 +242,7 @@ load gps_actions;
 #alias {gps.traverse.stop} {
     #unaction {${gps_traverse_target}};
     #if {"${gps.run.mode}" == "TRAVERSE"} {
+        #var gps.run.mode nil;
         gps.stop;
     };
 };
@@ -235,6 +250,7 @@ load gps_actions;
 #alias {gps.traverse} {
     #unvar gps_traverse_target;
     #unvar gps_traverse_location;
+    gps.setup;
     #var gps_stop 0;
     #var traverse_tmp %1;
     #replace traverse_tmp {@} {;};
@@ -248,7 +264,7 @@ load gps_actions;
     #action {${gps_traverse_target}} {
         #unaction {${gps_traverse_target}};
         #showme 找到目标: ${gps_traverse_target};
-        gps.traverse.stop;
+        bl.stop;
     } {1};
 
     #alias {gps_check_room_done} {
@@ -390,14 +406,4 @@ load gps_actions;
         gps_check_room_done;
     };
 };
-#nop 归云遍历;
-#nop 白驼草丛;
-#nop 昆明客店内室;
-#nop 建康北山路遍历;
-#nop 福州密室房梁;
-#nop 北京永安门;
-#nop 长江黄河遍历;
-#nop 桃花岛桃林遍历;
-#nop 嘉兴山洞;
-#nop 古墓山洞;
 #class gps close;

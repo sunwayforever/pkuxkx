@@ -2,6 +2,9 @@
 #var ds_book shu;
 #var ds_count 50;
 
+#tab ds.start;
+#tab ds.stop;
+
 #alias {ds.start} {
     #var ds_book %0;
 

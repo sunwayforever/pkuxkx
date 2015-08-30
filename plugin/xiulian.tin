@@ -1,12 +1,17 @@
 #class xiulian open
+#tab xl.start;
+#tab xl.stop;
+
 #alias {xl.start} {
     set_last_quest xl;
     #class xl.inner open;
     #action {顿觉内功修为增进不小} {xiulian ${xl_kungfu}};
     #action {由于缺乏实战经验} {
+        #showme MISSION_COMPLETE: xl;
         xl.stop;
     };
     #action {你的潜能必须大于%*才能修炼。} {
+        #showme MISSION_COMPLETE: xl;
         xl.stop;
     };
     #class xl.inner close;

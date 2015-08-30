@@ -294,4 +294,19 @@
         burden.check.done;
     };
 };
+
+#alias {get.sheng_huo_ling} {
+    #alias tmp_get_sheng_huo_ling #cr;
+    #alias tmp_get_sheng_huo_ling %1;
+
+    #class get.sheng_huo_ling.inner open;
+    #action {张无忌说道：「好吧，这个圣火令你拿回去好好保管。」} {
+        tmp_get_sheng_huo_ling;
+    };
+    #class get.sheng_huo_ling.inner close;
+    gt 明教大殿;
+    on_there {
+        ask zhang about 圣火令;
+    };
+};
 #class get_item close;

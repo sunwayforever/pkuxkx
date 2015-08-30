@@ -78,7 +78,7 @@
     #var temp ${tmp_time} <099> %0;
 
     #if {@len{${temp}} > ${screen_width}} {
-        #math split_chunk_size ${screen_width}-${header_width}-10;
+        #math split_chunk_size (${screen_width}-${header_width}-20)/2;
         INVOKE split_string "%0" ${split_chunk_size};
         #foreach {${split_string}[%*]} {item} {
             show_to_chat > ${item};

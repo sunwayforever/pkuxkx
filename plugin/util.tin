@@ -6,6 +6,17 @@
     #var result #cr;
 };
 
+#function {mapclear} {
+    #var map_name map_%1;
+    #var map_key %2;
+    #list ${map_name}_keys find ${map_key} map_index;
+    #if {${map_index} != 0} {
+        #list ${map_name}_keys delete ${map_index};
+        #list ${map_name}_values delete ${map_index};
+    };
+    #var result #cr;
+};
+
 #function {mapset} {
     #var map_name map_%1;
     #var map_key %2;

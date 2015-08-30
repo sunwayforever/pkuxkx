@@ -1,4 +1,7 @@
 #class gem open
+#tab gem.combine;
+#tab gem.merge;
+
 #var gem_combine_level 6;
 #list gem_types create {地;山;水;风;雷;火;泽;天};
 #var gem.combine_count 0;
@@ -73,6 +76,11 @@
     #alias tmp_combine %1;
     gem.setup;
     #class gem.combine.inner open;
+    #action {笨阿，身上东西满了，小心无欢打劫你的宝石！} {
+        #delay {gem_combine_delay} {
+            combine_gems_done;
+        } {0.5};
+    };
     #action {你的宝石袋里空空荡荡} {
         combine_gems_done;
     };

@@ -1,7 +1,60 @@
 #class chaoting_spec open
-
+#var jiali_count 10;
 #alias {attack.prepare} {
 	yun powerup;
+};
+
+#alias {attack} {
+    #class attack.inner open;
+    #class attack.inner close;
+
+    #if {"${quest}" == "hb"} {
+        #class attack.inner open;
+        #class attack.inner close;
+    };
+    #elseif {${mj_started}  == 1} {
+        pfm zuoshou;
+        #class attack.inner open;
+        #ticker {qixing} {
+            pfm qixing;
+        } {1.8};
+        #ticker {perf_zuoshou} {
+            pfm zuoshou;
+        } {2.8};
+        #class attack.inner close;
+    };
+    #else {
+        #if {${xf.type} == -1 || ${xf.type} == 1} {
+            #var jiali_count max;
+            pfm beng;
+            #class attack.inner open;
+            #ticker {beng} {
+                pfm beng;
+            } {2.8};
+            #ticker {zuoshou} {
+                pfm zuoshou;
+            } {3.8};
+            #class attack.inner close;
+        };
+        #elseif {${xf.type} == 2} {
+            pfm beng;
+            #class attack.inner open;
+            #ticker {beng} {
+                pfm beng;
+            } {2.8};
+            #class attack.inner close;
+        };
+        #elseif {${xf.type} == 3} {
+            pfm beng;
+            #class attack.inner open;
+            #class attack.inner close;
+        };
+        #else {
+            pfm beng;
+            #class attack.inner open;
+            #class attack.inner close;
+        };
+    };
 };
 
 #macro {\eOP} {
@@ -20,73 +73,72 @@
 	zuoshou;
 };
 
-#macro {\e[15~} {
+#macro {\e[15~} { #]
 	qixing;
 };
 
 #alias {zuoshou} {
 	unwi;
-	wield blade;
-	jiali 10;
-	perform blade.zuoshou;
+	do_wield blade;
+	jiali ${jiali_count};
+	perform pojun-daofa.zuoshou;
 	jiali none;
 	wi;
 };
 
 #alias {qixing} {
 	unwi;
-	perform hand.qixing;
+	perform yuejia-sanshou.qixing;
 	wi;
 };
 
 #alias {huxiao} {
 	unwi;
-	perform cuff.huxiao;
+	perform taizu-changquan.huxiao;
 	wi;
 };
 
 #alias {beng} {
 	unwi;
-	wield staff;
-	perform staff.beng;
+	do_wield staff;
+    jiali ${jiali_count};
+	perform panlong-gun.beng;
 	wi;
 };
 
-#alias {chan_robber} {
-	unwi;
-	perform cuff.fengtian;
-	wi;
-};
-
-#alias {map_goto_lingwu} {
+#alias {goto_lingwu} {
 	gt ÁÙ°²¸®Ñ§ÌÃ;
 };
 
-#alias {map_goto_rest} {
+#alias {goto_rest} {
 	gt ÁÙ°²¸®Ïá·¿;
 };
 
-#alias {map_goto_shifu} {
+#alias {goto_shifu} {
 	gt ¶¼Í¤æä;
 };
 
 #alias {chan} {
 	unwi;
-	perform cuff.fengtian;
+	perform taizu-changquan.fengtian;
 	wi;
 };
 
 #list my_weapons_to_wield create {staff};
 
-#alias {qudu} {
-	#send {qudu};
-	#delay {1} {#send {qudu}};
-	#delay {2} {#send {qudu}};
-};
-
-
 #var shifu meng;
-#var shortcut F1:²ø F2:É±Íþ F3:»¢Ð¥ F4:×óÊÖ F5:ÆßÐÇ
+#var shortcut F1:²ø F2:±À F3:»¢Ð¥ F4:×óÊÖ F5:ÆßÐÇ;
 #var char_menpai_position hz;
 
+#alias {reborn} {
+    jifa force bixue-xinfa;
+    jifa dodge panlong-gun;
+    jifa parry taizu-changquan;
+    jifa staff panlong-gun;
+    jifa blade pojun-daofa;
+    jifa hand yuejia-sanshou;
+    jifa cuff taizu-changquan;
+    bei none;
+    bei hand cuff;
+};
 #class chaoting_spec close

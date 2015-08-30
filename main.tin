@@ -66,6 +66,7 @@
 #read plugin/hsz.tin;
 #read plugin/vein.tin;
 #read plugin/task.tin;
+#read plugin/fullskill.tin
 #read plugin/xmpp.tin;
 
 #read plugin/os/linux.tin;

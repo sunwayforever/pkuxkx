@@ -1,4 +1,6 @@
 #class hubo open
+#tab hubo.start;
+#tab hubo.stop;
 
 #alias {hubo.stop} {
     unset_last_quest;
