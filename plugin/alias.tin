@@ -1102,6 +1102,11 @@ walk_to east;
     #action {张 三双手抱拳，对着%*${char_name}作了个揖道} {
         notify 张三;
     };
+    #action {${char_name}(damage:%*气血:%*)} {
+        #if {${fighting} == 0} {
+            war;
+        };
+    };
     show_to_quest   ;
     #send {i};
     #send {hpbrief};

@@ -121,12 +121,6 @@
     war;
 };
 
-#action {${char_name}(damage:%*ÆøÑª:%*)} {
-    #if {${fighting} == 0} {
-        war;
-    };
-};
-
 #gag {wait_for_fight};
 #var fighting 0;
 #alias {war.monitor} {

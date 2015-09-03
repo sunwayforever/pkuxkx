@@ -9,7 +9,12 @@
 #alias {attack} {
     #class attack.inner open;
     #if {"${quest}" == "hb"} {
+        pfm xiongyong;
+        pfm fen;
         #class attack.inner open;
+        #ticker {fen} {
+            pfm fen;
+        } {5};
         #class attack.inner close;
     };
     #elseif {${mj_started}  == 1} {
@@ -29,11 +34,15 @@
         };
     };
     #else {
+        pfm xiongyong;
         pfm fen;
         #class attack.inner open;
         #ticker {fen} {
             pfm fen;
         } {5.8};
+        #ticker {xiongyong} {
+            pfm xiongyong;
+        } {4.8};
         #class attack.inner close;
         #if {${xf.type} == -1 || ${xf.type} == 1} {
         };
@@ -65,7 +74,7 @@
 	wi;
 };
 
-#var shortcut F1:·Ù F2:È¼ F3:ÎåË¥;
+#var shortcut F1:·Ù F2:È¼ F3:ÎåË¥ F4: ÐÚÓ¿;
 #macro {\eOP} {
 	fen;
 };
@@ -79,7 +88,7 @@
 };
 
 #macro {\eOS} {
-	#cr
+    xiongyong;
 };
 
 #alias {goto_lingwu} {
@@ -114,4 +123,12 @@
     bei strike;
 };
 
+#alias {xiongyong} {
+    unwield all;
+    do_wield sword;
+    #send {jifa parry xuantie-jian};
+    perform xuantie-jian.xiongyong;
+    #send {jifa parry huoyan-dao};
+    wi;
+};
 #class dalun_spec close

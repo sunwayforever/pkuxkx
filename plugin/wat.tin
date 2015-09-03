@@ -21,7 +21,6 @@
 };
 
 #alias {wat.start} {
-    wat.q;
     #class wat.auto.inner open;
     #var wat_count 0;
     #var wat_level 0;
@@ -46,7 +45,7 @@
         jq;
     };
 
-    #action {万安塔任务%s仍需%*秒才能接到下个任务} {
+    #action {万安塔任务%*仍需%*秒才能接到下个任务} {
         #var wat_level 0;
         #var second @ctd{%%2};
         #math delay_time ${second}+10;
@@ -56,7 +55,7 @@
         } {${delay_time}};
     } {2};
 
-    #action {万安塔任务%s仍需%S分%S秒才能接到下个任务。} {
+    #action {万安塔任务%*仍需%S分%S秒才能接到下个任务。} {
         #var wat_level 0;
         #var minute @ctd{%%2};
         #var second @ctd{%%3};
@@ -68,10 +67,13 @@
     } {1};
 
     #class wat.auto.inner close;
+    wat.q;
+    show_to_quest 爬塔;
 };
 
 #alias {wat.stop} {
     #class wat.auto.inner kill;
+    show_to_quest 爬塔结束;
 };
 
 #action {^恭喜你，答对了口令，你可以敲锣离开了} {

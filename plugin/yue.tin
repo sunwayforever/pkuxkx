@@ -2,16 +2,16 @@
 
 #alias {yue.q} {
     #class yue.inner open;
-    #action {岳不群对你道：「我这里正好有封密函，麻烦你跑一趟，交给%*。」} {
-        show_to_quest 送信: %%1;
-    };
-    
-    #action {请将这封密函火速送到%*手上} {
-        show_to_quest 送信: %%1;
+    #action {岳不群对你道：「我这里正好有封密函，麻烦你跑一趟，交给%*附近的%*。」} {
+        show_to_quest 送信: %%1:%%2;
     };
 
-    #action {你现在应该去%*送信} {
-        #var songxin_target %%1;
+    #action {你赶紧把它送到%*附近的%*手中} {
+        show_to_quest 送信: %%1:%%2;
+    };
+
+    #action {请将这封密函火速送到%*附近的%*手上} {
+        show_to_quest 送信: %%1:%%2;
     };
 
     #action {把密函给我乖乖交出来吧} {
@@ -33,7 +33,7 @@
 };
 
 #alias {yue.b} {
-    gt huashan;
+    gt hs;
     on_there {
         yue.d;
     };

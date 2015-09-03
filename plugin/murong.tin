@@ -2,18 +2,24 @@
 #tab mr.start;
 #tab mr.stop;
 
-#var mr_auto 0;
 #alias {mr.start} {
     #class mr.inner open;
+    #action {%*点实战经验} {
+        show_to_info @ctd{%%1} 点经验;
+    } {1};
+
+    #action {姑苏慕容叛徒%*气血} {
+        #class mr.bl.inner kill;
+        #undelay {mr_fight_delay};
+    } {1};
+
     #action {一脚踢向你的屁股} {
         mr.f;
     };
 
     #action {由于你没有找回大燕传国玉玺} {
-        #if {${mr_auto} == 1} {
-            #delay {3} {
-                mr.q;
-            };
+        on_health {
+            mr.q;
         };
     };
 
@@ -23,31 +29,20 @@
 
     #action {由于你成功的找回大燕传国玉玺} {
         show_to_quest 慕容任务: 完成;
-        #if {${mr_auto} == 1} {
-            #delay {3} {
-                mr.q;
-            };
+        on_health {
+            mr.q;
         };
     };
 
     #action {大燕传国玉玺在以下地点附近出现} {
+        #unticker {mr_q_ticker};
         show_to_quest 慕容任务: 未知;
     };
 
     #action {慕容复说道：大燕传国玉玺在『%*』附近出现，快去吧！} {
+        #unticker {mr_q_ticker};
         show_to_quest 慕容任务: %%1;
-        #if {"%%1" == "福州密室" || "%%1" == "桃花岛桃林"} {
-            mr.f;
-        };
-        #else {
-            #var dest %%1;
-            gt $dest;
-            on_there {
-                #if {@blsupport{${dest}} == 1} {
-                    mr.bl;
-                };
-            };
-        };
+        mr.check %%1;
     } {1};
 
     #action {慕容复忙着呢} {
@@ -56,50 +51,87 @@
         };
     };
 
-    #action {姑苏慕容叛徒死了。} {
-        get all from corpse;
+    #action {姑苏慕容叛徒%*死了。} {
+        #class mr.bl.inner kill;
+        on_unbusy {
+            get all from corpse;
+        };
     } {1};
 
-    #action {你从姑苏慕容叛徒的尸体身上搜出一块玉玺。} {
+    #action {你从姑苏慕容%*搜出一块玉玺。} {
         show_to_quest 慕容任务: 收工;
-    };
-
-    #action {${char_name}发现的%*叛徒} {
-        killall pantu;
-    };
-
-    #action {找到目标} {
-        killall pantu;
-        #action {你从姑苏慕容叛徒的尸体身上搜出一块玉玺} {
-            #unaction {你从姑苏慕容叛徒的尸体身上搜出一块玉玺};
-            show_to_quest 慕容任务: 收工;
+        #delay {mr_delay} {
             mr.b;
-        };
+        } {3};
     };
+
     #class mr.inner close;
 
-    #var mr_auto 1;
-    mr.q;
+    on_there {
+        on_health {
+            mr.q;
+        };
+    };
+    gt mrf;
+};
+
+#alias {mr.check} {
+    #var dest %1;
+    gt $dest;
+    on_there {
+        mr.bl;
+    };
+    on_not_there {
+        mr.f;
+    };
 };
 
 #alias {mr.stop} {
-    #var mr_auto 0;
     #class mr.inner kill;
+    #unticker {mr_q_ticker};
+    show_to_quest 慕容任务结束;
 };
 
 #alias {mr.q} {
-    ask murong about job;
+    drop_garbage;
+    #ticker {mr_q_ticker} {
+        ask murong about job;
+    } {5};
 };
 
 #alias {mr.d} {
     give murong xi;
 };
 
+#alias {mr.fight} {
+    #class mr.bl.inner kill;
+    #delay {mr_fight_delay} {
+        mr.bl;
+    } {10};
+
+    on_unbusy {
+        killall pantu;
+    };
+};
+
 #alias {mr.bl} {
+    #class mr.bl.inner open;
+    #action {找到目标} {
+        mr.fight;
+    };
+
+    #action {GPS: 遍历完成} {
+        #class mr.bl.inner kill;
+        mr.b;
+    };
+    #class mr.bl.inner close;
     bl.start ${char_name}%*叛徒;
 };
 
 #alias {mr.b} {
+    #class mr.bl.inner kill;
+    #undelay {mr_fight_delay};
+
     gt mrf;
     on_there {
         give xi to murong;
