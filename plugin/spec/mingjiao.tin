@@ -14,16 +14,11 @@
         pfm xiongyong;
     } {4.5};
     #class attack.inner close;
-    #if {${xf.type} == 3} {
-        pfm xiongyong;
-        pfm yinfeng;
-        pfm duo;
-        pfm jindou;
-    };
-    #else {
-        pfm yinfeng;
-        pfm duo;
-        pfm jindou;
+    pfm xiongyong;
+    pfm yinfeng;
+    pfm duo;
+    pfm jindou;
+    #if {${xf.type} != 3} {
         #class attack.inner open;
         #ticker {yinfeng} {
             pfm yinfeng;

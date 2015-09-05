@@ -1,49 +1,257 @@
 #class yue open;
+#alias {yue.watchdog.stop} {
+    #undelay {yue_check_delay};
+};
 
-#alias {yue.q} {
-    #class yue.inner open;
-    #action {岳不群对你道：「我这里正好有封密函，麻烦你跑一趟，交给%*附近的%*。」} {
-        show_to_quest 送信: %%1:%%2;
-    };
+#alias {yue.watchdog.kick} {
+    #delay {yue_check_delay} {
+        yue.watchdog.kick;
+        yue.start;
+    } {600};
+};
 
-    #action {你赶紧把它送到%*附近的%*手中} {
-        show_to_quest 送信: %%1:%%2;
-    };
+#alias {yue.stop} {
+    log.stop;
+    unset_last_quest;
+    #class yue.quest.inner kill;
+    #class yue.fight.inner kill;
+    #class yue.bl.inner kill;
+    #class yue.check.inner kill;
+    #unticker {yue_q_ticker};
+    yue.watchdog.stop;
+    show_to_quest 送信结束;
+};
 
-    #action {请将这封密函火速送到%*附近的%*手上} {
-        show_to_quest 送信: %%1:%%2;
+#alias {yue.restart} {
+    show_to_quest 送信: 准备;
+    #class yue.fight.inner kill;
+    #class yue.bl.inner kill;
+    #class yue.check.inner kill;
+    #var yue_state STARTED;
+    gt hs;
+    on_there {
+        on_health {
+            yue.d;
+            yue.q;
+        };
     };
+};
+
+#alias {yue.start} {
+    set_last_quest yue;
+    #class yue.quest.inner open;
+
+    #alias {on_huoyandao} {
+        quit_and_restart;
+    } {1};
+
+    #alias {on_huoqiu} {
+        quit_and_restart;
+    } {1};
+
+    #alias {on_special_state} {
+        notify 特殊状态, 危险!;
+        yue.stop;
+
+        #alias {yue_check_for_special_state} {
+            #if {${in_special_state} == 1} {
+                on_health {
+                    yue_check_for_special_state;
+                };
+            };
+            #else {
+                yue.start;
+            };
+        };
+        chain taopao keyao yue_check_for_special_state;
+    } {1};
 
     #action {把密函给我乖乖交出来吧} {
-        notify emergence;
+        yue.robber;
     };
-    #class yue.inner close;
+
+    #action {你伸手向怀中一摸，发现密函已经不翼而飞！} {
+        yue.robber;
+    };
+
+    #var yue_lunci 0;
+    #action {你总共已经送了%*件密函} {
+        #math yue_lunci ${yue_lunci}+1;
+        #if {${yue_lunci} > 10} {
+            yue.start;
+        };
+        #else {
+            yue.restart;
+        };
+    };
+
+    #action {岳不群说道：「不是已经交给你任务了么？」} {
+        ask yue about fail;
+    };
+
+    #action {你的任务失败，经验和潜能降低了。} {
+        yue.restart;
+    };
+
+    #action {岳不群对你道：「我这里正好有封密函，麻烦你跑一趟，交给%*附近的%*。」} {
+        yue.go %%1 %%2;
+    };
+
+    #class yue.quest.inner close;
+    show_to_quest 送信;
+    #if {${in_special_state} == 1} {
+        on_special_state;
+        #return;
+    };
+    yue.watchdog.kick;
+    chain yue.p yue.restart;
+};
+
+#alias {yue.bl} {
+    #class yue.bl.inner open;
+    #action {找到目标} {
+        yue.check;
+    };
+    #action {GPS: 遍历完成} {
+        #class yue.bl.inner kill;
+        #var yue_state FAILED;
+        show_to_quest 送信: 失败;
+        yue.b;
+    };
+    #class yue.bl.inner open;
+
+    #if {"${yue_state}" == "STARTED"} {
+        bl.start ${yue_target};
+    };
+    #else {
+        #class yue.bl.inner kill;
+    };
+};
+
+#alias {yue.check} {
+    #class yue.check.inner open;
+    #action {${yue_target}(%*)} {
+        songxin @lower{%%1};
+    };
+    #action {你的任务完成，快回去复命吧。} {
+        #class yue.check.inner kill;
+        #var yue_state ENDED;
+        #undelay {yue_check_delay};
+        show_to_quest 送信: 收工;
+        yue.b;
+    };
+    #class yue.check.inner close;
+
+    #send {l};
+    #delay {yue_check_delay} {
+        yue.bl;
+    } {5};
+};
+
+#alias {yue.songxin} {
+    yue.watchdog.kick;
+    #class yue.fight.inner kill;
+    gt ${yue_location};
+    on_there {
+        yue.bl;
+    };
+    on_not_there {
+        #var yue_state FAILED;
+        yue.b;
+    };
+};
+
+#alias {yue.robber} {
+    yue.watchdog.kick;
+    #class yue.fight.inner open;
+    #alias {yue.robber.delay} {
+        #delay {robber_delay} {
+            #class yue.fight.inner kill;
+            yue.songxin;
+        } {10};
+    };
+
+    #action {「铁手丹心」铁游夏(Tie youxia)} {
+        #cr;
+    } {1};
+
+    #action {「%*」%*(%* %*)} {
+        killall @lower{%%3 %%4};
+        yue.robber.delay;
+    };
+
+    #action {%*的尸体} {
+        get mi han from corpse;
+        get mi han from corpse 2;
+        yue.robber.delay;
+    };
+
+    #ticker {look_robber} {
+        #send {l};
+    } {3};
+
+    #class yue.fight.inner close;
+    war;
+    yue.robber.delay;
+};
+
+#alias {yue.go} {
+    yue.watchdog.kick;
+    log.start;
+    #unticker {yue_q_ticker};
+    show_to_quest 送信: %1:%2;
+    #var yue_location %1;
+    #var yue_target %2;
+    #if {"${xy_info}" == "on" && @startwith{${yue_location};襄阳} == 1} {
+        show_to_info 保卫期间: ${yue_location};
+        ask yue about fail;
+    };
+    #else  {
+        gps.check ${yue_location};
+        on_reachable {
+            gt bwc;
+            on_there {
+                get gold;
+                get silver;
+                chain get.qian {gt bwc};
+            };
+        };
+        on_unreachable {
+            ask yue about fail;
+        };
+    };
+
+};
+
+#alias {yue.q} {
+    #ticker {yue_q_ticker} {
+        ask yue buqun about job;
+    } {10};
 
     ask yue buqun about job;
 };
 
 #alias {yue.d} {
-    #class yue.inner kill;
     ask yue buqun about finish;
-};
-
-#alias {yue.f} {
-    #class yue.inner kill;
     ask yue buqun about fail;
 };
 
 #alias {yue.b} {
-    gt hs;
+    on_unbusy {
+        gt hs;
+    };
     on_there {
         yue.d;
     };
 };
 
-#alias {yue.bl} {
-    quest;
-    #delay {2} {
-        bl.start ${songxin_target};
-        #var songxin_target {};
+#alias {yue.p} {
+    #alias tmp_yue_p #cr;
+    #alias tmp_yue_p %1;
+    #var chain_action get.san get.qian get.fan repair tmp_yue_p;
+    #if {${need_reload} == 1} {
+        #var chain_action reload ${chain_action};
     };
+    chain ${chain_action};
 };
 #class yue cloe;

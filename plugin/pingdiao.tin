@@ -23,10 +23,10 @@
 };
 
 #alias {pd.stop} {
-    unset_last_quest;
     #class pd.inner kill;
     on_unbusy {
         show_to_quest Æ¾µõ½áÊø;
+        unset_last_quest;
     };
 };
 

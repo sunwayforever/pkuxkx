@@ -29,9 +29,7 @@
 
     #action {由于你成功的找回大燕传国玉玺} {
         show_to_quest 慕容任务: 完成;
-        on_health {
-            mr.q;
-        };
+        mr.q;
     };
 
     #action {大燕传国玉玺在以下地点附近出现} {

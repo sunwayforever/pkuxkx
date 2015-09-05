@@ -91,10 +91,8 @@ load gps_actions;
 
 #alias gt.stop gps.gt.stop;
 #alias {gps.gt.stop} {
-    #if {"${gps.run.mode}" == "NORMAL"} {
-        #var gps.run.mode nil;
-        gps.stop;
-    };
+    #var gps.run.mode nil;
+    gps.stop;
 };
 #alias {gps.stop} {
     gps.teardown;
@@ -173,6 +171,68 @@ load gps_actions;
     };
 };
 
+#alias {on_reachable} {
+    #alias tmp_there #cr;
+    #alias tmp_there %0;
+    #action {GPS: 目标房间可达} {
+        #unaction {GPS: 目标房间可达};
+        on_unbusy {
+            tmp_there;
+        };
+    };
+};
+
+#alias {on_unreachable} {
+    #alias tmp_not_there #cr;
+    #alias tmp_not_there %0;
+    #action {GPS: 目标房间不可达} {
+        #unaction {GPS: 目标房间不可达};
+        on_unbusy {
+            tmp_not_there;
+        };
+    };
+};
+
+#alias {gps.check} {
+    #var gps_stop 0;
+    #var gps_gt_dest %1;
+    #replace gps_gt_dest ( \(;
+    #replace gps_gt_dest ) \);
+
+    #alias {gps_check_room_done} {
+        #var src_roomno ${gps.roomno};
+        #if {${gps.roomno} == -1} {
+            #showme GPS: 目标房间可达;
+        };
+        #else {
+            #if {@isdigit{${gps_gt_dest}}} {
+                #var dst_roomno ${gps_gt_dest};
+            };
+            #else {
+                INVOKE gps.get_room ${gps_gt_dest};
+                #var dst_roomno ${gps.roomno};
+            };
+
+            #if {${dst_roomno} == ${src_roomno}} {
+                #showme GPS: 目标房间可达;
+            };
+            #else {
+                gps.get_path ${src_roomno} ${dst_roomno};
+                #list gps_path size gps_path_size;
+                #if {${gps_path_size} == 0} {
+                    #showme GPS: 目标房间不可达;
+                };
+                #else {
+                    #showme GPS: 目标房间可达;
+                };
+            };
+        };
+    };
+    gps.check_room {
+        gps_check_room_done;
+    };
+};
+
 #alias {gps.run} {
     #if {"${gps.run.mode}" == "NORMAL"} {
         gps.watchdog.kick;
@@ -241,10 +301,8 @@ load gps_actions;
 
 #alias {gps.traverse.stop} {
     #unaction {${gps_traverse_target}};
-    #if {"${gps.run.mode}" == "TRAVERSE"} {
-        #var gps.run.mode nil;
-        gps.stop;
-    };
+    #var gps.run.mode nil;
+    gps.stop;
 };
 
 #alias {gps.traverse} {
@@ -261,13 +319,13 @@ load gps_actions;
         #var gps_traverse_location $traverse_tmp_list[2];
     };
 
-    #action {${gps_traverse_target}} {
-        #unaction {${gps_traverse_target}};
-        #showme 找到目标: ${gps_traverse_target};
-        bl.stop;
-    } {1};
-
     #alias {gps_check_room_done} {
+        #action {${gps_traverse_target}} {
+            #unaction {${gps_traverse_target}};
+            #showme 找到目标: ${gps_traverse_target};
+            bl.stop;
+        } {1};
+
         #if {${gps.roomno} == -1} {
             #delay {gps_check_delay} {
                 #showme {GPS: 当前房间未记录, 无法遍历};

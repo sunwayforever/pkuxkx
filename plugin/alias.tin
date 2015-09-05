@@ -210,7 +210,7 @@
 
     #class halt.inner open;
     #gag {你现在不忙};
-    #ticker {checkbusy} {
+    #ticker {halt_ticker} {
         #10 halt;
     } {0.5};
     #action {你现在不忙} {
@@ -1005,13 +1005,9 @@ walk_to east;
         #undelay {delay_unbusy};
         tmp_unbusy;
     } {1};
-    #delay {delay_unbusy} {
-        #class unbusy.inner kill;
-        tmp_unbusy;
-    } {6};
     #ticker {checkbusy} {
         checkbusy;
-    } {0.2};
+    } {0.5};
     #class unbusy.inner close;
     checkbusy;
 };
@@ -1155,4 +1151,8 @@ walk_to east;
     get_char_info {
         startup;
     };
+};
+
+#alias {corpse} {
+    get all from corpse;
 };
