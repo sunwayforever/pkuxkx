@@ -103,7 +103,7 @@
 	gt ·¨ÌÃ¶şÂ¥;
 };
 
-#list my_weapons_to_wield create {staff;staff 2};
+#list my_weapons_to_wield create {};
 
 #var menzhong bofu;
 #var menzhong_didian bofu;

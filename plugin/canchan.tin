@@ -9,6 +9,11 @@
         canchan;
     } {180};
 
+    #action {你受到自身经验和悟性的影响，无法继续参禅了。} {
+        cc.stop;
+        #showme MISSION_COMPLETE: cc;
+    };
+
     #action {你修行完毕} {
         #delay {wd.done} {
             chifan;
@@ -16,6 +21,7 @@
         } {0.1};
     };
     #class canchan.inner close;
+
     gt 禅院;
     on_there {
         canchan;
@@ -24,9 +30,11 @@
 };
 
 #alias {cc.stop} {
-    unset_last_quest;
     #class canchan.inner kill;
-    show_to_quest 参禅结束;
+    on_unbusy {
+        unset_last_quest;
+        show_to_quest 参禅结束;
+    };
 };
 
 #class canchan close

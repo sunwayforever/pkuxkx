@@ -1,4 +1,5 @@
 #class get_item open;
+#alias get.xtj get.xuan_tie_jian;
 #alias {get.xuan_tie_jian} {
     gt jx;
     on_there {
@@ -203,6 +204,7 @@
     gt bs;
 };
 
+#alias get.gls get.guang_ling_san;
 #alias {get.guang_ling_san} {
     #class get.sibao.inner open;
     #action {你从冼老板那里买下了一个花雕酒袋} {
@@ -241,11 +243,26 @@
     #action {任盈盈一下子投入了令狐冲的怀抱} {
         ask ren about 曲长老;
     };
-    #action {任盈盈说道：「怎么？你也知道曲长老的事吗？」} {
+
+    #action {任盈盈说道：%*这具燕语古琴就送给你作个纪念吧！} {
+        show_to_info 拿到...古琴;
         #class get.sibao.inner kill;
-        give xiao ao jiang hu to ren;
-        show_to_info 广陵散!
     };
+
+    #action {任盈盈说道：%*这本《笑傲江湖》就送给你作个纪念吧！} {
+        show_to_info 拿到...《笑傲江湖》;
+        #class get.sibao.inner kill;
+    };
+
+    #action {任盈盈给你一本《广陵散》} {
+        show_to_info 广陵散!;
+        #class get.sibao.inner kill;
+    };
+
+    #action {任盈盈说道：「怎么？你也知道曲长老的事吗？」} {
+        give xiao ao jiang hu to ren;
+    };
+
     #action {你翻了翻这些枯枝，结果什么也没发现。} {
         #class get.sibao.inner kill;
         show_to_info 来晚了;

@@ -24,9 +24,11 @@
 };
 
 #alias {wd.stop} {
-    unset_last_quest;
     #class wudao.inner kill;
-    show_to_quest 悟道结束;
+    on_unbusy {
+        unset_last_quest;
+        show_to_quest 悟道结束;
+    };
 };
 
 #class wudao close

@@ -198,7 +198,7 @@
     #delay {huoyan_dao_delay} {
         notify 火焰刀!;
         on_huoyandao;
-    } {3};
+    } {0.5};
 } {1};
 
 #action {猛烈间火球温度飙升，火花迸射，炸开了你的护具！} {

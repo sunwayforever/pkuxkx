@@ -505,7 +505,7 @@
                 };
             };
             #else {
-                xf.restart;
+                xf.start;
             };
         };
         chain taopao keyao xf_check_for_special_state;
