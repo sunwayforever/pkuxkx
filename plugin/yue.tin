@@ -19,6 +19,8 @@
     #class yue.check.inner kill;
     #unticker {yue_q_ticker};
     #undelay {yue_check_delay};
+    #undelay {robber_delay};
+
     yue.watchdog.stop;
     show_to_quest 送信结束;
 };
@@ -42,6 +44,15 @@
     set_last_quest yue;
     #class yue.quest.inner open;
 
+    #action {慢慢地你终于又有了知觉....} {
+        notify 挂了;
+        quit_and_restart;
+    };
+
+    #alias {on_severe_wound} {
+        chain keyao yue.start;;
+    } {1};
+
     #alias {on_huoyandao} {
         quit_and_restart;
     } {1};
@@ -52,7 +63,8 @@
 
     #alias {on_special_state} {
         notify 特殊状态, 危险!;
-        yue.stop;
+        #class yue.fight.inner kill;
+        #undelay {robber_delay};
 
         #alias {yue_check_for_special_state} {
             #if {${in_special_state} == 1} {
@@ -64,7 +76,7 @@
                 yue.start;
             };
         };
-        chain yue_check_for_special_state;
+        yue_check_for_special_state;
     } {1};
 
     #action {把密函给我乖乖交出来吧} {
@@ -131,9 +143,26 @@
 
 #alias {yue.check} {
     #class yue.check.inner open;
-    #action {${yue_target}(%*)} {
-        songxin @lower{%%1};
+
+    #action {burden.check: done} {
+        #unaction {burden.check: done};
+        #if {@getburden{密函} == 1} {
+            songxin ${yue_real_target};
+        };
+        #else {
+            #class yue.check.inner kill;
+            #var yue_state FAILED;
+            #undelay {yue_check_delay};
+            show_to_quest 送信: 失败;
+            yue.b;
+        };
     };
+
+    #action {${yue_target}(%*)} {
+        #var yue_real_target @lower{%%1};
+        burden.check;
+    };
+
     #action {你的任务完成，快回去复命吧。} {
         #class yue.check.inner kill;
         #var yue_state ENDED;
@@ -223,7 +252,6 @@
             on_there {
                 get gold;
                 get silver;
-                chain get.qian {gt bwc};
             };
         };
         on_unreachable {

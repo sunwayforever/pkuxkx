@@ -1156,3 +1156,13 @@ walk_to east;
 #alias {corpse} {
     get all from corpse;
 };
+
+#alias {forge} {
+    ask chong er about forge;
+    #send {yes};
+};
+
+#alias {lvlup} {
+    #send {levelup};
+    #send {y};
+};

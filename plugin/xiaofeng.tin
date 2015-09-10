@@ -2,6 +2,11 @@
 #var xf.requested 0;
 #var xf.type -1;
 
+#var xf.job.1 0;
+#var xf.job.2 0;
+#var xf.job.3 0;
+#var xf.job.4 0;
+
 #tab xf.start;
 #tab xf.stop;
 
@@ -12,7 +17,7 @@
 #alias {xf.watchdog.kick} {
     #delay {xf_check_delay} {
         xf.watchdog.kick;
-        xf.b;
+        xf.restart;
     } {300};
 };
 
@@ -93,15 +98,6 @@
         };
     };
 
-    #action {要打便打} {
-        #undelay {xf_delay};
-        xf.watchdog.kick;
-        #if {${xf.type} != -1} {
-            follow shashou;
-            xf.fight;
-        };
-    };
-
     #action {你走上前去，试图劝服蒙面杀手，但蒙面杀手不耐烦的转了个身，不愿听你说下去。} {
         #var xf_quan 0;
         xf.watchdog.kick;
@@ -109,16 +105,6 @@
             #if {${xf.type} == 3} {
                 xf.setup;
                 xf.bl;
-            };
-        } {3};
-    };
-
-    #action {看起来蒙面杀手并不想跟你较量。} {
-        xf.watchdog.kick;
-        #delay {xf_delay} {
-            #if {${xf.type} == 4} {
-                #var xf_fail_reason 没有一次战胜;
-                xf.b;
             };
         } {3};
     };
@@ -181,12 +167,6 @@
         #if {${xf.type} == 2} {
             show_to_quest 萧峰: 擒回: ${xf.real_name};
 
-            #class xf.auto.inner open;
-            #action {你身上没有 ${xf.real_first_name} 这样东西。} {
-                xf.f;
-            } {1};
-            #class xf.auto.inner close;
-
             on_unbusy {
                 get ${xf.real_first_name};
             };
@@ -225,7 +205,7 @@
         show_to_info 掉宝: %%2;
     };
 
-    #action {%*向萧峰打听有关『job』的消息} {
+    #action {%*向萧峰打听有关『%*』的消息} {
         #if {"%%1" == "你"} {
             #var xf.requested 1;
             #var quest xf;
@@ -262,19 +242,39 @@
         };
     };
 
+    #action {你去将他除掉，取其首级回来。} {
+        #if {${xf.requested} == 1} {
+            #var xf.type 1;
+            #math xf.job.1 ${xf.job.1}+1;
+            @setenv{xf_type;1};
+            show_to_quest 萧峰: 杀死: ${xf.target};
+        };
+    };
+
     #action {你去将他擒回这里交给我} {
         #if {${xf.requested} == 1} {
             #var xf.type 2;
+            #math xf.job.2 ${xf.job.2}+1;
             @setenv{xf_type;2};
             show_to_quest 萧峰: 擒回: ${xf.target};
         };
     };
 
-    #action {你去将他除掉，取其首级回来。} {
+    #action {尚可教化} {
         #if {${xf.requested} == 1} {
-            #var xf.type 1;
-            @setenv{xf_type;1};
-            show_to_quest 萧峰: 杀死: ${xf.target};
+            #var xf.type 3;
+            #math xf.job.3 ${xf.job.3}+1;
+            @setenv{xf_type;3};
+            show_to_quest 萧峰: 劝: ${xf.target};
+        };
+    };
+
+    #action {让他认输就好} {
+        #if {${xf.requested} == 1} {
+            #var xf.type 4;
+            #math xf.job.4 ${xf.job.4}+1;
+            @setenv{xf_type;4};
+            show_to_quest 萧峰: 战胜: ${xf.target};
         };
     };
 
@@ -303,22 +303,6 @@
             on_halt {
                 quan;
             };
-        };
-    };
-
-    #action {尚可教化} {
-        #if {${xf.requested} == 1} {
-            #var xf.type 3;
-            @setenv{xf_type;3};
-            show_to_quest 萧峰: 劝: ${xf.target};
-        };
-    };
-
-    #action {让他认输就好} {
-        #if {${xf.requested} == 1} {
-            #var xf.type 4;
-            @setenv{xf_type;4};
-            show_to_quest 萧峰: 战胜: ${xf.target};
         };
     };
 
@@ -449,6 +433,7 @@
                 xf.bl;
             } {1};
         };
+
         #action {这里没有这个人。} {
             #class xf.fight.inner kill;
             #delay {xf_delay} {
@@ -597,6 +582,12 @@
         show_to_quest 萧峰: 完成;
         xf.restart;
     };
+    #action {^萧峰说道：「你又没有任务，如何轻言放弃！」} {
+        #if {${xf.requested} == 1} {
+            @setenv{xf_state;nil};
+            xf.restart;
+        };
+    };
     #class xf.auto.inner close;
 
     #var xf.type @getenv{xf_type};
@@ -677,6 +668,25 @@
         } {1};
     };
 
+    #action {要打便打} {
+        #undelay {xf_delay};
+        xf.watchdog.kick;
+        #if {${xf.type} != -1} {
+            follow shashou;
+            xf.fight;
+        };
+    };
+
+    #action {看起来蒙面杀手并不想跟你较量。} {
+        xf.watchdog.kick;
+        #delay {xf_delay} {
+            #if {${xf.type} == 4} {
+                #var xf_fail_reason 没有一次战胜;
+                xf.b;
+            };
+        } {3};
+    };
+
     #action {GPS: 遍历完成} {
         #class xf.bl.inner kill;
         #delay {xf_delay} {
@@ -732,7 +742,7 @@
 #alias {xf.p} {
     #alias tmp_xf_p #cr;
     #alias tmp_xf_p %1;
-    #var chain_action get.san get.qian sell.all repair tmp_xf_p;
+    #var chain_action get.san get.qian sell.all gem.combine repair tmp_xf_p;
     #if {${need_reload} == 1} {
         #var chain_action reload ${chain_action};
     };

@@ -1,4 +1,14 @@
 #class get_item open;
+#tab get.xtj;
+#tab get.gls;
+#tab get.qian;
+#tab get.san;
+#tab get.shl;
+#tab get.fan;
+#tab get.bao;
+#tab get.fenjiu;
+#tab get.shou_yin;
+
 #alias get.xtj get.xuan_tie_jian;
 #alias {get.xuan_tie_jian} {
     gt jx;
@@ -312,6 +322,7 @@
     };
 };
 
+#alias get.shl get.sheng_huo_ling;
 #alias {get.sheng_huo_ling} {
     #alias tmp_get_sheng_huo_ling #cr;
     #alias tmp_get_sheng_huo_ling %1;

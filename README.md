@@ -27,4 +27,3 @@ Requirements
 2. sqlite3
 3. python3
 4. 可选: libnotify-bin, notifu (for cygwin), mplayer, sleekxmpp (for xmpp notification)
- 

@@ -152,16 +152,8 @@
     answer 送信;
 };
 
-#action {你确定要升级吗} {
-    #send {y};
-};
-
-#action {你确定要把%*自动加载} {
-    #send {y};
-};
-
 #action {你的东西根本没坏} {
-    show_to_info 不需要修理;
+    #cr;
 };
 
 #action {爱爱告诉你：“修这把兵器共花了} {
@@ -181,10 +173,6 @@
     #delay {1.5} {
         #showme 抵达目的地;
     };
-};
-
-#action {“你已经把装备放入熔炉并打算让我帮你锻造了么？”(回答yes or no)} {
-    #send {yes};
 };
 
 #action {有人从别处%*连线取代你所控制的人物。} {
@@ -276,4 +264,8 @@
     vote unchblk %3;
 };
 
+#gag {设定环境变量：};
+#action {设定环境变量：%*} {
+    #showme 环境变量：%1;
+};
 #class action close;

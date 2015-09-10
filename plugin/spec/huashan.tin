@@ -168,8 +168,14 @@
 #alias {shijiujian} {
     unwi;
     do_wield sword;
+    jifa sword yunushijiu-jian;
     perform yunushijiu-jian.shijiu;
-    wi;
+    wi.freeze;
+    #delay {delay_sjj} {
+        jifa sword dugu-jiujian;
+        wi.unfreeze;
+        wi;
+    } {5};
 };
 
 #alias {sqf} {
