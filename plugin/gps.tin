@@ -56,6 +56,8 @@ load gps_actions;
 };
 #var gps_gt_check_count 0;
 #alias {gps.gt.check} {
+    gps.gt.stop;
+    #var gps_stop 0;
     #alias {gps_gt} {
         gps.gt ${dst_roomno};
     };
@@ -77,8 +79,10 @@ load gps_actions;
             };
             #else {
                 #if {${gps_stop} == 0} {
-                    taopao {
-                        gps_gt;
+                    #delay {1} {
+                        taopao {
+                            gps_gt;
+                        };
                     };
                 };
             };

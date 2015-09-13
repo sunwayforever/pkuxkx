@@ -427,6 +427,32 @@
             xf.bl;
         } {10};
         #class xf.fight.inner open;
+        #action {蒙面杀手说道：「就你也配跟我讨教功夫？！」} {
+            #undelay {xf_delay};
+            #delay {xf.bl} {
+                bl.next;
+            } {1};
+        };
+
+        #action {要打便打} {
+            #undelay {xf_delay};
+            xf.watchdog.kick;
+            #if {${xf.type} != -1} {
+                follow shashou;
+                xf.fight;
+            };
+        };
+
+        #action {看起来蒙面杀手并不想跟你较量。} {
+            xf.watchdog.kick;
+            #delay {xf_delay} {
+                #if {${xf.type} == 4} {
+                    #var xf_fail_reason 没有一次战胜;
+                    xf.b;
+                };
+            } {3};
+        };
+
         #action {这里没有 shashou。} {
             #class xf.fight.inner kill;
             #delay {xf_delay} {
@@ -661,32 +687,6 @@
 
 #alias {xf.bl} {
     #class xf.bl.inner open;
-    #action {蒙面杀手说道：「就你也配跟我讨教功夫？！」} {
-        #undelay {xf_delay};
-        #delay {xf.bl} {
-            bl.next;
-        } {1};
-    };
-
-    #action {要打便打} {
-        #undelay {xf_delay};
-        xf.watchdog.kick;
-        #if {${xf.type} != -1} {
-            follow shashou;
-            xf.fight;
-        };
-    };
-
-    #action {看起来蒙面杀手并不想跟你较量。} {
-        xf.watchdog.kick;
-        #delay {xf_delay} {
-            #if {${xf.type} == 4} {
-                #var xf_fail_reason 没有一次战胜;
-                xf.b;
-            };
-        } {3};
-    };
-
     #action {GPS: 遍历完成} {
         #class xf.bl.inner kill;
         #delay {xf_delay} {

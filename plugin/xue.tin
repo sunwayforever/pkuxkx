@@ -15,7 +15,7 @@
 
     #alias {start_ticker} {
         #ticker {xue} {
-            xue ${shifu} for ${xue.gongfu} ${xue_count};
+            xue ${shifu} for ${xue_gongfu} ${xue_count};
         } {0.5};
     };
 
@@ -46,8 +46,14 @@
     #class xue.inner close;
 
     autoheal.off;
-    #var xue.gongfu %1;
-    show_to_quest ѧϰ: ${shifu}/${xue.gongfu};
+    #var xue_gongfu %1;
+    #if {"${xue_gongfu}" == ""} {
+        #var xue_gongfu @getenv{xue_gongfu};
+    };
+    #else {
+        @setenv{xue_gongfu;${xue_gongfu}};
+    };
+    show_to_quest ѧϰ: ${shifu}/${xue_gongfu};
     xue.restart;
 };
 

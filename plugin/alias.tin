@@ -540,12 +540,13 @@ walk_to east;
 
 #var min_naijiu 10000;
 #alias {check_naijiu} {
-    #action {塚消業:%*} {
+    #class check.naijiu.inner open;
+    #alias {do_check_naijiu} {
         #if {${tmp_min_naijiu} > %%1} {
             #var tmp_min_naijiu %%1;
         };
         #delay {d} {
-            #unaction {塚消業:%*};
+            #class check.naijiu.inner kill;
             #if {${tmp_min_naijiu} != 10000} {
                 #var min_naijiu ${tmp_min_naijiu};
                 update_status;
@@ -554,7 +555,15 @@ walk_to east;
                 check_special_naijiu;
             };
         } {3};
-    } {1};
+    };
+    #action {塚消業:%*/%*} {
+        do_check_naijiu %%1;
+    } {2};
+    #action {塚消業:%*} {
+        do_check_naijiu %%1;
+    } {3};
+    #class check.naijiu.inner close;
+
     #var tmp_min_naijiu 10000;
     #foreach {${my_weapons}[%*]} {weapon} {#send {l ${weapon}}};
 };
