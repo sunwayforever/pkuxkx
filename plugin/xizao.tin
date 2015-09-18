@@ -13,9 +13,9 @@
         };
     };
     #class xi.inner close;
-    gt qfa;
+    set_last_quest xz;
+    gt œ¥œÛ≥ÿ±ﬂ;
     on_there {
-        w;w;w;w;sw;nd;nd;
         show_to_quest œ¥‘Ë;
         xi pool;
     };
@@ -23,7 +23,10 @@
 
 #alias {xz.stop} {
     #class xi.inner kill;
-    show_to_quest œ¥‘ËΩ· ¯;
+    on_unbusy {
+        show_to_quest œ¥‘ËΩ· ¯;
+        unset_last_quest;
+    };
 };
 
 #class xizao close

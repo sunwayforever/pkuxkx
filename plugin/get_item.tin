@@ -165,9 +165,13 @@
     #alias tmp_get_san #cr;
     #alias tmp_get_san %1;
     #var get_san_id -1;
+    #var san_amount 0;
     #class get_san.inner open;
-    #action {^%d%s清心散} {
-        #var get_san_id %%1;
+    #action {^%d%s清心散〖%*〗} {
+        #if {${san_amount} == 0 || %%3 > ${san_amount}} {
+            #var san_amount %%3;
+            #var get_san_id %%1;
+        };
     };
     #action {柜子里空空如也，啥也没有！} {
         #class get_san.inner kill;

@@ -6,6 +6,7 @@
     @stackcreate{fsk};
     @stackpush{fsk;dz};
     @stackpush{fsk;tn};
+    @stackpush{fsk;tl};
     @stackpush{fsk;lw};
     #foreach {${fsk}[%*]} {item} {
         @stackpush{fsk;${item}};

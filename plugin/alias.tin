@@ -648,20 +648,6 @@ walk_to east;
     show.reset;
 };
 
-#var reset 0;
-#alias {reset} {
-    #unaction {%*};
-    #undelay {%*};
-    #unalias {%*};
-    #unvar {%*};
-    #unticker {%*};
-    #ungag {%*};
-    #read main.tin;
-    show.reset;
-    #var reset 1;
-    login;
-};
-
 #alias {get_pos} {
     #alias tmp_get_pos #cr;
     #alias tmp_get_pos %1;
@@ -1045,6 +1031,7 @@ walk_to east;
 @mapset{menpai;天龙寺;tianlong};
 
 #alias {get_char_info} {
+    #show INFO: 获取角色信息;
     #alias get_char_info_action #cr;
     #alias get_char_info_action %1;
 
@@ -1112,41 +1099,43 @@ walk_to east;
             war;
         };
     };
-    show_to_quest   ;
+    #show INFO: 检查负重;
     #send {i};
     #send {hpbrief};
     #send {uptime};
     #send {time};
     init_set;
-    #if {${reset} == 0} {
-        xmpp.start;
-    };
-    show.init;
+    xmpp.start;
+    #show INFO: 检查保卫;
     check_baowei;
+    #show INFO: 检查环境变量;
     update_env;
+    #show INFO: 检查气血;
     check_health;
     #delay {4} {
         check_fm;
+        #show INFO: 检查武器;
         weapons.check;
     };
-    #delay {7} {
-        #send {l};
-    };
-    #delay {9} {
+    #delay {6} {
         #if {${need_reload} == 1} {
-            #showme need reload;
+            #show INFO: 需要重新加载武器;
         };
         #else {
             #showme reloaded;
+            #show INFO: 装备武器并检查耐久;
             wi;
             we;
             check_naijiu;
         };
+        #show INFO: 检查特技;
         pfm_special;
+        #show INFO: 检查武功设置;
         #send {jifa};
         reborn;
-        #delay {5} {
+        #delay {3} {
             #showme INFO: 自动 login 完成;
+            show.init;
             post_login;
         };
     };

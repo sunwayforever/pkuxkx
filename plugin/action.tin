@@ -87,12 +87,6 @@
     };
 };
 
-#event {SCREEN RESIZE} {
-    show_to_shortcut ${shortcut};
-    show.init;
-    update_status;
-};
-
 #action {您要将另一个连线中的相同人物赶出去} {
     y;
 };

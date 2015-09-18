@@ -1,5 +1,4 @@
 #class show open;
-#split 19 1
 
 #nop hp/-/status/-/shortcut/-/5(info)/-/6(chat)/- = 19
 #var info_window {{1}{ } {2}{ } {3}{ } {4}{ } {5}{ }};
@@ -9,19 +8,24 @@
 #math chat_window_offset $info_window_offset+&info_window[]+1;
 
 #alias {show.reset} {
-    #split 19 1;
     #var info_window {{1}{ } {2}{ } {3}{ } {4}{ } {5}{ }};
     #var chat_window {{1}{ } {2}{ } {3}{ } {4}{ } {5}{ } {6}{ }};
     show.init;
 };
 
+#var show_inited 0;
 #alias {show.init} {
-    #alias {show_to_status} {
-        #var show_status %%0;
-        update_status_line;
+    #split 19 1;
+    #var show_inited 1;
+    #event {SCREEN RESIZE} {
+        show_to_shortcut ${shortcut};
+        show.init;
+        update_status;
     };
 
+    update_status;
     show_to_shortcut ${shortcut};
+
     #loop {1} {&info_window[]} {cnt}
     {
         #math pos $cnt+${info_window_offset};
@@ -35,8 +39,19 @@
     }
 };
 
+#alias {show_to_status} {
+    #var show_status %0;
+    #if {${show_inited} == 0} {
+        #return;
+    };
+    update_status_line;
+};
+
 #alias {show_to_shortcut} {
     #var show_key %0;
+    #if {${show_inited} == 0} {
+        #return;
+    };
     #echo {{<cfa>${show_key}<099>}{-5}};
 };
 
@@ -54,8 +69,13 @@
         };
         #return;
     };
+
     #list info_window ins -1 $temp;
     #list info_window del 1;
+
+    #if {${show_inited} == 0} {
+        #return;
+    };
 
     #loop {1} {&info_window[]} {info_cnt}
     {
@@ -90,10 +110,15 @@
     #list chat_window ins -1 {$temp};
     #list chat_window del 1;
 
+    #if {${show_inited} == 0} {
+        #var showing_to_chat 0;
+        #return;
+    };
+
     #loop {1} {&chat_window[]} {chat_cnt}
     {
         #math chat_pos $chat_cnt+${chat_window_offset};
-        #echo {{<aff>$chat_window[$chat_cnt]<099>} {-$chat_pos}};
+        #echo {{<aff>%s<099>} {-$chat_pos}} {$chat_window[$chat_cnt]};
     }
     #var showing_to_chat 0;
 };
@@ -104,6 +129,9 @@
 
 #alias {show_to_quest} {
     #var show_quest %0;
+    #if {${show_inited} == 0} {
+        #return;
+    };
     update_status_line;
 };
 
@@ -134,6 +162,11 @@
     show_to_chat %0;
     #if {${xmpp_chat} == 1} {
         #xmpp %0;
+    };
+    #else {
+        #if {@issubstring{%0;${char_name}} == 1 || @issubstring{%0;${char_id}} == 1} {
+            #xmpp %0;
+        };
     };
 } {2};
 

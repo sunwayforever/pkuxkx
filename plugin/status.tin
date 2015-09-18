@@ -102,8 +102,8 @@
     drawhp;
 };
 
-#action {你身上带著下列这些东西(负重 %1\%)：} {
-    #var fuzhong %1;
+#action {你身上%*东西%*(负重 %*\%)：} {
+    #var fuzhong %3;
     drawhp;
 };
 

@@ -655,12 +655,12 @@
 };
 
 #alias {mx} {
-    gt %1;
     on_there {
         on_truce {
             mx.q;
         };
     };
+    gt %1;
 };
 
 #alias {mx.q} {

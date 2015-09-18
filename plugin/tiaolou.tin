@@ -26,6 +26,7 @@
         #send {exp};
         #delay {1} {
             #if {${max_level} < ${current_dodge}} {
+                #showme MISSION_COMPLETE: tl;
                 tl.stop;
             };
             #else {
