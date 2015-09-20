@@ -68,7 +68,7 @@
 
         #alias {yue_check_for_special_state} {
             #if {${in_special_state} == 1} {
-                on_health {
+                #delay {5} {
                     yue_check_for_special_state;
                 };
             };

@@ -1,9 +1,17 @@
 #class xizao open
 #alias {xz.start} {
+    set_last_quest xz;
+    #var level_up 0;
+
     #class xi.inner open;
     #ticker {xi.restart} {
         xi pool;
     } {300};
+
+    #action {你的「驻颜术」进步了！} {
+        #math level_up ${level_up}+1;
+        show_to_info 驻颜术 +${level_up};
+    };
 
     #action {你把衣服打开} {
         #delay {1} {
@@ -13,7 +21,6 @@
         };
     };
     #class xi.inner close;
-    set_last_quest xz;
     gt 洗象池边;
     on_there {
         show_to_quest 洗澡;

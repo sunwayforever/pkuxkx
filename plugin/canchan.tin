@@ -4,6 +4,7 @@
 
 #alias {cc.start} {
     set_last_quest cc;
+    #var level_up 0;
     #class canchan.inner open;
     #ticker {canchan} {
         canchan;
@@ -12,6 +13,11 @@
     #action {你受到自身经验和悟性的影响，无法继续参禅了。} {
         cc.stop;
         #showme MISSION_COMPLETE: cc;
+    };
+
+    #action {你的「禅宗心法」进步了！} {
+        #math level_up ${level_up}+1;
+        show_to_info  禅宗心法 +${level_up};
     };
 
     #action {你修行完毕} {
@@ -24,8 +30,8 @@
 
     gt 禅院;
     on_there {
-        canchan;
         show_to_quest 参禅;
+        canchan;
     };
 };
 

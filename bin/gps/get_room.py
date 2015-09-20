@@ -41,7 +41,9 @@ room_alias = {
     "江州客店内室":2064,
     "中原客店二楼":714,
     "南昌客店内室":2082,
+    "镇江府客店内室":2424,
 }
+
 def get_room(conn, desc):
     room = fixup_room(desc)
     # gt yz

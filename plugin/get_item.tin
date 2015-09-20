@@ -103,11 +103,11 @@
     #alias tmp_get_bao %1;
     #class get.bao.inner open;
     #action {你身上没有bao} {
-        buy bao;
+        buy im_110;
     };
     #action {你把身上的一个包袱卖掉} {
         #delay {1} {
-            buy bao;
+            buy im_110;
         };
     };
     #action {掌柜的说：客官您这包袱里面还有东西呢。} {

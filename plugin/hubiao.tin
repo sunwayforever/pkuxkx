@@ -697,7 +697,7 @@
 #alias {hb.p} {
     #alias tmp_hb_p #cr;
     #alias tmp_hb_p %1;
-    #var chain_action sell.all get.qian get.san get.bao repair special_repair gem.combine hb.spec tmp_hb_p;
+    #var chain_action sell.all get.qian get.san get.bao donate.all repair special_repair gem.combine hb.spec tmp_hb_p;
     #if {${need_reload} == 1} {
         #var chain_action reload ${chain_action};
     };
@@ -848,7 +848,7 @@
 };
 
 #list hb_blacklist:²ıÂ¡ïÚ¾Ö create {
-    Õò½­·ÉÁúïÚ¾Ö;¹éÔÆ×¯Ì«ºş½Ö;¼ÎĞËÇ®×¯;¶ëáÒÅşÂ¬µî;ÔÀÑô³µÂíĞĞ;ÈªÖİµ±ÆÌ;
+    Õò½­·ÉÁúïÚ¾Ö;¹éÔÆ×¯Ì«ºş½Ö;¼ÎĞËÇ®×¯;¶ëáÒÅşÂ¬µî;ÔÀÑô³µÂíĞĞ;ÈªÖİµ±ÆÌ;ËÕÖİ¾Û±¦Õ«;
 };
 
 #class hubiao close

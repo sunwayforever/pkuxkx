@@ -570,12 +570,12 @@ walk_to east;
 
 #var special_min_naijiu 10000;
 #alias {check_special_naijiu} {
-    #action {ÄÍ¾Ã¶È:%*} {
+    #action {ÄÍ¾Ã¶È:%*/%*} {
         #if {${tmp_min_naijiu} > %%1} {
             #var tmp_min_naijiu %%1;
         };
         #delay {d} {
-            #unaction {ÄÍ¾Ã¶È:%*};
+            #unaction {ÄÍ¾Ã¶È:%*/%*};
             #if {${tmp_min_naijiu} != 10000} {
                 #var special_min_naijiu ${tmp_min_naijiu};
             };
@@ -1163,4 +1163,38 @@ walk_to east;
 #alias {lvlup} {
     #send {levelup};
     #send {y};
+};
+
+#alias {donate.all} {
+    #alias tmp_donate #cr;
+    #alias tmp_donate %1;
+    #class donate.inner open;
+    #alias {donate} {
+        #var donate_item %%0;
+        #var tmp_count @getburden{${donate_item}};
+
+        #if {${tmp_count} > 0} {
+            #loop 1 ${tmp_count} i {
+                put %%0 in xiang;
+            };
+            chat ${char_name}½«${tmp_count}¿Å${donate_item}·Å½ø¹¦µÂÏä;
+        };
+    };
+    #alias {burden.check.done} {
+        donate »ğÁúµ¤;
+        donate Å®æ´Ê¯;
+        donate ÄõÁúµ¤;
+        donate Ç§Äê»ğÁúµ¤;
+        donate Öì¾¦±ùó¸;
+        #delay {donate_delay} {
+            tmp_donate;
+        } {1};
+    };
+    #class donate.inner close;
+    gt wm;
+    on_there {
+        burden.check {
+            burden.check.done;
+        };
+    };
 };
