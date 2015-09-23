@@ -13,7 +13,7 @@
 
     #action {你的「道家养生术」进步了！} {
         #math level_up ${level_up}+1;
-        show_to_info  道家养生术 +${level_up};
+        show_to_info 道家养生术 +${level_up};
     };
 
     #action {你修行完毕} {

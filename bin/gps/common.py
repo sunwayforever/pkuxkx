@@ -57,8 +57,8 @@ def fixup_area(desc):
 def fixup_room(room):
     if re.match(".*泥人.*",room):
         room = "泥人铺"
-    elif re.match(".*甜蜜小屋.*",room):
-        room = "甜蜜小屋"
+    elif re.match(".*储物柜.*",room):
+        room = "储物柜"
     elif re.match(".*炸弹人游戏",room):
         room = "炸弹人游戏"
 

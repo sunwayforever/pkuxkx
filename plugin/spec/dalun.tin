@@ -57,7 +57,9 @@
 
 #alias {fen} {
 	unwi;
+    jiali max;
 	perform huoyan-dao.fen;
+    jiali 1;
 	wi;
 };
 
@@ -131,4 +133,5 @@
     #send {jifa parry huoyan-dao};
     wi;
 };
+
 #class dalun_spec close

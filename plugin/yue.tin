@@ -76,7 +76,10 @@
                 yue.start;
             };
         };
-        yue_check_for_special_state;
+        gt bwc;
+        on_there {
+            yue_check_for_special_state;
+        };
     } {1};
 
     #action {把密函给我乖乖交出来吧} {
@@ -87,19 +90,12 @@
         yue.robber;
     };
 
-    #var yue_lunci 0;
-    #action {你总共已经送了%*件密函} {
-        #math yue_lunci ${yue_lunci}+1;
-        #if {${yue_lunci} > 10} {
-            yue.start;
-        };
-        #else {
-            yue.restart;
-        };
-    };
-
     #action {岳不群说道：「不是已经交给你任务了么？」} {
         ask yue about fail;
+    };
+
+    #action {你总共已经送了%*件密函。} {
+        yue.restart;
     };
 
     #action {你的任务失败，经验和潜能降低了。} {
@@ -262,11 +258,17 @@
 };
 
 #alias {yue.q} {
-    #ticker {yue_q_ticker} {
-        ask yue buqun about job;
-    } {10};
+    #if {"${fm_remaining_time}" == "0"} {
+        yue.stop;
+        chain fullme yue.start;
+    };
+    #else {
+        #ticker {yue_q_ticker} {
+            ask yue buqun about job;
+        } {10};
 
-    ask yue buqun about job;
+        ask yue buqun about job;
+    };
 };
 
 #alias {yue.d} {

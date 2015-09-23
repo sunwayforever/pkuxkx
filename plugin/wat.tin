@@ -1,11 +1,17 @@
 #class wat open
 #var wat_max_level 3;
 #alias {wat.q} {
-    #var quest wat;
-    on_health {
-        ask ke about 进塔;
-        detect_mingjiao wushi;
-        killall wushi;
+    #if {"${fm_remaining_time}" == "0"} {
+        wat.stop;
+        chain fullme wat.start;
+    };
+    #else {
+        #var quest wat;
+        on_health {
+            ask ke about 进塔;
+            detect_mingjiao wushi;
+            killall wushi;
+        };
     };
 };
 
@@ -23,7 +29,7 @@
 #alias {wat.start} {
     #class wat.auto.inner open;
     #var wat_count 0;
-    #var wat_level 0;
+    #var wat_level 1;
     #action {如果你继续上楼闯关} {
         #math wat_level ${wat_level}+1;
         #if {${wat_level} <= ${wat_max_level}} {
@@ -46,7 +52,7 @@
     };
 
     #action {万安塔任务%*仍需%*秒才能接到下个任务} {
-        #var wat_level 0;
+        #var wat_level 1;
         #var second @ctd{%%2};
         #math delay_time ${second}+10;
         show_to_info wat 等待 ${delay_time} 秒;
@@ -56,7 +62,7 @@
     } {2};
 
     #action {万安塔任务%*仍需%S分%S秒才能接到下个任务。} {
-        #var wat_level 0;
+        #var wat_level 1;
         #var minute @ctd{%%2};
         #var second @ctd{%%3};
         #math delay_time ${minute}*60+${second}+10;
@@ -67,8 +73,11 @@
     } {1};
 
     #class wat.auto.inner close;
-    wat.q;
-    show_to_quest 爬塔;
+    gt wat;
+    on_there {
+        show_to_quest 爬塔;
+        wat.q;
+    };
 };
 
 #alias {wat.stop} {

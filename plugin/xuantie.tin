@@ -42,7 +42,7 @@
 };
 
 #alias {xt.stop} {
-    #class xuetie.inner kill;
+    #class xuantie.inner kill;
     #unticker {check};
     unset_last_quest;
     halt;

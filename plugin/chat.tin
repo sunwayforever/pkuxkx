@@ -1,0 +1,51 @@
+#class chat open;
+#list chat_ignore_list create {
+    萧峰(xiao feng)告诉你;
+    我找不到,请看其他的回复;
+    连续的重复查询是不起作用的;
+    快去摁死它吧;
+    并不存在;
+    青山不改，绿水常流，咱们后会有期;
+    这封信用特殊药水写就;
+    钱眼开记完帐;
+    暂时不能处理你的询问,请稍等;
+    总舵主把狗皇帝扣在六和塔上了;
+    蒙哥对着;
+    蒙哥(Meng ge): 抓刺客！;
+    快来快来，肥水不留外人田，有好事当然想着你了;
+    牧场上最近出现了一只游荡的野狼，已经吞食了很多单身的旅人，没事最好经过这里。;
+};
+
+#foreach {${chat_ignore_list}[%*]} {chat_ignore} {
+    #action {${chat_ignore}} {
+        #cr;
+    } {3};
+};
+
+#gag {【闲聊】%*};
+#action {【闲聊】%*} {
+    show_to_chat %0;
+} {5};
+
+#action {^【闲聊】%*(%*): %*} {
+    show_to_chat %0;
+    #if {${xmpp_chat} == 1} {
+        #xmpp %0;
+    };
+    #elseif {@issubstring{%0;${char_name}} == 1 || @issubstring{%0;${char_id}} == 1} {
+        #if {"@lower{%2}" != "${char_id}"} {
+            #xmpp %0;
+        };
+    };
+} {4};
+
+#action {%1{回答|告诉}你：%2} {
+    show_to_chat 【私聊】%0;
+    #xmpp 【私聊】From %1：%2;
+} {5};
+
+#action {你{回答|告诉}%1：%2} {
+    show_to_chat 【私聊】%0;
+    #xmpp 【私聊】To %1：%2;
+} {5};
+#class chat close;
