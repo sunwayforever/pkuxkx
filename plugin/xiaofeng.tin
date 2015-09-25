@@ -286,7 +286,6 @@
         };
         #if {${xf.type} == 3} {
             #if {%%2 < 45 || %%3 < 45} {
-                raw;
                 on_halt;
             };
         };
@@ -298,7 +297,6 @@
     } {1};
 
     #action {看来杀手有点怕你了} {
-        raw;
         on_unbusy {
             on_halt {
                 quan;
@@ -352,14 +350,13 @@
         @setenv{xf_state;BEATED};
         #class xf.fight.inner kill;
         #undelay {xf_delay};
-        raw;
         #if {${xf.type} == 1} {
-            on_unbusy {
+            on_truce {
                 zhan corpse;
             };
         };
         #else {
-            on_unbusy {
+            on_truce {
                 #send {l};
             };
         };
@@ -368,13 +365,11 @@
     #action {蒙面杀手深深地叹了口气} {
         #unaction {『蒙面杀手(%*气血:%*\%/%*\%)』};
         #undelay {xf_delay};
-        raw;
-        on_halt;
         #if {${xf.type} == 3} {
             @setenv{xf_state;ENDED};
             #showme 收工;
             show_to_quest 萧峰: 已经劝服;
-            on_unbusy {
+            on_truce {
                 xf.b;
             };
         };
@@ -382,7 +377,7 @@
             @setenv{xf_state;ENDED};
             #showme 收工;
             show_to_quest 萧峰: 已经战胜;
-            on_unbusy {
+            on_truce {
                 xf.b;
             };
         };

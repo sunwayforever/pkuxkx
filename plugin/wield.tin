@@ -163,11 +163,8 @@
         };
     };
     #class reload_inner close;
-    gt 名人堂;
-    on_there {
-        save;
-        #send {reload};
-    };
+    #nop gt 名人堂;
+    #send {reload};
 };
 
 #class wield close

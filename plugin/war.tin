@@ -105,7 +105,7 @@
     #var enemy_menpai nil;
     jiali none;
     #var war_prepared 0;
-    #showme truce;
+    check_health;
 };
 
 #alias {on_truce} {
@@ -127,7 +127,6 @@
     #var fighting 1;
     #class war.inner open;
     #alias {war_end} {
-        check_health;
         mj.stop;
         raw;
     };
@@ -141,7 +140,7 @@
     };
 
     #action {你已经受伤过重，只怕一运真气便有生命危险！} {
-            war_end;
+        war_end;
     };
 
     #action {你全身放松，坐下来开始运功疗伤。} {
@@ -159,7 +158,7 @@
     attack;
 };
 
-#ticker {check_health} {
+#ticker {check_health_ticker} {
     #if {${critical_running} == 0} {
         check_health;
     };
@@ -184,10 +183,11 @@
             on_special_state;
             #alias {on_special_state} {
                 #cr;
-            };
+            } {1};
         };
         #else {
             #var in_special_state 0;
+            #showme truce;
         };
     } {1};
     #class check_health.inner close;
@@ -205,11 +205,6 @@
     notify 火球!;
     on_huoqiu;
 } {1};
-
-#alias {uncheck_health} {
-    #unticker {check_health};
-    #unaction {^【 状态 】 %*};
-};
 
 #alias {attack.end} {#cr};
 

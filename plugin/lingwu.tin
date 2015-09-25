@@ -6,7 +6,7 @@
     set_last_quest lw;
     #alias {lw_action} {#cr;};
     #class lingwu.inner open;
-    #list skills create  {force;cuff;strike;whip;staff;sword;parry;claw;blade;spear;dodge;hand;finger;dagger;throwing};
+    #list skills create  {force;cuff;strike;whip;staff;sword;parry;claw;blade;spear;dodge;hammer;hand;finger;dagger;throwing};
     #list skills size skill_size;
     #list level_a create {};
     #list level_b create {};
@@ -202,7 +202,7 @@
     #list special_skills_level clear;
     exp;
     #send {sk};
-    #delay {3} {#send {jifa}};
+    #delay {1} {#send {jifa}};
     #list skills get $skill_index skill;
     #delay {lw.restart} {
         get_level_a $skill;
@@ -228,6 +228,6 @@
         };
 
         start_ticker;
-    } {5};
+    } {2};
 };
 #class lingwu close

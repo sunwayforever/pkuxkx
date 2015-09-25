@@ -28,6 +28,7 @@
 } {5};
 
 #action {^¡¾ÏÐÁÄ¡¿%*(%*): %*} {
+    remember @lower{%2};
     show_to_chat %0;
     #if {${xmpp_chat} == 1} {
         #xmpp %0;
@@ -48,4 +49,23 @@
     show_to_chat ¡¾Ë½ÁÄ¡¿%0;
     #xmpp ¡¾Ë½ÁÄ¡¿To %1£º%2;
 } {5};
+
+#alias {remember} {
+    #if {@ismember{%1;contacts} != 0} {
+        #return;
+    };
+    #else {
+        #list contacts add %1;
+        #tab %1;
+        #delay {flush_contacts_delay} {
+            #class contacts write plugin/contacts.tin;
+        } {60};
+    };
+};
+
+load contacts;
+#foreach {${contacts}[%*]} {contact} {
+    #tab ${contact};
+};
+
 #class chat close;
