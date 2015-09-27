@@ -514,13 +514,13 @@
         show_to_info 额外获得 @ctd{%%2} 点经验;
     };
 
+    #action {${char_name}在帮助%*追回财物后，获得%*{◎|☆|★}%*一枚!} {
+        gem.record %%2 %%3 %%4;
+    };
+
     #alias {got_gem} {
         #action {你将手中%*{◎|☆|★}%*放进了宝石袋} {
-            #var gem_level @gemlevel{%%%1};
-            #if {${gem_level} >= 4} {
-                notify %%%1%%%2%%%3;
-                play gem2.wav;
-            };
+            gem.record %%%1 %%%2 %%%3;
         };
         pack gem;
         #delay {pack_gem} {

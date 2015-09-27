@@ -180,10 +180,12 @@
             #delay {check_health_delay} {
                 check_health;
             } {30};
-            on_special_state;
-            #alias {on_special_state} {
-                #cr;
-            } {1};
+            #delay {health_delay} {
+                on_special_state;
+                #alias {on_special_state} {
+                    #cr;
+                } {1};
+            } {5};
         };
         #else {
             #var in_special_state 0;

@@ -260,4 +260,11 @@
     };
 };
 
+#alias {gem.record} {
+    #var gem_level @gemlevel{%1};
+    #if {${gem_level} >= 4} {
+        notify %1%2%3;
+        play gem2.wav;
+    };
+};
 #class gem close

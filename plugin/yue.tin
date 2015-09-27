@@ -102,6 +102,17 @@
         yue.restart;
     };
 
+    #var yue_requested 0;
+    #action {岳不群交给你一封盖着火漆印戳的密函。} {
+        #var yue_requested 1;
+    };
+
+    #action {岳不群道：「%*你赶紧把它送到%*附近的%*手中。」} {
+        #if {${yue_requested} == 1} {
+            yue.go %%2 %%3;
+        };
+    };
+
     #action {岳不群对你道：「我这里正好有封密函，麻烦你跑一趟，交给%*附近的%*。」} {
         yue.go %%1 %%2;
     };
@@ -192,7 +203,6 @@
     #class yue.fight.inner open;
     #alias {yue.robber.delay} {
         #delay {robber_delay} {
-            #class yue.fight.inner kill;
             yue.songxin;
         } {10};
     };
@@ -206,13 +216,24 @@
         yue.robber.delay;
     };
 
-    #action {%*的尸体} {
-        get mi han from corpse;
-        get mi han from corpse 2;
+    #list yue_robbers create {};
+
+    #action {看起来%*想杀死你！} {
+        #if {@ismember{%%1;yue_robbers} == 0} {
+            #list yue_robbers add %%1;
+        };
+    } {1};
+
+    #action {%S的尸体} {
+        #math corpse_index ${corpse_index}+1;
+        #if {@ismember{%%1;yue_robbers} != 0} {
+            get mi han from corpse ${corpse_index};
+        };
         yue.robber.delay;
     };
 
     #ticker {look_robber} {
+        #var corpse_index 0;
         #send {l};
     } {3};
 
@@ -226,6 +247,7 @@
 #alias {yue.go} {
     yue.watchdog.kick;
     log.start;
+    #var yue_requested 0;
     #unticker {yue_q_ticker};
     show_to_quest 送信: %1:%2;
     #var yue_location %1;

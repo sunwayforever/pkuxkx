@@ -17,7 +17,9 @@
         #if {"${curr_fsk}" != "nil"} {
             ${curr_fsk}${dot}start;
             on_unbusy {
-                set_last_quest fsk;
+                #delay {fsk_delay} {
+                    set_last_quest fsk;
+                } {3};
             };
         };
         #else {
@@ -39,8 +41,10 @@
         ${curr_fsk}${dot}stop;
     };
     on_unbusy {
-        unset_last_quest;
-        show_to_quest fsk ½áÊø;
+        #delay {fsk_delay} {
+            unset_last_quest;
+            show_to_quest fsk ½áÊø;
+        } {3};
     };
 };
 #class fullskill close;
