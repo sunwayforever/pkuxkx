@@ -300,12 +300,12 @@
     };
 
     #action {已经受伤过重，经受不起你的真气震荡} {
-        #class health.inner kill;
+        health.cancel;
         on_severe_wound;
      };
 
-    #action {你已经受伤过重，只怕一运真气便有生命危险！} {
-        #class health.inner kill;
+     #action {你已经受伤过重，只怕一运真气便有生命危险！} {
+         health.cancel;
         on_severe_wound;
     };
     #class health.inner close;

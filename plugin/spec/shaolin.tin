@@ -1,6 +1,6 @@
 #class template open
 #var jiali_count 5;
-#var hb_max_path_size 50;
+#var hb_max_path_size 60;
 
 #action {汾酒已经被喝得一滴也不剩了} {
     drop fenjiu;

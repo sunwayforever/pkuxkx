@@ -2,8 +2,8 @@
 #read plugin/chanding.tin;
 
 #alias {attack.prepare} {
-	yun longxiang;
-	jiali 1;
+    yun longxiang;
+    jiali 1;
 };
 
 #alias {attack} {
@@ -18,75 +18,97 @@
         #class attack.inner close;
     };
     #elseif {${mj_started}  == 1} {
-        pfm fen;
         #class attack.inner open;
         #ticker {fen} {
             pfm fen;
-        } {5.8};
+        } {4.8};
         #class attack.inner close;
         #if {${xf.type} == -1 || ${xf.type} == 1} {
+            pfm fen;
         };
         #elseif {${xf.type} == 2} {
+            pfm fen;
         };
         #elseif {${xf.type} == 3} {
+            pfm fen;
         };
         #elseif {${xf.type} == 4} {
+            pfm fen;
         };
     };
     #else {
-        pfm xiongyong;
-        pfm fen;
         #class attack.inner open;
-        #ticker {fen} {
-            pfm fen;
-        } {5.8};
         #ticker {xiongyong} {
             pfm xiongyong;
         } {4.8};
         #class attack.inner close;
+
         #if {${xf.type} == -1 || ${xf.type} == 1} {
+            pfm wushuai;
+            pfm xiongyong;
+            #class attack.inner open;
+            #ticker {wushuai} {
+                pfm wushuai;
+            } {5.8};
+            #class attack.inner close;
         };
         #elseif {${xf.type} == 2} {
+            pfm wushuai;
+            #class attack.inner open;
+            #ticker {wushuai} {
+                pfm wushuai;
+            } {5.8};
+            #class attack.inner close;
         };
         #elseif {${xf.type} == 3} {
+            pfm xiongyong;
+            #if {${xf_slowdown} == 0} {
+                pfm fen;
+            };
         };
         #elseif {${xf.type} == 4} {
+            pfm xiongyong;
+            #if {${xf_slowdown} == 0} {
+                pfm fen;
+            };
         };
     };
 };
 
 #alias {fen} {
-	unwi;
-    jiali max;
-	perform huoyan-dao.fen;
-    jiali 1;
-	wi;
+    unwi;
+    perform huoyan-dao.fen;
+    wi;
 };
 
 #alias {ran} {
-	unwi;
-	perform huoyan-dao.ran;
-	wi;
+    unwi;
+    perform huoyan-dao.ran;
+    wi;
 };
 
 #alias {wushuai} {
-	unwi;
-	wield hammer;
-	perform xiangfu-lun.wushuai;
-	wi;
+    unwi;
+    jiali max;
+    wield hammer;
+    #send {jifa parry xiangfu-lun};
+    perform xiangfu-lun.wushuai;
+    #send {jifa parry huoyan-dao};
+    jiali 1;
+    wi;
 };
 
 #var shortcut F1:·Ù F2:È¼ F3:ÎåË¥ F4: ÐÚÓ¿;
 #macro {\eOP} {
-	fen;
+    fen;
 };
 
 #macro {\eOQ} {
-	ran;
+    ran;
 };
 
 #macro {\eOR} {
-	wushuai;
+    wushuai;
 };
 
 #macro {\eOS} {
@@ -94,15 +116,15 @@
 };
 
 #alias {goto_lingwu} {
-	gt ¿àÐÞÔú²Ö;
+    gt ¿àÐÞÔú²Ö;
 };
 
 #alias {goto_rest} {
-	gt ÇåÐÄÉá;
+    gt ÇåÐÄÉá;
 };
 
 #alias {goto_shifu} {
-	gt ·¨ÌÃ¶þÂ¥;
+    gt ·¨ÌÃ¶þÂ¥;
 };
 
 #list my_weapons_to_wield create {};

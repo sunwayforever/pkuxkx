@@ -14,6 +14,7 @@
     蒙哥(Meng ge): 抓刺客！;
     快来快来，肥水不留外人田，有好事当然想着你了;
     牧场上最近出现了一只游荡的野狼，已经吞食了很多单身的旅人，没事最好经过这里。;
+    华容道最近被一伙山贼占据，没事最好绕道而行;
 };
 
 #foreach {${chat_ignore_list}[%*]} {chat_ignore} {
@@ -30,6 +31,7 @@
 #action {^【闲聊】%*(%*): %*} {
     remember @lower{%2};
     show_to_chat %0;
+    chat.record %0;
     #if {${xmpp_chat} == 1} {
         #xmpp %0;
     };
@@ -42,13 +44,30 @@
 
 #action {%1{回答|告诉}你：%2} {
     show_to_chat 【私聊】%0;
+    chat.record %0;
     #xmpp 【私聊】From %1：%2;
 } {5};
 
 #action {你{回答|告诉}%1：%2} {
     show_to_chat 【私聊】%0;
+    chat.record %0;
     #xmpp 【私聊】To %1：%2;
 } {5};
+
+#alias {chat.record} {
+    #if {"${char_id}" == "erq"} {
+        #var chat_content %0;
+        #format {current_epoch} {%T};
+        #format {current_time} {%t} {%F %R};
+        #system {sqlite3 db/chat.db 'insert or ignore into chat values (${current_epoch}, "${current_time}", "${chat_content}")'};
+    };
+};
+
+#alias {chat.query} {
+    #format {current_epoch} {%T};
+    #math last_epoch ${current_epoch} - 2*60*60;
+    #system {sqlite3 db/chat.db 'select date, content from chat where epoch > ${last_epoch} order by epoch'};
+};
 
 #alias {remember} {
     #if {@ismember{%1;contacts} != 0} {

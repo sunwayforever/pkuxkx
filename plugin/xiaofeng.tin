@@ -22,7 +22,7 @@
 };
 
 #alias {xf.teardown} {
-    #var xf_quan 0;
+    #var xf_slowdown 0;
     #var quest nil;
     #undelay {xf_delay};
     #undelay {xf_fight_delay};
@@ -34,7 +34,7 @@
 };
 
 #alias {xf.setup} {
-    #var xf_quan 0;
+    #var xf_slowdown 0;
     #var xf_fail_reason nil;
     bl.stop;
     #alias {xf_on_taopao} {
@@ -99,7 +99,7 @@
     };
 
     #action {你走上前去，试图劝服蒙面杀手，但蒙面杀手不耐烦的转了个身，不愿听你说下去。} {
-        #var xf_quan 0;
+        #var xf_slowdown 0;
         xf.watchdog.kick;
         #delay {xf_delay} {
             #if {${xf.type} == 3} {
@@ -283,7 +283,7 @@
         #undelay {xf_fight_delay};
         xf.watchdog.kick;
         #if {%%3 < 45} {
-            #var xf_quan 1;
+            #var xf_slowdown 1;
         };
         #if {${xf.type} == 3} {
             #if {%%2 < 45 || %%3 < 45} {
@@ -369,6 +369,7 @@
         #if {${xf.type} == 3} {
             @setenv{xf_state;ENDED};
             #showme 收工;
+            raw;
             show_to_quest 萧峰: 已经劝服;
             on_truce {
                 xf.b;
@@ -377,6 +378,7 @@
         #elseif {${xf.type} == 4} {
             @setenv{xf_state;ENDED};
             #showme 收工;
+            raw;
             show_to_quest 萧峰: 已经战胜;
             on_truce {
                 xf.b;
@@ -398,7 +400,7 @@
             };
         };
         #elseif {${xf.type} == 3} {
-            #if {${xf_quan} == 1} {
+            #if {${xf_slowdown} == 1} {
                 on_unbusy {
                     quan;
                 };
