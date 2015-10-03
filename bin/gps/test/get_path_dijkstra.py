@@ -3,6 +3,7 @@
 import sqlite3
 import os
 import sys
+import heapq
 
 class Link:
     def __init__(self,roomno,linkroomno,direction,weight_type,is_boundary, linkroomname, src_room_zone, dst_room_zone):
@@ -56,46 +57,31 @@ class MudRoom:
         return self.__shortest_path(src,dst)
     
     def __shortest_path(self, src, dst):
-        INF = 1000
         if (src == dst):
             return []
-        distance = [INF]*4000
+
+        pq = []
+        distance = [-1]*4000
         parent = [None]*4000
         distance[src] = 0
-
-        src_set = set([src])
         found = False
-
-        while not found:
-            shortest_link = []
-            shortest_distance = INF
-
-            for i in src_set:
-                for link in self.neighbours[i]:
-                    if link.linkroomno in src_set:
-                        continue
-                    weight = self.weights_info[(i,link.linkroomno)]
-                    if weight < 0:
-                        continue
-                    if weight < shortest_distance:
-                        shortest_distance = weight
-                        shortest_link = [link]
-                    elif weight == shortest_distance:
-                        shortest_link.append(link)
-
-                        # now shortest_link contains all the shortest links from src_set
-            if len(shortest_link) == 0:
+        heapq.heappush(pq, (0,src))
+        
+        while len(pq) != 0:
+            i = heapq.heappop(pq)[1]
+            if i == dst:
+                found = True
                 break
-
-            for link in shortest_link:
-                s = link.roomno
+            for link in self.neighbours[i]:
                 d = link.linkroomno
-                src_set.add(d)
-                if (distance[d] > distance[s]+self.weights_info[(s, d)]):
-                    distance[d] = distance[s]+self.weights_info[(s, d)]
+                weight = self.weights_info[(i,link.linkroomno)]
+                if weight < 0:
+                    continue;
+                if distance[d] > distance[i]+weight or distance[d] == -1:
+                    distance[d] = distance[i]+weight
                     parent[d] = link
-                if d == dst:
-                    found = True
+                    heapq.heappush(pq, (distance[d],d))
+
         if not found:
             return []
 
@@ -111,4 +97,9 @@ weights = "50,100,10,50,100,80,0,150"
 conn = sqlite3.connect("/home/sunway/.tt/db/rooms.db")
 mud = MudRoom(conn, weights)
 
-print (";".join(mud.get_path(260, 2270)))
+
+# print (";".join(mud.get_path(260, 2270)))
+print (";".join(mud.get_path(974, 972)))
+print (";".join(mud.get_path(972, 971)))
+print (";".join(mud.get_path(971, 973)))
+print (";".join(mud.get_path(973, 975)))

@@ -4,7 +4,7 @@
     ask ren about job;
 };
 
-#alias {pl.start} {
+#alias {pl.go} {
     #var quest pl;
     #if {"%2" == "n"} {
         #var hua_direction north;

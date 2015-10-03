@@ -8,65 +8,64 @@
 };
 
 #alias {attack} {
-    pfm chan;
-    pfm poqi;
-    #class attack.inner open;
-    #ticker {kuangfeng} {
-        pfm kuangfeng;
-    } {2.8};
-    #ticker {poqi} {
-        pfm poqi;
-    } {3.8};
-    #class attack.inner close;
-
     #if {"${quest}" == "hb"} {
-        #if {"${enemy_menpai}" == "gaibang" || "${enemy_menpai}" == "wudang"} {
-            #cr;
+        pfm poqi;
+        #if {"${enemy_menpai}" == "gaibang" || "${enemy_menpai}" == "wudang" || "${enemy_menpai}" == "taohua"} {
+            pfm kuangfeng;
         };
     };
-    #elseif {${mj_started}  == 1} {
-        pfm zongjue;
-        #class attack.inner open;
-        #ticker {zongjue} {
-            pfm zongjue;
-        } {4.8};
-        #ticker {chan} {
-            pfm chan;
-        } {1};
-        #class attack.inner close;
-    };
     #else {
+        pfm chan;
+        pfm poqi;
+
         #class attack.inner open;
+        #ticker {kuangfeng} {
+            pfm kuangfeng;
+        } {2.8};
+        #ticker {poqi} {
+            pfm poqi;
+        } {3.8};
         #ticker {chan} {
             pfm chan;
         } {1};
         #class attack.inner close;
-        #if {${xf.type} == -1 || ${xf.type} == 1} {
+
+        #if {${mj_started}  == 1} {
+            pfm zongjue;
             #class attack.inner open;
             #ticker {zongjue} {
                 pfm zongjue;
             } {4.8};
-            #alias {on_skill_hit} {
-                #if {"%%1" == "养吾"} {
-                    pfm jianzhang;
-                };
-            };
             #class attack.inner close;
         };
-        #elseif {${xf.type} == 2} {
-            #class attack.inner open;
-            #alias {on_skill_hit} {
-                #if {"%%1" == "养吾"} {
-                    pfm sqf;
+        #else {
+            #if {${xf.type} == -1 || ${xf.type} == 1} {
+                #class attack.inner open;
+                #ticker {zongjue} {
+                    pfm zongjue;
+                } {4.8};
+                #alias {on_skill_hit} {
+                    #if {"%%1" == "养吾"} {
+                        pfm jianzhang;
+                    };
                 };
+                #class attack.inner close;
             };
-            #class attack.inner close;
-        };
-        #elseif {${xf.type} == 3} {
-            #cr;
-        };
-        #elseif {${xf.type} == 4} {
-            #cr;
+            #elseif {${xf.type} == 2} {
+                #class attack.inner open;
+                #alias {on_skill_hit} {
+                    #if {"%%1" == "养吾"} {
+                        pfm sqf;
+                    };
+                };
+                #class attack.inner close;
+            };
+            #elseif {${xf.type} == 3} {
+                #cr;
+            };
+            #elseif {${xf.type} == 4} {
+                #cr;
+            };
         };
     };
 };
@@ -212,27 +211,27 @@
 };
 
 #macro {\e[15~} {#nop ];
-    chan;
+chan;
 };
 
 #macro {\e[17~} {#nop ];
-    sqf;
+sqf;
 };
 
 #macro {\e[18~} {#nop ];
-    kuangfeng;
+kuangfeng;
 };
 
 #macro {\e[19~} {#nop ];
-    zongjue;
+zongjue;
 };
 
 #macro {\e[20~} {#nop ];
-    pobing;
+pobing;
 };
 
 #macro {\e[21~} {#nop ];
-    pozhang;
+pozhang;
 };
 
 #var shifu gao;

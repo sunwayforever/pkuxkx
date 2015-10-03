@@ -3,6 +3,7 @@
 import sqlite3
 import os
 import sys
+import heapq
 
 from .common import *
 from ..common import Tintin
@@ -70,6 +71,42 @@ class MudRoom:
         return self.__shortest_path_dijkstra(src,dst)
 
     def __shortest_path_dijkstra(self, src, dst):
+        if (src == dst):
+            return []
+
+        pq = []
+        distance = [-1] * self.max_room_no
+        parent = [None] * self.max_room_no
+        distance[src] = 0
+        found = False
+        heapq.heappush(pq, (0,src))
+        
+        while len(pq) != 0:
+            i = heapq.heappop(pq)[1]
+            if i == dst:
+                found = True
+                break
+            for link in self.neighbours[i]:
+                d = link.linkroomno
+                weight = self.weights_info[(i,link.linkroomno)]
+                if weight < 0:
+                    continue;
+                if distance[d] > distance[i]+weight or distance[d] == -1:
+                    distance[d] = distance[i]+weight
+                    parent[d] = link
+                    heapq.heappush(pq, (distance[d],d))
+
+        if not found:
+            return []
+
+        ret = []
+        tail = dst;
+        while tail != src:
+            ret.insert(0,parent[tail].direction)
+            tail = parent[tail].roomno
+        return ret
+    
+    def __shortest_path_test(self, src, dst):
         if (src == dst):
             return []
 

@@ -33,6 +33,22 @@
     bl.stop;
 };
 
+#alias {xf.go} {
+    #var xf.type %1;
+    @setenv{xf_type;%1};
+    @setenv{xf_state;STARTED};
+    #var xf.position %2;
+    xf.watchdog.kick;
+    gt ${xf.position};
+    on_there {
+        xf.bl;
+    };
+    on_not_there {
+        #var xf_fail_reason 房间不可达: ${xf.position};
+        xf.f;
+    };
+};
+
 #alias {xf.setup} {
     #var xf_slowdown 0;
     #var xf_fail_reason nil;
@@ -282,7 +298,7 @@
     #action {『蒙面杀手(%*气血:%*\%/%*\%)』} {
         #undelay {xf_fight_delay};
         xf.watchdog.kick;
-        #if {%%3 < 45} {
+        #if {%%3 < 50} {
             #var xf_slowdown 1;
         };
         #if {${xf.type} == 3} {

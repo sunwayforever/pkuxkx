@@ -61,8 +61,8 @@
             #class attack.inner close;
         };
         #elseif {${xf.type} == 3} {
-            pfm xiongyong;
             #if {${xf_slowdown} == 0} {
+                pfm xiongyong;
                 pfm fen;
             };
         };
