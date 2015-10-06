@@ -112,6 +112,7 @@ class MudRoom:
             tail = parent[tail].roomno
         return ret
 
+    
 weights = "50,100,10,50,100,80,0,150"
 # weights = "1,-1,1,-1,-1,1,1,1"
 conn = sqlite3.connect("/home/sunway/.tt/db/rooms.db")

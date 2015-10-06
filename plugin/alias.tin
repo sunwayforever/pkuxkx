@@ -254,6 +254,35 @@
     tn.cancel;
 };
 
+#alias {halt_life} {
+    #alias tmp_half_life #cr;
+    #alias tmp_half_life %0;
+    #class half_life.inner open;
+    #alias {start_chat} {
+        #ticker {chat} {
+            #10 chat;
+            #if {${eff_qx_percent} < 50} {
+                #class half_life.inner kill;
+                #unticker {chat};
+                on_unbusy {
+                    tmp_half_life;
+                };
+            };
+        } {1};
+    };
+    #class half_life.inner close;
+    #if {${eff_qx_percent} > 50} {
+        gt 扬州城知府大堂;
+        on_there {
+            start_chat;
+        };
+    };
+    #else {
+        #class half_life.inner kill;
+        tmp_half_life;
+    };
+};
+
 #alias {on_health} {
     #alias tmp_health #cr;
     #alias tmp_health %0;

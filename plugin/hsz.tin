@@ -1,20 +1,39 @@
 #class hsz open;
+
 #var hsz.requested 0;
 #alias {hsz.setup} {
+    #class hsz.inner open;
+    #action {你心中暗道：就是这里了，于是紧跟着几个形迹可疑的人走去。} {
+        #ticker {hsz_walk} {
+            e;
+        } {3};
+    };
+
+    #action {这时，你展开了精心绘制的地区地图，找到了异族奸细的行迹} {
+        #unticker {hsz_walk};
+    };
+
+    #action {你离开了这一片奸细出没的区域} {
+        hsz.b;
+    };
+
     #action {你已经完成了%*清除异族奸细的工作} {
         hsz.teardown;
         show_to_quest 韩世忠: 完成;
     };
+
     #action {韩世忠(han shizhong)告诉你：你去休息休息，过段时间再来吧。} {
         #delay {hsz_delay} {
             hsz.q;
-        } {10};  
+        } {10};
     } {1};
+
     #action {韩世忠说道：%*刚刚已经有人前去了} {
         #delay {hsz_delay} {
             hsz.q;
-        } {3};  
+        } {3};
     };
+
     #action {%*向韩世忠打听有关『job』的消息} {
         #if {"%%1" == "你"} {
             #var hsz.requested 1;
@@ -29,27 +48,37 @@
         #if {${hsz.requested} == 1} {
             show_to_quest 韩世忠: %%1: %%2;
             gt %%1%%2;
+            on_there {
+                datan;
+            };
         };
+        #nop ];
     };
+    #class hsz.inner close;
 };
+
 #alias {hsz.teardown} {
     #class hsz.inner kill;
     #var hsz.requested 0;
     #var quest  nil;
 };
+
 #alias {hsz.q} {
     hsz.setup;
     ask han about job;
 };
+
 #alias {hsz.b} {
     gt hsz;
     on_there {
         hsz.d;
     };
 };
+
 #alias {hsz.d} {
     ask han about finish;
 };
+
 #alias {hsz.f} {
     ask han about fail;
 };

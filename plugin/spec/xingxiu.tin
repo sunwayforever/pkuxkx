@@ -9,6 +9,7 @@
 #alias {attack} {
     #if {"${quest}" == "hb"} {
         pfm huose;
+        pfm huoqiu;
         #class attack.inner open;
         #ticker {huose} {
             pfm huose;
@@ -77,7 +78,7 @@
     gt É½¹È¿Ú;
 };
 
-#list my_weapons_to_wield create {spear; spear 2};
+#list my_weapons_to_wield create {staff};
 
 #alias {huose} {
     unwi;

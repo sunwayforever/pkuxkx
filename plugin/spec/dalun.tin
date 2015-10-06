@@ -17,59 +17,77 @@
         } {5};
         #class attack.inner close;
     };
-    #elseif {${mj_started}  == 1} {
+    #elseif {"${quest}" == "hsz"} {
+        pfm wushuai;
+        pfm xiongyong;
+        pfm fen;
         #class attack.inner open;
         #ticker {fen} {
             pfm fen;
-        } {4.8};
-        #class attack.inner close;
-        #if {${xf.type} == -1 || ${xf.type} == 1} {
-            pfm fen;
-        };
-        #elseif {${xf.type} == 2} {
-            pfm fen;
-        };
-        #elseif {${xf.type} == 3} {
-            pfm fen;
-        };
-        #elseif {${xf.type} == 4} {
-            pfm fen;
-        };
-    };
-    #else {
-        #class attack.inner open;
+        } {5};
         #ticker {xiongyong} {
             pfm xiongyong;
-        } {4.8};
+        } {2.8};
+        #ticker {wushuai} {
+            pfm wushuai;
+        } {6.8};
         #class attack.inner close;
-
-        #if {${xf.type} == -1 || ${xf.type} == 1} {
-            pfm wushuai;
-            pfm xiongyong;
+    };
+    #elseif {"${quest}" == "xf"} {
+        #if {${mj_started}  == 1} {
             #class attack.inner open;
-            #ticker {wushuai} {
-                pfm wushuai;
-            } {5.8};
+            #ticker {fen} {
+                pfm fen;
+            } {4.8};
             #class attack.inner close;
-        };
-        #elseif {${xf.type} == 2} {
-            pfm wushuai;
-            #class attack.inner open;
-            #ticker {wushuai} {
-                pfm wushuai;
-            } {5.8};
-            #class attack.inner close;
-        };
-        #elseif {${xf.type} == 3} {
-            #if {${xf_slowdown} == 0} {
-                pfm xiongyong;
+            #if {${xf.type} == -1 || ${xf.type} == 1} {
+                pfm fen;
+            };
+            #elseif {${xf.type} == 2} {
+                pfm fen;
+            };
+            #elseif {${xf.type} == 3} {
+                pfm fen;
+            };
+            #elseif {${xf.type} == 4} {
                 pfm fen;
             };
         };
-        #elseif {${xf.type} == 4} {
-            pfm xiongyong;
-            #if {${xf_slowdown} == 0} {
-                pfm fen;
+        #else {
+            #class attack.inner open;
+            #ticker {xiongyong} {
+                pfm xiongyong;
+            } {4.8};
+            #class attack.inner close;
+
+            #if {${xf.type} == -1 || ${xf.type} == 1} {
+                pfm wushuai;
+                pfm xiongyong;
+                #class attack.inner open;
+                #ticker {wushuai} {
+                    pfm wushuai;
+                } {5.8};
+                #class attack.inner close;
+            };
+            #elseif {${xf.type} == 2} {
+                pfm wushuai;
+                #class attack.inner open;
+                #ticker {wushuai} {
+                    pfm wushuai;
+                } {5.8};
+                #class attack.inner close;
+            };
+            #elseif {${xf.type} == 3} {
+                #if {${xf_slowdown} == 0} {
+                    pfm xiongyong;
+                    pfm fen;
+                };
+            };
+            #elseif {${xf.type} == 4} {
+                pfm xiongyong;
+                #if {${xf_slowdown} == 0} {
+                    pfm fen;
+                };
             };
         };
     };

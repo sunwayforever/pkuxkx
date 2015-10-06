@@ -1,5 +1,6 @@
 #class wudang_spec open
 #var jiali_count 50;
+#var hb_max_path_size 30;
 
 #alias {attack.prepare} {
     yun powerup;
@@ -215,7 +216,7 @@
     gt {Œ‰µ±…Ω–°Œ›};
 };
 
-#list my_weapons_to_wield create {sword; sword 2;};
+#list my_weapons_to_wield create {spear;spear 2;};
 
 #var shifu zhang;
 
