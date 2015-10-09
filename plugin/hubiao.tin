@@ -20,9 +20,9 @@
 @mapset{robber_score;taohua;8};
 @mapset{robber_score;wudang;7};
 @mapset{robber_score;xingxiu;6};
-@mapset{robber_score;quanzhen;4};
+@mapset{robber_score;huashan;4};
 @mapset{robber_score;shaolin;3};
-@mapset{robber_score;huashan;2};
+@mapset{robber_score;quanzhen;2};
 
 #function {should_accept_quest} {
     #var hb_owner_loc @getenv{hb_owner_loc};
@@ -139,13 +139,11 @@
                 #2 yun heal;
             };
             #if {${eff_qx_percent} < 50} {
-                #2 yun lifeheal;
+                #2 yun lifeheal ${char_id};
             };
             #delay {hb_move} {
                 #if {${hb_paused} == 0} {
-                    on_unbusy {
-                        ${hb_next_step};
-                    };
+                    ${hb_next_step};
                 };
             } {3};
         };
@@ -293,7 +291,6 @@
 
     #action {劫匪个起纵遁入暗里不见了} {
         hb.detect_enemy;
-        raw;
         hb.retry;
     };
 
@@ -315,7 +312,7 @@
     #action {劫匪伸手一拦道} {
         war;
         hb.retry;
-    };
+    } {1};
 
     #action {你长笑一声，开始对周围众人痛下杀手！} {
         #var hb_first_kill 1;
@@ -366,7 +363,7 @@
     #if {${hb_paused} == 0} {
         #delay {hb_move} {
             hb.run;
-        } {1.5};
+        } {3};
     };
 };
 
@@ -844,7 +841,7 @@
 };
 
 #list hb_blacklist:昌隆镖局 create {
-    镇江飞龙镖局;归云庄太湖街;嘉兴钱庄;峨嵋毗卢殿;岳阳车马行;泉州当铺;苏州聚宝斋;
+    镇江飞龙镖局;归云庄太湖街;嘉兴钱庄;峨嵋毗卢殿;岳阳车马行;泉州当铺;苏州聚宝斋;建康府车马行;
 };
 
 #class hubiao close

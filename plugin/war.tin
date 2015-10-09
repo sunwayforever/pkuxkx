@@ -104,7 +104,6 @@
     #var enemy nil;
     #var enemy_menpai nil;
     jiali none;
-    #var war_prepared 0;
 };
 
 #alias {on_truce} {
@@ -271,7 +270,7 @@
 };
 
 #var enemy nil;
-#alias {perform} {
+#alias {perform_not_used} {
     #if {"${enemy}" == "nil"} {
         #send {perform %0};
     };
@@ -336,20 +335,16 @@
     };
 };
 
-#var war_prepared 0;
 #alias {war.prepare} {
     war.monitor;
-    #if {${war_prepared} == 0} {
-        #var war_prepared 1;
-        yun qi;
-        yun jing;
-        #if {${youxiao_neigong} > 750} {
-            #nop yun shield;
-            #cr;
-        };
-        wi;
-        attack.prepare;
+    yun qi;
+    yun jing;
+    #if {${youxiao_neigong} > 750} {
+        #nop yun shield;
+        #cr;
     };
+    wi;
+    attack.prepare;
 };
 
 #alias {kill} {

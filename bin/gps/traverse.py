@@ -19,7 +19,7 @@ def traverse_bfs(mud, roomno, location=None):
     if location == None:
         bfs_max_count = 10
     else:
-        bfs_max_count = 50
+        bfs_max_count = 100
         
     while len(stack) != 0:
         bfs_max_count = bfs_max_count-1

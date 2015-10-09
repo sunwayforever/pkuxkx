@@ -1,6 +1,6 @@
 #class wudang_spec open
 #var jiali_count 50;
-#var hb_max_path_size 30;
+#var hb_max_path_size 20;
 
 #alias {attack.prepare} {
     yun powerup;
@@ -128,7 +128,7 @@
 #alias {chan} {
     unwield all;
     do_wield sword;
-    #2 perform taiji-jian.chan;
+    perform taiji-jian.chan;
     wi;
 };
 
@@ -150,7 +150,7 @@
 };
 
 #alias {zong} {
-    perform tiyunzong.zong;
+    #send {perform tiyunzong.zong};
 };
 
 #alias {lzj} {
@@ -242,5 +242,4 @@ stat.register 缠 hit 只能见招拆招，疲于应对，不觉已深陷太极剑意之中，无法出招。;
     #var jiali_count 50;
 };
 
-#list fsk create {wd};
 #class wudang_spec close
