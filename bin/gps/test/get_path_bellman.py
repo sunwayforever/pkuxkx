@@ -24,6 +24,8 @@ class MudRoom:
         self.weights = weights
         self.conn = conn
         self.weights_info = {}
+        self.links = []
+        self.nodes = set()
         self.__load_data()
 
     def __load_data(self):
@@ -31,6 +33,9 @@ class MudRoom:
         rows = self.conn.execute(sql).fetchall()
         for row in rows:
             link = Link(row[0],row[1],row[2],row[3],row[4], row[5], row[6], row[7])
+            self.links.append(link)
+            self.nodes.add(row[0])
+            
             if not row[0] in self.neighbours:
                 self.neighbours[row[0]]=[]
             self.neighbours[row[0]].append(link)
@@ -64,30 +69,23 @@ class MudRoom:
         distance = [-1]*4000
         parent = [None]*4000
         distance[src] = 0
-        found = False
-        heapq.heappush(pq, (0,src))
-        
-        while len(pq) != 0:
-            i = heapq.heappop(pq)[1]
-            if i == dst:
-                found = True
-                break
-            for link in self.neighbours[i]:
+
+        for node in self.nodes:
+            for link in self.links:
+                s = link.roomno
                 d = link.linkroomno
-                weight = self.weights_info[(i,link.linkroomno)]
+                weight = self.weights_info[(link.roomno, link.linkroomno)]
                 if weight < 0:
                     continue;
-                if distance[d] > distance[i]+weight or distance[d] == -1:
-                    distance[d] = distance[i]+weight
+                if distance[s] == -1:
+                    continue;    
+                if distance[d] > distance[s]+weight or distance[d] == -1:
+                    distance[d] = distance[s]+weight
                     parent[d] = link
-                    heapq.heappush(pq, (distance[d],d))
-
-        if not found:
-            return []
 
         ret = []
         tail = dst;
-        while tail != src:
+        while tail != src and parent[tail] != None:
             ret.insert(0,parent[tail].direction)
             tail = parent[tail].roomno
         return ret

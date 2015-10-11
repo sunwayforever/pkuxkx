@@ -1,4 +1,4 @@
-#class wudang_spec open
+#class huashan open
 #var jiali_count 50;
 #var hb_max_path_size 30;
 #alias {attack.prepare} {
@@ -9,10 +9,11 @@
 
 #alias {attack} {
     #if {"${quest}" == "hb"} {
-        pfm poqi;
+        pfm xiongyong;
+        pfm chan;
         #class attack.inner open;
         #ticker {pq} {
-            pfm poqi;
+            pfm chan;
         } {3};
         #class attack.inner close;
 
@@ -241,7 +242,7 @@ pozhang;
 };
 
 #var shifu gao;
-#list my_weapons_to_wield create {spear 2;spear};
+#list my_weapons_to_wield create {spear};
 
 #var menzhong ning;
 #var menzhong_didian hs;
@@ -279,4 +280,4 @@ stat.register 养吾 miss 你的养吾剑气效果大打折扣。;
     unwield all;
     wi;
 };
-#class wudang_spec close
+#class huashan close

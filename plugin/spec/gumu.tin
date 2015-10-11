@@ -1,4 +1,4 @@
-#class gumu_spec open
+#class gumu open
 #var jiali_count 1;
 
 #alias {attack.prepare} {
@@ -104,7 +104,7 @@
 };
 
 #alias {shuai} {
-    perform throwing.shuai;
+    perform qianmie-shou.shuai;
 };
 
 #alias {qixing} {
@@ -199,4 +199,4 @@ stat.register ĞÚÓ¿ miss ÄãµÄÁèÀ÷¹¥ÊÆ;
     unwield all;
     wi;
 };
-#class gumu_spec close
+#class gumu close

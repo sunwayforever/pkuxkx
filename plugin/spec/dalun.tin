@@ -1,4 +1,4 @@
-#class dalun_spec open
+#class dalun open
 #read plugin/chanding.tin;
 
 #alias {attack.prepare} {
@@ -174,4 +174,4 @@
     wi;
 };
 
-#class dalun_spec close
+#class dalun close

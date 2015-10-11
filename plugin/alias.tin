@@ -5,7 +5,7 @@
 #alias {load} {
     #var v %1;
     #if {"${v}" == "spec"} {
-        #read plugin/spec/${char_menpai}.tin;
+        #read plugin/spec/${char_menpai}${dot}tin;
     };
     #else {
         #read plugin/%1.tin;
@@ -374,7 +374,7 @@
 };
 
 #alias {init_set} {
-    set hubiao_additional 5;
+    set hubiao_additional 1;
     set learn_emote 1;
     set nowieldmsg 1;
     set nowiki 1;
@@ -501,7 +501,7 @@ walk_to east;
 #alias {sell.all} {
     #alias tmp_sell #cr;
     #alias tmp_sell %1;
-    #alias {sell_random_weapon} {
+    #alias {sell_weapon} {
         on_there {
             sell all;
             #delay {3} {
@@ -533,7 +533,7 @@ walk_to east;
         };
         gt 扬州当铺;
     };
-    sell_random_weapon;
+    sell_weapon;
 };
 
 #alias {repair} {
@@ -1226,4 +1226,50 @@ walk_to east;
             burden.check.done;
         };
     };
+};
+
+#alias {might} {
+    on_unbusy {
+        jiali max;
+        special might;
+        jiali 0;
+    };
+};
+
+#alias {pfm_special} {
+    #class pfm_special.inner open;
+    #action {你现在会以下这些特技：} {
+        #action {%S(%S)} {
+            #if {"%%%2" == "might"} {
+                might;
+                #ticker {pfm_might} {
+                    might;
+                } {300};
+            };
+            #else {
+                on_unbusy {
+                    special %%%2;
+                };
+            };
+
+            #if {"%%%2" == "chainless"} {
+                load chainless;
+            };
+            #elseif {"%%%2" == "perceive"} {
+                load pp;
+            };
+            #elseif {"%%%2" == "sociability"} {
+                #alias {gps.clear} {
+                    #nop %%%%1;
+                    gps.run;
+                };
+            };
+        };
+        on_echo {
+            #unaction {%S(%S)};
+            #class pfm_special.inner kill;
+        };
+    };
+    #class pfm_special.inner close;
+    special;
 };

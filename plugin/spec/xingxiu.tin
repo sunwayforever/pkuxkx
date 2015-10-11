@@ -1,4 +1,4 @@
-#class xingxiu_spec open
+#class xingxiu open
 #read plugin/liandu.tin;
 
 #alias {attack.prepare} {
@@ -195,4 +195,4 @@
     wi;
 };
 
-#class xingxiu_spec close
+#class xingxiu close

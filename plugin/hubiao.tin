@@ -6,14 +6,14 @@
 #var hb_auto 0;
 #var hb_rotate 0;
 #var hb_dest nil;
-#var hb_first_kill 0;
 #var hb_paused 0;
 #var hb_info nil;
 #var hb_rotate_location nil;
 #var hb_rotate_location_count 0;
 #var hb_robber_count 0;
+#var hb_need_kill 1;
 
-#var HB_WEIGHT "1,1,1,-1,-1,1,-1,-1";
+#var HB_GPS_WEIGHT "1,1,1,-1,-1,1,-1,-1";
 
 @mapcreate{robber_score};
 @mapset{robber_score;gaibang;9};
@@ -253,6 +253,10 @@
         hb.pause;
     };
 
+    #action {『劫匪%*气血%*』} {
+        #var hb_retry_count 0;
+    } {1};
+
     #action {你想杀谁？} {
         hb.retry;
     };
@@ -261,12 +265,16 @@
         hb.retry;
     };
 
-    #action {你还是先把对手解决了再说吧} {
+    #alias {hb.maybe_kill} {
         #math hb_retry_count ${hb_retry_count}+1;
-        #if {${hb_retry_count} > 3} {
+        #if {${hb_retry_count} > 5} {
             #var hb_retry_count 0;
             killall;
         };
+    };
+
+    #action {你还是先把对手解决了再说吧} {
+        hb.maybe_kill;
         hb.retry;
     } {1};
 
@@ -290,7 +298,7 @@
     };
 
     #action {劫匪个起纵遁入暗里不见了} {
-        hb.detect_enemy;
+        #nop hb.detect_enemy;
         hb.retry;
     };
 
@@ -311,16 +319,17 @@
 
     #action {劫匪伸手一拦道} {
         war;
+        hb.maybe_kill;
         hb.retry;
     } {1};
 
     #action {你长笑一声，开始对周围众人痛下杀手！} {
-        #var hb_first_kill 1;
+        #var hb_need_kill 0;
     };
 
     #action {劫匪突然从暗处跳了出来} {
-        hb.detect_enemy;
-        #if {${hb_first_kill} == 0} {
+        #nop hb.detect_enemy;
+        #if {${hb_need_kill} == 1} {
             killall robber;
         };
         #else {
@@ -690,7 +699,7 @@
 #alias {hb.p} {
     #alias tmp_hb_p #cr;
     #alias tmp_hb_p %1;
-    #var chain_action sell.all get.qian get.san get.bao donate.all repair special_repair gem.combine hb.spec tmp_hb_p;
+    #var chain_action sell.all get.qian get.san get.bao jianding.all donate.all repair special_repair gem.combine hb.spec tmp_hb_p;
     #if {${need_reload} == 1} {
         #var chain_action reload ${chain_action};
     };
@@ -737,7 +746,7 @@
             #math hb_remaining_path_size ${hb_remaining_path_size}-${hb_path_index};
             #var gps.from_roomno ${gps.roomno};
             INVOKE gps.get_room ${hb_dest};
-            INVOKE gps.get_path ${gps.from_roomno} ${gps.roomno} ${HB_WEIGHT};
+            INVOKE gps.get_path ${gps.from_roomno} ${gps.roomno} ${HB_GPS_WEIGHT};
             #var hb_path ${gps_path};
             #var hb_path_index 1;
             #list hb_path size hb_path_size;

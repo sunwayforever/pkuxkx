@@ -27,34 +27,42 @@
 @mapset{jd_value;whip;200};
 @mapset{jd_value;spear;200};
 @mapset{jd_value;hammer;200};
-@mapset{jd_value;armor;300};
-@mapset{jd_value;head;100};
-@mapset{jd_value;waist;50};
-@mapset{jd_value;boots;50};
-@mapset{jd_value;necklace;0};
-@mapset{jd_value;ring;0};
-@mapset{jd_value;surcoat;50};
-@mapset{jd_value;cloth;50};
-@mapset{jd_value;wrists;50};
-@mapset{jd_value;hands;50};
-@mapset{jd_value;shield;300};
+@mapset{jd_value;axe;200};
+@mapset{jd_value;dagger;200};
 
-#function {jd_get_method} {
+#function {jd_get_type} {
     #if {"%1" == "sword"
     || "%1" == "blade"
     || "%1" == "staff"
     || "%1" == "whip"
     || "%1" == "spear"
     || "%1" == "hammer"
+    || "%1" == "dagger"
+    || "%1" == "axe"
     } {
-        #var result wield;
+        #return weapon;
+    };
+    #elseif {"%1" == "ring"
+    || "%1" == "necklace"
+    } {
+        #return jewel;
     };
     #else {
-        #var result wear;
+        #return armor;
     };
 };
 
-#alias {jd.start} {
+#function {jd_get_method} {
+    #if {"@jd_get_type{%1}" == "weapon"} {
+        #return wield;
+    };
+    #else {
+        #return wear;
+    };
+};
+
+#alias {jianding.all} {
+    #alias tmp_jd #cr;
     #alias tmp_jd %1;
     #class jd.inner open;
     #action {你从包袱中拿出%*之%*。} {
@@ -62,22 +70,31 @@
         @stackpush{tmp;${jd_item}};
     };
     #action {之%*(+%*)} {
-        #var jd_current_value %%2;
         #var jd_item @mapget{jianding;%%1};
-        #var required_value @mapget{jd_value;${jd_item}};
+        #var jd_current_value %%2;
+        #nop #var required_value @mapget{jd_value;${jd_item}};
+        #var required_value 200;
         unwi;
         remove all;
-        #delay {3} {
-            #if {${required_value} <= ${jd_current_value}} {
-                show_to_info 保留: ${jd_item}:${jd_current_value};
-                put ${jd_item} in bao;
+        #if {"@jd_get_type{${jd_item}}" == "weapon"} {
+            #delay {3} {
+                #if {${required_value} <= ${jd_current_value}} {
+                    notify 掉装备: ${jd_item}:${jd_current_value};
+                    put ${jd_item} in bao;
+                };
+                #else {
+                    #showme 卖掉: ${jd_item}:${jd_current_value};
+                    sell ${jd_item};
+                };
+                on_unbusy {
+                    jianding.next;
+                };
             };
-            #else {
-                show_to_info 卖掉: ${jd_item}:${jd_current_value};
-                sell ${jd_item};
-            };
-            #delay {1} {
-                jd.next;
+        };
+        #else {
+            put ${jd_item} in bao;
+            on_unbusy {
+                jianding.next;
             };
         };
     } {1};
@@ -86,16 +103,17 @@
     @stackcreate{tmp};
     gt rbz;
     on_there {
+        sell all;
         remove all;
         unwield all;
         get all from bao;
-        #delay {3} {
-            jd.next;
+        on_unbusy {
+            jianding.next;
         };
     };
 };
 
-#alias {jd.next} {
+#alias {jianding.next} {
     #var item @stackpop{tmp};
     #if {"${item}" != "nil"} {
         @jd_get_method{${item}} ${item};
@@ -116,21 +134,26 @@
         #unaction {可塑性:%*(%*)};
         #var kong %%1;
         #var type @mapget{jianding;%2};
-        #if {"${type}" == "ring" || "${type}" == "necklace"} {
+        #var group_type @jd_get_type{${type}};
+        #if {"${group_type}" == "jewel"} {
             #if {${kong} > 1} {
                 put ${type} in bao;
+                notify 掉装备: ${kong} 孔 ${type};
             };
+        };
+        #elseif {"${group_type}" == "weapon"} {
+            put ${type} in bao;
         };
         #else {
             #if {${kong} > 2} {
                 put ${type} in bao;
+                notify 掉装备: ${kong} 孔 ${type};
             };
         };
     };
 
     #action {你将一%*之%*放进包袱} {
-        #unaction {你将一%*之%*放进包袱};
-        notify 掉装备: ${kong} 孔 ${type};
+        #cr;
     };
 };
 

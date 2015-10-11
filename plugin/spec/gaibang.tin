@@ -1,4 +1,4 @@
-#class gaibang_spec open
+#class gaibang open
 
 #var jiali_count 50;
 #var with_weapon 1;
@@ -192,4 +192,4 @@ stat.register 缠 hit 你得理不饶人;
     bei none;
     bei xianglong-zhang shexing-shou;
 };
-#class gaibang_spec close
+#class gaibang close

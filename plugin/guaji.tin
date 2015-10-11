@@ -13,21 +13,16 @@
     } {1};
 
     #alias {ticker.gua.start} {
-        #ticker {gua} {
-            kill gaoshou;
-        } {5};
-
+        kill gaoshou;
         on_dead {
-            #3 halt;
-            get tie qiao from corpse;
-            #ticker {gua} {
+            on_unbusy {
                 get tie qiao from corpse;
-            } {1};
+            };
         };
     };
 
     #alias {ticker.gua.end} {
-        #unticker {gua};
+        #cr;
     };
 
     #class guatieqiao.inner close;

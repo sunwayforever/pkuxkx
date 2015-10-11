@@ -172,44 +172,6 @@
     end;
 };
 
-#alias {pfm_special} {
-    #class pfm_special.inner open;
-    #action {你现在会以下这些特技：} {
-        #action {%S(%S)} {
-            #if {"%%%2" == "might"} {
-                jiali max;
-                special %%%2;
-                jiali 0;
-            };
-            #else {
-                special %%%2;
-            };
-            #if {"%%%2" == "chainless"} {
-                load chainless;
-            };
-            #elseif {"%%%2" == "perceive"} {
-                load pp;
-            };
-            #elseif {"%%%2" == "sociability"} {
-                #alias {bl.clear} {
-                    #nop %%%%1;
-                    bl.walk;
-                };
-                #alias {gps.clear} {
-                    #nop %%%%1;
-                    gps.run;
-                };
-            };
-        };
-        on_echo {
-            #unaction {%S(%S)};
-            #class pfm_special.inner kill;
-        };
-    };
-    #class pfm_special.inner close;
-    special;
-};
-
 #action {你端起一碗酥油茶喝了一大口，长出了口气，满意的点了点头。} {
     #delay {delay_hp} {
         #send {hp};

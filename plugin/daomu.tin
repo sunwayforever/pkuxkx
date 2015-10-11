@@ -33,7 +33,7 @@
             watch_qiang;
         };
 
-        #action {收功站了起来} {
+        #action {站了起来} {
             watch_qiang;
         };
 
@@ -52,7 +52,10 @@
     #class daomu.inner close;
 
     #var dm_count 0;
-    dig 岳王墓;
+    gt 墓后空地;
+    on_there {
+        dig 岳王墓;
+    };
 };
 
 #alias {dm.stop} {

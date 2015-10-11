@@ -37,7 +37,9 @@
         #xmpp %0;
     };
     #elseif {@issubstring{%3;${char_name}} == 1 || @issubstring{%3;${char_id}} == 1} {
-        #xmpp %0;
+        #if {"@lower{%2}" != "${char_id}"} {
+            #xmpp %0;
+        };
     };
 } {4};
 

@@ -1,4 +1,4 @@
-#class template open
+#class tianlong open
 #alias {attack.prepare} {
 	#cr;
 };
@@ -41,4 +41,4 @@
 #var shifu benyin;
 #var menzhong benyin;
 #var menzhong_didian ;
-#class template close
+#class tianlong close

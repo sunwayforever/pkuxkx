@@ -1,4 +1,4 @@
-#class template open
+#class shaolin open
 #var jiali_count 5;
 #var hb_max_path_size 60;
 
@@ -53,11 +53,9 @@
     #ticker {jingmo} {
         #if {"${quest}" == "hb"} {
             unwi;
-            #var tmp_pfm_index 0;
-            #while {$tmp_pfm_index < ${hb_robber_count}} {
-                #math tmp_pfm_index ${tmp_pfm_index}+1;
-                #send {perform yizhi-chan.jingmo ${char_id}'s robber ${tmp_pfm_index}};
-            };
+            #send {perform yizhi-chan.jingmo ${char_id}'s robber 1};
+            #send {perform yizhi-chan.jingmo ${char_id}'s robber 2};
+            #send {perform yizhi-chan.jingmo ${char_id}'s robber 3};
             wi;
         };
         #else {
@@ -272,4 +270,4 @@ stat.register 惊魔 miss 看破了你的企图，侧身避过指力;
 
 #list fsk create {cc};
 
-#class template close
+#class shaolin close

@@ -146,6 +146,10 @@
         war_end;
     };
 
+    #action {战斗中不能疗伤！} {
+        #cr;
+    };
+
     #ticker {fighting} {
         yun heal;
     } {2};
