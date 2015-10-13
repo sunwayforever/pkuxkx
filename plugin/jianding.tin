@@ -130,8 +130,8 @@
 };
 
 #action {^你捧着%*之%*上上下下仔仔细细的打量了一遍。} {
-    #action {可塑性:%*(%*)} {
-        #unaction {可塑性:%*(%*)};
+    #action {可塑性:%*(0)} {
+        #unaction {可塑性:%*(0)};
         #var kong %%1;
         #var type @mapget{jianding;%2};
         #var group_type @jd_get_type{${type}};
