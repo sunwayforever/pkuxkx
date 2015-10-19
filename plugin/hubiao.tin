@@ -2,7 +2,7 @@
 #tab hb.start;
 #tab hb.stop;
 
-#var hb_max_path_size 45;
+#var hb_max_path_size 30;
 #var hb_auto 0;
 #var hb_rotate 0;
 #var hb_dest nil;
@@ -17,12 +17,12 @@
 
 @mapcreate{robber_score};
 @mapset{robber_score;gaibang;9};
-@mapset{robber_score;taohua;8};
-@mapset{robber_score;wudang;7};
+@mapset{robber_score;wudang;8};
+@mapset{robber_score;taohua;7};
 @mapset{robber_score;xingxiu;6};
-@mapset{robber_score;huashan;4};
-@mapset{robber_score;shaolin;3};
-@mapset{robber_score;quanzhen;2};
+@mapset{robber_score;huashan;5};
+@mapset{robber_score;shaolin;4};
+@mapset{robber_score;quanzhen;3};
 
 #function {should_accept_quest} {
     #var hb_owner_loc @getenv{hb_owner_loc};
@@ -826,7 +826,7 @@
 };
 
 #list hb_blacklist:飞马镖局 create {
-    晋阳萧府;成都当铺;赞普来福杂货;
+    晋阳萧府;成都当铺;赞普来福杂货;大理太和居;武当荆西镖局;昆明神威镖局;全真天尊讲经堂;
 };
 
 #list hb_blacklist_baowei:飞马镖局 create {
@@ -834,7 +834,7 @@
 };
 
 #list hb_blacklist:飞虎镖局 create {
-    晋阳萧府;
+    晋阳萧府;赞普来福杂货;
 };
 
 #list hb_blacklist_baowei:飞虎镖局 create {
@@ -850,7 +850,7 @@
 };
 
 #list hb_blacklist:昌隆镖局 create {
-    镇江飞龙镖局;归云庄太湖街;嘉兴钱庄;峨嵋毗卢殿;岳阳车马行;泉州当铺;苏州聚宝斋;建康府车马行;
+    镇江飞龙镖局;归云庄太湖街;嘉兴钱庄;峨嵋毗卢殿;岳阳车马行;泉州当铺;苏州聚宝斋;
 };
 
 #class hubiao close

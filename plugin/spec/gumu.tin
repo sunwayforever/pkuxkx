@@ -17,11 +17,7 @@
 
     #if {"${quest}" == "hb"} {
         pfm suxin;
-        pfm zhua;
         #class attack.inner open;
-        #ticker {zhua} {
-            pfm zhua;
-        } {5.8};
         #class attack.inner close;
     };
     #elseif {${mj_started}  == 1} {

@@ -108,19 +108,19 @@
     #alias {combine_gems} {
         #if {${target_gem_id} != -1} {
             #3 {pickgem ${target_gem_id}};
-            #delay {3} {
+            on_unbusy {
                 combine gem;
-            };
-            #delay {4} {
-                pack gem;
-            };
-            #if {${nl_percent} > 20} {
-                #delay {5} {
-                    combine_gems_prepare;
+                on_unbusy {
+                    pack gem;
+                    #if {${nl_percent} > 20} {
+                        on_unbusy {
+                            combine_gems_prepare;
+                        };
+                    };
+                    #else {
+                        combine_gems_done;
+                    };
                 };
-            };
-            #else {
-                combine_gems_done;
             };
         };
         #else {
@@ -156,48 +156,42 @@
 };
 
 #alias {mark_gem} {
+    #if {${gem_id_1} != -1} {
+        #return;
+    };
+
     #var gem_id %1;
     #var gem_type %2;
     #var gem_yinyang %3;
     #var gem_name %4;
-    #list gem_types find ${gem_type} gem_type_index;
-    #if {${gem_type_index} <= ${gem_combine_level}} {
-        #if {"${gem_name}" == "神龙骨" || "${gem_name}" == "凤凰羽" || "${gem_name}" == "玄武甲" || "${gem_name}" == "麒麟角" } {
-            #var key ${gem_type}${gem_yinyang}${gem_name};
-            @mapset{gem_mark;$key;${gem_id}};
-            #if {"${gem_yinyang}" == "☆"} {
-                #var rev_gem_yinyang ★;
-            };
-            #elseif {"${gem_yinyang}" == "★"} {
-                #var rev_gem_yinyang ☆;
+    #if {"${gem_name}" == "神龙骨" || "${gem_name}" == "凤凰羽" || "${gem_name}" == "玄武甲" || "${gem_name}" == "麒麟角" } {
+        #var key ${gem_type}${gem_yinyang}${gem_name};
+        @mapset{gem_mark;$key;${gem_id}};
+        #if {"${gem_yinyang}" == "☆"} {
+            #var rev_gem_yinyang ★;
+        };
+        #elseif {"${gem_yinyang}" == "★"} {
+            #var rev_gem_yinyang ☆;
+        };
+        #else {
+            #var rev_gem_yinyang n;
+        };
+        #var rev_key ${gem_type}${rev_gem_yinyang}${gem_name};
+        #var rev_gem_id @mapget{gem_mark;${rev_key}};
+        #if {"${rev_gem_id}" != "nil"} {
+            #if {${gem_id} > ${rev_gem_id}} {
+                #var gem_id_1 ${gem_id};
+                #var gem_id_2 ${rev_gem_id};
             };
             #else {
-                #var rev_gem_yinyang n;
-            };
-            #var rev_key ${gem_type}${rev_gem_yinyang}${gem_name};
-            #var rev_gem_id @mapget{gem_mark;${rev_key}};
-            #if {"${rev_gem_id}" != "nil"} {
-                #if {${gem_id} > ${rev_gem_id}} {
-                    #var gem_id_1 ${gem_id};
-                    #var gem_id_2 ${rev_gem_id};
-                };
-                #else {
-                    #var gem_id_2 ${gem_id};
-                    #var gem_id_1 ${rev_gem_id};
-                };
+                #var gem_id_2 ${gem_id};
+                #var gem_id_1 ${rev_gem_id};
             };
         };
     };
 };
 
 #alias {gem.merge} {
-    #var gem_id_1 -1;
-    #var gem_id_2 -1;
-    #var nil @mapcreate(gem_mark);
-
-    #3 {pack gem};
-    jiancha jin nang;
-
     #class gem.merge.inner open;
     #action {(%s%S)%*{◎|☆|★}%*\*%S%s(%s%S)%*{◎|☆|★}%*\*%S%s(%s%S)%*{◎|☆|★}%*\*%S%s(%s%S)%*{◎|☆|★}%*\*%S%s(%s%S)%*{◎|☆|★}%*\*%S} {
         mark_gem {%%2} {%%3} {%%4} {%%5};
@@ -228,18 +222,27 @@
     #action {(%s%S)%*{◎|☆|★}%*\*%S} {
         mark_gem {%%2} {%%3} {%%4} {%%5};
     } {5};
+
+    #action {用pack <物品id>将宝石放入其中} {
+        #unaction {用pack <物品id>将宝石放入其中};
+        #class gem.merge.inner kill;
+        on_unbusy {
+            merge_gems;
+        };
+    };
     #class gem.merge.inner close;
 
     #alias {merge_gems} {
         #if {${gem_id_1} != -1} {
             pickgem ${gem_id_1};
             pickgem ${gem_id_2};
-            #delay {3} {
+
+            on_unbusy {
                 merge gem;
-                #delay {3} {
+                on_unbusy {
                     pack gem;
                     #if {${nl_percent} > 20} {
-                        #delay {5} {
+                        on_unbusy {
                             gem.merge;
                         };
                     };
@@ -250,14 +253,16 @@
             };
         };
         #else {
-            show_to_info 无法合成;
+            show_to_info 合成完毕;
         };
     };
-    #action {用pack <物品id>将宝石放入其中} {
-        #unaction {用pack <物品id>将宝石放入其中};
-        #class gem.merge.inner kill;
-        merge_gems;
-    };
+
+    #var gem_id_1 -1;
+    #var gem_id_2 -1;
+    @mapcreate{gem_mark};
+
+    #nop #3 {pack gem};
+    jiancha jin nang;
 };
 
 #alias {gem.record} {

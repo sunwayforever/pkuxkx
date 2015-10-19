@@ -17,5 +17,4 @@
   - 古墓山洞;
   - 大轮川西土路
   - salonbus, 遍历嘉兴关出错
-- xmpp embedded image
-
+  - 长安城墙

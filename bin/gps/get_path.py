@@ -83,9 +83,6 @@ class MudRoom:
         
         while len(pq) != 0:
             i = heapq.heappop(pq)[1]
-            if i == dst:
-                found = True
-                break
             for link in self.neighbours[i]:
                 d = link.linkroomno
                 weight = self.weights_info[(i,link.linkroomno)]
@@ -96,7 +93,7 @@ class MudRoom:
                     parent[d] = link
                     heapq.heappush(pq, (distance[d],d))
 
-        if not found:
+        if not parent[dst]:
             return []
 
         ret = []

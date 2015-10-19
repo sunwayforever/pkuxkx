@@ -3,28 +3,23 @@
 
 #alias {attack.prepare} {
     yun longxiang;
-    jiali 1;
+    jiali 10;
 };
 
 #alias {attack} {
     #class attack.inner open;
     #if {"${quest}" == "hb"} {
         pfm xiongyong;
-        pfm fen;
         #class attack.inner open;
-        #ticker {fen} {
-            pfm fen;
+        #ticker {xiongyong} {
+            pfm xiongyong;
         } {5};
         #class attack.inner close;
     };
     #elseif {"${quest}" == "hsz"} {
         pfm wushuai;
         pfm xiongyong;
-        pfm fen;
         #class attack.inner open;
-        #ticker {fen} {
-            pfm fen;
-        } {5};
         #ticker {xiongyong} {
             pfm xiongyong;
         } {2.8};
@@ -36,21 +31,15 @@
     #elseif {"${quest}" == "xf"} {
         #if {${mj_started}  == 1} {
             #class attack.inner open;
-            #ticker {fen} {
-                pfm fen;
-            } {4.8};
             #class attack.inner close;
             #if {${xf.type} == -1 || ${xf.type} == 1} {
-                pfm fen;
+                #cr;
             };
             #elseif {${xf.type} == 2} {
-                pfm fen;
             };
             #elseif {${xf.type} == 3} {
-                pfm fen;
             };
             #elseif {${xf.type} == 4} {
-                pfm fen;
             };
         };
         #else {
@@ -80,22 +69,20 @@
             #elseif {${xf.type} == 3} {
                 #if {${xf_slowdown} == 0} {
                     pfm xiongyong;
-                    pfm fen;
                 };
             };
             #elseif {${xf.type} == 4} {
                 pfm xiongyong;
                 #if {${xf_slowdown} == 0} {
-                    pfm fen;
                 };
             };
         };
     };
 };
 
-#alias {fen} {
+#alias {daoqi} {
     unwi;
-    perform huoyan-dao.fen;
+    perform huoyan-dao.daoqi;
     wi;
 };
 
@@ -116,9 +103,9 @@
     wi;
 };
 
-#var shortcut F1:·Ù F2:È¼ F3:ÎåË¥ F4: ÐÚÓ¿;
+#var shortcut F1:µ¶Æø F2:È¼ F3:ÎåË¥ F4: ÐÚÓ¿;
 #macro {\eOP} {
-    fen;
+    daoqi;
 };
 
 #macro {\eOQ} {
@@ -145,7 +132,7 @@
     gt ·¨ÌÃ¶þÂ¥;
 };
 
-#list my_weapons_to_wield create {};
+#list my_weapons_to_wield create {staff};
 
 #var menzhong bofu;
 #var menzhong_didian bofu;
@@ -173,5 +160,8 @@
     #send {jifa parry huoyan-dao};
     wi;
 };
+
+stat.register ÐÚÓ¿ hit Ö»¾õµÃÓÌÈçÉíÏÝºéÌÎ¾ÞÀË£¬µøµø×²×²;
+stat.register ÐÚÓ¿ miss ÄãµÄÁèÀ÷¹¥ÊÆ;
 
 #class dalun close
