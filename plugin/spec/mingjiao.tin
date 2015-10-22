@@ -94,9 +94,6 @@
     fenxin;
 };
 #nop ];
-#alias {qudu} {
-    eat san;
-};
 
 #alias {reborn} {
     #send {jifa strike hanbing-zhang};

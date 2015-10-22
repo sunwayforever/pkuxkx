@@ -267,7 +267,7 @@
 
 #alias {gem.record} {
     #var gem_level @gemlevel{%1};
-    #if {${gem_level} >= 4} {
+    #if {${gem_level} >= 6} {
         notify %1%2%3;
         play gem2.wav;
     };

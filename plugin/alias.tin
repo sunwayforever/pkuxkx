@@ -1206,7 +1206,7 @@ walk_to east;
             #loop 1 ${tmp_count} i {
                 put %%0 in xiang;
             };
-            chat ${char_name}将${tmp_count}颗${donate_item}放进功德箱;
+            chat ${char_name}将${tmp_count}个${donate_item}放进功德箱;
         };
     };
     #alias {burden.check.done} {
@@ -1215,6 +1215,9 @@ walk_to east;
         donate 孽龙丹;
         donate 千年火龙丹;
         donate 朱睛冰蟾;
+        donate 龙 牙;
+        donate 龙 鳞;
+        donate 龙 心;
         #delay {donate_delay} {
             tmp_donate;
         } {1};

@@ -232,10 +232,6 @@
 #macro {\e[18~} {#nop ]
 };
 
-#alias {qudu} {
-    eat san;
-};
-
 #alias {reborn} {
     #send {jifa cuff luohan-quan};
     #send {jifa dodge shaolin-shenfa};

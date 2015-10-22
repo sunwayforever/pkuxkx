@@ -1,9 +1,9 @@
 #class wudang open
 #var jiali_count 50;
-#var hb_max_path_size 20;
 
 #alias {attack.prepare} {
     yun powerup;
+    yun shield;
 };
 
 #alias {attack} {
@@ -17,6 +17,7 @@
     #class attack.inner close;
 
     #if {"${quest}" == "hb"} {
+        pfm szj;
         #class attack.inner open;
         #class attack.inner close;
     };
@@ -129,6 +130,8 @@
     unwield all;
     do_wield sword;
     perform taiji-jian.chan;
+    perform taiji-jian.chan;
+    perform taiji-jian.chan;
     wi;
 };
 
@@ -227,7 +230,7 @@
     #send {jifa sword taiji-jian};
     #send {jifa blade xuanxu-dao};
     #send {jifa claw taiji-zhao};
-    #send {jifa force taiji-shengong};
+    #nop #send {jifa force taiji-shengong};
     #send {jifa spear yuejia-qiangfa};
     bei cuff claw;
 };

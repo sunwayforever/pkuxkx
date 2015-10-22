@@ -38,9 +38,17 @@
     突然你打了个寒战，你中的冰魄寒毒发作了！;
     他的剧毒散至你的全身;
 };
+
+#var qxs_count 0;
+#action {你吃下一包清心散} {
+    #math qxs_count ${qxs_count}+1;
+};
+
 #foreach {${poisions}[%*]} {poision} {
     #action {${poision}} {
-        qudu;
+        #if {${qx_percent} < 70 || ${eff_qx_percent} < 70} {
+            qudu;
+        };
     } {1};
 };
 
@@ -83,6 +91,16 @@
 
 #alias {qudu} {
     eat san;
+};
+
+#alias {on_skill_hit} {
+    #var not_used %%0;
+    #cr;
+};
+
+#alias {on_skill_miss} {
+    #var not_used %%0;
+    #cr;
 };
 
 #alias {raw} {
@@ -142,7 +160,7 @@
         war_end;
     };
 
-    #action {你全身放松，坐下来开始运功疗伤。} {
+    #action {你全身放松} {
         war_end;
     };
 

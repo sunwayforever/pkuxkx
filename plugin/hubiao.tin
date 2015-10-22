@@ -2,7 +2,7 @@
 #tab hb.start;
 #tab hb.stop;
 
-#var hb_max_path_size 30;
+#var hb_max_path_size 45;
 #var hb_auto 0;
 #var hb_rotate 0;
 #var hb_dest nil;
@@ -135,18 +135,25 @@
             } {5};
         };
         #else {
-            #if {${eff_qx_percent} < 95} {
-                #2 yun heal;
-            };
-            #if {${eff_qx_percent} < 50} {
-                #2 yun lifeheal ${char_id};
-            };
+            hb.before_move;
             #delay {hb_move} {
                 #if {${hb_paused} == 0} {
                     ${hb_next_step};
                 };
             } {3};
         };
+    };
+};
+
+#alias {hb.before_move} {
+    #if {${eff_qx_percent} < 95} {
+        #2 yun heal;
+    };
+    #if {${eff_qx_percent} < 50} {
+        #2 yun lifeheal ${char_id};
+    };
+    #if {${eff_js_percent} < 95} {
+        #2 yun inspire;
     };
 };
 
