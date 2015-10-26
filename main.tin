@@ -57,6 +57,7 @@
 #read plugin/xizao.tin;
 #read plugin/show.tin;
 #read plugin/chat.tin;
+#read plugin/dummy.tin;
 #read plugin/xiulian.tin;
 #read plugin/zuiquan.tin;
 #read plugin/suck.tin;

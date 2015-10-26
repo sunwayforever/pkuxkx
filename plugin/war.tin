@@ -358,14 +358,16 @@
 };
 
 #alias {war.prepare} {
+    wi;
     war.monitor;
-    yun qi;
-    yun jing;
+    on_unbusy {
+        yun qi;
+        yun jing;
+    };
     #if {${youxiao_neigong} > 750} {
         #nop yun shield;
         #cr;
     };
-    wi;
     attack.prepare;
 };
 

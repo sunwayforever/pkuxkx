@@ -1,6 +1,21 @@
 #class hsz open;
 
 #var hsz.requested 0;
+#nop 这时，你展开了精心绘制的地区地图，找到了异族奸细的行迹。;
+#nop 你瞬间感到了危险临近，奸细就在附近！;
+
+#alias {hsz.start} {
+    hsz.setup;
+    gt hsz;
+    on_there {
+        hsz.q;
+    };
+};
+
+#alias {hsz.stop} {
+    hsz.teardown;
+};
+
 #alias {hsz.setup} {
     #class hsz.inner open;
     #action {你心中暗道：就是这里了，于是紧跟着几个形迹可疑的人走去。} {
@@ -64,7 +79,6 @@
 };
 
 #alias {hsz.q} {
-    hsz.setup;
     ask han about job;
 };
 

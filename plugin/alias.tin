@@ -153,7 +153,7 @@
             tmp_auto_pp nil;
         } {150};
         #class pp.inner open;
-        #action {告诉你：【%*(%*)】目前在【%*的%*】,快去摁死它吧!} {
+        #action {告诉你：【%*(%*)】目前在【{\S+?}的%*】,快去摁死它吧!} {
             #class pp.inner kill;
             #undelay {pp_delay};
             #unticker {pp};
@@ -1171,6 +1171,7 @@ walk_to east;
 };
 
 #alias {post_login} {
+    dummy.login;
     restart_last_quest;
 };
 

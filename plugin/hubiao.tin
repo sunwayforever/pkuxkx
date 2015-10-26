@@ -7,6 +7,7 @@
 #var hb_rotate 0;
 #var hb_dest nil;
 #var hb_paused 0;
+#var hb_requested 0;
 #var hb_info nil;
 #var hb_rotate_location nil;
 #var hb_rotate_location_count 0;
@@ -508,10 +509,8 @@
     } {1};
 
     #action {^你不是才要了任务吗} {
-        hb.d;
-        on_unbusy {
-            hb.restart;
-        };
+        hb.f;
+        hb.restart;
     };
 
     #action {你一共被奖励了：} {
@@ -572,6 +571,22 @@
             };
         };
     };
+
+    #action {%*向%*打听有关%*的消息} {
+        #if {"%%1" == "你"} {
+            #var hb_requested 1;
+        };
+        #else {
+            #var hb_requested 0;
+        };
+    };
+
+    #action {%*说道：「镖车没有送到地头，莫非是你吞了！？」} {
+        #if {${hb_requested} == 1} {
+            hb.f;
+            hb.restart;
+        };
+    } {1};
 
     #action {${char_name}把这批红货送到%*他已经派了个伙计名叫%*到%*附近接你} {
         #unticker {hb_q_ticker};
@@ -650,11 +665,11 @@
     log.stop;
     unset_last_quest;
     #var hb_auto 0;
+    health.cancel;
     #class hb.auto.inner kill;
     #undelay {hb_auto_delay};
     #unticker {hb_q_ticker};
     #unticker {hb_ticker};
-    dz.cancel;
     @clearenv{hb_dest};
     @clearenv{hb_huoji};
     @clearenv{hb_info};

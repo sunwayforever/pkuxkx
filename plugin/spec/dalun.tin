@@ -18,14 +18,13 @@
     };
     #elseif {"${quest}" == "hsz"} {
         pfm wushuai;
-        pfm xiongyong;
         #class attack.inner open;
-        #ticker {xiongyong} {
-            pfm xiongyong;
-        } {2.8};
         #ticker {wushuai} {
             pfm wushuai;
         } {6.8};
+        #ticker {daoqi} {
+            pfm daoqi;
+        } {5.8};
         #class attack.inner close;
     };
     #elseif {"${quest}" == "xf"} {

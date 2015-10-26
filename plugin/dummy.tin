@@ -1,0 +1,77 @@
+#class dummy open;
+#list dummy_list create {};
+#var dummy_verify nil;
+
+#alias {dummy.login} {
+    #if {"${dummy_verify}" == "nil"} {
+        #return;
+    };
+
+    on_unbusy {
+        chat ...;
+        chat dummy.login;
+    };
+};
+
+#alias {dummy.forall} {
+    #foreach {${dummy_list}[%*]} {dummy} {
+        tell ${dummy} dummy.action: ${dummy_verify}: %0;
+    };
+    %0;
+};
+
+#action {^¡¾ÏĞÁÄ¡¿%*(%*): dummy.login} {
+    #var issuer @lower{%2};
+    #if {"${issuer}" != "${char_id}"} {
+        on_unbusy {
+            tell ${issuer} dummy.syn: ${dummy_verify};
+        };
+    };
+} {1};
+
+#action {%*¸æËß%*dummy.{syn|ack|action}%*} {
+    #line gag;
+} {2};
+
+#action {%*(%*)¸æËßÄã£ºdummy.ack: %*} {
+    #line gag;
+    #if {"%3" != "${dummy_verify}"} {
+        #return;
+    };
+    #var dummy @lower{%2};
+    #if {@ismember{${dummy};dummy_list} != 0} {
+        #return;
+    };
+    #else {
+        #list dummy_list add ${dummy};
+    };
+} {1};
+
+#action {%*(%*)¸æËßÄã£ºdummy.syn: %*} {
+    #line gag;
+    #if {"%3" != "${dummy_verify}"} {
+        #return;
+    };
+    #var dummy @lower{%2};
+    #if {@ismember{${dummy};dummy_list} != 0} {
+        #return;
+    };
+    #else {
+        tell ${dummy} dummy.ack: ${dummy_verify};
+        #list dummy_list add ${dummy};
+    };
+} {1};
+
+#action {%*(%*)¸æËßÄã£ºdummy.action: %*: %*} {
+    #line gag;
+    #if {"%3" != "${dummy_verify}"} {
+        #return;
+    };
+    #var dummy @lower{%2};
+    #var dummy_action %4;
+    #if {@ismember{${dummy};dummy_list} != 0} {
+        ${dummy_action};
+    };
+} {1};
+
+#class dummy close;
