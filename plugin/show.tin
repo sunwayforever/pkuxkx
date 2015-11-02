@@ -1,21 +1,30 @@
 #class show open;
 
-#nop hp/-/status/-/shortcut/-/5(info)/-/6(chat)/- = 19
-#var info_window {{1}{ } {2}{ } {3}{ } {4}{ } {5}{ }};
-#var chat_window {{1}{ } {2}{ } {3}{ } {4}{ } {5}{ } {6}{ }};
+#nop hp/-/status/-/shortcut/-/4(info)/-/5(chat)/- = 17
+#var info_window {{1}{ } {2}{ } {3}{ } {4}{ }};
+#var chat_window {{1}{ } {2}{ } {3}{ } {4}{ } {5}{ }};
 
-#var info_window_offset 6;
-#math chat_window_offset $info_window_offset+&info_window[]+1;
+#var show_hp_pos -1;
+#nop -;
+#var show_status_pos -3;
+#nop -;
+#var show_shortcut_pos -5;
+#nop -;
+#var show_info_pos -6;
+#math show_chat_pos $show_info_pos - &info_window[];
+#nop -;
+#math show_chat_pos ${show_chat_pos} - 1;
 
 #alias {show.reset} {
-    #var info_window {{1}{ } {2}{ } {3}{ } {4}{ } {5}{ }};
-    #var chat_window {{1}{ } {2}{ } {3}{ } {4}{ } {5}{ } {6}{ }};
+    #var info_window {{1}{ } {2}{ } {3}{ } {4}{ }};
+    #var chat_window {{1}{ } {2}{ } {3}{ } {4}{ } {5}{ }};
     show.init;
 };
 
 #var show_inited 0;
 #alias {show.init} {
-    #split 19 1;
+    #math split_all 1-${show_chat_pos}+&chat_window[];
+    #split ${split_all} 1;
     #var show_inited 1;
     #event {SCREEN RESIZE} {
         show_to_shortcut ${shortcut};
@@ -28,14 +37,14 @@
 
     #loop {1} {&info_window[]} {cnt}
     {
-        #math pos $cnt+${info_window_offset};
-        #echo {{<aff>$info_window[$cnt]<099>} {-$pos}};
+        #math pos ${show_info_pos}-$cnt;
+        #echo {{<aff>$info_window[$cnt]<099>} {$pos}};
     }
 
     #loop {1} {&chat_window[]} {cnt}
     {
-        #math pos $cnt+${chat_window_offset};
-        #echo {{<aff>$chat_window[$cnt]<099>} {-$pos}};
+        #math pos ${show_chat_pos}-$cnt;
+        #echo {{<aff>$chat_window[$cnt]<099>} {$pos}};
     }
 };
 
@@ -52,7 +61,7 @@
     #if {${show_inited} == 0} {
         #return;
     };
-    #echo {{<cfa>${show_key}<099>}{-5}};
+    #echo {{<cfa>${show_key}<099>}{${show_shortcut_pos}}};
 };
 
 #alias {show_to_info} {
@@ -79,8 +88,8 @@
 
     #loop {1} {&info_window[]} {info_cnt}
     {
-        #math info_pos $info_cnt+${info_window_offset};
-        #echo {{<aff>$info_window[$info_cnt]<099>} {-$info_pos}};
+        #math info_pos ${show_info_pos}-${info_cnt};
+        #echo {{<aff>$info_window[$info_cnt]<099>} {${info_pos}}};
     }
 };
 
@@ -117,14 +126,14 @@
 
     #loop {1} {&chat_window[]} {chat_cnt}
     {
-        #math chat_pos $chat_cnt+${chat_window_offset};
-        #echo {{<aff>%s<099>} {-$chat_pos}} {$chat_window[$chat_cnt]};
+        #math chat_pos ${show_chat_pos}-${chat_cnt};
+        #echo {{<aff>%s<099>} {${chat_pos}}} {$chat_window[$chat_cnt]};
     }
     #var showing_to_chat 0;
 };
 
 #alias {update_status_line} {
-    #echo {{<099>${show_status}<099> => <cfa>${show_quest}<099>}{-1}};
+    #echo {{<099>${show_status}<099> => <cfa>${show_quest}<099>}{${show_hp_pos}}};
 };
 
 #alias {show_to_quest} {

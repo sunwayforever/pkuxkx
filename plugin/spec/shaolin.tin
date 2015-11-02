@@ -188,6 +188,12 @@
     wi;
 };
 
+#alias {fuxue} {
+    unwi;
+    perform nianhua-zhi.fuxue;
+    wi;
+};
+
 #alias {luohan} {
     unwi;
     jiali ${jiali_count};
@@ -205,7 +211,7 @@
 #list my_weapons_to_wield create {spear;spear 2};
 #list special_whip create {qixing};
 
-#var shortcut F1:¾ªÄ§ F2:²ø F3:ÂÞºº;
+#var shortcut F1:¾ªÄ§ F2:²ø F3:ÂÞºº F4:·÷Ñ¨;
 
 #macro {\eOP} {
     jingmo;
@@ -220,7 +226,7 @@
 };
 
 #macro {\eOS} {
-
+    fuxue;
 };
 
 #macro {\e[15~} {#nop ]

@@ -9,16 +9,19 @@
 
 #alias {attack} {
     #if {"${quest}" == "hb"} {
-        pfm xiongyong;
         pfm chan;
+        pfm zongjue;
         #class attack.inner open;
-        #ticker {pq} {
-            pfm chan;
+        #ticker {zj} {
+            pfm zongjue;
         } {3};
+        #ticker {chan} {
+            pfm chan;
+        } {1.5};
         #class attack.inner close;
 
         #if {"${enemy_menpai}" == "gaibang" || "${enemy_menpai}" == "wudang" || "${enemy_menpai}" == "taohua"} {
-            pfm kuangfeng;
+            #cr;
         };
     };
     #else {
@@ -121,10 +124,8 @@
 
 #alias {zongjue} {
     unwi;
-    jiali ${jiali_count};
     do_wield sword;
     perform dugu-jiujian.po;
-    jiali none;
     wi;
 };
 
@@ -137,10 +138,10 @@
 
 #alias {poqi} {
     unwi;
-    jiali max;
     do_wield sword;
     perform dugu-jiujian.poqi;
-    jiali none;
+    #send {perform dugu-jiujian.poqi};
+    #send {perform dugu-jiujian.poqi};
     wi;
 };
 
@@ -197,6 +198,8 @@
     unwi;
     do_wield sword;
     perform yangwu-jian.yangwu;
+    #send {perform yangwu-jian.yangwu};
+    #send {perform yangwu-jian.yangwu};
     wi;
 };
 
@@ -242,7 +245,7 @@ pozhang;
 };
 
 #var shifu gao;
-#list my_weapons_to_wield create {spear};
+#list my_weapons_to_wield create {spear;spear 2};
 
 #var menzhong ning;
 #var menzhong_didian hs;

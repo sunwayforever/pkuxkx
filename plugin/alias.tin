@@ -1186,7 +1186,7 @@ walk_to east;
 };
 
 #alias {forge} {
-    ask chong er about forge;
+    ask huo ji about forge;
     #send {yes};
 };
 

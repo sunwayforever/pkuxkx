@@ -74,7 +74,12 @@
 
 #action {银行存款：  %*两黄金} {
     #var money_info @ctd{%1} G;
-};
+} {3};
+
+#action {银行存款：  %*根金条%*两黄金} {
+    #math money_amount @ctd{%1}*100 + @ctd{%2};
+    #var money_info ${money_amount} G;
+} {2};
 
 #gag npc refreshed;
 #alias {zhengdian} {
@@ -228,7 +233,7 @@
 };
 
 #alias {drawhp} {
-    #echo {{<099>@hpcolor{气血[;$hpbrief_curr_qx}@hpdraw{$hpbrief_curr_qx;$hpbrief_max_qx}@hpcolor{];$hpbrief_curr_qx} @hpcolor{精神[;$hpbrief_curr_js}@hpdraw{$hpbrief_curr_js;$hpbrief_max_js}@hpcolor{];$hpbrief_curr_js} @hpcolor{精力[;$hpbrief_curr_jl}@hpdraw{$hpbrief_curr_jl;$hpbrief_max_jl}@hpcolor{];$hpbrief_curr_jl} @hpcolor{内力[;$hpbrief_curr_nl}@hpdraw{$hpbrief_curr_nl;$hpbrief_max_nl}@hpcolor{];$hpbrief_curr_nl} @hpcolor{食物[;$food}@hpdraw{$food;$maxfood}@hpcolor{];$food} @hpcolor{饮水[;$water}@hpdraw{$water;$maxwater}@hpcolor{];$water} @hpcolor{负重[;$fuzhong}@fzdraw{$fuzhong;100}@hpcolor{];$fuzhong}<099>} {-3}};
+    #echo {{<099>@hpcolor{气血[;$hpbrief_curr_qx}@hpdraw{$hpbrief_curr_qx;$hpbrief_max_qx}@hpcolor{];$hpbrief_curr_qx} @hpcolor{精神[;$hpbrief_curr_js}@hpdraw{$hpbrief_curr_js;$hpbrief_max_js}@hpcolor{];$hpbrief_curr_js} @hpcolor{精力[;$hpbrief_curr_jl}@hpdraw{$hpbrief_curr_jl;$hpbrief_max_jl}@hpcolor{];$hpbrief_curr_jl} @hpcolor{内力[;$hpbrief_curr_nl}@hpdraw{$hpbrief_curr_nl;$hpbrief_max_nl}@hpcolor{];$hpbrief_curr_nl} @hpcolor{食物[;$food}@hpdraw{$food;$maxfood}@hpcolor{];$food} @hpcolor{饮水[;$water}@hpdraw{$water;$maxwater}@hpcolor{];$water} @hpcolor{负重[;$fuzhong}@fzdraw{$fuzhong;100}@hpcolor{];$fuzhong}<099>} {${show_status_pos}}};
 };
 
 #function {hpdraw}

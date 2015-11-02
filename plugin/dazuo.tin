@@ -115,7 +115,10 @@
     #send {jifa};
     gt bs;
     on_there {
-        dz.check;
+        chifan;
+        on_health {
+            dz.check;
+        };
     };
 };
 

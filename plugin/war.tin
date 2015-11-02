@@ -46,7 +46,7 @@
 
 #foreach {${poisions}[%*]} {poision} {
     #action {${poision}} {
-        #if {${qx_percent} < 70 || ${eff_qx_percent} < 70} {
+        #if {${qx_percent} < 90 || ${eff_qx_percent} < 90} {
             qudu;
         };
     } {1};
@@ -248,6 +248,9 @@
     #alias {taopao_random_walk} {
         #list exits_list create ${exits_list};
         #list exits_list size tmp_exit_list_size;
+        #if {${tmp_exit_list_size} == 0} {
+            #return;
+        };
         #var tmp_exit_index @random{${tmp_exit_list_size}};
         #list exits_list get  ${tmp_exit_index} exit;
         raw;
@@ -292,7 +295,7 @@
 };
 
 #var enemy nil;
-#alias {perform_not_used} {
+#alias {perform} {
     #if {"${enemy}" == "nil"} {
         #send {perform %0};
     };

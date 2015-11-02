@@ -306,7 +306,7 @@
     };
 
     #action {劫匪个起纵遁入暗里不见了} {
-        #nop hb.detect_enemy;
+        hb.detect_enemy;
         hb.retry;
     };
 
@@ -336,7 +336,7 @@
     };
 
     #action {劫匪突然从暗处跳了出来} {
-        #nop hb.detect_enemy;
+        hb.detect_enemy;
         #if {${hb_need_kill} == 1} {
             killall robber;
         };
@@ -421,7 +421,7 @@
     #else {
         hb.f;
         #if {${hb_auto} == 1} {
-            hb.restart;
+            hb.start;
         };
     };
 };
@@ -584,7 +584,7 @@
     #action {%*说道：「镖车没有送到地头，莫非是你吞了！？」} {
         #if {${hb_requested} == 1} {
             hb.f;
-            hb.restart;
+            hb.start;
         };
     } {1};
 

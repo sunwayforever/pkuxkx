@@ -154,6 +154,18 @@
 #function {screenh} {#format result {%R}};
 #function {replace} {#var result %1;#replace result {%2} {%3}};
 #function {ctd} {
+    #var first_part 零;
+    #var second_part 零;
+    #regexp %1 {{.*}万{.*}} {#var first_part &1; #var second_part &2} {#var first_part nil};
+    #if {"${first_part}" != "nil"} {
+        #math result @ctd_inner{${first_part}} * 10000 + @ctd_inner{${second_part}};
+    };
+    #else {
+        #return @ctd_inner{%1};
+    };
+};
+
+#function {ctd_inner} {
     #math result {@replace{@replace{{0+@replace{@replace{@replace{@replace{@replace{@replace{@replace{@replace{@replace{@replace{@replace{@replace{@replace{@replace{%1;{零};{*0+}};{十};{*10+}};{百};{*100+}};{千};{*1000+}};{万};{*10000+}};{六};{6}};{一};{1}};{二};{2}};{三};{3}};{四};{4}};{五};{5}};{七};{7}};{八};{8}};{九};{9}}+0};{++};{+}};{+*};{+}}}
 };
 

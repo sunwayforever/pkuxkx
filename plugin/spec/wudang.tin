@@ -18,6 +18,9 @@
 
     #if {"${quest}" == "hb"} {
         pfm szj;
+        #if {${nl_percent} > 70} {
+            pfm lzj;
+        };
         #class attack.inner open;
         #class attack.inner close;
     };
@@ -130,8 +133,8 @@
     unwield all;
     do_wield sword;
     perform taiji-jian.chan;
-    perform taiji-jian.chan;
-    perform taiji-jian.chan;
+    #send {perform taiji-jian.chan};
+    #send {perform taiji-jian.chan};
     wi;
 };
 

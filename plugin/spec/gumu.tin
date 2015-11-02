@@ -155,6 +155,8 @@
     unwield all;
     do_wield whip;
     perform whip.chan;
+    #send {perform whip.chan};
+    #send {perform whip.chan};
     unwield all;
     wi;
 };
