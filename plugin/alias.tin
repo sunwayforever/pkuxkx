@@ -857,6 +857,7 @@ walk_to east;
 };
 
 #alias {fm} {
+    #undelay {fullme_delay};
     on_unbusy {
         #send {fullme %0};
     };
@@ -1096,7 +1097,7 @@ walk_to east;
             update_status;
             get_char_info_action;
         };
-        #action {内力恢复：+%*  } {
+        #action {内力恢复：+%* } {
             #var char_nl_recovery %%%1;
         };
         #action {系统喘气中} {
@@ -1171,7 +1172,7 @@ walk_to east;
 };
 
 #alias {post_login} {
-    dummy.login;
+    #nop dummy.login;
     restart_last_quest;
 };
 

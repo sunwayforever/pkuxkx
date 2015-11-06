@@ -367,9 +367,14 @@
         yun qi;
         yun jing;
     };
-    #if {${youxiao_neigong} > 750} {
-        #nop yun shield;
-        #cr;
+    #class war.inner open;
+    #ticker {qi_ticker} {
+        yun qi;
+        yun jing;
+    } {6};
+    #class war.inner close;
+    #if {${youxiao_neigong} > 750 && ${char_nl_recovery} > 100} {
+        yun shield;
     };
     attack.prepare;
 };

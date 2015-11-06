@@ -6,15 +6,36 @@
 #list gem_types create {地;山;水;风;雷;火;泽;天};
 #var gem.combine_count 0;
 #alias {gem} {
+    #var gem_filter nil;
+    #var gem_filter %1;
     #var gem_value 0;
+    #list gem_filter_list create {};
+    #alias {check_gem} {
+        #var gem_id %%1;
+        #var gem_type %%2;
+        #var gem_property %%3;
+        #var gem_name %%4;
+        #var gem_count %%5;
+        #list gem_types find ${gem_type} gem_type_index;
+        #math gem_value ${gem_value}+@power{3;${gem_type_index}}/3*${gem_count};
+        #if {"${gem_filter}" != "nil"} {
+            #if {@issubstring{${gem_name};${gem_filter}} == 1} {
+                #list gem_filter_list add (${gem_id})${gem_type}${gem_property}${gem_name}*${gem_count};
+            };
+        };
+    };
     gem.setup;
     jiancha jin nang;
     lock 用pack <物品id>将宝石放入其中;
     #action {用pack <物品id>将宝石放入其中} {
         #unaction {用pack <物品id>将宝石放入其中};
-        #buffer lock;
         gem.teardown;
         show_to_info 宝石价值: ${gem_value};
+        #if {"${gem_filter}" != "nil"} {
+            #foreach {${gem_filter_list}[%*]} {gem_item} {
+                #echo ${gem_item};
+            };
+        };
     };
 };
 
@@ -25,33 +46,33 @@
 #alias {gem.setup} {
     #class gem.inner open;
     #action {(%s%S)%*{◎|☆|★}%*\*%S%s(%s%S)%*{◎|☆|★}%*\*%S%s(%s%S)%*{◎|☆|★}%*\*%S%s(%s%S)%*{◎|☆|★}%*\*%S%s(%s%S)%*{◎|☆|★}%*\*%S} {
-        check_gem {%%2} {%%3} {%%6};
-        check_gem {%%9} {%%10} {%%13};
-        check_gem {%%16} {%%17} {%%20};
-        check_gem {%%23} {%%24} {%%27};
-        check_gem {%%30} {%%31} {%%34};
+        check_gem {%%2} {%%3} {%%4} {%%5} {%%6};
+        check_gem {%%9} {%%10} {%%11} {%%12} {%%13};
+        check_gem {%%16} {%%17} {%%18} {%%19} {%%20};
+        check_gem {%%23} {%%24} {%%25} {%%26} {%%27};
+        check_gem {%%30} {%%31} {%%32} {%%33} {%%34};
     } {1};
 
     #action {(%s%S)%*{◎|☆|★}%*\*%S%s(%s%S)%*{◎|☆|★}%*\*%S%s(%s%S)%*{◎|☆|★}%*\*%S%s(%s%S)%*{◎|☆|★}%*\*%S} {
-        check_gem {%%2} {%%3} {%%6};
-        check_gem {%%9} {%%10} {%%13};
-        check_gem {%%16} {%%17} {%%20};
-        check_gem {%%23} {%%24} {%%27};
+        check_gem {%%2} {%%3} {%%4} {%%5} {%%6};
+        check_gem {%%9} {%%10} {%%11} {%%12} {%%13};
+        check_gem {%%16} {%%17} {%%18} {%%19} {%%20};
+        check_gem {%%23} {%%24} {%%25} {%%26} {%%27};
     } {2};
 
     #action {(%s%S)%*{◎|☆|★}%*\*%S%s(%s%S)%*{◎|☆|★}%*\*%S%s(%s%S)%*{◎|☆|★}%*\*%S} {
-        check_gem {%%2} {%%3} {%%6};
-        check_gem {%%9} {%%10} {%%13};
-        check_gem {%%16} {%%17} {%%20};
+        check_gem {%%2} {%%3} {%%4} {%%5} {%%6};
+        check_gem {%%9} {%%10} {%%11} {%%12} {%%13};
+        check_gem {%%16} {%%17} {%%18} {%%19} {%%20};
     } {3};
 
     #action {(%s%S)%*{◎|☆|★}%*\*%S%s(%s%S)%*{◎|☆|★}%*\*%S} {
-        check_gem {%%2} {%%3} {%%6};
-        check_gem {%%9} {%%10} {%%13};
+        check_gem {%%2} {%%3} {%%4} {%%5} {%%6};
+        check_gem {%%9} {%%10} {%%11} {%%12} {%%13};
     } {4};
 
     #action {(%s%S)%*{◎|☆|★}%*\*%S} {
-        check_gem {%%2} {%%3} {%%6};
+        check_gem {%%2} {%%3} {%%4} {%%5} {%%6};
     } {5};
     #class gem.inner close;
 };
@@ -60,20 +81,21 @@
     #classs gem.inner kill;
 };
 
-#alias {check_gem} {
-    #var gem_id %1;
-    #var gem_type %2;
-    #var gem_count %3;
-    #list gem_types find ${gem_type} gem_type_index;
-    #if {${gem_count} >=3 && ${gem_type_index} < ${gem_combine_level}} {
-        #var target_gem_id ${gem_id};
-    };
-    #math gem_value ${gem_value}+@power{3;${gem_type_index}}/3*${gem_count};
-};
-
 #alias {gem.combine} {
     #alias tmp_combine #cr;
     #alias tmp_combine %1;
+    #alias {check_gem} {
+        #var gem_id %%1;
+        #var gem_type %%2;
+        #var gem_property %%3;
+        #var gem_name %%4;
+        #var gem_count %%5;
+        #list gem_types find ${gem_type} gem_type_index;
+        #if {${gem_count} >=3 && ${gem_type_index} < ${gem_combine_level}} {
+            #var target_gem_id ${gem_id};
+        };
+    };
+
     gem.setup;
     #class gem.combine.inner open;
     #action {笨阿，身上东西满了，小心无欢打劫你的宝石！} {
@@ -155,74 +177,45 @@
     pickgem 1;
 };
 
-#alias {mark_gem} {
-    #if {${gem_id_1} != -1} {
-        #return;
-    };
-
-    #var gem_id %1;
-    #var gem_type %2;
-    #var gem_yinyang %3;
-    #var gem_name %4;
-    #if {"${gem_name}" == "神龙骨" || "${gem_name}" == "凤凰羽" || "${gem_name}" == "玄武甲" || "${gem_name}" == "麒麟角" } {
-        #var key ${gem_type}${gem_yinyang}${gem_name};
-        @mapset{gem_mark;$key;${gem_id}};
-        #if {"${gem_yinyang}" == "☆"} {
-            #var rev_gem_yinyang ★;
-        };
-        #elseif {"${gem_yinyang}" == "★"} {
-            #var rev_gem_yinyang ☆;
-        };
-        #else {
-            #var rev_gem_yinyang n;
-        };
-        #var rev_key ${gem_type}${rev_gem_yinyang}${gem_name};
-        #var rev_gem_id @mapget{gem_mark;${rev_key}};
-        #if {"${rev_gem_id}" != "nil"} {
-            #if {${gem_id} > ${rev_gem_id}} {
-                #var gem_id_1 ${gem_id};
-                #var gem_id_2 ${rev_gem_id};
-            };
-            #else {
-                #var gem_id_2 ${gem_id};
-                #var gem_id_1 ${rev_gem_id};
-            };
-        };
-    };
-};
-
 #alias {gem.merge} {
     #class gem.merge.inner open;
-    #action {(%s%S)%*{◎|☆|★}%*\*%S%s(%s%S)%*{◎|☆|★}%*\*%S%s(%s%S)%*{◎|☆|★}%*\*%S%s(%s%S)%*{◎|☆|★}%*\*%S%s(%s%S)%*{◎|☆|★}%*\*%S} {
-        mark_gem {%%2} {%%3} {%%4} {%%5};
-        mark_gem {%%9} {%%10} {%%11} {%%12};
-        mark_gem {%%16} {%%17} {%%18} {%%19};
-        mark_gem {%%23} {%%24} {%%25} {%%26};
-        mark_gem {%%30} {%%31} {%%32} {%%33};
-    } {1};
+    #alias {check_gem} {
+        #var gem_id %%1;
+        #var gem_type %%2;
+        #var gem_yinyang %%3;
+        #var gem_name %%4;
+        #var gem_count %%5;
 
-    #action {(%s%S)%*{◎|☆|★}%*\*%S%s(%s%S)%*{◎|☆|★}%*\*%S%s(%s%S)%*{◎|☆|★}%*\*%S%s(%s%S)%*{◎|☆|★}%*\*%S} {
-        mark_gem {%%2} {%%3} {%%4} {%%5};
-        mark_gem {%%9} {%%10} {%%11} {%%12};
-        mark_gem {%%16} {%%17} {%%18} {%%19};
-        mark_gem {%%23} {%%24} {%%25} {%%26};
-    } {2};
+        #if {${gem_id_1} != -1} {
+            #return;
+        };
 
-    #action {(%s%S)%*{◎|☆|★}%*\*%S%s(%s%S)%*{◎|☆|★}%*\*%S%s(%s%S)%*{◎|☆|★}%*\*%S} {
-        mark_gem {%%2} {%%3} {%%4} {%%5};
-        mark_gem {%%9} {%%10} {%%11} {%%12};
-        mark_gem {%%16} {%%17} {%%18} {%%19};
-    } {3};
-
-    #action {(%s%S)%*{◎|☆|★}%*\*%S%s(%s%S)%*{◎|☆|★}%*\*%S} {
-        mark_gem {%%2} {%%3} {%%4} {%%5};
-        mark_gem {%%9} {%%10} {%%11} {%%12};
-    } {4};
-
-    #action {(%s%S)%*{◎|☆|★}%*\*%S} {
-        mark_gem {%%2} {%%3} {%%4} {%%5};
-    } {5};
-
+        #if {"${gem_name}" == "神龙骨" || "${gem_name}" == "凤凰羽" || "${gem_name}" == "玄武甲" || "${gem_name}" == "麒麟角" } {
+            #var key ${gem_type}${gem_yinyang}${gem_name};
+            @mapset{gem_mark;$key;${gem_id}};
+            #if {"${gem_yinyang}" == "☆"} {
+                #var rev_gem_yinyang ★;
+            };
+            #elseif {"${gem_yinyang}" == "★"} {
+                #var rev_gem_yinyang ☆;
+            };
+            #else {
+                #var rev_gem_yinyang n;
+            };
+            #var rev_key ${gem_type}${rev_gem_yinyang}${gem_name};
+            #var rev_gem_id @mapget{gem_mark;${rev_key}};
+            #if {"${rev_gem_id}" != "nil"} {
+                #if {${gem_id} > ${rev_gem_id}} {
+                    #var gem_id_1 ${gem_id};
+                    #var gem_id_2 ${rev_gem_id};
+                };
+                #else {
+                    #var gem_id_2 ${gem_id};
+                    #var gem_id_1 ${rev_gem_id};
+                };
+            };
+        };
+    };
     #action {用pack <物品id>将宝石放入其中} {
         #unaction {用pack <物品id>将宝石放入其中};
         #class gem.merge.inner kill;

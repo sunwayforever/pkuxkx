@@ -679,11 +679,7 @@
 };
 
 #alias {mx} {
-    on_there {
-        on_truce {
-            mx.q;
-        };
-    };
+    chain on_there on_unbusy mx.q;
     gt %1;
 };
 

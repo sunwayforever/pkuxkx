@@ -216,7 +216,8 @@
 };
 
 #action {【表决】%*投票打开%*(%*)的交谈频道} {
-    vote unchblk %3;
+    #nop vote unchblk %3;
+    #cr;
 };
 
 #gag {设定环境变量：};
