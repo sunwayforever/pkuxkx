@@ -180,6 +180,8 @@ stat.register ĞÚÓ¿ miss ÄãµÄÁèÀ÷¹¥ÊÆ;
     #send {jifa sword xuantie-jian};
     #send {jifa throwing qianmie-shou};
     #send {jifa claw jiuyin-baiguzhao};
+    #send {jifa spear yuejia-qiangfa};
+    #send {jifa whip changhen-bian};
     bei none;
     bei claw;
 };

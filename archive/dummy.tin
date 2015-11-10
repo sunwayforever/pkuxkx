@@ -1,0 +1,83 @@
+#class dummy open;
+#list dummy_list create {};
+#list fake_dummy_list create {};
+#var dummy_family nil;
+
+#alias {dummy.login} {
+    #if {"${dummy_family}" == "nil"} {
+        #return;
+    };
+
+    #class dummy.inner open;
+    #action {^¡¾ÏĞÁÄ¡¿%*(%*): dummy.login: %*} {
+        #if {"%%3" != "${dummy_family}"} {
+            #return;
+        };
+        #var issuer @lower{%%2};
+        #if {"${issuer}" != "${char_id}"} {
+            on_unbusy {
+                tell ${issuer} dummy.syn: ${cipher_text};
+            };
+        };
+    } {1};
+
+    #action {%*¸æËß%*dummy.{syn|ack|action}%*} {
+        #nop #line gag;
+    } {2};
+
+    #action {%*(%*)¸æËßÄã£ºdummy.ack: %*} {
+        #nop #line gag;
+        #var dummy @lower{%%2};
+        #if {@ismember{${dummy};dummy_list} != 0} {
+            #return;
+        };
+        #if {"%%3" == "${plain_text}"} {
+            #list dummy_list add ${dummy};
+        };
+        #else {
+            #list fake_dummy_list add ${dummy};
+        };
+    } {1};
+
+    #action {%*(%*)¸æËßÄã£ºdummy.syn: %*} {
+        #nop #line gag;
+        #var dummy @lower{%%2};
+        INVOKE cipher decode ${dummy_key} %%3;
+        tell ${dummy} dummy.ack: ${cipher};
+        #if {@ismember{${dummy};dummy_list} != 0 || @ismember{${dummy};fake_dummy_list} != 0} {
+            #return;
+        };
+
+        on_unbusy {
+            tell ${dummy} dummy.syn: ${cipher_text};
+        };
+    } {1};
+
+    #action {%*(%*)¸æËßÄã£ºdummy.action: %*} {
+        #nop #line gag;
+        #var dummy @lower{%%2};
+        #var dummy_action %%3;
+        #if {@ismember{${dummy};dummy_list} != 0} {
+            ${dummy_action};
+        };
+    } {1};
+    #class dummy.inner close;
+
+    INVOKE get_uuid;
+    #var plain_text ${uuid};
+    INVOKE cipher encode ${dummy_key} ${plain_text};
+    #var cipher_text ${cipher};
+
+    on_unbusy {
+        chat ...;
+        chat dummy.login: ${dummy_family};
+    };
+};
+
+#alias {dummy.forall} {
+    #foreach {${dummy_list}[%*]} {dummy} {
+        tell ${dummy} dummy.action: %0;
+    };
+    %0;
+};
+#class dummy close;

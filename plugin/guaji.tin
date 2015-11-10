@@ -38,16 +38,20 @@
     set_last_quest guasan;
     #var san_count 0;
     #class guasan.inner open;
-    #action {(%*)告诉你：san} {
+    #action {%*(%*)告诉你：san} {
+        #var dummy @lower{%%2};
+        #if {@ismember{${dummy};dummy_list} == 0} {
+            #return;
+        };
         #alias {burden_check_done} {
-            tell %%1 现在有 @getburden{清心散} 包清心散;
-            give %%1 qingxin san;
-            show_to_info %%1: @getburden{清心散} 包清心散;
+            tell ${dummy} 现在有 @getburden{清心散} 包清心散;
+            give ${dummy} qingxin san;
+            #nop show_to_info %%1: @getburden{清心散} 包清心散;
         };
         burden.check {
             burden_check_done;
         };
-    } {5};
+    } {1};
 
     #alias {ticker.gua.start} {
         #ticker {gua} {

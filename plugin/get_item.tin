@@ -386,4 +386,33 @@
         ask zhang about 圣火令;
     };
 };
+
+#alias {get.zhenglanqi} {
+    #alias {zlq_ask_wu} {
+        ask wu about 射月弓;
+        on_unbusy {
+            give wu gong;
+        };
+    };
+    #action {吴三桂说道：「大侠果然出手不凡，好，请入我密室一游!」} {
+        push desk;
+        on_unbusy {
+            d;light lampn;light lamps;light lampe;light lampw;d;break men;d;open cabinet;
+        };
+    };
+    #action {你从萍水逢的尸体身上搜出一张射月弓} {
+        gt 1987;
+        on_there {
+            zlq_ask_wu;
+        };
+    };
+    gt 1983;
+    on_there {
+        ask ping about 射月弓;
+        kill ping;
+        on_dead {
+            corpse;
+        };
+    };
+};
 #class get_item close;

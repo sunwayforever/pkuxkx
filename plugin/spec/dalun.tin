@@ -147,6 +147,7 @@
     #send {jifa strike huoyan-dao};
     #send {jifa sword xuantie-jian};
     #send {jifa force longxiang-boruo};
+    #send {jifa spear yuejia-qiangfa};
     bei none;
     bei strike;
 };
@@ -162,5 +163,25 @@
 
 stat.register ĞÚÓ¿ hit Ö»¾õµÃÓÌÈçÉíÏİºéÌÎ¾ŞÀË£¬µøµø×²×²;
 stat.register ĞÚÓ¿ miss ÄãµÄÁèÀ÷¹¥ÊÆ;
+
+#alias {gps.jue_qing_gu} {
+    enter;
+    move hou;
+    move hou;
+    move zuo;
+    move zuo;
+    move qian;
+    gps.run;
+};
+
+#alias {gps.jue_qing_gu_back} {
+    enter;
+    move qian;
+    move zuo;
+    move zuo;
+    move hou;
+    move hou;
+    gps.run;
+};
 
 #class dalun close

@@ -10,10 +10,10 @@
 #alias {attack} {
     #if {"${quest}" == "hb"} {
         pfm chan;
-        pfm zongjue;
+        pfm pobing;
         #class attack.inner open;
-        #ticker {zj} {
-            pfm zongjue;
+        #ticker {pobing} {
+            pfm pobing;
         } {3};
         #ticker {chan} {
             pfm chan;
@@ -271,6 +271,9 @@ stat.register 汹涌 hit 只觉得犹如身陷洪涛巨浪，跌跌撞撞;
 stat.register 汹涌 miss 你的凌厉攻势;
 stat.register 养吾 hit 结果他被你攻了个措手不及！;
 stat.register 养吾 miss 你的养吾剑气效果大打折扣。;
+stat.register 破兵 hit 你乘%*机会连发三招！;
+stat.register 破兵 miss 趁此机会暗换真气，庆幸度过一劫;
+stat.register 破兵 miss 回守，另图它策。;
 
 #alias {xiongyong} {
     unwield all;

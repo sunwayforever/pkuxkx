@@ -1172,7 +1172,6 @@ walk_to east;
 };
 
 #alias {post_login} {
-    #nop dummy.login;
     restart_last_quest;
 };
 

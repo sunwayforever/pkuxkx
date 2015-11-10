@@ -38,7 +38,9 @@
         #format {tmp_hit} {%-5s} {${${category}_hit}};
         #format {tmp_miss} {%-5s} {${${category}_miss}};
         #format {tmp_percent} {%s} {${stat_percent}%%};
-        #echo {${tmp_category}命中:${tmp_hit}丢失:${tmp_miss}命中率:${tmp_percent}};
+        #if {${${category}_hit} != 0 || ${${category}_miss} != 0} {
+            #echo {${tmp_category}命中:${tmp_hit}丢失:${tmp_miss}命中率:${tmp_percent}};
+        };
     };
     #buffer lock;
 };
