@@ -387,7 +387,49 @@
     };
 };
 
-#alias {get.zhenglanqi} {
+#alias {get.42_1} {
+    gt 慈宁宫;
+    on_there {
+        on_truce {
+            move bedding;
+            on_truce {
+                open cabinet;
+            };
+        };
+    };
+};
+
+#alias {get.42_2} {
+    gt 鳌拜卧房;
+    #alias {tmp_do_search} {
+        #ticker {search} {
+            search;
+        } {2};
+    };
+    #action {你前不久才来拿过东西，现在又来拿太贪心了吧，至少要过几天} {
+        #unticker {search};
+        on_unbusy {
+            up;
+        };
+    };
+
+    on_there {
+        on_truce {
+            move pi;
+            open door;
+            down;
+            on_unbusy {
+                search;
+                killall;
+                on_truce {
+                    tmp_do_search;
+                };
+            };
+        };
+    };
+};
+
+#alias {get.42_3} {
     #alias {zlq_ask_wu} {
         ask wu about 射月弓;
         on_unbusy {

@@ -121,8 +121,8 @@
     };
     #else {
         #class jd.inner kill;
-        we;
         wi;
+        we;
         #delay {3} {
             tmp_jd;
         };

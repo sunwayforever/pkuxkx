@@ -381,14 +381,6 @@
     set skip_combat 2;
     set wimpy 20;
     set hansz_new_mode 1;
-    set gps.weight.clear 50;
-    set gps.weight.guohe 100;
-    set gps.weight.delay 10;
-    set gps.weight.zuoche 50;
-    set gps.weight.bt 100;
-    set gps.weight.long_delay 80;
-    set gps.weight.shudong 0;
-    set gps.weight.jianghe 150;
 };
 
 #var xy_info off;
@@ -844,8 +836,15 @@ walk_to east;
     } {1200};
     #class fullme_inner close;
     #if {${ignore_fullme} == 0} {
-        xmpp.status 福米;
-        notify 福米;
+        #if {${fm_remaining_time} > 40} {
+            #class fullme_inner kill;
+            #undelay {fullme_delay};
+            tmp_on_fullme;
+        };
+        #else {
+            xmpp.status 福米;
+            notify 福米;
+        };
     };
     #else {
         #showme 也许是上天垂青于你的勤奋和努力吧，一个小时之内你不用担心被判为机器人。;
@@ -1099,7 +1098,10 @@ walk_to east;
         };
         #action {内力恢复：+%* } {
             #var char_nl_recovery %%%1;
-        };
+        } {3};
+        #action {内力恢复：+%*.%* } {
+            #var char_nl_recovery %%%1;
+        } {2};
         #action {系统喘气中} {
             #delay {10} {
                 #send {status_me};
@@ -1132,7 +1134,6 @@ walk_to east;
     #show INFO: 检查负重;
     #send {i};
     #send {hpbrief};
-    #send {uptime};
     #send {time};
     init_set;
     xmpp.start;
@@ -1143,6 +1144,7 @@ walk_to east;
     #show INFO: 检查气血;
     check_health;
     #delay {4} {
+        #send {uptime};
         check_fm;
         #show INFO: 检查武器;
         weapons.check;
@@ -1276,4 +1278,12 @@ walk_to east;
     };
     #class pfm_special.inner close;
     special;
+};
+
+#alias {on_server_reboot} {
+    #showme INFO: 服务器重启!;
+    @clearenv{hb_state};
+    @clearenv{hb_mixin_lunci};
+    @clearenv{hb_lunci};
+    @clearenv{hb_lunci_total};
 };

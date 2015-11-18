@@ -3,7 +3,6 @@
 
 #alias {attack.prepare} {
     yun powerup;
-    yun shield;
 };
 
 #alias {attack} {
@@ -17,10 +16,6 @@
     #class attack.inner close;
 
     #if {"${quest}" == "hb"} {
-        pfm szj;
-        #if {${nl_percent} > 70} {
-            pfm lzj;
-        };
         #class attack.inner open;
         #class attack.inner close;
     };

@@ -36,20 +36,39 @@
     };
 } {60};
 
+#alias {check_uptime} {
+    #if {${env_updated} == 0} {
+        #return;
+    };
+    #var curr_uptime %1;
+    #var last_uptime @getenv{uptime};
+    @setenv{uptime;${curr_uptime}};
+    #if {"${last_uptime}" == "nil" || ${last_uptime} > ${curr_uptime}} {
+        on_server_reboot;
+    };
+};
+
 #action {侠客行已经执行了%1分%2秒} {
     zhengdian %1;
+    check_uptime @ctd{%1};
 } {4};
 
 #action {侠客行已经执行了%1小时%2分%3秒} {
     zhengdian %2;
+    #math uptime {@ctd{%1}*60+@ctd{%2}};
+    check_uptime ${uptime};
 } {3};
 
 #action {侠客行已经执行了%1天%2分%3秒} {
     zhengdian %2;
+    #math uptime {@ctd{%1}*24*60+@ctd{%2}};
+    check_uptime ${uptime};
 } {2};
 
 #action {侠客行已经执行了%1天%2小时%3分%4秒} {
     zhengdian %3;
+    #math uptime {@ctd{%1}*24*60+@ctd{%2}*60+@ctd{%3}};
+    check_uptime ${uptime};
 } {1};
 
 #ticker {check_fuzhong} {

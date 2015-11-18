@@ -13,7 +13,7 @@
         #class attack.inner open;
         #ticker {xiongyong} {
             pfm xiongyong;
-        } {5};
+        } {3};
         #class attack.inner close;
     };
     #elseif {"${quest}" == "hsz"} {
@@ -48,7 +48,7 @@
             } {4.8};
             #class attack.inner close;
 
-            #if {${xf.type} == -1 || ${xf.type} == 1} {
+            #if {${xf.type} == 1} {
                 pfm wushuai;
                 pfm xiongyong;
                 #class attack.inner open;
@@ -76,6 +76,18 @@
                 };
             };
         };
+    };
+    #else {
+        pfm wushuai;
+        pfm xiongyong;
+        #class attack.inner open;
+        #ticker {wushuai} {
+            pfm wushuai;
+        } {6.8};
+        #ticker {xiongyong} {
+            pfm xiongyong;
+        } {4.8};
+        #class attack.inner close;
     };
 };
 
@@ -131,7 +143,7 @@
     gt ·¨ÌÃ¶þÂ¥;
 };
 
-#list my_weapons_to_wield create {staff};
+#list my_weapons_to_wield create {spear};
 
 #var menzhong bofu;
 #var menzhong_didian bofu;
@@ -157,6 +169,7 @@
     do_wield sword;
     #send {jifa parry xuantie-jian};
     perform xuantie-jian.xiongyong;
+    #send {perform xuantie-jian.xiongyong};
     #send {jifa parry huoyan-dao};
     wi;
 };

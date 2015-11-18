@@ -138,6 +138,7 @@
 
 #alias {show_to_quest} {
     #var show_quest %0;
+    xmpp.status ${show_quest};
     #if {${show_inited} == 0} {
         #return;
     };

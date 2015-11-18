@@ -38,6 +38,17 @@
     set_last_quest guasan;
     #var san_count 0;
     #class guasan.inner open;
+    #alias {san_report} {
+        #alias {burden_check_done} {
+            show_to_quest ÇåĞÄÉ¢: @getburden{ÇåĞÄÉ¢};
+        };
+        burden.check {
+            burden_check_done;
+        };
+    };
+    #ticker {san_report} {
+      san_report;
+    } {300};
     #action {%*(%*)¸æËßÄã£ºsan} {
         #var dummy @lower{%%2};
         #if {@ismember{${dummy};dummy_list} == 0} {
@@ -67,6 +78,7 @@
 
     gt ĞÇËŞÅÉ´¢²ØÊÒ;
     on_there {
+        san_report;
         guaji.start qingxin san;
     };
 };

@@ -38,7 +38,6 @@
 
 #alias {hb.watchdog.kick} {
     #delay {hb_check_delay} {
-        log.save;
         hb.run;
     } {60};
 };
@@ -72,13 +71,18 @@
                 };
             };
             #else {
-                INVOKE gps.traverse ${gps.roomno} "${gps_traverse_location}";
+                INVOKE gps.traverse ${gps.roomno} "${gps_traverse_location}" "nil";
                 #var hb_path ${gps_path};
                 #var hb_path_index 1;
                 #list hb_path size hb_path_size;
                 #var hb_paused 0;
                 #if {${hb_path_size} == 0} {
-                    notify 无法遍历伙计 @ ${gps_traverse_location};
+                    #if {"${pos.room}" == "${gps_traverse_location}"} {
+                        hb.back_and_forth;
+                    };
+                    #else {
+                        notify 无法遍历伙计 @ ${gps_traverse_location};
+                    };
                 };
                 #else {
                     hb.run;
@@ -287,7 +291,6 @@
     } {1};
 
     #action {镖车呼啦一声散了架} {
-        log.save;
         hb.pause;
         notify 镖车呼啦一声散了架;
         hb.b;
@@ -410,6 +413,7 @@
         };
         #else {
             @setenv{hb_owner;nil};
+            @setenv{hb_owner_loc;nil};
         };
         tmp_hb_get_owner;
     };
@@ -452,14 +456,6 @@
                 listesc;
             } {5};
         };
-    };
-};
-
-#alias {hb.fail} {
-    hb.teardown;
-    taopao {
-        raw;
-        hb.b;
     };
 };
 
@@ -659,7 +655,7 @@
         };
     };
     #elseif {"${hb_state}" == "GOT_MIXIN"} {
-        show_to_info 有密信在身;
+        notify 有密信;
     };
     #elseif {"${hb_state}" == "nil"} {
         #if {"${hb_location}" == "nil"} {
@@ -667,26 +663,18 @@
             hb.stop;
         };
         #else {
-            chain hb.p {
-                gt ${hb_location};
-                on_there {
-                    hb.get_owner {
-                        hb.restart;
-                    };
-                };
-            };
+            chain fullme hb.p {gt ${hb_location};on_there {hb.get_owner {hb.restart;};};};
         };
     };
     #else {
-        hb.b;
+        chain fullme hb.b;
     };
 };
 
 #alias {hb.restart} {
     drop_garbage;
     #math next_lunci @getenv{hb_lunci}+1;
-    show_to_quest 推车: @getenv{hb_lunci_total}+${next_lunci}: 准备;
-    set_last_quest hb;
+    show_to_tuiche 准备;
     on_health {hb.q};
 };
 
@@ -705,41 +693,64 @@
     @clearenv{hb_info};
     @clearenv{hb_owner};
     @clearenv{hb_state};
-    show_to_quest 推车结束;
+    show_to_tuiche 推车结束;
 };
 
 #alias {mx} {
-    chain on_there on_unbusy mx.q;
+    chain on_there mx.q;
     gt %1;
 };
 
 #alias {mx.q} {
     #class mx.inner open;
+    #ticker {mx_q} {
+        zhaoxun;
+    } {5};
     #action {你扯开嗓子，开始大喊：小王八蛋，你给我滚出来} {
         #class mx.inner kill;
         notify 密信地点不对;
     };
     #action {一个伙计挖着鼻屎走了出来，道：你找我啥事} {
-        l;
+        #unticker {mx_q};
+        #delay {3} {
+            gps.minor_traverse 财物的伙计;
+        };
     };
-    #action {财物的伙计 %S(%S)} {
-        #format {tmp_huoji} {%l} {%%2};
+    #action {GPS: 遍历完成} {
+        #class mx.inner kill;
+        notify 没找到伙计;
+    };
+    #action {找到目标} {
+        mx.check;
+    };
+    #alias {mx.got_caiwu} {
+        @setenv{hb_state;GOT_CAIWU};
+        show_to_tuiche 拿到财宝;
+        play get_item.wav;
+        #class mx.inner kill;
+        hb.b;
+    };
+    #alias {mx.check} {
+        l;
         #class mx.inner open;
-        #action {把一包财物砸向你，一转眼不见了。} {
-            @setenv{hb_state;GOT_CAIWU};
-            show_to_tuiche 拿到财宝;
-            play get_item.wav;
-            #class mx.inner kill;
-            hb.b;
-        };
-        #action {这里没有这个人} {
-            #class mx.inner kill;
-        };
-        #ticker {yao} {
-            ask $tmp_huoji about yao;
-        }{0.5};
+        #action {财物的伙计 %S(%S)} {
+            #format {tmp_huoji} {%l} {%%%2};
+            #class mx.inner open;
+            #action {把一包财物砸向你，一转眼不见了。} {
+                #undelay {mx_delay};
+                mx.got_caiwu;
+            };
+            #delay {mx_delay} {
+                mx.got_caiwu;
+            } {10};
+            #ticker {yao} {
+                ask $tmp_huoji about yao;
+            } {1};
+            #class mx.inner close;
+        } {1};
         #class mx.inner close;
-    } {1};
+    };
+
     #class mx.inner close;
     zhaoxun;
 };
@@ -747,11 +758,11 @@
 #alias {hb.p} {
     #alias tmp_hb_p #cr;
     #alias tmp_hb_p %1;
-    #var chain_action sell.all get.qian get.san get.bao jianding.all donate.all repair special_repair gem.combine hb.spec tmp_hb_p;
+    #var chain_action_hb_p sell.all get.qian get.san get.bao jianding.all donate.all repair special_repair gem.combine hb.spec tmp_hb_p;
     #if {${need_reload} == 1} {
-        #var chain_action reload ${chain_action};
+        #var chain_action_hb_p reload ${chain_action_hb_p};
     };
-    chain ${chain_action};
+    chain ${chain_action_hb_p};
 };
 
 #alias {show_to_tuiche} {
@@ -782,6 +793,20 @@
     };
 };
 
+#alias {hb.back_and_forth} {
+    #alias {get_pos_done} {
+        #list exits_list create ${exits_list};
+        #var back_exit ${exits_list}[1];
+        #list hb_path create {${back_exit};@opposite{${back_exit}}};
+        #var hb_path_index 1;
+        #list hb_path size 2;
+        hb.run;
+    };
+    get_pos {
+        get_pos_done;
+    };
+};
+
 #alias {hb.goto_dest_area} {
     #var hb_paused 0;
     #alias {gps_check_room_done} {
@@ -794,34 +819,35 @@
             #math hb_remaining_path_size ${hb_remaining_path_size}-${hb_path_index};
             #var gps.from_roomno ${gps.roomno};
             INVOKE gps.get_room ${hb_dest};
+            #if {${gps.from_roomno} == ${gps.roomno}} {
+                hb.back_and_forth;
+                #return;
+            };
             INVOKE gps.get_path ${gps.from_roomno} ${gps.roomno} ${HB_GPS_WEIGHT};
             #var hb_path ${gps_path};
             #var hb_path_index 1;
             #list hb_path size hb_path_size;
             #if {${hb_path_size} == 0} {
-                #delay {1} {
-                    #show {GPS: 目标房间不可达, 无法行走: ${hb_dest}:${gps.roomno}};
-                };
+                #show {GPS: 目标房间不可达, 无法行走: ${hb_dest}:${gps.roomno}};
+                #return;
             };
-            #else {
-                #if {@getenv{hb_mixin_lunci} == 5} {
-                    #math additional_path_size ${hb_remaining_path_size} - ${hb_path_size};
-                    #if {${additional_path_size} > 0} {
-                        #list hb_path get 3 first_step;
-                        #var second_step @opposite{${first_step}};
-                        #if {"${second_step}" != "nil"} {
-                            #var cnt 0;
-                            #while {${cnt} < ${additional_path_size}} {
-                                #list hb_path insert 3 ${second_step};
-                                #list hb_path insert 3 ${first_step};
-                                #math cnt $cnt+2;
-                            };
+            #if {@getenv{hb_mixin_lunci} == 5} {
+                #math additional_path_size ${hb_remaining_path_size} - ${hb_path_size};
+                #if {${additional_path_size} > 0} {
+                    #list hb_path get 3 first_step;
+                    #var second_step @opposite{${first_step}};
+                    #if {"${second_step}" != "nil"} {
+                        #var cnt 0;
+                        #while {${cnt} < ${additional_path_size}} {
+                            #list hb_path insert 3 ${second_step};
+                            #list hb_path insert 3 ${first_step};
+                            #math cnt $cnt+2;
                         };
-                        #list hb_path size hb_path_size;
                     };
+                    #list hb_path size hb_path_size;
                 };
-                hb.run;
             };
+            hb.run;
         };
     };
     gps.check_room {

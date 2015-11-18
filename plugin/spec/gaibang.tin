@@ -13,64 +13,68 @@
 
 #alias {attack} {
     pfm chan;
-    pfm tiao;
     #class attack.inner open;
     #ticker {perf_chan} {
         pfm chan;
     } {1};
-    #ticker {perf_tiao} {
-        pfm tiao;
-    } {5.8};
     #class attack.inner close;
 
     #if {"${quest}" == "hb"} {
     };
-    #elseif {${mj_started}  == 1} {
-        #class attack.inner open;
-        #ticker {chuo} {
-            pfm chuo;
-        } {2.5};
-        #class attack.inner close;
-        #if {${xf.type} == -1 || ${xf.type} == 1} {
-            #var jiali_count max;
-            pfm sanhui;
-        };
-        #elseif {${xf.type} == 2 || ${xf.type} == 3 || ${xf.type} == 4} {
-            pfm chuo;
-        };
-    };
-    #else {
-        #if {${xf.type} == -1 || ${xf.type} == 1} {
-            #var jiali_count max;
-            pfm sanhui;
-            #class attack.inner open;
-            #ticker {sanhui} {
-                pfm sanhui;
-            } {5.8};
-            #class attack.inner open;
-            #ticker {zhuan} {
-                pfm zhuan;
-            } {3.8};
-            #class attack.inner close;
-
-            #class attack.inner close;
-        };
-        #elseif {${xf.type} == 2} {
-            pfm zhuan;
-            #class attack.inner open;
-            #ticker {zhuan} {
-                pfm zhuan;
-            } {3.8};
-            #class attack.inner close;
-        };
-        #elseif {${xf.type} == 3 || ${xf.type} == 4} {
-            pfm chuo;
+    #elseif {"${quest}" == "xf"} {
+        #if {${mj_started}  == 1} {
             #class attack.inner open;
             #ticker {chuo} {
                 pfm chuo;
-            } {3.8};
+            } {2.5};
             #class attack.inner close;
+            #if {${xf.type} == -1 || ${xf.type} == 1} {
+                #var jiali_count max;
+                pfm sanhui;
+            };
+            #elseif {${xf.type} == 2 || ${xf.type} == 3 || ${xf.type} == 4} {
+                pfm chuo;
+            };
         };
+        #else {
+            #if {${xf.type} == 1} {
+                #var jiali_count max;
+                pfm sanhui;
+                #class attack.inner open;
+                #ticker {sanhui} {
+                    pfm sanhui;
+                } {5.8};
+                #ticker {zhuan} {
+                    pfm zhuan;
+                } {3.8};
+                #class attack.inner close;
+            };
+            #elseif {${xf.type} == 2} {
+                pfm zhuan;
+                #class attack.inner open;
+                #ticker {zhuan} {
+                    pfm zhuan;
+                } {3.8};
+                #class attack.inner close;
+            };
+            #elseif {${xf.type} == 3 || ${xf.type} == 4} {
+                pfm chuo;
+                #class attack.inner open;
+                #ticker {chuo} {
+                    pfm chuo;
+                } {3.8};
+                #class attack.inner close;
+            };
+        };
+    };
+    #else {
+        #var jiali_count max;
+        pfm sanhui;
+        #class attack.inner open;
+        #ticker {sanhui} {
+            pfm sanhui;
+        } {5.8};
+        #class attack.inner close;
     };
 };
 
@@ -115,6 +119,8 @@
     unwi;
     do_wield staff;
     perform dagou-bang.chan;
+    #send {perform dagou-bang.chan};
+    #send {perform dagou-bang.chan};
     wi;
 };
 
@@ -176,7 +182,7 @@
 stat.register 缠 miss 你叹了口气知道这“缠”字决已为人所破，只得收回了招式;
 stat.register 缠 hit 你得理不饶人;
 
-#list my_weapons_to_wield create {spear};
+#list my_weapons_to_wield create {spear;spear 2};
 
 #var shortcut F1:缠 F2:转 F3:挑 F4:戳 F5:雷霆降龙 F6:亢龙三悔;
 #var shifu hong;

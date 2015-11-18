@@ -309,12 +309,19 @@ load gps_actions;
     gps.stop;
 };
 
+#alias {gps.minor_traverse} {
+    gps.traverse %1 minor;
+};
+
 #alias {gps.traverse} {
     #unvar gps_traverse_target;
-    #unvar gps_traverse_location;
     gps.setup;
     #var gps_stop 0;
     #var traverse_tmp %1;
+    #var minor nil;
+    #var minor %2;
+    #var gps_traverse_location nil;
+
     #replace traverse_tmp {@} {;};
     #list traverse_tmp_list create ${traverse_tmp};
     #list traverse_tmp_list size traverse_tmp_size;
@@ -334,17 +341,21 @@ load gps_actions;
             #delay {gps_check_delay} {
                 #showme {GPS: 当前房间未记录, 无法遍历};
                 taopao {
-                    gps.traverse ${traverse_tmp};
+                    gps.traverse ${traverse_tmp} ${minor};
                 };
             } {1};
         };
         #else {
-            INVOKE gps.traverse ${gps.roomno} ${gps_traverse_location};
+            INVOKE gps.traverse ${gps.roomno} ${gps_traverse_location} ${minor};
             #var gps_path_index 1;
             #list gps_path size gps_path_size;
             #var gps.run.mode TRAVERSE;
             set brief 1;
-            gps.run;
+            #delay {gps_delay} {
+                #if {${gps_stop} == 0} {
+                    gps.run;
+                };
+            } {1};
         };
     };
 
@@ -359,33 +370,8 @@ load gps_actions;
     #nop weight = 0: there is no weight;
     #nop weight < 0: the path is disabled;
 
-    #list weights_list create {
-        @getenv{gps.weight.clear};
-        @getenv{gps.weight.guohe};
-        @getenv{gps.weight.delay};
-        @getenv{gps.weight.zuoche};
-        @getenv{gps.weight.bt};
-        @getenv{gps.weight.long_delay};
-        @getenv{gps.weight.shudong};
-        @getenv{gps.weight.jianghe};
-    };
-
-    #while {1} {
-        #list weights_list find nil tmp_get_path_index;
-        #if {${tmp_get_path_index} != 0} {
-            #list weights_list set ${tmp_get_path_index} 0;
-        };
-        #else {
-            #break;
-        };
-    };
-
-    #var weights tmp;
-    #foreach {${weights_list}[%*]} {i} {
-        #var weights ${weights},${i}
-    };
-    #replace weights {tmp,} {};
-    INVOKE gps.get_path %1 %2 ${weights};
+    #var DEFAULT_GPS_WEIGHT "50,100,10,50,100,80,0,150";
+    INVOKE gps.get_path %1 %2 ${DEFAULT_GPS_WEIGHT};
 };
 
 #macro {\e[24~} { #nop ];

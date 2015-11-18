@@ -10,10 +10,14 @@
 #alias {attack} {
     #if {"${quest}" == "hb"} {
         pfm chan;
-        pfm pobing;
+        #if {${nl_percent} > 70} {
+            pfm pobing;
+        };
         #class attack.inner open;
         #ticker {pobing} {
-            pfm pobing;
+            #if {${nl_percent} > 70} {
+                pfm pobing;
+            };
         } {3};
         #ticker {chan} {
             pfm chan;

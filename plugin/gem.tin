@@ -178,6 +178,8 @@
 };
 
 #alias {gem.merge} {
+    #alias tmp_merge #cr;
+    #alias tmp_merge %1;
     #class gem.merge.inner open;
     #alias {check_gem} {
         #var gem_id %%1;
@@ -241,12 +243,18 @@
                     };
                     #else {
                         show_to_info 内力不足, 无法 merge gem;
+                        #delay {3} {
+                            tmp_merge;
+                        };
                     };
                 };
             };
         };
         #else {
             show_to_info 合成完毕;
+            #delay {3} {
+                tmp_merge;
+            };
         };
     };
 

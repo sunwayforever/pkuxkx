@@ -22,9 +22,10 @@ class Bot(ClientXMPP):
 def send_image(xmpp, url):
     html = urlopen(url).readline().decode('utf-8')
     m = re.match(".*img src=\"(.*)\" alt",html)
-    if m:
-        image_url = "http://pkuxkx.net/antirobot/"+m.group(1)
-        xmpp.send_message(mto="messenger@v587.info/xkx", mbody=image_url, mtype='chat')
+    if not m:
+        return
+    image_url = "http://pkuxkx.net/antirobot/"+m.group(1)
+    xmpp.send_message(mto="messenger@v587.info/xkx", mbody=image_url, mtype='chat')
         
 if __name__ == '__main__':
     xmpp = Bot(sys.argv[1]+'@v587.info/xkx', '123456')

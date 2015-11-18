@@ -11,12 +11,12 @@ from ..common import Tintin
 from ..common import logger
 
 TRAVERSE_WEIGHT = "1,-1,1,-1,-1,1,1,1"
-def traverse_bfs(mud, roomno, location=None):
+def traverse_bfs(mud, roomno, location):
     traverse_path = []
     stack = [(roomno,"NULL")]
     visited = set()
     last_room_no = roomno
-    if location == None:
+    if location == "nil":
         bfs_max_count = 10
     else:
         bfs_max_count = 100
@@ -28,7 +28,7 @@ def traverse_bfs(mud, roomno, location=None):
         
         (dst_room_no,dst_room_name) = stack.pop(0)
 
-        if location == None or dst_room_name == location:
+        if location == "nil" or dst_room_name == location:
             if last_room_no != dst_room_no:
                 traverse_path.extend(mud.get_path(last_room_no, dst_room_no))
                 last_room_no = dst_room_no
@@ -42,7 +42,7 @@ def traverse_bfs(mud, roomno, location=None):
     traverse_path.extend(mud.get_path(last_room_no, roomno))
     return traverse_path
 
-def traverse_dfs(mud, roomno, location=None):
+def traverse_dfs(mud, roomno, location):
     traverse_path = []
     stack = [(roomno,"NULL")]
     visited = set()
@@ -51,7 +51,7 @@ def traverse_dfs(mud, roomno, location=None):
     while len(stack) != 0:
         (dst_room_no,dst_room_name) = stack.pop()
 
-        if location == None or dst_room_name == location:
+        if location == "nil" or dst_room_name == location:
             if last_room_no != dst_room_no:
                 traverse_path.extend(mud.get_path(last_room_no, dst_room_no))
                 last_room_no = dst_room_no
@@ -68,14 +68,13 @@ def traverse_dfs(mud, roomno, location=None):
 if __name__ == "__main__":
     conn = open_database()
     roomno = int(sys.argv[1])
-    if len(sys.argv) == 4:
-        location = sys.argv[2]
-    else:
-        location = None
+    location = sys.argv[2]
+    minor = sys.argv[3]
 
     mud = MudRoom(conn, TRAVERSE_WEIGHT)
     traverse_path = traverse_bfs(mud, roomno, location)
-    traverse_path.extend(traverse_dfs(mud, roomno, location))
+    if (minor == "nil"):
+        traverse_path.extend(traverse_dfs(mud, roomno, location))
         
     tt = Tintin()
     tt.write("#list {gps_path} create {%s}" % (";".join(traverse_path)))
