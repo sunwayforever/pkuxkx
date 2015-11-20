@@ -49,8 +49,8 @@
         #list special_skills_level add ${special_skill_level};
     };
 
-    #action {~\e[1;31m%d%s%d\e[2;37;0m} { #nop ]];
-        #var max_level %%1;
+    #action {你的技能等级最多能达到%*级} {
+        #var max_level @ctd{%%1};
     };
 
     #alias {do_lingwu} {
@@ -200,7 +200,6 @@
     };
     #list special_skills clear;
     #list special_skills_level clear;
-    exp;
     #send {sk};
     #delay {1} {#send {jifa}};
     #list skills get $skill_index skill;

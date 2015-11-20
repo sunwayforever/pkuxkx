@@ -222,6 +222,7 @@
             hb.run;
         };
     };
+
     #alias {hb.busy} {
         on_unbusy {
             #math hb_path_index ${hb_path_index}+1;
@@ -229,7 +230,8 @@
         };
     };
 
-    #alias {hb.clear} {
+    #alias hb.clear hb.force_clear;
+    #alias {hb.force_clear} {
         #var hb_tmp_blocker %%0;
         #class clear_blocker.inner open;
         #action {你想杀谁} {
@@ -924,7 +926,7 @@
 };
 
 #list hb_blacklist:昌隆镖局 create {
-    镇江飞龙镖局;归云庄太湖街;嘉兴钱庄;峨嵋毗卢殿;岳阳车马行;泉州当铺;苏州聚宝斋;
+    镇江飞龙镖局;归云庄太湖街;嘉兴钱庄;峨嵋毗卢殿;岳阳车马行;泉州当铺;苏州聚宝斋;江州天福镖局;
 };
 
 #class hubiao close

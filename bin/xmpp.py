@@ -6,8 +6,8 @@ from sleekxmpp.exceptions import IqError, IqTimeout
 from urllib.request import urlopen
 
 class Bot(ClientXMPP):
-    def __init__(self, jid, password):
-        ClientXMPP.__init__(self, jid, password)
+    def __init__(self, jid):
+        ClientXMPP.__init__(self, jid+'@v587.info/xkx', "123456")
         self.add_event_handler("session_start", self.session_start)
         self.add_event_handler("message", self.message)
 
@@ -19,16 +19,20 @@ class Bot(ClientXMPP):
         if msg['type'] in ('chat', 'normal'):
             print ("xmpp message: %s:%s\n" % (msg['from'],msg['body']))
 
-def send_image(xmpp, url):
+def send_image(xmpp, url, char_id):
     html = urlopen(url).readline().decode('utf-8')
     m = re.match(".*img src=\"(.*)\" alt",html)
     if not m:
         return
-    image_url = "http://pkuxkx.net/antirobot/"+m.group(1)
-    xmpp.send_message(mto="messenger@v587.info/xkx", mbody=image_url, mtype='chat')
-        
+    handle = urlopen("http://pkuxkx.net/antirobot/"+m.group(1))
+    image_file = open("/var/www/image_pkuxkx/%s.png"%(char_id),"wb")
+    image_file.write(handle.read())
+    image_file.close()
+    xmpp.send_message(mto="messenger@v587.info/xkx", mbody="http://v587.info:8080/image_pkuxkx/%s.png"%(char_id), mtype='chat')
+    
 if __name__ == '__main__':
-    xmpp = Bot(sys.argv[1]+'@v587.info/xkx', '123456')
+    char_id = sys.argv[1]
+    xmpp = Bot(char_id)
     xmpp.connect(("v587.info",5222))
     xmpp.process(block=False)
     while (True):
@@ -41,5 +45,5 @@ if __name__ == '__main__':
             xmpp.send_message(mto="messenger@v587.info/xkx", mbody=line, mtype='chat')
             m = re.match("http://pkuxkx.net/antirobot/robot.php", line)
             if m:
-                send_image(xmpp, line)
+                send_image(xmpp, line, char_id)
 

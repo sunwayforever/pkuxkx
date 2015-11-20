@@ -24,13 +24,13 @@
 #foreach {${chat_ignore_list}[%*]} {chat_ignore} {
     #action {${chat_ignore}} {
         #cr;
-    } {3};
+    } {2};
 };
 
 #gag {¡¾ÏÐÁÄ¡¿%*};
 #action {¡¾ÏÐÁÄ¡¿%*} {
     show_to_chat %0;
-} {5};
+} {4};
 
 #action {^¡¾ÏÐÁÄ¡¿%*(%*): %*} {
     remember @lower{%2};
@@ -44,19 +44,19 @@
             #xmpp %0;
         };
     };
-} {4};
+} {3};
 
 #action {%1{»Ø´ð|¸æËß}Äã£º%2} {
     show_to_chat ¡¾Ë½ÁÄ¡¿%0;
     chat.record %0;
     #xmpp ¡¾Ë½ÁÄ¡¿From %1£º%2;
-} {5};
+} {4};
 
 #action {Äã{»Ø´ð|¸æËß}%1£º%2} {
     show_to_chat ¡¾Ë½ÁÄ¡¿%0;
     chat.record %0;
     #xmpp ¡¾Ë½ÁÄ¡¿To %1£º%2;
-} {5};
+} {4};
 
 #alias {chat.record} {
     #if {"${char_id}" == "erq"} {

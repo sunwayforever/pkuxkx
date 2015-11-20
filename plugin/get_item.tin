@@ -412,20 +412,11 @@
             up;
         };
     };
-
+    #action {˜°∞›À¿¡À°£} {
+        unbusy {move pi} {open door} down search;
+    };
     on_there {
-        on_truce {
-            move pi;
-            open door;
-            down;
-            on_unbusy {
-                search;
-                killall;
-                on_truce {
-                    tmp_do_search;
-                };
-            };
-        };
+        kill ao bai;
     };
 };
 

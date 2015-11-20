@@ -7,8 +7,8 @@
         #var current_dodge %%2;
     };
 
-    #action {~\e[1;31m%d%s%d\e[2;37;0m} { #nop ]];
-        #var max_level %%1;
+    #action {你的技能等级最多能达到%*级} {
+        #var max_level @ctd{%%1};
     };
 
     #alias {tl.watchdog.stop} {
@@ -23,7 +23,6 @@
 
     #alias {check_dodge_level} {
         #send {sk};
-        #send {exp};
         #delay {1} {
             #if {${max_level} < ${current_dodge}} {
                 #showme MISSION_COMPLETE: tl;

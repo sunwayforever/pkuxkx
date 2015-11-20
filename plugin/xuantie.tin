@@ -7,6 +7,32 @@
     show_to_quest 江中练剑;
     #send {jifa sword xuantie-jian};
     #class xuantie.inner open;
+
+    #action {□玄铁剑法 (xuantie-jian)%*  %d/} {
+        #var xuantie_level %%2;
+    };
+
+    #action {你的技能等级最多能达到%*级} {
+        #var max_level @ctd{%%1};
+    };
+
+    #alias {check_xuantie_level} {
+        #send {sk};
+        #delay {1} {
+            #if {${max_level} <= ${xuantie_level}} {
+                #showme MISSION_COMPLETE: xt;
+                xt.stop;
+            };
+            #else {
+                show_to_quest 江中练剑: ${xuantie_level} -> ${max_level};
+            };
+        };
+    };
+
+    #ticker {check_xuantie_level} {
+        check_xuantie_level;
+    } {300};
+
     #alias {start_lian} {
         #ticker {check} {
             #if {${hpbrief_curr_nl} < 1000 || ${hpbrief_curr_qx} < 300 || ${hpbrief_curr_js} < 300} {
@@ -27,7 +53,7 @@
 
     #ticker {xuantie} {
         start_lian;
-    } {300};
+    } {400};
 
     #action {你见海潮退去} {
         #delay {5} {
@@ -37,6 +63,7 @@
     #class xuantie.inner close;
     gt 钱塘江口;
     on_there {
+        check_xuantie_level;
         start_lian;
     };
 };
