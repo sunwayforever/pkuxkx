@@ -2,7 +2,13 @@
 #tab gem.combine;
 #tab gem.merge;
 
-#var gem_combine_level 6;
+@mapcreate{gem_combine_level};
+@mapset{gem_combine_level;玄武甲;6};
+@mapset{gem_combine_level;麒麟角;6};
+@mapset{gem_combine_level;凤凰羽;6};
+@mapset{gem_combine_level;神龙骨;6};
+#var gem_combine_level_default 7;
+
 #list gem_types create {地;山;水;风;雷;火;泽;天};
 #var gem.combine_count 0;
 #alias {gem} {
@@ -19,7 +25,7 @@
         #list gem_types find ${gem_type} gem_type_index;
         #math gem_value ${gem_value}+@power{3;${gem_type_index}}/3*${gem_count};
         #if {"${gem_filter}" != "nil"} {
-            #if {@issubstring{${gem_name};${gem_filter}} == 1} {
+            #if {@issubstring{${gem_type}${gem_property}${gem_name};${gem_filter}} == 1} {
                 #list gem_filter_list add (${gem_id})${gem_type}${gem_property}${gem_name}*${gem_count};
             };
         };
@@ -91,8 +97,14 @@
         #var gem_name %%4;
         #var gem_count %%5;
         #list gem_types find ${gem_type} gem_type_index;
-        #if {${gem_count} >=3 && ${gem_type_index} < ${gem_combine_level}} {
-            #var target_gem_id ${gem_id};
+        #if {${gem_count} >= 3} {
+            #var gem_level @mapget{gem_combine_level;${gem_name}};
+            #if {"${gem_level}" == "nil"} {
+                #var gem_level ${gem_combine_level_default};
+            };
+            #if {${gem_type_index} < ${gem_level}} {
+                #var target_gem_id ${gem_id};
+            };
         };
     };
 
@@ -272,5 +284,56 @@
         notify %1%2%3;
         play gem2.wav;
     };
+};
+
+#alias {gem.pick} {
+    #if {"%1" == ""} {
+        #return;
+    };
+    #var gem_filter nil;
+    #var gem_filter %1;
+
+    #class gem.pick.inner open;
+    #var gem_id_to_pick -1;
+    #var gem_id_to_pick_count -1;
+    #alias {check_gem} {
+        #var gem_id %%1;
+        #var gem_type %%2;
+        #var gem_property %%3;
+        #var gem_name %%4;
+        #var gem_count %%5;
+        #list gem_types find ${gem_type} gem_type_index;
+        #if {@issubstring{${gem_type}${gem_property}${gem_name};${gem_filter}} == 1 && ${gem_id_to_pick} == -1} {
+            #var gem_id_to_pick ${gem_id};
+            #var gem_id_to_pick_count ${gem_count};
+        };
+    };
+    #action {用pack <物品id>将宝石放入其中} {
+        #if {${gem_id_to_pick} == -1} {
+            gem.teardown;
+            #class gem.pick.inner kill;
+            show_to_info gem.pick 完成;
+        };
+        #else {
+            pick_one_gem;
+        };
+    };
+    #action {你从宝石袋里面取出一颗} {
+        on_unbusy {
+            pick_one_gem;
+        };
+    };
+    #alias {pick_one_gem} {
+        #if {${gem_id_to_pick_count} > 0} {
+            #math gem_id_to_pick_count ${gem_id_to_pick_count}-1;
+            pickgem ${gem_id_to_pick};
+        };
+        #else {
+            gem.pick ${gem_filter};
+        };
+    };
+    #class gem.pick.inner close;
+    gem.setup;
+    jiancha jin nang;
 };
 #class gem close

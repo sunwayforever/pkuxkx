@@ -243,7 +243,7 @@
             killall ${hb_tmp_blocker};
         } {5};
         #class clear_blocker.inner close;
-        hb.pause;
+
         killall ${hb_tmp_blocker};
     };
 
@@ -661,7 +661,7 @@
     };
     #elseif {"${hb_state}" == "nil"} {
         #if {"${hb_location}" == "nil"} {
-            show_to_info 请指定镖局: zz, zuo, tf, fh, ...;
+            show_to_info 请指定镖局: zz, zuo, tf, fh, fm;
             hb.stop;
         };
         #else {
@@ -760,6 +760,7 @@
 #alias {hb.p} {
     #alias tmp_hb_p #cr;
     #alias tmp_hb_p %1;
+    show_to_tuiche 准备;
     #var chain_action_hb_p sell.all get.qian get.san get.bao jianding.all donate.all repair special_repair gem.combine hb.spec tmp_hb_p;
     #if {${need_reload} == 1} {
         #var chain_action_hb_p reload ${chain_action_hb_p};
@@ -918,7 +919,7 @@
 };
 
 #list hb_blacklist:天福镖局 create {
-    嘉兴钱庄;泉州当铺;
+    嘉兴钱庄;泉州当铺;长安飞马镖局;赞普来福杂货;
 };
 
 #list hb_blacklist_baowei:天福镖局 create {
