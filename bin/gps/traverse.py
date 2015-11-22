@@ -14,7 +14,7 @@ TRAVERSE_WEIGHT = "1,-1,1,-1,-1,1,1,1"
 def get_neighbors(mud, roomno):
     stack = [roomno,-1]
     visited = set()
-    bfs_max_count = 5
+    bfs_max_count = 8
 
     while len(stack) != 0:
         if bfs_max_count<0:

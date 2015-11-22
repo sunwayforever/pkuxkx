@@ -146,6 +146,10 @@
         };
     };
 
+    #action {必须使用匕首类武器} {
+        wield dagger;
+    };
+
     #list {lw_next_actions} create {
         道德小于零才能练这种阴毒功夫;
         乾坤大挪移心法只能用学习;

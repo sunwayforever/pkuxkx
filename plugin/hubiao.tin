@@ -804,7 +804,7 @@
         #var back_exit ${exits_list}[1];
         #list hb_path create {${back_exit};@opposite{${back_exit}}};
         #var hb_path_index 1;
-        #list hb_path size 2;
+        #list hb_path size hb_path_size;
         hb.run;
     };
     get_pos {
@@ -921,7 +921,7 @@
 };
 
 #list hb_blacklist:天福镖局 create {
-    嘉兴钱庄;泉州当铺;长安飞马镖局;赞普来福杂货;
+    长安飞马镖局;赞普来福杂货;峨嵋毗卢殿;
 };
 
 #list hb_blacklist_baowei:天福镖局 create {
