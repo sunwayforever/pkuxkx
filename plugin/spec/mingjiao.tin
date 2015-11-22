@@ -6,24 +6,35 @@
 };
 
 #alias {attack} {
-    #class attack.inner open;
-    #ticker {duo} {
-        pfm duo;
-    } {3.5};
-    #ticker {xiongyong} {
+    #if {"${quest}" == "hb"} {
         pfm xiongyong;
-    } {4.5};
-    #class attack.inner close;
-    pfm xiongyong;
-    pfm yinfeng;
-    pfm duo;
-    pfm jindou;
-    #if {${xf.type} != 3} {
+        pfm jindou;
         #class attack.inner open;
-        #ticker {yinfeng} {
-            pfm yinfeng;
-        } {1};
+        #ticker {xiongyong} {
+            pfm xiongyong;
+        } {5};
         #class attack.inner close;
+    };
+    #else {
+        #class attack.inner open;
+        #ticker {duo} {
+            pfm duo;
+        } {3.5};
+        #ticker {xiongyong} {
+            pfm xiongyong;
+        } {4.5};
+        #class attack.inner close;
+        pfm xiongyong;
+        pfm yinfeng;
+        pfm duo;
+        pfm jindou;
+        #if {${xf.type} != 3} {
+            #class attack.inner open;
+            #ticker {yinfeng} {
+                pfm yinfeng;
+            } {1};
+            #class attack.inner close;
+        };
     };
 };
 
@@ -46,21 +57,21 @@
 #alias {yinfeng} {
     unwi;
     do_wield dagger;
-    perform dagger.yinfeng;
+    perform shenghuo-lingfa.yinfeng;
     wi;
 };
 
 #alias {duo} {
     unwi;
     do_wield dagger;
-    perform dagger.duo;
+    perform shenghuo-lingfa.duo;
     wi;
 };
 
 #alias {jindou} {
     unwi;
     do_wield dagger;
-    perform dagger.jindou;
+    perform shenghuo-lingfa.jindou;
     wi;
 };
 
@@ -116,6 +127,7 @@
     do_wield sword;
     #send {jifa parry xuantie-jian};
     perform xuantie-jian.xiongyong;
+    #send {perform xuantie-jian.xiongyong};
     #send {jifa parry shenghuo-lingfa};
     wi;
 };

@@ -309,17 +309,13 @@ load gps_actions;
     gps.stop;
 };
 
-#alias {gps.minor_traverse} {
-    gps.traverse %1 minor;
-};
-
 #alias {gps.traverse} {
     #unvar gps_traverse_target;
     gps.setup;
     #var gps_stop 0;
     #var traverse_tmp %1;
-    #var minor nil;
-    #var minor %2;
+    #var mode nil;
+    #var mode %2;
     #var gps_traverse_location nil;
 
     #replace traverse_tmp {@} {;};
@@ -341,12 +337,12 @@ load gps_actions;
             #delay {gps_check_delay} {
                 #showme {GPS: 当前房间未记录, 无法遍历};
                 taopao {
-                    gps.traverse ${traverse_tmp} ${minor};
+                    gps.traverse ${traverse_tmp} ${mode};
                 };
             } {1};
         };
         #else {
-            INVOKE gps.traverse ${gps.roomno} ${gps_traverse_location} ${minor};
+            INVOKE gps.traverse ${gps.roomno} ${gps_traverse_location} ${mode};
             #var gps_path_index 1;
             #list gps_path size gps_path_size;
             #var gps.run.mode TRAVERSE;

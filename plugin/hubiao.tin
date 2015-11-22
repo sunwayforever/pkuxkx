@@ -71,7 +71,7 @@
                 };
             };
             #else {
-                INVOKE gps.traverse ${gps.roomno} "${gps_traverse_location}" "nil";
+                INVOKE gps.traverse ${gps.roomno} "${gps_traverse_location}" "dfs";
                 #var hb_path ${gps_path};
                 #var hb_path_index 1;
                 #list hb_path size hb_path_size;
@@ -570,6 +570,7 @@
         #var getesc_address %%3;
         #if {${getesc_current_id} == 0 && @should_accept_quest{${getesc_address}} == 1} {
             #var getesc_current_id ${getesc_id};
+            #var getesc_current_address ${getesc_address};
         };
     };
 
@@ -614,8 +615,9 @@
         @setenv{hb_state;STARTED};
         @setenv{hb_lunci;@eval{@getenv{hb_lunci}+1}};
         @setenv{hb_huoji;%%2};
-        INVOKE gps.get_area %%1;
-        #var hb_dest ${gps.area}%%3;
+        #nop INVOKE gps.get_area %%1;
+        #nop #var hb_dest ${gps.area}%%3;
+        #var hb_dest ${getesc_current_address};
         @setenv{hb_dest;${hb_dest}};
         #var hb_info %%2|${hb_dest};
         @setenv{hb_info;${hb_info}};
@@ -715,7 +717,7 @@
     #action {一个伙计挖着鼻屎走了出来，道：你找我啥事} {
         #unticker {mx_q};
         #delay {3} {
-            gps.minor_traverse 财物的伙计;
+            gps.traverse 财物的伙计 bfs;
         };
     };
     #action {GPS: 遍历完成} {
@@ -927,7 +929,7 @@
 };
 
 #list hb_blacklist:昌隆镖局 create {
-    镇江飞龙镖局;归云庄太湖街;嘉兴钱庄;峨嵋毗卢殿;岳阳车马行;泉州当铺;苏州聚宝斋;江州天福镖局;
+    归云庄太湖街;峨嵋毗卢殿;苏州聚宝斋;
 };
 
 #class hubiao close

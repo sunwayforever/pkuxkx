@@ -196,7 +196,6 @@
 };
 
 #action {^http://pkuxkx.net/antirobot/robot.php?filename=%1} {
-    browse http://pkuxkx.net/antirobot/robot.php?filename=%1;
     notify http://pkuxkx.net/antirobot/robot.php?filename=%1;
 };
 

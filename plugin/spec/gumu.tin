@@ -16,7 +16,7 @@
     #class attack.inner close;
 
     #if {"${quest}" == "hb"} {
-        pfm suxin;
+        pfm shexin;
         #class attack.inner open;
         #class attack.inner close;
     };
