@@ -153,6 +153,7 @@
             tmp_auto_pp nil;
         } {150};
         #class pp.inner open;
+
         #action {告诉你：【%*(%*)】目前在【{\S+?}的%*】,快去摁死它吧!} {
             #class pp.inner kill;
             #undelay {pp_delay};
@@ -167,13 +168,16 @@
             show_to_info %%1(%%2) @ %%3;
             tmp_auto_pp %%3;
         } {2};
+        #action {桃白白%*告诉你：【%*】并不存在} {
+            #cr;
+        } {1}
         #action {告诉你：【%*】并不存在} {
             #class pp.inner kill;
             #undelay {pp_delay};
             #unticker {pp};
             show_to_info %%1 @ 不存在;
             tmp_auto_pp nil;
-        } {1};
+        } {2};
         #class pp.inner close;
     };
 };

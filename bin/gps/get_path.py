@@ -62,7 +62,7 @@ class MudRoom:
         sql = "select roomno, linkroomno from mud_entrance where weight_type = 0"
         rows = self.conn.execute(sql).fetchall()
         for row in rows:
-            self.weights_info[(row[0],row[1])] = 0
+            self.weights_info[(row[0],row[1])] = 1
 
         self.weights_info_saved = self.weights_info.copy()
             
@@ -168,11 +168,11 @@ class MudRoom:
                     break
                 for link in self.neighbours[i]:
                     current_weight = self.weights_info[(link.roomno,link.linkroomno)]
-                    if  current_weight == 0:
+                    if current_weight == 1 or current_weight == 0:
                         if not link.linkroomno in src_set:
                             updated = True
                             tmp_set.add(link.linkroomno)
-                    elif current_weight > 0:
+                    elif current_weight > 1:
                         updated = True
                         self.weights_info[(link.roomno,link.linkroomno)] = current_weight - 1
                         

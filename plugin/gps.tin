@@ -366,7 +366,7 @@ load gps_actions;
     #nop weight = 0: there is no weight;
     #nop weight < 0: the path is disabled;
 
-    #var DEFAULT_GPS_WEIGHT "50,100,10,50,100,80,0,150";
+    #var DEFAULT_GPS_WEIGHT "50,100,10,50,100,80,1,150";
     INVOKE gps.get_path %1 %2 ${DEFAULT_GPS_WEIGHT};
 };
 
