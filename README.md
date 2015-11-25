@@ -2,12 +2,7 @@
 
 linux / cygwin
 ----------
-1. cd DIR; ./pkuxkx ID 'PASSWORD'
-
-windows
-----------
-1. 修改 wintin++/profile.tin, 填上自己的 user 和 password
-2. 双击 wintin++/pkuxkx.bat
+cd DIR; ./pkuxkx ID 'PASSWORD'
 
 添加新的门派支持
 ----------
@@ -26,4 +21,4 @@ Requirements
 1. tintin++
 2. sqlite3
 3. python3
-4. 可选: libnotify-bin, notifu (for cygwin), mplayer, sleekxmpp (for xmpp notification)
+4. Optional: sleekxmpp (for xmpp notification)
