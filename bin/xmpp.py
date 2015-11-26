@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 import sys
 import re
+import os
+import time
+import uuid
 from sleekxmpp import ClientXMPP
 from sleekxmpp.exceptions import IqError, IqTimeout
 from urllib.request import urlopen
@@ -21,20 +24,36 @@ class Bot(ClientXMPP):
         if msg['type'] in ('chat', 'normal'):
             print ("xmpp message: %s:%s\n" % (msg['from'],msg['body']))
 
+def get_ip_address():
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    s.connect(("8.8.8.8", 80))
+    return s.getsockname()[0]  
+            
+def remove_old_file():
+    ten_minute_ago = time.time() - 600
+    folder = '/var/www/image_pkuxkx/'
+    os.chdir(folder)
+    for somefile in os.listdir('.'):
+        st=os.stat(somefile)
+        mtime=st.st_mtime
+        if mtime < ten_minute_ago:
+            os.unlink(somefile)
+            
 def send_image_async(xmpp, url, char_id):
     try:
+        remove_old_file()
         html = urlopen(url,timeout=5).readline().decode('utf-8')
         m = re.match(".*img src=\"(.*)\" alt",html)
         if not m:
             return
+        file_name = str(uuid.uuid4())
         handle = urlopen("http://pkuxkx.net/antirobot/"+m.group(1),timeout=5)
-        image_file = open("/var/www/image_pkuxkx/%s.png"%(char_id),"wb")
+        image_file = open("/var/www/image_pkuxkx/%s.png"%(file_name),"wb")
         image_file.write(handle.read())
         image_file.close()
-        xmpp.send_message(mto="messenger@v587.info/xkx", mbody="http://v587.info:8080/image_pkuxkx/%s.png"%(char_id), mtype='chat')
+        xmpp.send_message(mto="messenger@v587.info/xkx", mbody="http://%s:8080/image_pkuxkx/%s.png"%(get_ip_address(), file_name), mtype='chat')
     except:
         pass
-    
     
 if __name__ == '__main__':
     socket.setdefaulttimeout(10)

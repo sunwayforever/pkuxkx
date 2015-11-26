@@ -131,4 +131,8 @@
     #send {jifa parry shenghuo-lingfa};
     wi;
 };
+
+stat.register ĞÚÓ¿ hit Ö»¾õµÃÓÌÈçÉíÏİºéÌÎ¾ŞÀË£¬µøµø×²×²;
+stat.register ĞÚÓ¿ miss ÄãµÄÁèÀ÷¹¥ÊÆ;
+
 #class mingjiao close

@@ -5,7 +5,9 @@
 #alias {xl.start} {
     set_last_quest xl;
     #class xl.inner open;
-    #action {顿觉内功修为增进不小} {xiulian ${xl_kungfu}};
+    #action {顿觉内功修为增进不小} {
+        xiulian ${xl_gongfu}
+    };
     #action {由于缺乏实战经验} {
         #showme MISSION_COMPLETE: xl;
         xl.stop;
@@ -14,10 +16,44 @@
         #showme MISSION_COMPLETE: xl;
         xl.stop;
     };
+
+    #action {□%* (%*)%*  %d/} {
+        #if {"%%2" == "${xl_gongfu}"} {
+            #var xiulian_level %%4;
+        };
+    };
+
+    #action {你的技能等级最多能达到%*级} {
+        #var max_level @ctd{%%1};
+    };
+
+    #alias {check_xiulian_level} {
+        #send {sk};
+        xiulian ${xl_gongfu};
+        #delay {1} {
+            #if {${max_level} <= ${xiulian_level}} {
+                #showme MISSION_COMPLETE: xt;
+                xt.stop;
+            };
+            #else {
+                show_to_quest 修炼 ${xl_gongfu}: ${xiulian_level} -> ${max_level};
+            };
+        };
+    };
+
+    #ticker {check_xiulian_level} {
+        check_xiulian_level;
+    } {300};
+
     #class xl.inner close;
-    #var xl_kungfu %1;
-    xiulian ${xl_kungfu};
-    show_to_quest 修炼内功;
+    #var xl_gongfu %1;
+    #if {"${xl_gongfu}" == ""} {
+        #var xl_gongfu @getenv{xl_gongfu};
+    };
+    #else {
+        @setenv{xl_gongfu;${xl_gongfu}};
+    };
+    check_xiulian_level;
 };
 
 #alias {xl.stop} {

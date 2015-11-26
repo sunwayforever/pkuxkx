@@ -11,6 +11,10 @@
         wudao;
     } {180};
 
+    #action {你心神无法专一，怎能参悟道学至理？} {
+        wd.stop;
+    };
+
     #action {你的「道家养生术」进步了！} {
         #math level_up ${level_up}+1;
         show_to_quest 道家养生术 +${level_up};
