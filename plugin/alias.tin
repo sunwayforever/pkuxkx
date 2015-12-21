@@ -1177,7 +1177,9 @@ walk_to east;
         #delay {2} {
             #showme INFO: 自动 login 完成;
             show.init;
-            post_login;
+            on_unbusy {
+                post_login;
+            };
         };
     };
 };

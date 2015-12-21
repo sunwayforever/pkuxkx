@@ -263,6 +263,21 @@
     gt bs;
 };
 
+#alias {ask.san} {
+    #alias tmp_ask_san #cr;
+    #alias tmp_ask_san %1;
+    #class ask_san.inner open;
+    #action {大老子给你一些清心散。} {
+        tmp_ask_san;
+        #class ask_san.inner kill;
+    };
+    #class ask_san.inner close;
+    on_there {
+        tell gamester san;
+    };
+    gt 星宿派储藏室;
+};
+
 #alias get.gls get.guang_ling_san;
 #alias {get.guang_ling_san} {
     #class get.sibao.inner open;

@@ -61,10 +61,21 @@
         };
     };
     #class xuantie.inner close;
-    gt Ç®ÌÁ½­¿Ú;
-    on_there {
-        check_xuantie_level;
-        start_lian;
+    #alias {burden_check_done} {
+        #if {@getburden{ÐþÌú½£} == 0} {
+            xt.stop;
+            #showme MISSION_COMPLETE: xt;
+        };
+        #else {
+            gt Ç®ÌÁ½­¿Ú;
+            on_there {
+                check_xuantie_level;
+                start_lian;
+            };
+        };
+    };
+    burden.check {
+        burden_check_done;
     };
 };
 
@@ -72,6 +83,7 @@
     #class xuantie.inner kill;
     #unticker {check};
     unset_last_quest;
+    health.cancel;
     halt;
     on_unbusy {
         jump out;

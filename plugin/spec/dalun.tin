@@ -197,4 +197,5 @@ stat.register ĞÚÓ¿ miss ÄãµÄÁèÀ÷¹¥ÊÆ;
     gps.run;
 };
 
+#list fsk create {xt};
 #class dalun close

@@ -135,4 +135,5 @@
 stat.register ĞÚÓ¿ hit Ö»¾õµÃÓÌÈçÉíÏİºéÌÎ¾ŞÀË£¬µøµø×²×²;
 stat.register ĞÚÓ¿ miss ÄãµÄÁèÀ÷¹¥ÊÆ;
 
+#list fsk create {xt};
 #class mingjiao close
