@@ -1091,7 +1091,7 @@ walk_to east;
         #class get_char_info.inner kill;
 
         #class get_name.inner open;
-        #action {ае    УћЃК %*} {
+        #action {ае    УћЃК	%*} {
             #var char_name %%%1;
             #class get_name.inner kill;
             update_status;

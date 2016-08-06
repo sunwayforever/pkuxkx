@@ -118,7 +118,13 @@
     #else {
         #var naijiu_info ${min_naijiu}/${special_min_naijiu};
     };
-    #var status_content ${char_name}: ${shaqi_info} | ${health_info} | ${exp_info} | ${naijiu_info} 耐久 | ${money_info} | ${daytime_info} | ${uptime_info} | ${week_info} | ${fm_remaining_time};
+    #if {"${naijiu_info}" == "10000"} {
+        #var naijiu_info 无兵器;
+    };
+    #else {
+        #var naijiu_info ${naijiu_info} 耐久;
+    }
+    #var status_content ${char_name}: ${shaqi_info} | ${health_info} | ${exp_info} | ${naijiu_info} | ${money_info} | ${daytime_info} | ${uptime_info} | ${week_info} | ${fm_remaining_time};
     #if {"${xy_info}" == "on"} {
         #var status_content ${status_content} | 保卫;
     };
@@ -209,8 +215,9 @@
 } {30};
 
 #var prev_daytime nil;
-#action {侠客行现在大约是%1时分} {
-    #var curr_daytime %1;
+
+#action {北大侠客行游戏时间是%*日%*时分。} {
+    #var curr_daytime %2;
     #if {"${curr_daytime}" != "${prev_daytime}"} {
         #showme ${curr_daytime}到了;
         #var daytime_info ${curr_daytime};
