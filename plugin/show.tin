@@ -15,6 +15,18 @@
 #nop -;
 #math show_chat_pos ${show_chat_pos} - 1;
 
+#var chat_on 0;
+#alias {chat.on} {
+    #var chat_on 1;
+    show.init;
+};
+
+#alias {chat.off} {
+    #var chat_on 0;
+    show.init;
+    #send {l};
+};
+
 #alias {show.reset} {
     #var info_window {{1}{ } {2}{ } {3}{ } {4}{ }};
     #var chat_window {{1}{ } {2}{ } {3}{ } {4}{ } {5}{ }};
@@ -23,7 +35,12 @@
 
 #var show_inited 0;
 #alias {show.init} {
-    #math split_all 1-${show_chat_pos}+&chat_window[];
+    #if {${chat_on} == 1} {
+        #math split_all 1-${show_chat_pos}+&chat_window[];
+    };
+    #else {
+        #math split_all 1-$show_info_pos+&info_window[];
+    };
     #split ${split_all} 1;
     #var show_inited 1;
     #event {SCREEN RESIZE} {
@@ -41,11 +58,13 @@
         #echo {{<aff>$info_window[$cnt]<099>} {$pos}};
     }
 
-    #loop {1} {&chat_window[]} {cnt}
-    {
-        #math pos ${show_chat_pos}-$cnt;
-        #echo {{<aff>$chat_window[$cnt]<099>} {$pos}};
-    }
+    #if {${chat_on} == 1} {
+        #loop {1} {&chat_window[]} {cnt}
+        {
+            #math pos ${show_chat_pos}-$cnt;
+            #echo {{<aff>$chat_window[$cnt]<099>} {$pos}};
+        }
+    };
 };
 
 #alias {show_to_status} {
@@ -95,6 +114,9 @@
 
 #var showing_to_chat 0;
 #alias {show_to_chat} {
+    #if {${chat_on} == 0} {
+        #return;
+    };
     #if {${showing_to_chat} == 1} {
         #delay {0.2} {
             show_to_chat %0;
