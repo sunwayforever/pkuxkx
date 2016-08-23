@@ -36,18 +36,18 @@
         };
     } {2};
 
-    #action {^│  %S (%S)%s-%*%d/%s%d│$} {
-        #var basic_skill %%2;
-        #var basic_skill_level %%5;
+    #action {│%s%S%s│%S%s│%S│%s%d│%*} {
+        #var basic_skill %%4;
+        #var basic_skill_level %%8;
         record_level_a  ${basic_skill} ${basic_skill_level};
-    };
+    } {3};
 
-    #action {□%S%s(%*)%s-%*%d/%s%d│$} {
+    #action {│□%S%s│%S%s│%S│%s%d│%*} {
         #var special_skill %%1;
-        #var special_skill_level %%6;
+        #var special_skill_level %%7;
         #list special_skills add ${special_skill};
         #list special_skills_level add ${special_skill_level};
-    };
+    } {2};
 
     #action {你的技能等级最多能达到%*级} {
         #var max_level @ctd{%%1};

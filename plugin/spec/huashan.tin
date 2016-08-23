@@ -18,7 +18,7 @@
             #if {${nl_percent} > 70} {
                 pfm pobing;
             };
-        } {3};
+        } {4.1};
         #ticker {chan} {
             pfm chan;
         } {1.5};
@@ -207,13 +207,9 @@
     wi;
 };
 
-#var shortcut F1:破气 F2:汹涌 F3:飞剑 F4:剑掌 F5:养吾 F6:三青峰 F7:狂风 F8:总决 F9: 破兵;
+#var shortcut F1:破气 F3:飞剑 F4:剑掌 F5:养吾 F6:三青峰 F7:狂风 F8:总决 F9: 破兵;
 #macro {\eOP} {
     poqi;
-};
-
-#macro {\eOQ} {
-    xiongyong;
 };
 
 #macro {\eOR} {
@@ -279,15 +275,4 @@ stat.register 破兵 hit 你乘%*机会连发三招！;
 stat.register 破兵 miss 趁此机会暗换真气，庆幸度过一劫;
 stat.register 破兵 miss 回守，另图它策。;
 
-#alias {xiongyong} {
-    unwield all;
-    do_wield sword;
-    #send {jifa sword xuantie-jian};
-    #send {jifa parry xuantie-jian};
-    perform xuantie-jian.xiongyong;
-    #send {jifa sword dugu-jiujian};
-    #send {jifa parry poyu-quan};
-    unwield all;
-    wi;
-};
 #class huashan close
