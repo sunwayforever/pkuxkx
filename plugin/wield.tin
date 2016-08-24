@@ -15,10 +15,8 @@
 
 #alias {wi} {
     unwi;
-    #if {"${quest}" == "hb" || "${quest}" == "nil" || "${quest}" == ""} {
-        #foreach {${weapons_to_wield}[%*]} {weapon} {
-            do_wield ${weapon};
-        };
+    #foreach {${weapons_to_wield}[%*]} {weapon} {
+        do_wield ${weapon};
     };
 };
 

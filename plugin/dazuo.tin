@@ -52,7 +52,7 @@
         #class dz.full.inner kill;
         #delay {dz_delay} {
             tmp_dz;
-        } {20};
+        } {@random{40}};
     };
 };
 

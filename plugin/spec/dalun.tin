@@ -43,14 +43,10 @@
         };
         #else {
             #class attack.inner open;
-            #ticker {xiongyong} {
-                pfm xiongyong;
-            } {4.8};
             #class attack.inner close;
 
             #if {${xf.type} == 1} {
                 pfm wushuai;
-                pfm xiongyong;
                 #class attack.inner open;
                 #ticker {wushuai} {
                     pfm wushuai;
@@ -67,26 +63,22 @@
             };
             #elseif {${xf.type} == 3} {
                 #if {${xf_slowdown} == 0} {
-                    pfm xiongyong;
+                    pfm ran;
                 };
             };
             #elseif {${xf.type} == 4} {
-                pfm xiongyong;
                 #if {${xf_slowdown} == 0} {
+                    pfm ran;
                 };
             };
         };
     };
     #else {
         pfm wushuai;
-        pfm xiongyong;
         #class attack.inner open;
         #ticker {wushuai} {
             pfm wushuai;
         } {6.8};
-        #ticker {xiongyong} {
-            pfm xiongyong;
-        } {4.8};
         #class attack.inner close;
     };
 };
@@ -114,7 +106,7 @@
     wi;
 };
 
-#var shortcut F1:µ¶Æø F2:È¼ F3:ÎåË¥ F4: ÐÚÓ¿;
+#var shortcut F1:µ¶Æø F2:È¼ F3:ÎåË¥
 #macro {\eOP} {
     daoqi;
 };
@@ -125,10 +117,6 @@
 
 #macro {\eOR} {
     wushuai;
-};
-
-#macro {\eOS} {
-    xiongyong;
 };
 
 #alias {goto_lingwu} {
