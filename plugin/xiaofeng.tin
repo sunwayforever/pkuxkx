@@ -33,8 +33,23 @@
 };
 
 #alias {xf.go} {
-    #var xf.type %1;
-    @setenv{xf_type;%1};
+    #if {"%1" == "杀"} {
+        #var xf.type 1;
+    };
+    #elseif {"%1" == "擒"} {
+        #var xf.type 2;
+    };
+    #elseif {"%1" == "劝"} {
+        #var xf.type 3;
+    };
+    #elseif {"%1" == "降"} {
+        #var xf.type 4;
+    };
+    #else {
+        #var xf.type %1;
+    };
+
+    @setenv{xf_type;${xf.type}};
     @setenv{xf_state;STARTED};
     #var xf.position %2;
     xf.watchdog.kick;
@@ -712,7 +727,8 @@
         #class xf.bl.inner kill;
         #delay {xf_delay} {
             #var xf_fail_reason 没有找到杀手 @ ${xf.position};
-            xf.b;
+            #nop xf.b;
+            notify ${xf_fail_reason};
         } {3};
     };
 
