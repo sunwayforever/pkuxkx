@@ -603,25 +603,33 @@
 
     #action {过%*再来问吧。} {
         #if {${xf.requested} == 1} {
-            dz.idle {xf.q};
+            #delay {xf_auto_delay} {
+                xf.q;
+            } {10};
         };
     };
 
     #action {^萧峰说道：「你先忙完你的事情吧。」} {
         #if {${xf.requested} == 1} {
-            dz.idle {xf.q};
+            #delay {xf_auto_delay} {
+                xf.q;
+            } {10};
         };
     } {1};
 
     #action {^萧峰(xiao feng)告诉你：你先去在江湖中历练一番吧。} {
         #if {${xf.requested} == 1} {
-            dz.idle {xf.q};
+            #delay {xf_auto_delay} {
+                xf.q;
+            } {10};
         };
     } {1};
 
     #action {^萧峰(xiao feng)告诉你：你先下去休息休息吧。} {
         #if {${xf.requested} == 1} {
-            dz.idle {xf.q};
+            #delay {xf_auto_delay} {
+                xf.q;
+            } {10};
         };
     } {1};
 
