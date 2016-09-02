@@ -9,6 +9,26 @@
     #unticker {dz};
 };
 
+#alias {calc_dazuo_time} {
+    #format {dz_current_time} {%T};
+    #if {${dz_last_time} == 0} {
+        #var dz_last_time ${dz_current_time};
+        #return;
+    };
+    #math delta ${dz_current_time} - ${dz_last_time};
+    #var dz_last_time ${dz_current_time};
+
+    #math dz_remain_nl ${max_neili} - ${hpbrief_max_nl};
+    #math dz_remain_time (${dz_remain_nl} * ${delta})/60;
+    #if {${dz_remain_time} < 60} {
+        #var dz_remain_time ${dz_remain_time} m;
+    };
+    #else {
+        #math dz_remain_time ${dz_remain_time}/60;
+        #var dz_remain_time ${dz_remain_time} h;
+    };
+};
+
 #alias {dz.rest} {
     #alias tmp_dz #cr;
     #alias tmp_dz %1;
@@ -84,6 +104,8 @@
 #alias {dz.start} {
     set_last_quest dz;
     autoheal.off;
+    #var dz_last_time 0;
+    #var dz_remain_time nil;
     #class dz.inner open;
     #alias {start_ticker} {
         #ticker {dz} {
@@ -132,6 +154,7 @@
 
 #alias {dz.check.inner} {
     #math max_neili ${youxiao_neigong} * 10 -1;
+    calc_dazuo_time;
     #if {${max_neili} < ${hpbrief_max_nl}} {
         dz.stop;
         #showme MISSION_COMPLETE: dz;
@@ -144,7 +167,7 @@
             #return;
         };
         start_ticker;
-        show_to_quest 打坐: ${hpbrief_max_nl} => ${max_neili};
+        show_to_quest 打坐: ${hpbrief_max_nl} => ${max_neili} 还需: ${dz_remain_time};
     };
 };
 
