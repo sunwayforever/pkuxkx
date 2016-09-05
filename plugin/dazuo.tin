@@ -15,11 +15,15 @@
         #var dz_last_time ${dz_current_time};
         #return;
     };
-    #math delta ${dz_current_time} - ${dz_last_time};
+
+    #math first_delta ${dz_current_time} - ${dz_last_time};
     #var dz_last_time ${dz_current_time};
 
+    #math last_delta ${first_delta} * ${max_neili} / ${hpbrief_max_nl};
     #math dz_remain_nl ${max_neili} - ${hpbrief_max_nl};
-    #math dz_remain_time (${dz_remain_nl} * ${delta})/60;
+
+    #math dz_remain_time (${first_delta} + ${last_delta}) * ${dz_remain_nl} / 120;
+
     #if {${dz_remain_time} < 60} {
         #var dz_remain_time ${dz_remain_time} m;
     };
