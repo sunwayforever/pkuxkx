@@ -59,6 +59,7 @@
 } {4};
 
 #alias {chat.record} {
+    #return
     #if {"${char_id}" == "erq"} {
         #var chat_content %0;
         #format {current_epoch} {%T};
@@ -74,6 +75,7 @@
 };
 
 #alias {remember} {
+    #return
     #if {@ismember{%1;contacts} != 0} {
         #return;
     };
