@@ -1097,7 +1097,7 @@ walk_to east;
         #class get_name.inner close;
 
         #class get_st.inner open;
-        #action {¡¡ÐÕÃû  ¡¡%S%s ¡¡£É£Ä} {
+        #action {¡¡ÐÕÃû£º¡¡%S%s ¡¡£É£Ä} {
             #var char_name %%%1;
             update_status;
             get_char_info_action;
