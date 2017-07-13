@@ -1,5 +1,5 @@
 #class shaolin open
-#var jiali_count 5;
+#var jiali_count max;
 #var hb_max_path_size 60;
 
 #action {汾酒已经被喝得一滴也不剩了} {
@@ -23,7 +23,7 @@
 };
 
 #alias {attack} {
-    pfm fmq;
+    jiali ${jiali_count}
 
     #if {"${quest}" == "hb"} {
         #send {perform yizhi-chan.jingmo ${char_id}'s robber 1};
@@ -41,9 +41,6 @@
     };
 
     #class attack.inner open;
-    #ticker {zuida} {
-        pfm zuida;
-    } {30};
     #ticker {jingmo} {
         #if {"${quest}" == "hb"} {
             #send {perform yizhi-chan.jingmo ${char_id}'s robber 1};
@@ -64,7 +61,6 @@
         #class attack.inner open;
         #class attack.inner close;
         #if {${xf.type} == -1 || ${xf.type} == 1} {
-            #var jiali_count max;
             pfm luohan;
             #class attack.inner open;
             #ticker {luohan} {
@@ -95,7 +91,6 @@
     };
     #else {
         #if {${xf.type} == -1 || ${xf.type} == 1} {
-            #var jiali_count max;
             pfm luohan;
             #class attack.inner open;
             #ticker {luohan} {
@@ -242,7 +237,7 @@ stat.register 惊魔 miss 看破了你的企图，侧身避过指力;
 #var menzhong_didian txg;
 
 #alias {attack.end} {
-    #var jiali_count 10;
+
 };
 
 #list fsk create {cc};
