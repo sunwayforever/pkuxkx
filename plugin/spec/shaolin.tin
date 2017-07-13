@@ -1,5 +1,5 @@
 #class shaolin open
-#var jiali_count max;
+#var jiali_count 10;
 #var hb_max_path_size 60;
 
 #action {汾酒已经被喝得一滴也不剩了} {
@@ -23,7 +23,7 @@
 };
 
 #alias {attack} {
-    jiali ${jiali_count}
+    jiali ${jiali_count};
 
     #if {"${quest}" == "hb"} {
         #send {perform yizhi-chan.jingmo ${char_id}'s robber 1};
@@ -50,7 +50,7 @@
         #else {
             pfm jingmo;
         };
-    } {1};
+    } {3};
     #class attack.inner close;
 
     #if {"${quest}" == "hb"} {
