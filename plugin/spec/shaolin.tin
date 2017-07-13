@@ -23,27 +23,21 @@
 };
 
 #alias {attack} {
-    pfm zuida;
     pfm fmq;
 
     #if {"${quest}" == "hb"} {
-        unwi;
         #send {perform yizhi-chan.jingmo ${char_id}'s robber 1};
         #send {perform yizhi-chan.jingmo ${char_id}'s robber 2};
         #send {perform yizhi-chan.jingmo ${char_id}'s robber 3};
-        wi;
     };
     #elseif {"${quest}" == "wat"} {
-        unwi;
         #send {perform yizhi-chan.jingmo wushi 1};
         #send {perform yizhi-chan.jingmo wushi 2};
         #send {perform yizhi-chan.jingmo wushi 3};
         #send {perform yizhi-chan.jingmo wushi 4};
-        wi;
     };
     #else {
         pfm jingmo;
-        pfm chan;
     };
 
     #class attack.inner open;
@@ -52,15 +46,12 @@
     } {30};
     #ticker {jingmo} {
         #if {"${quest}" == "hb"} {
-            unwi;
             #send {perform yizhi-chan.jingmo ${char_id}'s robber 1};
             #send {perform yizhi-chan.jingmo ${char_id}'s robber 2};
             #send {perform yizhi-chan.jingmo ${char_id}'s robber 3};
-            wi;
         };
         #else {
             pfm jingmo;
-            pfm chan;
         };
     } {1};
     #class attack.inner close;
@@ -174,13 +165,6 @@
     };
 };
 
-#alias {chan} {
-    unwi;
-    do_wield whip;
-    perform riyue-bian.chan;
-    wi;
-};
-
 #alias {zuida} {
     unwi;
     do_wield staff;
@@ -195,20 +179,14 @@
 };
 
 #alias {luohan} {
-    unwi;
-    jiali ${jiali_count};
     perform luohan-quan.luohan;
-    jiali none;
-    wi;
 };
 
 #alias {jingmo} {
-    unwi;
     perform yizhi-chan.jingmo;
-    wi;
 };
 
-#list my_weapons_to_wield create {spear;spear 2};
+#list my_weapons_to_wield create {};
 #list special_whip create {qixing};
 
 #var shortcut F1:惊魔 F2:缠 F3:罗汉 F4:拂穴;
@@ -253,10 +231,7 @@
 };
 
 #alias {fmq} {
-    unwi;
-    do_wield whip;
-    #send {perform riyue-bian.fumoquan};
-    wi;
+    chain unwi {do_wield whip} {perform riyue-bian.fumoquan} unwi;
 };
 
 stat.register 惊魔 hit 胸前大穴被你指力点中，全身动弹不得;
